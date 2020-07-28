@@ -1,0 +1,154 @@
+<!--  --------------------------------------------------------------------------------------------------------------------
+// Copyright file="editprofile.component.html"
+//  © Copyright European Space Agency, 2018-2020
+//
+//  Author: Software developed by RHEA System S.A.
+//
+//  This file is subject to the terms and conditions defined in file 'LICENSE.txt', which is part of this source code package.
+//  No part of the package, including this file, may be copied, modified, propagated, or distributed
+//  except according to the terms contained in the file ‘LICENSE.txt’.
+// -------------------------------------------------------------------------------------------------------------------- -->
+<div class="container-fluid">
+
+  <div class="row" style="margin-top: 10px">
+
+    <div class="col-lg-2">
+      <p-menu [model]="profileMenu" [style]="{'width': '100%'}"></p-menu>
+    </div>
+
+    <div class="col-lg-10">
+      <form class="well">
+        <div class="row">
+          <div class="col-md-6">
+
+            <div [formGroup]="profileForm" class="form-group">
+              <label for="name">Name</label>
+              <input formControlName="name" type="text" class="form-control" name="name" id="name" />
+              <control-messages [control]="profileForm.controls.name"></control-messages>
+            </div>
+
+
+            <div [formGroup]="profileForm" class="form-group">
+              <label for="organization">Organization</label>
+              <input formControlName="organization" type="text" class="form-control" name="organization" id="organization">
+              <control-messages [control]="profileForm.controls.organization"></control-messages>
+            </div>
+            <div [formGroup]="profileForm" class="form-group">
+              <label for="phase">System Engineering Project Phase</label>
+              <i class="fa fa-info-circle" (click)="infoPhase()" style="cursor:pointer;margin-left:1px;"></i>
+              <select formControlName="phase" class="form-control" name="phase" id="phase" disabled>
+
+                <option value="Initial">Initial</option>
+                <option value="Requirements">Requirements</option>
+                <option value="Design">Design</option>
+
+              </select>
+              <control-messages [control]="profileForm.controls.phase"></control-messages>
+            </div>
+
+            <div [formGroup]="profileForm" class="form-group">
+              <label for="riskMethodology">Methodology</label>
+              <select formControlName="riskMethodology" class="form-control" name="riskMethodology" id="riskMethodology" disabled>
+
+                <option value="Mehari">Mehari</option>
+                <!--<option value="HTRA">HTRA</option>-->
+
+              </select>
+              <control-messages [control]="profileForm.controls.riskMethodology"></control-messages>
+            </div>
+
+
+
+          </div>
+
+          <div class="col-md-6">
+            <div [formGroup]="profileForm" class="form-group">
+              <label for="description">Description</label>
+              <textarea formControlName="description" class="form-control" name="description" rows="11" id="description"></textarea>
+              <control-messages [control]="profileForm.controls.description"></control-messages>
+            </div>
+
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-3"></div>
+          <div class="col-md-6">
+            <div [formGroup]="profileForm" class="form-group" style="text-align: center">
+              <label for="template">Template</label>
+              <i class="fa fa-info-circle" (click)="infoTemplate()" style="cursor:pointer;margin-left:1px;"></i>
+              <p-pickList [source]="templateList" [target]="selectedTemplate" sourceHeader="Available Template" targetHeader="Selected Template"
+                          [responsive]="true" [sourceStyle]="{'height':'300px','width':'300px'}" [targetStyle]="{'height':'300px','width':'300px'}"
+                          id="template">
+                <ng-template let-template pTemplate="item">
+                  <div class="ui-helper-clearfix">
+                    <div style="font-size:14px;margin:5px 0 0 10px">{{ template.name }} - {{ template.riskMethodology }}</div>
+                  </div>
+                </ng-template>
+              </p-pickList>
+              <!--<control-messages [control]="profileForm.controls.template" ></control-messages>-->
+            </div>
+
+          </div>
+          <div class="col-md-3"></div>
+
+        </div>
+
+      </form>
+    </div>
+  </div>
+</div>
+
+<p-dialog [(visible)]="blocked" modal="modal" [responsive]="true" [showHeader]="false" class="editProfileSpinner">
+
+  <div *ngIf="!blockedMessage">
+    <h1></h1>
+    <div class="loader"></div>
+  </div>
+
+  <div *ngIf="blockedMessage">
+
+    <p-messages [(value)]="msgsAsset"></p-messages>
+
+  </div>
+
+
+</p-dialog>
+
+<p-dialog header="Info" [(visible)]="showPhaseInfo" modal="modal" width="600" [responsive]="true">
+
+  <div class="row">
+    <div class="col-md-12">
+
+      <p>Depending on the Templates that it is holding, a Profile could be more suited for a specific System Engineering Phase</p>
+
+    </div>
+  </div>
+
+
+  <p-footer>
+    <div class="ui-dialog-buttonpane ui-widget-content ui-helper-clearfix">
+      <button type="button" pButton icon="fa fa-fw fa-check" (click)="showPhaseInfo=false" label="Close"></button>
+    </div>
+
+  </p-footer>
+</p-dialog>
+
+<p-dialog header="Info" [(visible)]="showTemplateInfo" modal="modal" width="600" [responsive]="true">
+
+  <div class="row">
+    <div class="col-md-12">
+
+      <p>All available Templates are listed and they can be selected for the Profile. Tip: Please choose a meaningful name for
+        the Template, because it will be easier to associate!</p>
+
+    </div>
+  </div>
+
+
+  <p-footer>
+    <div class="ui-dialog-buttonpane ui-widget-content ui-helper-clearfix">
+      <button type="button" pButton icon="fa fa-fw fa-check" (click)="showTemplateInfo=false" label="Close"></button>
+    </div>
+
+  </p-footer>
+</p-dialog>

@@ -1,0 +1,70 @@
+<!--------------------------------------------------------------------------------------------------------------------
+// Copyright file="taxonomies-management.component.html"
+//  © Copyright European Space Agency, 2018-2020
+//
+//  Author: Software developed by RHEA System S.A.
+//
+//  This file is subject to the terms and conditions defined in file 'LICENSE.txt', which is part of this source code package.
+//  No part of the package, including this file, may be copied, modified, propagated, or distributed
+//  except according to the terms contained in the file ‘LICENSE.txt’.
+// -------------------------------------------------------------------------------------------------------------------->
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-2 col-md-2 col-lg-2 well" id="taxonomies-management-menu">
+      <label style="font-size: 18px">Taxonomy Selection :</label>
+
+      <div class="row">
+        <div class="col-md-12 col-lg-12 col-sm-12">
+          <div class="ui-g-12" *ngFor="let selection of taxonomiesSelections">
+            <p-radioButton value="{{ selection }}" label="{{ selection }}"
+                           [(ngModel)]="selectedTaxonomy"></p-radioButton>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-sm-11 col-lg-11">
+          <button style="margin-top: 15px;border: 1px solid " type="button" class="btn btn-secondary btn-xs btn-block"
+                  (click)="export()">
+            <b style="font-size: 0.9em">{{ getCreateBtnLabel('Export') }}</b>
+          </button>
+
+          <div id="upload_button" style="margin-top: 15px;border: 1px solid;" class="btn btn-secondary btn-xs btn-block"
+               *ngIf="admin">
+            <label>
+              <input type="file" (change)="importTaxonomyFile($event)" accept=".json">
+              <span style="font-size: 0.9em">{{ getCreateBtnLabel('Import') }}</span>
+            </label>
+          </div>
+          <!-- /button-->
+          <button style="margin-top: 15px;border: 1px solid " type="button" class="btn btn-secondary btn-xs btn-block"
+                  (click)="updateGasf()" *ngIf="admin">
+            <b style="font-size: 0.9em">Import GASF Taxonomy</b>
+          </button>
+
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-10 col-md-10 col-lg-10">
+      <app-vulnerabilities-taxonomy *ngIf="selectedTaxonomy === 'Vulnerabilities'"
+        [isAdmin]="admin">
+      </app-vulnerabilities-taxonomy>
+      <app-threats-taxonomy *ngIf="selectedTaxonomy === 'Threats'"
+         [isAdmin]="admin">
+      </app-threats-taxonomy>
+      <app-risk-scenario-taxonomy *ngIf="selectedTaxonomy === 'Risk Scenarios'"
+         [isAdmin]="admin">
+      </app-risk-scenario-taxonomy>
+    </div>
+    <p-dialog [(visible)]="blocked" modal="modal" [responsive]="true" [showHeader]="false" class="taxonomiesSpinner">
+      <div *ngIf="!blockedMessage">
+        <h1></h1>
+        <div class="loader"></div>
+      </div>
+      <div *ngIf="blockedMessage">
+        <p-messages [(value)]="msgImportExport"></p-messages>
+      </div>
+    </p-dialog>
+  </div>
+</div>

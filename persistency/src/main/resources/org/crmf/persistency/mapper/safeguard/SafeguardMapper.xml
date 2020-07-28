@@ -1,0 +1,42 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE mapper PUBLIC '-//mybatis.org//DTD Mapper 3.0//EN'
+        'http://mybatis.org/dtd/mybatis-3-mapper.dtd'>
+<mapper namespace='org.crmf.persistency.mapper.safeguard.SafeguardMapper'>
+    <resultMap type='SestSafeguardModel' id='SestSafeguardModel'>
+        <result property='sestobjId' column='SESTOBJ_ID'/>
+        <result property='safeguardModelJson' column='SAFEGUARD_MODEL_JSON'/>
+    </resultMap>
+
+    <insert id='insert' parameterType='SestSafeguardModel' useGeneratedKeys='true'
+            keyProperty='id' keyColumn='ID'>
+		INSERT INTO SAFEGUARD_MODEL(SESTOBJ_ID, SAFEGUARD_MODEL_JSON)
+		VALUES (#{sestobjId}, #{safeguardModelJson})
+	</insert>
+
+    <update id='update' parameterType='map'>
+		UPDATE SAFEGUARD_MODEL
+		SET
+		SAFEGUARD_MODEL_JSON = #{safeguardModelJson}
+		WHERE SESTOBJ_ID = #{sestobjId}
+	</update>
+
+    <select id='getByIdentifier' parameterType='String' resultMap='SestSafeguardModel'>
+		SELECT *
+		FROM SAFEGUARD_MODEL 
+		WHERE SESTOBJ_ID = '${value}'
+	</select>
+
+    <select id='getById' parameterType='int' resultMap='SestSafeguardModel'>
+		SELECT *
+		FROM SAFEGUARD_MODEL
+		WHERE ID = '${value}'
+	</select>
+
+    <select id='getLastByProjectIdentifier' parameterType='String' resultMap='SestSafeguardModel'>
+		SELECT *
+		FROM SAFEGUARD_MODEL
+		WHERE ID = (SELECT MAX(SAFEGUARD_ID) FROM ASSPROCEDURE WHERE
+			PROJECT_ID = (SELECT ID FROM ASSPROJECT WHERE SESTOBJ_ID = '${value}'))
+	</select>
+
+</mapper>

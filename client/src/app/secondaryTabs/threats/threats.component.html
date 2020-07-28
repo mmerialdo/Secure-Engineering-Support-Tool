@@ -1,0 +1,897 @@
+<!--  --------------------------------------------------------------------------------------------------------------------
+// Copyright file="threats.component.html"
+//  © Copyright European Space Agency, 2018-2020
+//
+//  Author: Software developed by RHEA System S.A.
+//
+//  This file is subject to the terms and conditions defined in file 'LICENSE.txt', which is part of this source code package.
+//  No part of the package, including this file, may be copied, modified, propagated, or distributed
+//  except according to the terms contained in the file ‘LICENSE.txt’.
+// -------------------------------------------------------------------------------------------------------------------- -->
+
+<div id="threatstabcontainer">
+  <div id="menuthreats" class="container">
+
+    <nav class="navbar navbar-default navbar-static-top">
+      <div class="container-fluid">
+        <button style="margin-top: 5px;border: 1px solid " type="button" class="btn btn-secondary btn-xs"
+                (click)="editThreat()"
+                [disabled]="!enableSaveButton || !thereAreChanges || !isLockedByCurrentUser()">
+          <b>Save Threat Model</b>
+        </button>
+        <hr>
+
+        <p-tree [value]="files" [style]="{'width': '100%', 'background-color': 'transparent', 'border': 'transparent'}"selectionMode="checkbox" [(selection)]="selectedFiles"
+                (onNodeSelect)="nodeSelect($event)" (onNodeUnselect)="nodeUnselect($event)"></p-tree>
+
+        <div style="margin-top: 10px;margin-bottom: 5px">
+          <button style="border:1px solid" type="button" class="btn btn-secondary btn-xs"
+                  [disabled]="selectedFiles.length===0 " (click)="addAssets()">
+            <b>Select Assets</b>
+          </button>
+        </div>
+
+      </div>
+
+      <div *ngIf="showAssetDetails">
+        <form class="col-md-12" style="padding-top: 5px;height: 780px;overflow: auto">
+          <div class="row">
+            <div class="col-md-12" s>
+              <hr>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-12">
+
+              <label>Name :</label>
+              <p>{{ nameAsset }}</p>
+
+              <label>Primary Asset Category :</label>
+              <p>{{ primaryAssetCategory }}</p>
+
+              <label style="margin-top: 10px">Secondary Asset Category :</label>
+              <p>{{ secondCat }}</p>
+
+              <div *ngIf="confidentiality!=null">
+                <label style="margin-top: 10px">Confidentiality Impact:</label>
+                <p>{{ confidentiality }}</p>
+              </div>
+
+              <div *ngIf="integrity!=null">
+                <label>Integrity Impact:</label>
+                <p>{{ integrity }}</p>
+              </div>
+
+              <div *ngIf="availability!=null">
+                <label>Availability Impact:</label>
+                <p>{{ availability }}</p>
+              </div>
+
+              <div *ngIf="efficiency!=null">
+                <label>Efficiency Impact:</label>
+                <p>{{ efficiency }}</p>
+              </div>
+
+            </div>
+          </div>
+
+          <div class="row" *ngIf="showSelectedRequirements.length>0">
+            <div class="col-md-12">
+              <hr>
+              <label>Requirements</label>
+              <div style="overflow: auto; width: 100%; height:100px">
+                <p-dataList [value]="showSelectedRequirements" [style]="{'height':'150px'}">
+
+                  <ng-template let-primaryAssetCategory pTemplate="item">
+                    <!--{{primaryAssetCategory.name}} - {{primaryAssetCategory.category}}-->
+                    {{ primaryAssetCategory }}
+                  </ng-template>
+                </p-dataList>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </nav>
+  </div>
+
+
+  <div id="centerTh" style="max-height: 780px;overflow: scroll">
+    <div id="canvas-div" style="width: 4000px;height:4001px"></div>
+  </div>
+
+
+  <div id="propertiesTh" [ngSwitch]="repository">
+
+    <form class="col-md-12 well" style="padding-top: 1px;max-height: 780px;overflow: auto">
+      <div class="row">
+        <div class="col-md-12">
+          <label>Threats Repository :</label>
+          <select [(ngModel)]="selectedRepository" (ngModelChange)="checkedRepository()" class="form-control"
+                  name="repository" id="repository">
+            <option *ngFor="let c of repositoryList" [ngValue]="c"> {{ c }}</option>
+
+          </select>
+            <p-tree [value]="threatTree" [style]="{'width': '100%', 'background-color': 'transparent', 'border': 'transparent'}" selectionMode="checkbox" [(selection)]="selectedThreatArray"
+                    (onNodeSelect)="vulSelect($event)"
+                    (onNodeUnselect)="vulUnselect($event)"></p-tree>
+            <div style="margin-top: 10px">
+              <button style="border:1px solid" type="button" class="btn btn-secondary btn-xs"
+                      [disabled]="selectedAsset === undefined || selectedThreatArray.length === 0"
+                      (click)="addThreats()">
+                <b>Select Threats</b>
+              </button>
+            </div>
+          </div>
+      </div>
+
+      <div *ngIf="showDetails">
+        <div class="row">
+
+          <div class="col-md-12">
+            <hr>
+            <label>Threat Details</label>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-8">
+            <label>Name :</label>
+            <p>{{ nameVul }} </p>
+          </div>
+
+          <div class="col-md-4">
+
+            <label>Catalogue :</label>
+            <p>{{ catalogueVul }}</p>
+          </div>
+
+        </div>
+
+        <div class="row" style="margin-top: 5px">
+          <div class="col-md-12">
+
+
+            <label>Description :</label>
+            <p>{{ descriptionTh }} </p>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-6">
+
+            <label>Score :</label>
+            <p>{{ scoreTh }} </p>
+          </div>
+          <div class="col-md-6">
+            <label>Likelihood :</label>
+            <p>{{ likeTh }} </p>
+
+          </div>
+        </div>
+
+        <div class="row">
+
+          <div class="col-md-12">
+            <hr>
+            <label>Actor </label>
+          </div>
+        </div>
+
+
+        <div class="row">
+          <div class="col-md-4">
+
+            <label>Name :</label>
+            <p>{{ actorName }} </p>
+          </div>
+
+          <div class="col-md-4">
+
+            <label>Catalogue :</label>
+            <p>{{ actorCat }} </p>
+          </div>
+
+          <div class="col-md-4">
+
+            <label>CatalogueID :</label>
+            <p>{{ actorCatId }} </p>
+          </div>
+
+        </div>
+
+        <div class="row">
+          <div class="col-md-12">
+            <hr>
+            <label>Event </label>
+          </div>
+        </div>
+
+        <div class="row">
+
+          <div class="col-md-4">
+            <label>Name :</label>
+            <p>{{ eventName }} </p>
+          </div>
+
+          <div class="col-md-4">
+            <label>Catalogue :</label>
+            <p>{{ eventCat }} </p>
+          </div>
+
+          <div class="col-md-4">
+            <label>CatalogueID :</label>
+            <p>{{ eventCatId }} </p>
+          </div>
+
+
+          <div class="col-md-4">
+
+            <button style="border:1px solid" type="button" (click)="displayThreatInformation=true"
+                    class="btn btn-secondary btn-xs">
+              <b>Further Information</b>
+            </button>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+
+
+</div>
+
+<p-dialog header="Threat Information" [(visible)]="displayThreatInformation" modal="modal" width="1300"
+          responsive="true"
+          [closable]="false">
+
+  <div class="row">
+
+    <div class="col-md-12">
+
+      <div class="row">
+        <div class="col-md-6">
+          <label>Name :</label>
+          <textarea class="form-control" [(ngModel)]="nameVul" rows="1" name="nameThInf" id="nameThInf"
+                    disabled> </textarea>
+        </div>
+
+        <div class="col-md-2">
+          <label>Catalogue :</label>
+          <p>{{ catalogueVul }}</p>
+        </div>
+
+        <div class="col-md-2">
+          <label>Catalogue ID :</label>
+          <p>{{ catalogueIDVul }}</p>
+        </div>
+
+        <div class="col-md-2">
+          <label>Threat Class :</label>
+          <p>{{ threatClass }}</p>
+        </div>
+      </div>
+
+      <div class="row" style="margin-top: 10px">
+        <div class="col-md-2">
+          <label>Affected Asset Categories :</label>
+          <p-dataList [value]="affectedCategories" id="affectedCategoriesInfoForm">
+            <ng-template let-affectedCategories pTemplate="item">
+              {{ affectedCategories }}
+            </ng-template>
+          </p-dataList>
+        </div>
+
+        <div class="col-md-2">
+          <label>Related Vulnerabilities :</label>
+          <p-dataList [value]="relatedVulnerabilities" id="relatedVulnInfoForm">
+            <ng-template let-relatedVulnerabilities pTemplate="item">
+              {{ relatedVulnerabilities }}
+            </ng-template>
+          </p-dataList>
+        </div>
+
+
+        <div class="col-md-1">
+          <label>Score :</label>
+          <p>{{ scoreTh }}</p>
+        </div>
+
+        <div class="col-md-1">
+          <label>Likelihood :</label>
+          <p>{{ likeTh }}</p>
+        </div>
+
+        <div class="col-md-6">
+
+          <label for="descriptionTh">Threat Description :</label>
+          <textarea class="form-control" [(ngModel)]="descriptionTh" name="descriptionThInf" rows="3"
+                    id="descriptionThInf" disabled></textarea>
+        </div>
+      </div>
+    </div>
+
+
+  </div>
+
+  <div class="row" style="margin-top: 10px">
+
+    <div class="col-md-6">
+     <label>Actor</label>
+      <hr>
+    </div>
+
+    <div class="col-md-6">
+      <label>Event</label>
+      <hr>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-6">
+
+
+      <div class="col-md-6">
+
+        <label>Name :</label>
+        <p>{{ actorName }}</p>
+
+      </div>
+
+
+      <div class="col-md-6">
+
+        <label>Description :</label>
+        <textarea class="form-control" [(ngModel)]="actorDescription" rows="1" name="actDescInf" id="actDescInf"
+                  disabled> </textarea>
+
+      </div>
+    </div>
+
+    <div class="col-md-6">
+
+      <div class="col-md-6">
+
+        <label>Name :</label>
+        <p>{{ eventName }}</p>
+
+      </div>
+
+
+      <div class="col-md-6">
+
+        <label>Description :</label>
+        <textarea class="form-control" [(ngModel)]="eventDescription" rows="1" name="eveDescInf" id="eveDescInf"
+                  disabled> </textarea>
+
+      </div>
+
+
+    </div>
+
+  </div>
+
+  <div class="row">
+
+    <div class="col-md-6">
+
+
+      <label>Place</label>
+
+      <hr>
+
+
+    </div>
+
+    <div class="col-md-6">
+
+
+      <label>Time</label>
+
+      <hr>
+
+
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-6">
+
+
+      <div class="col-md-6">
+
+        <label>Name :</label>
+        <p>{{ placeName }}</p>
+
+      </div>
+
+
+      <div class="col-md-6">
+
+        <label>Description :</label>
+        <textarea class="form-control" [(ngModel)]="placeDescription" rows="1" name="plaDescInf" id="plaDescInf"
+                  disabled> </textarea>
+
+      </div>
+
+
+    </div>
+
+    <div class="col-md-6">
+
+      <div class="col-md-6">
+
+        <label>Name :</label>
+        <p>{{ timeName }}</p>
+
+      </div>
+
+
+      <div class="col-md-6">
+
+        <label>Description :</label>
+        <textarea class="form-control" [(ngModel)]="timeDescription" rows="1" name="timDescInf" id="timDescInf"
+                  disabled> </textarea>
+
+      </div>
+
+
+    </div>
+
+  </div>
+
+  <div class="row">
+
+    <div class="col-md-6">
+
+
+      <label>Access</label>
+
+      <hr>
+
+
+    </div>
+
+    <div class="col-md-6">
+
+
+      <label>Process</label>
+
+      <hr>
+
+
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-6">
+
+
+      <div class="col-md-6">
+
+        <label>Name :</label>
+        <p>{{ processName }}</p>
+
+      </div>
+
+
+      <div class="col-md-6">
+
+        <label>Description :</label>
+        <textarea class="form-control" [(ngModel)]="accessDescription" rows="1" name="accDescInf" id="accDescInf"
+                  disabled> </textarea>
+
+      </div>
+
+
+    </div>
+
+    <div class="col-md-6">
+
+      <div class="col-md-6">
+
+        <label>Name :</label>
+        <p>{{ processName }}</p>
+
+      </div>
+
+
+      <div class="col-md-6">
+
+        <label>Description :</label>
+        <textarea class="form-control" [(ngModel)]="processDescription" rows="1" name="proDescInf" id="proDescInf"
+                  disabled> </textarea>
+
+      </div>
+
+
+    </div>
+
+  </div>
+
+
+  <p-footer>
+    <div class="ui-dialog-buttonpane ui-widget-content ui-helper-clearfix">
+      <button type="button" pButton icon="fa fa-fw fa-check" (click)="displayThreatInformation=false"
+              label="Ok"></button>
+    </div>
+  </p-footer>
+
+</p-dialog>
+
+<p-dialog header="Edit Threats" [(visible)]="displayEditVulnerability" modal="modal" width="1500" responsive="true"
+          [closable]="false">
+
+
+  <div class="row">
+    <div class="col-md-5">
+
+      <p-listbox [options]="associatedVulnerabilities" [(ngModel)]="selectedVulnerability"
+                 (click)="changeInformation(selectedVulnerability)"
+                 filter="filter" [style]="{'width':'100%','height':'340px','max-height':'300px', 'overflow-y':'auto'}" id="setB"
+                 [listStyle]="{'max-height':'240px'}"></p-listbox>
+      <button style="margin-bottom: 5px; margin-top: 5px;border: 1px solid " type="button"
+              class="btn btn-secondary btn-xs" [disabled]="selectedVulnerability === undefined"
+              (click)="deleteVulnerability(selectedVulnerability)">
+        <b>Remove Threat</b>
+      </button>
+
+    </div>
+
+    <div class="col-md-7" *ngIf="selectedVulnerability!=undefined">
+
+      <div class="row">
+        <div class="col-md-6">
+          <label>Name :</label>
+          <textarea class="form-control" [(ngModel)]="nameThForm" rows="1" name="nameTh" id="nameTh"
+                    disabled> </textarea>
+        </div>
+
+        <div class="col-md-2">
+          <label>Catalogue :</label>
+          <p>{{ catalogueThForm }}</p>
+        </div>
+
+        <div class="col-md-2">
+          <label>Catalogue ID :</label>
+          <p>{{ catalogueIDThForm }}</p>
+        </div>
+
+        <div class="col-md-2">
+          <label>Threat Class :</label>
+          <p>{{ threatClass }}</p>
+        </div>
+      </div>
+      <div class="row"></div>
+      <div class="row">
+        <div class="col-md-4">
+          <label>Affected Asset Categories :</label>
+          <p-dataList [value]="affectedCategoriesForm" [style]="{'height':'100px','width':'100%','overflow':'auto'}">
+            <ng-template let-affectedCategoriesForm pTemplate="item">
+              {{ affectedCategoriesForm }}
+            </ng-template>
+          </p-dataList>
+        </div>
+
+        <div class="col-md-4">
+          <label>Associated Vulnerabilities :</label>
+          <p-dataList [value]="associatedVulnerabilitiesForm"
+                      [style]="{'height':'100px','width':'100%','overflow':'auto'}">
+            <ng-template let-associatedVulnerabilitiesForm pTemplate="item">
+              {{ associatedVulnerabilitiesForm }}
+            </ng-template>
+          </p-dataList>
+        </div>
+
+
+        <div class="col-md-2">
+          <div [formGroup]="threatForm" class="form-group">
+            <label for="scoTh">Score </label>
+            <select formControlName="scoTh" [ngModel]="selectedScore" class="form-control" name="scoTh" id="scoTh">
+
+              <option *ngFor="let score of  scoreList" [ngValue]="score">{{ score }}</option>
+              <!--<option value="Low">Low</option>-->
+              <!--<option value="Medium">Medium</option>-->
+              <!--<option value="High">High</option>-->
+              <!--<option value="Critical">Critical</option>-->
+
+            </select>
+            <control-messages [control]="threatForm.controls.scoTh"></control-messages>
+
+          </div>
+        </div>
+
+        <div class="col-md-2">
+          <div [formGroup]="threatForm" class="form-group">
+            <label for="likeliTh">Likelihood </label>
+            <select formControlName="likeliTh" [ngModel]="selectedLikeli" class="form-control" name="likeliTh"
+                    id="likeliTh">
+
+              <option *ngFor="let likeli of  likeliList" [ngValue]="likeli">{{ likeli }}</option>
+              <!--<option value="Low">Low</option>-->
+              <!--<option value="Medium">Medium</option>-->
+              <!--<option value="High">High</option>-->
+              <!--<option value="Critical">Critical</option>-->
+
+            </select>
+            <control-messages [control]="threatForm.controls.likeliTh"></control-messages>
+
+          </div>
+        </div>
+
+        <!--<div class="col-md-2">-->
+        <!--<label>Threat Class :</label>-->
+        <!--<p>{{threatClass}}</p>-->
+        <!--</div>-->
+
+
+      </div>
+
+      <div class="row" style="margin-top: 5px">
+        <div class="col-md-12">
+          <div [formGroup]="threatForm" class="form-group">
+            <label for="descriptionTh">Threat Description :</label>
+            <textarea formControlName="descriptionTh" class="form-control" name="descriptionTh" rows="3"
+                      id="descriptionTh"></textarea>
+            <control-messages [control]="threatForm.controls.descriptionTh"></control-messages>
+          </div>
+        </div>
+
+      </div>
+
+
+    </div>
+
+
+  </div>
+
+  <div class="row" *ngIf="selectedVulnerability!=undefined">
+
+    <div class="col-md-6" *ngIf="selectedVulnerability!=undefined">
+
+
+      <label>Actor</label>
+
+      <hr>
+
+
+    </div>
+
+    <div class="col-md-6" *ngIf="selectedVulnerability!=undefined">
+
+
+      <label>Event</label>
+
+      <hr>
+
+
+    </div>
+  </div>
+
+  <div class="row" *ngIf="selectedVulnerability!=undefined">
+    <div class="col-md-6">
+
+
+      <div class="col-md-6">
+
+        <label>Name :</label>
+        <p>{{ actorName }}</p>
+
+      </div>
+
+
+      <div class="col-md-6">
+
+        <label>Description :</label>
+        <textarea class="form-control" [(ngModel)]="actorDescription" rows="1" name="actDesc" id="actDesc"
+                  disabled> </textarea>
+
+      </div>
+
+
+    </div>
+
+    <div class="col-md-6">
+
+      <div class="col-md-6">
+
+        <label>Name :</label>
+        <p>{{ eventName }}</p>
+
+      </div>
+
+
+      <div class="col-md-6">
+
+        <label>Description :</label>
+        <textarea class="form-control" [(ngModel)]="eventDescription" rows="1" name="eveDesc" id="eveDesc"
+                  disabled> </textarea>
+
+      </div>
+
+
+    </div>
+
+  </div>
+
+  <div class="row" *ngIf="selectedVulnerability!=undefined">
+
+    <div class="col-md-6" *ngIf="selectedVulnerability!=undefined">
+
+
+      <label>Place</label>
+
+      <hr>
+
+
+    </div>
+
+    <div class="col-md-6" *ngIf="selectedVulnerability!=undefined">
+
+
+      <label>Time</label>
+
+      <hr>
+
+
+    </div>
+  </div>
+
+  <div class="row" *ngIf="selectedVulnerability!=undefined">
+    <div class="col-md-6">
+
+
+      <div class="col-md-6">
+
+        <label>Name :</label>
+        <p>{{ placeName }}</p>
+
+      </div>
+
+
+      <div class="col-md-6">
+
+        <label>Description :</label>
+        <textarea class="form-control" [(ngModel)]="placeDescription" rows="1" name="plaDesc" id="plaDesc"
+                  disabled> </textarea>
+
+      </div>
+
+
+    </div>
+
+    <div class="col-md-6">
+
+      <div class="col-md-6">
+
+        <label>Name :</label>
+        <p>{{ timeName }}</p>
+
+      </div>
+
+
+      <div class="col-md-6">
+
+        <label>Description :</label>
+        <textarea class="form-control" [(ngModel)]="timeDescription" rows="1" name="timDesc" id="timDesc"
+                  disabled> </textarea>
+
+      </div>
+
+
+    </div>
+
+  </div>
+
+  <div class="row" *ngIf="selectedVulnerability!=undefined">
+
+    <div class="col-md-6" *ngIf="selectedVulnerability!=undefined">
+
+
+      <label>Access</label>
+
+      <hr>
+
+
+    </div>
+
+    <div class="col-md-6" *ngIf="selectedVulnerability!=undefined">
+
+
+      <label>Process</label>
+
+      <hr>
+
+
+    </div>
+  </div>
+
+  <div class="row" *ngIf="selectedVulnerability!=undefined">
+    <div class="col-md-6">
+
+
+      <div class="col-md-6">
+
+        <label>Name :</label>
+        <p>{{ processName }}</p>
+
+      </div>
+
+
+      <div class="col-md-6">
+
+        <label>Description :</label>
+        <textarea class="form-control" [(ngModel)]="accessDescription" rows="1" name="accDesc" id="accDesc"
+                  disabled> </textarea>
+
+      </div>
+
+
+    </div>
+
+    <div class="col-md-6">
+
+      <div class="col-md-6">
+
+        <label>Name :</label>
+        <p>{{ processName }}</p>
+
+      </div>
+
+
+      <div class="col-md-6">
+
+        <label>Description :</label>
+        <textarea class="form-control" [(ngModel)]="processDescription" rows="1" name="proDesc" id="proDesc"
+                  disabled> </textarea>
+
+      </div>
+
+
+    </div>
+
+  </div>
+
+
+  <p-footer>
+    <div class="ui-dialog-buttonpane ui-widget-content ui-helper-clearfix row">
+      <div class="col-md-6 text-left">
+        <button type="button" pButton icon="fa fa-fw fa-copy" (click)="addThreatsToCache()"
+                [disabled]="!associatedVulnerabilities || associatedVulnerabilities.length < 1"
+                label="Copy"></button>
+        <button type="button" pButton icon="fa fa-fw fa-paste" (click)="fetchThreatsFromCache()" label="Paste"
+                [disabled]="!(copied$ | async)"></button>
+        <button type="button" pButton icon="fa fa-fw fa-paste" (click)="addThreatsToAll()"
+                [disabled]="!associatedVulnerabilities || associatedVulnerabilities.length < 1"
+                label="Copy to all empty"></button>
+      </div>
+      <div class="col-md-6">
+        <button type="button" pButton icon="fa fa-fw fa-close" (click)="closeForm()" label="Cancel"></button>
+        <button type="button" pButton icon="fa fa-fw fa-check" (click)="modifiedBeforeToSave(selectedVulnerability)"
+                label="Save"></button>
+      </div>
+    </div>
+  </p-footer>
+
+</p-dialog>
+
+
+<p-confirmDialog width="425"></p-confirmDialog>
+
+
+<p-dialog [(visible)]="blocked" modal="modal" [responsive]="true" [showHeader]="false" class="threatsSpinner">
+
+  <div *ngIf="!blockedMessage">
+    <h1></h1>
+    <div class="loader"></div>
+  </div>
+
+  <div *ngIf="blockedMessage">
+
+    <p-messages [(value)]="msgsThreats"></p-messages>
+
+  </div>
+
+
+</p-dialog>
+<p-toast [style]="{marginTop: '80px'}" position="top-center" key="tc"></p-toast>

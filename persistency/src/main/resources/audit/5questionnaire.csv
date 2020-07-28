@@ -1,0 +1,279 @@
+5|MEHARI_LAN|||||||
+05A|Security of the architecture of the local area network|||||||
+05A01|Partitioning of the local area network into security domains |||||||
+05A01-01|"Has a partitioning of the local area network been effected in order to separate what is strictly the internal network from the areas which communicate externally (DMZ)?
+A DMZ, or demilitarized zone, is an exchange zone to the outside, isolated from the internal network (e.g. using a firewall)."|4|||E1|||
+05A01-02|Has the local area network been partitioned into security domains, each requiring a consistent set of security rules, and into zones of confidence within which controls may be specifically adapted?|4|2||E1|13.1.3|11.4.5|
+05A01-03|In particular, has any wireless network (WLAN) been considered as a distinct domain, strictly isolated from the rest of the network (by firewall or filtering router, etc.)?|4|2||E1|13.1.3|11.4.5|
+05A01-04|Have these partitions been documented and is the documentation kept up to date?|2|||E2|13.1.3|11.4.5|
+05A01-05|Is there a complete description of the links and communication equipment in place?|2|||E2|13.1.3|11.4.5|
+05A01-06|Is each domain isolated from the others domains, by using specific security means (filtering router, firewall, etc)?|4|2||E2|13.1.3|11.4.5; 11.4.6|
+05A01-07|Is the security proper to this filtering equipment subject to active maintenance and follow-up by an appropriate expert?|4|3||E3|||
+05A01-08|"For each of the domains, has a strictly limited list of authorized inter-domain links, communications and protocols been defined and, by default, are all other protocols shut off (""nothing except"" policy)?"|4|2||E2||11.4.6|
+05A01-09|Is there a procedure for the management of inter-domain connection requests and a group in charge of the analysis of these requests, of their authorization and the definition of filtering rules which will be put in place (firewall, service requests, protocols etc.)?|4|2||E3|||
+05A01-10|Is there a group in charge of controlling the application of the defined rules and the removal of specific rights when the requirement is no longer needed or the conditions are no longer met?|4|2||E3|||
+05A01-11|Are any addition to the authorized connection list for a domain and any modification of its parameters logged and audited?|4|3||C1|||
+05A01-12|Is there a regular review of all authorized connections (standard and non-standard) and of their pertinence?|4|3||C1||11.4.7|
+05A02|Security of the functioning of the local area network architecture|||||||
+05A02-01|Has each security domain been analyzed to determine the requirements of continuity of service and, if necessary, has redundancy been incorporated into interconnection points, networking equipment and meshed links?|4|2||E2|||
+05A02-02|Has a systematic analysis of potential single points of failure been carried out in order to ensure that service equipments (such as energy supply, air conditioning, etc.) do not affect the redundancy planned for network equipment or architecture? |4|2||E3|||
+05A02-03|Has a control of the average and peak load been carried out for each element of the network and of the compatibility of the network and associated equipment at this load level and is this control regularly repeated?|4|2||E2|||
+05A02-04|Has this analysis been complemented by a study of network capacity to ensure reliability of communications even in the case of failure of a single link or piece of equipment?|4|2||E3|||
+05A02-05|Is there a dynamic measurement of network load and of the load balancing tools?|4|||E2|||
+05A02-06|Do network monitoring and reconfiguration tools allow real time corrective action compatible with the requirements of the users?|4|2||E2|||
+05A02-07|Does the architecture of network equipment allow easy adaptation to changes of load levels (clusters, load balancing etc.)?|2|||E2|||
+05A02-08|Are overload detection and load balancing appliances and devices accessible only by administrators and is their access protected by strengthened access control?|2|2||R1|||
+05A02-09|Is any inhibition or shutdown of network overload detection and load balancing equipment signaled immediately to the monitoring center or to network administrators?|2|3||R1|||
+05A02-10|Are regular performance tests of detection and reconfiguration mechanisms carried out?|2|3||C1|||
+05A02-11|Are regular audits of the parameterization of detection and reconfiguration systems carried out?|1|3||C1|||
+05A02-12|Are regular audits carried out of procedures associated with the detection and reconfiguration systems?|1|3||C1|||
+05A03|Organization of the maintenance of local area network equipment|||||||
+05A03-01|Are all local area network equipments covered by a maintenance contract?|2|||E1|11.2.4|9.2.4|
+05A03-02|Have all equipment, critical to the provision of expected operation and performance of the network, been identified and, for each of them, have the required acceptable and maximum downtime delays been published?|4|||E2|||
+05A03-03|Have specifically adapted clauses related to these requirements been specified within maintenance contracts?|4|2||E2|||
+05A03-04|Are the penalties of non-compliance with these causes sufficiently persuasive for the contract holder?|4|2||E3|||
+05A03-05|Have escalation procedures been detailed in the case of non-compliance or difficulties in maintenance and do they anticipate the intervention of specialists within a short delay commensurate with the criticality of the equipment?|2|3||R1|||
+05A03-06|Have the number and proximity of specialists been detailed and do they guarantee a sufficiently good level of maintenance within an acceptable delay?|4|||R1|||
+05A03-07|Do the maintenance contracts anticipate a complete replacement of equipment in the case of significant damage which would not normally be taken into account by curative maintenance?|4|||E3|||
+05A03-08|Are maintenance contracts and procedures regularly audited?|2|3||C1|||
+05A04|Procedures and Recovery Plans following incidents on the local area network|||||||
+05A04-01|Has a list been established of incidents which could affect the proper functioning of the local area network and, for each of them, the seriousness level? |2|||E1|||
+05A04-02|Has it been established, for each serious incident, the solutions to implement and the actions to execute by operational personnel?|2|||E1|||
+05A04-03|Are the means of intervention over the LAN (for diagnostic as well as for reconfiguration) able to cover satisfactorily all of the scenarios identified and do they ensure that the actions can be implemented within the specified time delays?|2|2||E2|||
+05A04-04|For each serious incident on the local area network, have an expected resolution time and escalation procedure been determined in the case of failure or delay of the anticipated corrective actions?|4|||E3|||
+05A04-05|Are the diagnostic, management and reconfiguration tools of the local area network protected against all possible untimely or malicious action?|4|3||R1|||
+05A04-06|Do incident recovery plans and procedures cover the eventual loss of data (especially loss of requests and messages)?|4|||E3|||
+05A04-07|Are diagnostic and reconfiguration means regularly audited in order to assure a satisfactory minimum functioning of the local area network in the case of an incident?|2|3||C1|||
+05A05|Save and Restore plans of local area network configurations|||||||
+05A05-01|Has a backup plan been established, encompassing all local area network configurations, defining all objects to save and the frequency of backups?|4|||E1|12.3.1|10.5.1|
+05A05-02|Has this plan been translated into automatic operational routines?|2|2||E2|12.3.1|10.5.1|
+05A05-03|Has the backup of programs (source and executables, documentation and parameters) been regularly tested in order to be able to reconstitute the production environment at any time?|4|2||E1|12.3.1|10.5.1|
+05A05-04|"Are automatic operational backup routines protected by a high level of security against illicit or unintentional modification? 
+Such a mechanism may be a digital seal or any equivalent modification detection system."|4|3||R1|12.3.1|10.5.1|
+05A05-05|Are all configuration and file backups, necessary for the restoration of the local area network production environment, also saved at a location off premises (recourse backup)?|4|2||E3|12.3.1|10.5.1|
+05A05-06|"Are recourse backup copies stored in a secure location and protected against accidental or human risks?
+Such a location must be protected by strict access control as well as protected against fire or water damage risk."|4|||E3|12.3.1|10.5.1|
+05A05-07|Are regular tests carried out to read backups and recourse backups?|2|3||R2|12.3.1|10.5.1|
+05A05-08|Are all procedures and plans for backup of configuration files regularly audited?|2|3||C1|||
+05A06|Disaster Recovery Plan (DRP) of the local area network|||||||
+05A06-01|Is there a recovery solution to make up for the unavailability of any equipment or critical link in the local area network?|4||2|E1|17.1.2; 17.2.1|14.1.3|
+05A06-02|Is this recovery solution fully operational? |4||2|E2|17.1.2; 17.2.1|14.1.3|
+05A06-03|"Are these solutions described in detail in one (or several) Disaster Recovery Plan?
+A complete Disaster Recovery plan must describe the rules for triggering, the actions to execute, the priorities, the actors to mobilize and their contact details, as well as the conditions for return to normal operating conditions."|4|||E1|17.1.2; 17.2.1|14.1.3|
+05A06-04|Are these plans tested operationally at least once a year?|4|2||C1|17.1.2; 17.1.3; 17.2.1|14.1.5|
+05A06-05|Is there a formal guarantee of compatibility and capacity that these recovery solutions will support a sufficient operational load which has been approved by all concerned parties?|4|2||E2|17.1.2; 17.1.3; 17.2.1|14.1.5|
+05A06-06|If the recovery solutions include delivery of hardware components, which cannot be triggered during tests, is there a contractual engagement within the recovery plan for the delivery of hardware within fixed and anticipated time limits, guaranteed by the manufacturer or other third party (leaser, broker, other)?|4|2||E2|||
+05A06-07|If the recovery equipment and/or solution are pooled, is the number of other subscribers known and limited?|2|2||E3|||
+05A06-08|Has the unavailability or failure of the recovery facility been considered and has a second level backup been organized?|2||3|R1|||
+05A06-09|Is the backup solution usable for an unlimited duration and if not, has a follow on solution been established?|2|||E3|||
+05A06-10|Are the existence, the pertinence and the updates of the Disaster Recovery Plans regularly audited?|2|3||C1|||
+05A07|Management of critical suppliers as regards a permanent maintenance service|||||||
+05A07-01|Have the consequences of the disappearance of a supplier of equipment, network service or software been analyzed (in the case of failure, of a bug or change requirement) and has a list of critical points been established? |2|||E2|15.1.3||
+05A07-02|For each critical point, is there a corrective solution to cope with the failure or disappearance of a supplier (maintenance documentation lodged with a trusted third party, replacement of equipment or of software by widely available market solutions etc.)?|2|||E2|15.1.3||
+05A07-03|Is it certain that this corrective solution could be made operational within a sufficiently short time to enable the business activity to restart and which is acceptable to the users ?|2|2||E3|||
+05A07-04|Have alternate options to the basic solution been considered for the case where the latter might encounter unforeseen difficulties?|2|3||E3|||
+05A07-05|Is there a regular review of critical points and of the corrective solutions envisaged?|2|3||C1|||
+05B|Access control to the local area network|||||||
+05B01|Management of access profiles on the local area network |||||||
+05B01-01|Has a management policy for access rights to the local network been established according to an analysis of the security requirements as per the business stakes?|2|||E1|9.1.1; 9.2.5|11.1.1|
+05B01-02|Is this policy documented, regularly revised and approved by the concerned managers in charge?|2|||E2|9.2.5|11.2.2|
+05B01-03|"Is access to the local area network and to the various parts of this network defined in terms of job profiles which regroup roles or functions within the organization (profiles define access rights which are available to the holders of the profile)?
+Note: in certain circumstances, the notion of ""profile"" may be replaced by a notion of ""group"". In addition, access rights which may be attributed to partners must also be considered. 
+Access profiles must comprise the access rights towards each partition of the network, for a station connected directly to the network as well as for connections from outside the LAN (mobile users, teleworking, partners, etc.)."|4|2||E1|||
+05B01-04|Have various variable parameters been introduced into the access rights definition rules (which determine the rights that are attributed to profiles) as a function of context, in particular, the location of the requesting station (direct LAN access, extended network (WAN), external), the nature of the connection used (LAN, Leased line, Internet, type of protocol etc.) or the classification of the sub-network requested?|4|2||E2|||
+05B01-05|Do the profiles also allow definition of working time limits (daily working hours) and calendars (weekends, holidays, etc.)?|2|||E3|||
+05B01-06|Have these profiles and the access rights attributed to the different profiles, as a function of context, been approved by the information owners and the Information Security Officer?|4|2||E2|||
+05B01-07|"Is the process of definition and management of rights attributed to profiles under strict control?
+A strict control requires that the list of people allowed to change rights attributed to profiles be strictly limited, that the implementation of these rights into tables be strictly secure at the time of transmission and storage and that there exists a reinforced access control in order to be able to modify these rights and that any modification of these rights be logged and audited."|4|3||R1|||
+05B01-08|Is there a regular audit, at least once a year, of the access rights attributed to each profile and of the profile management procedures?|4|2||C1|9.2.5|11.2.4|
+05B02|Management of privileges and access authorizations (granting, delegation, revocation)|||||||
+05B02-01|Does the procedure of granting access authorizations to the local area network require the formal authorization of line management or of the unit managing external contractors (at a sufficiently senior level)?|4|2||E1|9.1.2||
+05B02-02|Are access authorizations granted to named individuals and only as a function of their profile?|2|||E2|9.1.2||
+05B02-03|"Is the procedure for granting (or modification or revocation) of access authorizations to the local area network (directly or via a profile) strictly controlled?
+A strict control requires a formal recognition of the signature (electronic or otherwise) of the requester, that the implementation of the profile attributed to users in the form of tables is highly secure during transmission and storage and that there be a reinforced access control over the modification of such records and that any modification of records be logged and audited.
+"|4|2||E3|9.1.2; 9.2.3; 9.2.5|11.2.2|
+05B02-04|Is there a systematic process of updating the table of access authorizations at the time of departure of in house personnel?|2|||E2|9.1.2; 9.2.5|11.2.4|
+05B02-05|Is there a systematic process of updating the table of access authorizations at the time of change of function (at the end of contract for external personnel or internal change of function)?|2|||E3|9.1.2; 9.2.5|11.2.4|
+05B02-06|Is there a list of all personnel who have access to the local area network?|1|||C1|9.1.2||
+05B02-07|Is there a regular audit, at least once a year, of all access authorizations granted to the personnel to the local area network and all those granted to partners?|1|2||C1|9.1.2; 9.2.5|11.2.4|
+05B03|"User or entity authentication for access requests to the local area network from an internal access point 
+This mechanism corresponds, for example, to the authentication implemented in a Windows domain controller."|||||||
+05B03-01|Is there a mechanism of authentication of each user before any access to a local area network resource?|4|1||E1|||
+05B03-02|"Does the process of modification or definition of a user credential respect a set of rules which ensures its robustness? 
+In the case of passwords: sufficient length (8 characters or more), obligatory mixture of types of characters, frequent change (less than once a month), impossibility of reusing an old password, non-trivial word test using a dictionary, banning of ""standard systems"", first names, anagrams of user name, dates etc.
+In the case of certificates or authentication based on cryptographic mechanisms, a generation process evaluated or publicly recognized, encryption keys of a sufficient length etc."|4|2||E2||11.2.3|
+05B03-03|"Does the process of providing user credentials guarantee its inviolability?
+The usage of a typed password will always be a weak point. the only process which does not divulge observable information consists either of introducing an object containing a secret code (smart card), or using a code which changes at every moment (token card ) or using a means which contains some biometric characteristic."|4|2||E3|||
+05B03-04|"Do the security equipment that retain and use reference data (passwords, calling number, etc.) in support of authentication use mechanisms which guarantee inviolability and authenticity?
+Passwords must be stored encrypted and a preliminary control of the user must be made before usage.
+In the case of authentication using cryptographic procedures, the mechanism must provide solid guarantees validated by a recognized organization."|4|3||E2|||
+05B03-05|"Does the transmission of reference data in support of authentication (password, calling number, etc.) between the user equipment and security systems, use mechanisms which guarantee inviolability and authenticity?
+Transmission of a password must be encrypted or use an algorithm which introduces a variable at each transmission.
+In the case of authentication using cryptographic procedures, the mechanism must provide solid guarantees validated by a recognized organization."|4|3||E3|||
+05B03-06|Is there an automatic process of invalidation of the calling station or the user account in the case of multiple incorrect attempts, so as to require the intervention of an administrator to reinstate the station or the user?|4|2||E2|||
+05B03-07|Does the procedure for the replacement of a lost or mislaid user credential (e.g. password, token card) lead to the instant deactivation of this credential?|4|2||E2|||
+05B03-08|Does the procedure for the replacement of a lost or mislaid user credential (e.g. password, token card) impose an effective control of the requester's identity?|4|2||E3|||
+05B03-09|"Are authentication parameters under strict control?
+A strict control requires that people allowed to change the definition rules of identifiers, the identifiers themselves, rules of surveillance of connection attempts etc., be strictly limited and that there exists a reinforced access control to effect these modifications, that these modifications be logged and audited and that there exists a regular general audit at least once a year of all authentication parameters."|4|2||C1|||
+05B03-10|"Are the processes that ensure authentication under strict control? 
+A strict control requires that the software used has been validated and undergoes a regular test for integrity (seal) and that there is an audit, at least once a year, of authentication procedures and processes."|4|3||C1|||
+05B04|User or requester authentication before access to the local area network from a remote site via the extended network|||||||
+05B04-01|Do membership rules of the extended network impose that all users are authenticated prior to any outgoing access using the extended network?|4|1||E1|||
+05B04-02|Do membership rules to the extended network and the controls effected mean that the same level of confidence can be attributed to users of the extended network as those of the local area network?|4|2||E2|||
+05B04-03|Is the pertinence of the rules of membership to the extended network regularly audited?|4|3||C1|||
+05B04-04|Is a regular audit carried out to ensure that the rules of membership to the extended network are applied by all the entities which are authorized to connect to it?|4|3||C1|||
+05B05|"User or requester authentication for outside access to the local area network
+(e.g. from the switched telephone network (POTS), X25, ISDN, broadband, Internet, etc.) "|||||||
+05B05-01|Is there a mechanism of authentication of all users connecting to the local area network from the outside?|4|2||E1||11.4.2|
+05B05-02|"Does the process of modification or definition of a user credential in support of access control respect a set of rules which ensures its intrinsic validity? 
+In the case of passwords: sufficient length (8 characters or more), obligatory mixture of types of characters, frequent change (less than once a month), impossibility of reusing an old password, non-trivial word test using a dictionary, banning of ""standard systems"", first names, anagrams of user name, dates etc.
+In the case of certificates or authentication based on cryptographic mechanisms, a generation process evaluated or publicly recognized, encryption keys of a sufficient length etc."|4|2||E2||11.4.2|
+05B05-03|"Does the process of using a credential guarantee its impregnability?
+The usage of a password will always be a weak point. the only process which does not divulge observable information consists either of introducing an object containing a secret (smart card), or using a code which changes at every moment (token card type SecureId) or using a means which contains some biometric characteristic."|4|2||E3||11.4.2|
+05B05-04|"Do the security equipment that retain reference data (e.g. passwords, calling number, etc.) to support access authentication use mechanisms which guarantee impregnability and authenticity?
+Passwords must be stored encrypted and a preliminary control of the user must be made before usage.
+In the case of authentication using cryptographic procedures, the mechanism must provide solid guarantees validated by a recognized organization."|4|3||E2|||
+05B05-05|"Does the transmission of reference data in support of authentication (e.g. passwords, calling address, etc.) between user equipment and security systems use mechanisms which guarantee impregnability and authenticity?
+Transmission of a password must be encrypted or use an algorithm which introduces a variable at each transmission. 
+In the case of authentication using cryptographic procedures, the mechanism must provide solid guarantees validated by a recognized organization."|4|3||E3|||
+05B05-06|Is there an automatic process of invalidation of the calling station or the user account in the case of multiple incorrect attempts, so as to require the intervention of an administrator to reinstate the station or the user?|4|2||E2|||
+05B05-07|Does the procedure for the replacement of a lost or mislaid user credential (e.g. password, token card) lead to the instant deactivation of this credential?|4|2||E2|||
+05B05-08|Does the procedure for the replacement of a lost or mislaid user credential (e.g. password, token card) impose an effective control of the requester's identity?|4|2||E3|||
+05B05-09|"Are authentication parameters under strict control?
+A strict control requires that people allowed to change the definition rules of identifiers, the identifiers themselves, rules of surveillance of connection attempts etc., be strictly limited and that there exists a reinforced access control to effect these modifications, that these modifications be logged and audited and that there exists a regular general audit at least once a year of all authentication parameters."|4|2||C1|||
+05B05-10|"Are the processes that ensure authentication under strict control? 
+A strict control requires that the software used has been validated and undergoes a regular test for integrity (seal) and that there is an audit, at least once a year, of authentication procedures and processes."|4|3||C1|||
+05B06|User or requester authentication for access requests to the local area network from a WiFi sub-network|||||||
+05B06-01|Are all WiFi networks isolated from the local area network by a firewall?|4|2||E1|||
+05B06-02|Is there a method of authentication of all users connecting to the local area network from a WiFi sub-network?|4|2||E1|||
+05B06-03|"Does the process of definition or modification of user credential for access control from a WiFi sub network respect a set of rules which ensures its intrinsic validity?
+In the case of passwords: sufficient length (8 characters or more), obligatory mixture of types of characters, frequent change (less than once a month), impossibility of reusing an old password, non-trivial word test using a dictionary, banning of ""standard systems"", first names, anagrams of user name, dates etc. 
+In the case of certificates or authentication based on cryptographic mechanisms, the generation process must be evaluated or publicly recognized, encryption keys of a sufficient length etc.
+In the case of simple access identifiers (e.g. calling phone number), a call back procedure is recommended."|4|2||E2|||
+05B06-04|Does the authentication system guarantee the impregnability of the user's credential?|4|2||E3|||
+05B06-05|"Do the security equipment that retain reference data (e.g. passwords, calling address, etc.) to support access authentication use mechanisms which guarantee impregnability and authenticity?
+Passwords must be stored encrypted and a preliminary control of the user must be made before usage.
+In the case of authentication using cryptographic procedures, the mechanism must provide solid guarantees validated by a recognized organization."|4|3||E2|||
+05B06-06|"Does the transmission of reference data in support of authentication (e.g. passwords, calling address, etc.) between calling user equipment and authentication systems use mechanisms which guarantee impregnability and authenticity?
+Transmission of a password must be encrypted or use an algorithm which introduces a variable at each transmission. 
+In the case of authentication using cryptographic procedures, the mechanism must provide solid guarantees validated by a recognized organization."|4|3||E3|||
+05B06-07|Is there an automatic process of invalidation of the user account and/or workstation in the case of multiple incorrect attempts so as to require the intervention of an administrator to reinstate the station or the user?|4|2||E2|||
+05B06-08|Does the procedure for the replacement of a lost or mislaid user credential (e.g. password, token card) lead to the instant deactivation of this credential?|4|2||E2|||
+05B06-09|Does the procedure for the replacement of a lost or mislaid user credential (e.g. password, token card) impose an effective control of the requester's identity?|4|2||E3|||
+05B06-10|"Are authentication parameters for the access from a WiFi sub-network under strict control?
+A strict control requires that people able to change the definition rules of identifiers, the identifiers themselves, rules of monitoring connection attempts etc., be strictly limited and that there exist a reinforced access control to effect these modifications, that these modifications be logged and audited and that there exists a regular general audit at least once a year of all authentication parameters."|4|2||C1|||
+05B06-11|"Are the processes that guarantee authentication from a WiFi sub network under strict control? 
+A strict control requires that the software used has been validated and undergoes a regular test for integrity (seal) and that there is an audit, audit, at least once a year, of authentication procedures and processes."|4|3||C1|||
+05B07|General filtering of access to the local area network|||||||
+05B07-01|Do all access to the local area network require the use of an identifier recognized by the system?|2|||E1|||
+05B07-02|Is there a one to one correspondence between an identifier and a real physical person?|4|2||E2|||
+05B07-03|Have all generic or by-default accounts and passwords been changed or deleted?|4|2||E2|||
+05B07-04|"Is the identifier provided for access to the local area network systematically subject to authentication?
+Systematic authentication requires that the control process be in place for all possible access paths (internal access, all types of access from the outside including reserved ports such as an those used for remote maintenance)."|4|2||E1|||
+05B07-05|Is there a systematic control of the context of the access requester (local area network, extended network, external link, nature of the link and protocols used )?|4|2||E3|||
+05B07-06|Is there a systematic control of the profile and the context of the connection of the requester and the appropriateness of that profile and context with the access requested?|4|2||E3|||
+05B07-07|Is there an automatic invalidation of the user identifier in the absence of traffic after a defined delay, which requires user re-identification and re-authentication?|4|||E2|||
+05B07-08|For connections requiring it, is there an identification for the calling equipment (MAC address, IP address, etc.) as per the access control rules?|3|||E3||11.4.3|
+05B07-09|"Are the processes of definition and management of access filtering rules under strict control?
+A strict control requires that the list of persons allowed to change the filtering security parameters be extremely limited, and that there be a reinforced access control in order to be able to effect such modification and that any modification be logged and audited."|4|2||R1|||
+05B07-10|Are there regular penetration tests into the network carried out in addition to detailed technical audits?|2|3||C1|18.2.3|15.2.2|
+05B08|Routing control of outgoing access|||||||
+05B08-01|Do all outgoing accesses require the use of an identifier recognized by the system?|2|||E1||11.4.2|
+05B08-02|Does this identifier correspond to a unique and directly or indirectly identifiable physical person? |1|||E2||11.4.2|
+05B08-03|"Is the identifier used in outgoing access control systematically subject to authentication?
+Systematic authentication requires that there is a process in place for all access paths and all outgoing ports."|4|2||E2||11.4.2|
+05B08-04|Has it been defined, in a security policy relatively to outgoing accesses, rules specifying the connections authorized (type of external network, authorized links and protocols) function of the internal sub-networks considered?|4|2||E2|||
+05B08-05|Is there, before authorizing any outgoing access, a control of the rules defined in the security policy?|4|2||E2|||
+05B08-06|Is there an automatic invalidation of the user identifier in the absence of traffic after a defined delay which requires user re-identification and re-authentication?|4|||E2|||
+05B08-07|"Are the processes of definition and management of outgoing access filtering rules under strict control?
+A strict control requires that the list of persons allowed to change the filtering security parameters be extremely limited, and that there be a reinforced access control in order to be able to effect such modification and that any modification be logged and audited."|4|2||R1|||
+05B08-08|Are there regular penetration tests of the network carried out and regular specialized technical audits effected?|2|3||C1|||
+05B09|Authentication of the external entity accessed for outgoing access to sensitive sites|||||||
+05B09-01|Is there a possibility to declare sites or remote access points as sensitive and, as such, requiring an authentication of the entity accessed?|4|1||E2|||
+05B09-02|Is there a mechanism of authentication of the entity called before access to sensitive sites from the internal network?|4|1||E2|||
+05B09-03|"Does the authentication mechanism of the accessed entity provide a recognized ""strong"" level of security?
+Notably the usage of a simple password will always be a weakness. The only methods recognized as ""strong"", that is observable without divulging information, are those based on cryptographic algorithms."|4|2||E3|||
+05B09-04|"Do the security equipment that retain credentials (e.g. passwords, calling number, etc.) use mechanisms which guarantee their impregnability and authenticity?
+Passwords must be stored encrypted and a preliminary control of the user must be made before usage.
+In the case of authentication using cryptographic procedures, the mechanism must provide solid guarantees validated by a recognized organization."|4|3||E2|||
+05B09-05|"Does the transmission of credentials (e.g. passwords, calling address, etc.) between calling user equipment and authentication systems use mechanisms which guarantee their impregnability and authenticity?
+Transmission of a password must be encrypted or use an algorithm which introduces a variable at each transmission. 
+In the case of authentication using cryptographic procedures, the mechanism must provide solid guarantees validated by a recognized organization."|4|3||E3|||
+05B09-06|Does the revoked keys management procedure guarantee that the control systems take into consideration in real time any revocation of keys?|4|2||E2|||
+05B09-07|Does the revoked keys management procedure guarantee that the control systems systematically test that the keys used have not been revoked?|4|2||E3|||
+05B09-08|"Are the processes that guarantee the authentication of the accessed entities under strict control? 
+A strict control requires that the software used has been validated and undergoes a regular test for integrity (seal) and that there is an audit at least once a year of the authentication procedures and processes."|4|3||R1|||
+05C|Security of data exchange and communication on the local network |||||||
+05C01|"Encryption of exchanges on the local area network
+Encryption can be effected at layer 3 (IPSEC VPN) or at level 4-5 (SSL) or directly effected by the application (level 6-7, for example encryption before or during transmission), case really treated by domain 09.
+It could be systematic on the ""pipeline"" (physical or logical) or limited only to certain data flows (as a function of address or type, etc.) it can also be performed on intermediate systems (VPN boxes) or end systems (stations, server) or both."|||||||
+05C01-01|Have the permanent links and data exchanges which must be protected by encryption solutions been defined and such solutions been implemented on the local area network?|4|||E1|10.1.1|12.3.1|
+05C01-02|"Does the encryption solution offer valid and solid guarantees and has it been approved by the Information Security Officer? 
+The sufficient length of the keys is one of among many parameters to take into consideration (as a function of the algorithm) . The recommendation of an official organization can be a confidence factor."|4|2||E2|||
+05C01-03|Do the procedures and mechanisms for storage, distribution and exchange of keys and more generally the management of keys offer a sufficient level of confidence and have they been approved by the Information Security Officer?|4|3||E2|10.1.2|12.3.2|
+05C01-04|"Are the encryption mechanisms embodied in electronic components which are strictly protected at a physical level against intrusion or change?
+Encryption mechanisms should be contained within protected enclosures to which it should be impossible to gain access, i.e. within a microprocessor or smart cards and protected physically and logically."|4|3|3|R2|||
+05C01-05|Is shutdown or by-pass of the encryption solution immediately detected and signaled to a team available 24 hrs a day capable of triggering an immediate reaction?|4|2||R1|||
+05C01-06|"In the case of inhibition or bypass of the encryption solution or the activation of an unprotected fail-over link of the network, is there a procedure to immediately alert all users?
+For example by a warning requiring the user to acknowledge its receipt."|4|2||R1|||
+05C01-07|Is there a regular audit, at least once a year, of all data exchange, encryption systems and associated procedures?|4|3||C1|||
+05C02|Integrity control of exchanges on the local area network|||||||
+05C02-01|Have the permanent links and data exchanges which must be protected by sealing solutions been defined and implemented on the local area network?|4|||E1|||
+05C02-02|"Does the sealing solution offer valid and solid guarantees and has it been approved by the Information Security Officer? 
+The sufficient length of the keys is one of among many parameters to take into consideration (as a function of the algorithm). The recommendation of an official organization can be a confidence factor."|4|2||E2|||
+05C02-03|Do the procedure and mechanisms of storage, distribution and exchange of keys and more generally the management of the keys offer solid guarantees which merit confidence and have they been approved by the Information Security Officer?|4|3||E2|||
+05C02-04|"Are the sealing mechanisms embodied in electronic components which are in turn strictly protected at a physical level against intrusion or change?
+Sealing mechanisms should be contained within protected appliances to which it should be impossible to gain access, i.e. within a microprocessor or smart card, and protected physically and logically."|4|3|3|R2|||
+05C02-05|Is shutdown or by-pass of the sealing solution immediately detected and signaled to a team available 24 hrs a day capable of triggering an immediate reaction?|4|2||R1|||
+05C02-06|"In the case of inhibition or bypass of the sealing solution or the activation of an unprotected fail-over link, is there a procedure to immediately alert all users?
+For example by a warning requiring the user to actively validate its receipt."|4|2||R1|||
+05C02-07|Is there a regular audit, at least once a year, of all systems of data integrity protection and of associated procedures?|4|3||C1|||
+05C03|Encryption of exchanges in the case of remote access to the local area network|||||||
+05C03-01|Have encryption solutions been defined and implemented for exchanges with users connecting from outside (mobile staff, authorized service providers etc.) ?|4|||E1|10.1.1|12.3.1|
+05C03-02|"Does the encryption solution offer valid and solid guarantees and has it been approved by the Information Security Officer? 
+The sufficient length of the keys is one of among many parameters to take into consideration (as a function of the algorithm). The recommendation of an official organization can be a confidence factor."|4|2||E2|||
+05C03-03|Do the procedure and mechanisms of storage, distribution and exchange of keys, and more generally the management of the keys, offer solid guarantees which merit confidence and are they approved by the Information Security Officer?|4|3||E2|10.1.2|12.3.2|
+05C03-04|"Are the encryption mechanisms embodied in physical electronic components which are strictly protected at a physical level against intrusion or change?
+Encryption mechanisms should be contained within protected enclosures to which it should be impossible to gain access, i.e. within a microprocessor or smart card and protected physically and logically."|4|3|3|R1|||
+05C03-05|Is access to the network from the outside impossible without using encryption |4|2||R1|||
+05C04|Protection of the integrity of exchanges in the case of remote access to the local area network|||||||
+05C04-01|Have solutions for sealing or integrity control of exchanges with users connecting from the outside (mobile staff, authorized service providers etc.) been defined and implemented? |4|||E2|||
+05C04-02|"Does the sealing solution offer valid and solid guarantees and has it been approved by the Information Security Officer? 
+The sufficient length of the keys is one of among many parameters to take into consideration (as a function of the algorithm). The recommendation of an official organization can be a confidence factor."|4|2||E2|||
+05C04-03|Do the procedures and mechanisms of storage, distribution and exchange of keys and more generally the management of keys offer solid guarantees which merit confidence and have they been approved by the Information Security Officer?|4|3||E3|||
+05C04-04|"Are the sealing mechanisms embodied in electronic components which are in turn strictly protected at a physical level against intrusion or change? 
+Sealing mechanisms should be contained within protected enclosures to which it should be impossible to gain access, i.e. within a microprocessor or smart card and protected physically and logically."|4|3|3|R2|||
+05C04-05|Is access to the network from the outside impossible without using integrity control?|4|2||R1|||
+05D|Control, detection and resolution of incidents on the local network |||||||
+05D01|Real-time monitoring of the local area network |||||||
+05D01-01|Have events or successions of events been analyzed which might reveal abnormal behavior or illicit action on the local area network and as a consequence have specific monitoring indicators or control points been identified?|4|||E2|12.4.1; 16.1.4|10.10.2|
+05D01-02|Is the system equipped with an automatic real time monitoring system in the case of an accumulation of abnormal events (for example unsuccessful connection attempts on non-open ports)?|4|||E3|12.4.1; 16.1.4|10.10.2|
+05D01-03|Is use made of an intrusion detection system or capable of detecting anomalies on the local area network?|4|||E2|12.4.1; |10.10.2|
+05D01-04|Are there one or more applications capable of analyzing the individual anomaly diagnostic data on the local area network and of triggering an alert to operational personnel?|4|||E3|||
+05D01-05|Is there within operational personnel a team available 24 hrs a day or group capable of reacting in the case of a monitoring alert on the network?|4|2||E3|||
+05D01-06|For each case of alert has the expected response from the intervention team been defined and is the availability of the intervention team sufficient to face this expectation?|4|3||E3|||
+05D01-07|Are the parameters defining alarms strictly protected (restricted access rights and strict authentication) against illicit modification?|4|||R1|||
+05D01-08|Does any stoppage of the alarm system, linked to the local area network, trigger an alarm towards the surveillance team?|4|3||R1|12.4.1|10.10.2|
+05D01-09|Are the elements enabling the detection of an anomaly or incident archived (on disk, cassette or optical disk etc.)?|2|||E2|12.4.2|10.10.3|
+05D01-10|Are the monitoring procedures of the local area network, the detection of the anomalies and the availability of the surveillance team subject to regular audit?|2|3||C1|||
+05D02|Offline analysis of traces, log files and event journals on the local area network |||||||
+05D02-01|Has detailed analysis been carried out of the events or succession of events on the local area network which may have an impact on security (refused connections, re-routings, reconfigurations, changes in performance, access to sensitive data or tools etc.)?|2|||E1|12.4.1|10.10.1|
+05D02-02|Are these events recorded as well as the parameters used for their subsequent analysis?|4|||E1|12.4.1|10.10.1|
+05D02-03|Is there an application capable of analyzing these records as well as performance measures, of establishing statistics, a dashboard and anomaly diagnostics for examination by a competent team of specialists?|4|2|3|E2|||
+05D02-04|Is the structure, empowered to analyze these summaries (or incidents logs) and security related events, required to do so within a fixed and determined period and does it have sufficient availability?|4|||E2|||
+05D02-05|Has the expected reaction from the surveillance team been defined for each case of alert and are its availability and staffing level sufficient to meet these expectations?|4|||E3|||
+05D02-06|Are the parameters defining the elements to record and the analysis to effect strictly protected against unauthorized change (limited rights and strong authentication)?|4|||R1|12.4.2|10.10.3|
+05D02-07|Is any inhibition of this recording and processing system immediately signaled to the surveillance team?|4|||R1|||
+05D02-08|Are the records and summary analysis protected against any alteration or destruction??|2|||E2|12.4.2|10.10.3|
+05D02-09|Are the records and summary analysis kept for a long period?|2|||E2|12.4.2|10.10.3|
+05D02-10|Are the procedures for recording, processing and analysis of the records and summaries as well as the availability of the analysis and corrective team subject to regular audit?|2|||C1|||
+05D03|Management of incidents on the local area network |||||||
+05D03-01|Is there a hot-line charged with taking, recording and escalating all calls related to the local area network incidents?|2|||E1|12.4.1; 16.1.5|10.10.5|
+05D03-02|Is this hot-line available 24 hours a day?|2|||E2|12.4.1; 16.1.5|10.10.5|
+05D03-03|Is there a system to support incident management?|2|2||E2|12.4.1; 16.1.5|10.10.5|
+05D03-04|Does this system centralize incidents detected both by operational personnel and by users?|2|||E2|12.4.1; 16.1.5|10.10.5|
+05D03-05|Does this system cater for a systematic follow-up of necessary actions?|4|||E3|12.4.1; 16.1.5|10.10.5|
+05D03-06|Does this system incorporate a categorization of incidents including statistics and dashboards generation destined for use by the Information Security Officer?|4|||E3|; 16.1.5||
+05D03-07|"Is the incident management system strictly controlled with regard to unauthorized or illicit modification?
+A strict control requires a reinforced protection in order to modify records and an audit trail or protection by digitally signing all modifications of records."|4|3||R1|||
+05D03-08|Is each major incident on the network subject to a specific follow-up (nature and description, priority, technical solution, analysis in progress, expected resolution lead time etc.)?|4|||E2|16.1.1|13.2.1|

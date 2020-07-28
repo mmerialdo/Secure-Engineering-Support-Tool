@@ -1,0 +1,91 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+	<!DOCTYPE mapper PUBLIC '-//mybatis.org//DTD Mapper 3.0//EN'
+	  'http://mybatis.org/dtd/mybatis-3-mapper.dtd'>
+<mapper namespace='org.crmf.persistency.mapper.requirement.RequirementMapper'>
+
+	<resultMap type='Requirement' id='Requirement'>
+		<result property='elementType' column='ELEMENT_TYPE' />
+		<result property='reqId' column='REQ_ID' />
+		<result property='sourceDescription' column='SOURCE_DESCRIPTION' />
+		<result property='sestobjId' column='SESTOBJ_ID' />
+		<result property='sysprojectId' column='SYSPROJECT_ID' />
+	</resultMap>
+
+	<insert id='insert' parameterType='Requirement'
+		useGeneratedKeys='true' keyProperty='id' keyColumn='ID'>
+		INSERT INTO
+		REQUIREMENT(ID, AUTHOR, CATEGORY, PARENT,
+		DESCRIPTION, ELEMENT_TYPE,
+		REQ_ID, LASTUPD, NOTE, SOURCE, SOURCE_DESCRIPTION,
+		STABILITY, STATUS,
+		SUBCATEGORY, TAG, TITLE, TYPOLOGY, VERSION,
+		SESTOBJ_ID, SYSPROJECT_ID)
+		VALUES (#{id}, #{author}, #{category},
+		#{parent}, #{description},
+		#{elementType}, #{reqId},
+		#{lastupd}, #{note}, #{source},
+		#{sourceDescription}, #{stability}, #{status},
+		#{subcategory},
+		#{tag},
+		#{title}, #{typology}, #{version}, #{sestobjId}, #{sysprojectId})
+		ON
+		DUPLICATE KEY UPDATE
+		AUTHOR = #{author},
+		CATEGORY = #{category},
+		PARENT =
+		#{parent},
+		DESCRIPTION = #{description},
+		ELEMENT_TYPE = #{elementType},
+		LASTUPD = #{lastupd},
+		NOTE = #{note},
+		SOURCE = #{source},
+		SOURCE_DESCRIPTION = #{sourceDescription},
+		STABILITY = #{stability},
+		STATUS = #{status},
+		SUBCATEGORY = #{subcategory},
+		TAG = #{tag},
+		TITLE =
+		#{title},
+		TYPOLOGY = #{typology},
+		VERSION = #{version},
+		SYSPROJECT_ID =
+		#{sysprojectId}
+	</insert>
+
+	<select id='getBySysProject' resultMap='Requirement'
+		parameterType='String'>
+		SELECT * FROM REQUIREMENT
+		<if test="sysprojectId != null and sysprojectId != '' ">
+			WHERE SYSPROJECT_ID like #{sysprojectId}
+		</if>
+	</select>
+
+	<select id='getByIds' resultMap='Requirement' parameterType='list'>
+		SELECT * FROM REQUIREMENT WHERE REQ_ID IN
+		<foreach item="item" collection="list" open="(" separator=","
+			close=")">
+			#{item}
+		</foreach>
+	</select>
+
+	<select id='getBySysProjectAndFile' resultMap='Requirement'
+		parameterType='map'>
+		SELECT * FROM REQUIREMENT
+		WHERE
+		<if test="sysprojectIdentifier != null and sysprojectIdentifier !='' ">
+			SYSPROJECT_ID = (SELECT ID FROM SYSPROJECT WHERE SESTOBJ_ID =
+			#{sysprojectIdentifier})
+			<if test="filename != null and filename !='' ">
+				AND
+			</if>
+		</if>
+		<if test="filename != null and filename !='' ">
+			CATEGORY LIKE #{filename}
+		</if>
+	</select>
+
+	<select id='getFilenameByProject' parameterType='String' resultType='String' >
+		SELECT DISTINCT(CATEGORY) FROM REQUIREMENT WHERE SYSPROJECT_ID like #{sysprojectId}
+	</select>
+
+</mapper>

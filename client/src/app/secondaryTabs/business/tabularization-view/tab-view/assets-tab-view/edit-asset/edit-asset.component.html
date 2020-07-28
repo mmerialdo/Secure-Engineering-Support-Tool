@@ -1,0 +1,877 @@
+<!--  --------------------------------------------------------------------------------------------------------------------
+// Copyright file="edit-asset.component.html"
+//  © Copyright European Space Agency, 2018-2020
+//
+//  Author: Software developed by RHEA System S.A.
+//
+//  This file is subject to the terms and conditions defined in file 'LICENSE.txt', which is part of this source code package.
+//  No part of the package, including this file, may be copied, modified, propagated, or distributed
+//  except according to the terms contained in the file ‘LICENSE.txt’.
+// ------------------------------------------------------------------------------------------------------------------ -->
+
+<p-dialog header="{{isNew?'New Asset':'Edit Asset'}}" [(visible)]="displayEditAsset" modal="modal" width="1600" responsive="true" (onHide)="cancel()">
+  <div class="row">
+    <div class="col-md-3">
+      <div [formGroup]="editAssetForm" class="form-group">
+        <label for="assetName">Name (*)</label>
+        <input formControlName="assetName" [(ngModel)]="name" class="form-control" name="assetName" id="assetName" (ngModelChange)="checkName($event)"
+        />
+        <control-messages [control]="editAssetForm.controls.assetName"></control-messages>
+        <span style="color:red" *ngIf="duplicateName">This name already exists!</span>
+      </div>
+      <div [formGroup]="editAssetForm" class="form-group">
+        <label for="ownAsset">Owner</label>
+        <select formControlName="ownAsset" class="form-control" name="ownAsset" id="ownAsset">
+          <option *ngFor="let c of ownerListAsset" [ngValue]="c.name+' '+c.surname"> {{ c.name }} {{ c.surname }} </option>
+        </select>
+        <!--<control-messages [control]="businessEditAssetForm.controls.ownAsset"></control-messages>-->
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div [formGroup]="editAssetForm" class="form-group">
+        <label for="desAsset">Description (*)</label>
+        <textarea formControlName="desAsset" [(ngModel)]="assetDescription" rows="8" class="form-control" name="desAsset" id="desAsset"> </textarea>
+        <control-messages [control]="editAssetForm.controls.desAsset"></control-messages>
+      </div>
+    </div>
+    <div class="col-md-5">
+      <div class="form-group">
+        <label>Malfunctions</label>
+        <p-listbox [options]="associatedMalf" [(ngModel)]="selectedMalfunction" (ngModelChange)="editMalfunction($event)"
+                   multiple="multiple" checkbox="checkbox" filter="filter"
+                   [style]="{'width':'100%','height':'200px','max-height':'300px', 'overflow-y':'auto'}" ></p-listbox>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-12">
+    <div class="row">
+      <h1 style="font-size: 18px">Primary Asset Category</h1>
+      <hr>
+      <div class="col-md-4">
+        <div class="form-group">
+          <label>Data (*)</label>
+          <i class="fa fa-info-circle" (click)="infoDataAsset()" style="cursor:pointer;margin-left:1px;"></i>
+          <select [(ngModel)]="selectedCategoryData" name="dataPrymaryAsset" id="dataPrymaryAsset" class="form-control" [disabled]="selectedCategoryCompli!='' || selectedCategoryService!=''">
+            <option *ngFor="let c of primaryAssetConf" [ngValue]="c"> {{ c }} </option>
+          </select>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="form-group">
+          <label>Services</label>
+          <i class="fa fa-info-circle" (click)="infoServicesAsset()" style="cursor:pointer;margin-left:1px;"></i>
+          <select [(ngModel)]="selectedCategoryService" name="servicesPrymaryAsset" id="servicesPrymaryAsset" class="form-control"
+                  [disabled]="selectedCategoryCompli!='' || selectedCategoryData!=''">
+            <option *ngFor="let c of primaryAssetInt" [ngValue]="c"> {{ c }} </option>
+          </select>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="form-group">
+          <label>Compliance to Regulations</label>
+          <i class="fa fa-info-circle" (click)="infoManagementAsset()" style="cursor:pointer;margin-left:1px;"></i>
+          <select [(ngModel)]="selectedCategoryCompli" name="compliPrymaryAsset" id="compliPrymaryAsset" class="form-control" [disabled]="selectedCategoryService!='' || selectedCategoryData!=''">
+            <option *ngFor="let c of primaryAssetAva" [ngValue]="c"> {{ c }} </option>
+          </select>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <h1 style="font-size: 18px">Secondary Asset Category</h1>
+      <hr>
+      <div class="col-md-4">
+        <div class="form-group">
+          <label for="secAsset">Secondary Asset Category (*)</label>
+          <i class="fa fa-info-circle" (click)="infoSecondaryAsset()" style="cursor:pointer;margin-left:1px;"></i>
+          <!--<select formControlName="secAsset" class="form-control" name="secAsset" id="secAsset" >-->
+          <select [(ngModel)]="selectedSecondary" class="form-control" name="secAsset" id="secAsset" [disabled]="selectedCategoryData === '' && selectedCategoryService === '' && selectedCategoryCompli === ''">
+
+            <option value=""></option>
+            <option value="Personnel" *ngIf="selectedCategoryService === 'Service_User_Workspace'">Personnel</option>
+
+            <option value="Hardware" *ngIf="selectedCategoryService === 'Service_Telecommunication_Service' || selectedCategoryService === 'Service_Extended_Network_Service' || selectedCategoryService === 'Service_Local_Network_Service'
+
+                                    || selectedCategoryService === 'Service_Application_Service' || selectedCategoryService === 'Service_Shared_Service' || selectedCategoryService === 'Service_User_Hardware' || selectedCategoryService === 'Service_Common_Service'
+                                    || selectedCategoryService === 'Service_Web_editing_Service'">
+              Hardware</option>
+
+            <option value="Software_Off_the_Shelf" *ngIf="selectedCategoryService === 'Service_Application_Service'||selectedCategoryService === 'Service_Shared_Service' ||selectedCategoryService === 'Service_User_Hardware'
+                                                 ||selectedCategoryService === 'Service_Common_Service' || selectedCategoryService === 'Service_Web_editing_Service'">
+              Software_Off_the_Shelf</option>
+
+            <option value="Premise" *ngIf="selectedCategoryService === 'Service_User_Workspace'">Premise</option>
+
+            <option value="Data_File" *ngIf="selectedCategoryData === 'Data_DataFile_Database'|| selectedCategoryData === 'Data_Shared_Office_File'|| selectedCategoryData === 'Data_Personal_Office_File'||selectedCategoryData === 'Data_Digital_Mail'||selectedCategoryData === 'Data_IT_Archive'
+                                    ||selectedCategoryData === 'Data_Published_Data'">
+              Data_File</option>
+
+            <option value="Data_Message" *ngIf="selectedCategoryData === 'Data_Exchanged_Message' || selectedCategoryData === 'Data_Digital_Mail' || selectedCategoryData === 'Data_Physical_Mail'">Data_Message</option>
+
+            <option value="Software_Configuration" *ngIf="selectedCategoryService === 'Service_Telecommunication_Service' || selectedCategoryService === 'Service_Extended_Network_Service' || selectedCategoryService === 'Service_Local_Network_Service'
+                                                 || selectedCategoryService === 'Service_Application_Service' || selectedCategoryService === 'Service_Shared_Service' || selectedCategoryService === 'Service_User_Hardware' || selectedCategoryService === 'Service_Common_Service'
+                                                 || selectedCategoryService === 'Service_Web_editing_Service'">
+              Software_Configuration</option>
+
+            <option value="Policy" *ngIf="selectedCategoryCompli === 'Compliance_Policy_Personal_Information_Protection' || selectedCategoryCompli === 'Compliance_Policy_Financial_Communication' || selectedCategoryCompli === 'Compliance_Policy_Digital_Accounting_Control'
+                                                 || selectedCategoryCompli === 'Compliance_Policy_Intellectual_Property' || selectedCategoryCompli === 'Compliance_Policy_Protection_Of_Information_Systems' || selectedCategoryCompli === 'Compliance_Policy_People_And_Environment_Safety'">
+              Policy</option>
+
+            <option value="Electronic_Media" *ngIf="selectedCategoryData === 'Data_DataFile_Database'|| selectedCategoryData === 'Data_Shared_Office_File'|| selectedCategoryData === 'Data_Personal_Office_File'||selectedCategoryService === 'Service_Application_Service'||selectedCategoryData === 'Data_IT_Archive'
+                                    ||selectedCategoryData === 'Data_Published_Data' || selectedCategoryService === 'Service_Shared_Service' || selectedCategoryService === 'Service_Common_Service' || selectedCategoryService === 'Service_Web_editing_Service'">
+              Electronic_Media</option>
+
+            <option value="Non_Electronic_Media" *ngIf="selectedCategoryData === 'Data_Physical_File' || selectedCategoryData === 'Data_Physical_Mail' || selectedCategoryData === 'Data_Physical_Archive'">
+              Non_Electronic_Media</option>
+
+            <!--<option value="Communication_Network">Communication_Network</option>-->
+
+            <option value="Software_Custom" *ngIf="selectedCategoryService === 'Service_Application_Service' || selectedCategoryService === 'Service_Shared_Service' || selectedCategoryService === 'Service_User_Hardware' || selectedCategoryService === 'Service_Common_Service'
+                                                 || selectedCategoryService === 'Service_Web_editing_Service'">
+              Software_Custom</option>
+
+            <option value="Hardware_Configuration" *ngIf="selectedCategoryService === 'Service_Telecommunication_Service' || selectedCategoryService === 'Service_Extended_Network_Service' || selectedCategoryService === 'Service_Local_Network_Service'
+                                                 || selectedCategoryService === 'Service_Application_Service' || selectedCategoryService === 'Service_Shared_Service' || selectedCategoryService === 'Service_Common_Service'
+                                                 || selectedCategoryService === 'Service_Web_editing_Service'">
+              Hardware_Configuration</option>
+
+            <option value="Auxiliary_Equipment" *ngIf="selectedCategoryService === 'Service_Telecommunication_Service' || selectedCategoryService === 'Service_Extended_Network_Service' || selectedCategoryService === 'Service_Local_Network_Service'
+                                                 || selectedCategoryService === 'Service_Application_Service' || selectedCategoryService === 'Service_Shared_Service' || selectedCategoryService === 'Service_Common_Service'
+                                                 || selectedCategoryService === 'Service_Web_editing_Service'">
+              Auxiliary_Equipment</option>
+
+            <!--<option value="Firmware">Firmware</option>-->
+
+            <option value="Service_Access_Mean" *ngIf="selectedCategoryService === 'Service_Application_Service' || selectedCategoryService === 'Service_Shared_Service' || selectedCategoryService === 'Service_Common_Service'">
+              Service_Access_Mean</option>
+
+            <option value="Data_Access_Mean" *ngIf="selectedCategoryData === 'Data_DataFile_Database'|| selectedCategoryData === 'Data_Shared_Office_File'|| selectedCategoryData === 'Data_Personal_Office_File'||selectedCategoryData === 'Data_IT_Archive'">
+              Data_Access_Mean</option>
+
+
+          </select>
+          <!--<control-messages [control]="businessEditAssetForm.controls.secAsset"></control-messages>-->
+        </div>
+      </div>
+
+    </div>
+
+    <div class="row" *ngIf="assetConfidentiality !=null || assetIntegrity !=null || assetAvailability !=null || assetEfficiency !=null  ">
+
+      <h1 style="font-size: 18px">Impact Level</h1>
+      <hr>
+
+      <div class="col-md-3" *ngIf="assetConfidentiality !=null">
+
+        <label>Confidentiality Impact:</label>
+        <p> {{ assetConfidentiality }}</p>
+
+      </div>
+
+      <div class="col-md-3" *ngIf="assetIntegrity !=null">
+
+        <label>Integrity Impact:</label>
+        <p>{{ assetIntegrity }}</p>
+      </div>
+
+      <div class="col-md-3" *ngIf="assetAvailability !=null">
+
+        <label>Availability Impact:</label>
+        <p>{{ assetAvailability }}</p>
+      </div>
+
+      <div class="col-md-3" *ngIf="assetEfficiency !=null">
+
+        <label>Efficiency Impact:</label>
+        <p> {{ assetEfficiency }}</p>
+      </div>
+
+    </div>
+    <div class="row col-md-3"><br><span>* - mandatory field</span></div>
+
+
+  </div>
+
+
+  <p-footer>
+    <div class="ui-dialog-buttonpane ui-widget-content ui-helper-clearfix">
+      <button type="button" pButton icon="fa fa-close" (click)="this.closeEditAssetForm()" label="Cancel"></button>
+      <button type="button" pButton icon="fa fa-check" [disabled]="!editAssetForm.valid || duplicateName || (selectedCategoryData === '' && selectedCategoryService === '' && selectedCategoryCompli === '') || selectedSecondary === '' || selectedSecondary === null || selectedSecondary === undefined "
+              (click)="saveOrEditAsset()" label="Save"></button>
+    </div>
+  </p-footer>
+
+</p-dialog>
+<p-dialog header="Primary Asset Type - Data" [(visible)]="showAssetPrimaryDataTypeInfo" modal="modal" width="700" [responsive]="true">
+
+  <div class="row">
+    <div class=WordSection1>
+      <p class=MsoNormal>
+        <u>
+          <span lang=EN-CA>Primary assets categorization correspond to functional needs, while secondary assets categorization correspond,
+            on a physical and concrete level, to the means required to meet functional needs.</span>
+        </u>
+      </p>
+      <p class=MsoNormal>
+        <span lang=EN-CA>&nbsp;</span>
+      </p>
+      <p class=MsoNormal>
+        <b>
+          <span lang=EN-CA>Assets of the category Data</span>
+        </b>
+      </p>
+      <p class=MsoListParagraph style='margin-left:.5in'>
+        <span lang=EN-GB style='font-family:Symbol'>·
+          <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          </span>
+        </span>
+        <span lang=EN-GB>Data files or databases associated to applications
+        </span>
+      </p>
+      <p class=MsoListParagraph style='margin-left:.5in'>
+        <span lang=EN-GB style='font-family:Symbol'>·
+          <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          </span>
+        </span>
+        <span lang=EN-GB>Exchanges data, screens, data individually sensitive
+        </span>
+      </p>
+      <p class=MsoListParagraph style='margin-left:.5in'>
+        <span lang=EN-GB style='font-family:Symbol'>·
+          <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          </span>
+        </span>
+        <span lang=EN-GB>Office related files</span>
+      </p>
+      <p class=MsoListParagraph style='margin-left:.5in'>
+        <span lang=EN-GB style='font-family:Symbol'>·
+          <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          </span>
+        </span>
+        <span lang=EN-GB>Written or printed information available to users and personal archives</span>
+      </p>
+      <p class=MsoListParagraph style='margin-left:.5in'>
+        <span lang=EN-GB style='font-family:Symbol'>·
+          <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          </span>
+        </span>
+        <span lang=EN-GB>Mail (Classical or electronic) and faxes</span>
+      </p>
+      <p class=MsoListParagraph style='margin-left:.5in'>
+        <span lang=EN-GB style='font-family:Symbol'>·
+          <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          </span>
+        </span>
+        <span lang=EN-GB>Archives (physical and IT)</span>
+      </p>
+      <p class=MsoListParagraph style='margin-left:.5in;text-indent:0in'>
+        <span lang=EN-GB>&nbsp;</span>
+      </p>
+      <p class=MsoNormal>
+        <span lang=EN-CA>Within the SEST tool, Data Primary Category has been subdivided in the following:</span>
+      </p>
+      <p class=MsoListParagraph style='margin-left:.5in'>
+        <span lang=EN-GB style='font-family:Symbol'>·
+          <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          </span>
+        </span>
+        <b>
+          <span lang=EN-GB>Data_DataFile_Database</span>
+        </b>
+        <span lang=EN-GB> (Data files and data bases accessed by applications)</span>
+      </p>
+      <p class=MsoListParagraph style='margin-left:.5in'>
+        <span lang=EN-GB style='font-family:Symbol'>·
+          <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          </span>
+        </span>
+        <b>
+          <span lang=EN-GB>Data_Shared_Office_File</span>
+        </b>
+        <span lang=EN-GB> (Shared office files and data)</span>
+      </p>
+      <p class=MsoListParagraph style='margin-left:.5in'>
+        <span lang=EN-GB style='font-family:Symbol'>·
+          <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          </span>
+        </span>
+        <b>
+          <span lang=EN-GB>Data_Personal_Office_File</span>
+        </b>
+        <span lang=EN-GB> (Personal office files and data)</span>
+      </p>
+      <p class=MsoListParagraph style='margin-left:.5in'>
+        <span lang=EN-GB style='font-family:Symbol'>·
+          <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          </span>
+        </span>
+        <b>
+          <span lang=EN-GB>Data_Physical_File</span>
+        </b>
+        <span lang=EN-GB> (Written or printed files and data)</span>
+      </p>
+      <p class=MsoListParagraph style='margin-left:.5in'>
+        <span lang=EN-GB style='font-family:Symbol'>·
+          <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          </span>
+        </span>
+        <b>
+          <span lang=EN-GB>Data_Exchanged_Message</span>
+        </b>
+        <span lang=EN-GB> (Exchanged messages, screen views, data individually sensitive)</span>
+      </p>
+      <p class=MsoListParagraph style='margin-left:.5in'>
+        <span lang=EN-GB style='font-family:Symbol'>·
+          <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          </span>
+        </span>
+        <b>
+          <span lang=EN-GB>Data_Digital_Mail</span>
+        </b>
+        <span lang=EN-GB>
+          (Electronic mailing)</span>
+      </p>
+      <p class=MsoListParagraph style='margin-left:.5in'>
+        <span lang=EN-GB style='font-family:Symbol'>·
+          <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          </span>
+        </span>
+        <b>
+          <span lang=EN-GB>Data_Physical_Mail</span>
+        </b>
+        <span lang=EN-GB> (Written or printed mailing)</span>
+      </p>
+      <p class=MsoListParagraph style='margin-left:.5in'>
+        <span lang=EN-GB style='font-family:Symbol'>·
+          <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          </span>
+        </span>
+        <b>
+          <span lang=EN-GB>Data_Physical_Archive</span>
+        </b>
+        <span lang=EN-GB> (Physical data archive)</span>
+      </p>
+      <p class=MsoListParagraph style='margin-left:.5in'>
+        <span lang=EN-GB style='font-family:Symbol'>·
+          <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          </span>
+        </span>
+        <b>
+          <span lang=EN-GB>Data_IT_Archive</span>
+        </b>
+        <span lang=EN-GB>
+          (Digital data archive)</span>
+      </p>
+      <p class=MsoListParagraph style='margin-left:.5in'>
+        <span lang=EN-GB style='font-family:Symbol'>·
+          <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          </span>
+        </span>
+        <b>
+          <span lang=EN-GB>Data_Published_Data</span>
+        </b>
+        <span lang=EN-GB>
+          (Data and information published on public or internal sites)</span>
+      </p>
+    </div>
+  </div>
+
+  <p-footer>
+    <div class="ui-dialog-buttonpane ui-widget-content ui-helper-clearfix">
+      <button type="button" pButton icon="fa fa-fw fa-check" (click)="showAssetPrimaryDataTypeInfo=false" label="Close"></button>
+    </div>
+
+  </p-footer>
+</p-dialog>
+<p-dialog header="Primary Asset Type - Services" [(visible)]="showAssetPrimaryServicesTypeInfo" modal="modal" width="700"
+          [responsive]="true">
+
+  <div class="row">
+    <div class=WordSection1>
+      <p class=MsoNormal>
+        <u>
+          <span lang=EN-CA>Primary assets categorization correspond to functional needs, while secondary assets categorization correspond,
+            on a physical and concrete level, to the means required to meet functional needs.</span>
+        </u>
+      </p>
+      <p class=MsoNormal>
+        <span lang=EN-CA>&nbsp;</span>
+      </p>
+      <p class=MsoNormal>
+        <b>
+          <span lang=EN-CA>Assets of the category Services</span>
+        </b>
+      </p>
+      <p class=MsoListParagraph style='margin-left:.25in'>
+        <span lang=EN-GB style='font-family:Symbol'>·
+          <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          </span>
+        </span>
+        <span lang=EN-GB>Network services</span>
+      </p>
+      <p class=MsoListParagraph style='margin-left:.25in'>
+        <span lang=EN-GB style='font-family:Symbol'>·
+          <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          </span>
+        </span>
+        <span lang=EN-GB>Application services</span>
+      </p>
+      <p class=MsoListParagraph style='margin-left:.25in'>
+        <span lang=EN-GB style='font-family:Symbol'>·
+          <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          </span>
+        </span>
+        <span lang=EN-GB>Common/shared office services</span>
+      </p>
+      <p class=MsoListParagraph style='margin-left:.25in'>
+        <span lang=EN-GB style='font-family:Symbol'>·
+          <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          </span>
+        </span>
+        <span lang=EN-GB>Common system services: emailing, archiving, printing, edition, etc.</span>
+      </p>
+      <p class=MsoListParagraph style='margin-left:.25in'>
+        <span lang=EN-GB style='font-family:Symbol'>·
+          <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          </span>
+        </span>
+        <span lang=EN-GB>User interface services and peripherals (PC, local printers, peripherals, specific interfaces, etc.)</span>
+      </p>
+      <p class=MsoListParagraph style='margin-left:.25in'>
+        <span lang=EN-GB style='font-family:Symbol'>·
+          <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          </span>
+        </span>
+        <span lang=EN-GB>Telecommunication services (voice, faxes, video-conferencing, etc.)</span>
+      </p>
+      <p class=MsoListParagraph style='margin-left:.25in'>
+        <span lang=EN-GB style='font-family:Symbol'>·
+          <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          </span>
+        </span>
+        <span lang=EN-GB>Common services for the working environment of the staff (offices, power supply, air</span>
+      </p>
+      <p class=MsoListParagraph style='margin-left:.25in'>
+        <span lang=EN-GB style='font-family:Symbol'>·
+          <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          </span>
+        </span>
+        <span lang=EN-GB>conditioning, etc.)</span>
+      </p>
+      <p class=MsoListParagraph style='margin-left:.25in'>
+        <span lang=EN-GB style='font-family:Symbol'>·
+          <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          </span>
+        </span>
+        <span lang=EN-GB>Classical mail services and treatment</span>
+      </p>
+      <p class=MsoListParagraph style='margin-left:.75in;text-indent:0in'>
+        <span lang=EN-GB>&nbsp;</span>
+      </p>
+      <p class=MsoNormal>
+        <span lang=EN-CA>Within the SEST tool, Services Primary Category has been subdivided in the following:</span>
+      </p>
+      <p class=MsoListParagraph style='margin-left:.25in'>
+        <span lang=EN-GB style='font-family:Symbol'>·
+          <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          </span>
+        </span>
+        <b>
+          <span lang=EN-GB>Service_User_Workspace</span>
+        </b>
+        <span lang=EN-GB> (User workspace and environment)</span>
+      </p>
+      <p class=MsoListParagraph style='margin-left:.25in'>
+        <span lang=EN-GB style='font-family:Symbol'>·
+          <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          </span>
+        </span>
+        <b>
+          <span lang=EN-GB>Service_Telecommunication_Service</span>
+        </b>
+        <span lang=EN-GB> (Telecommunication Services)</span>
+      </p>
+      <p class=MsoListParagraph style='margin-left:.25in'>
+        <span lang=EN-GB style='font-family:Symbol'>·
+          <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          </span>
+        </span>
+        <b>
+          <span lang=EN-GB>Service_Extended_Network_Service</span>
+        </b>
+        <span lang=EN-GB> (Extended Network Service)</span>
+      </p>
+      <p class=MsoListParagraph style='margin-left:.25in'>
+        <span lang=EN-GB style='font-family:Symbol'>·
+          <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          </span>
+        </span>
+        <b>
+          <span lang=EN-GB>Service_Local_Network_Service</span>
+        </b>
+        <span lang=EN-GB> (Local Area Network Service)</span>
+      </p>
+      <p class=MsoListParagraph style='margin-left:.25in'>
+        <span lang=EN-GB style='font-family:Symbol'>·
+          <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          </span>
+        </span>
+        <b>
+          <span lang=EN-GB>Service_Application_Service</span>
+        </b>
+        <span lang=EN-GB> (Services provided by applications)</span>
+      </p>
+      <p class=MsoListParagraph style='margin-left:.25in'>
+        <span lang=EN-GB style='font-family:Symbol'>·
+          <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          </span>
+        </span>
+        <b>
+          <span lang=EN-GB>Service_Shared_Service</span>
+        </b>
+        <span lang=EN-GB> (Shared office Services)</span>
+      </p>
+      <p class=MsoListParagraph style='margin-left:.25in'>
+        <span lang=EN-GB style='font-family:Symbol'>·
+          <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          </span>
+        </span>
+        <b>
+          <span lang=EN-GB>Service_User_Hardware</span>
+        </b>
+        <span lang=EN-GB> (Equipment provided to end users)</span>
+      </p>
+      <p class=MsoListParagraph style='margin-left:.25in'>
+        <span lang=EN-GB style='font-family:Symbol'>·
+          <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          </span>
+        </span>
+        <b>
+          <span lang=EN-GB>Service_Common_Service</span>
+        </b>
+        <span lang=EN-GB> (Common system Services)</span>
+      </p>
+      <p class=MsoListParagraph style='margin-left:.25in'>
+        <span lang=EN-GB style='font-family:Symbol'>·
+          <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          </span>
+        </span>
+        <b>
+          <span lang=EN-GB>Service_Web_editing_Service</span>
+        </b>
+        <span lang=EN-GB>  (Web editing Service (internal or public)</span>
+      </p>
+      <p class=MsoListParagraph style='margin-left:.25in;text-indent:0in'>
+        <span lang=EN-GB>&nbsp;</span>
+      </p>
+
+    </div>
+
+  </div>
+
+  <p-footer>
+    <div class="ui-dialog-buttonpane ui-widget-content ui-helper-clearfix">
+      <button type="button" pButton icon="fa fa-fw fa-check" (click)="showAssetPrimaryServicesTypeInfo=false" label="Close"></button>
+    </div>
+
+  </p-footer>
+</p-dialog>
+<p-dialog header="Primary Asset Type - Management" [(visible)]="showAssetPrimaryManagementTypeInfo" modal="modal" width="1000"
+          [responsive]="true">
+
+  <div class="row">
+    <div class=WordSection1>
+      <p class=MsoNormal>
+        <u>
+          <span lang=EN-CA>Primary assets categorization correspond to functional needs, while secondary assets categorization correspond,
+            on a physical and concrete level, to the means required to meet functional needs.</span>
+        </u>
+      </p>
+      <p class=MsoNormal>
+        <span lang=EN-CA>&nbsp;</span>
+      </p>
+      <p class=MsoNormal>
+        <b>
+          <span lang=EN-CA>Assets of the category Management processes
+          </span>
+        </b>
+      </p>
+      <p class=MsoListParagraph style='margin-left:.25in'>
+        <span lang=EN-GB style='font-family:Symbol'>·
+          <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          </span>
+        </span>
+        <span lang=EN-GB>Processes related to laws, regulations and contractual requirements</span>
+      </p>
+      <p class=MsoListParagraph style='margin-left:.25in'>
+        <span lang=EN-GB style='font-family:Symbol'>·
+          <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          </span>
+        </span>
+        <span lang=EN-GB>Processes for the management of information security
+        </span>
+      </p>
+      <p class=MsoNormal>
+        <span lang=EN-CA>&nbsp;</span>
+      </p>
+      <p class=MsoNormal>
+        <span lang=EN-CA>Within the SEST tool, Management Primary Category has been subdivided in the following:</span>
+      </p>
+      <p class=MsoListParagraph style='margin-left:.25in'>
+        <span lang=EN-GB style='font-family:Symbol'>·
+          <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          </span>
+        </span>
+        <b>
+          <span lang=EN-GB>Compliance_Policy_Personal_Information_Protection</span>
+        </b>
+        <span lang=EN-GB> (Compliance to law or regulations relative to personal information protection)
+        </span>
+      </p>
+      <p class=MsoListParagraph style='margin-left:.25in'>
+        <span lang=EN-GB style='font-family:Symbol'>·
+          <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          </span>
+        </span>
+        <b>
+          <span lang=EN-GB>Compliance_Policy_Financial_Communication</span>
+        </b>
+        <span lang=EN-GB> (Compliance to law or regulations relative to financial communication)
+        </span>
+      </p>
+      <p class=MsoListParagraph style='margin-left:.25in'>
+        <span lang=EN-GB style='font-family:Symbol'>·
+          <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          </span>
+        </span>
+        <b>
+          <span lang=EN-GB>Compliance_Policy_Digital_Accounting_Control</span>
+        </b>
+        <span lang=EN-GB> (Compliance to law or regulations relative to digital accounting control)
+        </span>
+      </p>
+      <p class=MsoListParagraph style='margin-left:.25in'>
+        <span lang=EN-GB style='font-family:Symbol'>·
+          <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          </span>
+        </span>
+        <b>
+          <span lang=EN-GB>Compliance_Policy_Intellectual_Property</span>
+        </b>
+        <span lang=EN-GB> (Compliance to law or regulations relative to intellectual property)
+        </span>
+      </p>
+      <p class=MsoListParagraph style='margin-left:.25in'>
+        <span lang=EN-GB style='font-family:Symbol'>·
+          <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          </span>
+        </span>
+        <b>
+          <span lang=EN-GB>Compliance_Policy_Protection_Of_Information_Systems</span>
+        </b>
+        <span lang=EN-GB> (Compliance to law or regulations relative to the protection of information systems)</span>
+      </p>
+      <p class=MsoListParagraph style='margin-left:.25in'>
+        <span lang=EN-GB style='font-family:Symbol'>·
+          <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          </span>
+        </span>
+        <b>
+          <span lang=EN-GB>Compliance_Policy_People_And_Environment_Safety</span>
+        </b>
+        <span lang=EN-GB> (Compliance to law or regulations relative to people safety and protection of environment)</span>
+      </p>
+    </div>
+  </div>
+
+  <p-footer>
+    <div class="ui-dialog-buttonpane ui-widget-content ui-helper-clearfix">
+      <button type="button" pButton icon="fa fa-fw fa-check" (click)="showAssetPrimaryManagementTypeInfo=false" label="Close"></button>
+    </div>
+
+  </p-footer>
+</p-dialog>
+<p-dialog header="Secondary Asset Type" [(visible)]="showAssetSecondaryTypeInfo" modal="modal" width="700" [responsive]="true">
+
+  <div class="row">
+    <div class=WordSection1>
+      <p class=MsoNormal>
+        <u>
+          <span lang=EN-CA>Primary assets categorization correspond to functional needs, while secondary assets categorization correspond,
+            on a physical and concrete level, to the means required to meet functional needs.</span>
+        </u>
+      </p>
+      <p class=MsoNormal>
+        <span lang=EN-CA>&nbsp;</span>
+      </p>
+      <p class=MsoNormal>
+        <b>
+          <span lang=EN-CA>Among the Secondary Asset Category possibilities
+          </span>
+        </b>
+        <span lang=EN-CA>:</span>
+      </p>
+      <p class=MsoListParagraph style='margin-left:.5in'>
+        <span lang=EN-GB style='font-family:Symbol'>·
+          <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          </span>
+        </span>
+        <b>
+          <span lang=EN-GB>Personnel </span>
+        </b>
+        <span lang=EN-GB>(human resource involved in the Business Activity)</span>
+      </p>
+      <p class=MsoListParagraph style='margin-left:.5in'>
+        <span lang=EN-GB style='font-family:Symbol'>·
+          <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          </span>
+        </span>
+        <b>
+          <span lang=EN-GB>Hardware </span>
+        </b>
+        <span lang=EN-GB>(Any hardware supporting the Service)</span>
+      </p>
+      <p class=MsoListParagraph style='margin-left:.5in'>
+        <span lang=EN-GB style='font-family:Symbol'>·
+          <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          </span>
+        </span>
+        <b>
+          <span lang=EN-GB>Software_Off_the_Shelf </span>
+        </b>
+        <span lang=EN-GB>(any COTS software application supporting the Service)</span>
+      </p>
+      <p class=MsoListParagraph style='margin-left:.5in'>
+        <span lang=EN-GB style='font-family:Symbol'>·
+          <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          </span>
+        </span>
+        <b>
+          <span lang=EN-GB>Premise </span>
+        </b>
+        <span lang=EN-GB>(physical premise supporting the User Workspace Service)</span>
+      </p>
+      <p class=MsoListParagraph style='margin-left:.5in'>
+        <span lang=EN-GB style='font-family:Symbol'>·
+          <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          </span>
+        </span>
+        <b>
+          <span lang=EN-GB>Data_File</span>
+        </b>
+        <span lang=EN-GB> (Logical entities: files or databases)</span>
+      </p>
+      <p class=MsoListParagraph style='margin-left:.5in'>
+        <span lang=EN-GB style='font-family:Symbol'>·
+          <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          </span>
+        </span>
+        <b>
+          <span lang=EN-GB>Data_Message </span>
+        </b>
+        <span lang=EN-GB>(Logical entities: transiting data packets or messages)</span>
+      </p>
+      <p class=MsoListParagraph style='margin-left:.5in'>
+        <span lang=EN-GB style='font-family:Symbol'>·
+          <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          </span>
+        </span>
+        <b>
+          <span lang=EN-GB>Software_Configuration </span>
+        </b>
+        <span lang=EN-GB>(Configuration of the software application supporting the Service)</span>
+      </p>
+      <p class=MsoListParagraph style='margin-left:.5in'>
+        <span lang=EN-GB style='font-family:Symbol'>·
+          <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          </span>
+        </span>
+        <b>
+          <span lang=EN-GB>Policy </span>
+        </b>
+        <span lang=EN-GB>(Internal guidelines and procedures)</span>
+      </p>
+      <p class=MsoListParagraph style='margin-left:.5in'>
+        <span lang=EN-GB style='font-family:Symbol'>·
+          <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          </span>
+        </span>
+        <b>
+          <span lang=EN-GB>Electronic_Media </span>
+        </b>
+        <span lang=EN-GB>(Physical electronic media)</span>
+      </p>
+      <p class=MsoListParagraph style='margin-left:.5in'>
+        <span lang=EN-GB style='font-family:Symbol'>·
+          <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          </span>
+        </span>
+        <b>
+          <span lang=EN-GB>Non_Electronic_Media </span>
+        </b>
+        <span lang=EN-GB>(Physical non-electronic media –paper document for example)</span>
+      </p>
+      <p class=MsoListParagraph style='margin-left:.5in'>
+        <span lang=EN-GB style='font-family:Symbol'>·
+          <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          </span>
+        </span>
+        <b>
+          <span lang=EN-GB>Software_Custom </span>
+        </b>
+        <span lang=EN-GB>(any internally-developed software application supporting the Service)</span>
+      </p>
+      <p class=MsoListParagraph style='margin-left:.5in'>
+        <span lang=EN-GB style='font-family:Symbol'>·
+          <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          </span>
+        </span>
+        <b>
+          <span lang=EN-GB>Hardware_Configuration </span>
+        </b>
+        <span lang=EN-GB>(Configuration of the hardware supporting the Service)</span>
+      </p>
+      <p class=MsoListParagraph style='margin-left:.5in'>
+        <span lang=EN-GB style='font-family:Symbol'>·
+          <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          </span>
+        </span>
+        <b>
+          <span lang=EN-GB>Auxiliary_Equipment </span>
+        </b>
+        <span lang=EN-GB>(Auxiliary hardware supporting the Service – fridges, air conditioning, etc.)</span>
+      </p>
+      <p class=MsoListParagraph style='margin-left:.5in'>
+        <span lang=EN-GB style='font-family:Symbol'>·
+          <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          </span>
+        </span>
+        <b>
+          <span lang=EN-GB>Service_Access_Mean </span>
+        </b>
+        <span lang=EN-GB>(Means for accessing the Service –physical or logical)</span>
+      </p>
+      <p class=MsoListParagraph style='margin-left:.5in'>
+        <span lang=EN-GB style='font-family:Symbol'>·
+          <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          </span>
+        </span>
+        <b>
+          <span lang=EN-GB>Data_Access_Mean </span>
+        </b>
+        <span lang=EN-GB>(Means for accessing data: keys –physical or logical)</span>
+      </p>
+
+      <p class=MsoNormal>
+        <span lang=EN-GB>&nbsp;</span>
+      </p>
+
+    </div>
+
+  </div>
+  <p-footer>
+    <div class="ui-dialog-buttonpane ui-widget-content ui-helper-clearfix">
+      <button type="button" pButton icon="fa fa-fw fa-check" (click)="showAssetSecondaryTypeInfo=false" label="Close"></button>
+    </div>
+
+  </p-footer>
+</p-dialog>

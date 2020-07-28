@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- This blueprint describes the needed dependencies for the authentication classes of sest-proxy bundle (including websockets) and the exposed interfaces  and Apache Camel webservices-->
+<blueprint xmlns="http://www.osgi.org/xmlns/blueprint/v1.0.0"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xmlns:cm="http://aries.apache.org/blueprint/xmlns/blueprint-cm/v1.1.0"
+           xsi:schemaLocation="
+		  http://www.osgi.org/xmlns/blueprint/v1.0.0 http://www.osgi.org/xmlns/blueprint/v1.0.0/blueprint.xsd
+		  http://camel.apache.org/schema/blueprint http://camel.apache.org/schema/blueprint/camel-blueprint.xsd
+		  http://aries.apache.org/blueprint/xmlns/blueprint-cm/v1.1.0 http://aries.apache.org/schemas/blueprint-cm/blueprint-cm-1.1.0.xsd">
+
+    <cm:property-placeholder id="SEST.placeholder"
+                             persistent-id="SEST"/>
+
+    <reference id="userAuthenticationService" timeout="300000"
+               availability="optional"
+               interface="org.crmf.user.manager.authentication.UserAuthenticationInterface"/>
+
+    <reference id="userPermissionService" timeout="300000"
+               availability="optional"
+               interface="org.crmf.user.validation.permission.UserPermissionManagerInputInterface"/>
+
+    <reference id="userManagerService_proxy" timeout="300000"
+               availability="optional" interface="org.crmf.user.manager.core.UserManagerInputInterface"/>
+
+    <service id="securityPolicyCustomService" ref="securityPolicyCustom"
+             interface="org.crmf.proxy.authnauthz.ShiroSecurityPolicyCustomInterface"/>
+
+    <bean id="realmBean" class="org.crmf.proxy.authnauthz.CustomSecurityRealm">
+        <!-- property name="userPermission" ref="userPermissionService"></property -->
+        <property name="userAuthentication" ref="userAuthenticationService"></property>
+    </bean>
+
+    <bean id="sessionListener"
+          class="org.crmf.proxy.authnauthz.ShiroSessionListener">
+    </bean>
+
+    <bean id="sessionValidationTimer" class="org.apache.shiro.session.mgt.ExecutorServiceSessionValidationScheduler">
+        <property name="interval" value="60000"/>
+        <property name="sessionManager" ref="sessionManager"/>
+    </bean>
+
+    <bean id="sessionCacheManager" class="org.apache.shiro.cache.ehcache.EhCacheManager">
+        <property name="cacheManagerConfigFile" value="${ehcache.path}"/>
+    </bean>
+
+    <bean id="sessionDAO"
+          class="org.apache.shiro.session.mgt.eis.EnterpriseCacheSessionDAO"/>
+
+    <bean id="sessionManager" class="org.apache.shiro.session.mgt.DefaultSessionManager">
+        <property name="sessionDAO" ref="sessionDAO"/>
+        <property name="globalSessionTimeout" value="${timeout}"/>
+        <property name="sessionValidationScheduler" ref="sessionValidationTimer"/>
+        <property name="sessionValidationSchedulerEnabled" value="true"/>
+        <property name="sessionListeners">
+            <list>
+                <ref component-id="sessionListener"/>
+            </list>
+        </property>
+    </bean>
+
+    <bean id="secMgr" class="org.apache.shiro.mgt.DefaultSecurityManager">
+        <argument ref="realmBean"/>
+        <property name="sessionManager" ref="sessionManager"/>
+    </bean>
+
+    <bean id="securityUtils" class="org.crmf.proxy.authnauthz.CustomSecurityUtils"
+          factory-method="setSecurityManagerMine">
+        <argument ref="secMgr"/>
+    </bean>
+
+    <bean id="cipherServiceBean" class="org.apache.shiro.crypto.AesCipherService"/>
+
+    <bean id="securityPolicyCustom" class="org.crmf.proxy.authnauthz.ShiroSecurityPolicyCustom">
+        <property name="securityManager" ref="secMgr"></property>
+        <property name="base64" value="false"></property>
+        <property name="userPermission" ref="userPermissionService"></property>
+        <property name="userManager" ref="userManagerService_proxy"></property>
+        <property name="alwaysReauthenticate" value="false"></property>
+    </bean>
+
+    <bean id="userBeanLogin"
+          class="org.crmf.proxy.user.auth.rest.UserAuthenticationRestServer">
+        <property name="policy" ref="securityPolicyCustom"></property>
+        <property name="manager" ref="secMgr"></property>
+        <property name="userAuthentication" ref="userAuthenticationService"></property>
+        <property name="userManager" ref="userManagerService"></property>
+    </bean>
+
+    <bean id="websocket" class="org.apache.camel.component.websocket.WebsocketComponent">
+        <property name="maxThreads" value="100"/>
+    </bean>
+
+    <bean id="onExceptionProcessorRef" class="org.crmf.proxy.exception.ExceptionProcessor"/>
+
+    <bean id="defaultLetterErrorHandler" class="org.apache.camel.builder.DefaultErrorHandlerBuilder">
+        <property name="failureProcessor" ref="onExceptionProcessorRef"/>
+        <property name="onExceptionOccurred" ref="onExceptionProcessorRef"/>
+    </bean>
+
+    <bean id="jetty" class="org.apache.camel.component.jetty9.JettyHttpComponent9">
+        <property name="sslContextParameters" ref="SSLContextParameters"/>
+    </bean>
+
+    <bean id="SSLContextParameters" class="org.apache.camel.util.jsse.SSLContextParameters">
+        <property name="keyManagers" ref="KeyManagersParameters"/>
+    </bean>
+
+    <bean id="KeyManagersParameters"
+          class="org.apache.camel.util.jsse.KeyManagersParameters">
+        <property name="keyStore" ref="KeyStoreParameters"/>
+        <property name="keyPassword" value="${keyStore.password}"/>
+    </bean>
+
+    <bean id="KeyStoreParameters"
+          class="org.apache.camel.util.jsse.KeyStoreParameters">
+        <property name="resource" value="${keyStore.resource}"/>
+        <property name="password" value="${keyStore.password}"/>
+    </bean>
+
+    <camelContext id="authCamelContext" errorHandlerRef="defaultLetterErrorHandler" streamCache="true"
+                  trace="true" xmlns="http://camel.apache.org/schema/blueprint">
+
+        <route id="getPermissionList">
+            <from uri="jetty:https://0.0.0.0:9090/permission/list?enableCORS=true"/>
+            <bean ref="userBeanLogin" method="getPermissionList"/>
+        </route>
+
+        <route id="authenticateUser">
+            <from uri="jetty:https://0.0.0.0:9090/login?enableCORS=true"/>
+            <log message="authenticateUser before body ${body}" loggingLevel="INFO"/>
+            <log message="authenticateUser before ${header.SHIRO_SECURITY_TOKEN}"
+                 loggingLevel="INFO"/>
+            <bean ref="userBeanLogin" method="authenticateUser"/>
+            <log message="authenticateUser after ${body}" loggingLevel="INFO"/>
+        </route>
+
+        <route id="logoutProject">
+            <from uri="jetty:https://0.0.0.0:9090/logout?enableCORS=true"/>
+            <log message="logout before body ${body}"
+                 loggingLevel="INFO"/>
+            <log
+                    message="logout before ${header.SHIRO_SECURITY_TOKEN}"
+                    loggingLevel="INFO"/>
+            <log message="logout before ${header.PROJECT}"
+                 loggingLevel="INFO"/>
+            <bean ref="userBeanLogin" method="logoutUser"/>
+            <log message="logout after ${body}" loggingLevel="INFO"/>
+        </route>
+    </camelContext>
+</blueprint>

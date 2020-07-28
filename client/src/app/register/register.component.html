@@ -1,0 +1,176 @@
+<!--  --------------------------------------------------------------------------------------------------------------------
+// Copyright file="register.component.html"
+//  © Copyright European Space Agency, 2018-2020
+//
+//  Author: Software developed by RHEA System S.A.
+//
+//  This file is subject to the terms and conditions defined in file 'LICENSE.txt', which is part of this source code package.
+//  No part of the package, including this file, may be copied, modified, propagated, or distributed
+//  except according to the terms contained in the file ‘LICENSE.txt’.
+// -------------------------------------------------------------------------------------------------------------------- -->
+
+<div class="registerContainer">
+  <div class="row main">
+
+    <div class="main-login main-center">
+      <form class="form-horizontal" method="post" action="#">
+
+        <div [formGroup]="userForm" class="form-group">
+          <label for="name" class="cols-sm-2 control-label">Firstname (*)</label>
+          <div class="cols-sm-10">
+            <div class="input-group">
+              <span class="input-group-addon">
+                <i class="fa fa-user fa" aria-hidden="true"></i>
+              </span>
+              <input formControlName="name" class="form-control" name="name" id="name" />
+            </div>
+            <control-messages [control]="userForm.controls.name"></control-messages>
+          </div>
+        </div>
+
+        <div [formGroup]="userForm" class="form-group">
+          <label for="surname" class="cols-sm-2 control-label">Surname (*)</label>
+          <div class="cols-sm-10">
+            <div class="input-group">
+              <span class="input-group-addon">
+                <i class="fa fa-user fa" aria-hidden="true"></i>
+              </span>
+              <input formControlName="surname" class="form-control" name="surname" id="surname" />
+            </div>
+            <control-messages [control]="userForm.controls.surname"></control-messages>
+          </div>
+        </div>
+
+
+        <div [formGroup]="userForm" class="form-group">
+          <label for="email" class="cols-sm-2 control-label">Email (*)</label>
+          <div class="cols-sm-10">
+            <div class="input-group">
+              <span class="input-group-addon">
+                <i class="fa fa-envelope fa" aria-hidden="true"></i>
+              </span>
+              <input formControlName="email" class="form-control" name="email" id="email" />
+            </div>
+            <control-messages [control]="userForm.controls.email"></control-messages>
+          </div>
+        </div>
+
+        <div [formGroup]="userForm" class="form-group">
+          <label for="username" class="cols-sm-2 control-label">Username (*)</label>
+          <div class="cols-sm-10">
+            <div class="input-group">
+              <span class="input-group-addon">
+                <i class="fa fa-users fa" aria-hidden="true"></i>
+              </span>
+              <input formControlName="username" class="form-control" name="username" id="username" />
+
+            </div>
+            <control-messages [control]="userForm.controls.username"></control-messages>
+          </div>
+        </div>
+
+        <div [formGroup]="userForm" class="form-group">
+          <label for="password" class="cols-sm-2 control-label">Password (*)</label>
+          <div class="cols-sm-10">
+            <div class="input-group">
+
+              <span class="input-group-addon">
+                <i class="fa fa-lock fa-lg" aria-hidden="true"></i>
+              </span>
+
+
+
+              <input formControlName="password" class="form-control" name="password" id="password" type={{kindTypePass}}/>
+
+              <span class="input-group-addon" style="background-color: #FFFFFF">
+
+                <i class="glyphicon glyphicon-eye-open" style="cursor: pointer" (click)="changePass()" *ngIf="glyPass"></i>
+                <i class="glyphicon glyphicon-eye-close" style="cursor: pointer" (click)="changePass()" *ngIf="!glyPass"></i>
+
+
+
+              </span>
+
+
+
+
+
+
+
+            </div>
+            <control-messages [control]="userForm.controls.password"></control-messages>
+          </div>
+        </div>
+
+        <div [formGroup]="userForm" class="form-group">
+          <label for="confirm" class="cols-sm-2 control-label">Confirm Password (*)</label>
+          <div class="cols-sm-10">
+            <div class="input-group">
+              <span class="input-group-addon">
+                <i class="fa fa-lock fa-lg" aria-hidden="true"></i>
+              </span>
+              <input formControlName="confirm" class="form-control" name="confirm" id="confirm" type={{kindTypeConfirm}} />
+
+              <span class="input-group-addon" style="background-color: #FFFFFF">
+
+                <i class="glyphicon glyphicon-eye-open" style="cursor: pointer" (click)="changeConfirm()" *ngIf="glyConf"></i>
+                <i class="glyphicon glyphicon-eye-close" style="cursor: pointer" (click)="changeConfirm()" *ngIf="!glyConf"></i>
+
+              </span>
+            </div>
+            <control-messages [control]="userForm.controls.confirm"></control-messages>
+          </div>
+        </div>
+
+        <div [formGroup]="userForm" class="form-group">
+          <label for="profile" class="cols-sm-2 control-label">Profile (*)</label>
+          <div class="cols-sm-10">
+            <div class="input-group">
+              <span class="input-group-addon">
+                <i class="fa fa-user-circle-o" aria-hidden="true">
+
+                </i>
+              </span>
+              <select formControlName="profile" class="form-control" name="profile" id="profile">
+
+
+                <option value="ProjectManager">Project Manager</option>
+                <option value="GeneralUser">General User</option>
+
+              </select>
+            </div>
+            <control-messages [control]="userForm.controls.profile"></control-messages>
+          </div>
+        </div>
+
+        <div class="form-group ">
+          <button type="button" class="btn btn-primary btn-lg btn-block login-button" (click)="createUser()" [disabled]="!userForm.valid">Create</button>
+        </div>
+        <div class="form-group ">
+          <button type="button" class="btn btn-primary btn-lg btn-block login-button" (click)="sendFeedback(true)">Back</button>
+        </div>
+
+
+
+
+
+      </form>
+      <span  class="cols-sm-2 control-label">* - mandatory field</span>
+    </div>
+  </div>
+</div>
+
+<p-dialog [(visible)]="blocked" modal="modal" [responsive]="true" [showHeader]="false" class="registerSpinner">
+
+  <div *ngIf="!blockedMessage">
+    <h1></h1>
+    <div class="loader"></div>
+  </div>
+
+  <div *ngIf="blockedMessage">
+
+    <p-messages [(value)]="msgsAsset"></p-messages>
+
+  </div>
+
+</p-dialog>

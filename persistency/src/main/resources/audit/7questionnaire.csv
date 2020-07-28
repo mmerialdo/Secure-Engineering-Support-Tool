@@ -1,0 +1,130 @@
+7|MEHARI_SecurityAndArchitecture|||||||
+07A|Control of access to systems |||||||
+07A01|Management of access profiles (rights and privileges granted by functional profile) |||||||
+07A01-01|Has a management policy for access rights to the systems been established, built from an analysis of the security requirements based on the business stakes?|2|||E1|9.1.1|11.1.1|
+07A01-02|"Is access to the various parts of the information system (applications, data bases, systems, equipments, etc) defined in terms of job profiles which regroup roles or functions within the organization (profiles define access rights which are available to holders of the profile)?
+Note: in certain circumstances the notion of ""profile"" may be replaced by the notion of ""group""."|4|2||E1|9.2.3; 9.2.5; 9.4.1|11.2.2|
+07A01-03|Is it possible to adjust the access rights attributed to a given profile, based on the nature of the connection and equipment used (location, link, network, protocol, encryption, etc) and on the classification of the resources accessed?|4|||E2|||
+07A01-04|Do the profiles also allow definition of working time limits (daily hours and periods in the working calendar, weekends, holidays etc.)?|2|||E3|9.4.2|11.5.6|
+07A01-05|Have these profiles and the access rights attributed to the different profiles, as a function of context, been approved by the information owners and the Information Security Officer?|4|2||E2|9.4.2|11.5.6|
+07A01-06|"Is the process of definition and management of rights attributed to profiles under strict control?
+A strict control requires that the list of people able to change rights attributed to profiles be strictly limited and that the implementation of these rights into tables be strictly secure during transmission and storage and that there exists a reinforced access control in order to be able to modify these rights and that any modification of these rights be logged and audited."|4|3||R1|||
+07A01-07|Is it possible to review at any time, the complete list of profiles and of the rights attributed to each profile?  |2|2||C1|||
+07A01-08|Is there a regular audit at least once a year of all rights attributed to each profile and the profile management procedures?|4|2||C1|9.2.5|11.2.4|
+07A02|Management of access authorizations and privileges (granting, delegation, revocation)|||||||
+07A02-01|Does the procedure of granting access authorization require the formal approval of line management (at a sufficiently high level)?|4|2||E1|9.2.2||
+07A02-02|Are authorizations granted to named individuals only as a function of their profile?|2|||E1|9.2.2||
+07A02-03|"Is the procedure for granting (or changing or revoking) authorization to an individual (either directly or via his profile) strictly controlled?
+A strict control requires a formal recognition of the signature (electronic or otherwise) of the requester, that the implementation of the profile attributed to users in the form of tables is highly secure during transmission and storage and that there be a reinforced access control over the modification of such records and that any modification of records be logged and audited."|4|2|3|E2|9.2.2; 9.2.5|11.2.2|
+07A02-04|Is there a systematic process of updating the table of access authorizations at the time of departure of personnel (either internal or external)?|4|3||E2|9.2.2; 9.2.5|11.2.4|
+07A02-05|Is there a systematic process of updating the table of access authorizations at the time of change of function?|4|||E3|9.2.2; 9.2.5|11.2.4|
+07A02-06|"Is there a strictly controlled process (as above) which allows to delegate his/her own authorizations, in part or in whole, to a person of choice for a determined period (in case of absence)?
+In this case, the delegated rights must no longer be authorized to the person who has delegated them during this time. The owner however, must have the possibility of taking them back, by which process he or she effectively ends the delegation."|4|||E3|9.2.2||
+07A02-07|Is it possible to control at any time, for all users, the rights, authorizations and privileges in force?|2|||C1|9.2.2||
+07A02-08|Is there a regular audit, at least once a year, of  the profiles and authorizations granted to all users and of the procedures for management of attributed profiles?|1|2||C1|9.2.5|11.2.4|
+07A03|Authentication of the access requester (user or entity)|||||||
+07A03-01|Does the process of distribution or modification of the user credentials guarantee that only the holder of the identifier can have access to them (initial communication is confidential, password change is under the exclusive control of the user, etc.)?  |2|1||E1|9.2.4; 9.4.3|11.5.3|
+07A03-02|"Does the process of definition or modification of user credentials respect a set of rules which ensures their intrinsic validity?
+In the case of passwords: sufficient length (8 characters or more), obligatory mixture of types of characters, frequent change (less than once a month), impossibility of reusing an old password, non-trivial word test using a dictionary, banning of ""standard systems"", first names, anagrams of user name, dates etc. In the case of certificates and authentications based on cryptographic mechanisms: generation process evaluated or publicly recognized, keys of a sufficient length etc."|4|2||E2|9.2.4; 9.4.3|11.2.3; 11.5.3|
+07A03-03|"Does the process of presenting a user password guarantee its trustworthiness?
+The usage of a password will always be a weak point. The only process which does not divulge observable information consists of either introducing an object containing a secret (smart card), or entering a code which changes at every moment (token card type SecureId) or using a biometric characteristic."|4|2||E3|9.2.4; 9.4.2;  9.4.3|11.5.1; 11.5.3|
+07A03-04|"Is the logon process secured?
+A secure logon should not give any information before the process is satisfactorily executed, not display the authenticators' password, display date and time of last connection, display eventual connection attempts that have failed, etc. "|1|||E3|9.2.4; 9.4.2;  9.4.3|11.5.1; 11.5.3|
+07A03-05|"Do the mechanisms for retention and usage of credentials by the user (or by the equipment representing the user) or by the target systems guarantee trustworthiness and authenticity of these credentials?
+Passwords must be stored encrypted and a preliminary access control must be made before being accessible to the user.
+In the case of authentication using cryptographic procedures, the mechanism must propose solid guarantees validated by a recognized organization."|2|2|3|E2|9.2.4; 9.4.2;  9.4.3|11.5.1; 11.5.3|
+07A03-06|"Do the mechanisms used for the transmission of the credentials between the user and target equipments guarantee trustworthiness and authenticity of these credentials?
+Transmission of a password must be encrypted or use an algorithm which introduces a variable at each transmission.
+In the case of authentication using cryptographic procedures, the mechanism must propose solid guarantees validated by a recognized organization."|2|2|3|E3|9.4.2;  9.4.3|11.5.1; 11.5.3|
+07A03-07|In the case of multiple incorrect authentication attempts, is there an automatic process which temporarily invalidates the identifier used or, possibly, the user workstation itself, or which slows down the authentication process so as to inhibit any automatic routine from connecting?|4|2||E2|9.4.2;  9.4.3|11.5.1; 11.5.3|
+07A03-08|Does the procedure for the replacement of a lost or mislaid user credential (password, token card) allow the instant deactivation of the old credential?|2|2||E2|9.2.4|11.5.3|
+07A03-09|Does the procedure for the replacement of a lost or mislaid user credential (password, token card) allow an effective control of the requester's identity?|2|2||E3|9.2.4|11.5.3|
+07A03-10|"Are authentication parameters under strict control?
+A strict control requires that the list of people allowed to change the definition rules of credentials, the credentials themselves, the rules of surveillance of connection attempts etc., be strictly limited and that there exists a reinforced access control to effect these modifications, that these modifications be logged and audited and that there exists a regular general audit at least once a year of all authentication parameters."|4|2||R1|||
+07A03-11|"Are the processes that ensure authentication under strict control?
+A strict control requires that the software used has been validated and undergoes a regular test for integrity (close with a seal) and that there be an audit at least once a year of authentication procedures and processes (including the processes which aim to detect intrusion attempts and the processes which respond to these intrusion attempts)."|4|3||C1|||
+07A04|Access filtering and management of associations |||||||
+07A04-01|Does any access to a system require the use of an identifier recognized by the system?|1|2||E1||11.5.2|
+07A04-02|"Is there a direct or indirect correspondence between any identifier and a real physical person?
+In the case where an application calls another or executes a system call, it may be that the application does not transfer to the target system the identifier which originally made the request. The link between the call, the identifier and the user himself must remain traceable after the fact."|4|2||E1||11.5.2|
+07A04-03|Have all generic or by-default accounts been deleted?|4|2||E2||11.5.2|
+07A04-04|"Is the acceptance of the identifier by the system systematically subject to authentication?
+Systematic authentication requires that the process be implemented for all subsystems (Remote process monitors, database management systems, batch processes, etc.), for all application requests and for all access routes, including ports reserved for remote maintenance."|2|2||E2|9.4.2|11.5.2|
+07A04-05|May the authentication process be renewed during an open session for those transactions considered to be sensitive?|4|||E3|9.4.2||
+07A04-06|Is there an automatic invalidation of the user session in the absence of traffic after a defined duration, thus requiring user re-identification and re-authentication?|4|||E3|9.4.2|11.5.5|
+07A04-07|Is there a systematic control, based upon definite access rules, of the profile of the requester, of the association context and of the appropriateness of that profile and context for the access requested?|4|2||E3|||
+07A04-08|"Are the parameters for the definition and management of access filtering rules under strict control?
+A strict control requires that the list of persons allowed to change the security parameters for access filtering be extremely limited, and that there be a reinforced access control in order to be able to effect such modification and that any modification be logged and audited."|4|2||R1|||
+07A04-09|"Are the processes that guarantee access filtering under strict control?
+A strict control requires that the software used has been validated and undergoes a regular test for integrity (close with a seal) and that there be an audit at least once a year of access filtering procedures and processes (including the processes which aim to detect intrusion attempts and the processes which respond to these intrusion attempts)."|4|3||C1|||
+07A04-10|Are regular tests carried out to attempt to break into the information system and are there detailed technical audits run by specialists?|2|3||R2|||
+07A05|Authentication of the server for access to sensitive servers|||||||
+07A05-01|Is there a possibility to declare servers as sensitive and, as such, requiring an authentication of the server accessed?|4|1||E2|||
+07A05-02|Is there a mechanism of authentication of the server called before access to a sensitive server from the internal network?|4|1||E2|||
+07A05-03|"Does the authentication mechanism of the accessed servers provide a recognized ""strong"" level of security?
+Notably the usage of a simple password will always be a weakness. The only methods recognized as ""strong"", that is observable without divulging information, are those based on cryptographic algorithms."|4|2||E3|||
+07A05-04|"Do the security equipment that retain credentials (e.g. passwords, calling number, etc.) use mechanisms which guarantee their impregnability and authenticity?
+Passwords must be stored encrypted and a preliminary control of the user must be made before usage.
+In the case of authentication using cryptographic procedures, the mechanism must provide solid guarantees validated by a recognized organization."|4|3||E2|||
+07A05-05|"Does the transmission of credentials (e.g. passwords, calling address, etc.) between calling user equipment and authentication systems use mechanisms which guarantee their impregnability and authenticity?
+Transmission of a password must be encrypted or use an algorithm which introduces a variable at each transmission. 
+In the case of authentication using cryptographic procedures, the mechanism must provide solid guarantees validated by a recognized organization."|4|3||E3|||
+07A05-06|Does the revoked keys management procedure guarantee that the control systems take into consideration in real time any revocation of keys?|4|2||E2|||
+07A05-07|Does the revoked keys management procedure guarantee that the control systems systematically test that the keys used have not been revoked?|4|2||E3|||
+07A05-08|"Are the processes that guarantee the authentication of the accessed entities under strict control?
+A strict control requires that the software used has been validated and undergoes a regular test for integrity (seal) and that there is an audit at least once a year of the authentication procedures and processes."|4|3||R1|||
+07B|Containment of environments |||||||
+07B01|Control of access to residual data|||||||
+07B01-01|Has a detailed analysis been carried out for each type of system to identify residual data files, their storage areas and access paths to such files and storage areas?|4|||E2|||
+07B01-02|Have storage systems (and medias) been identified which once stored sensitive information and which have been re-affected to other usages? |4|||E1|||
+07B01-03|Does the system use an access rights control mechanism which prohibits user access to the contents of resources which have been freed up by another process (areas of memory, temporary resources )?  |4|||E2|||
+07B01-04|Are the tools which enable access to sensitive remnant data or temporary files reserved only for the use of systems operators and does access to those tools require a secure authentication?|4|||E3|||
+07B01-05|Are there procedures of physical erasure of residual files (in main memory or for storage media)?  |4|||E3|||
+07B01-06|Are these procedures implemented systematically and automatically by the relevant systems each time a logical resource is freed? |4|3||E2|||
+07B01-07|Is the invalidation of such procedures alerted to an operational IT manager?|4|3||R1|||
+07B01-08|Is there a procedure which guarantees that sensitive information contained on discarded media will be protected until the destruction of the supporting media?|4|||E2|8.3.2|10.7.2|
+07B01-09|Are all security procedures and parameters protecting access to residual data subject to regular audit?|4|3||C1|||
+07C|Management and saving of logs |||||||
+07C01|Recording access to sensitive resources |||||||
+07C01-01|Has a specific analysis been carried out to determine which access requests and related parameters will be logged?|4|||E2|12.4.1|10.10.2|
+07C01-02|Is a tool or control application used which is able to log accesses to sensitive resources (applications, files, databases, etc.)?  |4|||E2|12.4.1|10.10.2|
+07C01-03|Are the rules, specifying which accesses to log and retain, formalized?|2|||E2|||
+07C01-04|Have the rules, specifying which accesses to log and retain, been approved by the information owners or the Information Security Officer?|4|||E3|||
+07C01-05|"Do the rules which specify which accesses will be logged include the necessary elements to carry out a subsequent investigation in the case of anomaly?
+These rules should specify for each type of access (system, database management system, etc. ) the fundamental elements to record; for example user ID, the service or application requested, date and time, the point from where the access was requested if known etc."|2|||E2|12.4.1|10.10.1|
+07C01-06|Have these rules been validated by Legal Department (particularly for logs containing personal data)?|2|2||E3|12.4.1|10.10.1|
+07C01-07|Are all these records archived (on disk, cassettes, optical disk, etc.) and conserved for a long period in such a way as to not be modifiable?|2|||E2|12.4.1; 12.4.2|10.10.1; 10.10.3|
+07C01-08|"Are the parameters for definition and management of recording connections (login) and called applications under strict control?
+A strict control requires that the list of persons allowed  to change the definition parameters and the management of the recording rules for the logins and called applications be strictly limited and that there exist a reinforced access control to effect these modifications and that these modifications be logged and audited."|4|2||R1|12.4.2|10.10.3|
+07C01-09|"Are the processes which ensure the recording of connections and called applications under strict control?
+A strict control requires that the software used for recording has been validated and undergoes a regular test for integrity (closed with seal) and that there be an audit at least once a year of recording procedures and processes (including the processes which aim to detect modification attempts and the processes which respond to these modification attempts)."|4|3||C1|||
+07C02|Recording privileged system calls |||||||
+07C02-01|Has a specific analysis been carried out of privileged system calls to log and of parameters related to these calls which should be recorded?|4|||E2|12.4.1|10.10.2|
+07C02-02|Is use made of a tool or control application which is able to record privileged system calls (tools which require special access rights, access to security files, administration of security parameters etc.)?|4|||E2|12.4.1|10.10.2|
+07C02-03|Have the rules specifying the privileged system calls to be logged been formalized?|2|||E2|||
+07C02-04|Have the rules specifying the privileged system calls to be logged been approved by the information owners or the Information Security Officer?|4|||E3|||
+07C02-05|"Do the rules specifying the accesses to privileged system calls to be logged include the relevant elements needed for subsequent investigation in the case of anomaly?
+The rules must specify for each type of system call (create, read, update or delete) the basic elements to record, for example, the nature of the event, the user identifier, the systems services required, date and time etc."|2|||E2|12.4.1|10.10.1|
+07C02-06|Have these rules been validated by Legal Department (particularly for logs containing personal data)?|2|2||E3|12.4.1|10.10.1|
+07C02-07|Are all these records archived (on disk, cassettes, optical disk, etc.) and conserved for a long period in such a way as to not be falsifiable?|2|||E2|12.4.1; 12.4.2|10.10.3; 10.10.1|
+07C02-08|"Are the parameters for definition and management of the rules for recording privileged system calls under strict control?
+A strict control requires that the list of persons allowed to change the recording parameters be strictly limited and that there exists a reinforced access control to effect these modifications and that these modifications be logged and audited."|4|2||R1|12.4.2|10.10.3|
+07C02-09|"Are the processes which ensure the recording of privileged system calls under strict control?
+A strict control requires that the software used for recording has been validated and undergoes a regular test for integrity (closed with seal) and that there be an audit at least once a year of recording procedures and processes (including the processes which aim to detect modification attempts and the processes which respond to these modification attempts)."|4|3||C1|||
+07D|Security of the architecture|||||||
+07D01|Service continuity of the architecture and of its components|||||||
+07D01-01|"Has an analysis been carried out of the various shared equipment and systems (apart from the architecture of the applications but including general peripheral systems such as backup systems and robots, print servers and centralized printing equipment) in order to highlight the needs of service continuity?
+An in depth analysis assumes that a list of failure scenarios has been established and that the consequences of such events have been analyzed."|4|2||E2|||
+07D01-02|Has this analysis allowed to detail the minimum performance levels that must be maintained for each system and have these performance levels been accepted by users or information owners?|4|2||E2|||
+07D01-03|Has the appropriate level of architectural redundancy been determined (e.g. clusters or disk replication ) for the servers or equipment concerned? |4|2||E2|||
+07D01-04|"Does the architecture and its implementation guarantee that the minimum performance levels will be exceeded in the case of an incident of failure?
+Such a guarantee supposes that either fail safe systems are entirely automatic or that sufficient detection systems and staff are in place so as to manually reconfigure them."|4|2||E2|||
+07D01-05|Is there an assurance in this case that secondary equipment (power supply, air-conditioning, etc. ) does not introduce any additional risk and does not eliminate redundancy envisaged for the systems architecture or equipment?|2|||E3|||
+07D01-06|Does any shutdown or inhibition of redundant equipment or system devoted to detecting the need for human intervention or for automatic reconfiguration trigger an alarm to an operational manager? |2|||R1|||
+07D01-07|Are regular tests made to demonstrate that security equipment is able to guarantee minimum performance levels required in the case of an incident or failure? |2|3||C1|||
+07D02|Isolation of Sensitive Systems|||||||
+07D02-01|"Has the systems' sensitivity been analyzed (based on the applications and data processed) including peripheral systems or robots used for storage or archiving, print servers or central printing equipment, etc.) to highlight their security requirements?
+A thorough analysis implies the establishment of a list of incident scenarios (A, I, C), for which all foreseeable consequences were analyzed."|3|||E2||11.6.2|
+07D02-02|Did this analysis allow to formalize minimum requirements for each system and were these minimum requirements accepted by the users (information owner)?|3|||E2||11.6.2|
+07D02-03|"Have appropriate isolation measures (physical and logical) been determined for these servers and equipment?
+These measures may impose to use different data centers for sensitive servers or applications from other servers."|3|||E2||11.6.2|

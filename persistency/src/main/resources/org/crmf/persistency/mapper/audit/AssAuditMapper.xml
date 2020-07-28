@@ -1,0 +1,56 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+	<!DOCTYPE mapper PUBLIC '-//mybatis.org//DTD Mapper 3.0//EN'
+	  'http://mybatis.org/dtd/mybatis-3-mapper.dtd'>
+<mapper namespace='org.crmf.persistency.mapper.audit.AssAuditMapper'>
+
+	<resultMap type='SestAuditModel' id='SestAuditModel'>
+		<result property='identifier' column='SESTOBJ_ID' />
+		<result property='projectId' column='PROJECT_ID' />
+		<result property='profileId' column='PROFILE_ID' />
+		<result property='type' column='ATYPE' />
+	</resultMap>
+	
+	<insert id='insert' parameterType='SestAuditModel' useGeneratedKeys='true'
+		keyProperty='id' keyColumn='ID'>
+		INSERT INTO ASSAUDIT(ATYPE, PROJECT_ID, PROFILE_ID, SESTOBJ_ID)
+		VALUES (#{type}, #{projectId}, #{profileId}, #{identifier})
+	</insert>
+	
+	<select id='getIdByIdentifier' parameterType='String'
+		resultType='int'>
+		SELECT id
+		FROM ASSAUDIT
+		WHERE SESTOBJ_ID = '${value}'
+	</select>
+	
+	<select id='getProjectIdByIdentifier' parameterType='String'
+		resultType='int'>
+		SELECT PROJECT_ID
+		FROM ASSAUDIT
+		WHERE SESTOBJ_ID = '${value}'
+	</select>
+
+	<select id='getAllForProject' parameterType='String' resultMap='SestAuditModel'>
+		SELECT *
+		FROM ASSAUDIT
+		WHERE PROJECT_ID = (SELECT ID FROM ASSPROJECT WHERE SESTOBJ_ID = '${value}')
+	</select>
+	
+	<select id='getByProjectAndType' resultMap='SestAuditModel'>
+		SELECT *
+		FROM ASSAUDIT
+		WHERE PROJECT_ID = (SELECT ID FROM ASSPROJECT WHERE SESTOBJ_ID = #{identifier})
+		AND ATYPE = #{type}
+	</select>
+	
+	<delete id='delete' parameterType='int'>
+		DELETE FROM ASSAUDIT WHERE ID =
+		'${value}'
+	</delete>
+
+	<delete id='deleteByIdentifier' parameterType='String'>
+		DELETE FROM ASSAUDIT WHERE SESTOBJ_ID =
+		'${value}'
+	</delete>
+	
+</mapper>

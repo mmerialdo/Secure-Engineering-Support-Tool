@@ -1,0 +1,154 @@
+6|MEHARI_NetworkOperations|||||||
+06A|Security of operations procedures |||||||
+06A01|Security in the relationship with operational personnel (employees, suppliers or service providers)|||||||
+06A01-01|Is there a security policy specifically aimed at operational network personnel covering all the aspects of information security (confidentiality of information, service and information availability, integrity of information and configurations, trace ability, etc. )?  |4|1||E1|||
+06A01-02|Is operational network personnel required to sign contract clauses of adherence to that security policy (no matter their status: permanent or temporary staff, students, etc.)?|4|||E2|||
+06A01-03|Do these clauses make clear that the obligation to respect security applies to all information no matter what the medium is (paper, magnetic, optical, etc.)?|2|2||E3|||
+06A01-04|"Do these clauses make clear, if necessary and legally possible, that the obligation to respect the security policy applies without limitation in time? 
+This applies, in particular, to the clauses concerning confidentiality, they may (and often must) continue after the end of the contract linking (directly or indirectly) the employee or  service provider or partner to the company"|4|2||E3|||
+06A01-05|Do these clauses make clear that the personnel has an obligation not to tolerate any action contrary to security from other people?|4|3||E3|||
+06A01-06|"Does the signature of these clauses represent a formal commitment?
+In order to achieve a formal commitment, the personnel should explicitly state that his/her signature implies having understood and accepted the security policy"|4|3||E2|||
+06A01-07|"Are these same clauses obligatory for contractors working on network operations?
+Practically, the contractors should ensure that their personnel sign individually and explicitly under the same conditions than internal staff."|4|2||E2|||
+06A01-08|Is there a mandatory and well adapted training course aimed at network operations personnel?|2|||E2|||
+06A01-09|Are the confidentiality agreements, signed by personnel, securely kept (at least in a locked cupboard )?  |2|3||R1|||
+06A01-10|Are the confidentiality agreements, signed by external contractors, securely kept (at least in a locked cupboard )?  |2|3||R1|||
+06A01-11|Is there a regular audit, at least once a year, of the effective application of the signature procedure by  operational personnel (directly employed by the company or indirectly through a service company)?|2|3||C1|||
+06A02|Control of the implementation or upgrade of software or hardware |||||||
+06A02-01|Is there a control procedure for change decisions, equipment and system evolutions (registration, planning, formal approbation, communication to all concerned individuals, etc.)?|2|2||E1|12.1.2|10.1.2|
+06A02-02|Are the change decisions based on an analysis of the capacity of the new equipment and systems in ensuring the required load taking into account the evolution of foreseeable requests?|2|||E2|12.1.3|10.3.1|
+06A02-03|Do the installations take into account physical protection (protected access, no direct external view to equipments, absence of physical threats, climate conditions, protection against thunderbolts, protection against dust, etc.)?|2|||E2|11.2.1|9.2.1|
+06A02-04|Is there a definite review, involving Information Security Office personnel, of the potential risks related to functional changes associated to each new or revised network software or equipment?|2|||E2|12.5.1; 14.2.9|12.4.1; 10.3.2|
+06A02-05|Does this review contain an analysis of the risks that may arise from these functional changes?|2|2||E2|12.5.1; 14.2.9|12.4.1; 10.3.2|
+06A02-06|Has operational staff received specific formal training in risk analysis?|1|||E3|||
+06A02-07|Does operational staff obtain appropriate advice when needed?|4|||E3|||
+06A02-08|Are security measures, to be implemented to counter any new risks identified, subject to formal review and control before start of production?|4|||E2|14.2.9|10.3.2|
+06A02-09|Are security parameters and configuration rules (removal of all generic accounts, changing of generic passwords, closure of all ports not specifically requested and authorized, access control and authentication parameters, control of routing tables etc.) detailed and kept up to date and are they reviewed before any start of production of a new version?|4|||E2|14.2.9|11.4.4; 10.3.2|
+06A02-10|Are the security parameters and configuration rules controlled before any new version is installed and operated? |4|||E2|14.2.9|11.4.4; 10.3.2|
+06A02-11|Is it considered the possible impact over the continuity plans due the system changes?|2|||E2|14.2.9|10.3.2|
+06A02-12|Are any exemptions from the prior risk analysis and control of security parameters subject to strict procedures requiring the signature of a senior manager?|4|||R1|||
+06A02-13|Is the start of production of new equipment or software only possible by operational staff?|4|2||E2|12.5.1|12.4.1; 6.1.4|
+06A02-14|Is the start of production of new equipment or software only possible following a defined validation and authorization process?|2|3||E3|12.5.1|12.4.1; 6.1.4|
+06A02-15|Are all the control procedures related to start of production subject to regular audit?|2|3||C1|||
+06A03|Control of maintenance operations |||||||
+06A03-01|Is it kept a trace of all maintenance operations?|1|||E2|11.2.4|9.2.4|
+06A03-02|Are all maintenance operations required to terminate with a systematic verification of all security parameters (as defined at the start of production)?  |4|2||E2|||
+06A03-03|Are all maintenance operations required to terminate with a systematic verification of security log files parameters (events to be recorded, context of events to be recorded, duration of retention, etc.)?|4|3||E3|||
+06A03-04|Are all maintenance operations required to terminate with a systematic verification of administration control parameters (necessary profile, authentication type, removal of standard logins, etc.)?  |4|3||E3|||
+06A03-05|Is a formal exemption, signed by a responsible manager, required if the above mentioned procedures are not observed? |4|||E3||14.2.9|
+06A03-06|Is the totality of start of production (after maintenance) control procedures regularly audited?|2|3||C1||14.2.9|
+06A04|Control of Remote Maintenance |||||||
+06A04-01|In the case of remote maintenance, is there a secure authentication procedure of the remote maintenance center?|2|||E2||11.4.4|
+06A04-02|In the case of remote maintenance is there a secure authentication procedure for maintenance personnel? |4||2|E2||11.4.4|
+06A04-03|Is there a set of procedures covering the attribution of access rights for a new maintenance operative, the revocation of rights and the attribution of rights in emergency situations? |2|||E3||11.4.4|
+06A04-04|Have the procedures and protocols for the exchange and storage of secret data etc., been approved by the Information Security Officer or a specialized organization? |4|||E3|||
+06A04-05|Does the usage of the remote maintenance line require the prior agreement (for each usage) of operational personnel (following the provider's request specifying the nature, date and time of the intervention )?  |4|||E2||11.4.4|
+06A04-06|Is the equipment allocated for remote maintenance protected against inhibition or modification of access conditions, resulting in the triggering of an alarm? |2|2||R1|||
+06A04-07|Are all the control procedures for remote maintenance regularly audited?|2|3||C1|||
+06A05|Management of Operating Procedures for Network Operation|||||||
+06A05-01|Do the network operating  procedure result from the study of the overall cases to be covered by said procedure (normal operating cases and incidents)?|4|||E2|12.1.1|10.1.1|
+06A05-02|Are the operating procedures documented and kept up to date?|4|||E2|12.1.1|10.1.1|
+06A05-03|Are these operating procedures readily available upon request by any accredited individual?|4|||E2|12.1.1; 15.2.1|10.1.1|
+06A05-04|Does the Management approve changes to procedures ?|2|||E2|12.1.1; 15.2.1|10.1.1|
+06A05-05|Are these procedures protected from unauthorized alterations?|2|||R1|15.2.1||
+06A05-06|Are the operating procedures audited regularly for authenticity and relevance?|2|||C1|||
+06A06|Management of service providers relating to networks|||||||
+06A06-01|Is it ensured regularly that the network security services allocated to suppliers or service providers are efficiently implemented and maintained by them?|4|||C1|12.6.1|10.2.1|
+06A06-02|Is it ensured that the above suppliers have efficiently prepared the appropriate arrangements to ensure that the services are provided as agreed?|2|||E2|12.6.1|10.2.1|
+06A06-03|Is the respect of the security provisions by the suppliers or service providers under control and regularly reviewed?|4|||E1|12.6.1|10.2.2|
+06A06-04|Is it ensured that the suppliers report and document any security incident concerning information or networks?|4|||E2|12.6.1|10.2.2|
+06A06-05|Is there a regular review of these incidents or malfunctions with the concerned suppliers?|2|||E2|12.6.1|10.2.2|
+06A06-06|Are any changes in the contract relationship (e.g. Mandatory duties, service levels) analyzed for impact on resulting potential risks?|2|||E3|15.2.2|10.2.3|
+06A07|Taking into account the confidentiality during maintenance operations on network equipment.|||||||
+06A07-01|Is there a procedure describing in detail the operations to execute before conducting maintenance thus avoiding their access to critical data (encryption keys, network protection, equipment security configuration, etc.)?|4|||E2|11.2.4; 11.2.7|9.2.6; 9.2.4|
+06A07-02|Is there a procedure or a contractual provision regarding the maintenance personnel (internal and external) specifying that any support containing sensitive information must be wiped out before its disposal?|4|||E2|11.2.4|9.2.4|
+06A07-03|Is there a systems' integrity verification procedure after a maintenance is conducted (no spyware, no Trojan horse, etc.)?|2|||E2|||
+06A07-04|Is a formal exemption, signed by a responsible manager, required if the above mentioned procedures are not observed? |4|||E3|||
+06A07-05|Are the above procedures regularly audited?|2|3||C1|||
+06A08|Contract Management of Network Services|||||||
+06A08-01|"Have service levels been identified for each network service?
+Service levels apply not only to the services rendered to users, but also the security features required and the commitments of each party involved. "|4|||E1|13.1.2|10.6.2|
+06A08-02|Have these service levels been included in a contractual agreement  (whatever the services are ensured internally or by an external provider)?|4|||E2|13.1.2|10.6.2|
+06A08-03|Does Management control the application of corresponding measures?|2|||C1|13.1.2|10.6.2|
+06B|Parameters setting and control of hardware and software configurations|||||||
+06B01|Network equipment customizing and compliance control of configurations|||||||
+06B01-01|"Is there a document or set of documents or an operational procedure detailing all security parameters for network equipment? which is derived from the network protection policy and determined filtering rules?
+Such a document must result from the network protection policy and describe the filtering rules decided. It should also state the reference versions of the  systems so it is possible to check the status of the updates."|4|2||E1|||
+06B01-02|Does this document (or documents) require the removal of all generic or by default accounts and does it detail the list of such accounts?  |4|2||E2|||
+06B01-03|Does this document or procedure impose a synchronization feature, based on a reliable time reference?|4|||E2|12.4.4|10.10.6|
+06B01-04|"Are these parameters set and updated regularly in line with latest information and in cooperation with expert authorities (specialized audits, subscription to a service center, regular consultation with CERTs, etc.)?
+CERT : Computer Emergency Response Team."|2|3||E3|||
+06B01-05|Are these referenced documents (or copies of installed parameters considered as references) protected, by secure sealing methods, against untimely or illicit alteration?  |2|3||R1|||
+06B01-06|Is the integrity of system configurations regularly tested against the configuration theoretically expected (at least weekly if not each time  systems are activated)?|4|2||E3|18.2.3|15.2.2|
+06B01-07|Are regular audits carried out of the list of security parameters specified?|2|||R1|12.1.4; 18.2.3|10.1.4; 15.2.2|
+06B01-08|Are regular audits carried out of the exception or escalation procedures in case of difficulties?|2|||C1|12.1.4; 18.2.3|10.1.4; 15.2.2|
+06B01-09|Are the development and test systems separated from the operational systems?|1|||E2|12.1.4|10.1.4|
+06B02|Control of the network access configurations of  user equipment|||||||
+06B02-01|Is there a document detailing all parameters to check on user workstations related to external connections capability (modem, WiFi, etc.)?|4|2||E2|||
+06B02-02|Is this document regularly updated in line with the latest information and in cooperation with expert authorities (specialized audits, subscription to a service center, regular consultation with CERTs, etc.)?   |4|2||E2|||
+06B02-03|Is this reference document protected against all unauthorized] or illicit modification by strong security methods (digital signature)?  |4|3||R1|||
+06B02-04|Is the configuration of network equipment of user workstations checked systematically for compliance against this reference document?|2|3||E2|||
+06B02-05|Is this control effected systematically, at each connection to the network? |4|||E3|||
+06B02-06|Are there automatic routines which systematically analyze the use of the telephone network for data transmission? |4|||E3|||
+06B02-07|Are there automatic routines which test for the presence of non declared wireless network (WiFi) access points?  |4|||E3|||
+06B02-08|Are user workstations protected against the possibility of installing systems software and of modifying configurations? |4|||E3|||
+06B02-09|Is there a regular audit of the user configuration reference document and is the configuration control procedure regularly executed? |2|3||C1|||
+06C|Control of administrative rights |||||||
+06C01|Control of special access rights to network equipment |||||||
+06C01-01|Has a management policy for privileged access rights on the network equipment been established, based on prior analysis of the security requirements and business stakes?|2|||E1|9.1.1|11.1.1|
+06C01-02|Is this policy documented, regularly reviewed, and approved by the affected managers?|2|||E2|||
+06C01-03|Have profiles been defined, as part of network operations, corresponding to each type of activity (equipment administration, the administration of security equipment, network management, management of backup medias and contents etc.)?  |1|||E1|6.1.2; 9.2.3;  9.2.5; 13.1.1|10.1.3; 10.6.1; 11.2.2|
+06C01-04|For each profile have the necessary administrative rights been defined? |4|2||E1|6.1.2; 13.1.1|10.1.3; 10.6.1|
+06C01-05|Does the process of attribution of administrative rights require the formal authorization of management (or the manager responsible for external service providers) at a sufficiently high level?|4|2||E2|6.1.2|10.1.3|
+06C01-06|Does the process of attribution of administrative rights effected uniquely in relation to the profile of the holder?|4|2||E2|6.1.2|10.1.3|
+06C01-07|"Is the process of granting (modification or retraction) of special rights to an individual strictly controlled?
+A strict control requires a formal recognition of the signature (electronic or not) of the requester, that there be an access control in order to attribute or modify such rights and that any modification of special rights be logged and audited."|4|2|3|R1|9.2.3; 9.2.5|11.2.2|
+06C01-08|Is there a systematic process of removal of administrative rights at the time of departure or role change of staff?|4|3||E2|9.2.5|11.2.4|
+06C01-09|Is there a regular audit, at least once a year, of all administrative rights attributed ?|1|2||C1|9.2.5|11.2.4|
+06C02|Authentication of administrators and operational personnel  |||||||
+06C02-01|"Is the process of authentication of network administrators or holders of administrative rights considered to be secure?
+An authentication protocol is considered secure if it is not susceptible to being broken by a listening device on the network or rendered inoperable by specialists tools (in particular password crack tools). Such security usually uses cryptographic methods."|4|2||E2|||
+06C02-02|"Are the rules, for instance in the case of passwords, considered to be very strict?
+Strict rules impose the use of tested non-trivial passwords and the use of a mixture of different types of character of a reasonable length (ten or more characters). It is desirable that such rules be decided or agreed upon by the CISO."|2|2||E2|||
+06C02-03|"Is a strong authentication used for the connection of administrators to the supervision system as well as for the connection of the supervision system to network equipments?
+If the administrator connects to a hypervisor (such as HP OpenView, IBM TIVOLI, CA Unicenter, BMC Patrol or Bull OpenMaster) with secure authentication and effective access control, an equivalent level of security is needed for the objects that are managed (avoiding for example visible passwords, default public and community groups, access via telnet or simple SQL) in order to avoid malicious direct action on the equipment."|4|2||E2|||
+06C02-04|Is there a consistent control of the administrator's rights, of its context, and of the suitability of this context with the requested access, as per formal rules of access control?|4|||E2|||
+06C02-05|"Are authentication parameters under strict control?
+A strict control requires that the list of people able to change authentication rules, the identifiers themselves and the rules for monitoring connection attempts be strictly limited, that there be a reinforced access control in order to be able to modify these rights and that any modification of these rights be logged and audited and that there be a general audit at least once a year of all authentication parameters."|4|2||R1|||
+06C02-06|"Are there processes that guarantee authentication under strict control?
+A strict control requires that the software used has been validated and undergoes a regular test for integrity (seal) and that there is an audit at least once a year of the authentication procedures and processes."|4|3||R1|||
+06C02-07|Is there a regular audit of existing profiles having administrative rights?|4|3||C1|9.2.5|11.2.4|
+06C02-08|Is there a regular audit of the procedures for granting profiles and the security parameters protecting the profiles and the rights?|4|3||C1|||
+06C03|Surveillance of administrative actions on the network |||||||
+06C03-01|Has a detailed analysis been carried out of the operations performed with administrative rights which may potentially have an impact on network security (configuration of security systems, access to sensitive information, usage of sensitive tools, download or modification of administrative tools etc.)?|2|||E2|12.4.3; 13.1.1|10.10.4; 10.6.1|
+06C03-02|Are all these events recorded on a log file as well as all parameters required for their subsequent analysis?|4|||E2|12.4.3; 13.1.1|10.10.4; 10.6.1|
+06C03-03|Is there a system which enables the detection of the modification or deletion of a past record and to immediately trigger an alarm to a manager? |4|2||E3|12.4.3|10.10.4|
+06C03-04|Is there a summary of these records which enables management to detect abnormal behavior?|4||3|E3|12.4.3|10.10.4|
+06C03-05|Is there a system which enables the detection of any modification of recording parameters and to immediately trigger an alarm to a manager? |4|2||R1|12.4.3|10.10.4|
+06C03-06|Does any inhibition of the recording system and processing of logged events trigger an alarm to a manager? |4|3||E3|12.4.3|10.10.4|
+06C03-07|Are all records or summary analysis protected against destruction or modification?|2|||R1|12.4.3|10.10.4|
+06C03-08|Are all records or summary analysis kept for a long period?|2|||R1||10.10.4|
+06C03-09|Are the procedures for recording and analyzing operations executed with administrative rights regularly audited? |2|3||C1|||
+06C04|Control of networking operational tools and utilities |||||||
+06C04-01|Is there an exhaustive inventory of the sensitive networking tools or utilities (administration of rights, configuration management, backups, copies, hot system restarts etc.) allowed for each type of operational staff profile?|4|||E1|||
+06C04-02|Can the tools or sensitive utilities only be used by the holders of the corresponding profiles following a secure and individual authentication (authentication token, smart card etc.)?  |2|2||E2|||
+06C04-03|Is it forbidden to add or create tools or utilities without formal authorization?|2|2||E2|||
+06C04-04|Is this forbidding rule regularly enforced by an automatic procedure which may trigger an alert to a manager? |2|2||E3|||
+06C04-05|Do the rights attributed to operational teams prohibit them from modifying operational tools and utilities or at the very least is there a control of any such modification with triggering of an alert to a manager? |4|2||E3|||
+06C04-06|Are the attribution of profiles and the implementation of the security measures mentioned above regularly audited?|2|2||C1|||
+06D|Audit and Network Control Procedures|||||||
+06D01|Audit Control Operation |||||||
+06D01-01|Has the management established the requirements and procedures to follow during the audits conducted on the networks?|4|||E2|12.7.1|15.3.1|
+06D01-02|"Are the rules related to network audits, relevant procedures and associated responsibilities defined and documented?
+The limits to be determined concern the type of access to the equipment, the controls and authorized processing, the deletion of sensitive data obtained, the flagging of certain operations, ... and the empowerment of the individuals conducting the audits. "|3|||E2|12.7.1|15.3.1|
+06D01-03|Are the auditors independent of the concerned activities?|2|||E2|12.7.1|15.3.1|
+06D01-04|Are the audit operations conducted for critical data recorded?|2|||E3|12.7.1|15.3.1|
+06D01-05|"Are the possible actions of the auditors well delimited? 
+Such limitations are recommended in the case of external auditors."|2|||E2||15.3.2|
+06D02|Protection of Tools and Audit Results|||||||
+06D02-01|"Are the audit tools protected to avoid any unauthorized or abusive use?
+This applies particularly to intrusion testing and vulnerability assessments."|3|||E2||15.3.2|
+06D02-02|Are the audit results protected against any modification or disclosure?|3|||E2||15.3.2|
+06D02-03|"Is the use of audit tools and results strictly limited?
+Such limitations are recommended in the case of external auditors."|2|||E2||15.3.2|

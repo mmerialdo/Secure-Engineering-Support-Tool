@@ -1,0 +1,68 @@
+/* --------------------------------------------------------------------------------------------------------------------
+// Copyright file="procedure.component.css"
+//  © Copyright European Space Agency, 2018-2020
+//
+//  Author: Software developed by RHEA System S.A.
+//
+//  This file is subject to the terms and conditions defined in file 'LICENSE.txt', which is part of this source code package.
+//  No part of the package, including this file, may be copied, modified, propagated, or distributed
+//  except according to the terms contained in the file ‘LICENSE.txt’.
+// --------------------------------------------------------------------------------------------------------------------
+*/
+#procedureTable .ui-datatable .ui-datatable-thead>tr>th, #procedureTable .ui-datatable .ui-datatable-tfoot>tr>td, #procedureTable .ui-datatable .ui-datatable-data>tr>td {
+  border-color: transparent !important;
+}
+
+.loader {
+  border: 16px solid #f3f3f3;
+  /* Light grey */
+  border-top: 16px solid #067606;
+  /* Green */
+  border-radius: 50%;
+  width: 120px;
+  height: 120px;
+  animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+#procedureSpinner .ui-dialog.ui-widget.ui-widget-content.ui-corner-all.ui-shadow.ui-dialog-draggable {
+  border: none !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+#procedureSpinner .ui-dialog-content.ui-widget-content {
+  overflow: hidden !important;
+}
+
+textarea {
+  resize: none;
+}
+
+:host {
+  ::ng-deep {
+    .procedureSpinner {
+
+      .ui-dialog-content.ui-widget-content {
+        overflow: hidden !important;
+        background-color: transparent !important;
+        border: transparent !important;
+        box-shadow: none !important;
+      }
+
+      .ui-shadow {
+        box-shadow: none;
+      }
+    }
+  }
+}
+
+

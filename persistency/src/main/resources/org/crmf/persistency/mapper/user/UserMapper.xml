@@ -1,0 +1,95 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+	<!DOCTYPE mapper PUBLIC '-//mybatis.org//DTD Mapper 3.0//EN'
+	  'http://mybatis.org/dtd/mybatis-3-mapper.dtd'>
+<mapper namespace='org.crmf.persistency.mapper.user.UserMapper'>
+
+	<resultMap type='Sestuser' id='Sestuser'>
+		<result property='sestobjId' column='SESTOBJ_ID' />
+	</resultMap>
+	
+	<insert id='insert' parameterType='Sestuser' useGeneratedKeys='true'
+		keyProperty='id'>
+		INSERT INTO SESTUSER(NAME, SURNAME, USERNAME, EMAIL, PASSWORD, PROFILE, SESTOBJ_ID)
+		VALUES(#{name}, #{surname}, #{username}, #{email}, #{password}, #{profile}, #{sestobjId})
+	</insert>
+	
+	<insert id='insertUserPswHistory' parameterType='map'>
+		INSERT INTO SESTUSER_PSW(SESTUSER_ID, PASSWORD, UPD_TIME)
+		VALUES(#{id}, #{password}, NOW())
+	</insert>
+		
+	<update id='update' parameterType='Sestuser'>
+		UPDATE SESTUSER
+		SET
+		NAME= #{name},
+		SURNAME= #{surname},
+		EMAIL = #{email},
+		PROFILE = #{profile}, 
+		USERNAME = #{username}
+		WHERE ID = #{id}
+	</update>
+	
+	<update id='updatePassword' parameterType='map'>	
+		UPDATE SESTUSER
+		SET
+		PASSWORD= #{password}
+		WHERE ID = #{id}
+	</update>
+		
+	<delete id='delete' parameterType='Sestuser'>
+		DELETE FROM SESTUSER WHERE ID = #{id}
+	</delete>
+	
+	<delete id='deleteByIdentifier' parameterType='String'>
+		DELETE FROM SESTUSER WHERE SESTOBJ_ID = ${value}
+	</delete>
+	
+	<delete id='deleteUserPswByIdentifier' parameterType='String'>
+		DELETE FROM SESTUSER_PSW WHERE SESTUSER_ID = (SELECT ID FROM SESTUSER WHERE SESTOBJ_ID = ${value})
+	</delete>
+	
+	<delete id='deleteUserPswById' parameterType='Integer'>
+		DELETE FROM SESTUSER_PSW WHERE SESTUSER_ID = ${value}
+	</delete>
+	
+	<select id='getOldUserPswByUserId' parameterType='String' resultType='String'>
+		SELECT password FROM `SESTUSER_PSW` WHERE SESTUSER_ID = ${value} ORDER BY ID DESC LIMIT 2 
+	</select>
+	
+	<select id='getUserPswLastUpdate' parameterType='int' resultType='Date'>
+		SELECT UPD_TIME FROM `SESTUSER_PSW` WHERE SESTUSER_ID = ${value} ORDER BY ID DESC LIMIT 1
+	</select>	
+	
+	<select id='getById' parameterType='int'
+		resultMap='Sestuser'>
+		SELECT *
+		FROM SESTUSER
+		WHERE ID = ${value}
+	</select>
+	
+	<select id='getByIdentifier' parameterType='String'
+		resultMap='Sestuser'>
+		SELECT *
+		FROM SESTUSER
+		WHERE SESTOBJ_ID = '${value}'
+	</select>
+	
+	<select id='getIdByIdentifier' parameterType='String'
+		resultType='Integer'>
+		SELECT id
+		FROM SESTUSER
+		WHERE SESTOBJ_ID = '${value}'
+	</select>
+	
+	<select id='getByUsername' parameterType='String'
+		resultMap='Sestuser'>
+		SELECT *
+		FROM SESTUSER
+		WHERE USERNAME LIKE '${value}'
+	</select>
+	
+	<select id='getAll' resultMap='Sestuser'>
+		SELECT * FROM SESTUSER
+	</select>
+	
+</mapper>

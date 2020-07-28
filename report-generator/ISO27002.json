@@ -1,0 +1,916 @@
+{
+	"ISO 27002 controls": [
+  {
+    "ClauseId": "A5",
+    "Clause": "Information Security policies",
+    "ObjectiveId": "A5.1",
+    "Objective": "Management direction for information security",
+    "ControlId": "5.1.1",
+    "Control": "Policies for information security"
+  },
+  {
+    "ClauseId": "A5",
+    "Clause": "Information Security policies",
+    "ObjectiveId": "A5.1",
+    "Objective": "Management direction for information security",
+    "ControlId": "5.1.2",
+    "Control": "Review of the policies for information security"
+  },
+  {
+    "ClauseId": "A6",
+    "Clause": "Organization of information security",
+    "ObjectiveId": "A6.1",
+    "Objective": "Internal organization",
+    "ControlId": "6.1.1",
+    "Control": "Information security roles and responsibilities"
+  },
+  {
+    "ClauseId": "A6",
+    "Clause": "Organization of information security",
+    "ObjectiveId": "A6.1",
+    "Objective": "Internal organization",
+    "ControlId": "6.1.2",
+    "Control": "Segregation of duties"
+  },
+  {
+    "ClauseId": "A6",
+    "Clause": "Organization of information security",
+    "ObjectiveId": "A6.1",
+    "Objective": "Internal organization",
+    "ControlId": "6.1.3",
+    "Control": "Contact with authorities"
+  },
+  {
+    "ClauseId": "A6",
+    "Clause": "Organization of information security",
+    "ObjectiveId": "A6.1",
+    "Objective": "Internal organization",
+    "ControlId": "6.1.4",
+    "Control": "Contact with special interest groups"
+  },
+  {
+    "ClauseId": "A6",
+    "Clause": "Organization of information security",
+    "ObjectiveId": "A6.1",
+    "Objective": "Internal organization",
+    "ControlId": "6.1.5",
+    "Control": "Information security in project management"
+  },
+  {
+    "ClauseId": "A6",
+    "Clause": "Organization of information security",
+    "ObjectiveId": "A6.2",
+    "Objective": "Mobile devices and teleworking",
+    "ControlId": "6.2.1",
+    "Control": "Mobile device policy"
+  },
+  {
+    "ClauseId": "A6",
+    "Clause": "Organization of information security",
+    "ObjectiveId": "A6.2",
+    "Objective": "Mobile devices and teleworking",
+    "ControlId": "6.2.2",
+    "Control": "Teleworking"
+  },
+  {
+    "ClauseId": "A7",
+    "Clause": "Human resource security",
+    "ObjectiveId": "A7.1",
+    "Objective": "Prior to employment",
+    "ControlId": "7.1.1",
+    "Control": "Screening"
+  },
+  {
+    "ClauseId": "A7",
+    "Clause": "Human resource security",
+    "ObjectiveId": "A7.1",
+    "Objective": "Prior to employment",
+    "ControlId": "7.1.2",
+    "Control": "Terms and conditions of employment"
+  },
+  {
+    "ClauseId": "A7",
+    "Clause": "Human resource security",
+    "ObjectiveId": "A7.2",
+    "Objective": "During employment",
+    "ControlId": "7.2.1",
+    "Control": "Management responsibilities"
+  },
+  {
+    "ClauseId": "A7",
+    "Clause": "Human resource security",
+    "ObjectiveId": "A7.2",
+    "Objective": "During employment",
+    "ControlId": "7.2.2",
+    "Control": "Information security awareness, education and training"
+  },
+  {
+    "ClauseId": "A7",
+    "Clause": "Human resource security",
+    "ObjectiveId": "A7.2",
+    "Objective": "During employment",
+    "ControlId": "7.2.3",
+    "Control": "Disciplinary process"
+  },
+  {
+    "ClauseId": "A7",
+    "Clause": "Human resource security",
+    "ObjectiveId": "A7.3",
+    "Objective": "Termination and change of employment",
+    "ControlId": "7.3.1",
+    "Control": "Termination or change of employment responsibilities"
+  },
+  {
+    "ClauseId": "A8",
+    "Clause": "Asset management",
+    "ObjectiveId": "A8.1",
+    "Objective": "Responsibility for assets",
+    "ControlId": "8.1.1",
+    "Control": "Inventory of assets"
+  },
+  {
+    "ClauseId": "A8",
+    "Clause": "Asset management",
+    "ObjectiveId": "A8.1",
+    "Objective": "Responsibility for assets",
+    "ControlId": "8.1.2",
+    "Control": "Ownership of assets"
+  },
+  {
+    "ClauseId": "A8",
+    "Clause": "Asset management",
+    "ObjectiveId": "A8.1",
+    "Objective": "Responsibility for assets",
+    "ControlId": "8.1.3",
+    "Control": "Acceptable use of assets"
+  },
+  {
+    "ClauseId": "A8",
+    "Clause": "Asset management",
+    "ObjectiveId": "A8.1",
+    "Objective": "Responsibility for assets",
+    "ControlId": "8.1.4",
+    "Control": "Return of assets"
+  },
+  {
+    "ClauseId": "A8",
+    "Clause": "Asset management",
+    "ObjectiveId": "A8.2",
+    "Objective": "Information classification",
+    "ControlId": "8.2.1",
+    "Control": "Classification of information"
+  },
+  {
+    "ClauseId": "A8",
+    "Clause": "Asset management",
+    "ObjectiveId": "A8.2",
+    "Objective": "Information classification",
+    "ControlId": "8.2.2",
+    "Control": "Labelling of information"
+  },
+  {
+    "ClauseId": "A8",
+    "Clause": "Asset management",
+    "ObjectiveId": "A8.2",
+    "Objective": "Information classification",
+    "ControlId": "8.2.3",
+    "Control": "Handling of assets"
+  },
+  {
+    "ClauseId": "A8",
+    "Clause": "Asset management",
+    "ObjectiveId": "A8.3",
+    "Objective": "Media handling",
+    "ControlId": "8.3.1",
+    "Control": "Management of removable media"
+  },
+  {
+    "ClauseId": "A8",
+    "Clause": "Asset management",
+    "ObjectiveId": "A8.3",
+    "Objective": "Media handling",
+    "ControlId": "8.3.2",
+    "Control": "Disposal of media"
+  },
+  {
+    "ClauseId": "A8",
+    "Clause": "Asset management",
+    "ObjectiveId": "A8.3",
+    "Objective": "Media handling",
+    "ControlId": "8.3.3",
+    "Control": "Physical media transfer"
+  },
+  {
+    "ClauseId": "A9",
+    "Clause": "Access control",
+    "ObjectiveId": "A9.1",
+    "Objective": "Business requirements of access control",
+    "ControlId": "9.1.1",
+    "Control": "Access control policy"
+  },
+  {
+    "ClauseId": "A9",
+    "Clause": "Access control",
+    "ObjectiveId": "A9.1",
+    "Objective": "Business requirements of access control",
+    "ControlId": "9.1.2",
+    "Control": "Access to networks and network services"
+  },
+  {
+    "ClauseId": "A9",
+    "Clause": "Access control",
+    "ObjectiveId": "A9.2",
+    "Objective": "User access management",
+    "ControlId": "9.2.1",
+    "Control": "User registration and de-registration"
+  },
+  {
+    "ClauseId": "A9",
+    "Clause": "Access control",
+    "ObjectiveId": "A9.2",
+    "Objective": "User access management",
+    "ControlId": "9.2.2",
+    "Control": "User access provisioning"
+  },
+  {
+    "ClauseId": "A9",
+    "Clause": "Access control",
+    "ObjectiveId": "A9.2",
+    "Objective": "User access management",
+    "ControlId": "9.2.3",
+    "Control": "Management of privileged access rights"
+  },
+  {
+    "ClauseId": "A9",
+    "Clause": "Access control",
+    "ObjectiveId": "A9.2",
+    "Objective": "User access management",
+    "ControlId": "9.2.4",
+    "Control": "Management of secret authentication information of users"
+  },
+  {
+    "ClauseId": "A9",
+    "Clause": "Access control",
+    "ObjectiveId": "A9.2",
+    "Objective": "User access management",
+    "ControlId": "9.2.5",
+    "Control": "Review of user access rights"
+  },
+  {
+    "ClauseId": "A9",
+    "Clause": "Access control",
+    "ObjectiveId": "A9.2",
+    "Objective": "User access management",
+    "ControlId": "9.2.6",
+    "Control": "Removal or adjustment of access rights"
+  },
+  {
+    "ClauseId": "A9",
+    "Clause": "Access control",
+    "ObjectiveId": "A9.3",
+    "Objective": "User responsibilities",
+    "ControlId": "9.3.1",
+    "Control": "Use of secret authentication information"
+  },
+  {
+    "ClauseId": "A9",
+    "Clause": "Access control",
+    "ObjectiveId": "A9.4",
+    "Objective": "System and application access",
+    "ControlId": "9.4.1",
+    "Control": "Information access restriction"
+  },
+  {
+    "ClauseId": "A9",
+    "Clause": "Access control",
+    "ObjectiveId": "A9.4",
+    "Objective": "System and application access",
+    "ControlId": "9.4.2",
+    "Control": "Secure log-on procedures"
+  },
+  {
+    "ClauseId": "A9",
+    "Clause": "Access control",
+    "ObjectiveId": "A9.4",
+    "Objective": "System and application access",
+    "ControlId": "9.4.3",
+    "Control": "Password management system"
+  },
+  {
+    "ClauseId": "A9",
+    "Clause": "Access control",
+    "ObjectiveId": "A9.4",
+    "Objective": "System and application access",
+    "ControlId": "9.4.4",
+    "Control": "Use of privileged utility programs"
+  },
+  {
+    "ClauseId": "A9",
+    "Clause": "Access control",
+    "ObjectiveId": "A9.4",
+    "Objective": "System and application access",
+    "ControlId": "9.4.5",
+    "Control": "Access control to program source code"
+  },
+  {
+    "ClauseId": "A10",
+    "Clause": "Cryptography",
+    "ObjectiveId": "A10.1",
+    "Objective": "Cryptographic controls",
+    "ControlId": "10.1.1",
+    "Control": "Policy on the use of cryptographic controls"
+  },
+  {
+    "ClauseId": "A10",
+    "Clause": "Cryptography",
+    "ObjectiveId": "A10.1",
+    "Objective": "Cryptographic controls",
+    "ControlId": "10.1.2",
+    "Control": "Key management"
+  },
+  {
+    "ClauseId": "A11",
+    "Clause": "Physical and environmental security",
+    "ObjectiveId": "A11.1",
+    "Objective": "Secure areas",
+    "ControlId": "11.1.1",
+    "Control": "Physical security perimeter"
+  },
+  {
+    "ClauseId": "A11",
+    "Clause": "Physical and environmental security",
+    "ObjectiveId": "A11.1",
+    "Objective": "Secure areas",
+    "ControlId": "11.1.2",
+    "Control": "Physical entry controls"
+  },
+  {
+    "ClauseId": "A11",
+    "Clause": "Physical and environmental security",
+    "ObjectiveId": "A11.1",
+    "Objective": "Secure areas",
+    "ControlId": "11.1.3",
+    "Control": "Securing offices, rooms and facilities"
+  },
+  {
+    "ClauseId": "A11",
+    "Clause": "Physical and environmental security",
+    "ObjectiveId": "A11.1",
+    "Objective": "Secure areas",
+    "ControlId": "11.1.4",
+    "Control": "Protecting against external and environmental threats"
+  },
+  {
+    "ClauseId": "A11",
+    "Clause": "Physical and environmental security",
+    "ObjectiveId": "A11.1",
+    "Objective": "Secure areas",
+    "ControlId": "11.1.5",
+    "Control": "Working in secure areas"
+  },
+  {
+    "ClauseId": "A11",
+    "Clause": "Physical and environmental security",
+    "ObjectiveId": "A11.1",
+    "Objective": "Secure areas",
+    "ControlId": "11.1.6",
+    "Control": "Delivery and loading areas"
+  },
+  {
+    "ClauseId": "A11",
+    "Clause": "Physical and environmental security",
+    "ObjectiveId": "A11.2",
+    "Objective": "Equipment",
+    "ControlId": "11.2.1",
+    "Control": "Equipment siting and protection"
+  },
+  {
+    "ClauseId": "A11",
+    "Clause": "Physical and environmental security",
+    "ObjectiveId": "A11.2",
+    "Objective": "Equipment",
+    "ControlId": "11.2.2",
+    "Control": "Supporting utilities"
+  },
+  {
+    "ClauseId": "A11",
+    "Clause": "Physical and environmental security",
+    "ObjectiveId": "A11.2",
+    "Objective": "Equipment",
+    "ControlId": "11.2.3",
+    "Control": "Cabling security"
+  },
+  {
+    "ClauseId": "A11",
+    "Clause": "Physical and environmental security",
+    "ObjectiveId": "A11.2",
+    "Objective": "Equipment",
+    "ControlId": "11.2.4",
+    "Control": "Equipment maintenance"
+  },
+  {
+    "ClauseId": "A11",
+    "Clause": "Physical and environmental security",
+    "ObjectiveId": "A11.2",
+    "Objective": "Equipment",
+    "ControlId": "11.2.5",
+    "Control": "Removal of assets"
+  },
+  {
+    "ClauseId": "A11",
+    "Clause": "Physical and environmental security",
+    "ObjectiveId": "A11.2",
+    "Objective": "Equipment",
+    "ControlId": "11.2.6",
+    "Control": "Security of equipment and assets off-premises"
+  },
+  {
+    "ClauseId": "A11",
+    "Clause": "Physical and environmental security",
+    "ObjectiveId": "A11.2",
+    "Objective": "Equipment",
+    "ControlId": "11.2.7",
+    "Control": "Secure disposal or reuse of equipment"
+  },
+  {
+    "ClauseId": "A11",
+    "Clause": "Physical and environmental security",
+    "ObjectiveId": "A11.2",
+    "Objective": "Equipment",
+    "ControlId": "11.2.8",
+    "Control": "Unattended user equipment"
+  },
+  {
+    "ClauseId": "A11",
+    "Clause": "Physical and environmental security",
+    "ObjectiveId": "A11.2",
+    "Objective": "Equipment",
+    "ControlId": "11.2.9",
+    "Control": "Clear desk and clear screen policy"
+  },
+  {
+    "ClauseId": "A12",
+    "Clause": "Operations security",
+    "ObjectiveId": "A12.1",
+    "Objective": "Operational procedures and responsibilities",
+    "ControlId": "12.1.1",
+    "Control": "Documented operating procedures"
+  },
+  {
+    "ClauseId": "A12",
+    "Clause": "Operations security",
+    "ObjectiveId": "A12.1",
+    "Objective": "Operational procedures and responsibilities",
+    "ControlId": "12.1.2",
+    "Control": "Change management"
+  },
+  {
+    "ClauseId": "A12",
+    "Clause": "Operations security",
+    "ObjectiveId": "A12.1",
+    "Objective": "Operational procedures and responsibilities",
+    "ControlId": "12.1.3",
+    "Control": "Capacity management"
+  },
+  {
+    "ClauseId": "A12",
+    "Clause": "Operations security",
+    "ObjectiveId": "A12.1",
+    "Objective": "Operational procedures and responsibilities",
+    "ControlId": "12.1.4",
+    "Control": "Separation of development, testing and operational environment"
+  },
+  {
+    "ClauseId": "A12",
+    "Clause": "Operations security",
+    "ObjectiveId": "A12.2",
+    "Objective": "Protection from malware",
+    "ControlId": "12.2.1",
+    "Control": "Controls against malware"
+  },
+  {
+    "ClauseId": "A12",
+    "Clause": "Operations security",
+    "ObjectiveId": "A12.3",
+    "Objective": "Backup",
+    "ControlId": "12.3.1",
+    "Control": "Information backup"
+  },
+  {
+    "ClauseId": "A12",
+    "Clause": "Operations security",
+    "ObjectiveId": "A12.4",
+    "Objective": "Logging and monitoring",
+    "ControlId": "12.4.1",
+    "Control": "Event logging"
+  },
+  {
+    "ClauseId": "A12",
+    "Clause": "Operations security",
+    "ObjectiveId": "A12.4",
+    "Objective": "Logging and monitoring",
+    "ControlId": "12.4.2",
+    "Control": "Protection of log information"
+  },
+  {
+    "ClauseId": "A12",
+    "Clause": "Operations security",
+    "ObjectiveId": "A12.4",
+    "Objective": "Logging and monitoring",
+    "ControlId": "12.4.3",
+    "Control": "Administrator and operator logs"
+  },
+  {
+    "ClauseId": "A12",
+    "Clause": "Operations security",
+    "ObjectiveId": "A12.4",
+    "Objective": "Logging and monitoring",
+    "ControlId": "12.4.4",
+    "Control": "Clock synchronisation"
+  },
+  {
+    "ClauseId": "A12",
+    "Clause": "Operations security",
+    "ObjectiveId": "A12.5",
+    "Objective": "Control of operational software",
+    "ControlId": "12.5.1",
+    "Control": "Installation of software on operational systems"
+  },
+  {
+    "ClauseId": "A12",
+    "Clause": "Operations security",
+    "ObjectiveId": "A12.6",
+    "Objective": "Technical vulnerability management",
+    "ControlId": "12.6.1",
+    "Control": "Management of technical vulnerabilities"
+  },
+  {
+    "ClauseId": "A12",
+    "Clause": "Operations security",
+    "ObjectiveId": "A12.6",
+    "Objective": "Technical vulnerability management",
+    "ControlId": "12.6.2",
+    "Control": "Restrictions on software installation"
+  },
+  {
+    "ClauseId": "A12",
+    "Clause": "Operations security",
+    "ObjectiveId": "A12.7",
+    "Objective": "Information systems audit considerations",
+    "ControlId": "12.7.1",
+    "Control": "Information systems audit controls"
+  },
+  {
+    "ClauseId": "A13",
+    "Clause": "Communications security",
+    "ObjectiveId": "A13.1",
+    "Objective": "Network security management",
+    "ControlId": "13.1.1",
+    "Control": "Network controls"
+  },
+  {
+    "ClauseId": "A13",
+    "Clause": "Communications security",
+    "ObjectiveId": "A13.1",
+    "Objective": "Network security management",
+    "ControlId": "13.1.2",
+    "Control": "Security of network services"
+  },
+  {
+    "ClauseId": "A13",
+    "Clause": "Communications security",
+    "ObjectiveId": "A13.1",
+    "Objective": "Network security management",
+    "ControlId": "13.1.3",
+    "Control": "Segregation in networks"
+  },
+  {
+    "ClauseId": "A13",
+    "Clause": "Communications security",
+    "ObjectiveId": "A13.2",
+    "Objective": "Information transfer",
+    "ControlId": "13.2.1",
+    "Control": "Information transfer policies and procedures"
+  },
+  {
+    "ClauseId": "A13",
+    "Clause": "Communications security",
+    "ObjectiveId": "A13.2",
+    "Objective": "Information transfer",
+    "ControlId": "13.2.2",
+    "Control": "Agreements on information transfer"
+  },
+  {
+    "ClauseId": "A13",
+    "Clause": "Communications security",
+    "ObjectiveId": "A13.2",
+    "Objective": "Information transfer",
+    "ControlId": "13.2.3",
+    "Control": "Electronic messaging"
+  },
+  {
+    "ClauseId": "A13",
+    "Clause": "Communications security",
+    "ObjectiveId": "A13.2",
+    "Objective": "Information transfer",
+    "ControlId": "13.2.4",
+    "Control": "Confidentiality or nondisclosure agreements"
+  },
+  {
+    "ClauseId": "A14",
+    "Clause": "System acquisition, development and maintenance",
+    "ObjectiveId": "A14.1",
+    "Objective": "Security requirements of information systems",
+    "ControlId": "14.1.1",
+    "Control": "Information security requirements analysis and specification"
+  },
+  {
+    "ClauseId": "A14",
+    "Clause": "System acquisition, development and maintenance",
+    "ObjectiveId": "A14.1",
+    "Objective": "Security requirements of information systems",
+    "ControlId": "14.1.2",
+    "Control": "Securing application services on public networks"
+  },
+  {
+    "ClauseId": "A14",
+    "Clause": "System acquisition, development and maintenance",
+    "ObjectiveId": "A14.1",
+    "Objective": "Security requirements of information systems",
+    "ControlId": "14.1.3",
+    "Control": "Protecting application services transactions"
+  },
+  {
+    "ClauseId": "A14",
+    "Clause": "System acquisition, development and maintenance",
+    "ObjectiveId": "A14.2",
+    "Objective": "Security in development and support processes",
+    "ControlId": "14.2.1",
+    "Control": "Secure development policy"
+  },
+  {
+    "ClauseId": "A14",
+    "Clause": "System acquisition, development and maintenance",
+    "ObjectiveId": "A14.2",
+    "Objective": "Security in development and support processes",
+    "ControlId": "14.2.2",
+    "Control": "System change control procedures"
+  },
+  {
+    "ClauseId": "A14",
+    "Clause": "System acquisition, development and maintenance",
+    "ObjectiveId": "A14.2",
+    "Objective": "Security in development and support processes",
+    "ControlId": "14.2.3",
+    "Control": "Technical review of applications after operating platform changes"
+  },
+  {
+    "ClauseId": "A14",
+    "Clause": "System acquisition, development and maintenance",
+    "ObjectiveId": "A14.2",
+    "Objective": "Security in development and support processes",
+    "ControlId": "14.2.4",
+    "Control": "Restrictions on changes to software packages"
+  },
+  {
+    "ClauseId": "A14",
+    "Clause": "System acquisition, development and maintenance",
+    "ObjectiveId": "A14.2",
+    "Objective": "Security in development and support processes",
+    "ControlId": "14.2.5",
+    "Control": "Secure system engineering principles"
+  },
+  {
+    "ClauseId": "A14",
+    "Clause": "System acquisition, development and maintenance",
+    "ObjectiveId": "A14.2",
+    "Objective": "Security in development and support processes",
+    "ControlId": "14.2.6",
+    "Control": "Secure development environment"
+  },
+  {
+    "ClauseId": "A14",
+    "Clause": "System acquisition, development and maintenance",
+    "ObjectiveId": "A14.2",
+    "Objective": "Security in development and support processes",
+    "ControlId": "14.2.7",
+    "Control": "Outsourced development"
+  },
+  {
+    "ClauseId": "A14",
+    "Clause": "System acquisition, development and maintenance",
+    "ObjectiveId": "A14.2",
+    "Objective": "Security in development and support processes",
+    "ControlId": "14.2.8",
+    "Control": "System security testing"
+  },
+  {
+    "ClauseId": "A14",
+    "Clause": "System acquisition, development and maintenance",
+    "ObjectiveId": "A14.2",
+    "Objective": "Security in development and support processes",
+    "ControlId": "14.2.9",
+    "Control": "System acceptance testing"
+  },
+  {
+    "ClauseId": "A14",
+    "Clause": "System acquisition, development and maintenance",
+    "ObjectiveId": "A14.3",
+    "Objective": "Test data",
+    "ControlId": "14.3.1",
+    "Control": "Protection of test data"
+  },
+  {
+    "ClauseId": "A15",
+    "Clause": "Supplier relationships",
+    "ObjectiveId": "A15.1",
+    "Objective": "Information security in supplier relationships",
+    "ControlId": "15.1.1",
+    "Control": "Information security policy for supplier relationships"
+  },
+  {
+    "ClauseId": "A15",
+    "Clause": "Supplier relationships",
+    "ObjectiveId": "A15.1",
+    "Objective": "Information security in supplier relationships",
+    "ControlId": "15.1.2",
+    "Control": "Addressing security within supplier agreements"
+  },
+  {
+    "ClauseId": "A15",
+    "Clause": "Supplier relationships",
+    "ObjectiveId": "A15.1",
+    "Objective": "Information security in supplier relationships",
+    "ControlId": "15.1.3",
+    "Control": "Information and communication technology supply chain"
+  },
+  {
+    "ClauseId": "A15",
+    "Clause": "Supplier relationships",
+    "ObjectiveId": "A15.2",
+    "Objective": "Supplier service delivery management",
+    "ControlId": "15.2.1",
+    "Control": "Monitoring and review of supplier services"
+  },
+  {
+    "ClauseId": "A15",
+    "Clause": "Supplier relationships",
+    "ObjectiveId": "A15.2",
+    "Objective": "Supplier service delivery management",
+    "ControlId": "15.2.2",
+    "Control": "Managing changes to supplier services"
+  },
+  {
+    "ClauseId": "A16",
+    "Clause": "Information security incident management",
+    "ObjectiveId": "A16.1",
+    "Objective": "Management of information security incidents and improvements",
+    "ControlId": "16.1.1",
+    "Control": "Responsibilities and procedures"
+  },
+  {
+    "ClauseId": "A16",
+    "Clause": "Information security incident management",
+    "ObjectiveId": "A16.1",
+    "Objective": "Management of information security incidents and improvements",
+    "ControlId": "16.1.2",
+    "Control": "Reporting information security events"
+  },
+  {
+    "ClauseId": "A16",
+    "Clause": "Information security incident management",
+    "ObjectiveId": "A16.1",
+    "Objective": "Management of information security incidents and improvements",
+    "ControlId": "16.1.3",
+    "Control": "Reporting information security weaknesses"
+  },
+  {
+    "ClauseId": "A16",
+    "Clause": "Information security incident management",
+    "ObjectiveId": "A16.1",
+    "Objective": "Management of information security incidents and improvements",
+    "ControlId": "16.1.4",
+    "Control": "Assessment of and decision on information security events"
+  },
+  {
+    "ClauseId": "A16",
+    "Clause": "Information security incident management",
+    "ObjectiveId": "A16.1",
+    "Objective": "Management of information security incidents and improvements",
+    "ControlId": "16.1.5",
+    "Control": "Response to information security incidents"
+  },
+  {
+    "ClauseId": "A16",
+    "Clause": "Information security incident management",
+    "ObjectiveId": "A16.1",
+    "Objective": "Management of information security incidents and improvements",
+    "ControlId": "16.1.6",
+    "Control": "Learning from information security incidents"
+  },
+  {
+    "ClauseId": "A16",
+    "Clause": "Information security incident management",
+    "ObjectiveId": "A16.1",
+    "Objective": "Management of information security incidents and improvements",
+    "ControlId": "16.1.7",
+    "Control": "Collection of evidence"
+  },
+  {
+    "ClauseId": "A17",
+    "Clause": "Information security aspects of business continuity management",
+    "ObjectiveId": "A17.1",
+    "Objective": "Information security continuity",
+    "ControlId": "17.1.1",
+    "Control": "Planning information security continuity"
+  },
+  {
+    "ClauseId": "A17",
+    "Clause": "Information security aspects of business continuity management",
+    "ObjectiveId": "A17.1",
+    "Objective": "Information security continuity",
+    "ControlId": "17.1.2",
+    "Control": "Implementing information security continuity"
+  },
+  {
+    "ClauseId": "A17",
+    "Clause": "Information security aspects of business continuity management",
+    "ObjectiveId": "A17.1",
+    "Objective": "Information security continuity",
+    "ControlId": "17.1.3",
+    "Control": "Verify, review and evaluate information security continuity"
+  },
+  {
+    "ClauseId": "A17",
+    "Clause": "Information security aspects of business continuity management",
+    "ObjectiveId": "A17.2",
+    "Objective": "Redundancies",
+    "ControlId": "17.2.1",
+    "Control": "Availability of information processing facilities"
+  },
+  {
+    "ClauseId": "A18",
+    "Clause": "Compliance",
+    "ObjectiveId": "A18.1",
+    "Objective": "Compliance with legal and contractual requirements",
+    "ControlId": "18.1.1",
+    "Control": "Identification of applicable legislation and contractual requirements"
+  },
+  {
+    "ClauseId": "A18",
+    "Clause": "Compliance",
+    "ObjectiveId": "A18.1",
+    "Objective": "Compliance with legal and contractual requirements",
+    "ControlId": "18.1.2",
+    "Control": "Intellectual property rights"
+  },
+  {
+    "ClauseId": "A18",
+    "Clause": "Compliance",
+    "ObjectiveId": "A18.1",
+    "Objective": "Compliance with legal and contractual requirements",
+    "ControlId": "18.1.3",
+    "Control": "Protection of records"
+  },
+  {
+    "ClauseId": "A18",
+    "Clause": "Compliance",
+    "ObjectiveId": "A18.1",
+    "Objective": "Compliance with legal and contractual requirements",
+    "ControlId": "18.1.4",
+    "Control": "Privacy and protection of personally identifiable information"
+  },
+  {
+    "ClauseId": "A18",
+    "Clause": "Compliance",
+    "ObjectiveId": "A18.1",
+    "Objective": "Compliance with legal and contractual requirements",
+    "ControlId": "18.1.5",
+    "Control": "Regulation of cryptographic controls"
+  },
+  {
+    "ClauseId": "A18",
+    "Clause": "Compliance",
+    "ObjectiveId": "A18.2",
+    "Objective": "Information security reviews",
+    "ControlId": "18.2.1",
+    "Control": "Independent review of information security"
+  },
+  {
+    "ClauseId": "A18",
+    "Clause": "Compliance",
+    "ObjectiveId": "A18.2",
+    "Objective": "Information security reviews",
+    "ControlId": "18.2.2",
+    "Control": "Compliance with security policies and standards"
+  },
+  {
+    "ClauseId": "A18",
+    "Clause": "Compliance",
+    "ObjectiveId": "A18.2",
+    "Objective": "Information security reviews",
+    "ControlId": "18.2.3",
+    "Control": "Technical compliance review"
+  }
+]
+}

@@ -1,0 +1,71 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+	<!DOCTYPE mapper PUBLIC '-//mybatis.org//DTD Mapper 3.0//EN'
+	  'http://mybatis.org/dtd/mybatis-3-mapper.dtd'>
+<mapper namespace='org.crmf.persistency.mapper.project.SysprojectMapper'>
+
+	<resultMap type='Sysproject' id='Sysproject'>
+		<result property='sestobjId' column='SESTOBJ_ID' />
+		<result property='creationTime' column='CREATION_TIME' />
+		<result property='updateTime' column='UPDATE_TIME' />
+	</resultMap>
+	
+	<insert id='insert' parameterType='Sysproject' useGeneratedKeys='true'
+		keyProperty='id' keyColumn='ID'>
+		INSERT INTO SYSPROJECT(NAME, DESCRIPTION, MANDATE, PSCOPE, SESTOBJ_ID)
+		VALUES (#{name}, #{description}, #{mandate}, #{pscope}, #{sestobjId})
+	</insert>
+
+	<update id='update' parameterType='Sysproject'>
+		UPDATE SYSPROJECT
+		SET
+		NAME = #{name},
+		DESCRIPTION = #{description}, 
+		MANDATE = #{mandate}, 
+		PSCOPE = #{pscope}
+		WHERE ID = #{id}
+	</update>
+	
+	<select id='getById' parameterType='int' resultMap='Sysproject'>
+		SELECT *
+		FROM SYSPROJECT
+		WHERE ID = '${value}'
+	</select>
+	
+	<select id='getIdByIdentifier' parameterType='String'
+		resultType='Integer'>
+		SELECT id
+		FROM SYSPROJECT 
+		WHERE SESTOBJ_ID = '${value}'
+	</select>
+
+	<select id='getByIdentifier' parameterType='String' resultType='Sysproject'>
+		SELECT *
+		FROM SYSPROJECT 
+		WHERE SESTOBJ_ID = '${value}'
+	</select>
+		
+	<select id='getIdByAssprojectIdentifier' parameterType='String' resultType='int'>
+		SELECT S.ID
+		FROM SYSPROJECT AS S, ASSPROJECT AS P
+		WHERE P.SYSPROJECT_ID = S.ID AND P.SESTOBJ_ID = '${value}'
+	</select>
+	
+	<delete id='delete' parameterType='int'>
+		DELETE FROM SYSPROJECT WHERE ID =
+		'${value}'
+	</delete>
+
+	<delete id='deleteByIdentifier' parameterType='String'>
+		DELETE FROM
+		SYSPROJECT WHERE SESTOBJ_ID = '${value}'
+	</delete>
+
+	<delete id='deleteByAssprojectIdentifier' parameterType='String'>
+		DELETE FROM
+		SYSPROJECT WHERE ID = (SELECT ID FROM ASSPROJECT WHERE SESTOBJ_ID = '${value}')
+	</delete>
+	
+	<select id='getAll' resultMap='Sysproject'>
+		SELECT * FROM SYSPROJECT
+	</select>
+</mapper>

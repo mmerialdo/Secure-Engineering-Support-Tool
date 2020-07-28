@@ -1,0 +1,96 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE mapper PUBLIC '-//mybatis.org//DTD Mapper 3.0//EN'
+        'http://mybatis.org/dtd/mybatis-3-mapper.dtd'>
+<mapper namespace='org.crmf.persistency.mapper.threat.ThreatMapper'>
+    <resultMap type='SestThreatModel' id='SestThreatModel'>
+        <result property='sestobjId' column='SESTOBJ_ID'/>
+        <result property='threatModelJson' column='THREAT_MODEL_JSON'/>
+    </resultMap>
+
+    <resultMap type='SestThreat' id='SestThreat'>
+        <result property='sestobjId' column='SESTOBJ_ID'/>
+        <result property='threatJson' column='THREAT_JSON'/>
+    </resultMap>
+
+    <insert id='insert' parameterType='SestThreatModel' useGeneratedKeys='true'
+            keyProperty='id' keyColumn='ID'>
+		INSERT INTO THREAT_MODEL(SESTOBJ_ID, THREAT_MODEL_JSON)
+		VALUES (#{sestobjId}, #{threatModelJson})
+	</insert>
+
+    <update id='update' parameterType='map'>
+		UPDATE THREAT_MODEL
+		SET
+		THREAT_MODEL_JSON = #{threatModelJson}
+		WHERE SESTOBJ_ID = #{sestobjId}
+	</update>
+
+    <select id='getByIdentifier' parameterType='String' resultMap='SestThreatModel'>
+		SELECT *
+		FROM THREAT_MODEL 
+		WHERE SESTOBJ_ID = '${value}'
+	</select>
+
+    <select id='getById' parameterType='int' resultMap='SestThreatModel'>
+		SELECT *
+		FROM THREAT_MODEL
+		WHERE ID = '${value}'
+	</select>
+
+    <select id='getThreatRepository' resultMap='SestThreat'
+            parameterType='String'>
+        SELECT * FROM THREAT_REFERENCE
+        <if test="catalogue != null and catalogue != '' ">
+            WHERE CATALOGUE = #{catalogue}
+        </if>
+    </select>
+
+    <insert id='insertThreatRepository' parameterType='SestThreat' useGeneratedKeys='true'
+            keyProperty='id' keyColumn='ID'>
+		INSERT INTO THREAT_REFERENCE(CATALOGUE, CATALOGUE_ID, UPDATE_TIME, NAME, PHASE, THREATCLASS, LIKELIHOOD, SCORE, THREAT_JSON, SESTOBJ_ID)
+		VALUES (#{catalogue}, #{catalogueId}, #{updateTime}, #{name}, #{phase}, #{threatClass}, #{likelihood}, #{score}, #{threatJson}, #{sestobjId})
+	</insert>
+
+    <update id='updateThreatRepository' parameterType='SestThreat'>
+		UPDATE THREAT_REFERENCE
+		SET
+		CATALOGUE = #{catalogue},
+		CATALOGUE_ID = #{catalogueId},
+		UPDATE_TIME = #{updateTime},
+		NAME = #{name},
+		PHASE = #{phase},
+		LIKELIHOOD = #{likelihood},
+		SCORE = #{score},
+		THREATCLASS = #{threatClass},
+		THREAT_JSON = #{threatJson}
+		WHERE SESTOBJ_ID = #{sestobjId}
+	</update>
+
+    <select id='retrieveThreatReferenceId' parameterType='String' resultType='Integer'>
+		SELECT ID
+		FROM THREAT_REFERENCE 
+		WHERE CATALOGUE_ID = '${value}'
+	</select>
+
+	<select id='getThreatReferenceSestObjIdByCatalogueId' resultType='String'
+			parameterType='String'>
+		SELECT SESTOBJ_ID FROM THREAT_REFERENCE
+			WHERE
+			CATALOGUE_ID = '${catalogueId}'
+	</select>
+
+    <select id='getReferenceCatalogueById' parameterType='Integer' resultType='String'>
+		SELECT CATALOGUE_ID
+		FROM THREAT_REFERENCE 
+		WHERE ID = '${value}'
+	</select>
+
+    <delete id='deleteThreatReference' parameterType='String'>
+        DELETE FROM THREAT_REFERENCE WHERE SESTOBJ_ID IN
+        <foreach item="item" index="index" collection="sestobjIds"
+                 open="(" separator="," close=")">
+            #{item}
+        </foreach>
+    </delete>
+
+</mapper>

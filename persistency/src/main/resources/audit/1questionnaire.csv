@@ -1,0 +1,231 @@
+01|MEHARI_OrganizationSecurity|||||||
+01A|Roles and Structures of Security|||||||
+01A01|Organization and Management of General Security|||||||
+01A01-01|Are dedicated managers  (computer and telecom security, general security in the workplace (documents, fax, telephone), general physical security of the sites and premises) or a designated point of contact (HR for awareness and training, work contracts, user account and access rights management, responsibility for disciplining malicious acts or internal negligence) assigned to all areas of security?|4|2||E1|||
+01A01-02|For each security manager, is there a clear definition of the job function detailing, in particular, its objectives, responsibilities and interfaces with other areas concerned with security?|4|||E2|12.6.1||
+01A01-03|Are security management actions represented on dashboards and regularly reviewed?|4|||E2|12.6.1||
+01A01-04|Is there a committee or structure bringing together all security managers, from all disciplines, in order to coordinate the various security related actions, take cross decisions, and meet regularly?|2|||R1|12.6.1||
+01A01-05|Is the approach to security clearly recognized and supported by senior management?|2|||E2|||
+01A02|Organization and Supervision of Information Systems Security|||||||
+01A02-01|Is there a document describing the security policy related to information systems and in particular the organization, management and supervising of security (roles and responsibilities) as well as the fundamental principles underlying information security management?|2|||E1|5.1.1|5.1.1|
+01A02-02|Is this Security Policy revised, on a regular basis or when major changes are done, to ensure the upholding of its relevancy and efficiency?|1|||E2|5.1.2|5.1.2|
+01A02-03|Have the structure and organization of the management of information systems security been defined in detail: CISO, local responsibilities and contacts, roles and responsibilities towards operational managers and is this organizational structure in operation?|4|2|3|E2|6.1.1|6.1.2|
+01A02-04|Has this structure the capacity to alert senior management without delay in the case of a serious incident?|2|||E2|6.1.1|6.1.2|
+01A02-05|Have the mode of managing security and the decision processes been defined in detail: methodology used (for audit of exposure, risk analysis etc.), associated tools, actors (organization, support, training, expertise, advice etc.)?|4|||E2|6.1.1|6.1.2|
+01A02-06|Have the respective roles of security managers, operational managers and managers of functional domains (information owners) been clearly defined with regard to final decision making and arbitration?|4|2||E2|6.1.1|6.1.3|
+01A02-07|Has a mode of information systems security management been defined: dashboards (contents and frequency), management structure, orientation and reporting?|4|||E2|6.1.1|6.1.3|
+01A02-08|Is an annual information systems security plan established which brings together all action plans, means to put in place, planning, budget?|2||2|E2|5.1.2||
+01A02-09|Is the Company's  Management involved in the organization of the information security, particularly in the development and the approbation of the security policy, responsibilities definition, resource allocation, and the efficiency control of the actions taken?|1|||E2|6.1.1|6.1.1|
+01A02-10|Is a contact maintained with the concerned authorities regarding information security and crisis situation (Police, Reporting Services, Legal Administration, Firemen, Public Services, etc.) ?|1|||E2|6.1.3|6.1.6|
+01A02-11|Does the organization improve knowledge about best security practices and maintain contacts with interest groups, associations, conferences, etc?|1|3||E2|6.1.4; 12.6.1|6.1.7|
+01A02-12|Are the responsibilities and procedures established to provide quick and efficient solutions to the security incidents?|2|||E2|16.1.1; 16.1.2|13.2.1; 13.1.1|
+01A02-13|Is there a procedure for regularly updating organizational documents related to information systems security in line with changing organization structures?|2|3||R1|18.2.1; 12.6.1|6.1.8|
+01A03|General reporting system and incident management system|||||||
+01A03-01|Is there an incident reporting system which relays incidents to Information Systems Security correspondents including an incident summary for the CISO?|2|||E1|16.1.2|13.1.1|
+01A03-02|Does this reporting system include all incidents (operation, development, maintenance, usage of the information system) physical, logical or organizational?|4|2||E1|16.1.2|13.1.1|
+01A03-03|Does this reporting system include malevolent actions and failed attempts to breach security?|4|3||E3|16.1.2|13.1.1|
+01A03-04|Is this reporting system applied in all locations and organizations including subsidiaries?|4|3||E2|16.1.1; 16.1.2|13.1.1; 13.2.1|
+01A03-05|Are the form and description of incidents recorded in a database enabling continuous improvement as well as easy selective access in order to be able to follow up the resolution of individual incidents?|2|||E2|16.1.6|13.2.2|
+01A03-06|Is the collection of forensic proofs performed each time a legal action is considered? |2|||E2|16.1.7|13.2.3|
+01A03-07|Is the implementation and updating of the incident management system followed-up using a dashboard and a regular review which are transformed into action plans?|2|2||R1|12.6.1||
+01A04|Organization of audits and audit program|||||||
+01A04-01|Has the security function communicated to internal auditors (or the structure responsible for internal audits) a reference guide related to the information system security, describing in particular, the obligations of each category of personnel, the mandatory directives and the recommendations?|4|2||E2|12.7.1||
+01A04-02|Is the procedure, allowing derogation from internal directives, written into the audit reference documentation and is the procedure auditable?|4|||E2|12.7.1||
+01A04-03|Is there a coordination structure or a procedure enabling information security managers to define the annual audit program or to participate in its definition?|4|||E3|12.7.1||
+01A04-04|Is the CISO informed of the audit results which concern information systems security?|2|3||E2|12.7.1||
+01A04-05|Is the CISO informed of summary audit results not specifically related to information systems security and does (s)he have access to corresponding detailed audit reports?|4|||E2|12.7.1||
+01A04-06|Has the annual audit program been presented to and approved by the management? |2|||E2|12.7.1||
+01A04-07|Is the organization of annual information system audits subject to a regularly reviewed and followed-up dashboard?|2|3||R1|||
+01A05|Crisis management related to information security|||||||
+01A05-01|Is there a crisis plan in all buildings which details, as a function of various symptoms, the names and contact details of all persons to notify in order that they may effect an initial diagnosis and, as a function of this diagnosis, the members of the crisis team to convoke and the most urgent actions to carry out?|4|2||E1|||
+01A05-02|Is there an alert procedure, distributed to the entire organization, which enables directly or indirectly (via surveillance personnel) to contact the various persons likely to initiate a crisis plan?|2|||E1|||
+01A05-03|Does the crisis plan describe in detail the major crisis situations linked to information systems and does it address issues specific to them?|4|2||E2|||
+01A05-04|Does the crisis plan include the implementation of corresponding logistical means (equipped war room, communications etc.)?|4|2||E2|||
+01A05-05|Are there tools or procedures which enable the updating of the crisis plan and is this updating audited?|4|3||R1|||
+01B|Security Reference Guide|||||||
+01B01|"Obligations and responsibilities of personnel and management
+This includes all staff, internal and external (temporary contractors, trainees, etc.)"|||||||
+01B01-01|Are the responsibilities and obligations of staff with regard to the usage, preservation, archiving and non disclosure of information detailed in a memo or document available to management?|4|||E1|7.2.1||
+01B01-02|Does this document specify the personnel's duties and responsibilities regarding the use and protection of the authentication means (passwords, keys, tokens, badges, etc.) at its disposal?|1|||E2|9.3.1|11.3.1|
+01B01-03|Do the personnel's duties and responsibilities specify how to react when the workstation is left vacant (logout, logoff, screen savers, lock-out, etc.) ?|1|||E2|11.2.8|11.3.2|
+01B01-04|Are the obligations and responsibilities of personnel related to the usage and protection of assets and resources belonging to the company detailed in a memo or document available to management?|4|||E2|8.2.3||
+01B01-05|Does this document detail what is tolerated and the limits that cannot be disregarded (personal use of company possessions for example)?|2|||E2|8.1.3|15.1.5|
+01B01-06|Does this document detail the course of action in case of excess or abuse?|2|||E2|||
+01B01-07|Is there a formal disciplinary process to cover a breach to security rules or infringement of procedure?|1|||E3|7.2.3|8.2.3|
+01B01-08|Are the obligations and responsibilities of management in the domain of protection of information and of company resources detailed in a document distributed to all staff managers?|2|||E2|||
+01B01-09|Are the Management's duties and responsibilities at the time of an employee's termination or change of functions (internal or contract) defined and specified by a procedure or a document disclosed to all the managers ?|1|||E2|7.3.1|8.3.1|
+01B01-10|Does the previous procedure (or the equivalent document) cover the questioning and deletion of access rights to all relevant parts of the information system?|2|||E2|9.2.6|8.3.3|
+01B01-11|Are all documents or charters concerning staff obligations and responsibilities authenticated?|2|3||E3|||
+01B01-12|Are the Managers ensuring and held accountable for their colleagues' compliance to the policies and standards in force?|2|3||R1|18.2.2|15.2.1|
+01B01-13|Is there a regular review of such documents or charters relating to staff obligations and responsibilities?|2|3||R1|||
+01B02|General directives related to information protection|||||||
+01B02-01|Is there document defining the general rules for site protection from external threats, the required conditions for access to each site from outside and the protection of sensitive premises?|2|||E2||11.4.2|
+01B02-02|Is there a document defining the general rules to apply in order to protect the internal network from external threats, the conditions required to access the internal network from the outside and vice versa and the separation required between internal sub-networks?|2|||E2|13.1.3|11.4.2; 11.4.5|
+01B02-03|Is there a document defining the general rules applied to the access protection of computing resources (storage and networking elements, systems, applications, data, media, etc.) and the conditions required for the granting, the management and control of access rights?|2|||E2|13.2.1|10.8.1; 10.7.3|
+01B02-04|Are these rules established according to the concerned assets' classification level?|2|||E2|8.2.2; 13.2.1|10.7.3; 10.8.1; 7.2.2|
+01B02-05|Is there a document defining the rules applied to the usage of computing (networks, servers etc.) and communications resources?|2|||E2|9.1.2; 13.2.1|10.8.1; 11.4.1; 10.7.3|
+01B02-06|Is there a document defining the general rules applied to software development and security considerations in project management?|2|||E2|6.1.5|10.7.3|
+01B02-07|Is there a document defining the general day-to-day rules applicable to the management of the working environment (documents, workstations, telephone, fax, off-site work)?|2|||E2|11.2.9; 13.2.1|10.8.1; 11.3.3; 10.7.3|
+01B02-08|Is there a document defining additional security procedures to apply regarding mobile computing and teleworking?|2|||E2|6.2.1; 13.2.1|10.8.1; 11.7.1|
+01B02-09|Is there a document setting out the requirements, responsibilities and procedures to apply to protect archives that are important for the company?|2|||E1|18.1.3|15.1.3|
+01B02-10|Are the overall regulatory, contractual, and legal requirements explicitly identified, and does their application by the organization appear in an updated document?|2|||E2|8.2.3; 18.1.1|15.1.1|
+01B02-11|Are the resources and solutions available to managers and users in line with above documents?|4|2||E2|8.2.3||
+01B02-12|Are the rules concerning information and resource protection easily accessible to all staff (for example via intranet)?|4|2||E2|||
+01B02-13|Is there a procedure to control or audit the relevance and authenticity of the rules, pertaining to information protection and information system resources, distributed to all staff?|2|3||R1|||
+01B03|Classification of resources|||||||
+01B03-01|Is there a hierarchy or system enabling the classification of information assets reflecting their protection as a function of the context of the organization and taking into account availability, integrity and confidentiality?|4|||E1|8.2.1||
+01B03-02|Does this categorization scheme define the marking of different types of assets according to its classification?|1|||E2|8.2.1; 8.2.2|7.2.2|
+01B03-03|Have information sources (documents, data, files, databases etc.) been classified as a function of the impact that a security breach might have on the organization?|4|1|2|E2|8.2.1|7.2.1|
+01B03-04|Has the classification been effected for each of the criteria availability, integrity and confidentiality?|2|2||E2|8.2.1||
+01B03-05|Have sensitive resources been classified (information systems, telecom equipment, sites etc.) as a function of the impact that a security breach affecting these assets might have on the organization?|4|||E2|||
+01B03-06|Has this classification been effected for each of the criteria availability, integrity, confidentiality?|2|||E2|||
+01B03-07|Have sensitive programs and transactions been classified as a function of the impact a security breach on these assets might have on the organization?|4|||E2|||
+01B03-08|Has this classification been effected for the criteria availability, integrity and confidentiality?|4|||E2|||
+01B03-09|Are these classifications easily available when needed to the staff concerned?|4|2||E2|||
+01B03-10|Is there a procedure for regular review of the classifications and is this procedure controlled?|4|3||E3|8.2.1|7.2.1|
+01B04|Asset management|||||||
+01B04-01|"Are the types of assets - that need to be identified and inventoried defined?
+Assets can be information (databases, files, contracts, agreements, documentation, guides, procedures, plans, archives, etc.), software (applications, firmware, middleware, tools and utilities, etc.), equipment (computers, network equipment, media, etc.), services and supporting utilities (energy, heating, air conditioning, etc.), people or know-how, intangible assets such as reputation or image."|2|||E2|8.1.1|7.1.1|
+01B04-02|Is an inventory of the types of assets - as identified and defined herein - kept up-to-date?|4|||E2|8.1.1|7.1.1|
+01B04-03|"Is an ""owner"" appointed for each identified and inventoried asset?
+An owner is the individual or the entity appointed to assume responsibility of the development, maintenance, operation, use and security of this asset. The word owner does not mean that the individual or entity holds a property right for this asset."|2|||E2|8.1.2|7.1.2|
+01B04-04|"Is an acceptable set of usage rules defined and documented for each asset?
+
+This implies, particularly, defining the private use an employee can make of the company's assets."|2|||E2|8.1.3|7.1.3|
+01B04-05|Are the rules regarding the return to the company or organization of assets entrusted to employees at the time of termination or change of functions clearly defined and set forth by Management ?|1|||E2|8.1.4|8.3.2|
+01B04-06|Are there rules regarding outside taking of asset (prior authorization, authorized individuals, log for returning or taking asset outside, deletion of unnecessary data, etc.)?|1|||E2|11.2.5|9.2.7|
+01B05|Protection of assets having value of evidence|||||||
+01B05-01|Have the assets that may be used as elements of evidence been identified and itemized?|2|||E2|||
+01B05-02|For each of these assets, have the proclamations that it would allow checking, and the associated checking process?|4|||E2|||
+01B05-03|For each verification process, have the reasons that could foil or weaken the capacity to provide conviction been analyzed? |4|||E2|||
+01B05-04|Have all necessary measures been taken consequently?|2|||E2|||
+01B05-05|Is the aptness of these measures periodically reviewed? |1|||R2|||
+01B05-06|Are these measures periodically subject to an audit?|1|||C1|||
+01C| Human Resource Management|||||||
+01C01|Staff involvement, contractual clauses|||||||
+01C01-01|Has a note been distributed to all personnel (including temporary staff) detailing staff obligations and responsibilities such that they cannot deny having received it?|4|||E2|7.1.1; 13.2.4|6.1.5; 8.1.3|
+01C01-02|Is there, within work contracts or within internal regulations, a clause which clearly states the obligation to adhere to the security rules in force?|4|||E2|7.1.1; 13.2.4|6.1.5; 8.1.3|
+01C01-03|Has a note been distributed to all personnel informing them of all legal, regulatory or contractual obligations?|2|||E2|13.2.4|6.1.5|
+01C01-04|Are the security obligations and responsibilities embodied in contracts (in either of general or specific clauses) of all staff acting for the organization and who for this reason may have or require access to information or sensitive resources?|4|||E3|13.2.4|6.1.5|
+01C01-05|Are contractor companies, who may have access to sensitive information or systems, obliged to ensure that all staff sign a personal commitment that they will abide by the specified security clauses?|4|||E3|13.2.4; 15.1.1|6.1.5|
+01C01-06|Is Management responsible to ensure that the personnel, contractors and third parties respect the company's security policies and procedures?|1|||E2|7.2.1|8.2.1|
+01C01-07|Is there a control procedure validating and authenticating all rules distributed to staff?|4|3||R1|||
+01C02|Management of strategic personnel, partners and providers|||||||
+01C02-01|Are strategic skills regularly identified in the organization?|4|2||E2|||
+01C02-02|Are backup solutions available in the absence of strategic skills?|4|3||E3|||
+01C02-03|Are strategic partners and service providers regularly identified?|4|2||E2|||
+01C02-04|Are backup solutions ready for the unavailability of strategic partners or providers? |4|3||E3|||
+01C02-05|Are these backup solutions regarding internal staff or providers able to guarantee the normal functioning of the organization without major disruption?|4|3||E3|||
+01C02-06|Are strategic personnel subject to specific career management?|2|||E3|||
+01C02-07|Are strategic partners subject to a specific contractual management? |2|||E3|||
+01C02-08|Is there a relevant control and update procedure for the preceding measures?|2||3|R1|||
+01C03|Staff screening procedure|||||||
+01C03-01|Is there a preliminary information procedure for the personnel (internal or contractual) regarding its duties and responsibilities, and security requirements before any assignment or hiring?|1|||E2|6.1.1|8.1.1|
+01C03-02|Is screening information collected at time of recruitment of staff likely to be involved in sensitive tasks?|4|||E2|7.1.1|8.1.2|
+01C03-03|Have external contractors, working on site on sensitive tasks, been checked for security clearance approval by an official organization?|4|||E2|7.1.1|8.1.2|
+01C03-04|"Is additional (clearance) information collected when staff are affected to sensitive tasks?
+
+NB: an open interview may be used in order to avoid placing people in a situation of conflict of interest"|4|||E2|7.1.1|8.1.2|
+01C04|Awareness and training in security|||||||
+01C04-01|Is there a program to raise awareness of staff to risks of accident, error or malevolence in the processing of information?|4|2||E1|7.2.2|8.2.2|
+01C04-02|Are all staff members trained on a regular basis in security awareness?|2|||E2|7.2.2|8.2.2|
+01C04-03|Is there a program to train staff in the rules and general measures of information protection?|2|||E2|7.2.2|8.2.2|
+01C04-04|Do these rules and general measures cover all relevant domains (documents, computer equipment, premises, systems and application access, telephone, fax, behavior in meetings and out of office etc.)?|2|||E2|7.2.2|8.2.2|
+01C04-05|Are these rules and general measures easily accessible to staff in case of need (intranet for example) and has communication been done on this matter?|4|||E2|7.2.2|8.2.2|
+01C04-06|Do these regulations specify reporting processes for the incidents and faults observed, and how to react? |1|||E2|16.1.3|13.1.2|
+01C04-07|Do people with responsibility for security issues receive regular relevant training?|4|||E2|||
+01C04-08|Is there a dashboard detailing the effective implementation of actions related to security awareness and training?|4|3||R1|||
+01C04-09|Is there a follow up carried out of the level of satisfaction and compliance of staff related to actions of raising awareness and training in information systems security?|4|3||R1|||
+01C05|Third Parties Management (partners, suppliers, clients, public, etc.)|||||||
+01C05-01|Have the risks associated with access by third-party personnel (providers) to the information system (in full or in part) or on the premises containing information been assessed, and thus the necessary security measures been defined?|2|||E2|15.1.1|6.2.1|
+01C05-02|Have the risks associated with client or public's access to the information system (in full or in part) or on the premises containing information) been assessed, and thus the necessary security measures been defined?|2|||E2|15.1.1|6.2.2|
+01C05-03|Have the risks associated to information or software transfers to a third party been assessed and have the procedures and responsibilities for each party been formalized by contract?|2|||E2|13.2.2; 15.1.1|10.8.2|
+01C05-04|"Have the overall security clauses been defined, that should be included in each Agreement signed with a third party involving an access to the information system or to the premises containing information?
+The information system, including any data support or means of processing, carrying or communicating information."|4|||E2|15.1.1; 15.1.2|6.2.3|
+01C05-05|Are all accesses by a third party to the information system or on the premises containing sensitive information authorized uniquely after a formal Agreement restating these clauses?|2|2||E3|15.1.1; 15.1.2| 6.2.3; 15.1.5|
+01C06|People Registration|||||||
+01C06-01|Are there formal registration and revocation procedures for the individuals?|4|||E2|9.2.1|11.2.1|
+01C06-02|Do these procedures involve personnel management and hierarchy?|4|||E2|9.2.1|11.2.1|
+01C06-03|Is a unique identifier (ID) assigned to each user (employee, external, etc.) who could have access to the information system? |4|||E2|9.2.1|11.2.1|
+01C06-04|Are the rights granted to the users as they register (shared services, messaging, etc.) approved by the owners of the concerned assets?|4|||E2|9.2.1|11.2.1|
+01C06-05|Are all users kept informed, at time of registration, of all the vested rights and of his/her duties regarding any adjudication of rights (vested at the time of registration or he/she could be granted afterwards)? |4|||E2|9.2.1|11.2.1|
+01C06-06|"Are these procedures controlled and are possible defects documented and corrected in real time?
+
+The responsiveness of the managerial chain must forbid exception procedures that may result from delays with (de)registration processes."|4|||R1|9.2.1|11.2.1|
+01D|Insurance|||||||
+01D01|Insurance against property (or material) damages|||||||
+01D01-01|"Are information systems covered by an insurance policy which accounts for material damage (fire damage, miscellaneous risks and accidents, damage to machines, all computing risks, ""all risks except"", named risks etc.)?"|2|||E1|||
+01D01-02|Does the insurance policy cover all computer and telecommunications systems, cabling and computer rooms?|4|2||E2|||
+01D01-03|Does the insurance policy cover all usual causes of disaster: accident (fire, water damage, lightning etc.), human error, sabotage, vandalism (including by company personnel or third party engaged in operations, maintenance or upkeep)?|4|2||E2|||
+01D01-04|Does the insurance policy cover (real) costs of information system re-initialization incurred by a disaster (installation, restart and system test, data and media reconstruction)?|4|2||E2|||
+01D01-05|Does the insurance policy cover all additional operational costs (continuing expenses and fees, avoid or limit halting of work activity)?|4|2||E2|||
+01D01-06|Does the insurance policy cover costs incurred by the company in order to re-establish its image with clients or partners?|4|||E2|||
+01D01-07|Does the insurance policy cover the global losses incurred by the disaster?|4|3||E2|||
+01D01-08|Is the coverage of computer and information system (exclusions, guarantees) decided jointly with Information Technology management and updated regularly?|2|||E2|||
+01D01-09|Does the level of guarantee and deductible cover the survival of the company in the case of a disaster?|2|2||E2|||
+01D01-10|Does the level of guarantee and deductible allow the company to survive a disaster without major consequences?|2|3||E2|||
+01D02|Insurance of consequential losses (non-material damages)|||||||
+01D02-01|Are the information systems covered by an insurance policy which covers non material damage (malevolence, non authorized usage, accidental loss of data or programs, denial of service)?|2|||E1|||
+01D02-02|Does this policy cover all computer systems (internal systems, intranet, extranet, web sites etc.)?|4|2||E2|||
+01D02-03|Does the contract cover the usual causes of this type of damages: accident (breakage, bugs etc.), human error (data entry errors, programming errors etc.), malicious entry (frauds, intrusions, service denial, including company personnel or third party responsible for its operation or maintenance)?|4|2||E2|||
+01D02-04|Does this contract cover all (real) costs of investigation and research of the causes and consequences of the disaster?|4|2||E2|||
+01D02-05|Does the insurance contract cover (real) costs of re-initialization of information systems affected by the disaster (restart costs and cost of tests following restart, costs of data reconstruction)?|4|2||E2|||
+01D02-06|Does this contract cover all additional operating costs (cover of costs and expenses liabilities, costs incurred to limit operational shutdown)?|4|2||E2|||
+01D02-07|Does the insurance policy cover additional costs incurred by the organization to re-establish its image with clients or partners?|4|||E2|||
+01D02-08|Does the policy cover  overall loss of turnover incurred due to the disaster?|4|3||E2|||
+01D02-09|Is the choice of computer and information system cover (exclusions, guarantees) decided jointly with Information Technology management and reviewed regularly?|2|||E2|||
+01D02-10|Does the level of guarantee and deductible cover the survival of the company in the case of a disaster?|2|2||E2|||
+01D02-11|Does the level of guarantee and deductible allow the company to survive a disaster without major consequences?|2|3||E2|||
+01D03|Personal Liability Insurance (PLI)|||||||
+01D03-01|Is the organization covered by personal liability insurance including the consequences of computer disasters (Professional Liability, Product Personal Liability)?|4|||E1|||
+01D03-02|Does the contract cover the usual causes of this type of damages: accident (breakage, bugs etc.), human error (data entry errors, programming errors etc.), malicious entry (frauds, intrusions, service denial, including company personnel or third party responsible for its operation or maintenance)?|2|||E2|||
+01D03-03|Does the insurance policy cover additional costs incurred by the organization to re-establish its image with clients or partners?|2|||E2|||
+01D03-04|Is the choice of computer and information system cover (exclusions, guarantees) decided jointly with Information Technology management and reviewed regularly?|2|||E2|||
+01D03-05|Does the level of guarantee and deductible cover the survival of the company in the case of a disaster?|2|2||E2|||
+01D03-06|Does the level of guarantee and deductible allow the company to survive a disaster without major consequences?|2|3||E2|||
+01D04|Insurance against loss of Key Personnel|||||||
+01D04-01|Is the organization covered by insurance covering exposure to loss of key personnel?|2|||E2|||
+01D04-02|Does the contract cover all possible causes of loss of key personnel such as airplane or automobile accidents, illness, individual or group resignation?|4|2||E2|||
+01D04-03|Does the insurance policy cover additional running costs incurred by loss of key personnel?|4|2||E2|||
+01D04-04|Does the insurance policy cover additional costs incurred by the organization to re-establish its image with clients or partners?|4|||E2|||
+01D04-05|Does the insurance policy cover operational losses incurred by the disaster?|4|||E2|||
+01D04-06|Is the choice of computer and information system cover (exclusions, deductibles) decided jointly with Information Technology management and updated regularly?|2|||E2|||
+01D04-07|Does the level of guarantee and deductibles cover the survival of the company in the case of a disaster?|2|2||E2|||
+01D04-08|Does the level of guarantee and deductibles allow the company to survive a disaster without major consequences?|2|3||E2|||
+01D05|Management of insurance contracts|||||||
+01D05-01|Is there a person responsible for the insurances within the organization? |1|||E1|||
+01D05-02|Is the level of guarantee for IT related assets  the result of a specific study made in conjunction with the IT department (on the basis of a risk analysis carried out recently -within less than three years)?|2|||E1|||
+01D05-03|Is there a regular check (at least once per year) of the insurance contracts by the insurance manager, in consultation with the relevant sector managers, with an adjustment of the cover with the broker or insurance agent if required?|2|||E2|||
+01D05-04|Is there a regular check (at least once per year) of the insurance contracts by the insurance manager, in consultation with the relevant sector managers, with an adjustment of the cover with the broker or insurance agent if required?|2|||E2|||
+01D05-05|Do the relevant sector managers participate in the study of the coverage limits (exclusions, deductible, ceiling, etc) defined in the contracts?|2|||E2|||
+01D05-06|"Has there been an analysis of the transfer of risks depending to the various types of partners ?
+E.g. service and product providers, hosting services, clients"|2|||E2|||
+01E|Business continuity|||||||
+01E01|Taking into account the need for business continuity|||||||
+01E01-01|"Has an analysis been carried out of the criticality of applications in order to underscore the requirements of service continuity?
+An in-depth analysis supposes that a list of incidents or failure scenarios and all the foreseeable consequences is established"|4|2||E1|17.1.1|14.1.2|
+01E01-02|Has this analysis allowed the minimum service requirements to be defined for each application and system and have these minimum service requirements been accepted by the users (information owners)?|4|2||E1|17.1.1|14.1.2|
+01E01-03|Are there processes, regularly implemented, for risk analysis linked to information, possibly leading to a disruption of the company activities and thus a definition of the security requirements, responsibilities, procedures to apply and implement to allow the development of a business continuity plan?|2|||E2|17.1.2|14.1.1|
+01E02|Business continuity Plans|||||||
+01E02-01|Have Business Continuity Plans (BCP) been designed, from a criticality analysis, for each critical activity?|3|||E1|17.1.2|14.1.3|
+01E02-02|Do these plans foresee all measures to undertake to ensure business continuity between the alert and the eventual implementation of alternative solutions set forth by the technical Disaster Recovery plans?|3|2||E2|17.1.2|14.1.3|
+01E02-03|"Do these plans cover all organizational aspects related to the ""manual"" continuity solution  (personnel, logistics, coaching, etc.)?"|3|||E2|17.1.2|14.1.3|
+01E02-04|Have instructions and training been given to implied personnel for the operation of the continuity plans? |2|||E2|17.1.2|14.1.3|
+01E02-05|Do the business continuity plans include procedures for returning to normal activity? |4|2||E2|17.1.2|14.1.3|
+01E02-06|Is there a crisis trigger plan associated with each of these plans?  |4|||E2|||
+01E02-07|"Does implementation of these plans result in an acceptable level (impact limited to 2) of all critical malfunctions?
+
+This question is intended to insure that the effectiveness of this service is not overstated."|1|2|3|E2|||
+01E02-08|Is there a manager responsible for the creation, monitoring, and testing of these plans?|3|||C1|17.1.2; 17.1.3|14.1.5|
+01E02-09|Are these plans tested regularly (at least once a year)? |3|2||C1|17.1.2; 17.1.3|14.1.5|
+01E02-10|Are the test results analyzed by management and the relevant stakeholders? |3|2||C1|17.1.2; 17.1.3|14.1.5|
+01E02-11|"Are the business continuity plans updated regularly?
+An update should be required to take account of changes in personnel concerned, technical changes, or the results of tests. "|3|2||C1|17.1.2; 17.1.3|14.1.5|
+01E02-12|Are updates to plans audited regularly (at least once a year)?|3|2||R1|||
+01E03|Workplace Recovery Plans (WRP)|||||||
+01E03-01|Are there recovery solutions to reduce the impact if the work environment is not available (workplace unavailable, power outage, telephone outage, etc)?|4|2||E1|||
+01E03-02|Are these solutions described in detail in the Workplace Recovery Plans (WRP), including trigger rules, actions to take, priorities, people to mobilize and their contact details? |4|||E1|||
+01E03-03|Are these plans tested at least once a year?|2|3||R1|||
+01E03-04|Is the case of failure or non-availability of a crisis solution envisaged, and for each case is there a secondary backup plan? |4|3||R2|||
+01E03-05|Are the recovery solutions usable for an unlimited period of time, and if not, has a second solution been identified to replace the initial solution after a predetermined time period? |2|||E2|||
+01E03-06|Is the existence, relevance, and activation of the WRP audited regularly?|3|||C1|||

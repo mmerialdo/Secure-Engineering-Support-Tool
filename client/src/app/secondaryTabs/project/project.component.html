@@ -1,0 +1,184 @@
+<!--  --------------------------------------------------------------------------------------------------------------------
+// Copyright file="project.component.html"
+//  © Copyright European Space Agency, 2018-2020
+//
+//  Author: Software developed by RHEA System S.A.
+//
+//  This file is subject to the terms and conditions defined in file 'LICENSE.txt', which is part of this source code package.
+//  No part of the package, including this file, may be copied, modified, propagated, or distributed
+//  except according to the terms contained in the file ‘LICENSE.txt’.
+// -------------------------------------------------------------------------------------------------------------------- -->
+
+<div class="container-fluid" id="containerProjectInfo">
+  <div class="row">
+    <fieldset class="for-panel">
+      <legend>Project Info</legend>
+      <div class="row">
+        <!-- First Column -->
+        <div class="col-xs-6">
+          <div class="row">
+            <!-- name row -->
+            <div class="col-xs-3">
+              <label>Project: </label>
+            </div>
+            <div class="col-xs-9">
+              <p>{{ nameProject }}</p>
+            </div>
+          </div>
+          <div class="row">
+            <!-- name row -->
+            <div class="col-xs-3">
+              <label>Profile:</label>
+            </div>
+            <div class="col-xs-9">
+              <p>{{ profile }}</p>
+            </div>
+          </div>
+          <div class="row">
+            <!-- name row -->
+            <div class="col-xs-3">
+              <label>Template:</label>
+            </div>
+            <div class="col-xs-9">
+              <p>{{ template }}</p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xs-3">
+              <label>Description: </label>
+              <!-- description row -->
+            </div>
+            <div class="col-xs-9">
+              <p> {{ descrProject }}</p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xs-3">
+              <label>Users: </label>
+              <!-- description row -->
+            </div>
+            <div class="col-xs-9">
+              <p-dataList [value]="users" id="usersListProject">
+
+                <ng-template let-user pTemplate="item">
+                  <div class="ui-grid ui-grid-responsive ui-fluid" style="border-bottom:1px solid #D5D5D5;">
+                    <div class="ui-grid-row">
+
+                      <div class="ui-grid-col-9">
+                        <div class="ui-grid ui-grid-responsive ui-fluid">
+                          <div class="ui-grid-row">
+                            <div class="ui-grid-col-11" style="margin-left:3px;">{{ user.name }} {{ user.surname }} </div>
+                            <div class="ui-grid-col-1" style="margin-left:3px;">
+                              <b>{{ user.roles[0].role }}</b>
+                            </div>
+
+
+                          </div>
+
+                        </div>
+                      </div>
+                      <!--<div class="ui-grid-col-3" style="text-align:center"><i class="fa fa-search" style="cursor:pointer;" pTooltip="{{user.roles[0].role}}" tooltipPosition="right"></i></div>-->
+
+                    </div>
+                  </div>
+                </ng-template>
+              </p-dataList>
+            </div>
+          </div>
+        </div>
+        <!-- Second Column -->
+        <div class="col-xs-6">
+          <div class="row">
+            <!-- name row -->
+            <div class="col-xs-3">
+              <label>System Project: </label>
+            </div>
+            <div class="col-xs-9">
+              <p>{{ nameSys }}</p>
+            </div>
+          </div>
+          <div class="row">
+            <!-- name row -->
+            <div class="col-xs-3">
+              <label>Scope:</label>
+            </div>
+            <div class="col-xs-9">
+              <p>{{ scope }}</p>
+            </div>
+          </div>
+          <div class="row">
+            <!-- name row -->
+            <div class="col-xs-3">
+              <label>Mandate:</label>
+            </div>
+            <div class="col-xs-9">
+              <p>{{ mandate }}</p>
+            </div>
+          </div>
+          <div class="row">
+            <!-- description row -->
+            <div class="col-xs-3">
+              <label>Description: </label>
+            </div>
+
+            <div class="col-xs-9">
+              <p>{{ descrSyst }}</p>
+            </div>
+          </div>
+          <div class="row">
+            <!-- name row -->
+            <div class="col-xs-3">
+              <label>Participants: </label>
+            </div>
+            <div class="col-xs-9">
+              <p-dataList [value]="parti" id="participansListProject">
+
+                <ng-template let-user pTemplate="item">
+                  <div class="ui-grid ui-grid-responsive ui-fluid" style="border-bottom:1px solid #D5D5D5;">
+                    <div class="ui-grid-row">
+
+                      <div class="ui-grid-col-9">
+                        <div class="ui-grid ui-grid-responsive ui-fluid">
+                          <div class="ui-grid-row">
+                            <div class="ui-grid-col-11" style="margin-left:3px;">{{ user.name }} {{ user.surname }}</div>
+                            <div class="ui-grid-col-1" style="margin-left:3px;">
+                              <b>{{ user.role }}</b>
+                            </div>
+
+
+
+                          </div>
+
+                        </div>
+                      </div>
+                      <!--<div class="ui-grid-col-3" style="text-align:center"><i class="fa fa-search" style="cursor:pointer;" pTooltip="{{user.role}}" tooltipPosition="right"></i></div>-->
+
+                    </div>
+                  </div>
+                </ng-template>
+              </p-dataList>
+            </div>
+          </div>
+        </div>
+      </div>
+    </fieldset>
+  </div>
+
+
+</div>
+
+<p-dialog [(visible)]="blocked" modal="modal" [style]="{width: '200px', height: '200px'}" [responsive]="true" [showHeader]="false" [ngClass]="'projectSpinner'">
+
+  <div *ngIf="!blockedMessage">
+    <h1></h1>
+    <div class="loader"></div>
+  </div>
+
+  <div *ngIf="blockedMessage">
+
+    <p-messages [(value)]="msgsAsset"></p-messages>
+
+  </div>
+
+
+</p-dialog>

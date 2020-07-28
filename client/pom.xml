@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ~ **********************************************************************
+  ~                                                                      *
+  ~  RHEA System S.A. CONFIDENTIAL                                       *
+  ~  ____________________________________________________________________*
+  ~                                                                      *
+  ~   Copyright (c) 2017-2018 RHEA System S.A.                           *
+  ~   All Rights Reserved.                                               *
+  ~                                                                      *
+  ~  NOTICE:  All information contained herein is, and remains           *
+  ~  the property of RHEA System S.A.. The intellectual and technical    *
+  ~  concepts contained herein are proprietary to RHEA System S.A.       *
+  ~  and are protected by trade secret or copyright law.                 *
+  ~  Dissemination of this information or reproduction of this material  *
+  ~  is strictly forbidden unless prior written permission is obtained   *
+  ~  from RHEA System S.A..                                              *
+  ~                                                                      *
+  ~ **********************************************************************
+  -->
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+  <modelVersion>4.0.0</modelVersion>
+
+  <parent>
+    <groupId>org.crmf</groupId>
+    <artifactId>parent</artifactId>
+    <version>0.0.2</version>
+  </parent>
+
+  <artifactId>sest-client</artifactId>
+  <version>0.0.2</version>
+  <packaging>bundle</packaging>
+
+  <properties>
+    <checkstyle.skip>true</checkstyle.skip>
+  </properties>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-antrun-plugin</artifactId>
+        <version>3.0.0</version>
+        <executions>
+          <execution>
+            <id>ng-build</id>
+            <phase>generate-resources</phase>
+            <goals>
+              <goal>run</goal>
+            </goals>
+            <configuration>
+              <target>
+                <mkdir dir="target"/>
+                <echo message="Generating frontend resource"/>
+                <exec executable="ng.cmd">
+                  <arg value="build"/>
+                  <arg value="--prod"/>
+                </exec>
+              </target>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.felix</groupId>
+        <artifactId>maven-bundle-plugin</artifactId>
+        <version>${bundle.plugin.version}</version>
+        <inherited>true</inherited>
+        <extensions>true</extensions>
+        <configuration>
+          <instructions>
+            <Web-ContextPath>/</Web-ContextPath>
+            <Include-Resource>dist</Include-Resource>
+            <DynamicImport-Package>*</DynamicImport-Package>
+          </instructions>
+        </configuration>
+      </plugin>
+    </plugins>
+    <pluginManagement>
+      <plugins>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-clean-plugin</artifactId>
+          <configuration>
+            <directory>dist</directory>
+            <directory>target</directory>
+          </configuration>
+        </plugin>
+      </plugins>
+    </pluginManagement>
+  </build>
+
+</project>

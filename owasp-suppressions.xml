@@ -1,0 +1,323 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suppressions xmlns="https://jeremylong.github.io/DependencyCheck/dependency-suppression.1.1.xsd">
+    <suppress>
+        <notes><![CDATA[
+   file name: spring-security-oauth2-autoconfigure-2.0.9.RELEASE.jar
+
+   Applies only if application acts as an authorization server
+
+   ]]></notes>
+        <gav regex="true">^org\.springframework\.security\.oauth\.boot:spring-security-oauth2-autoconfigure:.*$</gav>
+        <cve>CVE-2016-4977</cve>
+        <cve>CVE-2018-1260</cve>
+        <cve>CVE-2018-15758</cve>
+        <cve>CVE-2019-3778</cve>
+        <cve>CVE-2019-11269</cve>
+    </suppress>
+    <suppress>
+        <notes><![CDATA[
+   file name: spring-security-oauth2-autoconfigure-2.0.9.RELEASE.jar
+
+   False positive: only springframework 5.0.5 affected
+
+   ]]></notes>
+        <gav regex="true">^org\.springframework\.security\.oauth\.boot:spring-security-oauth2-autoconfigure:.*$</gav>
+        <cve>CVE-2018-1258</cve>
+    </suppress>
+    <suppress>
+        <notes><![CDATA[
+   file name: spring-security-oauth2-core.5.0.12.RELEASE.jar
+
+   False positive: only springframework 5.0.5 affected
+
+   ]]></notes>
+        <gav regex="true">^org\.springframework\.security:spring-security-oauth2-core:.*$</gav>
+        <cve>CVE-2018-1258</cve>
+    </suppress>
+    <suppress>
+        <notes><![CDATA[
+   file name: spring-security-oauth2-client.5.0.12.RELEASE.jar
+
+   False positive: only springframework 5.0.5 affected
+
+   ]]></notes>
+        <gav regex="true">^org\.springframework\.security:spring-security-oauth2-client:.*$</gav>
+        <cve>CVE-2018-1258</cve>
+    </suppress>
+    <suppress>
+        <notes><![CDATA[
+   file name: jaxb-impl-2.2.11.jar/META-INF/maven/com.sun.xml.bind/jaxb-impl/pom.xml
+
+        False positive:
+
+        Even though owasp checker makes this CVE hit on JAXB, looking at the NVD report,
+        this only actually applies if you are using a software called "Processing" which
+        is not our use case.
+
+   ]]></notes>
+        <gav regex="true">^com\.sun\.xml\.bind:jaxb-impl:.*$</gav>
+        <cpe>cpe:/a:processing:processing</cpe>
+    </suppress>
+    <suppress>
+        <notes><![CDATA[
+   file name: querydsl-mongodb-4.2.1.jar
+
+   False positive only relevant for MongoDB on Redhat 6
+
+   ]]></notes>
+        <gav regex="true">^com\.querydsl:querydsl-mongodb:.*$</gav>
+        <cve>CVE-2014-8180</cve>
+    </suppress>
+    <suppress>
+        <notes><![CDATA[
+   file name: querydsl-mongodb-4.2.1.jar
+
+   False positive: This CVE applies to the Mongo installation itself, specifically the "skyring" feature
+   which we are not using, the talked about plaintext password file is not present on our mongodb machine:
+   /etc/skyring/skyring.conf
+
+   ]]></notes>
+        <gav regex="true">^com\.querydsl:querydsl-mongodb:.*$</gav>
+        <cve>CVE-2017-2665</cve>
+    </suppress>
+    <suppress>
+        <notes><![CDATA[
+            file name: spring-boot-2.0.0.RELEASE.jar
+
+            We have a newer version: 2.0.0.RELEASE. Last version to be affected was a 2.0.0.MX (where X is milestone)
+   ]]></notes>
+        <cve>CVE-2017-8046</cve>
+        <cve>CVE-2018-1196</cve>
+    </suppress>
+    <suppress>
+        <notes><![CDATA[
+   file name: ws-commons-util-1.0.2.jar
+
+    False positive hit on this jar. The actually vulnerable library is a node js library related to websockets,
+    this is an xml parsing library.
+
+   ]]></notes>
+        <gav regex="true">^org\.apache\.ws\.commons\.util:ws-commons-util:.*$</gav>
+        <cve>CVE-2016-10542</cve>
+    </suppress>
+    <suppress>
+        <notes><![CDATA[
+   file name: spring-boot-starter-data-rest-2.0.2.RELEASE.jar
+
+        After bumping to version 2.0.2 of spring boot we get a spring data that is past version 3.0.5
+        which resolves this vulnerability. It is still excluded here since it gives a false positive
+        on the spring-boot-starter-data-rest.
+
+   ]]></notes>
+        <gav regex="true">^org\.springframework\.boot:spring-boot-starter-data-rest:.*$</gav>
+        <cve>CVE-2018-1273</cve>
+    </suppress>
+    <suppress>
+        <notes><![CDATA[
+            file name: spring-boot-2.0.0.RELEASE.jar
+
+            We have a newer version: 2.0.0.RELEASE. Last version to be affected was a 2.0.0.MX (where X is milestone)
+        ]]></notes>
+        <cve>CVE-2017-8046</cve>
+        <cve>CVE-2018-1196</cve>
+    </suppress>
+    <suppress>
+        <notes><![CDATA[
+            file name: spring-boot-starter-data-mongodb-2.0.0.RELEASE.jar
+
+            All four reported issues apply to mongodb 2.x. We are using mongodb 3.x.
+
+            ]]></notes>
+        <gav regex="true">^org\.springframework\.boot:spring-boot-starter-data-mongodb:.*$</gav>
+        <cpe>cpe:/a:mongodb:mongodb</cpe>
+    </suppress>
+    <suppress>
+        <notes><![CDATA[
+           file name: spring-security-core-5.0.0.RELEASE.jar
+           This CVE applies only to the 5.0.0.M1 and is fixed in 5.0.0.M2 and above.
+           Since we use the RELEASE version we are good and this is a false positive.
+        ]]></notes>
+        <gav regex="true">^org\.springframework\.security:spring-security-core:.*$</gav>
+        <cve>CVE-2017-4995</cve>
+    </suppress>
+    <suppress>
+        <notes><![CDATA[
+           file name: spring-security-web-5.0.0.RELEASE.jar
+
+           This CVE applies only to the 5.0.0.M1 and is fixed in 5.0.0.M2 and above.
+           Since we use the RELEASE version we are good and this is a false positive.
+        ]]></notes>
+        <gav regex="true">^org\.springframework\.security:spring-security-web:.*$</gav>
+        <cve>CVE-2017-4995</cve>
+    </suppress>
+    <suppress>
+        <notes><![CDATA[
+           file name: spring-security-config-5.0.0.RELEASE.jar
+
+           This CVE applies only to the 5.0.0.M1 and is fixed in 5.0.0.M2 and above.
+           Since we use the RELEASE version we are good and this is a false positive.
+        ]]></notes>
+        <gav regex="true">^org\.springframework\.security:spring-security-config:.*$</gav>
+        <cve>CVE-2017-4995</cve>
+    </suppress>
+    <suppress>
+        <notes><![CDATA[
+            file name: spring-boot-starter-security-2.0.0.RELEASE.jar
+
+            Only applicable to 2.0.0.M1 - 2.0.0.M7 versions.
+            Since we use the RELEASE version we are good and this is a false positive.
+        ]]></notes>
+        <cve>CVE-2018-1196</cve>
+    </suppress>
+    <suppress>
+        <notes><![CDATA[
+            file name: jul-to-slf4j-1.7.25.jar
+
+            The spring-boot-starter-logging library introduces this as a dependency.
+            For now the OWASP hit is suppressed, pending the release of slf4j 1.8.0-beta3 or newer to fix this.
+            Tracked in http://csceph.rheagroup.com/T1801
+        ]]></notes>
+        <gav regex="true">^org\.slf4j:jul-to-slf4j:.*$</gav>
+        <cve>CVE-2018-8088</cve>
+    </suppress>
+    <suppress>
+        <notes><![CDATA[
+            file name: slf4j-api-1.7.7.jar
+
+            The spring-boot-starter-logging library introduces this as a dependency.
+            For now the OWASP hit is suppressed, pending the release of slf4j 1.8.0-beta3 or newer to fix this.
+            Tracked in http://csceph.rheagroup.com/T1801
+        ]]></notes>
+        <gav regex="true">^org\.slf4j:slf4j-api:.*$</gav>
+        <cve>CVE-2018-8088</cve>
+    </suppress>
+    <suppress>
+        <notes><![CDATA[
+   file name: spring-security-config-5.0.11.RELEASE.jar
+
+        Ignored because CVE regexp seem to be to broad
+   ]]></notes>
+        <gav regex="true">^org\.springframework\.security:spring-security-config:.*$</gav>
+        <cve>CVE-2018-1258</cve>
+    </suppress>
+    <suppress>
+        <notes><![CDATA[
+   file name: spring-security-web-5.0.11.RELEASE.jar
+
+        Ignored because CVE regexp seem to be to broad
+   ]]></notes>
+        <gav regex="true">^org\.springframework\.security:spring-security-web:.*$</gav>
+        <cve>CVE-2018-1258</cve>
+    </suppress>
+    <suppress>
+        <notes><![CDATA[
+   file name: spring-boot-starter-security-2.0.8.RELEASE.jar
+
+        Ignored because CVE regexp seem to be to broad
+   ]]></notes>
+        <gav regex="true">^org\.springframework\.boot:spring-boot-starter-security:.*$</gav>
+        <cve>CVE-2018-1258</cve>
+    </suppress>
+    <suppress>
+        <notes><![CDATA[
+   file name: spring-security-core-5.0.12.RELEASE.jar
+
+        Ignored because CVE regexp seem to be to broad
+   ]]></notes>
+        <gav regex="true">^org\.springframework\.security:spring-security-core:.*$</gav>
+        <cve>CVE-2018-1258</cve>
+    </suppress>
+    <suppress>
+        <notes><![CDATA[
+   file name: spring-security-ldap-5.0.12.RELEASE.jar
+
+        Ignored because CVE regexp seem to be to broad
+   ]]></notes>
+        <gav regex="true">^org\.springframework\.security:spring-security-ldap:.*$</gav>
+        <cve>CVE-2018-1258</cve>
+    </suppress>
+    <suppress>
+        <notes><![CDATA[
+   file name: lombok-1.18.6.jar
+   ]]></notes>
+        <gav regex="true">^org\.projectlombok:lombok:.*$</gav>
+        <cpe>cpe:/a:spice_project:spice</cpe>
+    </suppress>
+    <suppress>
+        <notes><![CDATA[
+file name: jackson-databind-2.9.9.jar
+]]></notes>
+        <gav regex="true">^com\.fasterxml\.jackson\.core:jackson-databind:.*$</gav>
+        <cve>CVE-2019-12814</cve>
+    </suppress>
+    <suppress>
+        <notes><![CDATA[
+file name: jackson-databind-2.9.9.jar
+]]></notes>
+        <gav regex="true">^com\.fasterxml\.jackson\.dataformat:jackson-dataformat-xml:.*$</gav>
+        <cve>CVE-2019-12814</cve>
+    </suppress>
+    <suppress>
+        <notes><![CDATA[
+file name: jackson-databind-2.9.9.3.jar
+]]></notes>
+        <gav regex="true">^com\.fasterxml\.jackson\.dataformat:jackson-dataformat-xml:.*$</gav>
+        <cve>CVE-2019-14379</cve>
+    </suppress>
+    <suppress>
+        <notes><![CDATA[
+file name: jackson-databind-2.9.9.3.jar
+]]></notes>
+        <gav regex="true">^com\.fasterxml\.jackson\.dataformat:jackson-dataformat-xml:.*$</gav>
+        <cve>CVE-2019-14439</cve>
+    </suppress>
+    <suppress>
+        <notes><![CDATA[
+   file name: querydsl-mongodb-4.2.1.jar
+   ]]></notes>
+        <gav regex="true">^com\.querydsl:querydsl-mongodb:.*$</gav>
+        <cve>CVE-2017-18381</cve>
+    </suppress>
+    <suppress>
+        <notes><![CDATA[
+file name: jackson-databind-2.9.9.3.jar
+]]></notes>
+        <gav regex="true">^com\.fasterxml\.jackson\.dataformat:jackson-dataformat-xml:.*$</gav>
+        <cve>CVE-2019-12384</cve>
+    </suppress>
+    <suppress>
+        <notes><![CDATA[
+   file name: querydsl-mongodb-4.2.1.jar
+   ]]></notes>
+        <gav regex="true">^com\.querydsl:querydsl-mongodb:.*$</gav>
+        <cve>CVE-2016-6494</cve>
+    </suppress>
+    <suppress>
+        <notes><![CDATA[
+file name: jackson-databind-2.9.9.3.jar
+]]></notes>
+        <gav regex="true">^com\.fasterxml\.jackson\.core:jackson-databind:.*$</gav>
+        <cve>CVE-2019-16335</cve>
+    </suppress>
+    <suppress>
+        <notes><![CDATA[
+file name: jackson-databind-2.9.9.3.jar
+]]></notes>
+        <gav regex="true">^com\.fasterxml\.jackson\.core:jackson-databind:.*$</gav>
+        <cve>CVE-2019-14540</cve>
+    </suppress>
+    <suppress>
+        <notes><![CDATA[
+file name: jackson-databind-2.9.9.3.jar
+]]></notes>
+        <gav regex="true">^com\.fasterxml\.jackson\.dataformat:jackson-dataformat-xml:.*$</gav>
+        <cve>CVE-2019-16335</cve>
+    </suppress>
+    <suppress>
+        <notes><![CDATA[
+file name: jackson-databind-2.9.9.3.jar
+]]></notes>
+        <gav regex="true">^com\.fasterxml\.jackson\.dataformat:jackson-dataformat-xml:.*$</gav>
+        <cve>CVE-2019-14540</cve>
+    </suppress>
+</suppressions>

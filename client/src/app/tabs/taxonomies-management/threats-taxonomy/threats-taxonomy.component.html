@@ -1,0 +1,233 @@
+<!--------------------------------------------------------------------------------------------------------------------
+// Copyright file="threat-taxonomy.component.html"
+//  © Copyright European Space Agency, 2018-2020
+//
+//  Author: Software developed by RHEA System S.A.
+//
+//  This file is subject to the terms and conditions defined in file 'LICENSE.txt', which is part of this source code package.
+//  No part of the package, including this file, may be copied, modified, propagated, or distributed
+//  except according to the terms contained in the file ‘LICENSE.txt’.
+// -------------------------------------------------------------------------------------------------------------------->
+
+<div class="row" style="margin-top: 4px" *ngIf="threats$ | async as taxonomies">
+  <div [ngClass]="selectedTaxonomies.length === 1 ? 'col-lg-9' : 'col-lg-12'">
+    <p-table #dt [value]="taxonomies" [(selection)]="selectedTaxonomies" [responsive]="true" [rows]="10" [paginator]="true"
+             [tableStyle]="{'font-size':'12px'}"  [resizableColumns]="true" [autoLayout]="true"
+             selectionMode="multiple" [metaKeySelection]="true">
+      <ng-template pTemplate="header">
+        <tr>
+          <th>Name</th>
+          <th>Catalogue Id</th>
+          <th>Description</th>
+          <th>Likelihood</th>
+        </tr>
+        <tr>
+          <th>
+            <div class="ui-inputgroup">
+              <span class="ui-inputgroup-addon"><i class="pi pi-search" style="line-height: 1.25;"></i></span>
+              <input pInputText type="text" (input)="dt.filter($event.target.value, 'name', 'startsWith')"  class="my-input">
+            </div>
+          </th>
+          <th>
+            <div class="ui-inputgroup">
+              <span class="ui-inputgroup-addon"><i class="pi pi-search" style="line-height: 1.25;"></i></span>
+              <input pInputText type="text" (input)="dt.filter($event.target.value, 'catalogueId', 'startsWith')" class="my-input">
+            </div>
+          </th>
+          <th>
+            <div class="ui-inputgroup">
+              <span class="ui-inputgroup-addon"><i class="pi pi-search" style="line-height: 1.25;"></i></span>
+              <input pInputText type="text" (input)="dt.filter($event.target.value, 'description', 'startsWith')" class="my-input" >
+            </div>
+          </th>
+          <th>
+            <p-dropdown [options]="impacts" (onChange)="dt.filter($event.value, 'score.likelihood', 'startsWith')"
+                        appendTo="body" placeholder="Select an Value" [showClear]="true" [style]="{'min-width':0, 'width':'90%', 'font-size': '12px'}"></p-dropdown>
+          </th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-taxonomy let-rowIndex="rowIndex">
+        <tr [pSelectableRow]="taxonomy" [pSelectableRowIndex]="rowIndex">
+          <td>
+            {{taxonomy.name}}<span>&nbsp;&nbsp;</span><i class="fa fa-user-plus fa-xs" *ngIf="taxonomy.catalogue === 'CUSTOM'" pTooltip="Customized by {{taxonomy.author}}"></i>
+          </td>
+          <td>
+            {{taxonomy.catalogueId}}
+          </td>
+          <td>
+            {{taxonomy.description}}
+          </td>
+          <td>
+            {{taxonomy.score.likelihood}}
+          </td>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="summary" let-rowData *ngIf="isAdmin">
+        <div style="text-align:left">
+          <button type="button" pButton icon="fa fa-plus" (click)="showDialog('Create')"></button><span>&nbsp;&nbsp;</span>
+          <button type="button" pButton icon="fa fa-edit"(click)="showDialog('Edit')" *ngIf="selectedTaxonomies.length === 1"></button><span>&nbsp;&nbsp;</span>
+          <button type="button" pButton icon="fa fa-minus" (click)="removeTaxonomy()"  *ngIf="selectedTaxonomies.length > 0"></button>
+        </div>
+      </ng-template>
+
+    </p-table >
+  </div>
+  <div class="col-lg-3 well modal-body" *ngIf="selectedTaxonomies.length === 1">
+    <div class="container-fluid">
+      <div class="row">
+        <label style="font-size: 18px">Threat Details</label>
+      </div>
+      <div class="row">
+        <div class="col-lg-12">
+          <label>Name:</label>
+          <p>{{ selectedTaxonomies[0].name}}</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-6">
+          <label>Catalogue Id:</label>
+          <p>{{ selectedTaxonomies[0].catalogueId}}</p>
+        </div>
+        <div class="col-lg-6">
+          <label>Threat class:</label>
+          <p>{{ selectedTaxonomies[0].threatClass}}</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-12">
+          <label>Description:</label>
+          <p>{{ selectedTaxonomies[0].description}}</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <label>Affected Asset Categories :</label>
+          <p-dataList [value]="selectedTaxonomies[0].affectedAssetsCategories" [style]="{'font-size':'11px', 'max-height': '70px', 'overflow-y':'auto'}">
+            <ng-template let-affectedCategories pTemplate="item">
+              {{ affectedCategories }}
+            </ng-template>
+          </p-dataList>
+        </div>
+      </div>
+      <div class="row" style="margin-top: 5px">
+
+        <div class="col-md-12" *ngIf="selectedTaxonomies[0].associatedVulnerabilities.length>0">
+          <label>Associated Vulnerabilities :</label>
+          <p-dataList [value]="selectedTaxonomies[0].associatedVulnerabilities" [style]="{'font-size':'11px', 'max-height': '70px', 'overflow-y':'auto'}" >
+            <ng-template let-associatedVulnerability pTemplate="item">
+              {{ associatedVulnerability }}
+            </ng-template>
+          </p-dataList>
+        </div>
+      </div>
+      <div class="row" style="margin-top: 5px">
+        <div class="col-lg-6" *ngIf="selectedTaxonomies[0].author">
+          <label>Author:</label>
+          <p>{{ selectedTaxonomies[0].author}}</p>
+        </div>
+        <div class="col-lg-6">
+          <label>Likelihood:</label>
+          <p>{{ selectedTaxonomies[0].score.likelihood}}</p>
+        </div>
+      </div>
+      <div class="row" *ngIf="selectedTaxonomies[0].event.name">
+        <label>Event</label>
+        <hr>
+      </div>
+      <div class="row" *ngIf="selectedTaxonomies[0].event.name">
+        <div class="col-lg-4">
+          <label>Name:</label>
+          <p>{{ selectedTaxonomies[0].event.name}}</p>
+        </div>
+        <div class="col-lg-8">
+          <label>Description:</label>
+          <p>{{ selectedTaxonomies[0].event.description}}</p>
+        </div>
+      </div>
+      <div class="row" *ngIf="selectedTaxonomies[0].actor.name">
+        <label >Actor</label>
+        <hr>
+      </div>
+      <div class="row" *ngIf="selectedTaxonomies[0].actor.name">
+        <div class="col-lg-4">
+          <label>Name:</label>
+          <p>{{ selectedTaxonomies[0].actor.name}}</p>
+        </div>
+        <div class="col-lg-8">
+          <label>Description:</label>
+          <p>{{ selectedTaxonomies[0].actor.description}}</p>
+        </div>
+      </div>
+      <div class="row" *ngIf="selectedTaxonomies[0].process.name">
+        <label >Process</label>
+        <hr>
+      </div>
+      <div class="row" *ngIf="selectedTaxonomies[0].process.name">
+        <div class="col-lg-4">
+          <label>Name:</label>
+          <p>{{ selectedTaxonomies[0].process.name}}</p>
+        </div>
+        <div class="col-lg-8">
+          <label>Description:</label>
+          <p>{{ selectedTaxonomies[0].process.description}}</p>
+        </div>
+      </div>
+      <div class="row" *ngIf="selectedTaxonomies[0].access.name">
+        <label >Access</label>
+        <hr>
+      </div>
+      <div class="row" *ngIf="selectedTaxonomies[0].access.name">
+        <div class="col-lg-4">
+          <label>Name:</label>
+          <p>{{ selectedTaxonomies[0].access.name}}</p>
+        </div>
+        <div class="col-lg-8">
+          <label>Description:</label>
+          <p>{{ selectedTaxonomies[0].access.description}}</p>
+        </div>
+      </div>
+      <div class="row" *ngIf="selectedTaxonomies[0].place.name">
+        <label >Place</label>
+        <hr>
+      </div>
+      <div class="row" *ngIf="selectedTaxonomies[0].place.name">
+        <div class="col-lg-4">
+          <label>Name:</label>
+          <p>{{ selectedTaxonomies[0].place.name}}</p>
+        </div>
+        <div class="col-lg-8">
+          <label>Description:</label>
+          <p>{{ selectedTaxonomies[0].place.description}}</p>
+        </div>
+      </div>
+      <div class="row" *ngIf="selectedTaxonomies[0].time.name">
+        <label >Time</label>
+        <hr>
+      </div>
+      <div class="row" *ngIf="selectedTaxonomies[0].time.name">
+        <div class="col-lg-4">
+          <label>Name:</label>
+          <p>{{ selectedTaxonomies[0].time.name}}</p>
+        </div>
+        <div class="col-lg-8">
+          <label>Description:</label>
+          <p>{{ selectedTaxonomies[0].time.description}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<p-confirmDialog key="account" [style]="{width: '50vw'}"></p-confirmDialog>
+
+  <app-add-edit-threat-row
+    [taxonomy]="{operation: this.currentOperation, value: this.selectedTaxonomies}"
+    (closePopUp)="onClose($event)"
+    *ngIf="showPopup"
+  ></app-add-edit-threat-row>
+
+<p-toast position="center"></p-toast>
+
+
+
+

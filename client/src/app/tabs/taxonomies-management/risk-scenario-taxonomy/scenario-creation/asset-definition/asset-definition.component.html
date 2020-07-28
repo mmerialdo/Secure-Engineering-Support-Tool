@@ -1,0 +1,37 @@
+<!-------------------------------------------------------------------------------------------------------------------
+// Copyright file="asset-definition.component.html"
+//  © Copyright European Space Agency, 2018-2020
+//
+//  Author: Software developed by RHEA System S.A.
+//
+//  This file is subject to the terms and conditions defined in file 'LICENSE.txt', which is part of this source code package.
+//  No part of the package, including this file, may be copied, modified, propagated, or distributed
+//  except according to the terms contained in the file ‘LICENSE.txt’.
+// -------------------------------------------------------------------------------------------------------------------->
+
+<div class="container-fluid">
+  <p-card header="Define the Asset: ">
+    <div class="row" [formGroup]="form">
+      <div class="col-lg-5">
+        <label>Primary Asset Categories</label>
+        <p-listbox [options]="primaryCategories" formControlName="assetType" optionLabel="value" [checkbox]="true"
+                   [filter]="true" [listStyle]="{'max-height':'300px'}" [style]="{'width':'100%', 'font-size': '13px'}"
+                   (onChange)="updateSecondaryCategories()">
+        </p-listbox>
+      </div>
+      <div class="col-lg-4">
+        <label>Secondary Asset Categories</label>
+        <p-listbox [options]="secondaryCategories" formControlName="supportingAsset" optionLabel="value" [checkbox]="true"
+                   [filter]="true" [listStyle]="{'max-height':'300px'}" [style]="{'width':'100%', 'font-size': '13px'}">
+        </p-listbox>
+      </div>
+      <div class="col-lg-3">
+        <label>Security Dimensions</label>
+          <div class="ui-g-12" *ngFor="let impact of impactTypes" >
+            <p-radioButton name="groupname" value="{{ impact }}" label="{{ impact }}" formControlName="aice"></p-radioButton>
+          </div>
+      </div>
+    </div>
+    <div class="row"></div>
+  </p-card>
+</div>

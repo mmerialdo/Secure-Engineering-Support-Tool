@@ -1,0 +1,79 @@
+/* --------------------------------------------------------------------------------------------------------------------
+// Copyright file="styles.css"
+//  © Copyright European Space Agency, 2018-2020
+//
+//  Author: Software developed by RHEA System S.A.
+//
+//  This file is subject to the terms and conditions defined in file 'LICENSE.txt', which is part of this source code package.
+//  No part of the package, including this file, may be copied, modified, propagated, or distributed
+//  except according to the terms contained in the file ‘LICENSE.txt’.
+// --------------------------------------------------------------------------------------------------------------------
+*/
+
+html,body{
+
+  /*background-color: #699E8B;*/
+  height: 100%;
+  background-repeat: no-repeat;
+  /*background-image: linear-gradient(rgb(104, 145, 162), rgb(12, 97, 33));*/
+
+  background-image: linear-gradient(rgb(105,158,139),rgb(173,197,187),rgb(255,255,255));
+
+  /*background-image: linear-gradient(rgb(220,220,220),rgb(255,255,255),rgb(255,255,255));*/
+
+  /*background-image: linear-gradient(rgb(201, 225, 215),rgb(255,255,255));*/
+
+  /*background-image: linear-gradient(rgb(173,197,187),rgb(255,255,255));*/
+/*colore screens matteo*/
+
+  /*background-image: linear-gradient(rgb(220,220,220),rgb(211,211,211),rgb(255,255,255));*/
+
+
+}
+
+/*tables' margin*/
+/*.ui-datatable .ui-datatable-thead > tr > th, .ui-datatable .ui-datatable-tfoot > tr > td, .ui-datatable .ui-datatable-data > tr > td{*/
+
+  /*border-color: transparent ;*/
+
+/*}*/
+
+
+
+/* remove backgroung-color in the first tab*/
+
+#prova{
+  position: absolute;
+  top: 25%;
+  left: 43%;
+  margin-top: -50px;
+  margin-left: -50px;
+
+}
+.ui-picklist-target-controls{
+  display: none !important;
+}
+.ui-picklist-source-controls {
+  display:none !important;
+}
+.ui-picklist-listwrapper{
+  width:15% !important;
+}
+.ui-datalist-content ui-widget-content{
+
+  height: 130px;
+
+
+}
+
+.ui-steps .ui-steps-item {
+  width: 25%;
+}
+
+
+
+
+
+
+
+

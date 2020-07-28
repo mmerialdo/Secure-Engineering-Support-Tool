@@ -1,0 +1,70 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+	<!DOCTYPE mapper PUBLIC '-//mybatis.org//DTD Mapper 3.0//EN'
+	  'http://mybatis.org/dtd/mybatis-3-mapper.dtd'>
+<mapper namespace='org.crmf.persistency.mapper.audit.QuestionnaireMapper'>
+
+	<resultMap type='SestQuestionnaireModel' id='SestQuestionnaireModel'>
+		<result property='identifier' column='SESTOBJ_ID' />
+		<result property='auditId' column='AUDIT_ID' />
+		<result property='type' column='QTYPE' />
+		<result property='questionnaireModelJson' column='QUESTIONNAIRE_MODEL_JSON' />
+	</resultMap>
+
+	<insert id='insert' parameterType='SestQuestionnaireModel' useGeneratedKeys='true'
+		keyProperty='id' keyColumn='ID'>
+		INSERT INTO QUESTIONNAIRE_MODEL(IX, QTYPE, CATEGORY, AUDIT_ID, SESTOBJ_ID, QUESTIONNAIRE_MODEL_JSON)
+		VALUES (#{ix}, #{type}, #{category}, #{auditId}, #{identifier}, #{questionnaireModelJson})
+	</insert>
+
+	<update id='update' parameterType='map'>
+		UPDATE QUESTIONNAIRE_MODEL
+		SET
+		QUESTIONNAIRE_MODEL_JSON = #{questionnaireModelJson}
+		WHERE SESTOBJ_ID = #{sestobjId}
+	</update>
+
+	<select id='getIdByIdentifier' parameterType='String'
+		resultType='int'>
+		SELECT id
+		FROM QUESTIONNAIRE_MODEL
+		WHERE SESTOBJ_ID = '${value}'
+	</select>
+
+	<select id='getAllQuestionnaireNames' resultMap='SestQuestionnaireModel'>
+		SELECT ID, IX, QTYPE, CATEGORY, SESTOBJ_ID
+		FROM QUESTIONNAIRE_MODEL
+		WHERE AUDIT_ID = '${value}'
+		ORDER BY ID
+	</select>
+
+	<select id='getQuestionnaireByCategory' parameterType='String' resultMap='SestQuestionnaireModel'>
+		SELECT *
+		FROM QUESTIONNAIRE_MODEL
+		WHERE CATEGORY = '${value}'
+		ORDER BY ID
+	</select>
+
+	<select id='getByAuditId' parameterType='int' resultMap='SestQuestionnaireModel'>
+		SELECT *
+		FROM QUESTIONNAIRE_MODEL
+		WHERE AUDIT_ID = '${value}'
+	</select>
+
+	<select id='getTypeByAuditId' parameterType='int' resultMap='SestQuestionnaireModel'>
+		SELECT IX, QTYPE, CATEGORY, SESTOBJ_ID
+		FROM QUESTIONNAIRE_MODEL
+		WHERE AUDIT_ID = '${value}'
+	</select>
+
+	<select id='getByIdentifier' parameterType='int' resultMap='SestQuestionnaireModel'>
+		SELECT *
+		FROM QUESTIONNAIRE_MODEL
+		WHERE SESTOBJ_ID = '${value}'
+	</select>
+	
+	<delete id='delete' parameterType='int'>
+		DELETE FROM QUESTIONNAIRE_MODEL WHERE ID =
+		'${value}'
+	</delete>
+
+</mapper>

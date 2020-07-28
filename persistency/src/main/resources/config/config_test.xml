@@ -1,0 +1,49 @@
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Confi 3.0//EN" "http://www.mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>
+	<properties resource="config/database_test.properties"></properties>
+
+	<typeAliases>
+		<typeAlias alias="Sestuser" type="org.crmf.persistency.domain.user.Sestuser"></typeAlias>
+		<typeAlias alias="Sestobj" type="org.crmf.persistency.domain.general.Sestobj"></typeAlias>
+		<typeAlias alias="Role" type="org.crmf.persistency.domain.user.Role"></typeAlias>
+		<typeAlias alias="Assprocedure" type="org.crmf.persistency.domain.project.AssProcedure"></typeAlias>
+		<typeAlias alias="Assprofile" type="org.crmf.persistency.domain.project.AssProfile"></typeAlias>
+		<typeAlias alias="Assproject" type="org.crmf.persistency.domain.project.AssProject"></typeAlias>
+		<typeAlias alias="Asstemplate" type="org.crmf.persistency.domain.project.AssTemplate"></typeAlias>
+		<typeAlias alias="AssProfileTemplate" type="org.crmf.persistency.domain.project.AssProfileTemplate"></typeAlias>
+		<typeAlias alias="Sysproject" type="org.crmf.persistency.domain.project.SysProject"></typeAlias>
+		<typeAlias alias="Sysparticipant" type="org.crmf.persistency.domain.project.SysParticipant"></typeAlias>
+		<typeAlias alias="Requirement" type="org.crmf.persistency.domain.requirement.Requirement"></typeAlias>
+		<typeAlias alias="Assaudit" type="org.crmf.persistency.domain.audit.Assaudit"></typeAlias>
+		<typeAlias alias="AssauditDefaultJSON" type="org.crmf.persistency.domain.audit.AssauditDefaultJSON"></typeAlias>
+		<typeAlias alias="SestAuditModel" type="org.crmf.model.audit.SestAuditModel"></typeAlias>
+		<typeAlias alias="SestQuestionnaireModel" type="org.crmf.model.audit.SestQuestionnaireModel"></typeAlias>
+		<typeAlias alias="SestAssetModel" type="org.crmf.persistency.domain.asset.SestAssetModel"></typeAlias>
+		<typeAlias alias="SestVulnerabilityModel" type="org.crmf.persistency.domain.vulnerability.SestVulnerabilityModel"></typeAlias>
+		<typeAlias alias="SestVulnerability" type="org.crmf.persistency.domain.vulnerability.SestVulnerability"></typeAlias>
+		<typeAlias alias="SestSafeguardModel" type="org.crmf.persistency.domain.safeguard.SestSafeguardModel"></typeAlias>
+		<typeAlias alias="SestThreat" type="org.crmf.persistency.domain.threat.SestThreat"></typeAlias>
+		<typeAlias alias="SestThreatModel" type="org.crmf.persistency.domain.threat.SestThreatModel"></typeAlias>
+		<typeAlias alias="SestRiskModel" type="org.crmf.persistency.domain.risk.SestRiskModel"></typeAlias>
+		<typeAlias alias="SeriousnessScale" type="org.crmf.persistency.domain.risk.SeriousnessScale"></typeAlias>
+		<typeAlias alias="StatusImpactScale" type="org.crmf.persistency.domain.risk.StatusImpactScale"></typeAlias>
+		<typeAlias alias="StatusLikelihoodScale" type="org.crmf.persistency.domain.risk.StatusLikelihoodScale"></typeAlias>
+		<typeAlias alias="SestRiskScenarioReference" type="org.crmf.persistency.domain.risk.SestRiskScenarioReference"></typeAlias>
+		<typeAlias alias="VulnerabilityReferenceKeyFields" type="org.crmf.persistency.domain.vulnerability.VulnerabilityReferenceKeyFields"></typeAlias>
+		<typeAlias alias="SecRequirement" type="org.crmf.persistency.domain.secrequirement.SecRequirement"></typeAlias>
+		<typeAlias alias="SecRequirementSafeguard" type="org.crmf.persistency.domain.secrequirement.SecRequirementSafeguard"></typeAlias>
+		<typeAlias alias="SestRiskTreatmentModel" type="org.crmf.persistency.domain.risk.SestRiskTreatmentModel"></typeAlias>
+	</typeAliases>
+	<environments default="development">
+		<environment id="development">
+			<transactionManager type="JDBC" />
+			<dataSource type="POOLED">
+				<property name="driver" value="${jdbc.driverClassName}" />
+				<property name="url" value="${jdbc.url}" />
+				<property name="username" value="${jdbc.username}" />
+				<property name="password" value="${jdbc.password}" />
+			</dataSource>
+		</environment>
+	</environments>	
+</configuration>

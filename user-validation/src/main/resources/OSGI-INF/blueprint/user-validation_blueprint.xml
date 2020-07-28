@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- This blueprint describes the needed dependencies for the sest-user-validation bundle and the exposed interfaces -->
+<blueprint xmlns="http://www.osgi.org/xmlns/blueprint/v1.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:cm="http://aries.apache.org/blueprint/xmlns/blueprint-cm/v1.1.0"
+	xmlns:camel="http://camel.apache.org/schema/blueprint" xmlns:cxf="http://cxf.apache.org/blueprint/core"
+	xsi:schemaLocation="
+		  http://www.osgi.org/xmlns/blueprint/v1.0.0 http://www.osgi.org/xmlns/blueprint/v1.0.0/blueprint.xsd
+		  http://www.osgi.org/xmlns/blueprint-ext/v1.1.0 https://svn.apache.org/repos/asf/aries/tags/blueprint-0.4.1/blueprint-core/src/main/resources/org/apache/aries/blueprint/ext/blueprint-ext.xsd  
+		  http://camel.apache.org/schema/blueprint http://camel.apache.org/schema/blueprint/camel-blueprint.xsd
+		  http://aries.apache.org/blueprint/xmlns/blueprint-cm/v1.1.0 http://aries.apache.org/schemas/blueprint-cm/blueprint-cm-1.1.0.xsd">
+
+	
+	<reference id="userDBService" timeout="300000" availability="optional"
+		interface="org.crmf.persistency.mapper.user.UserServiceInterface" />
+
+	<reference id="roleDBService" timeout="300000" availability="optional"
+		interface="org.crmf.persistency.mapper.user.RoleServiceInterface" />
+
+	<service id="permissionManagerService" ref="userPermissionRef"
+		interface="org.crmf.user.validation.permission.UserPermissionManagerInputInterface" />
+		
+	<bean id="userPermissionRef" class="org.crmf.user.validation.permission.UserPermissionManagerInput">
+		<property name="userService" ref="userDBService"></property>
+		<property name="roleService" ref="roleDBService"></property>
+	</bean>
+		
+</blueprint>
+
+	

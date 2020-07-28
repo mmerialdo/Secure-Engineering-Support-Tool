@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- This blueprint describes the needed dependencies for the sest-persistency bundle and the exposed interfaces -->
+<blueprint xmlns="http://www.osgi.org/xmlns/blueprint/v1.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:cm="http://aries.apache.org/blueprint/xmlns/blueprint-cm/v1.1.0"
+	xsi:schemaLocation="
+		  http://aries.apache.org/blueprint/xmlns/blueprint-cm/v1.1.0 http://aries.apache.org/schemas/blueprint-cm/blueprint-cm-1.1.0.xsd">
+
+	<cm:property-placeholder id="persistency.placeholder"
+		persistent-id="persistency" />
+		
+    <service id="sestObjService" ref="sestObjRef"
+		interface="org.crmf.persistency.mapper.general.SestObjServiceInterface" />
+		
+	<service id="userService" ref="userServiceRef"
+		interface="org.crmf.persistency.mapper.user.UserServiceInterface" />
+		
+	<service id="roleService" ref="roleServiceRef"
+		interface="org.crmf.persistency.mapper.user.RoleServiceInterface" />
+		
+	<service id="projectService" ref="projectServiceRef"
+		interface="org.crmf.persistency.mapper.project.AssprojectServiceInterface" />
+		
+	<service id="profileService" ref="profileServiceRef"
+		interface="org.crmf.persistency.mapper.project.AssprofileServiceInterface" />
+		
+	<service id="procedureService" ref="procedureServiceRef"
+		interface="org.crmf.persistency.mapper.project.AssprocedureServiceInterface" />
+		
+	<service id="templateService" ref="templateServiceRef"
+		interface="org.crmf.persistency.mapper.project.AsstemplateServiceInterface" />
+		
+	<service id="auditService" ref="auditServiceRef"
+		interface="org.crmf.persistency.mapper.audit.AssAuditServiceInterface" />
+
+	<service id="isoService" ref="isoServiceRef"
+			 interface="org.crmf.persistency.mapper.audit.ISOControlServiceInterface" />
+
+	<service id="questionnaireService" ref="questionnaireServiceRef"
+		interface="org.crmf.persistency.mapper.audit.QuestionnaireServiceInterface" />
+		
+	<service id="sysRequirementService" ref="sysRequirementServiceRef"
+		interface="org.crmf.persistency.mapper.requirement.RequirementServiceInterface" />
+		
+	<service id="assetService" ref="assetServiceRef"
+		interface="org.crmf.persistency.mapper.asset.AssetServiceInterface" />
+		
+	<service id="vulnerabilityService" ref="vulnerabilityServiceRef"
+		interface="org.crmf.persistency.mapper.vulnerability.VulnerabilityServiceInterface" />
+		
+	<service id="threatService" ref="threatServiceRef"
+		interface="org.crmf.persistency.mapper.threat.ThreatServiceInterface" />
+		
+		<bean id="safeguardServiceRef" class="org.crmf.persistency.mapper.safeguard.SafeguardService">
+		<property name="sessionFactory" ref="sessionFactoryRef" />
+	</bean>
+	
+	<service id="secrequirementService" ref="secrequirementServiceRef"
+		interface="org.crmf.persistency.mapper.secrequirement.SecRequirementServiceInterface" />
+
+	<service id="safeguardService" ref="safeguardServiceRef"
+		interface="org.crmf.persistency.mapper.safeguard.SafeguardServiceInterface" />
+
+	<service id="riskService" ref="riskServiceRef"
+		interface="org.crmf.persistency.mapper.risk.RiskServiceInterface" />
+		
+	<service id="riskTreatmentService" ref="riskTreatmentServiceRef"
+		interface="org.crmf.persistency.mapper.risk.RiskTreatmentServiceInterface" />
+		
+	<bean id="sessionFactoryRef" class="org.crmf.persistency.session.PersistencySessionFactory"
+		init-method="createSessionFactory">
+		<property name="context" ref="blueprintBundleContext" />
+	</bean>
+
+	<bean id="sestObjRef" class="org.crmf.persistency.mapper.general.SestObjService">
+		<property name="sessionFactory" ref="sessionFactoryRef" />
+	</bean>
+
+	<bean id="userServiceRef" class="org.crmf.persistency.mapper.user.UserService">
+		<property name="sessionFactory" ref="sessionFactoryRef" />
+		<property name="roleService" ref="roleServiceRef" />
+	</bean>
+
+	<bean id="roleServiceRef" class="org.crmf.persistency.mapper.user.RoleService">
+		<property name="sessionFactory" ref="sessionFactoryRef" />
+	</bean>
+		
+	<bean id="syspartRef" class="org.crmf.persistency.mapper.project.SysparticipantService">
+		<property name="sessionFactory" ref="sessionFactoryRef" />
+	</bean>
+	
+	<bean id="sysprjRef" class="org.crmf.persistency.mapper.project.SysprojectService">
+		<property name="sessionFactory" ref="sessionFactoryRef" />
+		<property name="syspService" ref="syspartRef" />
+	</bean>
+	
+	<bean id="questionnaireRef" class="org.crmf.persistency.mapper.audit.QuestionnaireService">
+		<property name="sessionFactory" ref="sessionFactoryRef" />
+	</bean>
+
+	<bean id="auditDefaultRef" class="org.crmf.persistency.mapper.audit.AssAuditDefaultService">
+		<property name="sessionFactory" ref="sessionFactoryRef" />
+	</bean>
+
+	<bean id="isoServiceRef" class="org.crmf.persistency.mapper.audit.ISOControlService">
+		<property name="auditDefaultService" ref="auditDefaultRef" />
+	</bean>
+
+	<bean id="auditServiceRef" class="org.crmf.persistency.mapper.audit.AssAuditService">
+		<property name="sessionFactory" ref="sessionFactoryRef" />
+		<property name="questionnaireService" ref="questionnaireRef" />
+		<property name="auditDefaultService" ref="auditDefaultRef" />
+	</bean>
+
+	<bean id="projectServiceRef" class="org.crmf.persistency.mapper.project.AssprojectService">
+		<property name="sessionFactory" ref="sessionFactoryRef" />
+		<property name="sysprjService" ref="sysprjRef" />
+		<property name="syspartService" ref="syspartRef" />
+		<property name="auditService" ref="auditServiceRef" />
+		<property name="roleService" ref="roleServiceRef" />
+	</bean>
+
+	<bean id="profileServiceRef" class="org.crmf.persistency.mapper.project.AssprofileService">
+		<property name="sessionFactory" ref="sessionFactoryRef" />
+	</bean>
+
+	<bean id="procedureServiceRef" class="org.crmf.persistency.mapper.project.AssprocedureService">
+		<property name="sessionFactory" ref="sessionFactoryRef" />
+	</bean>
+
+	<bean id="templateServiceRef" class="org.crmf.persistency.mapper.project.AsstemplateService">
+		<property name="sessionFactory" ref="sessionFactoryRef" />
+	</bean>
+
+	<bean id="questionnaireServiceRef" class="org.crmf.persistency.mapper.audit.QuestionnaireService">
+		<property name="sessionFactory" ref="sessionFactoryRef" />
+	</bean>
+
+	<bean id="sysRequirementServiceRef" class="org.crmf.persistency.mapper.requirement.RequirementService">
+		<property name="sessionFactory" ref="sessionFactoryRef" />
+	</bean>
+		
+	<bean id="assetServiceRef" class="org.crmf.persistency.mapper.asset.AssetService">
+		<property name="sessionFactory" ref="sessionFactoryRef" />
+	</bean>
+		
+	<bean id="vulnerabilityServiceRef" class="org.crmf.persistency.mapper.vulnerability.VulnerabilityService">
+		<property name="sessionFactory" ref="sessionFactoryRef" />
+	</bean>
+		
+	<bean id="threatServiceRef" class="org.crmf.persistency.mapper.threat.ThreatService">
+		<property name="sessionFactory" ref="sessionFactoryRef" />
+	</bean>
+		
+	<bean id="riskServiceRef" class="org.crmf.persistency.mapper.risk.RiskService">
+		<property name="sessionFactory" ref="sessionFactoryRef" />
+	</bean>
+
+	<bean id="secrequirementServiceRef" class="org.crmf.persistency.mapper.secrequirement.SecRequirementService">
+		<property name="sessionFactory" ref="sessionFactoryRef" />
+		<property name="auditDefaultService" ref="auditDefaultRef" />
+	</bean>
+			
+	<bean id="riskTreatmentServiceRef" class="org.crmf.persistency.mapper.risk.RiskTreatmentService">
+		<property name="sessionFactory" ref="sessionFactoryRef" />
+	</bean>
+		
+</blueprint>

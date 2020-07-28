@@ -1,0 +1,110 @@
+{
+  "project": {
+    "version": "1.0.0-beta.28.3",
+    "name": "sestclient"
+  },
+  "apps": [
+    {
+      "root": "src",
+      "outDir": "dist",
+      "assets": [
+        "assets",
+        "favicon.ico"
+      ],
+      "index": "index.html",
+      "main": "main.ts",
+      "polyfills": "polyfills.ts",
+      "test": "test.ts",
+      "tsconfig": "tsconfig.json",
+      "prefix": "app",
+      "styles": [
+        "../node_modules/bootstrap/dist/css/bootstrap.css",
+        "../node_modules/primeng/resources/primeng.min.css",
+        "../node_modules/primeng/resources/themes/omega/theme.css",
+        "../node_modules/font-awesome/css/font-awesome.min.css",
+
+        "styles.css"
+      ],
+      "scripts": [
+
+        "../src/assets/library/jquery-1.12.0.min.js",
+        "../src/assets/library/jquery.autoresize.js",
+        "../src/assets/library/jquery-touch_punch.js",
+        "../src/assets/library/jquery.contextmenu.js",
+        "../src/assets/library/shifty.js",
+        "../src/assets/library/raphael.js",
+        "../src/assets/library/rgbcolor.js",
+        "../src/assets/library/StackBlur.js",
+        "../src/assets/library/canvg.js",
+        "../src/assets/library/Class.js",
+        "../src/assets/library/json2.js",
+        "../src/assets/library/pathfinding-browser.min.js",
+
+
+        "../src/assets/library/draw2d.js",
+
+        "../src/assets/library/LabeledEnd.js",
+
+        "../src/assets/library/CollapsibleLocator.js",
+        "../src/assets/library/CollapsibleInputLocator.js",
+        "../src/assets/library/CollapsibleOutputLocator.js",
+        "../src/assets/library/CollapsibleShape.js",
+        "../src/assets/library/CollapsibleShapeThreat.js"
+
+
+
+
+
+
+
+
+
+      ],
+
+
+        "environmentSource": "environments/environment.ts",
+      "environments": {
+        "source": "environments/environment.ts",
+        "dev": "environments/environment.ts",
+        "prod": "environments/environment.prod.ts"
+      }
+
+    }
+  ],
+  "e2e": {
+    "protractor": {
+      "config": "./protractor.conf.js"
+    }
+  },
+  "lint": [
+    {
+      "files": "src/**/*.ts",
+      "project": "src/tsconfig.json"
+    },
+    {
+      "files": "e2e/**/*.ts",
+      "project": "e2e/tsconfig.json"
+    }
+  ],
+  "test": {
+    "karma": {
+      "config": "./karma.conf.js"
+    }
+  },
+  "defaults": {
+    "styleExt": "css",
+    "prefixInterfaces": false,
+    "inline": {
+      "style": false,
+      "template": false
+    },
+    "spec": {
+      "class": false,
+      "component": true,
+      "directive": true,
+      "module": false,
+      "pipe": true,
+      "service": true
+    }
+  }
+}

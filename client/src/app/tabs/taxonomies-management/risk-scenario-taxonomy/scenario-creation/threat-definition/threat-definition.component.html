@@ -1,0 +1,83 @@
+<!--------------------------------------------------------------------------------------------------------------------
+// Copyright file="threat-definition.component.html"
+//  © Copyright European Space Agency, 2018-2020
+//
+//  Author: Software developed by RHEA System S.A.
+//
+//  This file is subject to the terms and conditions defined in file 'LICENSE.txt', which is part of this source code package.
+//  No part of the package, including this file, may be copied, modified, propagated, or distributed
+//  except according to the terms contained in the file ‘LICENSE.txt’.
+// -------------------------------------------------------------------------------------------------------------------->
+
+<div class="container-fluid" *ngIf="filteredThreats$ | async as taxonomies">
+  <p-card header="Select the Threat: ">
+    <div class="row">
+      <div class="col-lg-12">
+        <p-table #dt [value]="taxonomies" [(selection)]="selectedTaxonomy" [responsive]="true" [rows]="10" [paginator]="true"
+                 (onRowSelect)="onSelect()" (onRowUnselect)="onDeselect()" [tableStyle]="{'font-size':'11px'}"  [resizableColumns]="true" [autoLayout]="true"
+                 selectionMode="single">
+          <ng-template pTemplate="header">
+            <tr>
+              <th>Name</th>
+              <th>Catalogue Id</th>
+              <th>Description</th>
+              <th>Likelihood</th>
+            </tr>
+            <tr>
+              <th>
+                <div class="ui-inputgroup">
+                  <span class="ui-inputgroup-addon"><i class="pi pi-search" style="line-height: 1.25;"></i></span>
+                  <input pInputText type="text" (input)="dt.filter($event.target.value, 'name', 'contains')"  class="my-input">
+                </div>
+              </th>
+              <th>
+                <div class="ui-inputgroup">
+                  <span class="ui-inputgroup-addon"><i class="pi pi-search" style="line-height: 1.25;"></i></span>
+                  <input pInputText type="text" (input)="dt.filter($event.target.value, 'catalogueId', 'contains')" class="my-input">
+                </div>
+              </th>
+              <th>
+                <div class="ui-inputgroup">
+                  <span class="ui-inputgroup-addon"><i class="pi pi-search" style="line-height: 1.25;"></i></span>
+                  <input pInputText type="text" (input)="dt.filter($event.target.value, 'description', 'contains')" class="my-input" >
+                </div>
+              </th>
+              <th>
+                <p-dropdown [options]="impacts" (onChange)="dt.filter($event.value, 'score.likelihood', 'equals')"
+                            appendTo="body" placeholder="Select an Value" [showClear]="true" [style]="{'min-width':0, 'width':'90%', 'font-size': '12px'}"></p-dropdown>
+              </th>
+            </tr>
+          </ng-template>
+          <ng-template pTemplate="body" let-taxonomy let-rowIndex="rowIndex">
+            <tr [pSelectableRow]="taxonomy" [pSelectableRowIndex]="rowIndex">
+              <td>
+                {{taxonomy.name}}<span>&nbsp;&nbsp;</span><i class="fa fa-user-plus fa-xs" *ngIf="taxonomy.catalogue === 'CUSTOM'" pTooltip="Added by {{taxonomy.author}}"></i>
+              </td>
+              <td>
+                {{taxonomy.catalogueId}}
+              </td>
+              <td>
+                {{taxonomy.description}}
+              </td>
+              <td>
+                {{taxonomy.score.likelihood}}
+              </td>
+            </tr>
+          </ng-template>
+          <ng-template pTemplate="summary" let-rowData>
+            <div style="text-align:left">
+              <button type="button" pButton icon="fa fa-plus" (click)="showDialog('Create')"></button>
+            </div>
+          </ng-template>
+
+        </p-table >
+      </div>
+    </div>
+  </p-card>
+</div>
+<app-add-edit-threat-row
+  [taxonomy]="{operation: 'Create', value: this.selectedTaxonomy}"
+  (closePopUp)="onClose($event)"
+  *ngIf="showPopup"
+>
+</app-add-edit-threat-row>

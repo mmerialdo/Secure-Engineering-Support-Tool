@@ -1,0 +1,158 @@
+4|MEHARI_ExtendedNetwork|||||||
+04A|Security of the Wide-area Network architecture and service continuity|||||||
+04A01|Functional security of the Wide-area Network architecture|||||||
+04A01-01|Have the requirements of service continuity of the Wide-area Network been analyzed and, if necessary, has a redundant architecture been determined for network connection points, equipment and network meshing?|4|2||E2|||
+04A01-02|Has a systematic search for single points of failure been carried out and has it been ensured that subsidiary equipment (power supply and air conditioning etc.) does not introduce or eliminate the redundancy expected in the equipment or network architecture?|4|2||E3|||
+04A01-03|Has a verification of the average and peak load been carried out for each segment of the Wide-area Network and has the compatibility of the network and associated equipment at this load level been verified and is this verification regularly repeated?|4|2||E2|||
+04A01-04|Has this analysis been complemented by a study of network capacity to ensure reliability of communications in all cases of failure of a single link or piece of equipment?|4|2||E3|||
+04A01-05|Is there a dynamic measurement of network load and are load balancing tools available?|4|||E2|||
+04A01-06|Do network monitoring and configuration tools allow real time corrective action compatible with the needs of the users?|4|2||E2|||
+04A01-07|Are overload detection and load balancing tools accessible only by administrators and are they protected by strengthened access control?|2|2||R2|||
+04A01-08|Is any failure or shutdown of network overload detection and equilibrating equipment signaled immediately to the monitoring center and to network administrators?|2|3||R1|||
+04A01-09|Are regular performance tests of load detection equipment and reconfiguration mechanisms carried out?|2|3||C1|||
+04A01-10|Are regular audits carried out of equipment parameters and procedures associated with the load detection and reconfiguration systems?|1|3||C1|||
+04A01-11|Are regular audits carried out of the procedures associated to the load detection and  reconfiguration systems?|1|3||C1|||
+04A02|Management of Wide-area Network equipment maintenance|||||||
+04A02-01|Is all equipment covered by a maintenance contract?|2|||E1|11.2.4|9.2.4|
+04A02-02|Has all critical production equipment been identified, has their performance capability been controlled and have the acceptable and maximum downtime limits been documented?|4|||E2|||
+04A02-03|Have specifically adapted clauses related to these requirements been set down within maintenance contracts?|4|2||E2|||
+04A02-04|Are the penalties of non-compliance with these clauses sufficiently persuasive for the contract holder?|4|2||E3|||
+04A02-05|Have escalation procedures been detailed in the case of non-compliance or difficulties in maintenance and do they anticipate the intervention of specialists within a short delay commensurate with the criticality of the equipment?|2|3||R1|||
+04A02-06|Has the number and proximity of specialists been detailed and do they guarantee a sufficiently good level of maintenance within an acceptable period of time?|4|||R2|||
+04A02-07|Do the maintenance contracts anticipate a complete replacement of equipment in the case of significant damage which would not normally be taken into account by curative maintenance?|4|||E3|||
+04A02-08|Are maintenance contracts and procedures regularly audited?|2|3||C1|||
+04A03|Procedures and Business Contingency Planning following incidents on the Wide-area Network|||||||
+04A03-01|Has a list been established of incidents which could affect the proper functioning of the Wide-area Network and analyzed the seriousness level, for each of them?|2|||E2|||
+04A03-02|Has it been established, for each critical incident, the solution to implement and the action to execute by operational personnel? |2|||E2|||
+04A03-03|Have sufficient means of intervention (reconfiguration) on the Wide-area Network been put in place which cover satisfactorily all of the scenarios identified and do they allow for the actions decided to be implemented within the specified delays?|2|2||E2|||
+04A03-04|For each possible critical incident on the Wide-area Network has an expected resolution time and escalation procedure been determined in the case of failure or delay of the specified corrective actions?|4|||E3|||
+04A03-05|Are the diagnostic, management and reconfiguration tools of the Wide-area Network protected against all possible untimely or malicious action?|4|3||R1|||
+04A03-06|Do incident recovery plans and procedures cover the eventual loss of data (especially e-mail messages)?|4|||E3|||
+04A03-07|Are diagnostic and reconfiguration facilities regularly audited in order to assure a satisfactory minimum functioning of the Wide-area Network in the case of an incident?|2|3||C1|||
+04A04|Backup plan of Wide-area Network configurations|||||||
+04A04-01|Has a backup plan been established encompassing all network configurations, defining all objects to save and the frequency of backups?|4|||E1|12.3.1|10.5.1|
+04A04-02|Has this plan been translated into automatic operational routines?|2|2||E2|12.3.1|10.5.1|
+04A04-03|Has the backup of programs, (source and executables), documentation and parameters been regularly tested in order to be able to reconstitute the production environment at any time?|4|2||E1|12.3.1|10.5.1|
+04A04-04|"Are operational automatic routines protected by a high level of protection against illicit or unintentional modification? 
+Such a mechanism may be a digital seal or any equivalent protection system."|4|3||R1|12.3.1|10.5.1|
+04A04-05|Are all configuration backups and files which enable the restoration of the Wide-area Network production environment also saved at a location off premises (recourse backup)?|4|2||E3|12.3.1|10.5.1|
+04A04-06|"Are recourse backup copies stored in a secure location and protected against accidental risk or theft?
+Such a location must be protected by strict access control as well as protected against fire or water damage risk."|4|||E3|12.3.1|10.5.1|
+04A04-07|Are regular tests carried out to read backups and recourse backups?|2|3||C1|12.3.1|10.5.1|
+04A04-08|Are all procedures and plans for backup of configuration files regularly audited?|2|3||C1|||
+04A05|Business Contingency Planning (BCP) of the Wide-area Network|||||||
+04A05-01|Is there an operational recovery solution to make up for the unavailability of any critical equipment or link on the Wide-area Network?|4||2|E1|17.1.2|14.1.3|
+04A05-02|Is this recovery solution satisfactorily operational?|4||2|E2|17.1.2|14.1.3|
+04A05-03|"Are these alternative solutions described in detail in one (or several) Disaster Recovery Plan formal and complete?
+A complete recovery plan must include the conditions for triggering, the actions to execute, the priorities, the actors to mobilize and their contact details as well as the conditions for considering the return to the normal state. "|4|||E1|17.1.2|14.1.3|
+04A05-04|Are these plans tested in operational conditions at least once a year?|4|2||C1|17.1.2|14.1.5; 17.1.3|
+04A05-05|Is there a formal guarantee that the capacity and compatibility of these recovery solutions will support a sufficient operational load which has been approved by all connected entities?|4|2||E2|17.1.2|14.1.5; 17.1.3|
+04A05-06|If the recovery solutions include delivery of hardware components which cannot be triggered during tests, is there a contractual engagement within the recovery plan for the delivery of the replacement hardware within fixed and anticipated time limits guaranteed by the manufacturer or other third party (leaser, broker, other)?|4|2||E2|||
+04A05-07|If the recovery facility (hot site, equipment etc.) is subscribed through a service provider, is the number of other subscribers known and limited?|2|2||E3|||
+04A05-08|Has the possible unavailability or failure of the recovery facility been considered and has a second level backup been organized?|2||3|R1|||
+04A05-09|Is the backup solution usable for an unlimited duration and, if not, has a follow on backup solution been established?|2|||E3|||
+04A05-10|Are the existence, the pertinence and the updates of the Disaster Recovery Plans regularly audited?|2|3||C1|||
+04A06|Management of critical suppliers as regards a permanent maintenance service|||||||
+04A06-01|Have the consequences of the disappearance of a supplier of equipment, network service or software been analyzed (in the case of failure, a bug or change requirement) and has a list of critical points been established? |2|||E2|15.1.3; 17.1.2||
+04A06-02|For each critical point is there a corrective solution to cope with the failure or disappearance of a supplier (consignment of maintenance documentation with a trusted third party, replacement of equipment or of software by available market solutions etc.)?|2|||E2|15.1.3; 17.1.2||
+04A06-03|Is it certain that this corrective solution could be made operational to enable company activity to restart within a time delay sufficiently short to be acceptable to the users ?|2|2||E3|17.1.2||
+04A06-04|Have variants to the primary solution been considered in case the latter might encounter unforeseen difficulties?|2|3||E3|17.1.2||
+04A06-05|Is there a regular review of critical points and corrective solutions envisaged?|2|3||C1|17.1.2||
+04B|Control of connections on the Wide-area Network |||||||
+04B01|Security profiles for entities connected to the Wide-area Network|||||||
+04B01-01|Has a set of rules been defined such that an entity can be connected to the Wide-area Network (which is considered to be a domain of confidence)? |4|||E1|||
+04B01-02|Do these rules cover the necessary organization for each entity connected to the network?|2|2||E3|||
+04B01-03|Within each entity connected, are  managers designed and known responsible of security in various domains (such as physical security, operating systems security, etc.)? |4|2||E3|||
+04B01-04|Do the rules establishing the connection criteria to the Wide-area Network define the physical security measures required to protect the network equipment and cabling?|4|2||E2|||
+04B01-05|Do these rules establishing the connection criteria to the Wide-area Network define the logical security measures required to protect the network equipment and cabling?|2|||E2||11.4.6|
+04B01-06|Do these rules detail the filtering rules required for the control of incoming as well as outgoing accesses?|4|2||E2||11.4.6|
+04B01-07|Do these rules detail controls to effect on the network equipment configurations?|4|3||E2|||
+04B01-08|Do these rules detail controls to effect on the configurations of users stations?|4|3||E2|||
+04B01-09|Do these rules define the required management methods to cover anomalies and incidents?|2|2||E3|||
+04B01-10|Do these rules impose to send a report to a central authority for any anomaly and incident challenging the security of the Wide-area Network?|4|2||E3|||
+04B01-11|Is there a management procedure covering the authorization requests for the binding of any entity to the Wide-area Network and a structure empowered to analyze these requests and provide the corresponding authorization?|4|2||E2|||
+04B01-12|Is there a structure empowered to audit the application of the rules and to remove specific rights which are no longer needed or when the conditions are no longer met?|4|2||E3|||
+04B01-13|Is there a regular audit of the required conditions and application of the rules in each entity authorized to be part of the Wide-area Network?|4|3||C1|||
+04B01-14|Are reviews of the authorized connections (standard and non-standard) and of their relevance regularly conducted?|4|3||C1||11.4.7|
+04B02|Authentication of the entity for an incoming access from the Wide-area Network|||||||
+04B02-01|Is there, for any access arriving from the Wide-area Network to the local area network, a mechanism controlling the authentication and access control rights of the accessing entity prior to any action?|4|1||E1|||
+04B02-02|"Does the authentication mechanism provide a recognized ""strong"" level of security?
+Notably the usage of a simple password will always be a weakness. The only methods recognized as ""strong"", that is to say observable without divulging information, are those based on cryptographic algorithms."|4|2||E2|||
+04B02-03|"Does the security equipment that retains and uses reference data (secret elements) to support access authentication use mechanisms which guarantee inviolability and authenticity?
+In the case of authentication using cryptographic procedures, the mechanisms used for the creation, modification and storage of reference elements (public keys in particular) must guarantee a level of security comparable to the authentication protocol itself."|4|3||E2|||
+04B02-04|"Does the transmission between systems and security equipments of reference data (secret elements, secret or public keys, etc.) use mechanisms which guarantee inviolability and authenticity?
+In the case of authentication using cryptographic procedures, the mechanisms used for the transmission of reference elements (public keys in particular) must guarantee a level of security comparable to the authentication protocol itself."|4|3||E3|||
+04B02-05|Does the management procedure of revoked keys systematically test that the keys have not been revoked?|4|2||E2|||
+04B02-06|Does the management procedure of revoked keys guarantee that the control systems take in consideration in real time any revocation?|4|2||E3|||
+04B02-07|"Are the processes that guarantee authentication under strict control?
+A strict control requires that the software used has been validated and undergoes a regular test for integrity (seal) and that there is an audit at least once a year of the authentication procedures and processes."|4|3||C1|||
+04B03|Authentication of the entity accessed for an outgoing access across the Wide-area Network|||||||
+04B03-01|Is there a mechanism for the authentication of the called entity before any outgoing access from the internal network across the Wide-area Network?|4|1||E1|||
+04B03-02|"Is the authentication mechanism recognized as ""strong""?
+The only methods recognized as ""strong"", that is to say observable without divulging information, are those based on cryptographic algorithms."|4|2||E2|||
+04B03-03|"Does the security equipment that retains and uses reference data (secret elements) to support authentication use mechanisms which guarantee inviolability and authenticity?
+In the case of authentication using cryptographic procedures, the mechanisms of modification, storage and transmission of reference elements (public keys in particular) must use a level of security comparable to the authentication protocol itself."|4|3||E2|||
+04B03-04|"Does the transmission between equipments of reference data (secret elements) to support authentication use mechanisms which guarantee inviolability and authenticity?
+In the case of authentication using cryptographic procedures, the mechanisms of transmission of reference elements (secret elements, public keys, etc.) must guarantee a level of security comparable to the authentication protocol itself."|4|3||E3|||
+04B03-05|Does the revoked keys management procedure  guarantee that the control systems systematically test that the keys used have not been revoked?|4|2||E2|||
+04B03-06|Does the revoked keys management procedure  guarantee that the control systems take into consideration in real time any revocation of keys?|4|2||E3|||
+04B03-07|"Are the processes that guarantee authentication under strict control?
+A strict control requires that the software used has been validated and undergoes a regular test for integrity (seal) and that an audit is performed at least once a year of authentication procedures and processes."|4|3||C1|||
+04C|Security during data exchanges and communication |||||||
+04C01|"Encryption of exchanges on the Wide-area Network
+Encryption can be effected at layer 2 (encrypting modem ), 3 (IPSEC VPN) or at level 4-5 (SSL) or directly effected by the application (level 6-7, for example encryption before or during transmission), case really treated by domain 09 
+It could be systematically on the ""pipeline"" (physical or logical) or limited only to certain data flows (as a function of address or type, etc.) it can also be performed on intermediate systems (VPN boxes) or end systems (stations, server) or both."|||||||
+04C01-01|Have the permanent links and data exchanges which must be protected by encryption solutions been defined and such solutions been implemented on the Wide-area Network?|4|||E2|10.1.1|12.3.1|
+04C01-02|"Does the encryption solution offer valid and solid guarantees and has it been approved by the Information Security Officer?  
+The sufficient length of the key is one of among many parameters to take into consideration (as a function of the algorithm) . The recommendation of an official organization can be a confidence factor."|4|2||E2|||
+04C01-03|Do the procedure and mechanisms of storage, distribution and exchange of keys and more generally the management of the keys offer solid guarantees which merit confidence and are they approved by the Information Security Officer?|4|3||E3|10.1.2|12.3.2|
+04C01-04|"Are the encryption mechanisms embodied in electronic components which are strictly protected at a physical level against intrusion or change? 
+Encryption mechanisms should be contained within protected enclosures to which it should be impossible to gain a"|4|3|3|R2|||
+04C01-05|Is shutdown or by-pass of the encryption solution immediately detected and signaled to a team available 24 hrs a day capable of triggering an immediate reaction?|4|2||R1|||
+04C01-06|"In the case of inhibition or bypass of the encryption solution or the activation of an unprotected fail-over link of the network, is there a procedure to immediately alert all users?
+For example by a warning requiring the user to acknowledge its receipt."|4|2||R1|||
+04C01-07|Is there a regular audit, at least once a year, of all data exchange, encryption systems and associated procedures?|4|3||C1|||
+04C02|Integrity control of exchanges on the Wide-area Network|||||||
+04C02-01|Have all data exchanges and permanent links which must be protected by sealing solutions been defined and implemented on the Wide-area Network?|4|||E2|||
+04C02-02|"Does the sealing solution offer valid and solid guarantees and has it been approved by the Information Security Officer?  
+The sufficient length of the key is one of among many parameters to take into consideration (as a function of the algorithm) . The recommendation of an official organization can be a confidence factor."|4|2||E2|||
+04C02-03|Do the procedure and mechanisms for storage, distribution and exchange of keys and more generally the management of keys offer a sufficient level of confidence and have they been approved by the Information Security Officer?|4|3||E3|||
+04C02-04|"Are the sealing mechanisms embodied in electronic components which are in turn strictly protected at a physical level against intrusion or change? 
+Sealing mechanisms should be contained within protected enclosures to which it should be impossible to gain access. The algorithm is contained within the microprocessor or a microprocessor card which is protected physically and logically."|4|3|3|R2|||
+04C02-05|Is shutdown or by-pass of the sealing solution immediately detected and signaled to a team available 24 hrs a day capable of triggering an immediate reaction?|4|2||R1|||
+04C02-06|"In the case of inhibition or bypass of the sealing solution or the activation of an unprotected fail-over link, is there a procedure to immediately alert all users?
+For example by a warning requiring the user to actively validate its receipt."|4|2||R1|||
+04C02-07|Is there a regular audit, at least once a year, of all systems of sealing of the data exchanged and associated procedures?|4|3||C1|||
+04D|Control, Detection and Handling of incidents on the Wide-area Network |||||||
+04D01|Real-time monitoring of the Wide-area Network|||||||
+04D01-01|Have events or successions of events which might reveal abnormal behavior or illicit action on the Wide-area Network been analyzed and, as a consequence, have specific monitoring points and indicators been established?|4|||E2|12.4.1; 16.1.4|10.10.2|
+04D01-02|Is the system equipped with an automatic real time monitoring system in the case of an accumulation of abnormal events (for example unsuccessful connection attempts on non-open ports)?|4|||E3|12.4.1; 16.1.4|10.10.2|
+04D01-03|Is use made of a system capable of detecting intrusion and anomalies on the Wide-area Network?|4|||E2|12.4.1; 16.1.4|10.10.2|
+04D01-04|Are there one or more applications capable of analyzing the individual anomaly diagnostic data on the Wide-area Network and of triggering an alert to operational personnel?|4|||E3|||
+04D01-05|Is there within operational personnel a permanent dedicated team or group capable of reacting in the case of a monitoring alert on the Wide-area Network?|4|2||E3|||
+04D01-06|For each case of alert has the expected response from the intervention team been defined and is the availability of the intervention team sufficient to face this expectation?|4|3||E3|||
+04D01-07|Are the parameters defining alarms strictly protected (restricted access rights and strict authentication ) against illicit modification?|4|||R1|||
+04D01-08|Does the inhibition of an alert system on the Wide-area Network, trigger an alarm with the surveillance team?|4|3||R1|12.4.1|10.10.2|
+04D01-09|Are the elements which enable the detection of an anomaly or incident archived (on disk, cassette or optical disk etc.)?|2|||E2|12.4.2|10.10.3|
+04D01-10|Are the procedures for monitoring the Wide-area Network, for the detection of the anomalies and the reactivity of the surveillance team subject to regular audit?|2|3||C1|||
+04D02|Offline analysis of traces, log files and event journals on the Wide-area Network |||||||
+04D02-01|Has detailed analysis been carried out of the events or succession of events on the Wide-area Network which may have had an impact on security (refused connections, re-routings, reconfigurations, changes in performance, access to sensitive data or tools etc.)?|2|||E1|12.4.1|10.10.1|
+04D02-02|Are these events recorded as well as the parameters used for their subsequent analysis?|4|||E1|12.4.1|10.10.1|
+04D02-03|Is there an application capable of analyzing these records as well as performance measures, of establishing statistics, a dashboard and anomaly diagnostics for examination by a competent team of specialists?|4|2|3|E2|||
+04D02-04|Is the structure empowered to analyze these summaries (or incidents logs and security related events) required to do so within a fixed and determined period and does it have sufficient availability?|4|||E2|||
+04D02-05|Has the expected response from the surveillance team been defined for each case of alert and are its availability and staffing level sufficient to meet these expectations?|4|||E3|||
+04D02-06|Are the parameters defining the elements to record and the analysis to effect strictly protected against unauthorized change (limited rights and strong authentication)?|4|||R1|12.4.2|10.10.3|
+04D02-07|Is any inhibition of the recording and processing system immediately signaled to the surveillance team?|4|||R1|||
+04D02-08|Are the records and summary analysis protected against any destruction or modification?|2|||E2|12.4.2|10.10.3|
+04D02-09|Are the records and summary analysis kept for a long period?|2|||E2|12.4.2|10.10.3|
+04D02-10|Are the procedures for recording, processing and analyzing of the records and summaries as well as the availability of the analysis and corrective team subject to regular audit?|2|||C1|||
+04D03|Management of incidents on the Wide-area Network|||||||
+04D03-01|Is there a hot-line charged with taking and recording calls related to the Wide-area Network and to escalate all incidents?|2|||E1|12.4.1; 16.1.5|10.10.5|
+04D03-02|Is this hot-line team available 24 hours a day?|2|||E2|12.4.1; 16.1.5|10.10.5|
+04D03-03|Is there a system to support incident management?|2|2||E2|12.4.1; 16.1.5|10.10.5|
+04D03-04|Does this system centralize incidents detected both by operational personnel and by users?|2|||E2|12.4.1; 16.1.5|10.10.5|
+04D03-05|Does the system cater for a systematic follow-up of necessary actions?|4|||E3|12.4.1; 16.1.5|10.10.5|
+04D03-06|Does this system incorporate a categorization of incidents including statistics and dashboards generation destined for use by the Information Security Officer?|4|||E3|16.1.1; 16.1.5||
+04D03-07|"Is the incident management system strictly controlled with regard to unauthorized or illicit modification?
+A strict control requires a reinforced protection in order to modify records and an audit trail or protection by electronic seal of all modifications of records."|4|3||R1|||
+04D03-08|Is each major incident on the network subject to a specific follow-up (nature and description, priority, technical solution, progress analysis, expected resolution lead time etc.)?|4|||E2|16.1.1|13.2.1|

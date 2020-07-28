@@ -1,0 +1,88 @@
+<?xml version="1.0"?>
+<project
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+	xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>org.crmf</groupId>
+		<artifactId>parent</artifactId>
+        <version>0.0.2</version>
+	</parent>
+	<artifactId>sest-threat-import</artifactId>
+	<name>sest-threat-import</name>
+	<packaging>${packaging.type}</packaging>
+	<url>http://maven.apache.org</url>
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	</properties>
+	<dependencies>
+	<dependency>
+			<groupId>org.crmf</groupId>
+			<artifactId>sest-crmf-model</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.crmf</groupId>
+			<artifactId>sest-persistency</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+		    <dependency>
+        <groupId>org.ini4j</groupId>
+        <artifactId>ini4j</artifactId>
+        <version>0.5.4</version>
+    </dependency>
+		<dependency>
+			<groupId>org.apache.camel</groupId>
+			<artifactId>camel-jetty</artifactId>
+			<version>${camel.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.camel</groupId>
+			<artifactId>camel-cxf</artifactId>
+			<version>${camel.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.cxf</groupId>
+			<artifactId>cxf-rt-transports-http-jetty</artifactId>
+			<version>${cxf.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.cxf</groupId>
+			<artifactId>cxf-rt-rs-security-cors</artifactId>
+			<version>${cxf.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.cxf</groupId>
+			<artifactId>cxf-rt-frontend-jaxrs</artifactId>
+			<version>${cxf.version}</version>
+		</dependency>
+
+	</dependencies>
+
+	<build>
+		<defaultGoal>install</defaultGoal>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.felix</groupId>
+				<artifactId>maven-bundle-plugin</artifactId>
+				<version>${bundle.plugin.version}</version>
+				<extensions>true</extensions>
+				<configuration>
+					<obrRepository>NONE</obrRepository>
+					<instructions>
+						<Bundle-Name>${project.name}</Bundle-Name>
+						<Bundle-SymbolicName>${project.artifactId}</Bundle-SymbolicName>
+						<Bundle-Version>${project.version}</Bundle-Version>
+						<Bundle-Activator>org.crmf.threatimport.ThreatImportActivator</Bundle-Activator>
+						<!-- Bundle-Activator>core.TemplateActivator</Bundle-Activator> <Import-Package>core.*, 
+							!* </Import-Package> <Export-Package>core.*, !* </Export-Package> <DynamicImport-Package>*</DynamicImport-Package -->
+					</instructions>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+</project>

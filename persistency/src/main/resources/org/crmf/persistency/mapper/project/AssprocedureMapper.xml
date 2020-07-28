@@ -1,0 +1,151 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+	<!DOCTYPE mapper PUBLIC '-//mybatis.org//DTD Mapper 3.0//EN'
+	  'http://mybatis.org/dtd/mybatis-3-mapper.dtd'>
+<mapper namespace='org.crmf.persistency.mapper.project.AssprocedureMapper'>
+
+	<resultMap type='Assprocedure' id='Assprocedure'>
+		<result property='sestobjId' column='SESTOBJ_ID' />
+		<result property='creationTime' column='CREATION_TIME' />
+		<result property='updateTime' column='UPDATE_TIME' />
+		<result property='projectId' column='PROJECT_ID' />
+		<result property='assetId' column='ASSET_ID' />
+		<result property='threatId' column='THREAT_ID' />
+		<result property='vulnerabilityId' column='VULNERABILITY_ID' />
+		<result property='safeguardId' column='SAFEGUARD_ID' />
+		<result property='riskModelId' column='RISKMODEL_ID' />
+		<result property='riskTreatmentModelId' column='RISKTREATMENTMODEL_ID' />
+		<result property='lastUserUpdateId' column='LASTUSERUPD_ID' />
+	</resultMap>
+
+	<insert id='insert' parameterType='Assprocedure'
+		useGeneratedKeys='true' keyProperty='id' keyColumn='ID'>
+		INSERT INTO
+		ASSPROCEDURE(NAME, PHASE, STATUS, PROJECT_ID, CREATION_TIME,
+		UPDATE_TIME, ASSET_ID, THREAT_ID, VULNERABILITY_ID, SAFEGUARD_ID,
+		RISKMODEL_ID, RISKTREATMENTMODEL_ID, LASTUSERUPD_ID, SESTOBJ_ID)
+		VALUES (#{name}, #{phase}, #{status}, #{projectId}, #{creationTime},
+		#{updateTime}, #{assetId}, #{threatId}, #{vulnerabilityId},
+		#{safeguardId}, #{riskModelId}, #{riskTreatmentModelId},
+		#{lastUserUpdateId}, #{sestobjId})
+	</insert>
+
+	<update id='update' parameterType='Assprocedure'>
+		UPDATE ASSPROCEDURE
+		SET
+		NAME =
+		#{name},
+		PHASE = #{phase},
+		STATUS = #{status},
+		UPDATE_TIME = #{updateTime}
+		WHERE SESTOBJ_ID = #{sestobjId}
+	</update>
+
+	<select id='getById' parameterType='int' resultMap='Assprocedure'>
+		SELECT *
+		FROM
+		ASSPROCEDURE
+		WHERE ID = '${value}'
+	</select>
+
+	<select id='getIdByIdentifier' parameterType='String'
+		resultType='Integer'>
+		SELECT id
+		FROM ASSPROCEDURE
+		WHERE SESTOBJ_ID = '${value}'
+	</select>
+
+	<select id='getByIdentifier' parameterType='String' resultMap='Assprocedure'>
+		SELECT *
+		FROM ASSPROCEDURE
+		WHERE SESTOBJ_ID = '${value}'
+	</select>
+
+	<select id='getByAssetModelIdentifier' parameterType='String'
+		resultMap='Assprocedure'>
+		SELECT *
+		FROM ASSPROCEDURE
+		INNER JOIN ASSET_MODEL ON ASSPROCEDURE.ASSET_ID = ASSET_MODEL.ID WHERE
+		ASSET_MODEL.SESTOBJ_ID = #{identifier}
+	</select>
+
+	<select id='getByVulnerabilityModelIdentifier' parameterType='String'
+		resultMap='Assprocedure'>
+		SELECT *
+		FROM ASSPROCEDURE
+		INNER JOIN VULNERABILITY_MODEL ON ASSPROCEDURE.VULNERABILITY_ID =
+		VULNERABILITY_MODEL.ID WHERE VULNERABILITY_MODEL.SESTOBJ_ID =
+		#{identifier}
+	</select>
+
+	<select id='getByThreatModelIdentifier' parameterType='String'
+		resultMap='Assprocedure'>
+		SELECT *
+		FROM ASSPROCEDURE
+		INNER JOIN THREAT_MODEL ON ASSPROCEDURE.THREAT_ID = THREAT_MODEL.ID WHERE
+		THREAT_MODEL.SESTOBJ_ID = #{identifier}
+	</select>
+
+	<select id='getByRiskModelIdentifier' parameterType='String'
+		resultMap='Assprocedure'>
+		SELECT *
+		FROM ASSPROCEDURE
+		INNER JOIN RISK_MODEL ON ASSPROCEDURE.RISKMODEL_ID = RISK_MODEL.ID WHERE
+		RISK_MODEL.SESTOBJ_ID = #{identifier}
+	</select>
+
+	<select id='getByRiskTreatmentModelIdentifier' parameterType='String'
+		resultMap='Assprocedure'>
+		SELECT *
+		FROM ASSPROCEDURE
+		INNER JOIN RISKTREATMENT_MODEL ON ASSPROCEDURE.RISKTREATMENTMODEL_ID =
+		RISKTREATMENT_MODEL.ID WHERE RISKTREATMENT_MODEL.SESTOBJ_ID =
+		#{identifier}
+	</select>
+
+	<select id='getBySafeguardModelIdentifier' parameterType='String'
+		resultMap='Assprocedure'>
+		SELECT *
+		FROM ASSPROCEDURE
+		INNER JOIN SAFEGUARD_MODEL ON ASSPROCEDURE.SAFEGUARD_ID = SAFEGUARD_MODEL.ID WHERE
+		SAFEGUARD_MODEL.SESTOBJ_ID = #{identifier}
+	</select>
+	
+	<delete id='delete' parameterType='int'>
+		DELETE FROM ASSPROCEDURE WHERE
+		ID =
+		'${value}'
+	</delete>
+
+	<delete id='deleteByIdentifier' parameterType='String'>
+		DELETE FROM
+		ASSPROCEDURE WHERE SESTOBJ_ID = '${value}'
+	</delete>
+
+	<delete id='deleteLinkedObj' parameterType='int'>
+		DELETE FROM `SESTOBJ` WHERE OBJTYPE = 'AssessmentProcedure' AND
+		`IDENTIFIER` NOT IN (SELECT SESTOBJ_ID from ASSPROCEDURE)
+	</delete>
+
+	<select id='getAll' resultMap='Assprocedure'>
+		SELECT * FROM ASSPROCEDURE
+	</select>
+
+	<select id='getByProjectIdentifier' resultMap='Assprocedure'
+		parameterType='String'>
+		SELECT p.* FROM ASSPROCEDURE AS p, ASSPROJECT AS ap
+		WHERE ap.SESTOBJ_ID = '${value}' AND p.PROJECT_ID = ap.ID
+	</select>
+
+	<select id='getProjectdIdByIdentifier' parameterType='String'
+		resultType='int'>
+		SELECT PROJECT_ID
+		FROM ASSPROCEDURE
+		WHERE SESTOBJ_ID = '${value}'
+	</select>
+
+	<select id='getOpenByProjectId' resultMap='Assprocedure'
+		parameterType='int'>
+		SELECT p.* FROM ASSPROCEDURE AS p WHERE p.PROJECT_ID =
+		'${value}' AND p.STATUS = 'OnGoing'
+	</select>
+</mapper>

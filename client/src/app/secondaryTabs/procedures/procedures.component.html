@@ -1,0 +1,165 @@
+<!--  --------------------------------------------------------------------------------------------------------------------
+// Copyright file="procedure.component.html"
+//  © Copyright European Space Agency, 2018-2020
+//
+//  Author: Software developed by RHEA System S.A.
+//
+//  This file is subject to the terms and conditions defined in file 'LICENSE.txt', which is part of this source code package.
+//  No part of the package, including this file, may be copied, modified, propagated, or distributed
+//  except according to the terms contained in the file ‘LICENSE.txt’.
+// -------------------------------------------------------------------------------------------------------------------- -->
+<div class="container-fluid">
+  <div class="row" style="margin-top: 10px">
+    <div class="col-lg-2">
+      <p-menu [model]="proceduresitems" [style]="{'width': '100%'}"></p-menu>
+    </div>
+
+    <div class="col-lg-10">
+      <p-table [value]="procedureslist" selectionMode="single" (onRowSelect)="onRowSelectProcedure($event)"
+               (onRowUnselect)="onRowUnselectProcedure($event)"
+               [metaKeySelection]="false" id="procedureTable">
+
+
+        <ng-template pTemplate="header">
+          <tr>
+            <th *ngFor="let col of proceduresListCols">
+              {{col.header}}
+            </th>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-procedure>
+          <tr [pSelectableRow]="procedure">
+            <td *ngFor="let col of proceduresListCols">
+              {{procedure[col.field]}}
+            </td>
+          </tr>
+        </ng-template>
+      </p-table>
+    </div>
+  </div>
+</div>
+
+
+<p-confirmDialog width="425"></p-confirmDialog>
+
+
+<p-dialog header="New Procedure" [(visible)]="displaycreation" modal="modal" width="500" responsive="true">
+  <div class="row">
+    <div class="col-md-12">
+      <div [formGroup]="procedureForm" class="form-group">
+        <label for="name">Name (*)</label>
+        <input formControlName="name" type="text" class="form-control" name="name" id="name"/>
+        <control-messages [control]="procedureForm.controls.name"></control-messages>
+        <span style="color:#ff0000" *ngIf="duplicatedProceduresName">This name already exists!</span>
+      </div>
+
+      <div [formGroup]="procedureForm" class="form-group">
+        <label for="phase">Import procedure from (*)</label>
+        <select formControlName="phase" class="form-control" name="phase" id="phase">
+
+          <option value="Initial">Template</option>
+          <option value="Requirements">Last Procedure</option>
+        </select>
+        <control-messages [control]="procedureForm.controls.phase"></control-messages>
+      </div>
+      <span class="cols-sm-2 control-label">* - mandatory field</span>
+
+    </div>
+  </div>
+
+  <p-footer>
+    <div class="ui-dialog-buttonpane ui-widget-content ui-helper-clearfix">
+      <button type="button" pButton icon="fa fa-fw fa-close" (click)="cancelProcedure()" label="Cancel"></button>
+      <button type="button" pButton icon="fa fa-fw fa-check"
+              [disabled]="!procedureForm.valid || duplicatedProceduresName" (click)="createProcedure()"
+              label="Create"></button>
+    </div>
+  </p-footer>
+</p-dialog>
+
+<p-dialog header="New Template" [(visible)]="displaycreationTemp" modal="modal" width="500" responsive="true">
+  <div class="row">
+    <div class="col-md-12">
+      <div [formGroup]="templateForm" class="form-group">
+        <label for="namet">Name (*)</label>
+        <input formControlName="namet" type="text" class="form-control" name="namet" id="namet"/>
+        <control-messages [control]="templateForm.controls.namet"></control-messages>
+      </div>
+      <div [formGroup]="templateForm" class="form-group">
+        <label for="description">Description (*)</label>
+        <textarea formControlName="description" class="form-control" name="description" rows="11"
+                  id="description"></textarea>
+        <control-messages [control]="templateForm.controls.description"></control-messages>
+      </div>
+      <span class="cols-sm-2 control-label">* - mandatory field</span>
+    </div>
+  </div>
+
+  <p-footer>
+    <div class="ui-dialog-buttonpane ui-widget-content ui-helper-clearfix">
+      <button type="button" pButton icon="fa fa-fw fa-close" (click)="cancelTemplate()" label="Cancel"></button>
+      <button type="button" pButton icon="fa fa-fw fa-check" [disabled]="!templateForm.valid" (click)="createTemplate()"
+              label="Create"></button>
+    </div>
+  </p-footer>
+</p-dialog>
+
+<p-dialog [formGroup]="reportForm" header="Report Generate" [(visible)]="displaycreationReport" modal="modal" width="500" responsive="true">
+  <div class="row">
+    <div class="col-md-12">
+
+      <label for="type">Report Type (*)</label>
+      <select #typeList formControlName="type" class="form-control" name="type" id="type">
+        <option *ngFor="let valueType of reportTypes"> {{valueType}}</option>
+      </select>
+      <div *ngIf="typeList.selectedIndex === 1">
+        <label for="threshold">Threshold</label>
+        <select formControlName="threshold" class="form-control" name="threshold" id="threshold">
+          <option *ngFor="let value of thresholdValues"> {{value}}</option>
+        </select>
+      </div>
+      <span class="cols-sm-2 control-label">* - mandatory field</span>
+    </div>
+  </div>
+
+  <p-footer>
+    <div class="ui-dialog-buttonpane ui-widget-content ui-helper-clearfix">
+      <button type="button" pButton icon="fa fa-fw fa-close" (click)="cancelReport()" label="Cancel"></button>
+      <button type="button" pButton icon="fa fa-fw fa-check" [disabled]="!reportForm.valid" (click)="createReport()"
+              label="Create"></button>
+    </div>
+  </p-footer>
+</p-dialog>
+
+<p-dialog [formGroup]="reportForm" header="Report Download" [(visible)]="displaygenerateReport" modal="modal" width="500" responsive="true">
+  <div class="row">
+    <div class="col-md-12">
+      <label for="type">Report Type (*)</label>
+      <select formControlName="type" class="form-control" name="type" id="type">
+        <option *ngFor="let valueType of reportTypes"> {{valueType}}</option>
+      </select>
+    </div>
+  </div>
+  <p-footer>
+    <div class="ui-dialog-buttonpane ui-widget-content ui-helper-clearfix">
+      <button type="button" pButton icon="fa fa-fw fa-close" (click)="cancelReport()" label="Cancel"></button>
+      <button type="button" pButton icon="fa fa-fw fa-check" (click)="downloadReport()"
+              label="Download"></button>
+    </div>
+  </p-footer>
+</p-dialog>
+
+<p-dialog [(visible)]="blocked" modal="modal" [responsive]="true" [showHeader]="false" class="procedureSpinner">
+
+  <div *ngIf="!blockedMessage">
+    <h1></h1>
+    <div class="loader"></div>
+  </div>
+
+  <div *ngIf="blockedMessage">
+
+    <p-messages [(value)]="msgsProcedures"></p-messages>
+
+  </div>
+
+</p-dialog>

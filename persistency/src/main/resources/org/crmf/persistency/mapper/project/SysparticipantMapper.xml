@@ -1,0 +1,44 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+	<!DOCTYPE mapper PUBLIC '-//mybatis.org//DTD Mapper 3.0//EN'
+	  'http://mybatis.org/dtd/mybatis-3-mapper.dtd'>
+<mapper namespace='org.crmf.persistency.mapper.project.SysparticipantMapper'>
+
+	<resultMap type='Sysparticipant' id='Sysparticipant'>
+		<result property='sysprojectId' column='SYSPROJECT_ID' />
+	</resultMap>
+	
+	<insert id='insert' parameterType='Sysparticipant' useGeneratedKeys='true'
+		keyProperty='id' keyColumn='ID'>
+		INSERT INTO SYSPARTICIPANT(NAME, SURNAME, ROLE, SYSPROJECT_ID, SESTOBJ_ID)
+		VALUES (#{name}, #{surname}, #{role}, #{sysprojectId}, #{sestobjId})
+	</insert>
+
+	<update id='update' parameterType='Sysparticipant'>
+		UPDATE SYSPARTICIPANT
+		SET
+		NAME = #{name},
+		SURNAME = #{surname}, 
+		ROLE = #{role}, 
+		SYSPROJECT_ID = #{sysprojectId}
+		WHERE ID = #{id}
+	</update>
+	
+	<select id='getByProjectId' parameterType='int' resultMap='Sysparticipant'>
+		SELECT *
+		FROM SYSPARTICIPANT
+		WHERE SYSPROJECT_ID = '${value}'
+	</select>
+	
+	<select id='deleteByProjectId' parameterType='int'>
+		DELETE
+		FROM SYSPARTICIPANT 
+		WHERE SYSPROJECT_ID = '${value}'
+	</select>
+
+	<select id='deleteByIdentifier' parameterType='String'>
+		DELETE
+		FROM SYSPARTICIPANT 
+		WHERE SESTOBJ_ID = '${value}'
+	</select>
+		
+</mapper>

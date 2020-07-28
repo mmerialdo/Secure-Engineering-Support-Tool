@@ -1,0 +1,65 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+	<!DOCTYPE mapper PUBLIC '-//mybatis.org//DTD Mapper 3.0//EN'
+	  'http://mybatis.org/dtd/mybatis-3-mapper.dtd'>
+<mapper namespace='org.crmf.persistency.mapper.general.SestobjMapper'>
+	<resultMap type='Sestobj' id='Sestobj'>
+		<result property='lockedBy' column='LOCKED_BY'/>
+	</resultMap>
+
+	<insert id='insert' parameterType='Sestobj' useGeneratedKeys='true'
+		keyProperty='id' keyColumn='ID'> 
+		<selectKey keyProperty="identifier" resultType="String" order="BEFORE">
+			SELECT UUID();
+		</selectKey>
+ 		INSERT INTO SESTOBJ(IDENTIFIER, OBJTYPE, LOCKED_BY)
+		VALUES (#{identifier}, #{objtype}, #{lockedBy})
+	</insert>
+	
+	<insert id='insertWithIdentifier' parameterType='Sestobj' useGeneratedKeys='true'
+		keyProperty='id' keyColumn='ID'> 
+ 		INSERT INTO SESTOBJ(IDENTIFIER, OBJTYPE, LOCKED_BY)
+		VALUES (#{identifier}, #{objtype},  #{lockedBy})
+	</insert>
+
+	<update id='updateLock' parameterType='map'>
+		UPDATE SESTOBJ
+		SET
+		LOCKED_BY = #{lockedBy}
+		WHERE IDENTIFIER = #{sestobjId}
+	</update>
+
+	<select id='getById' parameterType='String' resultType='Sestobj'>
+		SELECT *
+		FROM SESTOBJ
+		WHERE ID = '${value}'
+	</select>
+	
+	<select id='getIdByIdentifier' parameterType='String'
+		resultType='int'>
+		SELECT id
+		FROM SESTOBJ 
+		WHERE IDENTIFIER = '${value}'
+	</select>
+
+	<select id='getByIdentifier' parameterType='String'	resultMap='Sestobj'>
+		SELECT *
+		FROM SESTOBJ 
+		WHERE IDENTIFIER = '${value}'
+	</select>
+	
+	<select id='getAll' parameterType='String' resultType='Sestobj'>
+		SELECT *
+		FROM SESTOBJ 
+	</select>
+	
+	<delete id='delete' parameterType='String'>
+		DELETE FROM SESTOBJ WHERE ID =
+		'${value}'
+	</delete>
+
+	<delete id='deleteByIdentifier' parameterType='String'>
+		DELETE FROM
+		SESTOBJ WHERE IDENTIFIER = '${value}'
+	</delete>
+
+</mapper>

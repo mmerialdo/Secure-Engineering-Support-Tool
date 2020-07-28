@@ -1,0 +1,1310 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- This blueprint describes the needed dependencies for the sest-core related classes of sest-proxy bundle and the exposed interfaces and Apache Camel webservices -->
+<blueprint xmlns="http://www.osgi.org/xmlns/blueprint/v1.0.0"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xmlns:cm="http://aries.apache.org/blueprint/xmlns/blueprint-cm/v1.1.0"
+           xmlns:camel="http://camel.apache.org/schema/blueprint" xmlns:cxf="http://cxf.apache.org/blueprint/core"
+           xmlns:cxfrs="http://camel.apache.org/schema/blueprint/cxf"
+           xmlns:jaxrs="http://cxf.apache.org/blueprint/jaxrs"
+           xsi:schemaLocation="
+		  http://www.osgi.org/xmlns/blueprint/v1.0.0 http://www.osgi.org/xmlns/blueprint/v1.0.0/blueprint.xsd
+		  http://www.osgi.org/xmlns/blueprint-ext/v1.1.0 http://svn.apache.org/repos/asf/aries/tags/blueprint-0.4.1/blueprint-core/src/main/resources/org/apache/aries/blueprint/ext/blueprint-ext.xsd
+		  http://cxf.apache.org/blueprint/jaxrs http://cxf.apache.org/schemas/blueprint/jaxrs.xsd
+		  http://cxf.apache.org/blueprint/core http://cxf.apache.org/schemas/blueprint/core.xsd
+		  http://camel.apache.org/schema/blueprint/cxf http://camel.apache.org/schema/blueprint/cxf/camel-cxf.xsd
+		  http://camel.apache.org/schema/blueprint https://camel.apache.org/schema/blueprint/camel-blueprint.xsd
+		  http://aries.apache.org/blueprint/xmlns/blueprint-cm/v1.1.0 http://aries.apache.org/schemas/blueprint-cm/blueprint-cm-1.1.0.xsd">
+
+    <reference id="assProjectUserService" timeout="300000"
+               availability="optional"
+               interface="org.crmf.core.riskassessment.project.manager.AssessmentProjectUserInputInterface"/>
+
+    <reference id="assProjectService" timeout="300000"
+               availability="optional"
+               interface="org.crmf.core.riskassessment.project.manager.AssessmentProjectInputInterface"/>
+
+    <reference id="assProfileService" timeout="300000"
+               availability="optional"
+               interface="org.crmf.core.riskassessment.project.manager.AssessmentProfileInputInterface"/>
+
+    <reference id="assProcedureService" timeout="300000"
+               availability="optional"
+               interface="org.crmf.core.riskassessment.project.manager.AssessmentProcedureInputInterface"/>
+
+    <reference id="assTemplateService" timeout="300000"
+               availability="optional"
+               interface="org.crmf.core.riskassessment.project.manager.AssessmentTemplateInputInterface"/>
+
+    <reference id="assAuditService" timeout="300000"
+               availability="optional" interface="org.crmf.core.audit.AuditInputInterface"/>
+
+    <reference id="requirementService" timeout="300000"
+               availability="optional"
+               interface="org.crmf.core.riskassessment.project.requirement.SystemProjectRequirementInputInterface"/>
+
+    <reference id="assetModelService" timeout="300000"
+               availability="optional"
+               interface="org.crmf.core.assetmodel.manager.AssetModelManagerInputInterface"/>
+
+    <reference id="vulnerabilityModelService" timeout="300000"
+               availability="optional"
+               interface="org.crmf.core.vulnerabilitymodel.manager.VulnerabilityModelManagerInputInterface"/>
+    <reference id="vulnerabilityImportService" timeout="300000"
+               availability="optional"
+               interface="org.crmf.vulnerabilityimport.vulnerabilityimportmanager.VulnerabilityImportManagerInputInterface"/>
+
+    <reference id="threatImportService" timeout="300000"
+               availability="optional"
+               interface="org.crmf.threatimport.threatimportmanager.ThreatImportManagerInputInterface"/>
+
+    <reference id="riskModelService" timeout="300000"
+               availability="optional"
+               interface="org.crmf.riskmodel.manager.RiskModelManagerInputInterface"/>
+
+    <reference id="threatModelService" timeout="300000"
+               availability="optional"
+               interface="org.crmf.core.threatmodel.manager.ThreatModelManagerInputInterface"/>
+
+    <reference id="safeguardModelService" timeout="300000"
+               availability="optional"
+               interface="org.crmf.core.safeguardmodel.manager.SafeguardModelManagerInputInterface"/>
+
+    <reference id="secrequirementService" timeout="300000"
+               availability="optional"
+               interface="org.crmf.secreqimport.manager.gasf.GASFInputInterface"/>
+
+    <reference id="riskTreatmentModelService" timeout="300000"
+               availability="optional"
+               interface="org.crmf.risktreatmentmodel.manager.RiskTreatmentModelManagerInputInterface"/>
+
+    <reference id="permissionManagerService" timeout="300000"
+               availability="optional"
+               interface="org.crmf.user.validation.permission.UserPermissionManagerInputInterface"/>
+
+    <reference id="lockManagerService" timeout="300000"
+               availability="optional" interface="org.crmf.user.manager.lock.LockViewInputInterface"/>
+
+    <reference id="userManagerService" timeout="300000"
+               availability="optional" interface="org.crmf.user.manager.core.UserManagerInputInterface"/>
+
+    <bean id="assProjectUserBean"
+          class="org.crmf.proxy.core.riskassessment.project.rest.AssessmentProjectUserRestServer">
+        <property name="projectUserInput" ref="assProjectUserService"></property>
+    </bean>
+
+    <bean id="assProjectBean"
+          class="org.crmf.proxy.core.riskassessment.project.rest.AssessmentProjectRestServer">
+        <property name="projectInput" ref="assProjectService"></property>
+    </bean>
+
+    <bean id="assProfileBean"
+          class="org.crmf.proxy.core.riskassessment.project.rest.AssessmentProfileRestServer">
+        <property name="profileInput" ref="assProfileService"></property>
+    </bean>
+
+    <bean id="assProcedureBean"
+          class="org.crmf.proxy.core.riskassessment.project.rest.AssessmentProcedureRestServer">
+        <property name="procedureInput" ref="assProcedureService"></property>
+    </bean>
+
+    <bean id="assTemplateBean"
+          class="org.crmf.proxy.core.riskassessment.project.rest.AssessmentTemplateRestServer">
+        <property name="templateInput" ref="assTemplateService"></property>
+    </bean>
+
+    <bean id="assAuditBean" class="org.crmf.proxy.core.audit.rest.AuditRestServer">
+        <property name="auditInput" ref="assAuditService"></property>
+    </bean>
+
+    <bean id="requirementBean"
+          class="org.crmf.proxy.core.riskassessment.project.rest.SystemProjectRequirementRestServer">
+        <property name="requirementInput" ref="requirementService"></property>
+    </bean>
+
+    <bean id="assetBean"
+          class="org.crmf.proxy.core.assetmodel.manager.rest.AssetModelManagerRestServer">
+        <property name="assetModelInput" ref="assetModelService"></property>
+        <property name="riskModelInput" ref="riskModelService"></property>
+    </bean>
+
+    <bean id="vulnerabilityBean"
+          class="org.crmf.proxy.core.vulnerabilitymodel.manager.rest.VulnerabilityModelManagerRestServer">
+        <property name="vulnerabilityModelInput" ref="vulnerabilityModelService"></property>
+        <property name="vulnerabilityImportInput" ref="vulnerabilityImportService"></property>
+        <property name="riskModelInput" ref="riskModelService"></property>
+    </bean>
+
+
+    <bean id="threatBean"
+          class="org.crmf.proxy.core.threatmodel.manager.rest.ThreatModelManagerRestServer">
+        <property name="threatModelInput" ref="threatModelService"></property>
+        <property name="threatImportInput" ref="threatImportService"></property>
+        <property name="riskModelInput" ref="riskModelService"></property>
+    </bean>
+
+    <bean id="safeguardBean"
+          class="org.crmf.proxy.core.safeguardmodel.manager.rest.SafeguardModelManagerRestServer">
+        <property name="safeguardModelInput" ref="safeguardModelService"></property>
+    </bean>
+
+    <bean id="riskBean"
+          class="org.crmf.proxy.core.riskmodel.manager.rest.RiskModelManagerRestServer">
+        <property name="riskModelInput" ref="riskModelService"></property>
+    </bean>
+
+    <bean id="riskTreatmentBean"
+          class="org.crmf.proxy.core.risktreatmentmodel.manager.rest.RiskTreatmentModelManagerRestServer">
+        <property name="riskTreatmentModelInput" ref="riskTreatmentModelService"></property>
+    </bean>
+
+    <bean id="secreqBean"
+          class="org.crmf.proxy.core.secrequirement.manager.rest.SecRequirementManagerRestServer">
+        <property name="secrequirementInput" ref="secrequirementService"></property>
+    </bean>
+
+    <bean id="userBean" class="org.crmf.proxy.user.manager.rest.UserRestServer">
+        <property name="userInput" ref="userManagerService"></property>
+    </bean>
+
+    <bean id="configurationBean" class="org.crmf.proxy.util.configuration.rest.ConfigurationRestServer">
+        <property name="timeout" value="${timeout}"/>
+        <property name="timeoutWarning" value="${timeoutWarning}"/>
+    </bean>
+
+    <bean id="lockViewBean" class="org.crmf.proxy.user.lock.rest.LockViewRestServer">
+        <property name="lockInput" ref="lockManagerService"/>
+    </bean>
+
+    <bean id="gsonUser" class="org.apache.camel.component.gson.GsonDataFormat">
+        <property name="unmarshalType" value="org.crmf.model.user.User"/>
+    </bean>
+
+    <bean id="gsonAssProject" class="org.apache.camel.component.gson.GsonDataFormat">
+        <property name="unmarshalType"
+                  value="org.crmf.model.riskassessment.AssessmentProject"/>
+    </bean>
+
+    <bean id="gsonAssProfile" class="org.apache.camel.component.gson.GsonDataFormat">
+        <property name="unmarshalType"
+                  value="org.crmf.model.riskassessment.AssessmentProfile"/>
+    </bean>
+
+    <bean id="gsonAssProcedure" class="org.apache.camel.component.gson.GsonDataFormat">
+        <property name="unmarshalType"
+                  value="org.crmf.model.riskassessment.AssessmentProcedure"/>
+    </bean>
+
+    <bean id="gsonAssTemplate" class="org.apache.camel.component.gson.GsonDataFormat">
+        <property name="unmarshalType"
+                  value="org.crmf.model.riskassessment.AssessmentTemplate"/>
+    </bean>
+
+    <bean id="gsonAssAudit" class="org.apache.camel.component.gson.GsonDataFormat">
+        <property name="unmarshalType" value="org.crmf.model.audit.Audit"/>
+    </bean>
+
+    <bean id="gsonQuestionnaire" class="org.apache.camel.component.gson.GsonDataFormat">
+        <property name="unmarshalType" value="org.crmf.model.audit.Questionnaire"/>
+    </bean>
+
+    <bean id="gsonQuestion" class="org.apache.camel.component.gson.GsonDataFormat">
+        <property name="unmarshalType" value="org.crmf.model.audit.Question"/>
+    </bean>
+
+    <bean id="gsonRequirement" class="org.apache.camel.component.gson.GsonDataFormat">
+        <property name="unmarshalType"
+                  value="org.crmf.model.requirement.ProjectRequirement"/>
+    </bean>
+
+    <bean id="gsonVulnerability" class="org.apache.camel.component.gson.GsonDataFormat">
+        <property name="unmarshalType" value="org.crmf.model.riskassessmentelements.Vulnerability"/>
+    </bean>
+
+    <bean id="gsonThreat" class="org.apache.camel.component.gson.GsonDataFormat">
+        <property name="unmarshalType" value="org.crmf.model.riskassessmentelements.Threat"/>
+    </bean>
+
+    <bean id="gsonRiskScenarioReference" class="org.apache.camel.component.gson.GsonDataFormat">
+        <property name="unmarshalType" value="org.crmf.model.riskassessmentelements.RiskScenarioReference"/>
+    </bean>
+
+    <bean id="gsonGenericFilter" class="org.apache.camel.component.gson.GsonDataFormat">
+        <property name="unmarshalType" value="org.crmf.model.utility.GenericFilter"/>
+    </bean>
+
+    <bean id="gsonGeneric" class="org.apache.camel.component.gson.GsonDataFormat">
+    </bean>
+
+    <bean id="gsonList" class="org.apache.camel.component.gson.GsonDataFormat">
+        <property name="unmarshalType" value="java.util.List"/>
+    </bean>
+
+    <bean id="gsonModelObject" class="org.apache.camel.component.gson.GsonDataFormat">
+        <property name="unmarshalType" value="org.crmf.model.utility.ModelObject"/>
+    </bean>
+
+    <camelContext id="proxyCamelContext"
+                  streamCache="true" trace="true" xmlns="http://camel.apache.org/schema/blueprint">
+
+        <route id="editAssProjectUserRoles">
+            <from uri="jetty:https://0.0.0.0:9090/project/users/edit?enableCORS=true"/>
+            <log message="editAssProjectUserRoles ${body}" loggingLevel="INFO"/>
+            <unmarshal ref="gsonAssProject"/>
+
+            <setHeader headerName="permission">
+                <simple>AssessmentProject:Update</simple>
+            </setHeader>
+
+            <policy ref="securityPolicyCustom">
+                <log message="editAssProjectUserRoles before ${body}"
+                     loggingLevel="INFO"/>
+                <bean ref="assProjectUserBean" method="editAssessmentProjectUserRoles"/>
+                <log message="editAssProjectUserRoles after ${body}"
+                     loggingLevel="INFO"/>
+            </policy>
+        </route>
+
+        <route id="createAssessmentProject">
+            <from uri="jetty:https://0.0.0.0:9090/project/create?enableCORS=true"/>
+            <log message="createAssessmentProject ${body}" loggingLevel="INFO"/>
+            <unmarshal ref="gsonAssProject"/>
+            <setHeader headerName="permission">
+                <simple>AssessmentProject:Update</simple>
+            </setHeader>
+
+            <policy ref="securityPolicyCustom">
+                <log message="createAssessmentProject before ${body}"
+                     loggingLevel="INFO"/>
+                <bean ref="assProjectBean" method="createAssessmentProject"/>
+                <log message="createAssessmentProject after ${body}"
+                     loggingLevel="INFO"/>
+            </policy>
+        </route>
+
+        <route id="editAssessmentProject">
+            <from uri="jetty:https://0.0.0.0:9090/project/edit?enableCORS=true"/>
+            <log message="editAssessmentProject ${body}" loggingLevel="INFO"/>
+            <unmarshal ref="gsonAssProject"/>
+            <log message="editAssessmentProject before ${body}" loggingLevel="INFO"/>
+
+            <setHeader headerName="permission">
+                <simple>AssessmentProject:Update</simple>
+            </setHeader>
+
+            <policy ref="securityPolicyCustom">
+                <bean ref="assProjectBean" method="editAssessmentProject"/>
+                <log message="editAssessmentProject after ${body}" loggingLevel="INFO"/>
+            </policy>
+        </route>
+
+        <route id="deleteAssessmentProject">
+            <from uri="jetty:https://0.0.0.0:9090/project/delete?enableCORS=true"/>
+            <log message="deleteAssessmentProject ${body}" loggingLevel="INFO"/>
+            <convertBodyTo type="java.lang.String"/>
+            <setHeader headerName="permission">
+                <simple>AssessmentProject:Update</simple>
+            </setHeader>
+            <policy ref="securityPolicyCustom">
+                <bean ref="assProjectBean" method="deleteAssessmentProject"/>
+                <log message="deleteAssessmentProject after ${body}"
+                     loggingLevel="INFO"/>
+            </policy>
+        </route>
+
+        <route id="loadAssessmentProject">
+            <from uri="jetty:https://0.0.0.0:9090/project/load?enableCORS=true"/>
+            <unmarshal ref="gsonGenericFilter"/>
+
+            <setHeader headerName="permission">
+                <simple>AssessmentProject:Read</simple>
+            </setHeader>
+            <policy ref="securityPolicyCustom">
+                <bean ref="assProjectBean" method="loadAssessmentProject"/>
+                <marshal ref="gsonAssProject"/>
+
+            </policy>
+        </route>
+
+        <route id="loadAssessmentProjectList">
+            <from uri="jetty:https://0.0.0.0:9090/project/list?enableCORS=true"/>
+            <!-- No role/profile permission applied because it is filtered by project role permission -->
+            <setHeader headerName="permission">
+                <simple>AssessmentProject:Read</simple>
+            </setHeader>
+            <bean ref="assProjectBean" method="loadAssessmentProjectList"/>
+            <marshal ref="gsonAssProject"/>
+        </route>
+
+        <route id="createAssessmentProfile">
+            <from uri="jetty:https://0.0.0.0:9090/profile/create?enableCORS=true"/>
+
+            <unmarshal ref="gsonAssProfile"/>
+            <log message="createAssessmentProfile before ${body}"
+                 loggingLevel="INFO"/>
+
+            <setHeader headerName="permission">
+                <simple>AssessmentProfile:Update</simple>
+            </setHeader>
+
+            <policy ref="securityPolicyCustom">
+                <bean ref="assProfileBean" method="createAssessmentProfile"/>
+                <log message="createAssessmentProfile after ${body}"
+                     loggingLevel="INFO"/>
+            </policy>
+        </route>
+
+        <route id="editAssessmentProfile">
+            <from uri="jetty:https://0.0.0.0:9090/profile/edit?enableCORS=true"/>
+
+            <unmarshal ref="gsonAssProfile"/>
+            <log message="editAssessmentProfile before ${body}" loggingLevel="INFO"/>
+
+            <setHeader headerName="permission">
+                <simple>AssessmentProfile:Update</simple>
+            </setHeader>
+
+            <policy ref="securityPolicyCustom">
+                <bean ref="assProfileBean" method="editAssessmentProfile"/>
+                <log message="editAssessmentProfile after ${body}" loggingLevel="INFO"/>
+            </policy>
+        </route>
+
+        <route id="deleteAssessmentProfile">
+            <from uri="jetty:https://0.0.0.0:9090/profile/delete?enableCORS=true"/>
+            <log message="deleteAssessmentProfile before ${body}"
+                 loggingLevel="INFO"/>
+            <convertBodyTo type="java.lang.String"/>
+            <setHeader headerName="permission">
+                <simple>AssessmentProfile:Update</simple>
+            </setHeader>
+
+            <policy ref="securityPolicyCustom">
+                <bean ref="assProfileBean" method="deleteAssessmentProfile"/>
+                <log message="deleteAssessmentProfile after ${body}"
+                     loggingLevel="INFO"/>
+            </policy>
+        </route>
+
+        <route id="loadAssessmentProfile">
+            <from uri="jetty:https://0.0.0.0:9090/profile/load?enableCORS=true"/>
+
+            <unmarshal ref="gsonGenericFilter"/>
+            <log message="loadAssessmentProfile before ${body}" loggingLevel="INFO"/>
+
+            <setHeader headerName="permission">
+                <simple>AssessmentProfile:Read</simple>
+            </setHeader>
+
+            <policy ref="securityPolicyCustom">
+                <bean ref="assProfileBean" method="loadAssessmentProfile"/>
+                <marshal ref="gsonAssProfile"/>
+                <log message="loadAssessmentProfile after ${body}" loggingLevel="INFO"/>
+            </policy>
+        </route>
+
+        <route id="loadAssessmentProfileList">
+            <from uri="jetty:https://0.0.0.0:9090/profile/list?enableCORS=true"/>
+            <log message="loadAssessmentProfileList before ${body}"
+                 loggingLevel="INFO"/>
+
+            <setHeader headerName="permission">
+                <simple>AssessmentProfile:Read</simple>
+            </setHeader>
+
+            <policy ref="securityPolicyCustom">
+                <bean ref="assProfileBean" method="loadAssessmentProfileList"/>
+                <marshal ref="gsonAssProfile"/>
+
+            </policy>
+        </route>
+
+        <route id="createAssessmentProcedure">
+            <from uri="jetty:https://0.0.0.0:9090/procedure/create?enableCORS=true"/>
+            <unmarshal ref="gsonAssProject"/>
+            <log message="createAssessmentProcedure ${body}" loggingLevel="INFO"/>
+            <setHeader headerName="permission">
+                <simple>AssessmentProcedure:Update</simple>
+            </setHeader>
+
+            <policy ref="securityPolicyCustom">
+                <bean ref="assProcedureBean" method="createAssessmentProcedure"/>
+                <log message="createAssessmentProcedure after ${body}"
+                     loggingLevel="INFO"/>
+            </policy>
+        </route>
+
+        <route id="editAssessmentProcedure">
+            <from uri="jetty:https://0.0.0.0:9090/procedure/edit?enableCORS=true"/>
+            <unmarshal ref="gsonAssProcedure"/>
+            <log message="editAssessmentProcedure before ${body}"
+                 loggingLevel="INFO"/>
+
+            <setHeader headerName="permission">
+                <simple>AssessmentProcedure:Update</simple>
+            </setHeader>
+
+            <policy ref="securityPolicyCustom">
+                <bean ref="assProcedureBean" method="editAssessmentProcedure"/>
+                <log message="editAssessmentProcedure after ${body}"
+                     loggingLevel="INFO"/>
+            </policy>
+        </route>
+
+        <route id="deleteAssessmentProcedure">
+            <from uri="jetty:https://0.0.0.0:9090/procedure/delete?enableCORS=true"/>
+            <convertBodyTo type="java.lang.String"/>
+            <log message="deleteAssessmentProcedure before ${body}"
+                 loggingLevel="INFO"/>
+            <setHeader headerName="permission">
+                <simple>AssessmentProcedure:Update</simple>
+            </setHeader>
+
+            <policy ref="securityPolicyCustom">
+                <bean ref="assProcedureBean" method="deleteAssessmentProcedure"/>
+                <log message="deleteAssessmentProcedure after ${body}"
+                     loggingLevel="INFO"/>
+            </policy>
+        </route>
+
+        <route id="loadAssessmentProcedure">
+            <from uri="jetty:https://0.0.0.0:9090/procedure/load?enableCORS=true"/>
+            <unmarshal ref="gsonGenericFilter"/>
+            <setHeader headerName="permission">
+                <simple>AssessmentProcedure:Read</simple>
+            </setHeader>
+
+            <policy ref="securityPolicyCustom">
+                <bean ref="assProcedureBean" method="loadAssessmentProcedure"/>
+                <marshal ref="gsonAssProcedure"/>
+            </policy>
+        </route>
+
+        <route id="loadAssessmentProcedureList">
+            <from uri="jetty:https://0.0.0.0:9090/procedure/list?enableCORS=true"/>
+
+            <setHeader headerName="permission">
+                <simple>AssessmentProcedure:Read</simple>
+            </setHeader>
+
+            <policy ref="securityPolicyCustom">
+                <bean ref="assProcedureBean" method="loadAssessmentProcedureList"/>
+                <marshal ref="gsonAssProcedure"/>
+                <log message="loadAssessmentProcedureList after ${body}"
+                     loggingLevel="INFO"/>
+            </policy>
+        </route>
+
+        <route id="createAssessmentTemplate">
+            <from uri="jetty:https://0.0.0.0:9090/template/create?enableCORS=true"/>
+            <unmarshal ref="gsonAssProfile"/>
+
+            <setHeader headerName="permission">
+                <simple>AssessmentTemplate:Update</simple>
+            </setHeader>
+
+            <policy ref="securityPolicyCustom">
+                <bean ref="assTemplateBean" method="createAssessmentTemplate"/>
+                <log message="createAssessmentTemplate after ${body}"
+                     loggingLevel="INFO"/>
+            </policy>
+        </route>
+
+        <route id="loadAssessmentTemplate">
+            <from uri="jetty:https://0.0.0.0:9090/template/load?enableCORS=true"/>
+
+            <unmarshal ref="gsonGenericFilter"/>
+            <log message="loadAssessmentTemplate before ${body}"
+                 loggingLevel="INFO"/>
+
+            <setHeader headerName="permission">
+                <simple>AssessmentTemplate:Read</simple>
+            </setHeader>
+
+            <policy ref="securityPolicyCustom">
+                <bean ref="assTemplateBean" method="loadAssessmentTemplate"/>
+                <marshal ref="gsonGeneric"/>
+            </policy>
+        </route>
+
+        <route id="loadAssessmentTemplateList">
+            <from uri="jetty:https://0.0.0.0:9090/template/list?enableCORS=true"/>
+            <log message="loadAssessmentTemplateList before ${body}"
+                 loggingLevel="INFO"/>
+
+            <setHeader headerName="permission">
+                <simple>AssessmentTemplate:Read</simple>
+            </setHeader>
+
+            <policy ref="securityPolicyCustom">
+                <bean ref="assTemplateBean" method="loadAssessmentTemplateList"/>
+                <marshal ref="gsonAssTemplate"/>
+                <log message="loadAssessmentTemplateList after ${body}"
+                     loggingLevel="INFO"/>
+            </policy>
+        </route>
+
+        <route id="loadAuditList">
+            <from uri="jetty:https://0.0.0.0:9090/audit/load?enableCORS=true"/>
+            <unmarshal ref="gsonGenericFilter"/>
+
+            <setHeader headerName="permission">
+                <simple>Audit:Read</simple>
+            </setHeader>
+            <policy ref="securityPolicyCustom">
+                <bean ref="assAuditBean" method="loadAudit"/>
+                <marshal ref="gsonAssAudit"/>
+            </policy>
+        </route>
+
+        <route id="editAudit">
+            <from uri="jetty:https://0.0.0.0:9090/audit/edit?enableCORS=true"/>
+            <unmarshal ref="gsonModelObject"/>
+            <log message="editAudit before ${body}" loggingLevel="INFO"/>
+
+            <setHeader headerName="permission">
+                <simple>Audit:Update</simple>
+            </setHeader>
+
+            <policy ref="securityPolicyCustom">
+                <bean ref="assAuditBean" method="editAudit"/>
+                <log message="editAudit after ${body}" loggingLevel="INFO"/>
+            </policy>
+        </route>
+
+        <route id="loadQuestionnaire">
+            <from uri="jetty:https://0.0.0.0:9090/questionnaireSafeguard/load?enableCORS=true"/>
+
+            <setHeader headerName="permission">
+                <simple>Audit:Read</simple>
+            </setHeader>
+            <policy ref="securityPolicyCustom">
+                <bean ref="assAuditBean" method="loadQuestionnaireSafeguard"/>
+                <marshal ref="gsonQuestion"/>
+                <log message="loadQuestionnaire after ${body}" loggingLevel="INFO"/>
+            </policy>
+        </route>
+
+        <route id="loadQuestionnaireJson">
+            <from uri="jetty:https://0.0.0.0:9090/questionnairejson/load?enableCORS=true"/>
+            <unmarshal ref="gsonGenericFilter"/>
+
+            <setHeader headerName="permission">
+                <simple>Audit:Read</simple>
+            </setHeader>
+
+            <policy ref="securityPolicyCustom">
+                <bean ref="assAuditBean" method="loadQuestionnaireJson"/>
+                <marshal ref="gsonModelObject"/>
+                <log message="loadQuestionnaire after ${body}" loggingLevel="INFO"/>
+            </policy>
+        </route>
+
+        <route id="createQuestionnaireJson">
+            <from uri="jetty:https://0.0.0.0:9090/questionnairejson/create?enableCORS=true"/>
+
+            <setHeader headerName="permission">
+                <simple>Settings:Update</simple>
+            </setHeader>
+
+            <policy ref="securityPolicyCustom">
+                <bean ref="assAuditBean" method="createDefaultQuestionnaire"/>
+                <log message="createDefaultQuestionnaire after ${body}" loggingLevel="INFO"/>
+            </policy>
+        </route>
+
+        <route id="loadProjectRequirement">
+            <from uri="jetty:https://0.0.0.0:9090/sysrequirement/load?enableCORS=true"/>
+            <unmarshal ref="gsonGenericFilter"/>
+            <log message="loadProjectRequirement before ${body}"
+                 loggingLevel="INFO"/>
+
+            <setHeader headerName="permission">
+                <simple>AssessmentProject:Read</simple>
+            </setHeader>
+            <policy ref="securityPolicyCustom">
+                <bean ref="requirementBean" method="loadProjectRequirement"/>
+                <marshal ref="gsonRequirement"/>
+                <log message="loadProjectRequirement after ${body}"
+                     loggingLevel="INFO"/>
+            </policy>
+        </route>
+
+        <route id="loadProjectRequirementByIds">
+            <from
+                    uri="jetty:https://0.0.0.0:9090/sysrequirement/loadById?enableCORS=true"/>
+            <unmarshal ref="gsonGeneric"/>
+            <log message="loadProjectRequirementByIds before ${body}"
+                 loggingLevel="INFO"/>
+
+            <setHeader headerName="permission">
+                <simple>AssessmentProject:Read</simple>
+            </setHeader>
+
+            <policy ref="securityPolicyCustom">
+                <bean ref="requirementBean" method="loadProjectRequirementByIds"/>
+                <marshal ref="gsonRequirement"/>
+                <log message="loadProjectRequirementByIds after ${body}"
+                     loggingLevel="INFO"/>
+            </policy>
+        </route>
+
+        <route id="loadAssetModel">
+            <from uri="jetty:https://0.0.0.0:9090/assetModel/load?enableCORS=true"/>
+            <unmarshal ref="gsonGenericFilter"/>
+            <log message="loadAssetModel before ${body}" loggingLevel="INFO"/>
+
+            <setHeader headerName="permission">
+                <simple>AssetModel:Read</simple>
+            </setHeader>
+
+            <policy ref="securityPolicyCustom">
+                <bean ref="assetBean" method="loadAssetModel"/>
+                <marshal ref="gsonModelObject"/>
+            </policy>
+        </route>
+
+        <route id="editAssetModel">
+            <from uri="jetty:https://0.0.0.0:9090/assetModel/edit?enableCORS=true"/>
+            <unmarshal ref="gsonModelObject"/>
+            <log message="editAssetModel before ${body}" loggingLevel="INFO"/>
+
+            <setHeader headerName="permission">
+                <simple>AssetModel:Update</simple>
+            </setHeader>
+
+            <policy ref="securityPolicyCustom">
+                <bean ref="assetBean" method="editAssetModel"/>
+            </policy>
+        </route>
+
+        <route id="loadPrimaryAssetCategoryEnum">
+            <from uri="jetty:https://0.0.0.0:9090/assetModel/loadPrimaryAssetCategory?enableCORS=true"/>
+            <unmarshal ref="gsonGenericFilter"/>
+            <log message="loadPrimaryAssetCategoryEnum before ${body}" loggingLevel="INFO"/>
+
+            <setHeader headerName="permission">
+                <simple>AssetModel:Read</simple>
+            </setHeader>
+
+            <policy ref="securityPolicyCustom">
+                <bean ref="assetBean" method="loadPrimaryAssetCategoryEnum"/>
+            </policy>
+        </route>
+
+        <route id="loadSecondaryAssetCategoryEnum">
+            <from uri="jetty:https://0.0.0.0:9090/assetModel/loadSecondaryAssetCategory?enableCORS=true"/>
+            <unmarshal ref="gsonGenericFilter"/>
+            <log message="loadSecondaryAssetCategoryEnum before ${body}" loggingLevel="INFO"/>
+
+            <setHeader headerName="permission">
+                <simple>AssetModel:Read</simple>
+            </setHeader>
+
+            <policy ref="securityPolicyCustom">
+                <bean ref="assetBean" method="loadSecondaryAssetCategoryEnum"/>
+            </policy>
+        </route>
+
+        <route id="loadVulnerabilityModel">
+            <from
+                    uri="jetty:https://0.0.0.0:9090/vulnerabilityModel/load?enableCORS=true"/>
+            <unmarshal ref="gsonGenericFilter"/>
+
+            <setHeader headerName="permission">
+                <simple>VulnerabilityModel:Read</simple>
+            </setHeader>
+            <policy ref="securityPolicyCustom">
+                <bean ref="vulnerabilityBean" method="loadVulnerabilityModel"/>
+                <marshal ref="gsonModelObject"/>
+            </policy>
+        </route>
+
+        <route id="EditVulnerabilityModel">
+            <from
+                    uri="jetty:https://0.0.0.0:9090/vulnerabilityModel/edit?enableCORS=true"/>
+            <unmarshal ref="gsonModelObject"/>
+            <log message="editVulnerabilityModel ${body}" loggingLevel="INFO"/>
+
+            <setHeader headerName="permission">
+                <simple>VulnerabilityModel:Update</simple>
+            </setHeader>
+
+            <policy ref="securityPolicyCustom">
+                <bean ref="vulnerabilityBean" method="editVulnerabilityModel"/>
+            </policy>
+        </route>
+
+        <route id="loadVulnerabilityRepository">
+            <from
+                    uri="jetty:https://0.0.0.0:9090/vulnerabilityRepository/load?enableCORS=true"/>
+            <unmarshal ref="gsonGenericFilter"/>
+            <log message="loadVulnerabilityRepository before ${body}"
+                 loggingLevel="INFO"/>
+
+            <setHeader headerName="permission">
+                <simple>VulnerabilityModel:Read</simple>
+            </setHeader>
+
+            <policy ref="securityPolicyCustom">
+                <bean ref="vulnerabilityBean" method="loadVulnerabilityRepository"/>
+                <log message="loadVulnerabilityRepository after ${body}"
+                     loggingLevel="INFO"/>
+            </policy>
+        </route>
+
+        <route id="UpdateVulnerabilityRepository">
+            <from
+                    uri="jetty:https://0.0.0.0:9090/vulnerabilityRepository/update?enableCORS=true"/>
+            <log message="UpdateVulnerabilityRepository before ${body}"
+                 loggingLevel="INFO"/>
+
+            <setHeader headerName="permission">
+                <simple>Settings:Update</simple>
+            </setHeader>
+
+            <policy ref="securityPolicyCustom">
+                <bean ref="vulnerabilityBean" method="updateVulnerabilityRepository"/>
+                <log message="UpdateVulnerabilityRepository after ${body}"
+                     loggingLevel="INFO"/>
+            </policy>
+        </route>
+
+        <route id="UpdateVulnerabilityReference">
+            <from
+                    uri="jetty:https://0.0.0.0:9090/vulnerabilityReference/update?enableCORS=true"/>
+            <log message="UpdateVulnerabilityReference before ${body}"
+                 loggingLevel="INFO"/>
+
+            <setHeader headerName="permission">
+                <simple>Taxonomy:Update</simple>
+            </setHeader>
+
+            <policy ref="securityPolicyCustom">
+                <unmarshal ref="gsonVulnerability"/>
+                <bean ref="vulnerabilityBean" method="editVulnerabilityReference"/>
+                <log message="UpdateVulnerabilityReference after ${body}"
+                     loggingLevel="INFO"/>
+            </policy>
+        </route>
+
+        <route id="CreateVulnerabilityReference">
+            <from
+                    uri="jetty:https://0.0.0.0:9090/vulnerabilityReference/create?enableCORS=true"/>
+            <log message="CreateVulnerabilityReference before ${body}"
+                 loggingLevel="INFO"/>
+
+            <setHeader headerName="permission">
+                <simple>Taxonomy:Update</simple>
+            </setHeader>
+
+            <policy ref="securityPolicyCustom">
+                <unmarshal ref="gsonVulnerability"/>
+                <bean ref="vulnerabilityBean" method="createVulnerabilityReference"/>
+                <log message="CreateVulnerabilityReference after ${body}"
+                     loggingLevel="INFO"/>
+            </policy>
+        </route>
+
+        <route id="DeleteVulnerabilityReference" streamCache="false">
+            <from uri="jetty:https://0.0.0.0:9090/vulnerabilityReference/delete?enableCORS=true"/>
+            <convertBodyTo type="java.lang.String"/>
+            <log message="DeleteVulnerabilityReference1 before ${body}"
+                 loggingLevel="INFO"/>
+
+            <setHeader headerName="permission">
+                <simple>Taxonomy:Update</simple>
+            </setHeader>
+
+            <policy ref="securityPolicyCustom">
+                <unmarshal ref="gsonList"/>
+                <log message="After VulnerabilityReference convert before ${body}"
+                     loggingLevel="INFO"/>
+                <bean ref="vulnerabilityBean" method="deleteVulnerabilityReference"/>
+                <log message="DeleteVulnerabilityReference after ${body}"
+                     loggingLevel="INFO"/>
+            </policy>
+        </route>
+
+        <route id="loadThreatRepository">
+            <from
+                    uri="jetty:https://0.0.0.0:9090/threatRepository/load?enableCORS=true"/>
+            <unmarshal ref="gsonGenericFilter"/>
+            <log message="loadThreatRepository before ${body}" loggingLevel="INFO"/>
+
+            <setHeader headerName="permission">
+                <simple>ThreatModel:Read</simple>
+            </setHeader>
+
+            <policy ref="securityPolicyCustom">
+                <bean ref="threatBean" method="loadThreatRepository"/>
+                <log message="loadThreatRepository after ${body}" loggingLevel="INFO"/>
+            </policy>
+        </route>
+
+        <route id="UpdateThreatRepository">
+            <from
+                    uri="jetty:https://0.0.0.0:9090/threatRepository/update?enableCORS=true"/>
+            <log message="UpdateThreatRepository before ${body}"
+                 loggingLevel="INFO"/>
+
+            <setHeader headerName="permission">
+                <simple>Settings:Update</simple>
+            </setHeader>
+            <policy ref="securityPolicyCustom">
+                <bean ref="threatBean" method="updateThreatRepository"/>
+                <log message="UpdateThreatRepository after ${body}" loggingLevel="INFO"/>
+            </policy>
+        </route>
+
+        <route id="loadThreatModel">
+            <from uri="jetty:https://0.0.0.0:9090/threatModel/load?enableCORS=true"/>
+            <unmarshal ref="gsonGenericFilter"/>
+
+            <setHeader headerName="permission">
+                <simple>ThreatModel:Read</simple>
+            </setHeader>
+
+            <policy ref="securityPolicyCustom">
+                <bean ref="threatBean" method="loadThreatModel"/>
+                <marshal ref="gsonModelObject"/>
+            </policy>
+        </route>
+
+        <route id="editThreatModel">
+            <from uri="jetty:https://0.0.0.0:9090/threatModel/edit?enableCORS=true"/>
+            <unmarshal ref="gsonModelObject"/>
+
+            <setHeader headerName="permission">
+                <simple>ThreatModel:Update</simple>
+            </setHeader>
+
+            <policy ref="securityPolicyCustom">
+                <bean ref="threatBean" method="editThreatModel"/>
+            </policy>
+        </route>
+
+        <route id="UpdateThreatReference">
+            <from
+                    uri="jetty:https://0.0.0.0:9090/threatReference/update?enableCORS=true"/>
+            <log message="UpdateThreatReference before ${body}"
+                 loggingLevel="INFO"/>
+
+            <setHeader headerName="permission">
+                <simple>Taxonomy:Update</simple>
+            </setHeader>
+
+            <policy ref="securityPolicyCustom">
+                <unmarshal ref="gsonThreat"/>
+                <bean ref="threatBean" method="editThreatReference"/>
+                <log message="UpdateThreatReference after ${body}"
+                     loggingLevel="INFO"/>
+            </policy>
+        </route>
+
+        <route id="CreateThreatReference">
+            <from
+                    uri="jetty:https://0.0.0.0:9090/threatReference/create?enableCORS=true"/>
+            <log message="CreateThreatReference before ${body}"
+                 loggingLevel="INFO"/>
+
+            <setHeader headerName="permission">
+                <simple>Taxonomy:Update</simple>
+            </setHeader>
+
+            <policy ref="securityPolicyCustom">
+                <unmarshal ref="gsonThreat"/>
+                <bean ref="threatBean" method="createThreatReference"/>
+                <log message="CreateThreatReference after ${body}"
+                     loggingLevel="INFO"/>
+            </policy>
+        </route>
+
+        <route id="DeleteThreatReference">
+            <from uri="jetty:https://0.0.0.0:9090/threatReference/delete?enableCORS=true"/>
+            <convertBodyTo type="java.lang.String"/>
+            <log message="DeleteThreatReference before ${body}"
+                 loggingLevel="INFO"/>
+
+            <setHeader headerName="permission">
+                <simple>Taxonomy:Update</simple>
+            </setHeader>
+
+            <policy ref="securityPolicyCustom">
+                <unmarshal ref="gsonList"/>
+                <bean ref="threatBean" method="deleteThreatReference"/>
+                <log message="DeleteThreatReference after ${body}"
+                     loggingLevel="INFO"/>
+            </policy>
+        </route>
+
+        <route id="loadSafeguardModel">
+            <from uri="jetty:https://0.0.0.0:9090/safeguardModel/load?enableCORS=true"/>
+            <unmarshal ref="gsonGenericFilter"/>
+
+            <setHeader headerName="permission">
+                <simple>SafeguardModel:Read</simple>
+            </setHeader>
+            <policy ref="securityPolicyCustom">
+                <bean ref="safeguardBean" method="loadSafeguardModel"/>
+            </policy>
+        </route>
+
+        <route id="loadRiskModel">
+            <from uri="jetty:https://0.0.0.0:9090/riskModel/load?enableCORS=true"/>
+            <unmarshal ref="gsonGenericFilter"/>
+
+            <setHeader headerName="permission">
+                <simple>RiskModel:Read</simple>
+            </setHeader>
+            <policy ref="securityPolicyCustom">
+                <bean ref="riskBean" method="loadRiskModel"/>
+                <marshal ref="gsonModelObject"/>
+            </policy>
+        </route>
+
+        <route id="editRiskModel">
+            <from uri="jetty:https://0.0.0.0:9090/riskModel/edit?enableCORS=true"/>
+            <log message="editRiskModel ${body}" loggingLevel="INFO"/>
+            <unmarshal ref="gsonModelObject"/>
+
+            <setHeader headerName="permission">
+                <simple>RiskModel:Update</simple>
+            </setHeader>
+
+            <policy ref="securityPolicyCustom">
+                <bean ref="riskBean" method="editRiskModel"/>
+                <log message="editRiskModel after ${body}"
+                     loggingLevel="INFO"/>
+            </policy>
+        </route>
+
+        <route id="editRiskScenario">
+            <from uri="jetty:https://0.0.0.0:9090/riskScenario/edit?enableCORS=true"/>
+            <unmarshal ref="gsonModelObject"/>
+            <log message="editRiskScenario before ${body}"
+                 loggingLevel="INFO"/>
+
+            <setHeader headerName="permission">
+                <simple>RiskModel:Update</simple>
+            </setHeader>
+
+            <policy ref="securityPolicyCustom">
+                <bean ref="riskBean" method="editRiskScenario"/>
+                <log message="editRiskScenario after ${body}"
+                     loggingLevel="INFO"/>
+            </policy>
+
+        </route>
+
+        <route id="createRiskScenarioReference">
+            <from uri="jetty:https://0.0.0.0:9090/riskScenarioReference/create?enableCORS=true"/>
+            <unmarshal ref="gsonRiskScenarioReference"/>
+            <log message="createRiskScenarioReference before ${body}"
+                 loggingLevel="INFO"/>
+
+            <setHeader headerName="permission">
+                <simple>Taxonomy:Update</simple>
+            </setHeader>
+
+            <policy ref="securityPolicyCustom">
+                <bean ref="riskBean" method="createRiskScenarioReference"/>
+                <log message="createRiskScenarioReference after ${body}"
+                     loggingLevel="INFO"/>
+            </policy>
+        </route>
+
+        <route id="updateRiskScenarioReference">
+            <from uri="jetty:https://0.0.0.0:9090/riskScenarioReference/update?enableCORS=true"/>
+            <unmarshal ref="gsonRiskScenarioReference"/>
+            <log message="updateRiskScenarioReference before ${body}"
+                 loggingLevel="INFO"/>
+
+            <setHeader headerName="permission">
+                <simple>Taxonomy:Update</simple>
+            </setHeader>
+
+            <policy ref="securityPolicyCustom">
+                <bean ref="riskBean" method="updateRiskScenarioReference"/>
+                <log message="updateRiskScenarioReference after ${body}"
+                     loggingLevel="INFO"/>
+            </policy>
+        </route>
+
+        <route id="deleteRiskScenarioReference">
+            <from uri="jetty:https://0.0.0.0:9090/riskScenarioReference/delete?enableCORS=true"/>
+            <convertBodyTo type="java.lang.String"/>
+            <log message="deleteRiskScenarioReference before ${body}"
+                 loggingLevel="INFO"/>
+
+            <setHeader headerName="permission">
+                <simple>Taxonomy:Update</simple>
+            </setHeader>
+
+            <policy ref="securityPolicyCustom">
+                <unmarshal ref="gsonList"/>
+                <bean ref="riskBean" method="deleteRiskScenarioReference"/>
+                <log message="deleteRiskScenarioReference after ${body}"
+                     loggingLevel="INFO"/>
+            </policy>
+        </route>
+
+        <route id="loadRiskScenarioReference">
+            <from uri="jetty:https://0.0.0.0:9090/riskScenarioReference/load?enableCORS=true"/>
+            <log message="loadRiskScenarioReference before ${body}"
+                 loggingLevel="INFO"/>
+
+            <setHeader headerName="permission">
+                <simple>Taxonomy:Read</simple>
+            </setHeader>
+
+            <policy ref="securityPolicyCustom">
+                <bean ref="riskBean" method="loadRiskScenarioReference"/>
+                <marshal ref="gsonRiskScenarioReference"/>
+                <log message="loadRiskScenarioReference after ${body}"
+                     loggingLevel="INFO"/>
+            </policy>
+        </route>
+
+        <route id="UpdateScenarioRepository">
+            <from
+                    uri="jetty:https://0.0.0.0:9090/scenarioRepository/update?enableCORS=true"/>
+            <log message="UpdateScenarioRepository before ${body}"
+                 loggingLevel="INFO"/>
+
+            <setHeader headerName="permission">
+                <simple>Settings:Update</simple>
+            </setHeader>
+
+            <policy ref="securityPolicyCustom">
+                <bean ref="riskBean" method="updateScenarioRepository"/>
+                <log message="UpdateScenarioRepository after ${body}"
+                     loggingLevel="INFO"/>
+            </policy>
+
+        </route>
+
+        <route id="importSecRequirement">
+            <from uri="jetty:https://0.0.0.0:9090/secrequirement/import?enableCORS=true"/>
+            <log message="importSecRequirement ${body}" loggingLevel="INFO"/>
+
+            <setHeader headerName="permission">
+                <simple>Settings:Update</simple>
+            </setHeader>
+            <policy ref="securityPolicyCustom">
+                <bean ref="secreqBean" method="importGasfRequirement"/>
+                <log message="importSecRequirement after ${body}"
+                     loggingLevel="INFO"/>
+            </policy>
+        </route>
+
+        <route id="loadRiskTreatmentModel">
+            <from uri="jetty:https://0.0.0.0:9090/riskTreatmentModel/load?enableCORS=true"/>
+            <unmarshal ref="gsonGenericFilter"/>
+
+            <setHeader headerName="permission">
+                <simple>RiskTreatmentModel:Read</simple>
+            </setHeader>
+            <policy ref="securityPolicyCustom">
+                <bean ref="riskTreatmentBean" method="loadRiskTreatmentModel"/>
+                <marshal ref="gsonModelObject"/>
+            </policy>
+        </route>
+
+        <route id="loadRiskTreatmentModelDetail">
+            <from uri="jetty:https://0.0.0.0:9090/riskTreatmentModel/loadDetail?enableCORS=true"/>
+            <log message="loadRiskTreatmentModelDetail before ${body}" loggingLevel="INFO"/>
+            <unmarshal ref="gsonGenericFilter"/>
+
+            <setHeader headerName="permission">
+                <simple>RiskTreatmentModel:Read</simple>
+            </setHeader>
+            <policy ref="securityPolicyCustom">
+                <bean ref="riskTreatmentBean" method="loadRiskTreatmentModelDetail"/>
+                <log message="loadRiskTreatmentModelDetail after ${body}" loggingLevel="INFO"/>
+            </policy>
+        </route>
+
+        <route id="editRiskTreatmentModel">
+            <from uri="jetty:https://0.0.0.0:9090/riskTreatmentModel/edit?enableCORS=true"/>
+            <log message="editRiskTreatmentModel ${body}" loggingLevel="INFO"/>
+            <unmarshal ref="gsonModelObject"/>
+            <log message="editRiskTreatmentModel before ${body}" loggingLevel="INFO"/>
+
+            <setHeader headerName="permission">
+                <simple>RiskTreatmentModel:Update</simple>
+            </setHeader>
+
+            <policy ref="securityPolicyCustom">
+                <bean ref="riskTreatmentBean" method="editRiskTreatmentModel"/>
+                <log message="editRiskTreatmentModel after ${body}" loggingLevel="INFO"/>
+            </policy>
+        </route>
+
+        <route id="editRiskTreatmentModelDetail">
+            <from uri="jetty:https://0.0.0.0:9090/riskTreatmentModel/editDetail?enableCORS=true"/>
+            <log message="editRiskTreatmentModelDetail ${body}" loggingLevel="INFO"/>
+            <unmarshal ref="gsonModelObject"/>
+            <log message="editRiskTreatmentModelDetail before ${body}" loggingLevel="INFO"/>
+
+            <setHeader headerName="permission">
+                <simple>RiskTreatmentModel:Update</simple>
+            </setHeader>
+
+            <policy ref="securityPolicyCustom">
+                <bean ref="riskTreatmentBean" method="editRiskTreatmentModelDetail"/>
+                <log message="editRiskTreatmentModelDetail after ${body}" loggingLevel="INFO"/>
+            </policy>
+        </route>
+
+        <route id="calculateRiskTreatmentModel">
+            <from uri="jetty:https://0.0.0.0:9090/riskTreatmentModel/calculate?enableCORS=true"/>
+            <unmarshal ref="gsonModelObject"/>
+            <log message="calculateRiskTreatmentModel before ${body}" loggingLevel="INFO"/>
+
+            <setHeader headerName="permission">
+                <simple>RiskTreatmentModel:Update</simple>
+            </setHeader>
+
+            <policy ref="securityPolicyCustom">
+                <bean ref="riskTreatmentBean" method="calculateRiskTreatmentModel"/>
+                <log message="calculateRiskTreatmentModel after ${body}" loggingLevel="INFO"/>
+            </policy>
+        </route>
+
+        <route id="calculateRiskTreatmentModelDetail">
+            <from uri="jetty:https://0.0.0.0:9090/riskTreatmentModel/calculateDetail?enableCORS=true"/>
+            <unmarshal ref="gsonModelObject"/>
+            <log message="calculateRiskTreatmentModelDetail before ${body}" loggingLevel="INFO"/>
+
+            <setHeader headerName="permission">
+                <simple>RiskTreatmentModel:Update</simple>
+            </setHeader>
+
+            <policy ref="securityPolicyCustom">
+                <bean ref="riskTreatmentBean" method="calculateRiskTreatmentModelDetail"/>
+                <log message="calculateRiskTreatmentModelDetail after ${body}" loggingLevel="INFO"/>
+            </policy>
+        </route>
+
+        <route id="createUser">
+            <from uri="jetty:https://0.0.0.0:9090/user/create?enableCORS=true"/>
+            <setHeader headerName="permission">
+                <simple>User:Update</simple>
+            </setHeader>
+
+            <log message="createUser before |${header.SHIRO_SECURITY_TOKEN}|"
+                 loggingLevel="INFO"/>
+            <policy ref="securityPolicyCustom">
+                <log message="createUser ${body}" loggingLevel="INFO"/>
+                <unmarshal ref="gsonUser"/>
+                <log message="createUser before ${body}" loggingLevel="INFO"/>
+                <bean ref="userBean" method="createUser"/>
+                <log message="createUser after ${body}" loggingLevel="INFO"/>
+            </policy>
+        </route>
+
+        <route id="editUser">
+            <from uri="jetty:https://0.0.0.0:9090/user/edit?enableCORS=true"/>
+            <unmarshal ref="gsonUser"/>
+
+            <setHeader headerName="permission">
+                <simple>User:Update</simple>
+            </setHeader>
+
+            <policy ref="securityPolicyCustom">
+
+                <bean ref="userBean" method="editUser"/>
+                <log message="editUser after ${body}" loggingLevel="INFO"/>
+
+            </policy>
+        </route>
+
+        <route id="editUserPassword">
+            <from uri="jetty:https://0.0.0.0:9090/user/editPassword?enableCORS=true"/>
+            <unmarshal ref="gsonUser"/>
+            <policy ref="securityPolicyCustom">
+                <bean ref="userBean" method="editUserPassword"/>
+                <log message="editUser after ${body}" loggingLevel="INFO"/>
+
+            </policy>
+        </route>
+
+        <route id="loadUserList">
+            <from uri="jetty:https://0.0.0.0:9090/user/list?enableCORS=true"/>
+            <setHeader headerName="permission">
+                <simple>User:Read</simple>
+            </setHeader>
+            <policy ref="securityPolicyCustom">
+                <bean ref="userBean" method="loadUserList"/>
+                <marshal ref="gsonUser"/>
+            </policy>
+        </route>
+
+        <route id="loadUser">
+            <from uri="jetty:https://0.0.0.0:9090/user/load?enableCORS=true"/>
+            <log message="loadUser before ${body}" loggingLevel="INFO"/>
+            <unmarshal ref="gsonGenericFilter"/>
+            <setHeader headerName="permission">
+                <simple>User:Read</simple>
+            </setHeader>
+
+            <policy ref="securityPolicyCustom">
+                <bean ref="userBean" method="loadUser"/>
+                <marshal ref="gsonUser"/>
+                <log message="loadUser after ${body}" loggingLevel="INFO"/>
+            </policy>
+        </route>
+
+        <route id="deleteUser">
+            <from uri="jetty:https://0.0.0.0:9090/user/delete?enableCORS=true"/>
+            <log message="deleteUser before ${body}" loggingLevel="INFO"/>
+            <convertBodyTo type="java.lang.String"/>
+            <setHeader headerName="permission">
+                <simple>User:Update</simple>
+            </setHeader>
+
+            <policy ref="securityPolicyCustom">
+                <log message="user" loggingLevel="INFO"/>
+                <bean ref="userBean" method="deleteUser"/>
+            </policy>
+        </route>
+
+        <route id="getConfiguration">
+            <from uri="jetty:https://0.0.0.0:9090/configuration?enableCORS=true"/>
+            <bean ref="configurationBean" method="getConfiguration"/>
+        </route>
+
+        <route id="lockView">
+            <from uri="jetty:https://0.0.0.0:9090/lock?enableCORS=true"/>
+            <unmarshal ref="gsonGenericFilter"/>
+            <bean ref="lockViewBean" method="lock"/>
+        </route>
+
+        <route id="unlockView">
+            <from uri="jetty:https://0.0.0.0:9090/unlock?enableCORS=true"/>
+            <unmarshal ref="gsonGenericFilter"/>
+            <bean ref="lockViewBean" method="unlock"/>
+        </route>
+
+        <route id="getlockView">
+            <from uri="jetty:https://0.0.0.0:9090/getlock?enableCORS=true"/>
+            <unmarshal ref="gsonGenericFilter"/>
+            <bean ref="lockViewBean" method="getlock"/>
+        </route>
+
+        <route id="clientError">
+            <from uri="jetty:https://0.0.0.0:9090/client_error?enableCORS=true"/>
+            <log message="clientError after ${body}" loggingLevel="ERROR"/>
+        </route>
+
+        <route id="ping">
+            <from uri="jetty:https://0.0.0.0:9090/ping?enableCORS=true"/>
+            <setHeader headerName="permission">
+                <simple>Configuration:Read</simple>
+            </setHeader>
+            <policy ref="securityPolicyCustom">
+                <bean ref="configurationBean" method="ping"/>
+            </policy>
+        </route>
+    </camelContext>
+</blueprint>

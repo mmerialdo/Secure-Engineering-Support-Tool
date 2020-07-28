@@ -1,0 +1,1374 @@
+D01,A,File,Erasure,Fic.eff,IF.L,Exp,Exp,,,,,,08A03,08E03,08D05
+S01,A,Software,Erasure,Fic.eff,IF.L,Exp,Exp,,,,,,08A03,08E03,
+S02,A,Software,Erasure,Fic.eff,IF.L,Exp,Exp,,,,,,08A03,08E03,
+S03,A,Software,Erasure,Fic.eff,IF.L,Exp,Exp,,,,,,08A03,08E03,
+S04,A,Software,Erasure,Fic.eff,IF.L,Exp,Exp,,,,,,08A03,08E03,
+S05,A,Software,Erasure,Fic.eff,IF.L,Exp,Exp,,,,,,08A03,08E03,
+D01,A,File,Erasure,Fic.eff,ER.P,Pro,Exp,,Ain,,Ual,,,,08D05
+D01,A,File,Erasure,Fic.eff,ER.P,Pro,Exp,,Ain,,Uai,,max(07A02;09A02),,08D05
+D01,A,File,Erasure,Fic.eff,ER.P,Pro,Exp,,Ain,,Una,,min(07A03;07A04),,08D05
+D01,A,File,Erasure,Fic.eff,ER.P,Pro,Exp,,Ain,,E,,,,08D05
+D01,A,File,Erasure,Fic.eff,ER.P,Pro,Exp,,Ain,,M,,,,08D05
+D01,A,File,Erasure,Fic.eff,MA.L,Del,Exp,,Ain,,Ual,min(07C01;08E02),,,08D05
+D01,A,File,Erasure,Fic.eff,MA.L,Del,Exp,,Ain,,Uai,min(07C01;08E02),max(07A02;09A02),,08D05
+D01,A,File,Erasure,Fic.eff,MA.L,Del,Exp,,Ain,,Una,,min(07A03;07A04),,08D05
+D01,A,File,Erasure,Fic.eff,MA.L,Del,Exp,,Ain,,E,min(08F02;08F03),,,08D05
+D01,A,File,Erasure,Fic.eff,MA.L,Del,Exp,,Ain,,M,max(08A05;08E02),,,08D05
+D01,A,File,Erasure,Fic.eff,MA.L,Del,Exp,,Atm,,Tie,,08A06,,08D05
+D02,A,File,Erasure,Fic.eff,MA.L,Del,Exp,,Atm,,Tie,,08A06,,11D04
+D01,A,File,Erasure,Fic.eff,MA.L,Tot,,,Atm,,E,min(08F02;08F03),,,
+D10,A,File,Erasure,Fic.eff,MA.L,Tot,,,Atm,,E,,min(08F02;08F03),,08H02
+D10,A,File,Erasure,Fic.eff,MA.L,Tot,,,Ain,,E,,,,08H02
+D02,A,File,Erasure,Fic.eff,MA.L,Tot,,,Atm,,E,min(08F02;08F03),,,
+D01,A,File,Pollution,Fic.pol,ER.P,Pro,,,,Mal,M,,10B05,,08D05
+D02,A,File,Pollution,Fic.pol,ER.P,Pro,,,,Mal,M,,10B05,,11D04
+D01,A,File,Pollution,Fic.pol,ER.P,Pro,,,,Mac,M,,10B06,,08D05
+D02,A,File,Pollution,Fic.pol,ER.P,Pro,,,,Mac,M,,10B06,,11D04
+D01,A,File,Pollution,Fic.pol,IF.L,Exp,,,,,,,08D03,08E02,08D05
+D02,A,File,Pollution,Fic.pol,IF.L,Exp,,,,,,,08D03,08E02,08D05
+D01,A,File,Pollution,Fic.pol,MA.L,Fal,,,Ain,Exp,Uai,,max(min(07A01;07A02;08F01);min(09A01;09A02)),,08D05
+D02,A,File,Pollution,Fic.pol,MA.L,Fal,,,Ain,Exp,Uai,,max(min(07A01;07A02;08F01);min(09A01;09A02)),,11D04
+D11,A,File,Pollution,Fic.pol,MA.L,Fal,,,Ain,Exp,Uai,,max(min(07A01;07A02;08F01);min(09A01;09A02)),,08D05
+D01,A,File,Pollution,Fic.pol,MA.L,Fal,,,Ain,Exp,Una,,max(min(07A03;07A04;08F02);min(09A03;09A04);09C02),,08D05
+D02,A,File,Pollution,Fic.pol,MA.L,Fal,,,Ain,Exp,Una,,max(min(07A03;07A04;08F02);min(09A03;09A04);09C02),,11D04
+D11,A,File,Pollution,Fic.pol,MA.L,Fal,,,Ain,Exp,Una,,max(min(07A03;07A04;08F02);min(09A03;09A04);09C02),,08D05
+D01,A,File,Pollution,Fic.pol,MA.L,Fal,,,Ain,Exp,E,,09C02,,08D05
+D11,A,File,Pollution,Fic.pol,MA.L,Fal,,,Ain,Exp,E,,09C02,,08D05
+D02,A,File,Pollution,Fic.pol,MA.L,Fal,,,Ain,Exp,E,,09C02,,11D04
+D01,A,File,Pollution,Fic.pol,MA.L,Fal,,,Ain,Exp,M,,max(09C02;10B05),,08D05
+D02,A,File,Pollution,Fic.pol,MA.L,Fal,,,Ain,Exp,M,,max(09C02;10B05),,11D04
+D11,A,File,Pollution,Fic.pol,MA.L,Fal,,,Ain,Exp,M,,max(09C02;10B05),,08D05
+D01,A,Media,Destruction,Med.des,AC.E,Inc,Exp,,,,,,03D01,,min(08D05;08D09)
+D01,A,Media,Destruction,Med.des,AC.E,Ino,Exp,,,,,,,,min(08D05;08D09)
+D01,A,Media,Destruction,Med.des,AC.E,Inc,Med,,,,,,03D01,,min(08D05;08D09)
+D01,A,Media,Destruction,Med.des,AC.E,Ino,Med,,,,,,,,min(08D05;08D09)
+D01,A,Media,Disappearance,Med.dis,ER.P,Peo,Med,,,,,,,,08D05
+D01,C,Media,Disappearance,Med.dis,ER.P,Peo,Med,,,,,08C03,09C02,,
+D01,A,Media,Disappearance,Med.dis,ER.P,Peo,Exp,,,,,,,,08D05
+D01,C,Media,Disappearance,Med.dis,ER.P,Peo,Exp,,,,,08C03,09C02,,
+D01,A,Media,Disappearance,Med.dis,MA.P,Vol,Exp,,,,Pna,03B06,min(03B03;03B04),,08D05
+D01,C,Media,Disappearance,Med.dis,MA.P,Vol,Exp,,,,Pna,03B06,min(03B03;03B04),,
+D01,A,Media,Disappearance,Med.dis,MA.P,Vol,Exp,,,,E,03B06,,,08D05
+D01,C,Media,Disappearance,Med.dis,MA.P,Vol,Exp,,,,E,08C03,09C02,,
+D01,A,Media,Disappearance,Med.dis,MA.P,Vol,Exp,,,,Pse,03B06,,,08D05
+D01,C,Media,Disappearance,Med.dis,MA.P,Vol,Exp,,,,Pse,08C03,09C02,,
+D03,A,Media,Disappearance,Med.dis,MA.P,Vol,Exp,,,,Pse,03B06,,,08D05
+D03,C,Media,Disappearance,Med.dis,MA.P,Vol,Exp,,,,Pse,08C03,09C02,,
+D01,A,Media,Disappearance,Med.dis,MA.P,Vol,Med,,,,Pna,03B06,08C03,,08D05
+D01,C,Media,Disappearance,Med.dis,MA.P,Vol,Med,,,,Pna,08C03,09C02,,
+D01,A,Media,Disappearance,Med.dis,MA.P,Vol,Med,,,,E,03B06,,,08D05
+D01,C,Media,Disappearance,Med.dis,MA.P,Vol,Med,,,,E,08C03,09C02,,
+D01,A,Media,Disappearance,Med.dis,MA.P,Vol,Med,,,,Pse,03B06,,,08D05
+D01,C,Media,Disappearance,Med.dis,MA.P,Vol,Med,,,,Pse,08C03,09C02,,
+D01,A,Media,Inoperability,Med.ine,AC.M,Equ,Exp,,,,,,09D01,,08D05
+D01,A,Media,Inoperability,Med.ine,IC.E,De,Exp,,,,,,03C01,,08D05
+D01,A,Media,Inoperability,Med.ine,IC.E,Se,Exp,,,,,,min(03A01;03A04),,08D05
+D01,A,Electronic_Media,Inoperability,Med.ine,IF.L,Exp,Exp,,,,,,08A03,08E03,08D05
+D01,A,Media,Inoperability,Med.ine,IC.E,Pol,Med,,,,,,,,08D05
+D05,A,printouts,Inoperability,PMed.ine,IC.E,Pol,Med,,,,,,08A07,,
+D01,A,Media,Inoperability,Med.ine,IC.E,De,Med,,,,,,08C03,,08D05
+D01,A,Access means,Disappearance,Cle.dis,ER.P,Pro,,,,,,,,,09D02
+D01,A,Access means,Disappearance,Cle.dis,MA.P,Vol,,,,,,,,,09D02
+D01,A,File,Erasure,Fic.eff,IF.L,Vir,Exp,,,,,,min(08D07;11D06),,11D04
+D02,A,File,Erasure,Fic.eff,IF.L,Vir,Exp,,,,,,min(08D07;11D06),,11D04
+D03,A,File,Erasure,Fic.eff,IF.L,Vir,Exp,,,,,,min(08D07;11D06),,11D05
+D10,A,File,Erasure,Fic.eff,IF.L,Vir,Exp,,,,,,min(08D07;11D06),,11D04
+D02,A,File,Erasure,Fic.eff,ER.P,Pro,Exp,,Ain,,Ual,,,,11D04
+D02,A,File,Erasure,Fic.eff,ER.P,Pro,Exp,,Ain,,Uai,,,,11D04
+D02,A,File,Erasure,Fic.eff,ER.P,Pro,Exp,,Ain,,Una,,,,11D04
+D02,A,File,Erasure,Fic.eff,ER.P,Pro,Exp,,Ain,,E,,,,11D04
+D02,A,File,Erasure,Fic.eff,ER.P,Pro,Exp,,Ain,,M,,,,11D04
+D02,A,File,Erasure,Fic.eff,MA.L,Del,Exp,,Ain,,Ual,,,,11D04
+D02,A,File,Erasure,Fic.eff,MA.L,Del,Exp,,Ain,,Uai,,07A02,,11D04
+D02,A,File,Erasure,Fic.eff,MA.L,Del,Exp,,Ain,,Una,,min(07A03;07A04),,11D04
+D02,A,File,Erasure,Fic.eff,MA.L,Del,Exp,,Ain,,E,min(08F02;08F03),,,11D04
+D02,A,File,Erasure,Fic.eff,MA.L,Del,Exp,,Ain,,M,,,,11D04
+D01,A,File,Erasure,Fic.eff,MA.L,Tot,,,Ain,,E,min(08F02;08F03),,,
+D02,A,File,Erasure,Fic.eff,MA.L,Tot,,,Ain,,E,min(08F02;08F03),,,
+D02,A,Media,Destruction,Med.des,AC.E,Inc,Exp,,,,,,03D01,,min(11D04;08D09)
+D02,A,Media,Destruction,Med.des,AC.E,Ino,Exp,,,,,,,,min(11D04;08D09)
+D02,A,Media,Disappearance,Med.dis,MA.P,Vol,Exp,,,,Pna,03B06,min(03B03;03B04),,11D04
+D02,C,Media,Disappearance,Med.dis,MA.P,Vol,Exp,,,,Pna,03B06,min(03B03;03B04),,11D04
+D02,A,Media,Disappearance,Med.dis,MA.P,Vol,Exp,,,,E,03B06,,,11D04
+D02,A,Media,Disappearance,Med.dis,MA.P,Vol,Exp,,,,Pse,03B06,,,11D04
+D02,A,Media,Inoperability,Med.ine,AC.M,Equ,Exp,,,,,,,,11D04
+D02,A,Media,Inoperability,Med.ine,IC.E,De,Exp,,,,,,03C01,,11D04
+D02,A,Media,Inoperability,Med.ine,IC.E,Se,Exp,,,,,,min(03A01;03A04),,11D04
+D02,A,Electronic_Media,Inoperability,Med.ine,IF.L,Exp,Exp,,,,,,08A03,08E03,11D04
+D02,A,Access means,Disappearance,Cle.dis,ER.P,Pro,,,,,,,,,11D08
+D02,A,Access means,Disappearance,Cle.dis,MA.P,Vol,,,,,,,,,11D08
+D01,A,File,Erasure,Fic.eff,IF.L,Vir,Bur,,,,,,min(08D07;11D06),,11D04
+D02,A,File,Erasure,Fic.eff,IF.L,Vir,Bur,,,,,,min(08D07;11D06),,11D04
+D03,A,File,Erasure,Fic.eff,IF.L,Vir,Bur,,,,,,min(08D07;11D06),,11D05
+D10,A,File,Erasure,Fic.eff,IF.L,Vir,Bur,,,,,,min(08D07;11D06),,11D04
+D03,A,File,Erasure,Fic.eff,ER.P,Pro,Bur,,Apc,,Ua,,,,11D05
+D01,A,File,Erasure,Fic.eff,ER.P,Pro,Bur,,Apc,,Ua,,,,08D05
+D02,A,File,Erasure,Fic.eff,ER.P,Pro,Bur,,Apc,,Ua,,,,08D05
+D03,A,File,Erasure,Fic.eff,ER.P,Pro,Bur,,Ain,,E,,,,11D05
+D01,A,File,Erasure,Fic.eff,ER.P,Pro,Bur,,Ain,,E,,,,08D05
+D02,A,File,Erasure,Fic.eff,ER.P,Pro,Bur,,Ain,,E,,,,08D05
+D03,A,File,Erasure,Fic.eff,ER.P,Pro,Bur,,,,M,,,,11D05
+D01,A,File,Erasure,Fic.eff,ER.P,Pro,Bur,,,,M,,,,08D05
+D02,A,File,Erasure,Fic.eff,ER.P,Pro,Bur,,,,M,,,,08D05
+D03,A,File,Erasure,Fic.eff,ER.P,Pro,Exp,Abs,Apc,,Una,,11B01,,11D05
+D01,A,File,Erasure,Fic.eff,ER.P,Pro,Exp,Abs,Apc,,Una,,max(07A05;09A05),,08D05
+D02,A,File,Erasure,Fic.eff,ER.P,Pro,Exp,Abs,Apc,,Una,,max(07A05;09A05),,08D05
+D03,A,Files,Erasure,Fic.eff,MA.L,Del,Bur,Abs,Apc,,Una,,11B01,,11D05
+D01,A,Files,Erasure,Fic.eff,MA.L,Del,Bur,Abs,Apc,,Una,,max(07A05;09A05),,11D05
+D02,A,Files,Erasure,Fic.eff,MA.L,Del,Bur,Abs,Apc,,Una,,max(07A05;09A05),,11D05
+D03,A,Files,Erasure,Fic.eff,MA.L,Del,Bur,Hho,Apc,,Una,,11B01,,11D05
+D01,A,Files,Erasure,Fic.eff,MA.L,Del,Bur,Hho,Apc,,Una,,max(07A05;09A05),,11D05
+D02,A,Files,Erasure,Fic.eff,MA.L,Del,Bur,Hho,Apc,,Una,,max(07A05;09A05),,11D05
+D03,A,Files,Erasure,Fic.eff,MA.L,Del,Bur,,Ain,,E,min(08F02;08F03),,,11D05
+D01,A,Files,Erasure,Fic.eff,MA.L,Del,Bur,,Ain,,E,,max(07A05;09A05),,11D05
+D02,A,Files,Erasure,Fic.eff,MA.L,Del,Bur,,Ain,,E,,max(07A05;09A05),,11D05
+D03,A,Files,Erasure,Fic.eff,MA.L,Del,Bur,,,,M,,,,11D05
+D01,A,Files,Erasure,Fic.eff,MA.L,Del,Bur,,,,M,,,,08D05
+D02,A,Files,Erasure,Fic.eff,MA.L,Del,Bur,,,,M,,,,08D05
+D03,A,Media,Destruction,Med.des,AC.E,Inc,Bur,,,,,,,,11D05
+D04,A,Document,Destruction,PMed.des,AC.E,Inc,Bur,,,,,,,,11D05
+D03,A,Media,Destruction,Med.des,AC.E,Ino,Bur,,,,,,,,11D05
+D04,A,Document,Destruction,PMed.des,AC.E,Ino,Bur,,,,,,,,11D05
+D01,A,Media,Disappearance,Med.dis,ER.P,Peo,Bur,,,,,,,,11D05
+D01,C,Media,Disappearance,Med.dis,ER.P,Peo,Bur,,,,,02C05,max(02C03;02D02),,11D05
+D03,A,Media,Disappearance,Med.dis,ER.P,Peo,Bur,,,,,,,,11D05
+D03,C,Media,Disappearance,Med.dis,ER.P,Peo,Bur,,,,,02C05,max(02C03;02D02),,11D05
+D04,A,Document,Disappearance,PMed.dis,ER.P,Peo,Bur,,,,,02C05,max(02C03;02D02),,
+D04,C,Document,Disappearance,PMed.dis,ER.P,Peo,Bur,,,,,02C05,max(02C03;02D02),,
+D01,A,Media,Disappearance,Med.dis,ER.P,Peo,Ext,,,,,,,,11D05
+D01,C,Media,Disappearance,Med.dis,ER.P,Peo,Ext,,,,,02C05,max(02C03;02D02),,11D05
+D03,A,Media,Disappearance,Med.dis,ER.P,Peo,Ext,,,,,,,,11D05
+D03,C,Media,Disappearance,Med.dis,ER.P,Peo,Ext,,,,,02C05,max(02C03;02D02),,11D05
+D03,A,Media,Disappearance,PMed.dis,ER.P,Peo,Ext,,,,,,,,11D05
+D03,C,Media,Disappearance,PMed.dis,ER.P,Peo,Ext,,,,,,11C01,,
+D03,A,PC,Disappearance,Med.dis,MA.P,Vol,Bur,,,,Per,02C05,02D02,,11D05
+D03,C,PC,Disappearance,Med.dis,MA.P,Vol,Bur,,,,Per,02C05,02D02,,11D05
+D03,A,PC,Disappearance,Med.dis,MA.P,Vol,Bur,,,,Pse,02C05,02D02,,11D05
+D03,C,PC,Disappearance,Med.dis,MA.P,Vol,Bur,,,,Pse,02C05,02D02,,11D05
+D01,A,Electronic_Media,Disappearance,Med.dis,MA.P,Vol,Bur,,,,Pse,02C05,02D02,,11D05
+D01,C,Electronic_Media,Disappearance,Med.dis,MA.P,Vol,Bur,,,,Pse,02C05,02D02,,11D05
+D03,C,PC,Disappearance,Med.dis,MA.P,Vol,Bur,,,,Pse,02C05,02D02,,11D05
+D03,A,PC,Disappearance,Med.dis,MA.P,Vol,Bur,,,,Vis,02C05,max(02C03;02D02),,11D05
+D03,C,PC,Disappearance,Med.dis,MA.P,Vol,Bur,,,,Vis,02C05,max(02C03;02D02),,11D05
+D01,A,Electronic_Media,Disappearance,Med.dis,MA.P,Vol,Ext,,,,,,,,11D05
+D01,C,Electronic_Media,Disappearance,Med.dis,MA.P,Vol,Ext,,,,,,11C02,,
+D03,A,PC,Disappearance,Med.dis,MA.P,Vol,Ext,,,,,,,,11D05
+D03,C,PC,Disappearance,Med.dis,MA.P,Vol,Ext,,,,,,11C01,,
+D03,A,Media,Disappearance,Med.dis,MA.P,Vol,Bur,,,,Per,02C05,02D02,,11D05
+D03,C,Media,Disappearance,Med.dis,MA.P,Vol,Bur,,,,Per,02C05,02D02,,11D05
+D03,A,Media,Disappearance,Med.dis,MA.P,Vol,Bur,,,,Pse,02C05,02D02,,11D05
+D03,C,Media,Disappearance,Med.dis,MA.P,Vol,Bur,,,,Pse,02C05,02D02,,11D05
+D03,A,Media,Disappearance,Med.dis,MA.P,Vol,Bur,,,,Vis,02C05,max(02C03;02D02),,11D05
+D03,C,Media,Disappearance,Med.dis,MA.P,Vol,Bur,,,,Vis,02C05,max(02C03;02D02),,11D05
+D01,A,Media,Disappearance,Med.dis,MA.P,Vol,Bur,,,,Vis,02C05,max(02C03;02D02),,11D05
+D01,C,Media,Disappearance,Med.dis,MA.P,Vol,Bur,,,,Vis,02C05,max(02C03;02D02),,11D05
+D03,A,Media,Inoperability,Med.ine,AC.M,Equ,Bur,,,,,,,,11D05
+D03,A,Media,Inoperability,Med.ine,IC.E,De,Bur,,,,,,,,11D05
+D04,A,Document,Inoperability,PMed.ine,IC.E,De,Bur,,,,,,08A07,,
+D03,A,Media,Inoperability,Med.ine,IC.E,Se,Bur,,,,,,min(03A01;03A04),,11D05
+D03,A,Media,Inoperability,Med.ine,IC.E,Age,Bur,,,,,,,,11D05
+D03,A,Access means,Disappearance,Cle.dis,ER.P,Pro,,,,,,,,,11D08
+D03,A,Access means,Disappearance,Cle.dis,MA.P,Vol,,,,,,,,,11D08
+D04,A,Document,Inoperability,PMed.ine,IC.E,De,,,,,,,min(02D01;02D06),,
+D04,A,Document,Destruction,PMed.des,AC.E,Inc,,,,,,,min(02D01;02D06),,
+D04,A,Document,Destruction,PMed.des,AC.E,Ino,,,,,,,min(02D01;02D06),,
+D04,A,Document,Disappearance,PMed.dis,ER.P,Peo,,,,,,,min(02D01;02D06),,
+D04,C,Document,Disappearance,PMed.dis,ER.P,Peo,,,,,,,min(02D01;02D06),,
+D04,A,Document,Disappearance,PMed.dis,ER.P,Peo,Ext,,,,,,11B02,,
+D04,C,Document,Disappearance,PMed.dis,ER.P,Peo,Ext,,,,,,11B02,,
+D04,A,Document,Disappearance,PMed.dis,MA.P,Vol,,Abs,,,Per,02C05,min(02D01;02D06),,
+D04,C,Document,Disappearance,PMed.dis,MA.P,Vol,,Abs,,,Per,02C05,min(02D01;02D06),,
+D04,A,Document,Disappearance,PMed.dis,MA.P,Vol,,Abs,,,Vis,02C05,min(02D01;02D06),,
+D04,C,Document,Disappearance,PMed.dis,MA.P,Vol,,Abs,,,Vis,02C05,min(02D01;02D06),,
+D09,C,Document,Disappearance,PMed.dis,MA.P,Vol,,Abs,,,Vis,02C05,min(02D01;02D06),,
+D09,A,Document,Disappearance,PMed.dis,MA.P,Vol,,Abs,,,Vis,02C05,min(02D01;02D06),,
+D09,C,Document,Disappearance,PMed.dis,MA.P,Vol,Bur,Abs,,,Vis,02C05,min(02D01;02D06),,
+D09,A,Document,Disappearance,PMed.dis,MA.P,Vol,Bur,Abs,,,Vis,02C05,min(02D01;02D06),,
+D04,A,Document,Disappearance,PMed.dis,MA.P,Vol,,Hho,,,Per,02C05,min(02D01;02D06),,
+D04,C,Document,Disappearance,PMed.dis,MA.P,Vol,,Hho,,,Per,02C05,min(02D01;02D06),,
+D09,A,Document,Disappearance,PMed.dis,MA.P,Vol,,Hho,,,Per,02C05,min(02D01;02D06),,
+D09,C,Document,Disappearance,PMed.dis,MA.P,Vol,,Hho,,,Per,02C05,min(02D01;02D06),,
+D04,A,Document,Disappearance,PMed.dis,MA.P,Vol,,Hho,,,Pse,,min(02D01;02D06),,
+D04,C,Document,Disappearance,PMed.dis,MA.P,Vol,,Hho,,,Pse,,min(02D01;02D06),,
+D09,A,Document,Disappearance,PMed.dis,MA.P,Vol,,Hho,,,Pse,,min(02D01;02D06),,
+D09,C,Document,Disappearance,PMed.dis,MA.P,Vol,,Hho,,,Pse,,min(02D01;02D06),,
+D08,C,post mail,Disappearance,PMed.dis,MA.P,Vol,,Abs,,,Vis,02C05,min(02D01;02D06),,
+D08,A,post mail,Disappearance,PMed.dis,MA.P,Vol,,Abs,,,Vis,02C05,min(02D01;02D06),,
+D08,C,post mail,Disappearance,PMed.dis,MA.P,Vol,Bur,Abs,,,Vis,02C05,min(02D01;02D06),,
+D08,A,post mail,Disappearance,PMed.dis,MA.P,Vol,Bur,Abs,,,Vis,02C05,min(02D01;02D06),,
+D08,A,post mail,Disappearance,PMed.dis,MA.P,Vol,,Hho,,,Per,02C05,min(02D01;02D06),,
+D08,C,post mail,Disappearance,PMed.dis,MA.P,Vol,,Hho,,,Per,02C05,min(02D01;02D06),,
+D08,A,post mail,Disappearance,PMed.dis,MA.P,Vol,,Hho,,,Pse,,min(02D01;02D06),,
+D08,C,post mail,Disappearance,PMed.dis,MA.P,Vol,,Hho,,,Pse,,min(02D01;02D06),,
+D08,A,post mail,Inoperability,PMed.ine,IC.E,De,Arc,,,,,,min(02D06;02D07),,
+D08,A,post mail,Destruction,PMed.des,AC.E,Inc,Arc,,,,,,min(02D06;02D07),,
+D08,A,post mail,Destruction,PMed.des,AC.E,Ino,Arc,,,,,,min(02D06;02D07),,
+D08,A,post mail,Loss of reference,PMed.dis,ER.P,Pro,Arc,,,,,,min(02D06;02D07),,
+D08,A,post mail,Disappearance,PMed.dis,MA.P,Vol,Arc,Hou,,,Pa,min(02D06;02D07),min(02D06;02D07),,
+D08,C,post mail,Disappearance,PMed.dis,MA.P,Vol,Arc,Hou,,,Pa,min(02D06;02D07),min(02D06;02D07),,
+D08,A,post mail,Disappearance,PMed.dis,MA.P,Vol,Arc,Hho,,,Pse,min(02D06;02D07),min(02D06;02D07),,
+D08,C,post mail,Disappearance,PMed.dis,MA.P,Vol,Arc,Hho,,,Pse,min(02D06;02D07),min(02D06;02D07),,
+D08,A,post mail,Disappearance,PMed.dis,MA.P,Vol,Arc,Hou,,,Pna,min(02D06;02D07),min(02D06;02D07),,
+D08,C,post mail,Disappearance,PMed.dis,MA.P,Vol,Arc,Hou,,,Pna,min(02D06;02D07),min(02D06;02D07),,
+D08,A,post mail,Disappearance,PMed.dis,MA.P,Vol,Arc,Hho,,,Pna,min(02D06;02D07),min(02D06;02D07),,
+D08,C,post mail,Disappearance,PMed.dis,MA.P,Vol,Arc,Hho,,,Pna,min(02D06;02D07),min(02D06;02D07),,
+D08,A,post mail,Disappearance,PMed.dis,MA.P,Vol,Dis,,,Tran,Pna,min(02D06;02D07),min(02D06;02D07),,
+D08,C,post mail,Disappearance,PMed.dis,MA.P,Vol,Dis,,,Tran,Pna,min(02D06;02D07),min(02D06;02D07),,
+D08,A,post mail,Destruction,PMed.dis,MA.P,Ter,Arc,,,,Tve,min(02D06;02D07),min(02D06;02D07),,
+D08,A,post mail,Disappearance,PMed.dis,ER.P,Peo,Arc,,,,,02D07,,,
+D08,A,post mail,Disappearance,PMed.dis,ER.P,Peo,Bur,,,,,02D04,,,
+D08,C,post mail,Disappearance,PMed.dis,ER.P,Peo,Bur,,,,,02D04,,,
+D08,C,post mail,Disappearance,PMed.dis,ER.P,Peo,Arc,,,,,02D07,,,
+D08,A,post mail,Disappearance,PMed.dis,MA.P,Vol,Arc,,,,Pa,02D07,,,
+D08,C,post mail,Disappearance,PMed.dis,MA.P,Vol,Arc,,,,Pa,02D07,,,
+D08,A,post mail,Disappearance,PMed.dis,MA.P,Vol,Arc,,,,Pse,02D07,,,
+D08,C,post mail,Disappearance,PMed.dis,MA.P,Vol,Arc,,,,Pse,02D07,,,
+D08,C,post mail,Disappearance,PMed.dis,MA.P,Vol,Bur,,,,Ser,02C05,02D02,,
+D08,A,post mail,Disappearance,PMed.dis,MA.P,Vol,Bur,,,,Ser,02C05,02D02,,
+D08,C,post mail,Disappearance,PMed.dis,MA.P,Vol,,,,Imp,Vis,,max(02D02;11C06),,
+D08,A,post mail,Disappearance,PMed.dis,MA.P,Vol,,,,Imp,Vis,,max(02D02;11C06),,
+D08,C,post mail,Disappearance,PMed.dis,MA.P,Vol,Exp,,,,Pa,03B06,08A07,,
+D08,A,post mail,Disappearance,PMed.dis,MA.P,Vol,Exp,,,,Pa,03B06,08A07,,
+D08,C,post mail,Disappearance,PMed.dis,MA.P,Vol,Exp,,,,Ser,03B06,08A07,,
+D08,A,post mail,Disappearance,PMed.dis,MA.P,Vol,Exp,,,,Ser,03B06,08A07,,
+D08,C,post mail,Disappearance,PMed.dis,MA.P,Vol,Exp,,,,Pna,03B06,08A07,,
+D08,A,post mail,Disappearance,PMed.dis,MA.P,Vol,Exp,,,,Pna,03B06,08A07,,
+D08,C,post mail,Disappearance,PMed.dis,MA.P,Vol,Exp,,,,E,03B06,08A07,,
+D08,A,post mail,Disappearance,PMed.dis,MA.P,Vol,Exp,,,,E,03B06,08A07,,
+D08,C,post mail,Disappearance,PMed.dis,MA.P,Vol,Exp,,,,Pse,03B06,08A07,,
+D08,A,post mail,Disappearance,PMed.dis,MA.P,Vol,Exp,,,,Pse,03B06,08A07,,
+D08,C,post mail,Disappearance,PMed.dis,MA.P,Vol,Med,,,,Pna,03B06,08A07,,
+D08,A,post mail,Disappearance,PMed.dis,MA.P,Vol,Med,,,,Pna,03B06,08A07,,
+D08,C,post mail,Disappearance,PMed.dis,MA.P,Vol,Med,,,,E,03B06,08A07,,
+D08,A,post mail,Disappearance,PMed.dis,MA.P,Vol,Med,,,,E,03B06,08A07,,
+D08,C,post mail,Disappearance,PMed.dis,MA.P,Vol,Med,,,,Pse,03B06,08A07,,
+D08,A,post mail,Disappearance,PMed.dis,MA.P,Vol,Med,,,,Pse,03B06,08A07,,
+D08,C,post mail,Disappearance,PMed.dis,MA.P,Vol,,,,Dif,Per,,08A07,,
+D08,A,post mail,Disappearance,PMed.dis,MA.P,Vol,,,,Dif,Per,,08A07,,
+D08,C,post mail,Disappearance,PMed.dis,MA.P,Vol,,,,Dif,Vis,,08A07,,
+D08,A,post mail,Disappearance,PMed.dis,MA.P,Vol,,,,Dif,Vis,,08A07,,
+D08,C,post mail,Disappearance,PMed.dis,MA.P,Vol,Exp,,,Crc,,,08A07,,
+D08,A,post mail,Disappearance,PMed.dis,MA.P,Vol,Exp,,,Crc,,,08A07,,
+D08,C,post mail,Disappearance,PMed.dis,MA.P,Vol,Arc,,,,Pa,02D07,,,
+D08,A,post mail,Disappearance,PMed.dis,MA.P,Vol,Arc,,,,Pa,02D07,,,
+D08,A,post mail,Disappearance,PMed.dis,MA.P,Vol,Arc,,,,Pna,02D07,02D07,,
+D08,C,post mail,Disappearance,PMed.dis,MA.P,Vol,Arc,,,,Pna,02D07,02D07,,
+D08,C,post mail,Disappearance,PMed.dis,MA.P,Vol,,,,Tran,Pna,,02D07,,
+D08,A,post mail,Disappearance,PMed.dis,MA.P,Vol,,,,Tran,Pna,,02D07,,
+D08,C,post mail,Disclosure,PMed.dis,MA.P,Vol,Arc,,,,Pna,,02D07,,
+D04,A,Document,Disappearance,PMed.dis,MA.P,Vol,Ext,,,,,,max(02D02;11B02),,
+D04,C,Document,Disappearance,PMed.dis,MA.P,Vol,Ext,,,,,,max(02D02;11B02),,
+D06a,A,Messages,Loss,Dtr.per,IF.L,Exp,,,,,,,08A03,,09F03
+D06a,C,Messages,Loss,Dtr.per,IF.L,Exp,,,,,,,08A03,,09F03
+D06a,A,Messages,Loss,Dtr.per,AC.M,Equ,,,,,,,,,09F03
+D06a,A,Messages,Loss,Dtr.per,AC.E,Inc,,,,,,,03D01,,09F03
+D06a,A,Messages,Loss,Dtr.per,AC.E,Ino,,,,,,,03C01,,09F03
+D06a,A,data transferred,Erasure,Dtr.des,MA.L,Del,,,,,E,min(08F02;08F03),,,09F03
+D06a,A,data transferred,Erasure,Dtr.des,MA.L,Del,,,,,Pna,,min(08F02;07A03;07A04),,09F03
+D07,A,e-mails,Loss,Dtr.per,IF.L,Exp,,,,,,,08A03,,11C05
+D07,C,e-mails,Loss,Dtr.per,IF.L,Exp,,,,,,,08A03,,11C05
+D07,A,e-mails,Loss,Dtr.per,AC.M,Equ,,,,,,,,,11C05
+D07,A,e-mails,Loss,Dtr.per,AC.E,Inc,,,,,,,03D01,,11C05
+D07,A,e-mails,Loss,Dtr.per,AC.E,Ino,,,,,,,03C01,,11C05
+D07,A,e-mails,Erasure,Dtr.per,ER.P,Pro,,,,Tru,Ua,,,,11C05
+D07,A,e-mails,Erasure,Dtr.per,ER.P,Pro,,,,Exp,E,,,,11C05
+D07,A,e-mails,Erasure,Dtr.per,ER.P,Pro,,,,Mai,M,,,,11C05
+D07,A,e-mails,Erasure,Dtr.per,MA.L,Del,,,,,E,min(08F02;08F03),,,11C05
+D07,A,e-mails,Erasure,Dtr.per,MA.L,Del,,,,,Pna,,min(08F02;07A03;07A04),,11C05
+D08,A,fax,Destruction,Dtr.per,IC.E,De,,,,Emi,,,02D05,,02D05
+D08,A,fax,Destruction,Dtr.per,AC.E,Inc,,,,Emi,,,02D05,,02D05
+D08,A,fax,Destruction,Dtr.per,AC.E,Ino,,,,Emi,,,02D05,,02D05
+D08,A,fax,Loss,Dtr.per,AC.M,Equ,,,,Emi,,,,,02D05
+D08,A,post mail,Destruction,Dtr.per,IC.E,De,,,,Emi,,,02D04,,02D04
+D08,A,post mail,Destruction,Dtr.per,AC.E,Inc,,,,Emi,,,02D04,,02D04
+D08,A,post mail,Destruction,Dtr.per,AC.E,Ino,,,,Emi,,,02D04,,02D04
+D08,A,fax,Loss,Dtr.per,ER.P,Pro,Bur,,,Tru,,,,,02D05
+D08,A,post mail,Loss,Dtr.per,ER.P,Pro,Bur,,,Tru,,,,,02D04
+D08,A,fax mail,Disappearance,Dtr.per,MA.P,Vol,Lof,,,,Pna,,02D05,,02D05
+D08,A,fax mail,Disappearance,Dtr.per,MA.P,Vol,Dis,,,,Per,,02D05,,02D05
+D08,A,fax,Transfer,Dtr.per,MA.L,Fal,,,,,,,,,02D05
+D08,A,post mail,Disappearance,Dtr.per,MA.P,Vol,Loc,,,,Pna,,02D04,,02D04
+D08,A,post mail,Disappearance,Dtr.per,MA.P,Vol,Dis,,,,Per,,02D04,,02D04
+D09,A,Document,Inoperability,PMed.ine,IC.E,De,Arc,,,,,,min(02D06;02D07),,
+D09,A,Document,Destruction,PMed.des,AC.E,Inc,Arc,,,,,,min(02D06;02D07),,
+D09,A,Document,Destruction,PMed.des,AC.E,Ino,Arc,,,,,,min(02D06;02D07),,
+D09,A,Document,Loss of reference,PMed.dis,ER.P,Pro,Arc,,,,,,min(02D06;02D07),,
+D09,A,Document,Disappearance,PMed.dis,MA.P,Vol,Arc,Hou,,,Pa,min(02D06;02D07),min(02D06;02D07),,
+D09,C,Document,Disappearance,PMed.dis,MA.P,Vol,Arc,Hou,,,Pa,min(02D06;02D07),min(02D06;02D07),,
+D09,A,Document,Disappearance,PMed.dis,MA.P,Vol,Arc,Hho,,,Pse,min(02D06;02D07),min(02D06;02D07),,
+D09,C,Document,Disappearance,PMed.dis,MA.P,Vol,Arc,Hho,,,Pse,min(02D06;02D07),min(02D06;02D07),,
+D09,A,Document,Disappearance,PMed.dis,MA.P,Vol,Arc,Hou,,,Pna,min(02D06;02D07),min(02D06;02D07),,
+D09,C,Document,Disappearance,PMed.dis,MA.P,Vol,Arc,Hou,,,Pna,min(02D06;02D07),min(02D06;02D07),,
+D09,A,Document,Disappearance,PMed.dis,MA.P,Vol,Arc,Hho,,,Pna,min(02D06;02D07),min(02D06;02D07),,
+D09,C,Document,Disappearance,PMed.dis,MA.P,Vol,Arc,Hho,,,Pna,min(02D06;02D07),min(02D06;02D07),,
+D09,A,Document,Disappearance,PMed.dis,MA.P,Vol,Dis,,,Tran,Pna,min(02D06;02D07),min(02D06;02D07),,
+D09,C,Document,Disappearance,PMed.dis,MA.P,Vol,Dis,,,Tran,Pna,min(02D06;02D07),min(02D06;02D07),,
+D09,A,Document,Destruction,PMed.dis,MA.P,Ter,Arc,,,,Tve,min(02D06;02D07),min(02D06;02D07),,
+D10,A,File,Erasure,Fic.eff,ER.P,Pro,Exp,,Ain,,Ua,,,,08H02
+D10,A,File,Erasure,Fic.eff,ER.P,Pro,Exp,,Ain,,Ual,,,,08H02
+D10,A,File,Erasure,Fic.eff,ER.P,Pro,Exp,,Ain,,M,,,,08H02
+D10,A,File,Erasure,Fic.eff,ER.P,Pro,Exp,,,,M,,,,08H02
+D10,A,File,Pollution,Fic.pol,ER.P,Pro,,,,Mac,M,,08H03,,08H02
+D10,A,File,Pollution,Fic.pol,IF.L,Exp,,,,,,,08H03,,08H02
+D10,A,File,Pollution,Fic.pol,MA.L,Fal,,,Ain,Exp,Una,,08H03,,08H02
+D10,A,File,Pollution,Fic.pol,MA.L,Fal,,,Ain,Exp,Uai,,08H03,,08H02
+D10,A,File,Pollution,Fic.pol,MA.L,Fal,,,Ain,Exp,E,,08H03,,08H02
+D10,A,File,Pollution,Fic.pol,MA.L,Fal,,,Ain,Exp,M,,08H03,,08H02
+D01,A,File,Erasure,Fic.eff,ER.P,Pro,Exp,,Ain,,Ua,,max(07A02;09A02),,08D05
+D02,A,File,Erasure,Fic.eff,ER.P,Pro,Exp,,Ain,,Ua,,max(07A02;09A02),,08D05
+D10,A,File,Erasure,Fic.eff,ER.P,Pro,Exp,,Ain,,E,,,,08H02
+D01,A,File,Erasure,Fic.eff,ER.P,Pro,Exp,,Ain,,E,,max(07A02;09A02),,08D05
+D02,A,File,Erasure,Fic.eff,ER.P,Pro,Exp,,Ain,,E,,max(07A02;09A02),,08D05
+D10,A,File,Erasure,Fic.eff,MA.L,Del,Exp,,Ain,,E,08H02,,,
+D01,A,File,Erasure,Fic.eff,MA.L,Del,Exp,,Ain,,E,08H02,,,
+D02,A,File,Erasure,Fic.eff,MA.L,Del,Exp,,Ain,,E,08H02,,,
+D10,A,File,Erasure,Fic.eff,MA.L,Del,Exp,,Ain,,Ual,,,,08H02
+D01,A,File,Erasure,Fic.eff,MA.L,Del,Exp,,Ain,,Ual,,,,08H02
+D02,A,File,Erasure,Fic.eff,MA.L,Del,Exp,,Ain,,Ual,,,,08H02
+D10,A,File,Erasure,Fic.eff,MA.L,Del,Exp,,Ain,,Uai,,08H02,,08H02
+D10,A,File,Erasure,Fic.eff,MA.L,Del,Exp,,Ain,,Una,,08H02,,08H02
+D10,A,File,Erasure,Fic.eff,MA.L,Del,Exp,,Atm,,Tie,,08A06,,08H02
+D10,A,File,Erasure,Fic.eff,MA.L,Del,Exp,,Ain,,M,,,,08H02
+D10,A,File,Erasure,Fic.eff,MA.L,Del,Exp,,,,M,,,,08H02
+D01,A,File,Erasure,Fic.eff,MA.L,Del,Exp,,Ain,,Uai,,08H02,,08H02
+D02,A,File,Erasure,Fic.eff,MA.L,Del,Exp,,Ain,,Uai,,08H02,,08H02
+D10,A,File,Erasure,Fic.eff,MA.L,Del,Exp,,Ain,,Pna,,08H02,,08H02
+D01,A,File,Erasure,Fic.eff,MA.L,Del,Exp,,Ain,,Pna,,08H02,,08H02
+D02,A,File,Erasure,Fic.eff,MA.L,Del,Exp,,Ain,,Pna,,08H02,,08H02
+D10,A,data,Destruction,Med.des,AC.E,Inc,Med,,,,,,08H03,,08H02
+D10,A,data,Destruction,Med.des,AC.E,Inc,Med,,,,,,08H03,,08H02
+D01,A,Media,Destruction,Med.des,AC.E,Inc,Med,,,,,,08H03,,08H02
+D02,A,Media,Destruction,Med.des,AC.E,Inc,Med,,,,,,08H03,,08H02
+D10,A,data,Destruction,Med.des,AC.E,Ino,Med,,,,,,08H03,,08H02
+D01,A,Media,Destruction,Med.des,AC.E,Ino,Med,,,,,,08H03,,08H02
+D02,A,Media,Destruction,Med.des,AC.E,Ino,Med,,,,,,08H03,,08H02
+D09,A,Document,Disappearance,PMed.dis,ER.P,Peo,Arc,,,,,02D07,,,
+D09,C,Document,Disappearance,PMed.dis,ER.P,Peo,Arc,,,,,02D07,,,
+D10,A,data,Disappearance,Med.dis,ER.P,Peo,Arc,,,,,,08H01,,
+D10,A,data,Disappearance,Med.dis,ER.P,Peo,Exp,,,,,,,,08H02
+D09,A,Document,Disappearance,PMed.dis,MA.P,Vol,Arc,,,,Pa,02D07,,,
+D09,C,Document,Disappearance,PMed.dis,MA.P,Vol,Arc,,,,Pa,02D07,,,
+D10,A,data,Disappearance,Med.dis,MA.P,Vol,Arc,,,,Pa,08H03,,,
+D10,A,data,Disappearance,Med.dis,MA.P,Vol,Arc,,,,Pna,,08H03,,
+D09,A,Document,Disappearance,PMed.dis,MA.P,Vol,Arc,,,,Pse,02D07,,,
+D09,C,Document,Disappearance,PMed.dis,MA.P,Vol,Arc,,,,Pse,02D07,,,
+D10,A,data,Disappearance,Med.dis,MA.P,Vol,Arc,,,,Pse,,08H03,,
+D10,A,data,Disappearance,Med.dis,MA.P,Vol,Dis,,,,Pna,,08H02,,08H02
+D10,A,data,Inoperability,Med.ine,IC.E,Age,Arc,,,,,,08H03,08C05,
+D10,A,data,Inoperability,Med.ine,IC.E,De,Arc,,,,,,08H03,,
+D10,A,Access means,Loss of reference,Cle.dis,ER.P,Pro,Dis,,,,,,,,09D02
+D10,A,Access means,Disappearance,Cle.dis,MA.P,Vol,,,,,,,,,09D02
+D11,A,File,Erasure,Fic.eff,ER.P,Pro,Exp,,Ain,,Ual,,,,08D05
+D01,A,File,Erasure,Fic.eff,ER.P,Pro,Exp,,Ain,,Ual,,,,08D05
+D02,A,File,Erasure,Fic.eff,ER.P,Pro,Exp,,Ain,,Ual,,,,08D05
+D11,A,File,Erasure,Fic.eff,ER.P,Pro,Exp,,Ain,,Uai,,,,08D05
+D01,A,File,Erasure,Fic.eff,ER.P,Pro,Exp,,Ain,,Uai,,,,08D05
+D02,A,File,Erasure,Fic.eff,ER.P,Pro,Exp,,Ain,,Uai,,,,08D05
+D11,A,File,Erasure,Fic.eff,ER.P,Pro,Exp,,Ain,,Una,,,,08D05
+D01,A,File,Erasure,Fic.eff,ER.P,Pro,Exp,,Ain,,Una,,,,08D05
+D02,A,File,Erasure,Fic.eff,ER.P,Pro,Exp,,Ain,,Una,,,,08D05
+D11,A,File,Erasure,Fic.eff,ER.P,Pro,Exp,,Ain,,E,,,,08D05
+D01,A,File,Erasure,Fic.eff,ER.P,Pro,Exp,,Ain,,E,,,,08D05
+D02,A,File,Erasure,Fic.eff,ER.P,Pro,Exp,,Ain,,E,,,,08D05
+D11,A,File,Erasure,Fic.eff,ER.P,Pro,Exp,,,,M,,,,08D05
+D01,A,File,Erasure,Fic.eff,ER.P,Pro,Exp,,,,M,,,,08D05
+D02,A,File,Erasure,Fic.eff,ER.P,Pro,Exp,,,,M,,,,08D05
+S01,A,program file,Erasure,Fic.eff,ER.P,Pro,Exp,,,,M,,,,min(08D05;08D02)
+S02,A,program file,Erasure,Fic.eff,ER.P,Pro,Exp,,,,M,,,,min(08D05;08D02)
+S03,A,program file,Erasure,Fic.eff,ER.P,Pro,Exp,,,,M,,,,max(11D02;11D03)
+S04,A,program file,Erasure,Fic.eff,ER.P,Pro,Exp,,,,M,,,,min(08D05;08D02)
+S05,A,program file,Erasure,Fic.eff,ER.P,Pro,Exp,,,,M,,,,min(08D05;08D02)
+D11,A,File,Erasure,Fic.eff,MA.L,Del,Exp,,Ain,,Una,,min(07A03;07A04),,08D05
+D11,A,File,Erasure,Fic.eff,MA.L,Del,Exp,,Ain,,E,min(08F02;08F03),,,08D05
+D11,A,File,Erasure,Fic.eff,MA.L,Del,Exp,,,,M,max(08A05;08E02),,,08D05
+D01,A,File,Erasure,Fic.eff,MA.L,Del,Exp,,,,M,max(08A05;08E02),,,08D05
+D02,A,File,Erasure,Fic.eff,MA.L,Del,Exp,,,,M,max(08A05;08E02),,,08D05
+S01,A,File,Erasure,Fic.eff,MA.L,Del,Exp,,,,M,max(08A05;08E02),,,min(08D05;08D02)
+S02,A,File,Erasure,Fic.eff,MA.L,Del,Exp,,,,M,max(08A05;08E02),,,min(08D05;08D02)
+S04,A,File,Erasure,Fic.eff,MA.L,Del,Exp,,,,M,max(08A05;08E02),,,min(08D05;08D02)
+S05,A,File,Erasure,Fic.eff,MA.L,Del,Exp,,,,M,max(08A05;08E02),,,min(08D05;08D02)
+S01,A,Software,Erasure,Fic.eff,MA.L,Del,Exp,,,,M,max(08A05;08E02),,,min(08D05;08D02)
+S02,A,Software,Erasure,Fic.eff,MA.L,Del,Exp,,,,M,max(08A05;08E02),,,min(08D05;08D02)
+S03,A,Software,Erasure,Fic.eff,MA.L,Del,Exp,,,,M,,,,max(11D02;11D03)
+S04,A,Software,Erasure,Fic.eff,MA.L,Del,Exp,,,,M,max(08A05;08E02),,,min(08D05;08D02)
+S05,A,Software,Erasure,Fic.eff,MA.L,Del,Exp,,,,M,max(08A05;08E02),,,min(08D05;08D02)
+D11,A,File,Pollution,Fic.pol,ER.P,Pro,,,,Mal,M,,10B05,,08D05
+D11,A,File,Pollution,Fic.pol,ER.P,Pro,,,,Mac,M,,10B06,,08D05
+D11,A,File,Pollution,Fic.pol,IF.L,Exp,,,,,,,08D03,08E02,08D05
+D11,A,Media,Destruction,Med.des,AC.E,Inc,Exp,,,,,,03D01,,min(08D05;08D09)
+D11,A,Media,Destruction,Med.des,AC.E,Ino,Exp,,,,,,,,min(08D05;08D09)
+D11,A,Media,Destruction,Med.des,AC.E,Inc,Med,,,,,,03D01,,min(08D05;08D09)
+D11,A,Media,Destruction,Med.des,AC.E,Ino,Med,,,,,,,,min(08D05;08D09)
+D11,A,Media,Disappearance,Med.dis,ER.P,Peo,Exp,,,,,,,,08D05
+D11,A,Media,Disappearance,Med.dis,MA.P,Vol,Exp,,,,Pna,03B06,min(03B03;03B04),,08D05
+D11,A,Media,Disappearance,Med.dis,MA.P,Vol,Exp,,,,E,03B06,,,08D05
+D11,A,Media,Disappearance,Med.dis,MA.P,Vol,Exp,,,,Pse,03B06,,,08D05
+D11,A,Media,Inoperability,Med.ine,AC.M,Equ,Exp,,,,,,,,08D05
+D11,A,Media,Inoperability,Med.ine,IC.E,De,Exp,,,,,,03C01,,08D05
+D11,A,Media,Inoperability,Med.ine,IC.E,Se,Exp,,,,,,min(03A01;03A04),,08D05
+D11,A,Electronic_Media,Inoperability,Med.ine,IF.L,Exp,Exp,,,,,,08A03,08E03,08D05
+D01,I,File,Tampering,Fic.alt,ER.P,Pro,,,,Mal,M,,max(09B05;10B05),09B04,
+D01,I,File,Tampering,Fic.alt,ER.P,Pro,,,,Mac,M,,max(09B05;10B06),09B04,
+D02,I,File,Tampering,Fic.alt,ER.P,Pro,,,,Mal,M,,11C04,09B04,
+D02,I,File,Tampering,Fic.alt,ER.P,Pro,,,,Mac,M,,11C04,09B04,
+D01,I,File,Tampering,Fic.alt,IF.L,Exp,,,,,,,max(09B05;08D03),09B04,
+D02,I,File,Tampering,Fic.alt,IF.L,Exp,,,,,,,11C04,09B04,
+D01,I,File,Tampering,Fic.alt,ER.P,Pro,,,Ain,Tru,Ual,,09B05,09B04,
+D01,I,File,Tampering,Fic.alt,ER.P,Pro,,,Ain,Tru,Uai,,max(09B05;min(07A01;07A02;08F01);min(09A01;09A02)),09B04,
+D01,I,File,Tampering,Fic.alt,ER.P,Pro,,,Ain,Tru,Una,,max(09B05;min(07A03;07A04;08F02);min(09A03;09A04)),09B04,
+D11,I,File,Tampering,Fic.alt,ER.P,Pro,,,,Mal,M,,max(09B05;10B05),09B04,
+D01,I,File,Tampering,Fic.alt,MA.L,Fal,,,Ain,Exp,Uai,,max(09B05;min(07A01;07A02;08F01);min(09A01;09A02)),09B04,
+D01,I,File,Tampering,Fic.alt,MA.L,Fal,,,Ain,Exp,Una,,max(09B05;min(07A03;07A04;08F02);min(09A03;09A04);09B01;09C02),09B04,
+D01,I,File,Tampering,Fic.alt,MA.L,Fal,,,Ain,Exp,E,,max(09B01;09C02),09B04,
+D11,I,File,Tampering,Fic.alt,MA.L,Fal,,,Ain,Exp,E,,max(09B01;09C02),09B04,
+D11,I,File,Tampering,Fic.alt,MA.L,Fal,,,Ain,Exp,M,,max(09B01;09C02),09B04,
+D01,I,File,Tampering,Fic.alt,MA.L,Fal,,,,Exp,M,,max(09B01;09C02),09B04,
+D01,I,File,Tampering,Fic.alt,MA.L,Fal,,,Atm,Exp,Tie,,08A06,09B04,
+D02,I,File,Tampering,Fic.alt,MA.L,Fal,,,Atm,Exp,Tie,,08A06,09B04,
+D11,I,File,Tampering,Fic.alt,MA.L,Fal,,,Atm,Exp,Tie,,08A06,09B04,
+D01,I,Media,Tampering,Fic.alt,MA.L,Fal,,,,Tran,Pa,,max(09B01;09C02),09B04,
+D01,I,Media,Swap,Med.ech,MA.P,Fal,,,,Exp,Pa,,,09B04,
+D01,C,Media,Swap,Med.ech,MA.P,Fal,,,,Exp,Pa,,,09B04,
+D01,I,Media,Swap,Med.ech,MA.P,Fal,,,,Exp,Pna,max(03B04;03B05;03B06),max(min(03B01;03B02;03B03);08C02;09B01;09C02),09B04,
+D01,C,Media,Swap,Med.ech,MA.P,Fal,,,,Exp,Pna,max(03B04;03B05;03B06),max(min(03B01;03B02;03B03);08C02;09B01;09C02),09B04,
+D01,I,Media,Swap,Med.ech,MA.P,Fal,,,,Tran,Pa,,max(09B01;09C02),09B04,
+D01,C,Media,Swap,Med.ech,MA.P,Fal,,,,Tran,Pa,,max(09B01;09C02),09B04,
+D02,I,File,Tampering,Fic.alt,ER.P,Pro,,,Ain,Tru,Ual,,11C04,,
+D02,I,File,Tampering,Fic.alt,ER.P,Pro,,,Ain,Tru,Uai,,min(07A01;07A02;08F01),,
+D02,I,File,Tampering,Fic.alt,ER.P,Pro,,,Ain,Tru,Una,,max(min(08F02;07A03;07A04);11C01;11C04),,
+D02,I,File,Tampering,Fic.alt,MA.L,Fal,,,Ain,Exp,Uai,,min(07A01;07A02;08F01),,
+D02,I,File,Tampering,Fic.alt,MA.L,Fal,,,Ain,Exp,Una,,max(min(08F02;07A03;07A04);11C01;11C04),,
+D02,I,File,Tampering,Fic.alt,MA.L,Fal,,,Ain,Exp,E,,max(11C01;11C04),,
+D02,I,File,Tampering,Fic.alt,MA.L,Fal,,,Ain,Exp,M,,max(11C01;11C03;11C04),,
+D01,I,File,Tampering,Fic.alt,MA.L,Fal,,,Ain,Exp,M,,max(11C01;11C03;11C04),,
+D02,I,Media,Swap,Med.ech,MA.P,Fal,,,Ain,Exp,Pa,,max(11C01;11C04),,
+D02,C,Media,Swap,Med.ech,MA.P,Fal,,,Ain,Exp,Pa,,max(11C01;11C04),,
+D02,I,Media,Swap,Med.ech,MA.P,Fal,,,Ain,Exp,Pna,max(03B04;03B05;03B06),max(min(03B01;03B02;03B03);08C02;11C01;11C04),,
+D02,C,Media,Swap,Med.ech,MA.P,Fal,,,Ain,Exp,Pna,max(03B04;03B05;03B06),max(min(03B01;03B02;03B03);08C02;11C01;11C04),,
+D03,I,File,Tampering,Fic.alt,ER.P,Pro,,,Apc,Tru,Ual,,11C04,,
+D03,I,File,Tampering,Fic.alt,ER.P,Pro,,,Apc,Tru,Una,,max(11B01;11C04),,
+D03,I,File,Tampering,Fic.alt,MA.L,Fal,,,Ain,Stp,E,,max(11C01;11C04),,
+D01,I,File,Tampering,Fic.alt,MA.L,Fal,,,Ain,Stp,E,,max(11C01;11C04),,
+D02,I,File,Tampering,Fic.alt,MA.L,Fal,,,Ain,Stp,E,,max(11C01;11C04),,
+D03,I,File,Tampering,Fic.alt,MA.L,Fal,,,,Stp,M,,max(11C01;11C03;11C04),,
+D01,I,File,Tampering,Fic.alt,MA.L,Fal,,,,Stp,M,,max(11C01;11C03;11C04),,
+D02,I,File,Tampering,Fic.alt,MA.L,Fal,,,,Stp,M,,max(11C01;11C03;11C04),,
+D03,I,Media,Tampering,Fic.alt,MA.L,Fal,,,,Stm,Pa,,11C02,,
+D03,I,File,Tampering,Fic.alt,MA.L,Fal,,Abs,Apc,Act,Una,,max(11B01;11C01;11C04),,
+D01,I,File,Tampering,Fic.alt,MA.L,Fal,,Abs,Apc,Act,Una,,max(07A05;09A05),,08D05
+D02,I,File,Tampering,Fic.alt,MA.L,Fal,,Abs,Apc,Act,Una,,max(07A05;09A05),,08D05
+D03,I,Media,Swap,Med.ech,MA.P,Fal,,,,Stm,Pa,,11C02,,
+D01,I,Media,Swap,Med.ech,MA.P,Fal,,,,Stm,Pa,,11C02,,
+D03,C,Media,Swap,Med.ech,MA.P,Fal,,,,Stm,Pa,,11C02,,
+D01,C,Media,Swap,Med.ech,MA.P,Fal,,,,Stm,Pa,,11C02,,
+D01,I,data,Tampering,Fic.alt,ER.P,Prs,,,,,,,09B03,09B04,
+D02,I,data,Tampering,Fic.alt,ER.P,Prs,,,,,,,09B03,09B04,
+D11,I,data,Tampering,Fic.alt,ER.P,Prs,,,,,,,09B03,09B04,
+D01,I,data,Tampering,Fic.alt,MA.L,Fal,,,Ain,Exp,Ual,09B03,09B03,09B04,
+D02,I,data,Tampering,Fic.alt,MA.L,Fal,,,Ain,Exp,Ual,09B03,09B03,09B04,
+D11,I,data,Tampering,Fic.alt,MA.L,Fal,,,Ain,Exp,Ual,09B03,09B03,09B04,
+D01,I,data,Tampering,Fic.alt,MA.L,Fal,,,Ain,Exp,Pna,,max(min(07A03;07A04;08F02);min(09A03;09A04;08F02);09B01;09C02),09B04,
+D02,I,data,Tampering,Fic.alt,MA.L,Fal,,,Ain,Exp,Pna,,max(min(07A03;07A04;08F02);min(09A03;09A04;08F02);09B01;09C02),09B04,
+D11,I,data,Tampering,Fic.alt,MA.L,Fal,,,Ain,Exp,Pna,,max(min(07A03;07A04;08F02);min(09A03;09A04;08F02);09B01;09C02),09B04,
+D01,I,data,Tampering,Fic.alt,MA.L,Fal,,,,Exp,E,,max(09B01;09C02),09B04,
+D02,I,data,Tampering,Fic.alt,MA.L,Fal,,,,Exp,E,,max(09B01;09C02),09B04,
+D01,I,data,Tampering,Fic.alt,MA.L,Fal,,,,Exp,M,,max(09B01;09C02),09B04,
+D02,I,data,Tampering,Fic.alt,MA.L,Fal,,,,Exp,M,,max(09B01;09C02),09B04,
+D06c,I,data transferred,Tampering,Dtr.alt,MA.L,Fal,Ext,,Are,Ere,Tie,,max(04C01;04C02;09B02;09C01),09B04,
+D06c,I,data transferred,Tampering,Dtr.alt,MA.L,Fal,,,,Ere,E,,max(04C01;04C02;09B02;09C01),09B04,
+D06c,I,data transferred,Tampering,Dtr.alt,MA.L,Fal,,,Aerl,Are,Pna,,max(05C03;05C04),09B04,
+D06c,I,data transferred,Tampering,Dtr.alt,MA.L,Fal,,,Aerl,Are,E,,max(05C03;05C04),09B04,
+D06c,I,data transferred,Tampering,Dtr.alt,MA.L,Fal,,,,Erl,Pna,,max(05C01;05C02;09B02;09C01),09B04,
+D06c,I,data transferred,Tampering,Dtr.alt,MA.L,Fal,,,,Erl,E,,max(05C01;05C02;09B02;09C01),09B04,
+D06c,I,Transaction,Replay,Dtr.alt,MA.L,Rej,,,,,Una,,max(04C01;09C01;09F02),09F03,
+D06c,I,Message,Usurpation,Dtr.alt,MA.L,Fal,,,,,Una,,09F01,,
+D07,I,e-mail file,Tampering,Fic.alt,MA.L,Fal,,,,,Tie,,11C05,,
+D01,I,Files,Tampering,Fic.alt,MA.L,Fal,,,,,Tie,,max(07A05;09A05),,
+D02,I,Files,Tampering,Fic.alt,MA.L,Fal,,,,,Tie,,max(07A05;09A05),,
+D11,I,Files,Tampering,Fic.alt,MA.L,Fal,,,,,Tie,,max(07A05;09A05),,
+D07,I,e-mail file,Tampering,Fic.alt,MA.L,Fal,,,,,E,,11C05,,
+D07,I,e-mail file,Tampering,Fic.alt,MA.L,Fau,,,,Exp,Tie,,11C05,,
+D01,I,e-mail file,Tampering,Fic.alt,MA.L,Fau,,,,Exp,Tie,,max(07A05;09A05),,08D05
+D02,I,e-mail file,Tampering,Fic.alt,MA.L,Fau,,,,Exp,Tie,,max(07A05;09A05),,08D05
+D08,I,fax file,Tampering,Fic.alt,MA.L,Fal,,,,,Tie,,02D05,,
+D10,I,File,Tampering,Fic.alt,MA.L,Fal,,,,,E,,08H02,,
+D10,I,File,Tampering,Fic.alt,IF.L,Exp,,,,,,,08H02,,
+D10,I,File,Tampering,Fic.alt,ER.P,Pro,,,,Mac,M,,08H02,,
+D10,I,File,Tampering,Fic.alt,ER.P,Pro,,,,Mal,M,,08H02,,
+D01,I,File,Tampering,Fic.alt,MA.L,Fal,,,,,E,,max(09B01;09C02),09B04,
+D02,I,File,Tampering,Fic.alt,MA.L,Fal,,,,,E,,max(09B01;09C02),09B04,
+D10,I,File,Tampering,Fic.alt,MA.L,Fal,,,Ain,,Pna,,08H02,,
+D10,I,File,Tampering,Fic.alt,MA.L,Fal,,,Atm,Exp,Tie,,max(08A06;08H02),,
+D10,I,File,Tampering,Fic.alt,MA.L,Fal,,,Ain,Exp,Ual,,08H02,,
+D10,I,File,Tampering,Fic.alt,MA.L,Fal,,,Ain,Exp,Uai,,08H02,,
+D10,I,File,Tampering,Fic.alt,MA.L,Fal,,,Ain,Exp,Una,,08H02,,
+D10,I,File,Tampering,Fic.alt,MA.L,Fal,,,Ain,Exp,Pna,,08H02,,
+D10,I,File,Tampering,Fic.alt,MA.L,Fal,,,Ain,Exp,E,,08H02,,
+D10,I,File,Tampering,Fic.alt,MA.L,Fal,,,Ain,Exp,M,,08H02,,
+D10,I,File,Tampering,Fic.alt,MA.L,Fal,,,,Exp,E,,08H02,,
+D10,I,File,Tampering,Fic.alt,MA.L,Fal,,,,Exp,M,,08H02,,
+D10,I,File,Tampering,Fic.alt,MA.L,Fal,,,,Exp,M,,08H02,,
+D10,I,File,Tampering,Fic.alt,MA.L,Fal,,,,,Tie,,08H02,,
+D01,I,File,Tampering,Fic.alt,MA.L,Fal,,,Ain,,Pna,,max(min(07A03;07A04;08F02);min(09A03;09A04;08F02);09B01;09C02),09B04,
+D02,I,File,Tampering,Fic.alt,MA.L,Fal,,,Ain,,Pna,,max(min(07A03;07A04;08F02);min(09A03;09A04;08F02);09B01;09C02),09B04,
+D11,I,File,Tampering,Fic.alt,MA.L,Fal,,,Ain,,Pna,,max(min(07A03;07A04;08F02);min(09A03;09A04;08F02);09B01;09C02),09B04,
+D10,I,data,Swap,Med.ech,MA.P,Fal,,,Ain,,Pa,08H03,,,
+D10,C,data,Swap,Med.ech,MA.P,Fal,,,Ain,,Pa,08H03,,,
+D10,I,data,Swap,Med.ech,MA.P,Fal,,,Ain,,Pna,,08H02,,
+D10,C,data,Swap,Med.ech,MA.P,Fal,,,Ain,,Pna,,08H02,,
+D10,I,data,Swap,Med.ech,MA.P,Fal,,,Ain,Tran,Tie,,08H02,,
+D10,C,data,Swap,Med.ech,MA.P,Fal,,,Ain,Tran,Tie,,08H02,,
+D11,I,File,Tampering,Fic.alt,ER.P,Pro,,,,Mac,M,,max(09B05;10B06),09B04,
+D11,I,File,Tampering,Fic.alt,IF.L,Exp,,,,,,,max(09B05;08D03),09B04,
+D11,I,File,Tampering,Fic.alt,ER.P,Pro,,,Ain,Tru,Ual,,09B05,09B04,
+D11,I,File,Tampering,Fic.alt,ER.P,Pro,,,Ain,Tru,Uai,,max(09B05;min(07A01;07A02;08F01);min(09A01;09A02)),09B04,
+D11,I,File,Tampering,Fic.alt,ER.P,Pro,,,Ain,Tru,Una,,max(09B05;min(07A03;07A04;08F02);min(09A03;09A04)),09B04,
+D11,I,File,Tampering,Fic.alt,MA.L,Fal,,,Ain,Exp,Uai,,max(09B05;min(07A01;07A02;08F01);min(09A01;09A02)),09B04,
+D11,I,File,Tampering,Fic.alt,MA.L,Fal,,,Ain,Exp,Una,,max(09B05;min(07A03;07A04;08F02);min(09A03;09A04)),09B04,
+D11,I,File,Tampering,Fic.alt,MA.L,Fal,,,,Exp,E,,max(09B01;09C02),09B04,
+D11,I,File,Tampering,Fic.alt,MA.L,Fal,,,,,E,,max(09B01;09C02),09B04,
+D11,I,File,Tampering,Fic.alt,MA.L,Fal,,,,,,,max(09B01;09C02),09B04,
+D11,I,File,Tampering,Fic.alt,MA.L,Fal,,,,Exp,M,,max(09B01;09C02),09B04,
+D01,C,data,Disclosure,Fic.dif,ER.P,Pro,,,,Exp,E,,09C02,,
+D02,C,data,Disclosure,Fic.dif,ER.P,Pro,,,,Exp,E,,09C02,,
+D01,C,data,Disclosure,Fic.dif,ER.P,Pro,,,,Mam,E,,max(08A05;09C02),,
+D01,C,data,Disclosure,Fic.dif,ER.P,Pro,,,,Tde,D,,max(10B04;09C02),,
+D02,C,data,Disclosure,Fic.dif,ER.P,Pro,,,,Tde,D,,max(10B04;09C02),,
+D01,C,data,Disclosure,Fic.dif,ER.P,Pro,,,,Mal,M,,max(08A05;09C02),,
+D02,C,data,Disclosure,Fic.dif,ER.P,Pro,,,,Mal,M,,max(08A05;09C02),,
+D01,C,File,Disclosure,Fic.dif,MA.L,Vol,,,Ain,Tru,Ual,07C01,,,
+D01,C,data file,Disclosure,Fic.dif,MA.L,Vol,,,Ain,Tru,Uai,07C01,max(min(07A01;07A02);min(09A01;09A02)),,
+D01,C,data file,Disclosure,Fic.dif,MA.L,Vol,,,Ain,Tru,Una,,max(min(07A03;07A04;08F02;08C06);min(09A03;09A04)),,
+D01,C,data file,Disclosure,Fic.dif,MA.L,Vol,,,,Exp,E,,09C02,,
+D01,C,data file,Disclosure,Fic.dif,MA.L,Vol,,,Ain,Exp,Tie,,max(05B03;min(07A03;07A04)),,
+D01,C,data file,Disclosure,Fic.dif,MA.L,Vol,,,Aerl,Exp,Tie,,max(min(05B04;05B05;05B06;05B07;06B02);min(07A03;07A04)),,
+D01,C,data file,Disclosure,Fic.dif,MA.L,Vol,,,Atm,Exp,Tie,,08A06,,
+D02,C,data file,Disclosure,Fic.dif,MA.L,Vol,,,Atm,Exp,Tie,,08A06,,
+D01,C,data file,Disclosure,Fic.dif,MA.L,Vol,,,Asan,Exp,Tie,,min(05B08;05B09),,
+D01,C,data file,Disclosure,Fic.dif,MA.L,Vol,,,,Mai,M,,max(min(07B01;08A05);09C02),,
+D01,C,Media,Disappearance,Med.dis,MA.P,Vol,,,,Tran,Pa,,09C02,,
+D01,C,Media,Disappearance,Med.dis,MA.P,Vol,,,,Sti,Pa,08C03,09C02,,
+D01,C,Media,Disappearance,Med.dis,MA.P,Vol,,,,Ste,Pa,08C04,09C02,,
+D01,C,Media,Disappearance,Med.dis,MA.P,Vol,,,,Exp,Pna,03B06,max(min(03B03;03B04);09C02),,
+D01,C,Media,Disappearance,Med.dis,MA.P,Vol,,,,Tran,Pna,,max(08C07;09C02),,
+D01,C,Media,Disappearance,Med.dis,MA.P,Vol,,,,Sti,Pna,08C03,max(08C03;09C02),,
+D01,C,Media,Disappearance,Med.dis,MA.P,Vol,,,,Ste,Pna,08C04,max(08C04;09C02),,
+D02,C,File,Disclosure,Fic.dif,ER.P,Pro,,,,Exp,E,,11C01,,
+D02,C,File,Disclosure,Fic.dif,ER.P,Pro,,,,Mam,E,,max(11C01;11C03),,
+D02,C,data file,Disclosure,Fic.dif,MA.L,Vol,,,Ain,Tru,Ual,,11C01,,
+D02,C,data file,Disclosure,Fic.dif,MA.L,Vol,,,Ain,Tru,Uai,,min(07A01;07A02),,
+D02,C,data file,Disclosure,Fic.dif,MA.L,Vol,,,Ain,Tru,Una,,max(min(07A03;07A04;08C06;08F02);11C01),,
+D02,C,data file,Disclosure,Fic.dif,MA.L,Vol,,,,Exp,E,,11C01,,
+D02,C,data file,Disclosure,Fic.dif,MA.L,Vol,,,,Mai,M,,max(11C01;11C03),,
+D02,C,data file,Disclosure,Fic.dif,MA.L,Vol,,,Ain,Exp,Tie,,max(05B03;min(07A03;07A04);11C01),,
+D10,C,data,Disclosure,Fic.dif,MA.L,Vol,,,Ain,Exp,Tie,08H03,max(08H03;09C02),,
+D10,C,data,Disclosure,Fic.dif,MA.L,Vol,,,Aerl,Exp,Tie,08H03,max(08H03;09C02),,
+D10,C,data,Disclosure,Fic.dif,MA.L,Vol,,,Atm,Exp,Tie,08H03,max(08H03;09C02),,
+D10,C,data,Disclosure,Fic.dif,MA.L,Vol,,,Asan,Exp,Tie,08H03,max(08H03;09C02),,
+D10,C,data,Disclosure,Fic.dif,MA.L,Vol,,,,Mai,M,08H03,max(08H03;09C02),,
+D02,C,data file,Disclosure,Fic.dif,MA.L,Vol,,,Aerl,Exp,Tie,,max(min(05B04;05B05;05B06;05B07;06B02);min(07A03;07A04);11C01),,
+D02,C,data file,Disclosure,Fic.dif,MA.L,Vol,,,Asan,Exp,Tie,,max(min(05B08;05B09);11C01),,
+D02,C,Media,Disappearance,Med.dis,MA.P,Vol,,,,Exp,Pa,02C05,11C01,,
+D02,C,Media,Disappearance,Med.dis,MA.P,Vol,,,,Tran,Pa,,11C01,,
+D02,C,Media,Disappearance,Med.dis,MA.P,Vol,,,,Sti,Pa,08C03,11C01,,
+D02,C,Media,Disappearance,Med.dis,MA.P,Vol,,,,Ste,Pa,08C04,11C01,,
+D02,C,Media,Disappearance,Med.dis,MA.P,Vol,,,,Exp,Pna,,max(min(03B03;03B04);11C01),,
+D02,C,Media,Disappearance,Med.dis,MA.P,Vol,,,,Tran,Pna,,max(08C07;11C01),,
+D02,C,Media,Disappearance,Med.dis,MA.P,Vol,,,,Sti,Pna,08C03,max(08C03;11C01),,
+D02,C,Media,Disappearance,Med.dis,MA.P,Vol,,,,Ste,Pna,08C04,max(08C04;11C01),,
+D03,C,File,Disclosure,Fic.dif,ER.P,Pro,,,,Tru,,,11C01,,
+D03,C,File,Disclosure,Fic.dif,ER.P,Pro,,,,Mam,E,,max(11C01;11C03),,
+D03,C,data file,Disclosure,Fic.dif,MA.L,Vol,,Abs,Apc,,Pna,,max(min(11B01;11E01);11C01),,
+D01,C,data file,Disclosure,Fic.dif,MA.L,Vol,,Abs,Apc,,Pna,,max(07A05;09A05),,
+D02,C,data file,Disclosure,Fic.dif,MA.L,Vol,,Abs,Apc,,Pna,,max(07A05;09A05),,
+D03,C,data file,Disclosure,Fic.dif,MA.L,Vol,,Hho,Apc,,Pna,,max(min(11B01;11E01);11C01),,
+D01,C,data file,Disclosure,Fic.dif,MA.L,Vol,,Hho,Apc,,Pna,,max(07A05;09A05),,
+D02,C,data file,Disclosure,Fic.dif,MA.L,Vol,,Hho,Apc,,Pna,,max(07A05;09A05),,
+D03,C,data file,Disclosure,Fic.dif,MA.L,Vol,,,,Exp,E,min(11E02;11E03),11C01,,
+D10,C,data,Disclosure,Fic.dif,MA.L,Vol,,,,Exp,E,08H03,max(08H03;09C02),,
+D10,A,data,Disclosure,Fic.dif,MA.L,Vol,,,,Exp,E,08H03,max(08H03;09C02),,
+D03,C,data file,Disclosure,Fic.dif,MA.L,Vol,,,,Mai,M,,max(11C01;11C03),,
+D03,C,Media,Disappearance,Med.dis,ER.P,Peo,Ext,,,,,,11C01,,
+D04,C,Document,Disappearance,Med.dis,ER.P,Peo,Ext,,,,,,11C01,,
+D03,C,Media,Disappearance,Med.dis,MA.P,Vol,Bur,Abs,,,Per,02C05,max(min(02C01;02C02;02C03);11C02),,
+D03,C,Media,Disappearance,Med.dis,MA.P,Vol,Bur,Abs,,,Vis,02C05,max(02C06;11C02),,
+D03,A,Media,Disappearance,Med.dis,MA.P,Vol,Bur,Abs,,,Vis,02C05,max(02C06;11C02),,
+D01,C,Media,Disappearance,Med.dis,MA.P,Vol,Bur,Abs,,,Vis,02C05,max(02C06;11C02),,
+D01,A,Media,Disappearance,Med.dis,MA.P,Vol,Bur,Abs,,,Vis,02C05,max(02C06;11C02),,
+D03,C,Media,Disappearance,Med.dis,MA.P,Vol,Bur,Hho,,,Per,max(02C04;02C05),max(min(02C01;02C02;02C03);11C02),,
+D01,C,Media,Disappearance,Med.dis,MA.P,Vol,Bur,Hho,,,Ser,02C05,11C02,,
+D03,C,Media,Disappearance,Med.dis,MA.P,Vol,Bur,Hho,,,Ser,02C05,11C02,,
+D01,A,Media,Disappearance,Med.dis,MA.P,Vol,Bur,Hho,,,Ser,02C05,11C02,,
+D03,A,Media,Disappearance,Med.dis,MA.P,Vol,Bur,Hho,,,Ser,02C05,11C02,,
+D03,C,Media,Disappearance,Med.dis,MA.P,Vol,Ext,,,,,,11C02,,
+D03,A,Media,Disappearance,Med.dis,MA.P,Vol,Ext,,,,,,11C02,,
+D04,C,Document,Disappearance,PMed.dis,ER.P,Pro,Ext,,,,,,02D02,,
+D04,A,Document,Disappearance,PMed.dis,ER.P,Pro,Ext,,,,,,02D02,,
+D04,C,Document,Disappearance,PMed.dis,MA.P,Vol,Bur,Hho,,,Per,,02D02,,
+D04,C,Document,Disappearance,PMed.dis,MA.P,Vol,Bur,Abs,,,Uai,02C05,max(02A02;02C03;02D02),,
+D04,A,Document,Disappearance,PMed.dis,MA.P,Vol,Bur,Abs,,,Uai,02C05,max(02A02;02C03;02D02),,
+D08,A,post mail,Disappearance,PMed.dis,MA.P,Vol,Bur,Abs,,,Uai,02C05,min(02D01;02D06),,
+D08,C,post mail,Disappearance,PMed.dis,MA.P,Vol,Bur,Abs,,,Uai,02C05,min(02D01;02D06),,
+D04,C,Document,Disappearance,PMed.dis,MA.P,Vol,Bur,,,,Ser,02C05,02D02,,
+D04,A,Document,Disappearance,PMed.dis,MA.P,Vol,Bur,,,,Ser,02C05,02D02,,
+D09,C,Document,Disappearance,PMed.dis,MA.P,Vol,Bur,,,,Ser,02C05,02D02,,
+D09,A,Document,Disappearance,PMed.dis,MA.P,Vol,Bur,,,,Ser,02C05,02D02,,
+D08,C,post mail,Disappearance,PMed.dis,MA.P,Vol,Bur,,,,Ser,02C05,02D02,,
+D08,A,post mail,Disappearance,PMed.dis,MA.P,Vol,Bur,,,,Ser,02C05,02D02,,
+D04,C,Document,Disappearance,PMed.dis,MA.P,Vol,Bur,Abs,,,Per,02C05,max(02D02;min(02C01;02C02;02C03)),,
+D04,C,Document,Disappearance,PMed.dis,MA.P,Vol,Bur,Abs,,,Vis,02C05,max(02D02;min(02C01;02C02;02C06)),,
+D04,C,Document,Disappearance,PMed.dis,MA.P,Vol,,,,Imp,Per,,max(02D02;11C06),,
+D04,C,Document,Disappearance,PMed.dis,MA.P,Vol,,,,Imp,Vis,,max(02D02;11C06),,
+D04,A,Document,Disappearance,PMed.dis,MA.P,Vol,,,,Imp,Vis,,max(02D02;11C06),,
+D09,C,Document,Disappearance,PMed.dis,MA.P,Vol,,,,Imp,Vis,,max(02D02;11C06),,
+D09,A,Document,Disappearance,PMed.dis,MA.P,Vol,,,,Imp,Vis,,max(02D02;11C06),,
+D04,C,Document,Disappearance,PMed.dis,MA.P,Vol,,,,Dif,Per,,02D02,,
+D04,A,Document,Disappearance,PMed.dis,MA.P,Vol,,,,Dif,Per,,02D02,,
+D04,C,Document,Disappearance,PMed.dis,MA.P,Vol,,,,Dif,Vis,,02D02,,
+D04,A,Document,Disappearance,PMed.dis,MA.P,Vol,,,,Dif,Vis,,02D02,,
+D04,C,Document,Disappearance,PMed.dis,MA.P,Vol,,,,Crc,,,02D03,,
+D04,A,Document,Disappearance,PMed.dis,MA.P,Vol,,,,Crc,,,02D03,,
+D04,A,Document,Disclosure,PMed.dis,ER.P,Pro,,,,Dif,E,,08A07,,
+D04,C,Document,Disclosure,PMed.dis,ER.P,Pro,,,,Dif,E,,08A07,,
+D05,C,printouts,Disclosure,PMed.dis,ER.P,Pro,,,,Dif,E,,08A07,,
+D05,A,printouts,Disclosure,PMed.dis,ER.P,Pro,,,,Dif,E,,08A07,,
+D08,C,post mail,Disclosure,PMed.dis,ER.P,Pro,,,,Dif,E,,08A07,,
+D08,A,post mail,Disclosure,PMed.dis,ER.P,Pro,,,,Dif,E,,08A07,,
+D05,C,printouts,Disappearance,PMed.dis,MA.P,Vol,Exp,,,,Pa,03B06,08A07,,
+D05,A,printouts,Disappearance,PMed.dis,MA.P,Vol,Exp,,,,Pa,03B06,08A07,,
+D09,C,Document,Disappearance,PMed.dis,MA.P,Vol,Exp,,,,Pa,03B06,08A07,,
+D09,A,Document,Disappearance,PMed.dis,MA.P,Vol,Exp,,,,Pa,03B06,08A07,,
+D05,C,printouts,Disappearance,PMed.dis,MA.P,Vol,Exp,,,,Ser,03B06,08A07,,
+D05,A,printouts,Disappearance,PMed.dis,MA.P,Vol,Exp,,,,Ser,03B06,08A07,,
+D09,C,Document,Disappearance,PMed.dis,MA.P,Vol,Exp,,,,Ser,03B06,08A07,,
+D09,A,Document,Disappearance,PMed.dis,MA.P,Vol,Exp,,,,Ser,03B06,08A07,,
+D05,C,printouts,Disappearance,PMed.dis,MA.P,Vol,Exp,,,,Pna,03B06,08A07,,
+D05,A,printouts,Disappearance,PMed.dis,MA.P,Vol,Exp,,,,Pna,03B06,08A07,,
+D09,C,Document,Disappearance,PMed.dis,MA.P,Vol,Exp,,,,Pna,03B06,08A07,,
+D09,A,Document,Disappearance,PMed.dis,MA.P,Vol,Exp,,,,Pna,03B06,08A07,,
+D05,C,printouts,Disappearance,PMed.dis,MA.P,Vol,Exp,,,,E,03B06,08A07,,
+D05,A,printouts,Disappearance,PMed.dis,MA.P,Vol,Exp,,,,E,03B06,08A07,,
+D09,C,Document,Disappearance,PMed.dis,MA.P,Vol,Exp,,,,E,03B06,08A07,,
+D09,A,Document,Disappearance,PMed.dis,MA.P,Vol,Exp,,,,E,03B06,08A07,,
+D05,C,printouts,Disappearance,PMed.dis,MA.P,Vol,Exp,,,,Pse,03B06,08A07,,
+D05,A,printouts,Disappearance,PMed.dis,MA.P,Vol,Exp,,,,Pse,03B06,08A07,,
+D09,C,Document,Disappearance,PMed.dis,MA.P,Vol,Exp,,,,Pse,03B06,08A07,,
+D09,A,Document,Disappearance,PMed.dis,MA.P,Vol,Exp,,,,Pse,03B06,08A07,,
+D05,C,printouts,Disappearance,PMed.dis,MA.P,Vol,Med,,,,Pna,03B06,08A07,,
+D05,A,printouts,Disappearance,PMed.dis,MA.P,Vol,Med,,,,Pna,03B06,08A07,,
+D09,C,Document,Disappearance,PMed.dis,MA.P,Vol,Med,,,,Pna,03B06,08A07,,
+D09,A,Document,Disappearance,PMed.dis,MA.P,Vol,Med,,,,Pna,03B06,08A07,,
+D05,C,printouts,Disappearance,PMed.dis,MA.P,Vol,Med,,,,E,03B06,08A07,,
+D05,A,printouts,Disappearance,PMed.dis,MA.P,Vol,Med,,,,E,03B06,08A07,,
+D09,C,Document,Disappearance,PMed.dis,MA.P,Vol,Med,,,,E,03B06,08A07,,
+D09,A,Document,Disappearance,PMed.dis,MA.P,Vol,Med,,,,E,03B06,08A07,,
+D05,C,printouts,Disappearance,PMed.dis,MA.P,Vol,Med,,,,Pse,03B06,08A07,,
+D05,A,printouts,Disappearance,PMed.dis,MA.P,Vol,Med,,,,Pse,03B06,08A07,,
+D09,C,Document,Disappearance,PMed.dis,MA.P,Vol,Med,,,,Pse,03B06,08A07,,
+D09,A,Document,Disappearance,PMed.dis,MA.P,Vol,Med,,,,Pse,03B06,08A07,,
+D05,C,printouts,Disappearance,PMed.dis,MA.P,Vol,,,,Dif,Per,,08A07,,
+D05,A,printouts,Disappearance,PMed.dis,MA.P,Vol,,,,Dif,Per,,08A07,,
+D09,C,Document,Disappearance,PMed.dis,MA.P,Vol,,,,Dif,Per,,08A07,,
+D09,A,Document,Disappearance,PMed.dis,MA.P,Vol,,,,Dif,Per,,08A07,,
+D05,C,printouts,Disappearance,PMed.dis,MA.P,Vol,,,,Dif,Vis,,08A07,,
+D05,A,printouts,Disappearance,PMed.dis,MA.P,Vol,,,,Dif,Vis,,08A07,,
+D09,C,Document,Disappearance,PMed.dis,MA.P,Vol,,,,Dif,Vis,,08A07,,
+D09,A,Document,Disappearance,PMed.dis,MA.P,Vol,,,,Dif,Vis,,08A07,,
+D05,C,printouts,Disappearance,PMed.dis,MA.P,Vol,Exp,,,Crc,,,08A07,,
+D05,A,printouts,Disappearance,PMed.dis,MA.P,Vol,Exp,,,Crc,,,08A07,,
+D09,C,Document,Disappearance,PMed.dis,MA.P,Vol,Exp,,,Crc,,,08A07,,
+D09,A,Document,Disappearance,PMed.dis,MA.P,Vol,Exp,,,Crc,,,08A07,,
+D06,C,screen,Disclosure,Dtr.div,MA.L,Vol,Bur,,Ain,,Uai,,max(min(07A01;07A02;08F01);min(08F01;09A01;09A02)),,
+D06,C,screen,Disclosure,Dtr.div,MA.L,Vol,Bur,,Ain,,Tie,,max(min(05B01;05B02;05B03;05B07;06C02);min(07A03;07A04;08F02);min(09A03;09A04)),,
+D06,C,screen,Disclosure,Dtr.div,MA.L,Vol,Bur,,Ain,,E,min(08F02;08F03),,,
+D06,C,screen,Disclosure,Dtr.div,MA.L,Vol,Ext,,Aerl,,Tie,,max(04B02;min(05B04;05B05;05B06;05B07);min(07A03;07A04;08F02);min(09A03;09A04)),,
+D06,C,screen,harnessing,Dtr.div,MA.L,Ele,Ext,,Aem,,Tie,,09C03,,
+D06,C,screen,Disclosure,Dtr.div,MA.L,Vol,,,Aru,,E,min(08F02;08F03),07B01,,
+D06,C,data transferred,Disclosure,Dtr.div,MA.L,Vol,,,Aru,,E,min(08F02;08F03),07B01,,
+D06,C,data transferred,Harnessing,Dtr.div,MA.L,Vol,Ext,,Are,,Pna,,max(05C03;09C01),,
+D06,C,data transferred,Harnessing,Dtr.div,MA.L,Vol,,,Ain,,Per,,max(03B07;05C01;09C01),,
+D06,C,data transferred,Disclosure,Dtr.div,MA.L,Vol,,,,,Pna,,max(03B07;05C01;09C01),,
+D06,C,data transferred,Disclosure,Dtr.div,MA.L,Vol,,,,,E,,max(03B07;05C01;09C01),,
+D06,C,data transferred,Disclosure,Dtr.div,MA.L,Vol,,,,,M,,max(03B07;05C01;09C01),,
+D06,C,data transferred,Harnessing,Dtr.div,MA.L,Fal,,,Amer,,Per,,max(min(06C01;06C02);09C01),,
+D06,C,data transferred,Harnessing,Dtr.div,MA.L,Fal,,,Amer,,E,min(06A01;06C03),09C01,,
+D06,C,data transferred,Harnessing,Dtr.div,MA.L,Fal,Ext,,Amdertm,,Tie,,max(06A04;09C01),,
+D06,C,data transferred,Harnessing,Dtr.div,MA.L,Fal,,,,,,,max(06A04;09C01),,
+D06,C,data transferred,Harnessing,Dtr.div,MA.L,Vol,,,Amderuf,Main,Tie,,max(06A02;09C01),,
+D06,C,data transferred,Disclosure,Dtr.div,MA.L,Vol,Ext,,Auie,,Tie,,max(04B03;04C01;09C01),,
+D06,C,data transferred,Disclosure,Dtr.div,MA.L,Vol,Ext,,Auis,,E,,max(04B03;04C01;09C01),,
+D06,C,data transferred,Disclosure,Dtr.div,ER.P,Pro,,,,,,,max(09B01;09C01),,
+D06,C,data transferred,Disclosure,Dtr.div,ER.P,Pro,,,,,Ua,,max(09B01;09C01),,
+D06,C,data transferred,Disclosure,Dtr.div,MA.L,Fal,,,,,,,max(09B01;09C01),,
+D07,C,e-mails,Disclosure,Dtr.div,ER.P,Pro,,,,,Ua,,11C05,,
+D07,C,e-mails,Disclosure,Dtr.div,MA.L,Vol,,,,,E,,11C05,,
+D07,C,e-mails,Disclosure,Dtr.div,MA.L,Vol,,,,,M,,11C05,,
+D07,C,e-mails,Disclosure,Dtr.div,MA.L,Vol,,,,,Pna,,11C05,,
+D08,C,post mail,Disclosure,Dtr.div,ER.P,Pro,,,,,,,02D04,,
+D05,C,printouts,Disclosure,Dtr.div,ER.P,Pro,,,,,,,min(02D02;08A07),,
+D09,C,Document,Disclosure,Dtr.div,ER.P,Pro,,,,,,,min(02D06;02D07),,
+D08,C,fax,Disclosure,Dtr.div,ER.P,Pro,,,,,,,02D05,,
+D08,C,post mail,Disappearance,Dtr.div,MA.P,Vol,Loc,,,Col,,,02D04,,
+D08,C,post mail,Disappearance,Dtr.div,MA.P,Vol,Bur,,,Col,,,02D04,,
+D08,C,post mail,Disappearance,Dtr.div,MA.P,Vol,Lof,,,,,,02D05,,
+D08,C,post mail,Disappearance,Dtr.div,MA.P,Vol,,,,Col,,,02D05,,
+D08,C,fax,Disclosure,Dtr.div,MA.L,Fal,,,,,,,02D05,,
+D09,C,Document,Disappearance,PMed.dis,MA.P,Vol,Arc,,,,Pa,02D07,,,
+D09,A,Document,Disappearance,PMed.dis,MA.P,Vol,Arc,,,,Pa,02D07,,,
+D09,A,Document,Disappearance,PMed.dis,MA.P,Vol,Arc,,,,Pna,02D07,02D07,,
+D09,C,Document,Disappearance,PMed.dis,MA.P,Vol,Arc,,,,Pna,02D07,02D07,,
+D09,C,Document,Disappearance,PMed.dis,MA.P,Vol,,,,Tran,Pna,,02D07,,
+D09,A,Document,Disappearance,PMed.dis,MA.P,Vol,,,,Tran,Pna,,02D07,,
+D09,C,Document,Disclosure,PMed.dis,MA.P,Vol,Arc,,,,Pna,,02D07,,
+D10,C,data,Disappearance,Med.dis,MA.P,Vol,Arc,,,,Pa,08H03,max(08H03;09C02),,
+D10,A,data,Disappearance,Med.dis,MA.P,Vol,Arc,,,,Pa,08H03,max(08H03;09C02),,
+D10,C,data,Disclosure,Fic.dif,ER.P,Pro,,,,Exp,E,08H03,max(08H03;09C02),,
+D10,A,data,Disclosure,Fic.dif,ER.P,Pro,,,,Exp,E,08H03,max(08H03;09C02),,
+D10,C,data,Disclosure,Fic.dif,ER.P,Pro,,,,Mam,E,08H03,max(08H03;09C02),,
+D10,A,data,Disclosure,Fic.dif,ER.P,Pro,,,,Mam,E,08H03,max(08H03;09C02),,
+D10,C,data,Disappearance,Med.dis,MA.P,Vol,Arc,,,,Pna,08H03,max(08H03;09C02),,
+D10,A,data,Disappearance,Med.dis,MA.P,Vol,Arc,,,,Pna,08H03,max(08H03;09C02),,
+D10,C,data,Disappearance,Med.dis,MA.P,Vol,Dis,,,,Pna,08H03,max(08H03;09C02),,
+D10,A,data,Disappearance,Med.dis,MA.P,Vol,Dis,,,,Pna,08H03,max(08H03;09C02),,
+G01,A,premises,Unavailability,Loc.ina,AC.E,Inc,,,,,,,03D01,min(03D02;03D03),01E03
+G01,A,premises,Unavailability,Loc.ina,AC.E,Ino,,,,,,,03C01,min(03C02;03C03),01E03
+G01,A,premises,Unavailability,Loc.ina,AB.S,Ene,,,,,,,03A02,,01E03
+G01,A,premises,Unavailability,Loc.ina,AB.S,Loc,,,,,,,,,01E03
+G02,A,software configuration,Erasure,Cfl.eff,IF.L,Exp,Exp,,,,,,12A02,,12C03
+G02,A,hardware configuration,Erasure,PCfl.eff,IF.L,Exp,Exp,,,,,,12A02,,
+G02,A,software configuration,Erasure,Cfl.eff,ER.P,Pro,Exp,,,,M,,12A03,,12C03
+G02,A,Software,Erasure,Cfl.eff,MA.L,Del,Exp,,,,E,min(12E02;12E03),,,12C03
+G02,A,Software,Erasure,Cfl.eff,MA.L,Del,Exp,,,,M,12A03,,,12C03
+G02,A,telecom equipment,Damaging,Eq.hs,IC.E,De,Exp,,,,,,03C01,,12C04
+G02,A,telecom equipment,Damaging,Eq.hs,IC.E,Se,Exp,,,,,,min(03A01;03A04),,12C04
+G02,A,telecom equipment,Destruction,Eq.des,AC.E,Fou,Exp,,,,,,03A05,,12C04
+G02,A,telecom equipment,Destruction,Eq.des,AC.E,Inc,Exp,,,,,,03D01,min(03D02;03D03),12C04
+G02,A,telecom equipment,Destruction,Eq.des,AC.E,Ino,Exp,,,,,,03C01,min(03C02;03C03),12C04
+G02,A,telecom equipment,Unavailability,Eq.hs,AC.M,Equ,,,,,,,,,12C01
+G02,A,auxiliary elements,Unavailability,Ser.hs,AC.M,Ser,,,,,,,,,03A06
+G02,A,network equipment,Unavailability,Eq.hs,AB.S,Ene,,,,,,,,,03A02
+G02,A,telecom equipment,Damaging,Eq.hs,MA.P,Van,Exp,,,,Pa,03B06,min(03B01;03B02;03B03),03B04,12C01
+G02,A,telecom equipment,Damaging,Eq.hs,MA.P,Van,Exp,,,,Pna,,min(03B03;03B04;03B06),,12C01
+G02,A,telecom equipment,Damaging,Eq.hs,MA.P,Van,,,,,Tve,,,,12C01
+G02,A,telecom equipment,Damaging,Eq.hs,MA.P,Van,,,,,Tvi,,min(02A01;02A02;02A03;02A05),02A04,12C01
+G02,A,telecom equipment,Destruction,Eq.des,MA.P,Ter,,,,,Tve,,,,12C04
+G02,A,telecom equipment,Unavailability,Eq.hs,AB.S,Mas,,,,,,,,,12C05
+R01,A,software configuration,Erasure,Cfl.eff,IF.L,Exp,Exp,,,,,,06A02,04D03,04A04
+R01,A,software configuration,Erasure,Cfl.pol,IF.L,Exp,,,,,,,06A02,04D03,04A04
+R01,A,software configuration,Erasure,Cfl.eff,IF.L,Exp,,,,,,,06A02,04D03,04A04
+R01,A,software configuration,Erasure,Cfl.pol,IF.L,Exp,Exp,,,,,,06A02,04D03,04A04
+R01,A,software configuration,Pollution,Cfl.pol,ER.P,Pro,,,,Mal,M,,06A02,04D03,04A04
+R01,A,software configuration,Pollution,Cfl.pol,ER.P,Pro,,,,Mac,M,,06A02,04D03,04A04
+R01,A,hardware configuration,Erasure,PCfl.eff,IF.L,Exp,Exp,,,,,,06A02,04D03,04A04
+R01,A,software configuration,Erasure,Cfl.eff,ER.P,Pro,Exp,,,,E,,,,04A04
+R01,A,hardware configuration,Erasure,PCfl.eff,ER.P,Pro,Exp,,,,E,,,,04A04
+R01,A,software configuration,Erasure,Cfl.eff,ER.P,Pro,Exp,,,,M,,,,04A04
+R01,A,hardware configuration,Erasure,PCfl.eff,ER.P,Pro,Exp,,,,M,,,,04A04
+R01,A,software configuration,Erasure,Cfl.eff,MA.L,Del,Exp,,,,Una,,06C02,04D02,04A04
+R01,A,hardware configuration,Erasure,PCfl.eff,MA.L,Del,Exp,,,,Una,,06C02,04D02,04A04
+R01,A,software configuration,Erasure,Cfl.eff,MA.L,Del,Exp,,,,E,min(06C02;06C03),,,04A04
+R01,A,hardware configuration,Erasure,PCfl.eff,MA.L,Del,Exp,,,,E,min(06C02;06C03),,,04A04
+R01,A,software configuration,Erasure,Cfl.eff,MA.L,Del,Exp,,,,M,,,04D02,04A04
+R01,A,hardware configuration,Erasure,PCfl.eff,MA.L,Del,Exp,,,,M,,,04D02,04A04
+R01,A,software configuration,Erasure,Cfl.eff,MA.L,Tot,,,,,E,min(06C02;06C03),,,
+R01,A,hardware configuration,Erasure,PCfl.eff,MA.L,Tot,,,,,E,min(06C02;06C03),,,
+R01,A,network equipment,Damaging,Eq.hs,IC.E,De,Exp,,,,,,03C01,,max(04A01;04A05;min(01E01;01E02))
+R01,A,network equipment,Damaging,Eq.hs,IC.E,Se,Exp,,,,,,min(03A01;03A04),,max(04A01;04A05;min(01E01;01E02))
+R01,A,network equipment,Destruction,Eq.des,AC.E,Fou,Exp,,,,,,03A05,,04A05
+R01,A,network equipment,Destruction,Eq.des,AC.E,Inc,Exp,,,,,,03D01,min(03D02;03D03),04A05
+R01,A,network equipment,Destruction,Eq.des,AC.E,Ino,Exp,,,,,,03C01,min(03C02;03C03),04A05
+R01,A,network equipment,Unavailability,Eq.hs,AC.M,Equ,,,,,,,,,max(04A01;04A02)
+R01,A,auxiliary elements,Unavailability,Ser.hs,AC.M,Ser,,,,,,,,,03A06
+R01,A,network equipment,Unavailability,Eq.hs,AB.S,Ene,,,,,,,,,03A02
+R01,A,network equipment,Damaging,Eq.hs,MA.P,Van,Exp,,,,Pa,03B06,min(03B01;03B02;03B03),03B04,04A02
+R01,A,network equipment,Damaging,Eq.hs,MA.P,Van,Exp,,,,Pna,,min(03B03;03B04;03B06),,04A02
+R01,A,network equipment,Damaging,Eq.hs,MA.P,Van,,,,,Tve,,,,04A02
+R01,A,network equipment,Damaging,Eq.hs,MA.P,Van,,,,,Tvi,,min(02A01;02A02;02A03;02A05),02A04,04A02
+R01,A,network equipment,Destruction,Eq.des,MA.P,Ter,,,,,Tve,,,,04A05
+R01,A,network equipment,Unavailability,Eq.hs,MA.L,Cfg,,,,,E,min(06C02;06C03),,,04A04
+R01,A,network equipment,Unavailability,Eq.hs,MA.L,Cfg,,,,,M,,,,04A04
+R01,A,network equipment,Unavailability,Eq.hs,AB.S,Mas,,,,,,,,,04A06
+R01,A,network equipment,Unavailability,Eq.mo,AV.P,Gre,,,,,,,,,min(01E01;01E02)
+R01,A,network equipment,Unavailability,Eq.mo,AB.P,Per,,,,,,,,,01C02
+G02,A,network equipment,Unavailability,Eq.mo,AB.P,Per,,,,,,,,,01C02
+R01,A,network equipment,Unavailability,Eq.mo,AB.P,Pep,,,,,,,,,01C02
+R01,A,network equipment,Lock,Eq.hs,IF.L,Ver,,,,,,,04D01,,04A03
+R02,A,software configuration,Erasure,Cfl.eff,IF.L,Exp,Exp,,,,,,06A02,05D03,05A05
+R02,A,software configuration,Pollution,Cfl.pol,ER.P,Pro,,,,Mal,M,,06A02,05D03,05A05
+R02,A,software configuration,Pollution,Cfl.pol,ER.P,Pro,,,,Mac,M,,06A02,05D03,05A05
+R02,A,software configuration,Pollution,Cfl.pol,MA.L,Fal,,,,Exp,Uai,,06C02,05D02,05A05
+R02,A,software configuration,Pollution,Cfl.pol,MA.L,Fal,,,,Exp,M,,,05D02,05A05
+R02,A,software configuration,Pollution,Cfl.pol,MA.L,Fal,,,,Exp,E,min(06C02;06C03),,,05A05
+R02,A,software configuration,Pollution,Cfl.pol,MA.L,Fal,,,,Exp,Una,,06C02,05D02,05A05
+R01,A,software configuration,Pollution,Cfl.pol,MA.L,Fal,,,,Exp,Uai,,06A02,04D03,04A04
+R01,A,software configuration,Pollution,Cfl.pol,MA.L,Fal,,,,Exp,M,,06A02,04D03,04A04
+R01,A,software configuration,Pollution,Cfl.pol,MA.L,Fal,,,,Exp,E,,06A02,04D03,04A04
+R01,A,software configuration,Pollution,Cfl.pol,MA.L,Fal,,,,Exp,Una,,06A02,04D03,04A04
+R02,A,hardware configuration,Erasure,PCfl.eff,IF.L,Exp,Exp,,,,,,06A02,05D03,05A05
+R02,A,software configuration,Erasure,Cfl.eff,ER.P,Pro,Exp,,,,E,,,,05A05
+R02,A,hardware configuration,Erasure,PCfl.eff,ER.P,Pro,Exp,,,,E,,,,05A05
+R02,A,software configuration,Erasure,Cfl.eff,ER.P,Pro,Exp,,,,M,,,,05A05
+R02,A,hardware configuration,Erasure,PCfl.eff,ER.P,Pro,Exp,,,,M,,,,05A05
+R02,A,software configuration,Erasure,Cfl.eff,MA.L,Del,Exp,,,,Una,,06C02,05D02,05A05
+R02,A,hardware configuration,Erasure,PCfl.eff,MA.L,Del,Exp,,,,Una,,06C02,05D02,05A05
+R02,A,software configuration,Erasure,Cfl.eff,MA.L,Del,Exp,,,,E,min(06C02;06C03),,,05A05
+R02,A,hardware configuration,Erasure,PCfl.eff,MA.L,Del,Exp,,,,E,min(06C02;06C03),,,05A05
+R02,A,software configuration,Erasure,Cfl.eff,MA.L,Del,Exp,,,,M,,,05D02,05A05
+R02,A,hardware configuration,Erasure,PCfl.eff,MA.L,Del,Exp,,,,M,,,05D02,05A05
+R02,A,software configuration,Erasure,Cfl.eff,MA.L,Tot,,,,,E,min(06C02;06C03),,,
+R02,A,hardware configuration,Erasure,PCfl.eff,MA.L,Tot,,,,,E,min(06C02;06C03),,,
+R02,A,network equipment,Damaging,Eq.hs,IC.E,De,Exp,,,,,,03C01,,max(05A02;05A06;min(01E01;01E02))
+R02,A,network equipment,Damaging,Eq.hs,IC.E,Se,Exp,,,,,,min(03A01;03A04),,max(05A02;05A06;min(01E01;01E02))
+R02,A,network equipment,Destruction,Eq.des,AC.E,Fou,Exp,,,,,,03A05,,05A06
+R02,A,network equipment,Destruction,Eq.des,AC.E,Inc,Exp,,,,,,03D01,min(03D02;03D03),05A06
+R02,A,network equipment,Destruction,Eq.des,AC.E,Ino,Exp,,,,,,03C01,min(03C02;03C03),05A06
+R02,A,network equipment,Unavailability,Eq.hs,AC.M,Equ,,,,,,,,,max(05A02;05A03)
+R02,A,auxiliary elements,Unavailability,Ser.hs,AC.M,Ser,,,,,,,,,03A06
+R02,A,network equipment,Unavailability,Eq.hs,AB.S,Ene,,,,,,,,,03A02
+R02,A,network equipment,Damaging,Eq.hs,MA.P,Van,Exp,,,,Pa,03B06,min(03B01;03B02;03B03),03B04,05A03
+R02,A,network equipment,Damaging,Eq.hs,MA.P,Van,Exp,,,,Pna,,min(03B03;03B04;03B06),,05A03
+R02,A,network equipment,Damaging,Eq.hs,MA.P,Van,,,,,Tve,,,,05A03
+R02,A,network equipment,Damaging,Eq.hs,MA.P,Van,,,,,Tvi,,min(02A01;02A02;02A03;02A05),02A04,05A03
+R02,A,network equipment,Destruction,Eq.des,MA.P,Ter,,,,,Tve,,,,05A06
+R02,A,network equipment,Unavailability,Eq.hs,MA.L,Cfg,,,,,E,min(06C02;06C03),,,05A05
+R02,A,network equipment,Unavailability,Eq.hs,MA.L,Cfg,,,,,M,,,,05A05
+R02,A,network equipment,Unavailability,Eq.hs,AB.S,Mas,,,,,,,,,05A07
+R02,A,network equipment,Unavailability,Eq.mo,AV.P,Gre,,,,,,,,,min(01E01;01E02)
+R02,A,network equipment,Unavailability,Eq.mo,AB.P,Per,,,,,,,,,01C02
+R02,A,network equipment,Unavailability,Eq.mo,AB.P,Pep,,,,,,,,,01C02
+R02,A,network equipment,Lock,Eq.hs,IF.L,Ver,,,,,,,05D01,,05A04
+S01,A,program file,Erasure,Cfl.eff,IF.L,Exp,Exp,,,,,,08A03,08E03,08D04
+S01,A,program file,Erasure,Cfl.eff,ER.P,Pro,Exp,,,,Ual,,,,08D04
+S01,A,program file,Erasure,Cfl.eff,ER.P,Pro,Exp,,,,Uai,,max(07A02;09A02),,08D04
+S01,A,program file,Erasure,Cfl.eff,ER.P,Pro,Exp,,,,Una,,min(07A03;07A04),,08D04
+S01,A,program file,Erasure,Cfl.eff,ER.P,Pro,Exp,,,,E,,,,08D04
+S01,A,program file,Erasure,Cfl.eff,ER.P,Pro,Exp,,,,M,,,,08D04
+S01,A,program file,Erasure,Cfl.eff,MA.L,Del,Exp,,,,Ual,min(07C01;08E02),,,08D04
+S01,A,program file,Erasure,Cfl.eff,MA.L,Del,Exp,,,,Uai,min(07C01;08E02),max(07A02;09A02),,08D04
+S01,A,program file,Erasure,Cfl.eff,MA.L,Del,Exp,,,,Una,,min(07A03;07A04),,08D04
+S01,A,program file,Erasure,Cfl.eff,MA.L,Del,Exp,,,,E,min(08F02;08F03),,,08D04
+S01,A,program file,Erasure,Cfl.eff,MA.L,Del,Exp,,,,M,min(07C02;08E02),,,08D04
+S01,A,program file,Erasure,Fic.eff,MA.L,Tot,,,,,E,min(08F02;08F03),,,
+S01,A,program file,Erasure,Cfl.eff,MA.L,Tot,,,,,E,min(08F02;08F03),,,
+S01,A,File,Erasure,Fic.eff,MA.L,Tot,,,,,E,min(08F02;08F03),,,
+S01,A,File,Erasure,Cfl.eff,MA.L,Tot,,,,,E,min(08F02;08F03),,,
+S01,A,program file,Pollution,Cfl.pol,ER.P,Pro,,,,Mal,M,,10B05,,08D04
+S01,A,software configuration,Pollution,Cfl.pol,ER.P,Pro,,,,Mal,M,,10B05,,08D04
+S05,A,software configuration,Pollution,Cfl.pol,ER.P,Pro,,,,Mal,M,,10B05,,08D04
+S05,A,program file,Pollution,Cfl.pol,ER.P,Pro,,,,Mal,M,,10B05,,08D04
+S01,A,program file,Pollution,Cfl.pol,ER.P,Pro,,,,Mac,M,,10B06,,08D04
+S01,A,software configuration,Pollution,Cfl.pol,ER.P,Pro,,,,Mac,M,,10B06,,08D04
+S02,A,software configuration,Pollution,Cfl.pol,ER.P,Pro,,,,Mac,M,,10B06,,08D04
+S02,A,program file,Pollution,Cfl.pol,ER.P,Pro,,,,Mac,M,,10B06,,08D04
+S01,A,program file,Pollution,Cfl.pol,IF.L,Exp,,,,,,,,08E02,08D04
+S01,A,software configuration,Pollution,Cfl.pol,IF.L,Exp,,,,,,,,08E02,08D04
+S01,A,program file,Pollution,Cfl.pol,MA.L,Fal,,,,Exp,Uai,,max(min(07A01;07A02;08F01);min(09A01;09A02)),,08D04
+S01,A,software configuration,Pollution,Cfl.pol,MA.L,Fal,,,,Exp,Uai,,max(min(07A01;07A02;08F01);min(09A01;09A02)),,08D04
+S01,A,program file,Pollution,Cfl.pol,MA.L,Fal,,,,Exp,Una,,max(min(07A03;07A04;08F02);min(09A03;09A04)),,08D04
+S01,A,software configuration,Pollution,Cfl.pol,MA.L,Fal,,,,Exp,Una,,max(min(07A03;07A04;08F02);min(09A03;09A04)),,08D04
+S01,A,program file,Pollution,Cfl.pol,MA.L,Fal,,,,Exp,E,min(08F02;08F03),,,08D04
+S01,A,software configuration,Pollution,Cfl.pol,MA.L,Fal,,,,Exp,E,min(08F02;08F03),,,08D04
+S01,A,program file,Pollution,Cfl.pol,MA.L,Fal,,,,Exp,M,min(08F02;08F03),10B05,,08D04
+S01,A,software configuration,Pollution,Cfl.pol,MA.L,Fal,,,,Exp,M,min(08F02;08F03),10B05,,08D04
+S01,A,media storing program,Destruction,Med.des,AC.E,Inc,Exp,,,,,,03D01,,08D04
+S01,A,media storing program,Destruction,Med.des,AC.E,Ino,Exp,,,,,,,,08D04
+S01,A,media storing program,Destruction,Med.des,AC.E,Inc,Med,,,,,,03D01,,08D04
+S01,A,media storing program,Destruction,Med.des,AC.E,Ino,Med,,,,,,,,08D04
+S01,A,media storing program,Disappearance,Med.dis,ER.P,Peo,Med,,,,,,,,08D04
+S01,A,media storing program,Disappearance,Med.dis,ER.P,Peo,Exp,,,,,,,,08D04
+S01,A,media storing program,Disappearance,Med.dis,MA.P,Vol,Exp,,,,Pna,03B06,min(03B03;03B04),,08D04
+S01,A,media storing program,Disappearance,Med.dis,MA.P,Vol,Exp,,,,E,03B06,,,08D04
+S01,A,media storing program,Disappearance,Med.dis,MA.P,Vol,Exp,,,,Pse,03B06,,,08D04
+S01,A,media storing program,Disappearance,Med.dis,MA.P,Vol,Med,,,,Pna,03B06,08C03,,08D04
+S01,A,media storing program,Disappearance,Med.dis,MA.P,Vol,Med,,,,E,03B06,,,08D04
+S01,A,media storing program,Disappearance,Med.dis,MA.P,Vol,Med,,,,Pse,03B06,,,08D04
+S01,A,media storing program,Inoperability,Med.ine,AC.M,Equ,Exp,,,,,,,,08D04
+S01,A,media storing program,Inoperability,Med.ine,IC.E,De,Exp,,,,,,03C01,,08D04
+S01,A,media storing program,Inoperability,Med.ine,IC.E,Se,Exp,,,,,,min(03A01;03A04),,08D04
+S01,A,Electronic_Media,Inoperability,Med.ine,IF.L,Exp,Exp,,,,,,08A03,08E03,08D04
+S01,A,media storing program,Inoperability,Med.ine,IC.E,Pol,Med,,,,,,,,08D04
+S01,A,media storing program,Inoperability,Med.ine,IC.E,De,Med,,,,,,08C03,,08D04
+S01,A,media storing program,Inoperability,Med.ine,IC.E,Age,Med,,,,,,,08C05,08D04
+S01,A,application server,Damaging,Eq.hs,IC.E,De,Exp,,,,,,03C01,,max(07D01;09E01;min(08D06;09E02);min(01E01;01E02))
+S01,A,application server,Damaging,Eq.hs,IC.E,Se,Exp,,,,,,min(03A01;03A04),,max(07D01;09E01;min(08D06;09E02);min(01E01;01E02))
+S01,A,application server,Destruction,Eq.des,AC.E,Fou,Exp,,,,,,03A05,,min(08D06;09E02)
+S01,A,application server,Destruction,Eq.des,AC.E,Inc,Exp,,,,,,03D01,min(03D02;03D03),min(08D06;09E02)
+S01,A,application server,Destruction,Eq.des,AC.E,Ino,Exp,,,,,,03C01,min(03C02;03C03),min(08D06;09E02)
+S01,A,application server,Unavailability,Eq.hs,AC.M,Equ,,,,,,,09E01,,max(07D01;08D01)
+S01,A,auxiliary elements,Unavailability,Ser.hs,AC.M,Ser,,,,,,,,,03A06
+S01,A,network equipment,Unavailability,Eq.hs,AB.S,Ene,,,,,,,,,03A02
+S01,A,auxiliary elements,Unavailability,Ser.hs,AB.S,Cli,,,,,,,,,03A03
+S01,A,application server,Damaging,Eq.hs,MA.P,Van,Exp,,,,Pa,03B06,min(03B01;03B02;03B03),03B04,08D01
+S01,A,application server,Damaging,Eq.hs,MA.P,Van,Exp,,,,Pna,,min(03B03;03B04;03B06),,08D01
+S01,A,application server,Damaging,Eq.hs,MA.P,Van,,,,,Tve,,,,08D01
+S01,A,application server,Damaging,Eq.hs,MA.P,Van,,,,,Tvi,,min(02A01;02A02;02A03;02A05),02A04,08D01
+S01,A,application server,Destruction,Eq.des,MA.P,Ter,,,,,Tve,,,,min(08D06;09E02)
+S01,A,application server,Unavailability,Eq.hs,MA.L,Cfg,,,,,E,min(08F02;08F03),,,08D04
+S01,A,application server,Unavailability,Eq.hs,MA.L,Cfg,,,,,M,min(07C02;08E02),,,08D04
+S01,A,application server,Unavailability,Eq.hs,AB.S,Mas,,,,,,,,,08D08
+S01,A,application server,Lock,Eq.hs,AB.S,Maa,,,,Exp,,,,,09E03
+R02,A,network equipment,Lock,Eq.hs,AB.S,Maa,,,,Exp,,,,,09E01
+S01,A,application server,Unavailability,Eq.mo,AV.P,Gre,,,,,,,,,min(01E01;01E02)
+S01,A,application server,Unavailability,Eq.mo,AB.P,Per,,,,,,,,,01C02
+S01,A,application server,Unavailability,Eq.mo,AB.P,Pep,,,,,,,,,01C02
+S01,A,application,Lock,Cfl.bug,IF.L,Lsp,,,,Exp,,,08A03,,08D02
+S01,A,application,Lock,Cfl.bug,ER.L,Lin,,,,Exp,,,08A03,,10A04
+S01,A,application,Lock,Cfl.bug,IF.L,Exp,,,,Exp,,,07D01,08E01,08D03
+S01,A,application,Lock,Cfl.bug,MA.L,Sam,,,,Exp,,min(07C01;07C02),08E01,min(08E02;08E03),
+S01,A,account,Lock,Cpt.blo,MA.L,Blo,,,,,,,,,08D10
+S02,A,Software,Erasure,Cfl.eff,IF.L,Exp,Exp,,,,,,08A03,08E03,08D04
+S02,A,Software,Erasure,Cfl.eff,ER.P,Pro,Exp,,,,Ual,,,,08D04
+S03,A,Software,Erasure,Cfl.eff,ER.P,Pro,Exp,,,,Ual,,,,11D03
+S02,A,Software,Erasure,Cfl.eff,ER.P,Pro,Exp,,,,Uai,,max(07A02;09A02),,08D04
+S02,A,Software,Erasure,Cfl.eff,ER.P,Pro,Exp,,,,Una,,min(07A03;07A04),,08D04
+S02,A,Software,Erasure,Cfl.eff,ER.P,Pro,Exp,,,,E,,,,08D04
+S02,A,Software,Erasure,Cfl.eff,ER.P,Pro,Exp,,,,M,,,,08D04
+S02,A,Software,Erasure,Cfl.eff,MA.L,Del,Exp,,,,Ual,min(07C01;08E02),,,08D04
+S02,A,Software,Erasure,Cfl.eff,MA.L,Del,Exp,,,,Uai,min(07C01;08E02),max(07A02;09A02),,08D04
+S02,A,Software,Erasure,Cfl.eff,MA.L,Del,Exp,,,,Una,,min(07A03;07A04),,08D04
+S02,A,Software,Erasure,Cfl.eff,MA.L,Del,Exp,,,,E,min(08F02;08F03),,,08D04
+S02,A,Software,Erasure,Cfl.eff,MA.L,Del,Exp,,,,M,min(07C02;08E02),,,08D04
+S03,A,Software,Erasure,Cfl.eff,MA.L,Del,Exp,,,,Ual,min(07C01;08E02),,,08D04
+S03,A,Software,Erasure,Cfl.eff,MA.L,Del,Exp,,,,Uai,min(07C01;08E02),max(07A02;09A02),,08D04
+S03,A,Software,Erasure,Cfl.eff,MA.L,Del,Exp,,,,Una,,min(07A03;07A04),,08D04
+S03,A,Software,Erasure,Cfl.eff,MA.L,Del,Exp,,,,E,min(08F02;08F03),,,08D04
+S03,A,Software,Erasure,Cfl.eff,MA.L,Del,Exp,,,,M,min(07C02;08E02),,,08D04
+S02,A,File,Erasure,Fic.eff,MA.L,Tot,,,,,E,min(08F02;08F03),,,
+S02,A,File,Erasure,Cfl.eff,MA.L,Tot,,,,,E,min(08F02;08F03),,,
+S02,A,program file,Erasure,Fic.eff,MA.L,Tot,,,,,E,min(08F02;08F03),,,
+S02,A,program file,Erasure,Cfl.eff,MA.L,Tot,,,,,E,min(08F02;08F03),,,
+S02,A,Software,Pollution,Cfl.pol,ER.P,Pro,,,,Mal,M,,10B05,,08D04
+S02,A,software configuration,Pollution,Cfl.pol,ER.P,Pro,,,,Mal,M,,10B05,,08D04
+S03,A,software configuration,Pollution,Cfl.pol,ER.P,Pro,,,,Mac,M,,10B06,,08D04
+S03,A,Software,Pollution,Cfl.pol,ER.P,Pro,,,,Mal,M,,10B05,,08D04
+S03,A,software configuration,Pollution,Cfl.pol,ER.P,Pro,,,,Mal,M,,10B05,,08D04
+S03,A,Software,Pollution,Cfl.pol,ER.P,Pro,,,,Mac,M,,10B06,,08D04
+S02,A,Software,Pollution,Cfl.pol,IF.L,Exp,,,,,,,08D03,08E02,08D04
+S02,A,software configuration,Pollution,Cfl.pol,IF.L,Exp,,,,,,,08D03,08E02,08D04
+R02,A,software configuration,Pollution,Cfl.pol,IF.L,Exp,,,,,,,06A02,05D03,05A05
+S03,A,Software,Pollution,Cfl.pol,IF.L,Exp,,,,,,,08D03,08E02,08D04
+S03,A,software configuration,Pollution,Cfl.pol,IF.L,Exp,,,,,,,08D03,08E02,08D04
+S02,A,Software,Pollution,Cfl.pol,MA.L,Fal,,,,Exp,Uai,,max(min(07A01;07A02;08F01);min(09A01;09A02)),,08D04
+S02,A,software configuration,Pollution,Cfl.pol,MA.L,Fal,,,,Exp,Uai,,max(min(07A01;07A02;08F01);min(09A01;09A02)),,08D04
+S02,A,Software,Pollution,Cfl.pol,MA.L,Fal,,,,Exp,Una,,max(min(07A03;07A04;08F02);min(09A03;09A04)),,08D04
+S02,A,software configuration,Pollution,Cfl.pol,MA.L,Fal,,,,Exp,Una,,max(min(07A03;07A04;08F02);min(09A03;09A04)),,08D04
+S02,A,Software,Pollution,Cfl.pol,MA.L,Fal,,,,Exp,E,min(08F02;08F03),,,08D04
+S02,A,software configuration,Pollution,Cfl.pol,MA.L,Fal,,,,Exp,E,min(08F02;08F03),,,08D04
+S02,A,Software,Pollution,Cfl.pol,MA.L,Fal,,,,Exp,M,min(08F02;08F03),10B05,,08D04
+S02,A,software configuration,Pollution,Cfl.pol,MA.L,Fal,,,,Exp,M,min(08F02;08F03),10B05,,08D04
+S03,A,Software,Pollution,Cfl.pol,MA.L,Fal,,,,Exp,Uai,,11A01,,11D03
+S03,A,software configuration,Pollution,Cfl.pol,MA.L,Fal,,,,Exp,Uai,,11A01,,11D03
+S03,A,Software,Pollution,Cfl.pol,MA.L,Fal,,,,Exp,Una,,11A01,,11D03
+S03,A,software configuration,Pollution,Cfl.pol,MA.L,Fal,,,,Exp,Una,,11A01,,11D03
+S03,A,Software,Pollution,Cfl.pol,MA.L,Fal,,,,Exp,E,,11A01,,11D03
+S03,A,software configuration,Pollution,Cfl.pol,MA.L,Fal,,,,Exp,E,,11A01,,11D03
+S03,A,Software,Pollution,Cfl.pol,MA.L,Fal,,,,Exp,M,,11A01,,11D03
+S03,A,software configuration,Pollution,Cfl.pol,MA.L,Fal,,,,Exp,M,,11A01,,11D03
+S02,A,media storing program,Destruction,Med.des,AC.E,Inc,Exp,,,,,,03D01,,08D04
+S02,A,media storing program,Destruction,Med.des,AC.E,Ino,Exp,,,,,,,,08D04
+S02,A,media storing program,Destruction,Med.des,AC.E,Inc,Med,,,,,,03D01,,08D04
+S02,A,media storing program,Destruction,Med.des,AC.E,Ino,Med,,,,,,,,08D04
+S02,A,media storing program,Disappearance,Med.dis,ER.P,Peo,Med,,,,,,,,08D04
+S02,A,media storing program,Disappearance,Med.dis,ER.P,Peo,Exp,,,,,,,,08D04
+S02,A,media storing program,Disappearance,Med.dis,MA.P,Vol,Exp,,,,Pna,03B06,min(03B03;03B04),,08D04
+S02,A,media storing program,Disappearance,Med.dis,MA.P,Vol,Exp,,,,E,03B06,,,08D04
+S02,A,media storing program,Disappearance,Med.dis,MA.P,Vol,Exp,,,,Pse,03B06,,,08D04
+S02,A,media storing program,Disappearance,Med.dis,MA.P,Vol,Med,,,,Pna,03B06,08C03,,08D04
+S02,A,media storing program,Disappearance,Med.dis,MA.P,Vol,Med,,,,E,03B06,,,08D04
+S02,A,media storing program,Disappearance,Med.dis,MA.P,Vol,Med,,,,Pse,03B06,,,08D04
+S02,A,media storing program,Inoperability,Med.ine,AC.M,Equ,Exp,,,,,,,,08D04
+S02,A,media storing program,Inoperability,Med.ine,IC.E,De,Exp,,,,,,03C01,,08D04
+S02,A,media storing program,Inoperability,Med.ine,IC.E,Se,Exp,,,,,,min(03A01;03A04),,08D04
+S02,A,media storing program,Inoperability,Med.ine,IF.L,Exp,Exp,,,,,,08A03,08E03,08D04
+S02,A,media storing program,Inoperability,Med.ine,IC.E,Pol,Med,,,,,,,,08D04
+S02,A,media storing program,Inoperability,Med.ine,IC.E,De,Med,,,,,,08C03,,08D04
+S02,A,media storing program,Inoperability,Med.ine,IC.E,Age,Med,,,,,,,08C05,08D04
+S02,A,Server,Damaging,Eq.hs,IC.E,De,Exp,,,,,,03C01,,max(07D01;09E01;min(08D06;09E02);min(01E01;01E02))
+S02,A,Server,Damaging,Eq.hs,IC.E,Se,Exp,,,,,,min(03A01;03A04),,max(07D01;09E01;min(08D06;09E02);min(01E01;01E02))
+S03,A,Server,Damaging,Eq.hs,IC.E,Se,Exp,,,,,,min(03A01;03A04),,
+S02,A,Server,Destruction,Eq.des,AC.E,Fou,Exp,,,,,,03A05,,min(08D06;09E02)
+S02,A,Server,Destruction,Eq.des,AC.E,Inc,Exp,,,,,,03D01,min(03D02;03D03),min(08D06;09E02)
+S02,A,Server,Destruction,Eq.des,AC.E,Ino,Exp,,,,,,03C01,min(03C02;03C03),min(08D06;09E02)
+S02,A,Server,Unavailability,Eq.hs,AC.M,Equ,,,,,,,09E01,,max(07D01;08D01)
+S02,A,auxiliary elements,Unavailability,Ser.hs,AC.M,Ser,,,,,,,,,03A06
+S02,A,auxiliary elements,Unavailability,Ser.hs,AB.S,Ene,,,,,,,,,03A02
+S02,A,Server,Damaging,Eq.hs,MA.P,Van,Exp,,,,Pa,03B06,min(03B01;03B02;03B03),03B04,08D01
+S02,A,Server,Damaging,Eq.hs,MA.P,Van,Exp,,,,Pna,,min(03B03;03B04;03B063),,08D01
+S02,A,Server,Damaging,Eq.hs,MA.P,Van,,,,,Tve,,,,08D01
+S02,A,Server,Damaging,Eq.hs,MA.P,Van,,,,,Tvi,,min(02A01;02A02;02A03;02A05),02A04,08D01
+S02,A,Server,Destruction,Eq.des,MA.P,Ter,,,,,Tve,,,,min(08D06;09E02)
+S02,A,Server,Unavailability,Eq.hs,MA.L,Cfg,,,,,E,min(08F02;08F03),,,08D04
+S02,A,Server,Unavailability,Eq.hs,MA.L,Cfg,,,,,M,min(07C02;08E02),,,08D04
+S02,A,Server,Unavailability,Eq.hs,AB.S,Mas,,,,,,,,,08D08
+S03,A,shared equipment,Unavailability,Eq.hs,AB.S,Mas,,,,,,,,,11D01
+S01,A,application server,Lock,Eq.mo,AB.S,Maa,,,,Exp,,,,,09E01
+S02,A,application server,Lock,Eq.mo,AB.S,Maa,,,,Exp,,,,,09E01
+R01,A,network equipment,Lock,Eq.mo,AB.S,Maa,,,,Exp,,,,,max(04A01;04A02)
+R02,A,network equipment,Lock,Eq.mo,AB.S,Maa,,,,Exp,,,,,09E01
+S02,A,Server,Unavailability,Eq.mo,AV.P,Gre,,,,,,,,,min(01E01;01E02)
+S02,A,Server,Unavailability,Eq.mo,AB.P,Per,,,,,,,,,01C02
+S02,A,Server,Unavailability,Eq.mo,AB.P,Pep,,,,,,,,,01C02
+S03,A,work stations,Unavailability,Eq.mo,AB.P,Per,,,,,,,,,01C02
+S03,A,work stations,Unavailability,Eq.mo,AB.P,Pep,,,,,,,,,01C02
+S02,A,application,Lock,Cfl.bug,IF.L,Lsp,,,,Exp,,,11A01,,11D02
+S02,A,application,Lock,Cfl.bug,MA.L,Sam,,,,Exp,,min(07C01;07C02),08E01,min(08E02;08E03),
+S02,A,account,Lock,Cpt.blo,MA.L,Blo,,,,,,,,,08D10
+S03,A,Software,Erasure,Cfl.eff,IF.L,Exp,Exp,,,,,,11A01,,11D03
+S03,A,software configuration,Erasure,Cfl.eff,ER.P,Pro,Exp,,,,E,,,,11D03
+S03,A,software configuration,Erasure,Cfl.eff,ER.P,Pro,Exp,,,,M,,,,11D03
+S03,A,application,Erasure,Cfl.eff,ER.P,Pro,Exp,,,,E,,,,max(11D02;11D03)
+S03,A,application,Erasure,Cfl.eff,ER.P,Pro,Exp,,,,M,,,,max(11D02;11D03)
+S03,A,application,Erasure,Cfl.eff,ER.P,Pro,Exp,,,,Uai,,,,max(11D02;11D03)
+S03,A,application,Erasure,Cfl.eff,ER.P,Pro,Exp,,,,Una,,,,max(11D02;11D03)
+R02,A,network equipment,Unavailability,Eq.hs,IF.L,Vir,Exp,,,,,,min(08D07;11D06),,01E03
+S01,A,work stations,Unavailability,Eq.hs,IF.L,Vir,Exp,,,,,,min(08D07;11D06),,01E03
+S02,A,work stations,Unavailability,Eq.hs,IF.L,Vir,Exp,,,,,,min(08D07;11D06),,01E03
+S03,A,work stations,Unavailability,Eq.hs,IF.L,Vir,Exp,,,,,,11D06,,max(01E03;11D07)
+S03,A,work stations,Unavailability,Eq.hs,IF.L,Ver,,,,,,,11D06,,max(01E03;11D07)
+S04,A,work stations,Unavailability,Eq.hs,IF.L,Vir,Exp,,,,,,min(08D07;11D06),,01E03
+S05,A,work stations,Unavailability,Eq.hs,IF.L,Vir,Exp,,,,,,min(08D07;11D06),,01E03
+S03,A,work stations,Destruction,Eq.hs,AC.E,Fou,Exp,,,,,,03A05,,max(01E03;11D07)
+S03,A,work stations,Destruction,Eq.hs,AC.E,Inc,Exp,,,,,,03D01,min(03D02;03D03),max(01E03;11D07)
+S03,A,work stations,Destruction,Eq.hs,AC.E,Ino,Exp,,,,,,03C01,min(03C02;03C03),max(01E03;11D07)
+S03,A,work stations,Unavailability,Eq.hs,AB.S,Ene,,,,,,,03A02,,max(01E03;11D07)
+S03,A,work stations,Damaging,Eq.des,MA.P,Van,Exp,,,,Pa,03B06,min(03B01;03B02;03B03),03B04,max(01E03;11D07)
+S03,A,work stations,Damaging,Eq.des,MA.P,Van,Exp,,,,Tie,,min(03B03;03B04;03B063),,max(01E03;11D07)
+S03,A,shared equipment,Unavailability,Eq.hs,AC.M,Equ,,,,,,,,,11D01
+S03,A,shared equipment,Lock,Eq.mo,AB.S,Maa,,,,Exp,,,,,11D01
+G02,A,shared equipment,Lock,Eq.mo,AB.S,Maa,,,,Exp,,,,,12C01
+S04,A,application server,Lock,Eq.mo,AB.S,Maa,,,,Exp,,,,,11D01
+S04,A,program file,Erasure,Cfl.eff,IF.L,Exp,Exp,,,,,,08A03,08E03,08D04
+S04,A,program file,Erasure,Cfl.eff,ER.P,Pro,Exp,,,,Ual,,,,08D04
+S04,A,program file,Erasure,Cfl.eff,ER.P,Pro,Exp,,,,Uai,,max(07A02;09A02),,08D04
+S04,A,program file,Erasure,Cfl.eff,ER.P,Pro,Exp,,,,Una,,min(07A03;07A04),,08D04
+S04,A,program file,Erasure,Cfl.eff,ER.P,Pro,Exp,,,,E,,,,08D04
+S04,A,program file,Erasure,Cfl.eff,ER.P,Pro,Exp,,,,M,,,,08D04
+S04,A,program file,Erasure,Cfl.eff,MA.L,Del,Exp,,,,Ual,min(07C01;08E02),,,08D04
+S04,A,program file,Erasure,Cfl.eff,MA.L,Del,Exp,,,,Uai,min(07C01;08E02),max(07A02;09A02),,08D04
+S04,A,program file,Erasure,Cfl.eff,MA.L,Del,Exp,,,,Una,,min(07A03;07A04),,08D04
+S04,A,program file,Erasure,Cfl.eff,MA.L,Del,Exp,,,,E,min(08F02;08F03),,,08D04
+S04,A,program file,Erasure,Cfl.eff,MA.L,Del,Exp,,,,M,min(07C02;08E02),,,08D04
+S04,A,program file,Erasure,Fic.eff,MA.L,Tot,,,,,E,min(08F02;08F03),,,
+S04,A,program file,Erasure,Cfl.eff,MA.L,Tot,,,,,E,min(08F02;08F03),,,
+S04,A,File,Erasure,Fic.eff,MA.L,Tot,,,,,E,min(08F02;08F03),,,
+S04,A,File,Erasure,Cfl.eff,MA.L,Tot,,,,,E,min(08F02;08F03),,,
+S04,A,program file,Pollution,Cfl.pol,ER.P,Pro,,,,Mal,M,,10B05,,08D04
+S04,A,program file,Pollution,Cfl.pol,ER.P,Pro,,,,Mac,M,,10B06,,08D04
+S04,A,software configuration,Pollution,Cfl.pol,ER.P,Pro,,,,Mac,M,,10B06,,08D04
+S04,A,program file,Pollution,Cfl.pol,IF.L,Exp,,,,,,,,08E02,08D04
+S04,A,software configuration,Pollution,Cfl.pol,IF.L,Exp,,,,,,,,08E02,08D04
+S04,A,program file,Pollution,Cfl.pol,MA.L,Fal,,,,Exp,Uai,,max(min(07A01;07A02;08F01);min(09A01;09A02)),,08D04
+S04,A,software configuration,Pollution,Cfl.pol,MA.L,Fal,,,,Exp,Uai,,max(min(07A01;07A02;08F01);min(09A01;09A02)),,08D04
+S04,A,program file,Pollution,Cfl.pol,MA.L,Fal,,,,Exp,Una,,max(min(07A03;07A04;08F02);min(09A03;09A04)),,08D04
+S04,A,software configuration,Pollution,Cfl.pol,MA.L,Fal,,,,Exp,Una,,max(min(07A03;07A04;08F02);min(09A03;09A04)),,08D04
+S04,A,program file,Pollution,Cfl.pol,MA.L,Fal,,,,Exp,E,min(08F02;08F03),,,08D04
+S04,A,software configuration,Pollution,Cfl.pol,MA.L,Fal,,,,Exp,E,min(08F02;08F03),,,08D04
+S04,A,program file,Pollution,Cfl.pol,MA.L,Fal,,,,Exp,M,min(08F02;08F03),10B05,,08D04
+S04,A,software configuration,Pollution,Cfl.pol,MA.L,Fal,,,,Exp,M,min(08F02;08F03),10B05,,08D04
+S04,A,media storing program,Destruction,Med.des,AC.E,Inc,Exp,,,,,,03D01,,08D04
+S04,A,media storing program,Destruction,Med.des,AC.E,Ino,Exp,,,,,,,,08D04
+S04,A,media storing program,Destruction,Med.des,AC.E,Inc,Med,,,,,,03D01,,08D04
+S04,A,media storing program,Destruction,Med.des,AC.E,Ino,Med,,,,,,,,08D04
+S04,A,media storing program,Disappearance,Med.dis,ER.P,Peo,Med,,,,,,,,08D04
+S04,A,media storing program,Disappearance,Med.dis,ER.P,Peo,Exp,,,,,,,,08D04
+S04,A,media storing program,Disappearance,Med.dis,MA.P,Vol,Exp,,,,Pna,03B06,min(03B03;03B04),,08D04
+S04,A,media storing program,Disappearance,Med.dis,MA.P,Vol,Exp,,,,E,03B06,,,08D04
+S04,A,media storing program,Disappearance,Med.dis,MA.P,Vol,Exp,,,,Pse,03B06,,,08D04
+S04,A,media storing program,Disappearance,Med.dis,MA.P,Vol,Med,,,,Pna,03B06,08C03,,08D04
+S04,A,media storing program,Disappearance,Med.dis,MA.P,Vol,Med,,,,E,03B06,,,08D04
+S04,A,media storing program,Disappearance,Med.dis,MA.P,Vol,Med,,,,Pse,03B06,,,08D04
+S04,A,media storing program,Inoperability,Med.ine,AC.M,Equ,Exp,,,,,,,,08D04
+S04,A,media storing program,Inoperability,Med.ine,IC.E,De,Exp,,,,,,03C01,,08D04
+S04,A,media storing program,Inoperability,Med.ine,IC.E,Se,Exp,,,,,,min(03A01;03A04),,08D04
+S04,A,media storing program,Inoperability,Med.ine,IF.L,Exp,Exp,,,,,,08A03,08E03,08D04
+S04,A,media storing program,Inoperability,Med.ine,IC.E,Pol,Med,,,,,,,,08D04
+S04,A,media storing program,Inoperability,Med.ine,IC.E,De,Med,,,,,,08C03,,08D04
+S04,A,media storing program,Inoperability,Med.ine,IC.E,Age,Med,,,,,,,08C05,08D04
+S04,A,Server,Damaging,Eq.hs,IC.E,De,Exp,,,,,,03C01,,max(07D01;09E01;min(08D06;09E02);min(01E01;01E02))
+S04,A,Server,Damaging,Eq.hs,IC.E,Se,Exp,,,,,,min(03A01;03A04),,max(07D01;09E01;min(08D06;09E02);min(01E01;01E02))
+S04,A,Server,Destruction,Eq.des,AC.E,Fou,Exp,,,,,,03A05,,min(08D06;09E02)
+S04,A,Server,Destruction,Eq.des,AC.E,Inc,Exp,,,,,,03D01,min(03D02;03D03),min(08D06;09E02)
+S04,A,Server,Destruction,Eq.des,AC.E,Ino,Exp,,,,,,03C01,min(03C02;03C03),min(08D06;09E02)
+S04,A,Server,Unavailability,Eq.hs,AC.M,Equ,,,,,,,09E01,,max(07D01;08D01)
+S04,A,auxiliary elements,Unavailability,Ser.hs,AC.M,Ser,,,,,,,,,03A06
+S04,A,auxiliary elements,Unavailability,Ser.hs,AB.S,Ene,,,,,,,,,03A02
+S04,A,auxiliary elements,Unavailability,Ser.hs,AB.S,Cli,,,,,,,,,03A03
+S04,A,Server,Damaging,Eq.hs,MA.P,Van,Exp,,,,Pa,03B06,min(03B01;03B02;03B03),03B04,08D01
+S04,A,Server,Damaging,Eq.hs,MA.P,Van,Exp,,,,Pna,,min(03B03;03B04;03B06),,08D01
+S04,A,Server,Damaging,Eq.hs,MA.P,Van,,,,,Tve,,,,08D01
+S04,A,Server,Damaging,Eq.hs,MA.P,Van,,,,,Tvi,,min(02A01;02A02;02A03;02A05),02A04,08D01
+S04,A,Server,Destruction,Eq.des,MA.P,Ter,,,,,Tve,,,,min(08D06;09E02)
+S04,A,Server,Unavailability,Eq.hs,AB.S,Mas,,,,,,,,,08D08
+S03,A,shared equipment,Lock,Eq.hs,AB.S,Maa,,,,Exp,,,,,11D01
+S04,A,application server,Lock,Eq.hs,AB.S,Maa,,,,Exp,,,,,09E03
+S04,A,Server,Unavailability,Eq.mo,AV.P,Gre,,,,,,,,,min(01E01;01E02)
+S04,A,Server,Unavailability,Eq.mo,AB.P,Per,,,,,,,,,01C02
+S04,A,Server,Unavailability,Eq.mo,AB.P,Pep,,,,,,,,,01C02
+S04,A,application,Lock,Cfl.bug,IF.L,Lsp,,,,Exp,,,08A03,,08D02
+S04,A,application,Lock,Cfl.bug,ER.L,Lin,,,,Exp,,,08A03,,10A04
+S04,A,application,Lock,Cfl.bug,IF.L,Exp,,,,Exp,,,07D01,08E01,08D03
+S04,A,application,Lock,Cfl.bug,MA.L,Sam,,,,Exp,,min(07C01;07C02),08E01,min(08E02;08E03),
+S04,A,account,Lock,Cpt.blo,MA.L,Blo,,,,,,,,,08D10
+S05,A,program file,Erasure,Cfl.eff,IF.L,Exp,Exp,,,,,,08A03,08E03,08D04
+S05,A,program file,Erasure,Cfl.eff,ER.P,Pro,Exp,,,,Ual,,,,08D04
+S05,A,program file,Erasure,Cfl.eff,ER.P,Pro,Exp,,,,Uai,,max(07A02;09A02),,08D04
+S05,A,program file,Erasure,Cfl.eff,ER.P,Pro,Exp,,,,Una,,min(07A03;07A04),,08D04
+S05,A,program file,Erasure,Cfl.eff,ER.P,Pro,Exp,,,,E,,,,08D04
+S05,A,program file,Erasure,Cfl.eff,ER.P,Pro,Exp,,,,M,,,,08D04
+S05,A,program file,Erasure,Cfl.eff,MA.L,Del,Exp,,,,Ual,min(07C01;08E02),,,08D04
+S05,A,program file,Erasure,Cfl.eff,MA.L,Del,Exp,,,,Uai,min(07C01;08E02),max(07A02;09A02),,08D04
+S05,A,program file,Erasure,Cfl.eff,MA.L,Del,Exp,,,,Una,,min(07A03;07A04),,08D04
+S05,A,program file,Erasure,Cfl.eff,MA.L,Del,Exp,,,,E,min(08F02;08F03),,,08D04
+S05,A,program file,Erasure,Cfl.eff,MA.L,Del,Exp,,,,M,min(07C02;08E02),,,08D04
+S05,A,File,Erasure,Cfl.eff,MA.L,Tot,,,,,E,min(08F02;08F03),,,
+S05,A,File,Erasure,Fic.eff,MA.L,Tot,,,,,E,min(08F02;08F03),,,
+S05,A,program file,Erasure,Cfl.eff,MA.L,Tot,,,,,E,min(08F02;08F03),,,
+S05,A,program file,Erasure,Fic.eff,MA.L,Tot,,,,,E,min(08F02;08F03),,,
+S04,A,software configuration,Pollution,Cfl.pol,ER.P,Pro,,,,Mal,M,,10B05,,08D04
+S05,A,program file,Pollution,Cfl.pol,ER.P,Pro,,,,Mac,M,,10B06,,08D04
+S05,A,software configuration,Pollution,Cfl.pol,ER.P,Pro,,,,Mac,M,,10B06,,08D04
+S05,A,program file,Pollution,Cfl.pol,IF.L,Exp,,,,,,,08D03,08E02,08D04
+S05,A,software configuration,Pollution,Cfl.pol,IF.L,Exp,,,,,,,08D03,08E02,08D04
+S05,A,program file,Pollution,Cfl.pol,MA.L,Fal,,,,Exp,Uai,,max(min(07A01;07A02;08F01);min(09A01;09A02)),,08D04
+S05,A,software configuration,Pollution,Cfl.pol,MA.L,Fal,,,,Exp,Uai,,max(min(07A01;07A02;08F01);min(09A01;09A02)),,08D04
+S05,A,program file,Pollution,Cfl.pol,MA.L,Fal,,,,Exp,Una,,max(min(07A03;07A04;08F02);min(09A03;09A04)),,08D04
+S05,A,software configuration,Pollution,Cfl.pol,MA.L,Fal,,,,Exp,Una,,max(min(07A03;07A04;08F02);min(09A03;09A04)),,08D04
+S05,A,program file,Pollution,Cfl.pol,MA.L,Fal,,,,Exp,E,min(08F02;08F03),,,08D04
+S05,A,software configuration,Pollution,Cfl.pol,MA.L,Fal,,,,Exp,E,min(08F02;08F03),,,08D04
+S05,A,program file,Pollution,Cfl.pol,MA.L,Fal,,,,Exp,M,min(08F02;08F03),10B05,,08D04
+S05,A,software configuration,Pollution,Cfl.pol,MA.L,Fal,,,,Exp,M,min(08F02;08F03),10B05,,08D04
+S05,A,media storing program,Destruction,Med.des,AC.E,Inc,Exp,,,,,,03D01,,08D04
+S05,A,media storing program,Destruction,Med.des,AC.E,Ino,Exp,,,,,,,,08D04
+S05,A,media storing program,Destruction,Med.des,AC.E,Inc,Med,,,,,,03D01,,08D04
+S05,A,media storing program,Destruction,Med.des,AC.E,Ino,Med,,,,,,,,08D04
+S05,A,media storing program,Disappearance,Med.dis,ER.P,Peo,Med,,,,,,,,08D04
+S05,A,media storing program,Disappearance,Med.dis,ER.P,Peo,Exp,,,,,,,,08D04
+S05,A,media storing program,Disappearance,Med.dis,MA.P,Vol,Exp,,,,Pna,03B06,min(03B03;03B04),,08D04
+S05,A,media storing program,Disappearance,Med.dis,MA.P,Vol,Exp,,,,E,03B06,,,08D04
+S05,A,media storing program,Disappearance,Med.dis,MA.P,Vol,Exp,,,,Pse,03B06,,,08D04
+S05,A,media storing program,Disappearance,Med.dis,MA.P,Vol,Med,,,,Pna,03B06,08C03,,08D04
+S05,A,media storing program,Disappearance,Med.dis,MA.P,Vol,Med,,,,E,03B06,,,08D04
+S05,A,media storing program,Disappearance,Med.dis,MA.P,Vol,Med,,,,Pse,03B06,,,08D04
+S05,A,media storing program,Inoperability,Med.ine,AC.M,Equ,Exp,,,,,,,,08D04
+S05,A,media storing program,Inoperability,Med.ine,IC.E,De,Exp,,,,,,03C01,,08D04
+S05,A,media storing program,Inoperability,Med.ine,IC.E,Se,Exp,,,,,,min(03A01;03A04),,08D04
+S05,A,media storing program,Inoperability,Med.ine,IF.L,Exp,Exp,,,,,,08A03,08E03,08D04
+S05,A,media storing program,Inoperability,Med.ine,IC.E,Pol,Med,,,,,,,,08D04
+S05,A,media storing program,Inoperability,Med.ine,IC.E,De,Med,,,,,,08C03,,08D04
+S05,A,media storing program,Inoperability,Med.ine,IC.E,Age,Med,,,,,,,08C05,08D04
+S05,A,Server,Damaging,Eq.hs,IC.E,De,Exp,,,,,,03C01,,max(07D01;09E01;min(08D06;09E02);min(01E01;01E02))
+S05,A,Server,Damaging,Eq.hs,IC.E,Se,Exp,,,,,,min(03A01;03A04),,max(07D01;09E01;min(08D06;09E02);min(01E01;01E02))
+S05,A,Server,Destruction,Eq.des,AC.E,Fou,Exp,,,,,,03A05,,min(08D06;09E02)
+S05,A,Server,Destruction,Eq.des,AC.E,Inc,Exp,,,,,,03D01,min(03D02;03D03),min(08D06;09E02)
+S05,A,Server,Destruction,Eq.des,AC.E,Ino,Exp,,,,,,03C01,min(03C02;03C03),min(08D06;09E02)
+S05,A,Server,Unavailability,Eq.hs,AC.M,Equ,,,,,,,09E01,,max(07D01;08D01)
+S05,A,auxiliary elements,Unavailability,Ser.hs,AC.M,Ser,,,,,,,,,03A06
+S05,A,auxiliary elements,Unavailability,Ser.hs,AB.S,Ene,,,,,,,,,03A02
+S05,A,Server,Damaging,Eq.hs,MA.P,Van,Exp,,,,Pa,03B06,min(03B01;03B02;03B03),03B04,08D01
+S05,A,Server,Damaging,Eq.hs,MA.P,Van,Exp,,,,Pna,,min(03B03;03B04;03B063),,08D01
+S05,A,Server,Damaging,Eq.hs,MA.P,Van,,,,,Tve,,,,08D01
+S05,A,Server,Damaging,Eq.hs,MA.P,Van,,,,,Tvi,,min(02A01;02A02;02A03;02A05),02A04,08D01
+S05,A,Server,Unavailability,Eq.hs,MA.L,Cfg,,,,,E,min(08F02;08F03),,,08D04
+S05,A,Server,Unavailability,Eq.hs,MA.L,Cfg,,,,,M,min(07C02;08E02),,,08D04
+S05,A,Server,Destruction,Eq.des,MA.P,Ter,,,,,Tve,,,,min(08D06;09E02)
+S05,A,Server,Unavailability,Eq.hs,AB.S,Mas,,,,,,,,,08D08
+S05,A,application server,Lock,Eq.hs,AB.S,Maa,,,,Exp,,,,,09E03
+S05,A,Server,Unavailability,Eq.mo,AV.P,Gre,,,,,,,,,min(01E01;01E02)
+S05,A,Server,Unavailability,Eq.mo,AB.P,Per,,,,,,,,,01C02
+S05,A,Server,Unavailability,Eq.mo,AB.P,Pep,,,,,,,,,01C02
+S05,A,application,Lock,Cfl.bug,IF.L,Lsp,,,,Exp,,,08A03,,08D02
+S05,A,application,Lock,Cfl.bug,ER.L,Lin,,,,Exp,,,08A03,,10A04
+S05,A,application,Lock,Cfl.bug,IF.L,Exp,,,,Exp,,,07D01,08E01,08D03
+S05,A,application,Lock,Cfl.bug,MA.L,Sam,,,,Exp,,min(07C01;07C02),08E01,min(08E02;08E03),
+G02,I,software configuration,Tampering,Cfl.alt,ER.P,Pro,,,,,M,,min(12A02;12B02),,
+G02,I,hardware configuration,Tampering,PCfl.alt,ER.P,Pro,,,,,M,,min(12A02;12B02),,
+G02,I,software configuration,Tampering,Cfl.alt,ER.P,Pro,,,,,E,,12B01,,
+G02,I,hardware configuration,Tampering,Cfl.alt,ER.P,Pro,,,,,E,,12B01,,
+G02,I,software configuration,Tampering,Cfl.alt,MA.L,Fal,,,,,M,12A03,12B01,,
+G02,I,hardware configuration,Tampering,PCfl.alt,MA.L,Fal,,,,,M,12A03,12B01,,
+G02,I,software configuration,Tampering,Cfl.alt,MA.L,Fal,,,,,E,min(12E02;12E03),,,
+G02,I,hardware configuration,Tampering,PCfl.alt,MA.L,Fal,,,,,E,min(12E02;12E03),,,
+G02,I,software configuration,Tampering,Cfl.alt,MA.L,Fal,,,Ain,,Una,,min(12E01;12E02),,
+G02,I,hardware configuration,Tampering,PCfl.alt,MA.L,Fal,,,Ain,,Una,,min(12E01;12E02),,
+G02,I,software configuration,Tampering,Cfl.alt,MA.L,Fal,,,Atm,,Tie,,12A04,,
+G02,I,hardware configuration,Tampering,PCfl.alt,MA.L,Fal,,,Atm,,Tie,,12A04,,
+R01,I,software configuration,Tampering,Cfl.alt,ER.P,Pro,,,,,M,,06A02,,
+R01,I,hardware configuration,Tampering,PCfl.alt,ER.P,Pro,,,,,M,,06A02,,
+R01,I,software configuration,Tampering,Cfl.alt,ER.P,Pro,,,,,E,,06B01,,
+R01,I,hardware configuration,Tampering,PCfl.alt,ER.P,Pro,,,,,E,,06B01,,
+R01,I,software configuration,Tampering,Cfl.alt,MA.L,Fal,,,,,M,06A03,06B01,,
+R01,I,hardware configuration,Tampering,PCfl.alt,MA.L,Fal,,,,,M,06A03,06B01,,
+R01,I,software configuration,Tampering,Cfl.alt,MA.L,Fal,,,,,E,min(06C02;06C03),,,
+R01,I,hardware configuration,Tampering,PCfl.alt,MA.L,Fal,,,,,E,min(06C02;06C03),,,
+R01,I,software configuration,Tampering,Cfl.alt,MA.L,Fal,,,,,Una,,min(06C01;06C02),,
+R01,I,hardware configuration,Tampering,PCfl.alt,MA.L,Fal,,,,,Una,,min(06C01;06C02),,
+R02,I,software configuration,Tampering,Cfl.alt,ER.P,Pro,,,,,M,,06A02,,
+R02,I,hardware configuration,Tampering,PCfl.alt,ER.P,Pro,,,,,M,,06A02,,
+R02,I,software configuration,Tampering,Cfl.alt,ER.P,Pro,,,,,E,,06B01,,
+R02,I,hardware configuration,Tampering,PCfl.alt,ER.P,Pro,,,,,E,,06B01,,
+R02,I,software configuration,Tampering,Cfl.alt,MA.L,Fal,,,,,M,06A03,06B01,,
+R02,I,hardware configuration,Tampering,PCfl.alt,MA.L,Fal,,,,,M,06A03,06B01,,
+R02,I,software configuration,Tampering,Cfl.alt,MA.L,Fal,,,,,E,min(06C02;06C03),,,
+R02,I,hardware configuration,Tampering,PCfl.alt,MA.L,Fal,,,,,E,min(06C02;06C03),,,
+R02,I,software configuration,Tampering,Cfl.alt,MA.L,Fal,,,,,Una,,min(06C01;06C02),,
+R02,I,hardware configuration,Tampering,PCfl.alt,MA.L,Fal,,,,,Una,,min(06C01;06C02),,
+S01,I,software configuration,Tampering,Cfl.alt,ER.P,Pro,,,,,D,,max(08A03;08B03;09B05;10B01),09B05,
+S01,I,software configuration,Tampering,Cfl.alt,ER.P,Pro,,,,,M,,max(08A03;08B03;09B05;10B05),09B05,
+S01,I,hardware configuration,Tampering,PCfl.alt,ER.P,Pro,,,,,M,,max(08A03;08B03;09B05;10B05),09B05,
+S01,I,software configuration,Tampering,Cfl.alt,ER.P,Pro,,,,,E,,max(08B02;08B03;09B05),09B05,
+S01,I,hardware configuration,Tampering,PCfl.alt,ER.P,Pro,,,,,E,,max(08B02;08B03;09B05),09B05,
+S01,I,software configuration,Tampering,Cfl.alt,MA.L,Fal,,,,,D,10B01,10B01,,
+S01,I,software configuration,Tampering,Cfl.alt,MA.L,Fal,,,,,M,10B05,10B05,,
+S01,I,hardware configuration,Tampering,PCfl.alt,MA.L,Fal,,,,,M,10B05,10B05,,
+S01,I,software configuration,Tampering,Cfl.alt,MA.L,Fal,,,,,E,max(07C02;08F03),max(08B02;08B03),09B04,
+S01,I,hardware configuration,Tampering,PCfl.alt,MA.L,Fal,,,,,E,max(07C02;08F03),max(08B02;08B03),09B04,
+S01,I,software configuration,Tampering,Cfl.alt,MA.L,Fal,,,,,Una,07C02,max(min(07A01;07A02;07A03;07A04);08B02;08B03;09B05),09B04,
+S01,I,hardware configuration,Tampering,PCfl.alt,MA.L,Fal,,,,,Una,07C02,max(min(07A01;07A02;07A03;07A04);08B02;08B03;09B05),09B04,
+S01,I,media storing program,Swap,Med.ech,MA.P,Fal,,,,Exp,Pa,,max(08B03;09B05),09B04,
+S01,C,media storing program,Swap,Med.ech,MA.P,Fal,,,,Exp,Pa,,max(08B03;09B05),09B04,
+S01,I,media storing program,Swap,Med.ech,MA.P,Fal,,,,Exp,Pna,max(03B04;03B05;03B06),max(min(03B01;03B02;03B03);08B03;08C02;09B05),09B04,
+S01,C,media storing program,Swap,Med.ech,MA.P,Fal,,,,Exp,Pna,max(03B04;03B05;03B06),max(min(03B01;03B02;03B03);08B03;08C02;09B05),09B04,
+S01,I,media storing program,Swap,Med.ech,MA.P,Fal,,,,Tran,Pa,,max(08B03;09B05),09B04,
+S01,C,media storing program,Swap,Med.ech,MA.P,Fal,,,,Tran,Pa,,max(08B03;09B05),09B04,
+S01,I,connection process,Tampering,Cfl.alt,MA.L,Fal,,,,Con,E,max(07C02;08F03),max(07A05;09A05),,
+S01,I,connection process,Tampering,Cfl.alt,MA.L,Fal,,,,Con,D,10B01,max(07A05;09A05),,
+S01,I,connection process,Tampering,Cfl.alt,MA.L,Fal,,,,Con,M,10B05,max(07A05;09A05),,
+S01,I,security configuration,Tampering,Cfl.alt,ER.P,Pro,,,,Res,E,,,,
+S01,I,security configuration,Tampering,Cfl.alt,ER.P,Pro,,,,Res,M,,08A04,,
+S01,I,security configuration,Tampering,Cfl.alt,MA.L,Fal,,,,Res,E,min(07C02;08F03),,,
+S01,I,security configuration,Tampering,Cfl.alt,MA.L,Fal,,,,Res,M,10B05,08A04,,
+S01,I,security configuration,Tampering,Cfl.alt,MA.L,Fal,,,,Res,Pna,,min(08F01;08F02),,
+S02,I,software configuration,Tampering,Cfl.alt,ER.P,Pro,,,,,M,,08B01,,
+S02,I,hardware configuration,Tampering,PCfl.alt,ER.P,Pro,,,,,M,,08B01,,
+S02,I,software configuration,Tampering,Cfl.alt,ER.P,Pro,,,,,E,,08B01,,
+S02,I,hardware configuration,Tampering,PCfl.alt,ER.P,Pro,,,,,E,,08B01,,
+S02,I,software configuration,Tampering,Cfl.alt,MA.L,Fal,,,,,M,08A04,08B01,,
+S02,I,hardware configuration,Tampering,PCfl.alt,MA.L,Fal,,,,,M,08A04,08B01,,
+S02,I,software configuration,Tampering,Cfl.alt,MA.L,Fal,,,,,E,min(08F02;08F03),,,
+S02,I,hardware configuration,Tampering,PCfl.alt,MA.L,Fal,,,,,E,min(08F02;08F03),,,
+S02,I,software configuration,Tampering,Cfl.alt,MA.L,Fal,,,,,Una,,max(min(07A01;07A02;07A03;07A04);08B01),,
+S02,I,hardware configuration,Tampering,PCfl.alt,MA.L,Fal,,,,,Una,,max(min(07A01;07A02;07A03;07A04);08B01),,
+S02,I,security configuration,Tampering,Cfl.alt,ER.P,Pro,,,,Res,E,,08B01,,
+S02,I,security configuration,Tampering,Cfl.alt,ER.P,Pro,,,,Res,M,,08B01,,
+S02,I,security configuration,Tampering,Cfl.alt,MA.L,Fal,,,,Res,E,min(07C02;08F03),,,
+S02,I,security configuration,Tampering,Cfl.alt,MA.L,Fal,,,,Res,Pna,,min(08F01;08F02),,
+S04,I,software configuration,Tampering,Cfl.alt,ER.P,Pro,,,,,M,,08B01,,
+S04,I,hardware configuration,Tampering,PCfl.alt,ER.P,Pro,,,,,M,,08B01,,
+S04,I,software configuration,Tampering,Cfl.alt,ER.P,Pro,,,,,E,,08B01,,
+S04,I,hardware configuration,Tampering,PCfl.alt,ER.P,Pro,,,,,E,,08B01,,
+S04,I,software configuration,Tampering,Cfl.alt,MA.L,Fal,,,,,M,08A04,08B01,,
+S04,I,hardware configuration,Tampering,PCfl.alt,MA.L,Fal,,,,,M,08A04,08B01,,
+S04,I,software configuration,Tampering,Cfl.alt,MA.L,Fal,,,,,E,min(08F02;08F03),,,
+S04,I,hardware configuration,Tampering,PCfl.alt,MA.L,Fal,,,,,E,min(08F02;08F03),,,
+S04,I,software configuration,Tampering,Cfl.alt,MA.L,Fal,,,,,Una,,max(min(07A01;07A02;07A03;07A04);08B01),,
+S04,I,hardware configuration,Tampering,PCfl.alt,MA.L,Fal,,,,,Una,,max(min(07A01;07A02;07A03;07A04);08B01),,
+S04,I,security configuration,Tampering,Cfl.alt,ER.P,Pro,,,,Res,E,,08B01,,
+S04,I,security configuration,Tampering,Cfl.alt,ER.P,Pro,,,,Res,M,,08B01,,
+S04,I,security configuration,Tampering,Cfl.alt,MA.L,Fal,,,,Res,E,min(07C02;08F03),,,
+S04,I,security configuration,Tampering,Cfl.alt,MA.L,Fal,,,,Res,Pna,,min(08F01;08F02),,
+S05,I,software configuration,Tampering,Cfl.alt,ER.P,Pro,,,,,D,,max(08A03;08B03;09B05;10B01),09B05,
+S05,I,hardware configuration,Tampering,PCfl.alt,ER.P,Pro,,,,,D,,max(08A03;08B03;09B05;10B01),09B05,
+S05,I,equipment configuration,Tampering,Cfl.alt,ER.P,Pro,,,,,M,,max(08A03;08B03;09B05;10B05),09B05,
+S05,I,equipment configuration,Tampering,Cfl.alt,ER.P,Pro,,,,,E,,max(08B02;08B03;09B05),09B05,
+S05,I,software configuration,Tampering,Cfl.alt,MA.L,Fal,,,,,D,10B01,10B01,,
+S05,I,software configuration,Tampering,Cfl.alt,MA.L,Fal,,,,,M,10B05,10B05,,
+S05,I,hardware configuration,Tampering,PCfl.alt,MA.L,Fal,,,,,M,10B05,10B05,,
+S05,I,software configuration,Tampering,Cfl.alt,MA.L,Fal,,,,,E,max(07C02;08F03),max(08B02;08B03),09B04,
+S05,I,hardware configuration,Tampering,PCfl.alt,MA.L,Fal,,,,,E,max(07C02;08F03),max(08B02;08B03),09B04,
+S05,I,software configuration,Tampering,Cfl.alt,MA.L,Fal,,,,,Una,07C02,max(min(07A01;07A02;07A03;07A04);08B02;08B03;09B05),09B04,
+S05,I,hardware configuration,Tampering,PCfl.alt,MA.L,Fal,,,,,Una,07C02,max(min(07A01;07A02;07A03;07A04);08B02;08B03;09B05),09B04,
+S05,I,media storing program,Swap,Med.ech,MA.P,Fal,,,,Exp,Pa,,max(08B03;09B05),09B04,
+S05,C,media storing program,Swap,Med.ech,MA.P,Fal,,,,Exp,Pa,,max(08B03;09B05),09B04,
+S05,I,media storing program,Swap,Med.ech,MA.P,Fal,,,,Exp,Pna,max(03B04;03B05;03B06),max(min(03B01;03B02;03B03);08B03;08C02;09B05),09B04,
+S05,C,media storing program,Swap,Med.ech,MA.P,Fal,,,,Exp,Pna,max(03B04;03B05;03B06),max(min(03B01;03B02;03B03);08B03;08C02;09B05),09B04,
+S05,I,media storing program,Swap,Med.ech,MA.P,Fal,,,,Tran,Pa,,max(08B03;09B05),09B04,
+S05,C,media storing program,Swap,Med.ech,MA.P,Fal,,,,Tran,Pa,,max(08B03;09B05),09B04,
+S05,I,connection process,Tampering,Cfl.alt,MA.L,Fal,,,,Con,E,max(07C02;08F03),max(07A05;09A05),,
+S05,I,connection process,Tampering,Cfl.alt,MA.L,Fal,,,,Con,D,10B01,max(07A05;09A05),,
+S05,I,connection process,Tampering,Cfl.alt,MA.L,Fal,,,,Con,M,10B05,max(07A05;09A05),,
+S05,I,security configuration,Tampering,Cfl.alt,ER.P,Pro,,,,Res,E,,,,
+S05,I,security configuration,Tampering,Cfl.alt,ER.P,Pro,,,,Res,M,,08A04,,
+S05,I,security configuration,Tampering,Cfl.alt,MA.L,Fal,,,,Res,E,min(07C02;08F03),,,
+S05,I,security configuration,Tampering,Cfl.alt,MA.L,Fal,,,,Res,M,10B05,08A04,,
+S05,I,security configuration,Tampering,Cfl.alt,MA.L,Fal,,,,Res,Pna,,min(08F01;08F02),,
+S01,C,application,Disclosure,Cfl.dif,ER.P,Pro,,,,Exp,E,,max(min(07A01;07A02);min(09A01;09A02)),,
+S01,C,application,Disclosure,Cfl.dif,ER.P,Pro,,,,Mam,E,,max(min(07A01;07A02);min(09A01;09A02)),,
+S01,C,application,Disclosure,Cfl.dif,ER.P,Pro,,,,Tde,D,,max(min(07A01;07A02);min(09A01;09A02);10B02),,
+S01,C,application,Disclosure,Cfl.dif,ER.P,Pro,,,,Mal,M,,max(min(07A01;07A02);min(09A01;09A02)),,
+S01,C,application,Disclosure,Cfl.dif,ER.P,Pro,,,,Mai,M,,max(min(07A01;07A02);min(09A01;09A02)),,
+S01,C,application,Disclosure,Cfl.dif,MA.L,Vol,,,,Tru,Ual,,max(min(07A01;07A02);min(09A01;09A02)),,
+S01,C,application,Disclosure,Cfl.dif,MA.L,Vol,,,,Tru,Uai,,max(min(07A01;07A02);min(09A01;09A02)),,
+S01,C,application,Disclosure,Cfl.dif,MA.L,Vol,,,,Tru,Una,,max(min(07A03;07A04;08F02;08C06);min(09A03;09A04)),,
+S01,C,application,Disclosure,Cfl.dif,MA.L,Vol,,,,Exp,E,,max(min(07A01;07A02);min(09A01;09A02)),,
+S01,C,application,Disclosure,Cfl.dif,MA.L,Vol,,,,Mai,M,,max(min(07A01;07A02);min(09A01;09A02)),,
+S02,C,application,Disclosure,Cfl.dif,ER.P,Pro,,,,Exp,E,,max(min(07A01;07A02);min(09A01;09A02)),,
+S02,C,application,Disclosure,Cfl.dif,ER.P,Pro,,,,Mam,E,,max(min(07A01;07A02);min(09A01;09A02)),,
+S02,C,application,Disclosure,Cfl.dif,ER.P,Pro,,,,Tde,D,,max(min(07A01;07A02);min(09A01;09A02);10B02),,
+S02,C,application,Disclosure,Cfl.dif,ER.P,Pro,,,,Mal,M,,max(min(07A01;07A02);min(09A01;09A02)),,
+S02,C,application,Disclosure,Cfl.dif,ER.P,Pro,,,,Mai,M,,max(min(07A01;07A02);min(09A01;09A02)),,
+S02,C,application,Disclosure,Cfl.dif,MA.L,Vol,,,,Tru,Ual,,max(min(07A01;07A02);min(09A01;09A02)),,
+S02,C,application,Disclosure,Cfl.dif,MA.L,Vol,,,,Tru,Uai,,max(min(07A01;07A02);min(09A01;09A02)),,
+S02,C,application,Disclosure,Cfl.dif,MA.L,Vol,,,,Tru,Una,,max(min(07A03;07A04;08F02;08C06);min(09A03;09A04)),,
+S02,C,application,Disclosure,Cfl.dif,MA.L,Vol,,,,Exp,E,,max(min(07A01;07A02);min(09A01;09A02)),,
+S02,C,application,Disclosure,Cfl.dif,MA.L,Vol,,,,Mai,M,,max(min(07A01;07A02);min(09A01;09A02)),,
+S03,C,application,Disclosure,Cfl.dif,ER.P,Pro,,,,Exp,E,,max(min(07A01;07A02);min(09A01;09A02)),,
+S03,C,application,Disclosure,Cfl.dif,ER.P,Pro,,,,Mam,E,,max(min(07A01;07A02);min(09A01;09A02)),,
+S03,C,application,Disclosure,Cfl.dif,ER.P,Pro,,,,Tde,D,,max(min(07A01;07A02);min(09A01;09A02);10B02),,
+S03,C,application,Disclosure,Cfl.dif,ER.P,Pro,,,,Mal,M,,max(min(07A01;07A02);min(09A01;09A02)),,
+S03,C,application,Disclosure,Cfl.dif,ER.P,Pro,,,,Mai,M,,max(min(07A01;07A02);min(09A01;09A02)),,
+S03,C,application,Disclosure,Cfl.dif,MA.L,Vol,,,,Tru,Ual,,max(min(07A01;07A02);min(09A01;09A02)),,
+S03,C,application,Disclosure,Cfl.dif,MA.L,Vol,,,,Tru,Uai,,max(min(07A01;07A02);min(09A01;09A02)),,
+S03,C,application,Disclosure,Cfl.dif,MA.L,Vol,,,,Tru,Una,,max(min(07A03;07A04;08F02;08C06);min(09A03;09A04)),,
+S03,C,application,Disclosure,Cfl.dif,MA.L,Vol,,,,Exp,E,,max(min(07A01;07A02);min(09A01;09A02)),,
+S03,C,application,Disclosure,Cfl.dif,MA.L,Vol,,,,Mai,M,,max(min(07A01;07A02);min(09A01;09A02)),,
+S04,C,application,Disclosure,Cfl.dif,ER.P,Pro,,,,Exp,E,,max(min(07A01;07A02);min(09A01;09A02)),,
+S04,C,application,Disclosure,Cfl.dif,ER.P,Pro,,,,Mam,E,,max(min(07A01;07A02);min(09A01;09A02)),,
+S04,C,application,Disclosure,Cfl.dif,ER.P,Pro,,,,Tde,D,,max(min(07A01;07A02);min(09A01;09A02);10B02),,
+S04,C,application,Disclosure,Cfl.dif,ER.P,Pro,,,,Mal,M,,max(min(07A01;07A02);min(09A01;09A02)),,
+S04,C,application,Disclosure,Cfl.dif,ER.P,Pro,,,,Mai,M,,max(min(07A01;07A02);min(09A01;09A02)),,
+S04,C,application,Disclosure,Cfl.dif,MA.L,Vol,,,,Tru,Ual,,max(min(07A01;07A02);min(09A01;09A02)),,
+S04,C,application,Disclosure,Cfl.dif,MA.L,Vol,,,,Tru,Uai,,max(min(07A01;07A02);min(09A01;09A02)),,
+S04,C,application,Disclosure,Cfl.dif,MA.L,Vol,,,,Tru,Una,,max(min(07A03;07A04;08F02;08C06);min(09A03;09A04)),,
+S04,C,application,Disclosure,Cfl.dif,MA.L,Vol,,,,Exp,E,,max(min(07A01;07A02);min(09A01;09A02)),,
+S04,C,application,Disclosure,Cfl.dif,MA.L,Vol,,,,Mai,M,,max(min(07A01;07A02);min(09A01;09A02)),,
+S05,C,application,Disclosure,Cfl.dif,ER.P,Pro,,,,Exp,E,,max(min(07A01;07A02);min(09A01;09A02)),,
+S05,C,application,Disclosure,Cfl.dif,ER.P,Pro,,,,Mam,E,,max(min(07A01;07A02);min(09A01;09A02)),,
+S05,C,application,Disclosure,Cfl.dif,ER.P,Pro,,,,Tde,D,,max(min(07A01;07A02);min(09A01;09A02);10B02),,
+S05,C,application,Disclosure,Cfl.dif,ER.P,Pro,,,,Mal,M,,max(min(07A01;07A02);min(09A01;09A02)),,
+S05,C,application,Disclosure,Cfl.dif,ER.P,Pro,,,,Mai,M,,max(min(07A01;07A02);min(09A01;09A02)),,
+S05,C,application,Disclosure,Cfl.dif,MA.L,Vol,,,,Tru,Ual,,max(min(07A01;07A02);min(09A01;09A02)),,
+S05,C,application,Disclosure,Cfl.dif,MA.L,Vol,,,,Tru,Uai,,max(min(07A01;07A02);min(09A01;09A02)),,
+S05,C,application,Disclosure,Cfl.dif,MA.L,Vol,,,,Tru,Una,,max(min(07A03;07A04;08F02;08C06);min(09A03;09A04)),,
+S05,C,application,Disclosure,Cfl.dif,MA.L,Vol,,,,Exp,E,,max(min(07A01;07A02);min(09A01;09A02)),,
+S05,C,application,Disclosure,Cfl.dif,MA.L,Vol,,,,Mai,M,,max(min(07A01;07A02);min(09A01;09A02)),,
+S01,C,Media,Disappearance,Med.dis,MA.P,Vol,,,,Tran,Pa,,10B02,,
+S01,C,Media,Disappearance,Med.dis,MA.P,Vol,,,,Sti,Pa,08C03,10B02,,
+S01,C,Media,Disappearance,Med.dis,MA.P,Vol,,,,Ste,Pa,08C04,10B02,,
+S01,C,Media,Disappearance,Med.dis,MA.P,Vol,,,,Exp,Pna,03B06,max(min(03B03;03B04);10B02),,
+S01,C,Media,Disappearance,Med.dis,MA.P,Vol,,,,Tran,Pna,,max(08C07;10B02),,
+S01,C,Media,Disappearance,Med.dis,MA.P,Vol,,,,Sti,Pna,08C03,max(08C03;10B02),,
+S01,C,Media,Disappearance,Med.dis,MA.P,Vol,,,,Ste,Pna,08C04,max(08C04;10B02),,
+C01,E,compliance of processes,Non application,Pro.inf,PR.N,Api,,,,Exp,,,13A01,,
+C01,E,compliance of processes,Non application,Pro.inf,PR.N,Naa,,,,Exp,,,13A03,,
+C01,E,compliance of processes,Non application,Pro.inf,PR.N,Nam,,,,Exp,,,13A02,,
+C01,E,compliance of processes,Non application,Pro.inf,PR.N,Nav,,,,Exp,,13A04,,,
+C02,E,compliance of processes,Non application,Pro.inf,PR.N,Api,,,,Exp,,,13B01,,
+C02,E,compliance of processes,Non application,Pro.inf,PR.N,Naa,,,,Exp,,,13B03,,
+C02,E,compliance of processes,Non application,Pro.inf,PR.N,Nam,,,,Exp,,,13B02,,
+C02,E,compliance of processes,Non application,Pro.inf,PR.N,Nav,,,,Exp,,13B04,,,
+C03,E,compliance of processes,Non application,Pro.inf,PR.N,Api,,,,Exp,,,min(13C01;13C02),,
+C03,E,compliance of processes,Non application,Pro.inf,PR.N,Naa,,,,Exp,,,13C04,,
+C03,E,compliance of processes,Non application,Pro.inf,PR.N,Nam,,,,Exp,,,13C03,,
+C03,E,compliance of processes,Non application,Pro.inf,PR.N,Nav,,,,Exp,,13C05,,,
+C04,E,compliance of processes,Non application,Pro.inf,PR.N,Api,,,,Exp,,,min(11A03;13D01),,
+C04,E,compliance of processes,Non application,Pro.inf,PR.N,Naa,,,,Exp,,,13D03,,
+C04,E,compliance of processes,Non application,Pro.inf,PR.N,Nam,,,,Exp,,,13D02,,
+C04,E,compliance of processes,Non application,Pro.inf,PR.N,Nav,,,,Exp,,min(11A03;13D04),,,
+C05,E,compliance of processes,Non application,Pro.inf,PR.N,Api,,,,Exp,,,13E02,,
+C05,E,compliance of processes,Non application,Pro.inf,PR.N,Naa,,,,Exp,,,13E04,,
+C05,E,compliance of processes,Non application,Pro.inf,PR.N,Nam,,,,Exp,,,13E03,,
+C05,E,compliance of processes,Non application,Pro.inf,PR.N,Nav,,,,Exp,,13E03,,,
+C06,E,compliance of processes,Non application,Pro.inf,PR.N,Api,,,,Exp,,,13F01,,
+C06,E,compliance of processes,Non application,Pro.inf,PR.N,Naa,,,,Exp,,,13F03,,
+C06,E,compliance of processes,Non application,Pro.inf,PR.N,Nam,,,,Exp,,,13F02,,
+C06,E,compliance of processes,Non application,Pro.inf,PR.N,Nav,,,,Exp,,13F04,,,

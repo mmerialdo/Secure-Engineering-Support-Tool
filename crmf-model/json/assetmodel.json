@@ -1,0 +1,1811 @@
+{
+  "creationTime": "20/12/2017 10:29",
+  "updateTime": "20/12/2017 10:29",
+  "identifier": "115263f8-6317-456c-adef-03eb5d7744ac",
+  "edges": [
+    {
+      "operationalWeight": 0,
+      "securityImpacts": [],
+      "source": "b27587f8-43e5-ef36-023e-5cb2d0bdc516",
+      "target": "df933a42-1452-7841-7018-7626ad1920e1",
+      "businessImpactWeights": null,
+      "identifier": "d80af583-1c51-cb8f-2770-61f92ff78e26",
+      "objType": "AssetModel"
+    },
+    {
+      "operationalWeight": 0,
+      "securityImpacts": [],
+      "source": "859edc5e-fed7-e0eb-4fe6-11f89fe2a027",
+      "target": "b27587f8-43e5-ef36-023e-5cb2d0bdc516",
+      "businessImpactWeights": null,
+      "identifier": "a56c21a3-6f2b-06a0-3446-5ece86d13144",
+      "objType": "AssetModel"
+    },
+    {
+      "operationalWeight": 0,
+      "securityImpacts": [],
+      "source": "df933a42-1452-7841-7018-7626ad1920e1",
+      "target": "781d5ea4-6144-9af7-405c-0a52b0a8213c",
+      "businessImpactWeights": null,
+      "identifier": "93596fb4-183f-285d-4b17-59c34d8c9de7",
+      "objType": "AssetModel"
+    },
+    {
+      "operationalWeight": 0,
+      "securityImpacts": [],
+      "source": "df933a42-1452-7841-7018-7626ad1920e1",
+      "target": "4b8aabbe-e439-1947-09eb-07ee58a1ead0",
+      "businessImpactWeights": null,
+      "identifier": "376a638c-df6d-f46f-3c17-d98c20d8adbf",
+      "objType": "AssetModel"
+    },
+    {
+      "operationalWeight": 0,
+      "securityImpacts": [],
+      "source": "df933a42-1452-7841-7018-7626ad1920e1",
+      "target": "e02ded9c-1e61-7bb1-ddf0-689203433015",
+      "businessImpactWeights": null,
+      "identifier": "054161fb-3612-f48b-621f-264d9331f417",
+      "objType": "AssetModel"
+    },
+    {
+      "operationalWeight": 0,
+      "securityImpacts": [],
+      "source": "4b28ed84-8c4f-8bb3-a589-37517bd4114b",
+      "target": "73a22e63-8c70-22f9-35b4-29c9545795a9",
+      "businessImpactWeights": null,
+      "identifier": "6d25cc21-f7ad-826c-7ba7-2e227280f609",
+      "objType": "AssetModel"
+    },
+    {
+      "operationalWeight": 0,
+      "securityImpacts": [],
+      "source": "b27587f8-43e5-ef36-023e-5cb2d0bdc516",
+      "target": "4b28ed84-8c4f-8bb3-a589-37517bd4114b",
+      "businessImpactWeights": null,
+      "identifier": "cad24f24-1776-a9ee-becf-e5bebcc22516",
+      "objType": "AssetModel"
+    },
+    {
+      "operationalWeight": 0,
+      "securityImpacts": [
+        {
+          "impact": "CRITICAL",
+          "scope": "Availability",
+          "tecnicalImpacts": []
+        },
+        {
+          "impact": "CRITICAL",
+          "scope": "Confidentiality",
+          "tecnicalImpacts": []
+        },
+        {
+          "impact": "CRITICAL",
+          "scope": "Efficiency",
+          "tecnicalImpacts": []
+        },
+        {
+          "impact": "CRITICAL",
+          "scope": "Integrity",
+          "tecnicalImpacts": []
+        }
+      ],
+      "source": "4b28ed84-8c4f-8bb3-a589-37517bd4114b",
+      "target": "b8813ff2-2e6c-57a4-4777-7743795e749a",
+      "businessImpactWeights": null,
+      "identifier": "b584eda1-6e2f-2580-a7e9-f9d6d2a0691e",
+      "objType": "AssetModel"
+    },
+    {
+      "operationalWeight": 0,
+      "securityImpacts": [
+        {
+          "impact": "MEDIUM",
+          "scope": "Availability",
+          "tecnicalImpacts": []
+        },
+        {
+          "impact": "MEDIUM",
+          "scope": "Confidentiality",
+          "tecnicalImpacts": []
+        },
+        {
+          "impact": "MEDIUM",
+          "scope": "Integrity",
+          "tecnicalImpacts": []
+        }
+      ],
+      "source": "df933a42-1452-7841-7018-7626ad1920e1",
+      "target": "0cbac165-5886-3e2f-dc58-a3f91ffc1cbb",
+      "businessImpactWeights": null,
+      "identifier": "ae64cc04-ca95-44f2-a305-cc37ef3cf70d",
+      "objType": "AssetModel"
+    },
+    {
+      "operationalWeight": 0,
+      "securityImpacts": [
+        {
+          "impact": "CRITICAL",
+          "scope": "Availability",
+          "tecnicalImpacts": []
+        },
+        {
+          "impact": "CRITICAL",
+          "scope": "Confidentiality",
+          "tecnicalImpacts": []
+        },
+        {
+          "impact": "CRITICAL",
+          "scope": "Efficiency",
+          "tecnicalImpacts": []
+        },
+        {
+          "impact": "CRITICAL",
+          "scope": "Integrity",
+          "tecnicalImpacts": []
+        }
+      ],
+      "source": "4b28ed84-8c4f-8bb3-a589-37517bd4114b",
+      "target": "1503fcfd-6aad-513f-1daf-92efd1e26049",
+      "businessImpactWeights": null,
+      "identifier": "67652165-2943-9006-ceb3-9ae358f71f26",
+      "objType": "AssetModel"
+    },
+    {
+      "operationalWeight": 0,
+      "securityImpacts": [
+        {
+          "impact": "CRITICAL",
+          "scope": "Availability",
+          "tecnicalImpacts": []
+        },
+        {
+          "impact": "CRITICAL",
+          "scope": "Confidentiality",
+          "tecnicalImpacts": []
+        },
+        {
+          "impact": "CRITICAL",
+          "scope": "Efficiency",
+          "tecnicalImpacts": []
+        },
+        {
+          "impact": "CRITICAL",
+          "scope": "Integrity",
+          "tecnicalImpacts": []
+        }
+      ],
+      "source": "4b28ed84-8c4f-8bb3-a589-37517bd4114b",
+      "target": "ab240241-5ab6-d8a2-844d-fe6e391eba63",
+      "businessImpactWeights": null,
+      "identifier": "94d100c0-07e8-02e3-f93b-1da9e3a48330",
+      "objType": "AssetModel"
+    },
+    {
+      "operationalWeight": 0,
+      "securityImpacts": [],
+      "source": "4b28ed84-8c4f-8bb3-a589-37517bd4114b",
+      "target": "4b8aabbe-e439-1947-09eb-07ee58a1ead0",
+      "businessImpactWeights": null,
+      "identifier": "cb75116e-6fe3-ea02-e736-fc1ebe25059d",
+      "objType": "AssetModel"
+    },
+    {
+      "operationalWeight": 0,
+      "securityImpacts": [
+        {
+          "impact": "MEDIUM",
+          "scope": "Availability",
+          "tecnicalImpacts": []
+        },
+        {
+          "impact": "MEDIUM",
+          "scope": "Confidentiality",
+          "tecnicalImpacts": []
+        },
+        {
+          "impact": "MEDIUM",
+          "scope": "Integrity",
+          "tecnicalImpacts": []
+        }
+      ],
+      "source": "4b28ed84-8c4f-8bb3-a589-37517bd4114b",
+      "target": "14368497-e1bb-9235-89f5-c2b2bec03d7d",
+      "businessImpactWeights": null,
+      "identifier": "9340602e-7628-3664-b9da-71b3a5d15d24",
+      "objType": "AssetModel"
+    },
+    {
+      "operationalWeight": 0,
+      "securityImpacts": [
+        {
+          "impact": "MEDIUM",
+          "scope": "Availability",
+          "tecnicalImpacts": []
+        },
+        {
+          "impact": "MEDIUM",
+          "scope": "Confidentiality",
+          "tecnicalImpacts": []
+        },
+        {
+          "impact": "MEDIUM",
+          "scope": "Integrity",
+          "tecnicalImpacts": []
+        }
+      ],
+      "source": "df933a42-1452-7841-7018-7626ad1920e1",
+      "target": "4d6bfbe4-3af1-3406-8192-eb14ba0bccf1",
+      "businessImpactWeights": null,
+      "identifier": "d8ad331f-d5bc-db30-9499-b54253871fcc",
+      "objType": "AssetModel"
+    },
+    {
+      "operationalWeight": 0,
+      "securityImpacts": [
+        {
+          "impact": "LOW",
+          "scope": "Availability",
+          "tecnicalImpacts": []
+        },
+        {
+          "impact": "LOW",
+          "scope": "Integrity",
+          "tecnicalImpacts": []
+        }
+      ],
+      "source": "df933a42-1452-7841-7018-7626ad1920e1",
+      "target": "b8813ff2-2e6c-57a4-4777-7743795e749a",
+      "businessImpactWeights": null,
+      "identifier": "3418c7f9-7abc-02eb-1576-ab31f9f24a58",
+      "objType": "AssetModel"
+    }
+  ],
+  "nodes": [
+    {
+      "assessmentNode": true,
+      "description": "SYS project owner",
+      "goal": "description of the organization Y",
+      "name": "org Y",
+      "relatedRequirementsIds": [],
+      "systemParticipantOwnerId": "John Doe",
+      "children": [
+        "a56c21a3-6f2b-06a0-3446-5ece86d13144"
+      ],
+      "parents": [],
+      "identifier": "859edc5e-fed7-e0eb-4fe6-11f89fe2a027",
+      "objType": "AssetModel",
+      "nodeType": "Organization"
+    },
+    {
+      "type": "Business",
+      "assessmentNode": true,
+      "description": "core process of organization",
+      "goal": "create value from core process 1",
+      "name": "core process 1",
+      "relatedRequirementsIds": [],
+      "systemParticipantOwnerId": "Jane Doe",
+      "children": [
+        "d80af583-1c51-cb8f-2770-61f92ff78e26",
+        "cad24f24-1776-a9ee-becf-e5bebcc22516"
+      ],
+      "parents": [
+        "a56c21a3-6f2b-06a0-3446-5ece86d13144"
+      ],
+      "identifier": "b27587f8-43e5-ef36-023e-5cb2d0bdc516",
+      "objType": "AssetModel",
+      "nodeType": "BusinessProcess"
+    },
+    {
+      "assessmentNode": true,
+      "description": "very important business stuff for the core business processes",
+      "goal": "collect underpants",
+      "name": "do stuff 1",
+      "relatedRequirementsIds": [],
+      "systemParticipantOwnerId": "Max Mike",
+      "children": [
+        "93596fb4-183f-285d-4b17-59c34d8c9de7",
+        "376a638c-df6d-f46f-3c17-d98c20d8adbf",
+        "054161fb-3612-f48b-621f-264d9331f417",
+        "ae64cc04-ca95-44f2-a305-cc37ef3cf70d",
+        "d8ad331f-d5bc-db30-9499-b54253871fcc",
+        "3418c7f9-7abc-02eb-1576-ab31f9f24a58"
+      ],
+      "parents": [
+        "d80af583-1c51-cb8f-2770-61f92ff78e26"
+      ],
+      "identifier": "df933a42-1452-7841-7018-7626ad1920e1",
+      "objType": "AssetModel",
+      "nodeType": "BusinessActivity"
+    },
+    {
+      "assetCategory": null,
+      "functionalConsequence": "func consequences mal 1",
+      "functionalDescription": "func description mal 1",
+      "functionalType": "Incorrect_Timing",
+      "technicalConsequence": "tech consequences mal 1",
+      "technicalDescription": "technical description mal 1",
+      "weight": 0,
+      "technicalTypes": [
+        "Availability_Loss",
+        "Integrity_Loss"
+      ],
+      "scales": [
+        {
+          "seriousness": "LOW",
+          "description": "minor impact"
+        }
+      ],
+      "assessmentNode": true,
+      "description": null,
+      "goal": null,
+      "name": "mal 1 ",
+      "relatedRequirementsIds": [],
+      "systemParticipantOwnerId": null,
+      "children": [],
+      "parents": [
+        "93596fb4-183f-285d-4b17-59c34d8c9de7"
+      ],
+      "identifier": "781d5ea4-6144-9af7-405c-0a52b0a8213c",
+      "objType": "AssetModel",
+      "nodeType": "Malfunction"
+    },
+    {
+      "assetCategory": null,
+      "functionalConsequence": "func consequences mal 2",
+      "functionalDescription": "func description mal 2",
+      "functionalType": "Completeness_Lack",
+      "technicalConsequence": "tech consequences mal 2",
+      "technicalDescription": "tech description mal 2",
+      "weight": 0,
+      "technicalTypes": [
+        "Availability_Loss",
+        "Confidentiality_Loss",
+        "Integrity_Loss"
+      ],
+      "scales": [
+        {
+          "seriousness": "MEDIUM",
+          "description": "major impact on business process"
+        }
+      ],
+      "assessmentNode": true,
+      "description": null,
+      "goal": null,
+      "name": "mal 2 ",
+      "relatedRequirementsIds": [],
+      "systemParticipantOwnerId": null,
+      "children": [],
+      "parents": [
+        "376a638c-df6d-f46f-3c17-d98c20d8adbf",
+        "cb75116e-6fe3-ea02-e736-fc1ebe25059d"
+      ],
+      "identifier": "4b8aabbe-e439-1947-09eb-07ee58a1ead0",
+      "objType": "AssetModel",
+      "nodeType": "Malfunction"
+    },
+    {
+      "assetCategory": null,
+      "functionalConsequence": "func consequences mal 3",
+      "functionalDescription": "func description mal 3",
+      "functionalType": "Compliance_Lack",
+      "technicalConsequence": "tech consequences mal 3",
+      "technicalDescription": "tech description mal 2",
+      "weight": 0,
+      "technicalTypes": [
+        "Confidentiality_Loss",
+        "Integrity_Loss"
+      ],
+      "scales": [
+        {
+          "seriousness": "HIGH",
+          "description": "impact on whole organization"
+        }
+      ],
+      "assessmentNode": true,
+      "description": null,
+      "goal": null,
+      "name": "mal 3 ",
+      "relatedRequirementsIds": [],
+      "systemParticipantOwnerId": null,
+      "children": [],
+      "parents": [
+        "054161fb-3612-f48b-621f-264d9331f417"
+      ],
+      "identifier": "e02ded9c-1e61-7bb1-ddf0-689203433015",
+      "objType": "AssetModel",
+      "nodeType": "Malfunction"
+    },
+    {
+      "assetCategory": null,
+      "functionalConsequence": "func consequences mal 4",
+      "functionalDescription": "func description mal 4",
+      "functionalType": "Control_Lack",
+      "technicalConsequence": "tech consequences mal 4",
+      "technicalDescription": "tech description mal 4",
+      "weight": 0,
+      "technicalTypes": [
+        "Availability_Loss",
+        "Confidentiality_Loss",
+        "Efficiency_Loss",
+        "Integrity_Loss"
+      ],
+      "scales": [
+        {
+          "seriousness": "CRITICAL",
+          "description": "wide impact on organization and on parts of society"
+        }
+      ],
+      "assessmentNode": true,
+      "description": null,
+      "goal": null,
+      "name": "mal 4  iuhiuhi iuhiuhiuh iuhiuhiuhiuh iuhiuhiuhuih",
+      "relatedRequirementsIds": [],
+      "systemParticipantOwnerId": null,
+      "children": [],
+      "parents": [
+        "6d25cc21-f7ad-826c-7ba7-2e227280f609"
+      ],
+      "identifier": "73a22e63-8c70-22f9-35b4-29c9545795a9",
+      "objType": "AssetModel",
+      "nodeType": "Malfunction"
+    },
+    {
+      "assessmentNode": true,
+      "description": "very critical process with high impact on society",
+      "goal": "create high value or problems for society",
+      "name": "do critical stuff 2",
+      "relatedRequirementsIds": [],
+      "systemParticipantOwnerId": "Carol Caroline",
+      "children": [
+        "6d25cc21-f7ad-826c-7ba7-2e227280f609",
+        "b584eda1-6e2f-2580-a7e9-f9d6d2a0691e",
+        "67652165-2943-9006-ceb3-9ae358f71f26",
+        "94d100c0-07e8-02e3-f93b-1da9e3a48330",
+        "cb75116e-6fe3-ea02-e736-fc1ebe25059d",
+        "9340602e-7628-3664-b9da-71b3a5d15d24"
+      ],
+      "parents": [
+        "cad24f24-1776-a9ee-becf-e5bebcc22516"
+      ],
+      "identifier": "4b28ed84-8c4f-8bb3-a589-37517bd4114b",
+      "objType": "AssetModel",
+      "nodeType": "BusinessActivity"
+    },
+    {
+      "category": "Policy",
+      "cost": 0,
+      "primaryCategories": [
+        "Compliance_Policy_Personal_Information_Protection"
+      ],
+      "businessImpacts": null,
+      "securityImpacts": [
+        {
+          "impact": "CRITICAL",
+          "scope": "Availability",
+          "tecnicalImpacts": []
+        },
+        {
+          "impact": "CRITICAL",
+          "scope": "Confidentiality",
+          "tecnicalImpacts": []
+        },
+        {
+          "impact": "CRITICAL",
+          "scope": "Efficiency",
+          "tecnicalImpacts": []
+        },
+        {
+          "impact": "CRITICAL",
+          "scope": "Integrity",
+          "tecnicalImpacts": []
+        }
+      ],
+      "malfunctionsIds": [
+        "73a22e63-8c70-22f9-35b4-29c9545795a9"
+      ],
+      "assessmentNode": true,
+      "description": "GDPR company policy explanation",
+      "goal": null,
+      "name": "GDPR company policy",
+      "relatedRequirementsIds": [],
+      "systemParticipantOwnerId": "John Doe",
+      "children": [],
+      "parents": [
+        "94d100c0-07e8-02e3-f93b-1da9e3a48330"
+      ],
+      "identifier": "ab240241-5ab6-d8a2-844d-fe6e391eba63",
+      "objType": "AssetModel",
+      "nodeType": "Asset"
+    },
+    {
+      "category": "Data_Message",
+      "cost": 0,
+      "primaryCategories": [
+        "Data_Exchanged_Message"
+      ],
+      "businessImpacts": null,
+      "securityImpacts": [
+        {
+          "impact": "CRITICAL",
+          "scope": "Availability",
+          "tecnicalImpacts": []
+        },
+        {
+          "impact": "CRITICAL",
+          "scope": "Confidentiality",
+          "tecnicalImpacts": []
+        },
+        {
+          "impact": "CRITICAL",
+          "scope": "Efficiency",
+          "tecnicalImpacts": []
+        },
+        {
+          "impact": "CRITICAL",
+          "scope": "Integrity",
+          "tecnicalImpacts": []
+        }
+      ],
+      "malfunctionsIds": [
+        "73a22e63-8c70-22f9-35b4-29c9545795a9"
+      ],
+      "assessmentNode": true,
+      "description": "information exchanged with external partners with personal information that has to be stored and protected",
+      "goal": null,
+      "name": "external information",
+      "relatedRequirementsIds": [],
+      "systemParticipantOwnerId": "John Doe",
+      "children": [],
+      "parents": [
+        "67652165-2943-9006-ceb3-9ae358f71f26"
+      ],
+      "identifier": "1503fcfd-6aad-513f-1daf-92efd1e26049",
+      "objType": "AssetModel",
+      "nodeType": "Asset"
+    },
+    {
+      "category": "Hardware",
+      "cost": 0,
+      "primaryCategories": [
+        "Service_Local_Network_Service"
+      ],
+      "businessImpacts": null,
+      "securityImpacts": [
+        {
+          "impact": "MEDIUM",
+          "scope": "Availability",
+          "tecnicalImpacts": []
+        },
+        {
+          "impact": "MEDIUM",
+          "scope": "Confidentiality",
+          "tecnicalImpacts": []
+        },
+        {
+          "impact": "MEDIUM",
+          "scope": "Integrity",
+          "tecnicalImpacts": []
+        }
+      ],
+      "malfunctionsIds": [
+        "4b8aabbe-e439-1947-09eb-07ee58a1ead0"
+      ],
+      "assessmentNode": true,
+      "description": "for internal processes network services",
+      "goal": null,
+      "name": "LAN server",
+      "relatedRequirementsIds": [],
+      "systemParticipantOwnerId": "Max Mike",
+      "children": [],
+      "parents": [
+        "ae64cc04-ca95-44f2-a305-cc37ef3cf70d"
+      ],
+      "identifier": "0cbac165-5886-3e2f-dc58-a3f91ffc1cbb",
+      "objType": "AssetModel",
+      "nodeType": "Asset"
+    },
+    {
+      "category": "Hardware",
+      "cost": 0,
+      "primaryCategories": [
+        "Service_Application_Service"
+      ],
+      "businessImpacts": null,
+      "securityImpacts": [
+        {
+          "impact": "CRITICAL",
+          "scope": "Availability",
+          "tecnicalImpacts": []
+        },
+        {
+          "impact": "CRITICAL",
+          "scope": "Confidentiality",
+          "tecnicalImpacts": []
+        },
+        {
+          "impact": "CRITICAL",
+          "scope": "Efficiency",
+          "tecnicalImpacts": []
+        },
+        {
+          "impact": "CRITICAL",
+          "scope": "Integrity",
+          "tecnicalImpacts": []
+        }
+      ],
+      "malfunctionsIds": [
+        "73a22e63-8c70-22f9-35b4-29c9545795a9"
+      ],
+      "assessmentNode": true,
+      "description": "application server for critical business processes both internal and external partners as well as general public",
+      "goal": null,
+      "name": "server",
+      "relatedRequirementsIds": [],
+      "systemParticipantOwnerId": "Fred Fedin",
+      "children": [],
+      "parents": [
+        "b584eda1-6e2f-2580-a7e9-f9d6d2a0691e",
+        "3418c7f9-7abc-02eb-1576-ab31f9f24a58"
+      ],
+      "identifier": "b8813ff2-2e6c-57a4-4777-7743795e749a",
+      "objType": "AssetModel",
+      "nodeType": "Asset"
+    },
+    {
+      "category": "Software_Off_the_Shelf",
+      "cost": 0,
+      "primaryCategories": [
+        "Data_IT_Archive"
+      ],
+      "businessImpacts": null,
+      "securityImpacts": [
+        {
+          "impact": "MEDIUM",
+          "scope": "Availability",
+          "tecnicalImpacts": []
+        },
+        {
+          "impact": "MEDIUM",
+          "scope": "Confidentiality",
+          "tecnicalImpacts": []
+        },
+        {
+          "impact": "MEDIUM",
+          "scope": "Integrity",
+          "tecnicalImpacts": []
+        }
+      ],
+      "malfunctionsIds": [
+        "4b8aabbe-e439-1947-09eb-07ee58a1ead0"
+      ],
+      "assessmentNode": true,
+      "description": "system logs with external partner info",
+      "goal": null,
+      "name": "system logs oiuiouio oiiouoiu oiuoiuoiu o",
+      "relatedRequirementsIds": [
+        "4b545efe-e497-11e7-a25a-0200c0a80208",
+        "4b59bfc8-e497-11e7-a25a-0200c0a80208"
+      ],
+      "systemParticipantOwnerId": "Erik Idle",
+      "children": [],
+      "parents": [
+        "9340602e-7628-3664-b9da-71b3a5d15d24"
+      ],
+      "identifier": "14368497-e1bb-9235-89f5-c2b2bec03d7d",
+      "objType": "AssetModel",
+      "nodeType": "Asset"
+    },
+    {
+      "category": "Hardware",
+      "cost": 0,
+      "primaryCategories": [
+        "Data_DataFile_Database"
+      ],
+      "businessImpacts": null,
+      "securityImpacts": [
+        {
+          "impact": "MEDIUM",
+          "scope": "Availability",
+          "tecnicalImpacts": []
+        },
+        {
+          "impact": "MEDIUM",
+          "scope": "Confidentiality",
+          "tecnicalImpacts": []
+        },
+        {
+          "impact": "MEDIUM",
+          "scope": "Integrity",
+          "tecnicalImpacts": []
+        }
+      ],
+      "malfunctionsIds": [
+        "4b8aabbe-e439-1947-09eb-07ee58a1ead0"
+      ],
+      "assessmentNode": true,
+      "description": "backup server on hot standby",
+      "goal": null,
+      "name": "backup server",
+      "relatedRequirementsIds": [],
+      "systemParticipantOwnerId": "Erik Idle",
+      "children": [],
+      "parents": [
+        "d8ad331f-d5bc-db30-9499-b54253871fcc"
+      ],
+      "identifier": "4d6bfbe4-3af1-3406-8192-eb14ba0bccf1",
+      "objType": "AssetModel",
+      "nodeType": "Asset"
+    }
+  ],
+  "graphJson": [
+    {
+      "type": "draw2d.shape.node.End",
+      "id": "859edc5e-fed7-e0eb-4fe6-11f89fe2a027",
+      "x": 199,
+      "y": 28,
+      "width": 100,
+      "height": 60,
+      "alpha": 1,
+      "angle": 0,
+      "userData": {},
+      "cssClass": "organization",
+      "ports": [
+        {
+          "type": "draw2d.InputPort",
+          "id": "eff7b840-dfa0-ea9f-9bfd-5b6ea9a1d48f",
+          "width": 10,
+          "height": 10,
+          "alpha": 1,
+          "angle": 0,
+          "userData": {},
+          "cssClass": "draw2d_InputPort",
+          "bgColor": "#4F6870",
+          "color": "#1B1B1B",
+          "stroke": 1,
+          "dasharray": null,
+          "maxFanOut": 9007199254740991,
+          "name": "input0",
+          "port": "draw2d.InputPort",
+          "locator": "draw2d.layout.locator.BottomLocator"
+        }
+      ],
+      "bgColor": "#E0E0E0",
+      "color": "#000000",
+      "stroke": 1,
+      "radius": 0,
+      "dasharray": null
+    },
+    {
+      "type": "draw2d.shape.node.End",
+      "id": "b27587f8-43e5-ef36-023e-5cb2d0bdc516",
+      "x": 198.04799877241783,
+      "y": 146,
+      "width": 100,
+      "height": 60,
+      "alpha": 1,
+      "angle": 0,
+      "userData": {},
+      "cssClass": "process",
+      "ports": [
+        {
+          "type": "draw2d.InputPort",
+          "id": "15f10c5b-d734-6a87-b244-02d83d8c7691",
+          "width": 10,
+          "height": 10,
+          "alpha": 1,
+          "angle": 0,
+          "userData": {},
+          "cssClass": "draw2d_InputPort",
+          "bgColor": "#4F6870",
+          "color": "#1B1B1B",
+          "stroke": 1,
+          "dasharray": null,
+          "maxFanOut": 9007199254740991,
+          "name": "input0",
+          "port": "draw2d.InputPort",
+          "locator": "draw2d.layout.locator.BottomLocator"
+        },
+        {
+          "type": "draw2d.OutputPort",
+          "id": "6357a8a3-32fd-47c3-9297-fcc2f20cfa15",
+          "width": 10,
+          "height": 10,
+          "alpha": 1,
+          "angle": 0,
+          "userData": {},
+          "cssClass": "draw2d_OutputPort",
+          "bgColor": "#4F6870",
+          "color": "#1B1B1B",
+          "stroke": 1,
+          "dasharray": null,
+          "maxFanOut": 9007199254740991,
+          "name": "output0",
+          "port": "draw2d.OutputPort",
+          "locator": "draw2d.layout.locator.TopLocator"
+        }
+      ],
+      "bgColor": "#D3E1FF",
+      "color": "#000000",
+      "stroke": 1,
+      "radius": 0,
+      "dasharray": null
+    },
+    {
+      "type": "draw2d.shape.node.End",
+      "id": "df933a42-1452-7841-7018-7626ad1920e1",
+      "x": 145,
+      "y": 282,
+      "width": 100,
+      "height": 60,
+      "alpha": 1,
+      "angle": 0,
+      "userData": {},
+      "cssClass": "activity",
+      "ports": [
+        {
+          "type": "draw2d.InputPort",
+          "id": "9ef795b4-6555-0c5f-7bd2-e2b174c1656e",
+          "width": 10,
+          "height": 10,
+          "alpha": 1,
+          "angle": 0,
+          "userData": {},
+          "cssClass": "draw2d_InputPort",
+          "bgColor": "#4F6870",
+          "color": "#1B1B1B",
+          "stroke": 1,
+          "dasharray": null,
+          "maxFanOut": 9007199254740991,
+          "name": "input0",
+          "port": "draw2d.InputPort",
+          "locator": "draw2d.layout.locator.BottomLocator"
+        },
+        {
+          "type": "draw2d.OutputPort",
+          "id": "50f1e4c6-0b34-c52e-ce06-0f262cf6eb13",
+          "width": 10,
+          "height": 10,
+          "alpha": 1,
+          "angle": 0,
+          "userData": {},
+          "cssClass": "draw2d_OutputPort",
+          "bgColor": "#4F6870",
+          "color": "#1B1B1B",
+          "stroke": 1,
+          "dasharray": null,
+          "maxFanOut": 9007199254740991,
+          "name": "output0",
+          "port": "draw2d.OutputPort",
+          "locator": "draw2d.layout.locator.TopLocator"
+        }
+      ],
+      "bgColor": "#E6F1F5",
+      "color": "#000000",
+      "stroke": 1,
+      "radius": 0,
+      "dasharray": null
+    },
+    {
+      "type": "draw2d.shape.node.End",
+      "id": "781d5ea4-6144-9af7-405c-0a52b0a8213c",
+      "x": 528,
+      "y": 173,
+      "width": 100,
+      "height": 60,
+      "alpha": 1,
+      "angle": 0,
+      "userData": {},
+      "cssClass": "malfunction",
+      "ports": [
+        {
+          "type": "draw2d.OutputPort",
+          "id": "2fbaf471-cdf0-94a1-17f7-ae009da10628",
+          "width": 10,
+          "height": 10,
+          "alpha": 1,
+          "angle": 0,
+          "userData": {},
+          "cssClass": "draw2d_OutputPort",
+          "bgColor": "#4F6870",
+          "color": "#1B1B1B",
+          "stroke": 1,
+          "dasharray": null,
+          "maxFanOut": 9007199254740991,
+          "name": "output0",
+          "port": "draw2d.OutputPort",
+          "locator": "draw2d.layout.locator.TopLocator"
+        }
+      ],
+      "bgColor": "#00FF00",
+      "color": "#000000",
+      "stroke": 1,
+      "radius": 0,
+      "dasharray": null
+    },
+    {
+      "type": "draw2d.shape.node.End",
+      "id": "4b8aabbe-e439-1947-09eb-07ee58a1ead0",
+      "x": 667,
+      "y": 176,
+      "width": 120,
+      "height": 59,
+      "alpha": 1,
+      "angle": 0,
+      "userData": {},
+      "cssClass": "malfunction",
+      "ports": [
+        {
+          "type": "draw2d.OutputPort",
+          "id": "ac1abdd7-d974-92f3-2edf-16c1b1c490e6",
+          "width": 10,
+          "height": 10,
+          "alpha": 1,
+          "angle": 0,
+          "userData": {},
+          "cssClass": "draw2d_OutputPort",
+          "bgColor": "#4F6870",
+          "color": "#1B1B1B",
+          "stroke": 1,
+          "dasharray": null,
+          "maxFanOut": 9007199254740991,
+          "name": "output0",
+          "port": "draw2d.OutputPort",
+          "locator": "draw2d.layout.locator.TopLocator"
+        }
+      ],
+      "bgColor": "#FFDB00",
+      "color": "#000000",
+      "stroke": 1,
+      "radius": 0,
+      "dasharray": null
+    },
+    {
+      "type": "draw2d.shape.node.End",
+      "id": "e02ded9c-1e61-7bb1-ddf0-689203433015",
+      "x": 842,
+      "y": 178,
+      "width": 100,
+      "height": 60,
+      "alpha": 1,
+      "angle": 0,
+      "userData": {},
+      "cssClass": "malfunction",
+      "ports": [
+        {
+          "type": "draw2d.OutputPort",
+          "id": "d76e26f6-07bb-0554-bea7-738e541d12de",
+          "width": 10,
+          "height": 10,
+          "alpha": 1,
+          "angle": 0,
+          "userData": {},
+          "cssClass": "draw2d_OutputPort",
+          "bgColor": "#4F6870",
+          "color": "#1B1B1B",
+          "stroke": 1,
+          "dasharray": null,
+          "maxFanOut": 9007199254740991,
+          "name": "output0",
+          "port": "draw2d.OutputPort",
+          "locator": "draw2d.layout.locator.TopLocator"
+        }
+      ],
+      "bgColor": "#FFA500",
+      "color": "#000000",
+      "stroke": 1,
+      "radius": 0,
+      "dasharray": null
+    },
+    {
+      "type": "draw2d.shape.node.End",
+      "id": "73a22e63-8c70-22f9-35b4-29c9545795a9",
+      "x": 1001,
+      "y": 179,
+      "width": 285,
+      "height": 98,
+      "alpha": 1,
+      "angle": 0,
+      "userData": {},
+      "cssClass": "malfunction",
+      "ports": [
+        {
+          "type": "draw2d.OutputPort",
+          "id": "184bbfd4-139c-4c3d-aad1-e72c292e16ce",
+          "width": 10,
+          "height": 10,
+          "alpha": 1,
+          "angle": 0,
+          "userData": {},
+          "cssClass": "draw2d_OutputPort",
+          "bgColor": "#4F6870",
+          "color": "#1B1B1B",
+          "stroke": 1,
+          "dasharray": null,
+          "maxFanOut": 9007199254740991,
+          "name": "output0",
+          "port": "draw2d.OutputPort",
+          "locator": "draw2d.layout.locator.TopLocator"
+        }
+      ],
+      "bgColor": "#FF0000",
+      "color": "#000000",
+      "stroke": 1,
+      "radius": 0,
+      "dasharray": null
+    },
+    {
+      "type": "draw2d.shape.node.End",
+      "id": "4b28ed84-8c4f-8bb3-a589-37517bd4114b",
+      "x": 292,
+      "y": 281,
+      "width": 100,
+      "height": 60,
+      "alpha": 1,
+      "angle": 0,
+      "userData": {},
+      "cssClass": "activity",
+      "ports": [
+        {
+          "type": "draw2d.InputPort",
+          "id": "b8d1f4ab-d71f-0260-9d95-76562ffde400",
+          "width": 10,
+          "height": 10,
+          "alpha": 1,
+          "angle": 0,
+          "userData": {},
+          "cssClass": "draw2d_InputPort",
+          "bgColor": "#4F6870",
+          "color": "#1B1B1B",
+          "stroke": 1,
+          "dasharray": null,
+          "maxFanOut": 9007199254740991,
+          "name": "input0",
+          "port": "draw2d.InputPort",
+          "locator": "draw2d.layout.locator.BottomLocator"
+        },
+        {
+          "type": "draw2d.OutputPort",
+          "id": "b7777229-2a55-582f-2f6a-eab649891442",
+          "width": 10,
+          "height": 10,
+          "alpha": 1,
+          "angle": 0,
+          "userData": {},
+          "cssClass": "draw2d_OutputPort",
+          "bgColor": "#4F6870",
+          "color": "#1B1B1B",
+          "stroke": 1,
+          "dasharray": null,
+          "maxFanOut": 9007199254740991,
+          "name": "output0",
+          "port": "draw2d.OutputPort",
+          "locator": "draw2d.layout.locator.TopLocator"
+        }
+      ],
+      "bgColor": "#E6F1F5",
+      "color": "#000000",
+      "stroke": 1,
+      "radius": 0,
+      "dasharray": null
+    },
+    {
+      "type": "draw2d.shape.node.End",
+      "id": "ab240241-5ab6-d8a2-844d-fe6e391eba63",
+      "x": 593,
+      "y": 622,
+      "width": 145,
+      "height": 72,
+      "alpha": 1,
+      "angle": 0,
+      "userData": {},
+      "cssClass": "asset",
+      "ports": [
+        {
+          "type": "draw2d.OutputPort",
+          "id": "e85f703e-8a49-f033-afe8-65fe6929124a",
+          "width": 10,
+          "height": 10,
+          "alpha": 1,
+          "angle": 0,
+          "userData": {},
+          "cssClass": "draw2d_OutputPort",
+          "bgColor": "#4F6870",
+          "color": "#1B1B1B",
+          "stroke": 1,
+          "dasharray": null,
+          "maxFanOut": 9007199254740991,
+          "name": "output0",
+          "port": "draw2d.OutputPort",
+          "locator": "draw2d.layout.locator.TopLocator"
+        }
+      ],
+      "bgColor": "#FDF5E2",
+      "color": "#FF0000",
+      "stroke": 1,
+      "radius": 0,
+      "dasharray": null
+    },
+    {
+      "type": "draw2d.shape.node.End",
+      "id": "1503fcfd-6aad-513f-1daf-92efd1e26049",
+      "x": 439,
+      "y": 625,
+      "width": 100,
+      "height": 60,
+      "alpha": 1,
+      "angle": 0,
+      "userData": {},
+      "cssClass": "asset",
+      "ports": [
+        {
+          "type": "draw2d.OutputPort",
+          "id": "504273da-06da-cbfd-c778-6584d75f04f0",
+          "width": 10,
+          "height": 10,
+          "alpha": 1,
+          "angle": 0,
+          "userData": {},
+          "cssClass": "draw2d_OutputPort",
+          "bgColor": "#4F6870",
+          "color": "#1B1B1B",
+          "stroke": 1,
+          "dasharray": null,
+          "maxFanOut": 9007199254740991,
+          "name": "output0",
+          "port": "draw2d.OutputPort",
+          "locator": "draw2d.layout.locator.TopLocator"
+        }
+      ],
+      "bgColor": "#FDF5E2",
+      "color": "#FF0000",
+      "stroke": 1,
+      "radius": 0,
+      "dasharray": null
+    },
+    {
+      "type": "draw2d.shape.node.End",
+      "id": "0cbac165-5886-3e2f-dc58-a3f91ffc1cbb",
+      "x": 40,
+      "y": 500,
+      "width": 100,
+      "height": 60,
+      "alpha": 1,
+      "angle": 0,
+      "userData": {},
+      "cssClass": "asset",
+      "ports": [
+        {
+          "type": "draw2d.OutputPort",
+          "id": "5a849d52-3974-4e63-970d-d3d0a041539c",
+          "width": 10,
+          "height": 10,
+          "alpha": 1,
+          "angle": 0,
+          "userData": {},
+          "cssClass": "draw2d_OutputPort",
+          "bgColor": "#4F6870",
+          "color": "#1B1B1B",
+          "stroke": 1,
+          "dasharray": null,
+          "maxFanOut": 9007199254740991,
+          "name": "output0",
+          "port": "draw2d.OutputPort",
+          "locator": "draw2d.layout.locator.TopLocator"
+        }
+      ],
+      "bgColor": "#FDF5E2",
+      "color": "#FFDB00",
+      "stroke": 1,
+      "radius": 0,
+      "dasharray": null
+    },
+    {
+      "type": "draw2d.shape.node.End",
+      "id": "b8813ff2-2e6c-57a4-4777-7743795e749a",
+      "x": 295,
+      "y": 625,
+      "width": 100,
+      "height": 60,
+      "alpha": 1,
+      "angle": 0,
+      "userData": {},
+      "cssClass": "asset",
+      "ports": [
+        {
+          "type": "draw2d.OutputPort",
+          "id": "cfe0e2ce-cc79-9e63-65bc-80932a0957e4",
+          "width": 10,
+          "height": 10,
+          "alpha": 1,
+          "angle": 0,
+          "userData": {},
+          "cssClass": "draw2d_OutputPort",
+          "bgColor": "#4F6870",
+          "color": "#1B1B1B",
+          "stroke": 1,
+          "dasharray": null,
+          "maxFanOut": 9007199254740991,
+          "name": "output0",
+          "port": "draw2d.OutputPort",
+          "locator": "draw2d.layout.locator.TopLocator"
+        }
+      ],
+      "bgColor": "#FDF5E2",
+      "color": "#FF0000",
+      "stroke": 1,
+      "radius": 0,
+      "dasharray": null
+    },
+    {
+      "type": "draw2d.shape.node.End",
+      "id": "14368497-e1bb-9235-89f5-c2b2bec03d7d",
+      "x": 807,
+      "y": 620,
+      "width": 254,
+      "height": 77,
+      "alpha": 1,
+      "angle": 0,
+      "userData": {},
+      "cssClass": "asset",
+      "ports": [
+        {
+          "type": "draw2d.OutputPort",
+          "id": "9f888a49-ea8c-9a90-9883-f8bede3cf1d3",
+          "width": 10,
+          "height": 10,
+          "alpha": 1,
+          "angle": 0,
+          "userData": {},
+          "cssClass": "draw2d_OutputPort",
+          "bgColor": "#4F6870",
+          "color": "#1B1B1B",
+          "stroke": 1,
+          "dasharray": null,
+          "maxFanOut": 9007199254740991,
+          "name": "output0",
+          "port": "draw2d.OutputPort",
+          "locator": "draw2d.layout.locator.TopLocator"
+        }
+      ],
+      "bgColor": "#FDF5E2",
+      "color": "#FFDB00",
+      "stroke": 1,
+      "radius": 0,
+      "dasharray": null
+    },
+    {
+      "type": "draw2d.shape.node.End",
+      "id": "4d6bfbe4-3af1-3406-8192-eb14ba0bccf1",
+      "x": 158,
+      "y": 626,
+      "width": 100,
+      "height": 60,
+      "alpha": 1,
+      "angle": 0,
+      "userData": {},
+      "cssClass": "asset",
+      "ports": [
+        {
+          "type": "draw2d.OutputPort",
+          "id": "71c99f30-1ed6-da6c-8b4d-b29d61d00509",
+          "width": 10,
+          "height": 10,
+          "alpha": 1,
+          "angle": 0,
+          "userData": {},
+          "cssClass": "draw2d_OutputPort",
+          "bgColor": "#4F6870",
+          "color": "#1B1B1B",
+          "stroke": 1,
+          "dasharray": null,
+          "maxFanOut": 9007199254740991,
+          "name": "output0",
+          "port": "draw2d.OutputPort",
+          "locator": "draw2d.layout.locator.TopLocator"
+        }
+      ],
+      "bgColor": "#FDF5E2",
+      "color": "#FFDB00",
+      "stroke": 1,
+      "radius": 0,
+      "dasharray": null
+    },
+    {
+      "type": "draw2d.Connection",
+      "id": "d80af583-1c51-cb8f-2770-61f92ff78e26",
+      "alpha": 1,
+      "angle": 0,
+      "userData": {},
+      "cssClass": "draw2d_Connection",
+      "stroke": 2,
+      "color": "#787878",
+      "outlineStroke": 0,
+      "outlineColor": "none",
+      "policy": "draw2d.policy.line.LineSelectionFeedbackPolicy",
+      "vertex": [
+        {
+          "x": 195,
+          "y": 282
+        },
+        {
+          "x": 248.04799877241783,
+          "y": 206
+        }
+      ],
+      "router": "draw2d.layout.connection.DirectRouter",
+      "radius": 3,
+      "source": {
+        "node": "df933a42-1452-7841-7018-7626ad1920e1",
+        "port": "output0"
+      },
+      "target": {
+        "node": "b27587f8-43e5-ef36-023e-5cb2d0bdc516",
+        "port": "input0"
+      }
+    },
+    {
+      "type": "draw2d.Connection",
+      "id": "cad24f24-1776-a9ee-becf-e5bebcc22516",
+      "alpha": 1,
+      "angle": 0,
+      "userData": {},
+      "cssClass": "draw2d_Connection",
+      "stroke": 2,
+      "color": "#787878",
+      "outlineStroke": 0,
+      "outlineColor": "none",
+      "policy": "draw2d.policy.line.LineSelectionFeedbackPolicy",
+      "vertex": [
+        {
+          "x": 342,
+          "y": 281
+        },
+        {
+          "x": 248.04799877241783,
+          "y": 206
+        }
+      ],
+      "router": "draw2d.layout.connection.DirectRouter",
+      "radius": 3,
+      "source": {
+        "node": "4b28ed84-8c4f-8bb3-a589-37517bd4114b",
+        "port": "output0"
+      },
+      "target": {
+        "node": "b27587f8-43e5-ef36-023e-5cb2d0bdc516",
+        "port": "input0"
+      }
+    },
+    {
+      "type": "draw2d.Connection",
+      "id": "93596fb4-183f-285d-4b17-59c34d8c9de7",
+      "alpha": 1,
+      "angle": 0,
+      "userData": {},
+      "cssClass": "draw2d_Connection",
+      "stroke": 2,
+      "color": "#787878",
+      "outlineStroke": 0,
+      "outlineColor": "none",
+      "policy": "draw2d.policy.line.LineSelectionFeedbackPolicy",
+      "vertex": [
+        {
+          "x": 578,
+          "y": 173
+        },
+        {
+          "x": 195,
+          "y": 342
+        }
+      ],
+      "router": "draw2d.layout.connection.DirectRouter",
+      "radius": 3,
+      "source": {
+        "node": "781d5ea4-6144-9af7-405c-0a52b0a8213c",
+        "port": "output0"
+      },
+      "target": {
+        "node": "df933a42-1452-7841-7018-7626ad1920e1",
+        "port": "input0"
+      }
+    },
+    {
+      "type": "draw2d.Connection",
+      "id": "ae64cc04-ca95-44f2-a305-cc37ef3cf70d",
+      "alpha": 1,
+      "angle": 0,
+      "userData": {},
+      "cssClass": "draw2d_Connection",
+      "stroke": 2,
+      "color": "#FFDB00",
+      "outlineStroke": 0,
+      "outlineColor": "none",
+      "policy": "draw2d.policy.line.LineSelectionFeedbackPolicy",
+      "vertex": [
+        {
+          "x": 90,
+          "y": 500
+        },
+        {
+          "x": 195,
+          "y": 342
+        }
+      ],
+      "router": "draw2d.layout.connection.DirectRouter",
+      "radius": 3,
+      "source": {
+        "node": "0cbac165-5886-3e2f-dc58-a3f91ffc1cbb",
+        "port": "output0"
+      },
+      "target": {
+        "node": "df933a42-1452-7841-7018-7626ad1920e1",
+        "port": "input0"
+      }
+    },
+    {
+      "type": "draw2d.Connection",
+      "id": "d8ad331f-d5bc-db30-9499-b54253871fcc",
+      "alpha": 1,
+      "angle": 0,
+      "userData": {},
+      "cssClass": "draw2d_Connection",
+      "stroke": 2,
+      "color": "#FFDB00",
+      "outlineStroke": 0,
+      "outlineColor": "none",
+      "policy": "draw2d.policy.line.LineSelectionFeedbackPolicy",
+      "vertex": [
+        {
+          "x": 208,
+          "y": 626
+        },
+        {
+          "x": 195,
+          "y": 342
+        }
+      ],
+      "router": "draw2d.layout.connection.DirectRouter",
+      "radius": 3,
+      "source": {
+        "node": "4d6bfbe4-3af1-3406-8192-eb14ba0bccf1",
+        "port": "output0"
+      },
+      "target": {
+        "node": "df933a42-1452-7841-7018-7626ad1920e1",
+        "port": "input0"
+      }
+    },
+    {
+      "type": "draw2d.Connection",
+      "id": "376a638c-df6d-f46f-3c17-d98c20d8adbf",
+      "alpha": 1,
+      "angle": 0,
+      "userData": {},
+      "cssClass": "draw2d_Connection",
+      "stroke": 2,
+      "color": "#787878",
+      "outlineStroke": 0,
+      "outlineColor": "none",
+      "policy": "draw2d.policy.line.LineSelectionFeedbackPolicy",
+      "vertex": [
+        {
+          "x": 727,
+          "y": 176
+        },
+        {
+          "x": 195,
+          "y": 342
+        }
+      ],
+      "router": "draw2d.layout.connection.DirectRouter",
+      "radius": 3,
+      "source": {
+        "node": "4b8aabbe-e439-1947-09eb-07ee58a1ead0",
+        "port": "output0"
+      },
+      "target": {
+        "node": "df933a42-1452-7841-7018-7626ad1920e1",
+        "port": "input0"
+      }
+    },
+    {
+      "type": "draw2d.Connection",
+      "id": "054161fb-3612-f48b-621f-264d9331f417",
+      "alpha": 1,
+      "angle": 0,
+      "userData": {},
+      "cssClass": "draw2d_Connection",
+      "stroke": 2,
+      "color": "#787878",
+      "outlineStroke": 0,
+      "outlineColor": "none",
+      "policy": "draw2d.policy.line.LineSelectionFeedbackPolicy",
+      "vertex": [
+        {
+          "x": 892,
+          "y": 178
+        },
+        {
+          "x": 195,
+          "y": 342
+        }
+      ],
+      "router": "draw2d.layout.connection.DirectRouter",
+      "radius": 3,
+      "source": {
+        "node": "e02ded9c-1e61-7bb1-ddf0-689203433015",
+        "port": "output0"
+      },
+      "target": {
+        "node": "df933a42-1452-7841-7018-7626ad1920e1",
+        "port": "input0"
+      }
+    },
+    {
+      "type": "draw2d.Connection",
+      "id": "3418c7f9-7abc-02eb-1576-ab31f9f24a58",
+      "alpha": 1,
+      "angle": 0,
+      "userData": {},
+      "cssClass": "draw2d_Connection",
+      "stroke": 2,
+      "color": "#129CE4",
+      "outlineStroke": 0,
+      "outlineColor": "none",
+      "policy": "draw2d.policy.line.LineSelectionFeedbackPolicy",
+      "vertex": [
+        {
+          "x": 345,
+          "y": 625
+        },
+        {
+          "x": 195,
+          "y": 342
+        }
+      ],
+      "router": "draw2d.layout.connection.DirectRouter",
+      "radius": 3,
+      "source": {
+        "node": "b8813ff2-2e6c-57a4-4777-7743795e749a",
+        "port": "output0"
+      },
+      "target": {
+        "node": "df933a42-1452-7841-7018-7626ad1920e1",
+        "port": "input0"
+      }
+    },
+    {
+      "type": "draw2d.Connection",
+      "id": "cb75116e-6fe3-ea02-e736-fc1ebe25059d",
+      "alpha": 1,
+      "angle": 0,
+      "userData": {},
+      "cssClass": "draw2d_Connection",
+      "stroke": 2,
+      "color": "#787878",
+      "outlineStroke": 0,
+      "outlineColor": "none",
+      "policy": "draw2d.policy.line.LineSelectionFeedbackPolicy",
+      "vertex": [
+        {
+          "x": 727,
+          "y": 176
+        },
+        {
+          "x": 342,
+          "y": 341
+        }
+      ],
+      "router": "draw2d.layout.connection.DirectRouter",
+      "radius": 3,
+      "source": {
+        "node": "4b8aabbe-e439-1947-09eb-07ee58a1ead0",
+        "port": "output0"
+      },
+      "target": {
+        "node": "4b28ed84-8c4f-8bb3-a589-37517bd4114b",
+        "port": "input0"
+      }
+    },
+    {
+      "type": "draw2d.Connection",
+      "id": "94d100c0-07e8-02e3-f93b-1da9e3a48330",
+      "alpha": 1,
+      "angle": 0,
+      "userData": {},
+      "cssClass": "draw2d_Connection",
+      "stroke": 2,
+      "color": "#FF0000",
+      "outlineStroke": 0,
+      "outlineColor": "none",
+      "policy": "draw2d.policy.line.LineSelectionFeedbackPolicy",
+      "vertex": [
+        {
+          "x": 665.5,
+          "y": 622
+        },
+        {
+          "x": 342,
+          "y": 341
+        }
+      ],
+      "router": "draw2d.layout.connection.DirectRouter",
+      "radius": 3,
+      "source": {
+        "node": "ab240241-5ab6-d8a2-844d-fe6e391eba63",
+        "port": "output0"
+      },
+      "target": {
+        "node": "4b28ed84-8c4f-8bb3-a589-37517bd4114b",
+        "port": "input0"
+      }
+    },
+    {
+      "type": "draw2d.Connection",
+      "id": "6d25cc21-f7ad-826c-7ba7-2e227280f609",
+      "alpha": 1,
+      "angle": 0,
+      "userData": {},
+      "cssClass": "draw2d_Connection",
+      "stroke": 2,
+      "color": "#787878",
+      "outlineStroke": 0,
+      "outlineColor": "none",
+      "policy": "draw2d.policy.line.LineSelectionFeedbackPolicy",
+      "vertex": [
+        {
+          "x": 1143.5,
+          "y": 179
+        },
+        {
+          "x": 342,
+          "y": 341
+        }
+      ],
+      "router": "draw2d.layout.connection.DirectRouter",
+      "radius": 3,
+      "source": {
+        "node": "73a22e63-8c70-22f9-35b4-29c9545795a9",
+        "port": "output0"
+      },
+      "target": {
+        "node": "4b28ed84-8c4f-8bb3-a589-37517bd4114b",
+        "port": "input0"
+      }
+    },
+    {
+      "type": "draw2d.Connection",
+      "id": "9340602e-7628-3664-b9da-71b3a5d15d24",
+      "alpha": 1,
+      "angle": 0,
+      "userData": {},
+      "cssClass": "draw2d_Connection",
+      "stroke": 2,
+      "color": "#FFDB00",
+      "outlineStroke": 0,
+      "outlineColor": "none",
+      "policy": "draw2d.policy.line.LineSelectionFeedbackPolicy",
+      "vertex": [
+        {
+          "x": 934,
+          "y": 620
+        },
+        {
+          "x": 342,
+          "y": 341
+        }
+      ],
+      "router": "draw2d.layout.connection.DirectRouter",
+      "radius": 3,
+      "source": {
+        "node": "14368497-e1bb-9235-89f5-c2b2bec03d7d",
+        "port": "output0"
+      },
+      "target": {
+        "node": "4b28ed84-8c4f-8bb3-a589-37517bd4114b",
+        "port": "input0"
+      }
+    },
+    {
+      "type": "draw2d.Connection",
+      "id": "67652165-2943-9006-ceb3-9ae358f71f26",
+      "alpha": 1,
+      "angle": 0,
+      "userData": {},
+      "cssClass": "draw2d_Connection",
+      "stroke": 2,
+      "color": "#FF0000",
+      "outlineStroke": 0,
+      "outlineColor": "none",
+      "policy": "draw2d.policy.line.LineSelectionFeedbackPolicy",
+      "vertex": [
+        {
+          "x": 489,
+          "y": 625
+        },
+        {
+          "x": 342,
+          "y": 341
+        }
+      ],
+      "router": "draw2d.layout.connection.DirectRouter",
+      "radius": 3,
+      "source": {
+        "node": "1503fcfd-6aad-513f-1daf-92efd1e26049",
+        "port": "output0"
+      },
+      "target": {
+        "node": "4b28ed84-8c4f-8bb3-a589-37517bd4114b",
+        "port": "input0"
+      }
+    },
+    {
+      "type": "draw2d.Connection",
+      "id": "b584eda1-6e2f-2580-a7e9-f9d6d2a0691e",
+      "alpha": 1,
+      "angle": 0,
+      "userData": {},
+      "cssClass": "draw2d_Connection",
+      "stroke": 2,
+      "color": "#FF0000",
+      "outlineStroke": 0,
+      "outlineColor": "none",
+      "policy": "draw2d.policy.line.LineSelectionFeedbackPolicy",
+      "vertex": [
+        {
+          "x": 345,
+          "y": 625
+        },
+        {
+          "x": 342,
+          "y": 341
+        }
+      ],
+      "router": "draw2d.layout.connection.DirectRouter",
+      "radius": 3,
+      "source": {
+        "node": "b8813ff2-2e6c-57a4-4777-7743795e749a",
+        "port": "output0"
+      },
+      "target": {
+        "node": "4b28ed84-8c4f-8bb3-a589-37517bd4114b",
+        "port": "input0"
+      }
+    },
+    {
+      "type": "draw2d.Connection",
+      "id": "a56c21a3-6f2b-06a0-3446-5ece86d13144",
+      "alpha": 1,
+      "angle": 0,
+      "userData": {},
+      "cssClass": "draw2d_Connection",
+      "stroke": 2,
+      "color": "#787878",
+      "outlineStroke": 0,
+      "outlineColor": "none",
+      "policy": "draw2d.policy.line.LineSelectionFeedbackPolicy",
+      "vertex": [
+        {
+          "x": 248.04799877241783,
+          "y": 146
+        },
+        {
+          "x": 249,
+          "y": 88
+        }
+      ],
+      "router": "draw2d.layout.connection.DirectRouter",
+      "radius": 3,
+      "source": {
+        "node": "b27587f8-43e5-ef36-023e-5cb2d0bdc516",
+        "port": "output0"
+      },
+      "target": {
+        "node": "859edc5e-fed7-e0eb-4fe6-11f89fe2a027",
+        "port": "input0"
+      }
+    }
+  ],
+  "objType": "AssetModel"
+}

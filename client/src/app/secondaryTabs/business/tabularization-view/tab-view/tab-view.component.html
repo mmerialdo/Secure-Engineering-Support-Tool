@@ -1,0 +1,38 @@
+<!--  --------------------------------------------------------------------------------------------------------------------
+// Copyright file="tab-view.component.html"
+//  © Copyright European Space Agency, 2018-2020
+//
+//  Author: Software developed by RHEA System S.A.
+//
+//  This file is subject to the terms and conditions defined in file 'LICENSE.txt', which is part of this source code package.
+//  No part of the package, including this file, may be copied, modified, propagated, or distributed
+//  except according to the terms contained in the file ‘LICENSE.txt’.
+// ------------------------------------------------------------------------------------------------------------------ -->
+
+<p-accordion [multiple]="true" (onOpen)="onTabOpen($event)" (onClose)="onTabClosed($event)">
+  <p-accordionTab header="Organizations">
+    <app-organizations-tab-view
+      [serverAsset]="serverAsset"
+      [tabsStatus]="openTabs"></app-organizations-tab-view>
+  </p-accordionTab>
+  <p-accordionTab header="Processes">
+    <app-process-tab-view
+      [serverAsset]="serverAsset"
+      [tabsStatus]="openTabs"></app-process-tab-view>
+  </p-accordionTab>
+  <p-accordionTab header="Activities">
+    <app-activities-tab-view
+      [serverAsset]="serverAsset"
+      [tabsStatus]="openTabs"></app-activities-tab-view>
+  </p-accordionTab>
+  <p-accordionTab header="Assets">
+    <app-assets-tab-view
+      [serverAsset]="serverAsset"
+      [tabsStatus]="openTabs"></app-assets-tab-view>
+  </p-accordionTab>
+  <p-accordionTab header="Malfunctions">
+    <app-malfunctions-tab-view
+      [serverAsset]="serverAsset"
+      [tabsStatus]="openTabs"></app-malfunctions-tab-view>
+  </p-accordionTab>
+</p-accordion>

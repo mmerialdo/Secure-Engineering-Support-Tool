@@ -1,0 +1,220 @@
+<!--  --------------------------------------------------------------------------------------------------------------------
+// Copyright file="treatment.component.html"
+//  © Copyright European Space Agency, 2018-2020
+//
+//  Author: Software developed by RHEA System S.A.
+//
+//  This file is subject to the terms and conditions defined in file 'LICENSE.txt', which is part of this source code package.
+//  No part of the package, including this file, may be copied, modified, propagated, or distributed
+//  except according to the terms contained in the file ‘LICENSE.txt’.
+// -------------------------------------------------------------------------------------------------------------------- -->
+<div class="container-fluid">
+  <div class="row" style="margin-top: 4px">
+    <div class="col-lg-2">
+      <p-tieredMenu [model]="treatitems" [style]="{'width': '100%'}"></p-tieredMenu>
+    </div>
+
+    <div class="col-lg-10" *ngIf="showTable">
+      <div *ngIf="org">
+        <div *ngIf="orgTable">
+          <p-treeTable [value]="treatmentModel.data" selectionMode="single" (onNodeExpand)="open($event)"
+                       (onNodeCollapse)="close($event)" [scrollable]="true">
+            <ng-template pTemplate="header">
+              <tr>
+                <th [ngStyle]="{'width': '40%'}">Involved Safeguards</th>
+                <th *ngIf="!hideCoveredScenario" [ngStyle]="{'width': '5%'}">Covered Scenarios</th>
+                <th *ngIf="!hideValue" [ngStyle]="{'width': '5%'}">Current Value</th>
+                <th *ngIf="!hideValue" [ngStyle]="{'width': '5%'}">Target Value</th>
+                <th [ngStyle]="{'width': '15%'}">Security Impact</th>
+                <th [ngStyle]="{'width': '5%'}">S-L</th>
+                <th [ngStyle]="{'width': '5%'}">S-M</th>
+                <th [ngStyle]="{'width': '5%'}">S-H</th>
+                <th [ngStyle]="{'width': '5%'}">S-VH</th>
+                <th [ngStyle]="{'width': '5%'}">Total</th>
+                <th [ngStyle]="{'width': '5%'}">Info</th>
+              </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-rowNode let-rowData="rowData">
+              <tr>
+              <td [ngStyle]="{'width': '40%'}">
+                  <p-treeTableToggler [rowNode]="rowNode"></p-treeTableToggler>
+                  {{rowData.value}}
+                </td>
+                <td *ngIf="!hideCoveredScenario" [ngStyle]="{'width':'5%'}">
+                  {{rowData.coveredScenario}}
+                </td>
+                <td *ngIf="!hideValue" [ngStyle]="{'width':'5%'}">
+                  {{rowData.currentValue}}
+                </td>
+                <td *ngIf="!hideValue" [ngStyle]="{'width':'5%'}">
+                  <div *ngIf="rowData.type === 'Safeguard'">
+
+                    <p-dropdown [options]="rv1List" [(ngModel)]="rowData.targetValue"
+                                (onChange)="focusDrop($event,rowData)" (onBlur)="lostDrop(rowData)"
+                                [style]="{'min-width':0, 'width':'100%'}" appendTo="body"></p-dropdown>
+                  </div>
+
+                  <div *ngIf="rowData.type === 'SecurityRequirement'">
+                    <p-dropdown [options]="rv2List" [(ngModel)]="rowData.targetValue"
+                                (onChange)="focusDrop($event,rowData)"
+                                [style]="{'min-width':0, 'width':'100%'}" appendTo="body"></p-dropdown>
+                  </div>
+                </td>
+              <td [ngStyle]="{'width': '15%'}">
+                  {{rowData.securityImpact}}
+                </td>
+              <td  [ngStyle]="{'width': '5%'}">
+                  {{rowData.s1}}
+                </td>
+              <td [ngStyle]="{'width': '5%'}">
+                  {{rowData.s2}}
+                </td>
+              <td [ngStyle]="{'width': '5%'}">
+                  {{rowData.s3}}
+                </td>
+              <td  [ngStyle]="{'width': '5%'}">
+                  {{rowData.s4}}
+                </td>
+              <td [ngStyle]="{'width': '5%'}">
+                  {{rowData.tot}}
+                </td>
+              <td [ngStyle]="{'width': '5%'}">
+                  <div
+                    *ngIf="(rowData.type ==='PrimaryAssetCategory')||(rowData.type ==='Safeguard')||(rowData.type ==='SecurityRequirement')">
+                    <i class="fa fa-info-circle" (click)="info(rowData)" style="cursor:pointer;margin-left:30%;"></i>
+                  </div>
+                </td>
+              </tr>
+            </ng-template>
+          </p-treeTable>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<p-dialog header="Detailed Risk Treatment" [(visible)]="displayTreatInfo" modal="modal" width="1600"
+          [responsive]="true">
+
+  <div style="overflow-y: auto;max-height: 600px">
+    <p-treeTable [value]="secondTreatmentModel" selectionMode="single" (onNodeExpand)="openDetails($event)"
+                 (onNodeCollapse)="closeDetails($event)">
+      <ng-template pTemplate="header">
+        <tr>
+          <th [ngStyle]="{'width': '70%'}">Risk Scenario and Safeguards</th>
+          <th *ngIf="!showSerious" [ngStyle]="{'width': '7%'}">Current Seriousness</th>
+          <th *ngIf="!showSerious" [ngStyle]="{'width': '7%'}">Resulting Seriousness</th>
+          <th *ngIf="!showRisk" [ngStyle]="{'width': '5%'}">Current Value</th>
+          <th *ngIf="!showRisk" [ngStyle]="{'width': '6%'}">Target Value</th>
+          <th *ngIf="!showRisk" [ngStyle]="{'width': '5%'}">Info</th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-rowNode let-rowData="rowData">
+        <tr>
+          <td>
+            <p-treeTableToggler [rowNode]="rowNode" [ngStyle]="{'width':'61%'}"></p-treeTableToggler>
+            {{rowData.value}}
+          </td>
+          <td *ngIf="!showSerious" [ngStyle]="{'width':'11%'}">
+            {{rowData.currentSeriousness}}
+          </td>
+          <td *ngIf="!showSerious" [ngStyle]="{'width':'12%'}">
+            {{rowData.resultingSeriousness}}
+          </td>
+          <td *ngIf="!showRisk" [ngStyle]="{'width':'8%'}">
+            {{rowData.currentValue}}
+          </td>
+          <td *ngIf="!showRisk" [ngStyle]="{'width':'8%'}">
+            <div *ngIf="rowData.type === 'Safeguard'">
+
+              <p-dropdown [options]="rv1DetailsList" [(ngModel)]="rowData.targetValue"
+                          (onChange)="focusDropDetails($event,rowData)" (onBlur)="lostDrop(rowData)"
+                          [style]="{'min-width':0, 'width':'100%'}" appendTo="body"></p-dropdown>
+            </div>
+
+            <div *ngIf="rowData.type === 'SecurityRequirement'">
+              <p-dropdown [options]="rv2DetailsList" [(ngModel)]="rowData.targetValue"
+                          [style]="{'min-width':0, 'width':'100%'}" appendTo="body"></p-dropdown>
+            </div>
+
+          </td>
+          <td *ngIf="!showRisk" [ngStyle]="{'width':'3%'}">
+            <div *ngIf="(rowData.type ==='Safeguard')||(rowData.type ==='SecurityRequirement')">
+              <i class="fa fa-info-circle" (click)="info(rowData)" style="cursor:pointer;margin-left:30%;"></i>
+            </div>
+          </td>
+        </tr>
+      </ng-template>
+    </p-treeTable>
+  </div>
+
+
+  <p-footer>
+    <div class="ui-dialog-buttonpane ui-widget-content ui-helper-clearfix">
+      <button type="button" pButton icon="fa fa-fw fa-check" [disabled]="!enableSaveButton || !isLockedByCurrentUser()"
+              (click)="editTreatmentDetail(secondTreatmentModel)"
+              label="Calculate & Save"></button>
+      <button type="button" pButton icon="fa fa-fw fa-check" (click)="calculateTreatmentDetail(secondTreatmentModel)"
+              label="Calculate"></button>
+      <button type="button" pButton icon="fa fa-fw fa-check" (click)="displayTreatInfo=false" label="Cancel"></button>
+    </div>
+  </p-footer>
+</p-dialog>
+
+<p-dialog header="Details" [(visible)]="detailsInfo" modal="modal" width="1500" [responsive]="true">
+
+  <div class="row">
+    <div class="col-md-2">
+      <label>Code :</label>
+      <p>{{ safeguardCode }}</p>
+    </div>
+
+    <div class="col-md-5">
+      <label>Safeguard :</label>
+      <p>{{ safeguardTitle }}</p>
+    </div>
+
+    <div class="col-md-5">
+      <label>User Comment :</label>
+      <p>{{ safeguardComment }}</p>
+    </div>
+
+  </div>
+
+  <div class="row">
+
+    <div class="col-md-12">
+      <label>Additional Information :</label>
+      <pre>{{ safeguardAddInfo }}</pre>
+    </div>
+  </div>
+
+  <p-footer>
+    <div class="ui-dialog-buttonpane ui-widget-content ui-helper-clearfix">
+      <button type="button" pButton icon="fa fa-fw fa-check" (click)="detailsInfo=false" label="Ok"></button>
+    </div>
+
+  </p-footer>
+</p-dialog>
+
+<p-dialog [(visible)]="blocked" modal="modal" [responsive]="true" [showHeader]="false" class="treatmentSpinner">
+
+  <div *ngIf="blockeCalculate">
+    <h1></h1>
+    <div class="loader"></div>
+  </div>
+
+  <div *ngIf="!blockeCalculate">
+    <h1></h1>
+    <div class="loader"></div>
+  </div>
+
+  <div *ngIf="blockedMessage">
+
+    <p-messages [(value)]="msgsTreatment"></p-messages>
+
+  </div>
+
+</p-dialog>
+
+<p-confirmDialog width="425"></p-confirmDialog>

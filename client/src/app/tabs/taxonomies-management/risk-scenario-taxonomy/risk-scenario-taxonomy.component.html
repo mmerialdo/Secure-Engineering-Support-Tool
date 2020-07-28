@@ -1,0 +1,169 @@
+<!--------------------------------------------------------------------------------------------------------------------
+// Copyright file="risk-scenario-taxonomy.component.html"
+//  © Copyright European Space Agency, 2018-2020
+//
+//  Author: Software developed by RHEA System S.A.
+//
+//  This file is subject to the terms and conditions defined in file 'LICENSE.txt', which is part of this source code package.
+//  No part of the package, including this file, may be copied, modified, propagated, or distributed
+//  except according to the terms contained in the file ‘LICENSE.txt’.
+// -------------------------------------------------------------------------------------------------------------------->
+
+<div class="row" style="margin-top: 4px" *ngIf="scenarios$ | async as taxonomies">
+  <div [ngClass]="selectedTaxonomy.length === 1 ? 'col-lg-9' : 'col-lg-12'">
+    <p-table #dt [value]="taxonomies" [(selection)]="selectedTaxonomy" [responsive]="true" [rows]="10" [paginator]="true"
+            (onRowSelect)="onClick()" [tableStyle]="{'font-size':'12px'}"  [resizableColumns]="true" [autoLayout]="true"
+             selectionMode="multiple" [metaKeySelection]="true">
+      <ng-template pTemplate="header">
+        <tr>
+          <th>Primary Category</th>
+          <th>Secondary Category</th>
+          <th>Impact Score</th>
+          <th>Vulnerability Id</th>
+          <th>Threat Id</th>
+        </tr>
+        <tr>
+          <th>
+            <div class="ui-inputgroup">
+              <span class="ui-inputgroup-addon"><i class="pi pi-search" style="line-height: 1.25;"></i></span>
+              <input pInputText type="text" (input)="dt.filter($event.target.value, 'assetType', 'startsWith')"  class="my-input">
+            </div>
+          </th>
+          <th>
+            <div class="ui-inputgroup">
+              <span class="ui-inputgroup-addon"><i class="pi pi-search" style="line-height: 1.25;"></i></span>
+              <input pInputText type="text" (input)="dt.filter($event.target.value, 'supportingAsset', 'startsWith')" class="my-input">
+            </div>
+          </th>
+          <th>
+            <p-dropdown [options]="impacts" (onChange)="dt.filter($event.value, 'aice', 'startsWith')"
+                        appendTo="body" placeholder="Select a Value" [showClear]="true" [style]="{'min-width':0, 'width':'90%'}"></p-dropdown>
+          </th>
+          <th>
+            <div class="ui-inputgroup">
+              <span class="ui-inputgroup-addon"><i class="pi pi-search" style="line-height: 1.25;"></i></span>
+              <input pInputText type="text" (input)="dt.filter($event.target.value, 'vulnerabilityCode', 'startsWith')" class="my-input" >
+            </div>
+          </th>
+          <th>
+            <div class="ui-inputgroup">
+              <span class="ui-inputgroup-addon"><i class="pi pi-search" style="line-height: 1.25;"></i></span>
+              <input pInputText type="text" (input)="dt.filter($event.target.value, 'eventType', 'startsWith')" class="my-input" >
+            </div>
+          </th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-taxonomy let-rowIndex="rowIndex">
+        <tr [pSelectableRow]="taxonomy" [pSelectableRowIndex]="rowIndex">
+          <td>
+            {{taxonomy.assetType}}<span>&nbsp;&nbsp;</span><i class="fa fa-user-plus fa-xs" *ngIf="taxonomy.catalogue === 'CUSTOM'" pTooltip="Customized by {{taxonomy.author}}"></i>
+          </td>
+          <td>
+            {{taxonomy.supportingAsset}}
+          </td>
+          <td>
+            {{taxonomy.aice}}
+          </td>
+          <td>
+            {{taxonomy.vulnerabilityCode}}
+          </td>
+          <td>
+            {{ createThreatName(taxonomy.eventType, taxonomy.eventSubType,
+            taxonomy.place, taxonomy.time, taxonomy.access, taxonomy.process, taxonomy.actor) }}
+          </td>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="summary" let-rowData *ngIf="isAdmin">
+        <div style="text-align:left">
+          <button type="button" pButton icon="fa fa-plus" (click)="showDialog('Create')"></button><span>&nbsp;&nbsp;</span>
+          <button type="button" pButton icon="fa fa-edit"(click)="showDialog('Edit')" *ngIf="selectedTaxonomy.length === 1"></button><span>&nbsp;&nbsp;</span>
+          <button type="button" pButton icon="fa fa-minus" (click)="removeTaxonomy()"  *ngIf="selectedTaxonomy.length > 0"></button>
+        </div>
+      </ng-template>
+
+    </p-table >
+  </div>
+
+  <div class="col-lg-3 well" *ngIf="selectedTaxonomy.length === 1">
+    <div class="container-fluid">
+      <div class="row">
+        <label style="font-size: 18px">Scenario Details</label>
+      </div>
+      <div class="row">
+        <div class="col-lg-12">
+          <label>Primary Asset Category:</label>
+          <p style="word-wrap: break-word;">{{ selectedTaxonomy[0].assetType}}</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-12">
+          <label>Secondary Asset Category:</label>
+          <p>{{ selectedTaxonomy[0].supportingAsset}}</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-12">
+          <label>Security Dimension:</label>
+          <p>{{ selectedTaxonomy[0].aice}}</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-12">
+          <label>Vulnerability Id:</label>
+          <p>{{ selectedTaxonomy[0].vulnerabilityCode}}</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-12">
+          <label>Threat Id:</label>
+          <p>{{ selectedTaxonomy[0].eventType}}.{{selectedTaxonomy[0].eventSubType}}</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-6" *ngIf="selectedTaxonomy[0].dissuasion">
+          <label>Dissuasion:</label>
+          <p style="word-wrap: break-word;">{{ selectedTaxonomy[0].dissuasion }}</p>
+        </div>
+        <div class="col-lg-6" *ngIf="selectedTaxonomy[0].prevention">
+          <label>Prevention:</label>
+          <p style="word-wrap: break-word;">{{ selectedTaxonomy[0].prevention }}</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-6" *ngIf="selectedTaxonomy[0].confining">
+          <label>Confining:</label>
+          <p style="word-wrap: break-word;">{{ selectedTaxonomy[0].confining }}</p>
+        </div>
+        <div class="col-lg-6" *ngIf="selectedTaxonomy[0].palliative">
+          <label>Palliative:</label>
+          <p style="word-wrap: break-word;">{{ selectedTaxonomy[0].palliative }}</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <p-dialog [(visible)]="blocked" modal="modal" [responsive]="true" [showHeader]="false" class="taxonomiesSpinner">
+    <div *ngIf="!blockedMessage">
+      <h1></h1>
+      <div class="loader"></div>
+    </div>
+    <div *ngIf="blockedMessage">
+      <p-messages [(value)]="msgRiskScenario"></p-messages>
+    </div>
+  </p-dialog>
+</div>
+
+<p-confirmDialog key="account" [style]="{width: '50vw'}"></p-confirmDialog>
+
+<app-scenario-creation *ngIf="showPopup"
+                       [selectedScenarios]="selectedTaxonomy"
+                       (closePopup)="onClose($event)">
+</app-scenario-creation>
+
+<p-toast position="center"></p-toast>
+
+
+
+
+
+

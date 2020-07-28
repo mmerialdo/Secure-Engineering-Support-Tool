@@ -1,0 +1,191 @@
+2|MEHARI_SitesSecurity|||||||
+02A|"Physical access control to the site and the building
+Here control of access to the whole of the site or the building is considered, or a certain number of floors, which represents the ""site"" in which are situated the sensitive locations"|||||||
+02A01|Management of access rights to the site or building |||||||
+02A01-01|"Are permanent or semi permanent (for a specific length of time) access rights to each site or building (or to a number of floors) based on typical profiles (staff on permanent or limited contracts, temporary staff, students, service providers etc.) and to functional roles in the organization?
+Access rights should be granted to activity profiles and not to named individuals."|4|3|2|E1|||
+02A01-02|Is there a list, kept up-to-date, of these profiles and the people responsible for granting access rights for each of them?|4|2|2|E2|||
+02A01-03|Are the rights and the validity conditions attributed to profiles reviewed by the site or general security manager?|4|||E2|||
+02A01-04|Do the profiles also allow definition of working time limits (daily hours and periods in the working calendar, weekends, holidays etc.)?|2|||E2|||
+02A01-05|Are these rights and profiles as defined above protected against any possibility of alteration or falsification during their storage or when transferred between decision makers and the personnel in charge of implementing the rights?|1|3||R1|||
+02A01-06|Is there a regular audit, at least once a year of all rights attributed to the various categories of personnel and a review of the pertinence of those access rights?|1|3||C1|||
+02A02|Management of access authorizations granted to the site or the building|||||||
+02A02-01|"Does the procedure of granting permanent or semi permanent access authorization require the formal acceptance of line management or of the unit managing the external contractor (at a sufficiently senior level)?
+An access authorization is granted to a person, it may provide access rights based on the job profile he or she is linked to. It is usually materialized by a badge carried by the employee."|4|2||E1|||
+02A02-02|"Is the procedure for granting (or modification or retraction) of access authorization documented and strictly controlled? 
+A strict control requires a formal recognition of the signature (electronic or otherwise) of the requestor, that the implementation of the profile attributed to users is highly secure and that each operation is recorded (mentioning the date of issue of the badge and its length of validity) that there be a reinforced access control over the modification of such records and that any modification of records be logged and audited."|4|2||E2|||
+02A02-03|Are access authorizations granted to named individuals as a function of their profile?|4|||E2|||
+02A02-04|Are the access authorizations to the site materialized by a badge or a card? |2|||E2|||
+02A02-05|Are these access authorization badges or cards personalized i.e. with the name and picture of the owner?|2|||E2|||
+02A02-06|Can the list of valid access authorizations and corresponding profile be reviewed at any time?|2|||E2|||
+02A02-07|Is there a rapid and systematic process for revoking access authorizations (revocation of the badge to the automatic access control equipments) and return of the corresponding badge or card at the time of departure of internal or external personnel, change of site attachment (when the authorization is site dependent) or at the end of mission?|4|2||E2|||
+02A02-08|Is there a procedure enabling the subsequent detection of irregularities in the management of access authorizations (badge or card not returned, usage of a lost badge, false badge etc.)?|4|||C1|||
+02A03|Access control to the site or the building|||||||
+02A03-01|"Is the site completely enclosed by a perimeter fence which is difficult to cross or to scale?
+For a building on the public highway to be considered secure, all windows on the ground floor must be locked shut and all access points must have been taken into consideration (garages or underground car parks, roof etc.)"|1|1||E1|11.1.1|9.1.1|
+02A03-02|Is there an operational system (automatic or by security guard) for controlling pedestrian and vehicular access to the site?|1|1||E2|11.1.1|9.1.1|
+02A03-03|"Does this system guarantee that all people entering are checked?
+An efficient control assumes a double or revolving door, or a security guard who allows only one person to pass at a time (for pedestrians) and for vehicles entering the site, controls all people present in the vehicle."|4|2||E3|||
+02A03-04|Does such a system, if dependent on a badge, guarantee that the same badge cannot be used by a second person (by, for example, memorizing all entries and not allowing a further entry without an intervening exit)?|4|||E3|||
+02A03-05|In the case where presentation of a badge or card is required to gain access to a site, is there the possibility to immediately validate the authenticity and validity of the card or badge?|4|2||E2|||
+02A03-06|Are the automatic access control systems under 24 hr surveillance enabling the detection of a failure, a system deactivation or the usage of emergency exits in real time?|4|2||R1|11.1.1|9.1.1|
+02A03-07|Is there a procedure or automatic alert enabling the immediate intervention of security personnel in the case of failure of the access control system (or the usage of an emergency exit)?|4|3||R2|||
+02A03-08|Is there a control procedure enabling the detection of irregularities in the access control procedure (audit of procedures and parameters of access control systems, audit of exceptions and of interventions etc.)?|4|3||C1|||
+02A04|Intrusion detection to the site or the building|||||||
+02A04-01|Is there an operational intrusion detection system to the site, linked to a 24 hr monitoring center?|4|||E2|11.1.1|9.1.1|
+02A04-02|Does this system detect all boundary incursion, all forced attempts to open locked exits (windows and doors), all opening of emergency exits and all exits kept open abnormally?|4|2||E2|||
+02A04-03|Is this system backed up by a video and audio control system which allows the surveillance team to make a first analysis or dismiss uncertainty from a distance?|4|3||E3|||
+02A04-04|Is the surveillance team dedicated to its task, having only security responsibilities and are any alarms immediately detected and treated as the highest priority?|4|3||E3|||
+02A04-05|In the case of an intrusion detection alarm, does the surveillance team have the possibility of sending out an intervention team without delay to verify the cause of the alarm and to take appropriate action?|4|2||E2|||
+02A04-06|In the case of multiple alarms voluntarily activated, is the surveillance and intervention team right sized to take appropriate action?|4|3||E3|||
+02A04-07|Is there an advisory document clearly stating exactly what action to take in the case of each alarm envisaged?|2|||E2|||
+02A04-08|Is the intrusion detection system itself under surveillance (alarm in the case of inhibition, auto-surveillance by camera etc.)?|2|3||R1|||
+02A04-09|Are intrusion control points and procedures for reaction to intrusions audited regularly?|2|3||C1|||
+02A05|Access to the loading and unloading areas (goods receipt and consignment) or to areas open to public |||||||
+02A05-01|Are there specific access control mechanisms from outside through delivery and loading zones in place? |2|||E2|11.1.6|9.1.6|
+02A05-02|Are the delivery and loading zones established in such a way that the delivery men cannot have access to inner parts of the building or the site? |2|||E2|11.1.6|9.1.6|
+02A05-03|Are there specific measures allowing to isolate the moves of external public and the access from the rest of the building?|2|||E2|11.1.6|9.1.6|
+02B|Protection Against Miscellaneous Environmental Risks|||||||
+02B01|Analysis of Miscellaneous Environmental Risks|||||||
+02B01-01|"Has a thorough and systematic analysis of all the conceivable environmental risks for the site been conducted?
+Potential risks are : Avalanche, hurricane, storm, flooding, forest fire, land slide, earthquake, Volcano,  broken dam or dike,  torrential flood,  falling rocks, collapse, gullies, drought"|1|||E3|11.1.4|9.1.4|
+02B01-02|"Has a thorough and systematic analysis of all the conceivable industrial risks for the site been conducted?
+Potential risks are: high risk site nearby (Seveso like), dangerous internal installations, gas station, transport of dangerous materials..."|1|||E3|11.1.4|9.1.4|
+02B01-03|Was each situation considered highly improbable or were appropriate measures taken?|2|||E3|11.1.4|9.1.4|
+02C|Control of access to office areas |||||||
+02C01|Partitioning of office areas into protected zones|||||||
+02C01-01|Has a management policy for access rights to office area been established, and built from an analysis of the security requirements based on the business requirements?|2|||E1|9.1.1|11.1.1|
+02C01-02|Have office areas been partitioned into protected security zones corresponding to homogeneous security constraints and spaces of confidence within which information can be freely exchanged?|2|||E2|||
+02C01-03|"Has it been ensured that the access control rules to assets are coherent with this partitioning into protected zones?
+Assets considered may be  data, documents and equipments installed within these zones or accessible from them."|4|||E2|||
+02C01-04|Have specific procedures been defined for each kind of external person, including providers, induced to intervene in the offices (consultants, maintenance or cleaning staff, etc.): specific budge, accompanying person, previous authorization mentioning the identity of the beneficiary, etc)?   |2|3||E2|||
+02C01-05|Is there a systematic updating process for the partitioning rules of the office zones?|2|||C1|||
+02C02|Physical access control to the protected office zones |||||||
+02C02-01|Is an automatic authentication and access control system used for protected areas? |2|||E2|||
+02C02-02|Are there a procedure and calling means that people who do not have authorization can use to access the protected areas? |3|||E3|||
+02C02-03|In the case of a person without authorization entering these areas, does the procedure, guarantee that the person will be accompanied?|3|||E3|||
+02C02-04|Is there a procedure or automatic alert enabling the immediate intervention of security personnel in the case of failure or invalidation of the access control system?|2|||R1|||
+02C02-05|Is the access control system for protected office areas equipped with a no pass-back mechanism? |2|3||E3|||
+02C02-06|Is authentication based on tamper-proof means associated with the user (for example a badge, smart card, or biometric recognition system)? |4|4||E2|||
+02C02-07|Does the mechanism use strong authentication of the user, with two identifying factors? |4|3||E3|||
+02C02-08|Does the mechanism provide a temporary means of access, to allow for lost, stolen or forgotten badges?|2|||E3|||
+02C02-09|Does the temporary means of access grant only access to a strictly limited area?|2|3||E3|||
+02C02-10|Does the access control system guarantee exhaustive checking of the people entering the premises (turnstile preventing more than one person from entering at a time, a process to prevent a badge being used by more than one person, etc)?|4|4||E3|||
+02C02-11|In addition to controlling access by the normal routes, is access by other routes  (such as windows accessible from outside, emergency exits, or through false floors or ceilings) monitored?|4|3||E1|||
+02C02-12|Are the systems that provide automatic access control to protected areas operational and monitored permanently (24x24)  so that any outage or deactivation is flagged in real time?|2|||R1|||
+02C02-13|Are the emergency exits monitored permanently (24x24) so that their use can be checked in real time? |3|||E2|||
+02C02-14|Is there an audit process to detect, after the event, any anomalies in the access control system  (audit of the procedures and configuration of the access control system, audit of exception procedures and intervention, etc)? |3|||C1|||
+02C02-15| Is there a process for systematically updating access control policies? |2|||C1|||
+02C03|Management of access authorizations to protected office area|||||||
+02C03-01|Does the procedure of granting access rights to a protected office area require the formal authorization of the manager of the protected area?|2|||E1|||
+02C03-02|Is the authenticity of requests for attribution of access rights verifiable and verified (signature control ) ?  |3|||E2|||
+02C03-03|Are the authorizations accorded to named individuals and registered (with a mention of the day of the authorization and the duration of its validity)?|4|||E2|||
+02C03-04|"Is the validity of these authorizations limited in time?
+The validity duration shall be defined accordingly to the profile of the person."|2|||E3|||
+02C03-05|Is there a systematic process of removal of access rights to a protected office area at the time of departure ?|2|||E2|||
+02C03-06|Is there a systematic process of removal of access rights to a protected office area at the time of transfer or role change of staff?|2|||E3|||
+02C03-07|"Is there a regular audit, at least once a year, of all access rights currently attributed to each protected office area?
+This audit should also analyze the relevance of the authorizations granted."|2|||C1|||
+02C03-08|Are all entries into protected zones recorded?|3|||E2|||
+02C03-09|Are also all leavings from protected zones recorded?|2|||E3|||
+02C03-10|Is there a procedure enabling the subsequent detection of irregularities in the management or the use of access rights (badge or card not returned, usage of a lost badge, false badge etc.)?|4|||R1|||
+02C04|Detection of intrusions into protected office areas|||||||
+02C04-01|"Is there an operational system, linked to a 24 hr monitoring center, detecting the forcing of exits to the protected office zones?
+This system must monitor forced openings of exits (doors and windows), the usage of an emergency exit or their being kept open, etc. "|2|||E2|||
+02C04-02|"Is there an operational system detecting the presence of persons outside normal working hours, linked to a 24 hr monitoring center?
+This system should control the presence of persons (volumetric detection, etc.). It may also be a video surveillance system linked to a 24 hr monitoring center."|2|||E2|||
+02C04-03|Is this system backed up by a video and audio control system which allows the security team to make a first analysis or remotely dismiss uncertainty?|3|||E2|||
+02C04-04|In the case of an intrusion detection alarm, does the surveillance team have the possibility of sending out an intervention team without delay to verify the cause of the alarm and to take appropriate action?|2|||E2|||
+02C04-05|Has the security team sufficient resources to cover the eventuality of multiple alarms set off intentionally?|3|||E2|||
+02C04-06|Is the location of electronic systems for detection and processing of alarms protected 24 hrs a day by an access control system and by an intrusion detection system?|2|||R1|||
+02C04-07|Is the intrusion detection system itself monitored (alarm in the case of shutdown, video auto-surveillance etc.)?  |3|||R2|||
+02C04-08|Are the control points for intrusion detection and the procedures for action subsequent to intrusion subject to regular audit?|3|||C1|||
+02C05|Monitoring of protected office areas  |||||||
+02C05-01|Is there a complementary video surveillance system, complete and coherent, for protected office areas, able to detect movement and abnormal behavior?|4|3||E2|||
+02C05-02|In the case of an alarm, does the surveillance team have the possibility of sending out an intervention team without delay to verify the cause of the alarm and to take appropriate action?|4|||E2|||
+02C05-03|Has the security team sufficient resources to cover the eventuality of multiple alarms set off intentionally?|3|||E2|||
+02C05-04|Is the security surveillance team also on duty at times when cleaning of sensitive locations is done?|2|||E2|||
+02C05-05|Is video surveillance material recorded and kept for a long period?|2|||E3|||
+02C05-06|Is the intrusion detection system itself under surveillance (alarm in the case of shutdown, video auto-surveillance etc.)?|3|||R2|||
+02C05-07|Are procedures for surveillance and intervention in the case of abnormal behavior audited regularly?|3|||C2|||
+02C06|Control of movement of visitors and occasional service providers required to work in the offices|||||||
+02C06-01|Is there a general control of movement of visitors and occasional service providers (time stamping at arrival and departure, signature of the person visited, etc.)?  |2|||E1|11.1.2|9.1.2|
+02C06-02|Are visitors and occasional service providers always accompanied (on the way in, return to reception, intervening movements )?  |2|||E1|11.1.2|9.1.2|
+02C06-03|Are visitor reception zones set aside specifically for that purpose comprising only welcoming areas, meeting rooms or zones accessible to the public?|3|||E2|11.1.2|9.1.2|
+02C06-04|Have specific procedures been defined for each type of external service provider given to operate in the offices (IT service company, maintenance company, cleaning staff, etc.) such as the wearing of a personalized badge, accompaniment by staff, prior authorization indicating the name of the operative etc?|4|||E2|11.1.2|9.1.2|
+02C06-05|Do these procedures ensure that the service provided corresponds to the expressed requirement and that the actions of the service provider are limited only to that requirement?|2|||E2|||
+02C06-06|Are visitors and occasional service providers recorded in such a way as to enable a subsequent verification of the reason of their visit and has a procedure been put in place which enables the detection of dishonesty or abuse?|3|||E2|||
+02C06-07|Is there a secure way to register the departure of visitors (e.g. keeping their identity card)?|2|||E2|||
+02C06-08|Are the control procedures of visitors and occasional service providers movements regularly audited?|3|||C1|||
+02D|Protection of written information |||||||
+02D01|Conservation and protection of important commonly used documents|||||||
+02D01-01|Are there facilities available for the staff to put away, close to their desk, commonly used documents requiring a high degree of preservation or protection?|4|||E2|||
+02D01-02|Do these facilities allow to protect important documents from risks of water damage or flooding?|4|||E2|||
+02D01-03|Do these facilities allow to protect important documents from risks of fire (fireproof vaults) ?|4|||E2|||
+02D01-04|Are the premises used for the storage of these documents equipped with reinforced access control and intrusion detection?|3|||E2|||
+02D01-05|Does the shutdown of these security systems (fire, water damage, access control, intrusion detection) trigger an alarm with a surveillance center able to intervene rapidly?|2|||R1|||
+02D01-06|Are these storage conditions subject to regular audit? |3|3||C2|||
+02D02|Protection of documents and removable support media|||||||
+02D02-01|Do security procedures and instructions define the rules for protecting documents and information support media situated in offices (regardless of the type of support media)?|3|||E1|8.3.1|10.7.1|
+02D02-02|Do the security procedures and instructions detail the rules for protecting laptop microcomputers (storage, securing by cable etc.)?  |3|||E1|||
+02D02-03|Do the security procedures and instructions also detail the rules for protecting Tablet PCs, electronic personal assistant or telephones which may contain sensitive information?|3|||E2|||
+02D02-04|Do the security procedures and instructions detail the rules relative to the printing of sensitive documents?|3|||E2|||
+02D02-05|Do the security procedures and instructions detail the rules for the distribution of sensitive documents?|3|||E2|||
+02D02-06|Do the security procedures and instructions detail the rules relative to the handling of sensitive documents while carried outside the organization?|3|||E2|||
+02D02-07|Do staff have secure storage facilities (secure cupboards ) immediately available on request, in the office or in close proximity to the office at any time?  |4|3||E2|||
+02D02-08|Are staff regularly made aware of the necessity to protect documents and other sensitive support media in their offices ?  |2|||E2|||
+02D02-09|Do security staff regularly check (effecting regular rounds) the application of document tidying rules and various support media situated in offices ?  |3|||C1|||
+02D02-10|Are these controls also effected during opening hours, in the absence of the regular occupants of the offices? |3|||C2|||
+02D02-11|Is the application of the security rules relative to the printing and distribution of sensitive documents regularly audited?|3|||C2|||
+02D03|Paper-bin collection and destruction of documents|||||||
+02D03-01|Are the contents of all paper-bins subject to a system of secure destruction? |2|3||E2|||
+02D03-02|Do staff have available a means of secure destruction for sensitive documents (shredders, special paper collection )?|4|3||E1|||
+02D03-03|"Do the paper destruction facilities available to personnel offer a solid guarantee that documents destroyed cannot be reconstituted?
+For this, the shredder used must cross cut."|2|3||E2|||
+02D03-04|Is the capacity of the paper destruction facilities available to personnel compatible with the average volume of documents to destroy?|2|||E1|||
+02D03-05|"Has a shredder of sufficient capacity been installed next to each photocopier?
+Note: the capacity necessary must take into account the maximum thickness that photocopied document can generally attain."|4|||E2|||
+02D03-06|Are all paper destruction procedures and facilities regularly audited?|2|3||C1|||
+02D04|Security of post mail |||||||
+02D04-01|Is the incoming and outgoing mail sorting and dispatching office kept locked when staff are not present?|4|||E1|||
+02D04-02|Is the incoming and outgoing mail sorting and dispatching office protected against risks of fire and water damage (automatic detection and triggering of an alarm with a surveillance center able to intervene rapidly?|3|||E1|||
+02D04-03|Does the mail delivery round ensure that only the intended recipient department or person has access to its or their mail (locked post boxes, direct distribution and delivery direct to the intended person etc.)?  |3|||E1|||
+02D04-04|Within the office spaces, is any mail, either outgoing or incoming, kept aside so as not to be read by an unintended third party?|2|||E2|||
+02D04-05|Is confidential mail rendered neutral (double envelope with the degree of classification only being indicated on the internal envelope)?  |2|||E2|||
+02D04-06|Are important mails sent systematically registered with acknowledgement of receipt? |3|||E2|||
+02D04-07|Is the application of mail security advice and procedures regularly audited?|3|||C1|||
+02D05|Security of faxes (traditional)|||||||
+02D05-01|Is there a procedure or instruction stating the modes for sending and receiving confidential faxes?|2|||E1|||
+02D05-02|Is the location of each fax machine kept locked when staff are not present?|4|||E1|||
+02D05-03|Is the incoming and outgoing faxes office protected against risks of fire and water damage (automatic detection and triggering of an alarm with a surveillance center able to intervene rapidly?|3|||E1|||
+02D05-04|Does the fax delivery round ensure that only the intended recipients department or person has access to its or their faxes (locked post boxes, direct distribution and delivery direct to the intended person)?|3|||E1|||
+02D05-05|Have the possibilities and modes of remote fax retrieval with password been explained to personnel and relevant advice displayed near to fax machines?|4|3||E2|||
+02D05-06|Is the remote retrieval with password mode obligatory for the sending or receipt of a confidential fax?|3|||E2|||
+02D05-07|Is the application of fax security advice and procedures regularly audited?|2|3||C1|||
+02D06|Conservation and protection of important documents  (to be preserved during a long period)|||||||
+02D06-01|"Is there a department specifically responsible for keeping and protecting important documents that need to be kept for a long period of time?
+Such as important originals, elements usable as proof, documentary evidence, etc."|2|||E2|16.1.7|13.2.3|
+02D06-02|Is there a procedure which obliges users to use this service for all documents usable as proof, documentary evidence or important originals?|2|||E2|16.1.7|13.2.3|
+02D06-03|Are the corresponding documents kept in fireproof safes, themselves located in rooms with appropriate equipments for fire detection and extinguishing, flooding detection and water draining?|3|||E2|||
+02D06-04|Are the rooms used to store these documents equipped with reinforced access control and intrusion detection systems?|3|||E2|||
+02D06-05|Does the shutdown of security systems (fire, water damage, access control, intrusion detection) trigger an alarm with a surveillance center able to intervene rapidly?|2|||R1|||
+02D06-06|Is the capacity to work on these documents ensured on a long range?|3|||C1|||
+02D06-07|Are the storage conditions and associated security systems subject to regular audit?|3|||C1|||
+02D07|Management of archived documents|||||||
+02D07-01|Is there a department specifically responsible for archiving documents to be kept for a long range?|2|||E2|||
+02D07-02|Is there a procedure which obliges users to use this archiving service for all documents to be kept for a long range?|2|||E2|||
+02D07-03|"Are the delays for archiving or returning documents in accordance with the expectations of users? 
+Otherwise  users may prefer to keep the documents  next to them. "|4|||E2|||
+02D07-04|Are the rooms used for archives equipped with appropriate equipments for fire detection and extinguishing, flooding detection and water draining? |3|3||E2|||
+02D07-05|Are these rooms equipped with reinforced access control and intrusion detection systems?|3|3||E2|||
+02D07-06|Are the archive rooms under video-survey when they are not occupied? |3|3||E3|||
+02D07-07|Are the cartons for archives marked without reference to their content?|3|3||E2|||
+02D07-08|Are the correspondence tables associating the content to the reference of archives not accessible to the personnel in charge of managing physically the cartons of archives?|3|||E3|||
+02D07-09|Are these tables subject to a saving policy ?|3|3||E2|||
+02D07-10|Does the shutdown of security systems (fire, water damage, access control, intrusion detection) trigger an alarm with a surveillance center able to intervene rapidly?|2|3||R1|||
+02D07-11|Is the requester of an archive authenticated with a strong procedure? |3|3||E2|||
+02D07-12|Is the delivery of an archive registered and logged?|3|3||E2|||
+02D07-13|Is there a specific procedure used for the destruction of archives?|1|||E2|||
+02D07-14|Does this procedure guarantee that the requester has the appropriate rights?|4|3||E2|||
+02D07-15|Are the archives protected against any diversion during their transport between the archiving room and the requester? |3|||E2|||
+02D07-16|Are the storage conditions for archives and associated security systems subject to regular audit?|3|3||C1|||

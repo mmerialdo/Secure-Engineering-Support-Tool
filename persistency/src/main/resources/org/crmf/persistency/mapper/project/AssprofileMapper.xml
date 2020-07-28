@@ -1,0 +1,71 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+	<!DOCTYPE mapper PUBLIC '-//mybatis.org//DTD Mapper 3.0//EN'
+	  'http://mybatis.org/dtd/mybatis-3-mapper.dtd'>
+<mapper namespace='org.crmf.persistency.mapper.project.AssprofileMapper'>
+
+	<resultMap type='Assprofile' id='Assprofile'>
+		<result property='sestobjId' column='SESTOBJ_ID' />
+		<result property='creationTime' column='CREATION_TIME' />
+		<result property='updateTime' column='UPDATE_TIME' />
+	</resultMap>
+
+	<insert id='insert' parameterType='Assprofile' useGeneratedKeys='true'
+		keyProperty='id' keyColumn='ID'>
+		INSERT INTO ASSPROFILE(ID, NAME,
+		DESCRIPTION, CREATION_TIME, UPDATE_TIME, ORGANIZATION, PHASE,
+		METHODOLOGY, SESTOBJ_ID)
+		VALUES (#{id}, #{name}, #{description}, NOW(),
+		#{updateTime}, #{organization}, #{phase}, #{methodology},
+		#{sestobjId})
+		ON
+		DUPLICATE KEY UPDATE
+		NAME = #{name},
+		DESCRIPTION =
+		#{description},
+		UPDATE_TIME = NOW(),
+		ORGANIZATION = #{organization},
+		PHASE = #{phase},
+		METHODOLOGY = #{methodology}
+	</insert>
+
+	<select id='getById' parameterType='int' resultMap='Assprofile'>
+		SELECT *
+		FROM
+		ASSPROFILE
+		WHERE ID = '${value}'
+	</select>
+
+	<select id='getIdByIdentifier' parameterType='String'
+		resultType='Integer'>
+		SELECT id
+		FROM ASSPROFILE
+		WHERE SESTOBJ_ID = '${value}'
+	</select>
+
+	<select id='getByIdentifier' parameterType='String' resultMap='Assprofile'>
+		SELECT *
+		FROM ASSPROFILE
+		WHERE SESTOBJ_ID = '${value}'
+	</select>
+
+	<delete id='delete' parameterType='int'>
+		DELETE FROM ASSPROFILE WHERE
+		ID =
+		'${value}'
+	</delete>
+
+	<delete id='deleteByIdentifier' parameterType='String'>
+		DELETE FROM
+		ASSPROFILE WHERE SESTOBJ_ID = '${value}'
+	</delete>
+
+	<delete id='deleteLinkedObj' parameterType='int'>
+		DELETE FROM `SESTOBJ` WHERE OBJTYPE = 'AssessmentProfile' AND
+		`IDENTIFIER` NOT IN (SELECT SESTOBJ_ID from ASSPROFILE)
+	</delete>
+
+	<select id='getAll' resultMap='Assprofile'>
+		SELECT * FROM ASSPROFILE
+	</select>
+
+</mapper>

@@ -1,0 +1,62 @@
+<!--  --------------------------------------------------------------------------------------------------------------------
+// Copyright file="app.component.html"
+//  © Copyright European Space Agency, 2018-2020
+//
+//  Author: Software developed by RHEA System S.A.
+//
+//  This file is subject to the terms and conditions defined in file 'LICENSE.txt', which is part of this source code package.
+//  No part of the package, including this file, may be copied, modified, propagated, or distributed
+//  except according to the terms contained in the file ‘LICENSE.txt’.
+// -------------------------------------------------------------------------------------------------------------------- -->
+
+
+
+<div class="row">
+  <div class="col-md-3">
+    <img src="../../../assets/leftarrow.png" *ngIf="backArrow" height="60" width="90" (click)="backProjectsList()" style="cursor: pointer;float: left;margin-top: 2%;margin-left: 2%"
+    />
+  </div>
+  <div class="col-md-6">
+    <img src="../../../assets/2018-01-11-Secure-Engineering-Support-Tool-Logo-White.png" width="190" height="95" style="margin-bottom: 3px"
+      class="center-block img-responsive" />
+    <!--<h1>{{title}}</h1>-->
+  </div>
+  <div class="col-md-3" *ngIf="showLogout">
+    <button type="button" class="btn btn-default btn-sm" id="logoutButton" (click)="logout()">
+      <span class="glyphicon glyphicon-log-out"></span> Log out
+    </button>
+
+    <div class="round round-lg blue" id="logoutIcon">
+      <span class="glyphicon glyphicon-user" style="cursor: pointer" (click)="displayPassword()"></span>
+    </div>
+    <div style="float: right; margin-top: 8px; margin-right: 10px">
+      <p style="margin-top: 0em; margin-bottom: 0em; line-height: normal; text-align: center">
+        <b>{{ username}}</b>
+      </p>
+      <p style="margin-top: 0em; margin-bottom: 0em; line-height: normal">
+        <b style="font-size: 11px">{{  profile }}</b>
+      </p>
+    </div>
+  </div>
+</div>
+
+<p-confirmDialog header="Confirmation" icon="fa fa-question-circle" width="425" #cd>
+  <p-footer>
+    <button type="button" pButton icon="fa fa-fw fa-check" label="OK" (click)="cd.accept()"></button>
+  </p-footer>
+</p-confirmDialog>
+
+<p-dialog [(visible)]="blocked" modal="modal" [responsive]="true" [showHeader]="false" class="appSpinner">
+
+  <div *ngIf="blockedMessage">
+
+    <p-messages [(value)]="msgsAsset"></p-messages>
+
+  </div>
+
+</p-dialog>
+
+<user-password *ngIf="displayEditPassword" displayEditPassword="{{displayEditPassword}}"
+               username="{{username}}" (closePopup)="onClose($event)"></user-password>
+<p-toast position="center"></p-toast>
+<router-outlet></router-outlet>

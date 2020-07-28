@@ -1,0 +1,86 @@
+<!--  --------------------------------------------------------------------------------------------------------------------
+// Copyright file="setting.component.html"
+//  © Copyright European Space Agency, 2018-2020
+//
+//  Author: Software developed by RHEA System S.A.
+//
+//  This file is subject to the terms and conditions defined in file 'LICENSE.txt', which is part of this source code package.
+//  No part of the package, including this file, may be copied, modified, propagated, or distributed
+//  except according to the terms contained in the file ‘LICENSE.txt’.
+// -------------------------------------------------------------------------------------------------------------------- -->
+
+<div class="container" id="settingstabcontainer">
+  <h2>Taxonomies Update</h2>
+  <div class="panel panel-default" style="border: 2px solid">
+    <div class="panel-body">
+      <p style="float: left">
+        <b>Vulnerability Reference Taxonomy</b>
+      </p>
+      <button style="border: 1px solid;float: right " type="button" class="btn btn-primary btn-sm" (click)="updateVulnerability()">
+        <b>Update</b>
+      </button>
+
+
+    </div>
+  </div>
+
+  <div class="panel panel-default" style="border: 2px solid">
+    <div class="panel-body">
+      <p style="float: left">
+        <b>Threat Reference Taxonomy</b>
+      </p>
+      <button style="border: 1px solid;float: right " type="button" class="btn btn-primary btn-sm" (click)="updateThreat()">
+        <b>Update</b>
+      </button>
+    </div>
+  </div>
+
+  <div class="panel panel-default" style="border: 2px solid">
+    <div class="panel-body">
+      <p style="float: left">
+        <b>Scenario Reference Taxonomy</b>
+      </p>
+      <button style="border: 1px solid;float: right " type="button" class="btn btn-primary btn-sm" (click)="updateScenario()">
+        <b>Update</b>
+      </button>
+    </div>
+  </div>
+
+  <div class="panel panel-default" style="border: 2px solid">
+    <div class="panel-body">
+      <p style="float: left">
+        <b> GASF Reference Taxonomy</b>
+      </p>
+      <button style="border: 1px solid;float: right " type="button" class="btn btn-primary btn-sm" (click)="updateGasf()">
+        <b>Update</b>
+      </button>
+    </div>
+  </div>
+
+  <div class="panel panel-default" style="border: 2px solid">
+    <div class="panel-body">
+      <p style="float: left">
+        <b> Audit Reference Taxonomy</b>
+      </p>
+      <button style="border: 1px solid;float: right " type="button" class="btn btn-primary btn-sm" (click)="updateAudit()">
+        <b>Update</b>
+      </button>
+    </div>
+  </div>
+
+</div>
+
+<p-dialog [(visible)]="blocked" modal="modal" [responsive]="true" [showHeader]="false" class="settingsSpinner">
+
+  <div *ngIf="!blockedMessage">
+    <h1></h1>
+    <div class="loader"></div>
+  </div>
+
+  <div *ngIf="blockedMessage">
+
+    <p-messages [(value)]="msgsAsset"></p-messages>
+
+  </div>
+
+</p-dialog>

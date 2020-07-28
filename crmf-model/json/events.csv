@@ -1,0 +1,43 @@
+Absence of personnel from partner,AB.P.Pep
+Absence of internal personnel,AB.P.Per
+Absence of service : Air conditioning,AB.S.Cli
+Absence of service : Power supply,AB.S.Ene
+Absence of service : Impossibility to have access to the premises,AB.S.Loc
+Absence or impossibility of application software maintenance,AB.S.Maa
+Absence or impossibility of information system maintenance,AB.S.Mas
+Lightning,AC.E.Fou
+Fire,AC.E.Inc
+Flooding,AC.E.Ino
+Equipment breakdown,AC.M.Equ
+Accessory equipment breakdown,AC.M.Ser
+Social conflict with strike,AV.P.Gre
+Software blocking or malfunction due to a design or programming error (in-house software),ER.L.Lin
+Lost or forgotten document or media,ER.P.Peo
+Error of operation or non compliance of a procedure,ER.P.Pro
+Typing or data entry error ,ER.P.Prs
+Damage due to ageing (of equipment) ,IC.E.Age
+Water damage,IC.E.De
+Pollution damage,IC.E.Pol
+Electrical boosting or over load ,IC.E.Se
+Production incident ,IF.L.Exp
+Software blocking or malfunction (information system or software package),IF.L.Lsp
+Saturation due to an external cause (worm),IF.L.Ver
+Virus,IF.L.Vir
+Deliberate blocking of accounts ,MA.L.Blo
+Deliberate erasure or massive pollution of system configurations ,MA.L.Cfg
+Deliberate erasure of files or data bases or media ,MA.L.Del
+Electromagnetic pick up,MA.L.Ele
+Deliberate corruption of data or functions,MA.L.Fal
+Forgery of messages or data,MA.L.Fau
+Fraudulent replay of transaction,MA.L.Rej
+Deliberate saturation of IT equipments or networks,MA.L.Sam
+Deliberate total erasure of files and backups,MA.L.Tot
+Diversion of files or data (tele-load or copy),MA.L.Vol
+Tampering or falsification of equipment,MA.P.Fal
+Terrorism,MA.P.Ter
+Vandalism or hooliganism,MA.P.Van
+Theft of physical asset  ,MA.P.Vol
+Inadequate procedures,PR.N.Api
+Procedures not applied due to lack of resource or means,PR.N.Naa
+Procedures not applied due to ignorance ,PR.N.Nam
+Procedures not applied deliberately,PR.N.Nav

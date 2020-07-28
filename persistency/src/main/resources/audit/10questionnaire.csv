@@ -1,0 +1,122 @@
+10|MEHARI_SecurityOfProjectsAndDevelopment|||||||
+10A|Security of application projects and developments|||||||
+10A01|Consideration of security in application development|||||||
+10A01-01|"Is there a systematic analysis, from the start of project specification, of the dysfunctions which could be induced by the application or applications following the project or during one of the components of the project?
+Notes : A project may consist simply of the installation of a software package or of a full  internal development. 
+Possible dysfunctions must be analyzed on two levels: at the level of company activity and its operational processes (do new or deleted functions represent an additional risk?) and at the IT architecture level (do new or changed infrastructure, operating system, middleware, applications, data represent additional risk?)."|4|||E1|6.1.5; 14.1.1; 14.2.5|12.1.1|
+10A01-02|Is an analysis carried out with user managers of the level of impact and probability of possible dysfunction taking into consideration the security measures already in place and the additional or specific measures envisaged in the specifications of the project?|4|||E2|6.1.5; 14.1.1; 14.2.5|12.1.1|
+10A01-03|Are there  project reviews during which these risks are presented, decisions are taken about their acceptability or not and about any additional security measures needed?|4|2||E1|6.1.5; 14.1.1; 14.2.5|12.1.1|
+10A01-04|Has the possibility of information leaks through hidden canals been considered within risk studies and have adapted controls been implemented?|4|2||E3|6.1.5|12.5.4|
+10A01-05|"Is the implementation of security measures, specific to the project, formally tracked during the project lifecycle?
+The tracking may consist of an obligatory review point at each project phase, followed up by documentation detailing the choice of solutions and the status of their implementation."|4|||C1|"6.1.5; 14.2.6
+"||
+10A01-06|Is there a support group, specialized in project risk analysis, assisting the management of the project with the risk analysis process?|4|||E2|6.1.5; 14.2.6||
+10A01-07|Is the Information Security Office implicated, directly or indirectly, in security related decisions in the projects?  10A08 has been deleted|4|||E2| 14.2.6||
+10A02|Change management|||||||
+10A02-01|Are all change requests for an application subject to a formal review procedure (requestor, rationale, decision process)?|2|||E2|6.1.5; 14.2.2; 14.2.5|12.5.1|
+10A02-02|Are all automatic software changes or updates made impossible? |2|||R2|14.2.2|12.5.1|
+10A02-03|Are the versions of all software kept up?|2|||E2|14.2.2|12.5.1|
+10A02-04|Are the versions of all associated documentation kept up?|2|||E2|||
+10A02-05|When changes are made to the operating systems, is there a review and test of their impact on the applications?|4|||E2|6.1.5; 14.2.3; 14.2.8|12.5.2|
+10A02-06|"Does the change management procedure impose non regression tests to be run?
+Non regression tests check that the modifications do not change the characteristics nor the performances of the other functions of the application."|4|||E2|14.2.3; 14.2.6|12.5.2|
+10A02-07|Is the impact on the continuity plans of the changes introduced into the applications taken into account? |2|||E2|14.2.3; 17.1.2; 17.1.3|12.5.2; 14.1.5|
+10A03|Externalization of software development|||||||
+10A03-01|When the software development is subcontracted, have the issues regarding license agreement and intellectual property of the code developed been handled?|2|||E2|14.2.5; 14.2.7|12.5.5|
+10A03-02|Were requirements regarding the quality and the security level of the code formally integrated in the contracts? |2|2||E2|14.2.5; 14.2.7|12.5.5|
+10A03-03|Have access rights allowing to audit the quality of the work effected by subcontractors been agreed upon?|2|2||E2|14.2.7|12.5.5|
+10A03-04|Have pre-installation tests of new applications been anticipated in order to detect eventual malevolent code? |2|||E2|14.2.7|12.5.5|
+10A03-05|Have security measures regarding code custody, including all accompanying documents, been taken in case of default by a third party? |2|2||E2|14.2.7|12.5.5|
+10A04|Organization of application maintenance |||||||
+10A04-01|Does application maintenance have at its disposal a technical software support center which guarantees rapid, competent assistance in case of difficulty or bug? |2|||E1|14.2.4; 14.2.6||
+10A04-02|Is there a special service agreement for all in-house software requiring high availability and for which standard maintenance would not be provided within acceptable delays?|4|2||E2|14.2.4||
+10A04-03|Does this special service agreement anticipate the conditions of escalation in the case of intervention difficulty and the possibilities and conditions for calling in the most qualified specialists?|4|3||E2|14.2.4||
+10A04-04|"Is there a guarantee that the competence and availability of the maintenance staff enable them to respond in a satisfactory manner to the maintenance requests of users ?
+This agreement should consider weekend and holiday periods as well."|4|2||E2|14.2.4||
+10A04-05|Is the respect of the maintenance service agreement subject to regular audit?|2|3||C1|||
+10A05|Consideration of security in application development|||||||
+10A05-01|Is it avoided, as far as possible, to modify software packages?|2|||E2||12.5.3|
+10A05-02|Is a strict control of changes when obligated to modify software packages applied?|2|||E2||12.5.3|
+10A05-03|Specifically, has the editor's consent to proceed with said changes been obtained?|2|||E2||12.5.3|
+10A05-04|Have the consequences of those changes on the maintenance provided by the editor been examined?|2|2||E2||12.5.3|
+10B|Ensuring security in the development and maintenance processes|||||||
+10B01|Ensuring security in the organization of application developments |||||||
+10B01-01|Do application development procedures impose a strict separation between detailed specification, design, unit test and integration, with the attribution of specific profiles to the various members of the development team specific to the task involved?|4|||E1|14.2.6||
+10B01-02|Is the attribution of profiles and tasks to application development personnel done on an individual and nominative basis? |2|2||E2|||
+10B01-03|Is a trace kept of the tasks effected by each member of development staff? |2|||E2|12.5.1||
+10B01-04|Are the application development, test and integration environments strictly separated?|4|||E1|12.1.4|12.4.1|
+10B01-05|"Have strict and separated access rights been defined for these environments, based on profile and project?
+A strict access control supposes that it is necessary to get the right profile in order to access to a given environment "|4|||E2|12.1.4; 14.2.1||
+10B01-06|"Is the authentication protocol for development personnel holding privileged rights considered as strong?
+An authentication protocol is considered secure if it is not susceptible to being broken by a listening device on the network or rendered inoperable by specialists tools (in particular password crack tools ). Such security usually uses cryptographic methods."|4||4|E3|12.1.4||
+10B01-07|"In the particular case of passwords, can the imposed rules be considered as very strict?
+Very strict rules impose the use of tested non-trivial passwords, using a mixture of different types of characters and of a reasonable length (ten characters or more). It is desirable that these rules have been approved by the Information Security Officer. "|2|||E2|12.1.4||
+10B01-08|Do application development procedures require that a person never have sole responsibility for a task?|2|||R1|12.1.4; 14.2.1; 14.2.6||
+10B01-09|Do application development procedures require that, for sensitive functions, a verification of code is made by an independent team?|4|3||R2|12.1.4; 14.2.1; 14.2.8||
+10B01-10|Do application development procedures require a formal validation, by users, of the coverage of functional tests?|4|||E2|12.1.4; 14.2.1; 14.2.8||
+10B01-11|Do application development procedures require that the security function  provide a formal validation of the coverage of tests related to security functions or mechanisms?|4|3||E3|14.2.1; 14.2.8||
+10B01-12|In the case of software packages or developments conferred on IT service companies are the above conditions contractually imposed on the editor, partner or subcontractor?|2|||E1|14.2.8||
+10B01-13|"Are the management control parameters of rights attributed to development personnel under strict control?
+A strict control requires that the list of people able to change per project rights attributed to development staff, the  access control parameters to development environments and objects be strictly limited and that there be a reinforced access control in order to be able to modify these rights and that any modification of these rights be logged and audited."|4|||C2|||
+10B01-14|Are the organization of tasks within development teams and the application of clear segregation and control rules regularly audited?|2|||C1|||
+10B02|Ensuring confidentiality in  application developments|||||||
+10B02-01|Do the development procedures impose an analysis of the confidentiality of applications developed and a classification of objects implemented in the course of developments (documentation, source code, executable code, study notes, etc.)?  |4|||E1|14.2.1||
+10B02-02|In the case of development of a confidential application, are their special procedures for management of documentation?|4|||E1|14.2.1||
+10B02-03|In the case of development of a confidential application, are profiles put in place which enable the distribution of confidential information to be limited only to people who have a real need?|4|2||E1|14.2.1||
+10B02-04|"Are source code, executable code and documentation protected by a strict access control procedure which details, as a function of development phase, the authorized profiles having access to these objects as well as the storage conditions and corresponding access control rules?
+An access control procedure using strict access conditions should guarantee that all code or documentation modification is made by an authorized person under authorized conditions."|4|2||E2| 9.4.5; 14.2.1|12.4.3|
+10B02-05|"Are the control parameters related to the management of rights attributed to development personnel under strict control?
+A strict control requires that the list of people able to change rights  attributed to development personnel by project and the access control parameters to development environment and objects be strictly limited and that there be a reinforced access control in order to modify these rights and that any modification of these rights be logged and audited."|2|3||R2|||
+10B02-06|"Are the processes which ensure the filtering of access to development objects (documentation and code) under strict control?
+A strict control requires that the software used has been validated and undergoes a regular test for integrity (seal) and that there be an audit at least once a year of the procedures and processes of access filtering (including the process aiming to detect modification attempts and the processes which respond to these modification attempts)."|2|3||R3|||
+10B02-07|In the case of developments of packages or conferred on IT service companies are the above conditions contractually imposed on the editor, partner or subcontractor?|2|2||E1|||
+10B02-08|Is the management of access rights to development objects, protection procedures and mechanisms subject to a regular audit?|2|3||C1|||
+10B03|Security within Internal Processing of Applications|||||||
+10B03-01|During the design or implementation of applications, is a detailed study of the processing failures that could result in an integrity loss conducted? |4|||E2|14.2.6|12.2.2|
+10B03-02|"Specifically, is it made sure that the use of the functions  ""Add"", ""Modify"", ""Delete"" could not result in a loss of integrity (referential integrity, etc)?"|2|||E2||12.2.2|
+10B03-03|Has the processing sequence of execution been validated and has the restart sequence after failure of a previous processing been anticipated?|2|||E2||12.2.2|
+10B03-04|Have prevention controls against buffer overflow attacks been anticipated?|2|||E2||12.2.2|
+10B04|Protection of Data during tests|||||||
+10B04-01|For testing, is the use of functional databases containing personal information or any other sensitive information avoided?|4|||E1|14.2.8; 14.3.1|12.4.2|
+10B04-02|If sensitive or personal data have to be used, are sensitive details and contents sanitized or deleted before using them?|2|2||E2|14.3.1|12.4.2|
+10B04-03|When using operations data, do the access control procedures that apply to the running applications also apply to the test applications?|2|2||E2|14.3.1|12.4.2|
+10B04-04|Is the operating information used by a test application deleted immediately after the test is completed?|2|||E2|14.3.1|12.4.2|
+10B04-05|Is there a log of all copy or use of operating data during tests to create a audit trail?|2|||C1|14.3.1|12.4.2|
+10B05|Security of application maintenance |||||||
+10B05-01|Do application maintenance procedures impose a strict separation between detailed specification, design, unit test and integration tasks, with the attribution of specific profiles to the various members of the maintenance staff?|4|||E1|||
+10B05-02|Is the attribution of profiles and tasks to maintenance personnel done on an individual and named basis?|2|2||E2|||
+10B05-03|Is a trace kept of the tasks effected by each member of the maintenance staff?|2|2||E2|||
+10B05-04|Are the application maintenance, test and integration environments strictly separated?|4||||14.2.8||
+10B05-05|"Have strict and separated access rights been defined for these environments, based on profile and project?
+A strict access control supposes that it is necessary to get the right profile in order to access to a given environment."|4|||E2|||
+10B05-06|"Is the authentication protocol for development personnel holding privileged rights considered as strong?
+An authentication protocol is considered secure if it is not susceptible to being broken by a listening device on the network or rendered inoperable by specialists tools (in particular password crack tools ). Such security usually uses cryptographic methods."|4||4|E3|||
+10B05-07|"In the particular case of passwords, can the imposed rules be considered as very strict?
+Very strict rules impose the use of tested non-trivial passwords, using a mixture of different types of characters and of a reasonable length (ten characters or more). It is desirable that these rules have been approved by the Information Security Officer. "|2|||E2|||
+10B05-08|Do application maintenance procedures require that a person never be the only person responsible for a task?|2|||E2|||
+10B05-09|Do application maintenance procedures require that, for sensitive functions, a verification of code is made by an independent team?|4|3||E2|||
+10B05-10|Do application maintenance procedures require users to conduct a formal validation of the coverage of functional tests?|4|||E2|||
+10B05-11|Do application maintenance procedures require that a formal validation be run by the security function of the coverage of tests related to security functions or mechanisms?|4|3||E3|||
+10B05-12|"In the case of application maintenance conferred on outside contractors, are the above conditions contractually imposed on the partner or subcontractor?
+Note: when the maintenance is assured by a software editor and/or in a another country, separated by considerable distance, the guarantees made in respect of maintenance conditions must be reviewed with great care."|2|||E1|||
+10B05-13|"Are the control parameters related to the management of rights attributed to application maintenance personnel under strict control?
+A strict control requires that the list of people able to change profiles by project attributed to application maintenance personnel and the access control parameters to maintenance environments and objects be strictly limited and that there be a reinforced access control in order to be able to modify these rights and that any modification of these rights be logged and audited."|4|||C2|||
+10B05-14|Are the organization of tasks within application maintenance and the application of clear segregation and control rules regularly audited?|2|||C1|||
+10B06|Hot Maintenance|||||||
+10B06-01|Is real-time (hot) maintenance, when performed directly in the production environment, subject to the triggering of a formal procedure including, in particular, the formal agreement of the operational director and the manager responsible for the application domain (or data owner) concerned?|4|2||E1|||
+10B06-02|Is a full backup of the production environment (systems and applications) made before any real time maintenance, which would enable a return to the previous situation in case of a problem?|4|2||E2|||
+10B06-03|Is a full backup of operational data (synchronized)  made before any real time maintenance so as to enable a return to the prior situation in case of a problem?|4|2||E2|||
+10B06-04|Is a trace kept of all operations effected and commands launched during any real time maintenance in order to be able to investigate afterwards, or even to cancel them, if the sequence of operations finished improperly?|4|||E2|||
+10B06-05|Are the procedures of real time maintenance and their application subject to regular audit?|4|3||C1|||
+10C00|Secure development policy|||||||
+10C00-01|"Does the organization comply to a secure development policy for the application software lifecycle ?
+The policy includes security in the software development design, methodology, programming techniques, developers' awareness and capability to avoid and fix vulnerabilities"|3||||14.2.1||
+10C00-02|"Is an identification of security requirements from all sources conducted since the early stage of design?
+Like business and image impact from threats, vulnerabilities, non compliance to policies and regulations resulting from lack of adequate security.
+This includes external parties (clients,suppliers, staff, partners, environment, …)"|3||||14.2.1||
+10C00-03|"Are the required protection needs of the information assets involved (e.g. availabilty, integrity and confidentiality) defined?
+Mobile equipment is to be included in this requirement."|3||||14.2.1||
+10C00-04|Are the requirements applied also to associated activities, equipment (including systems,other software, data bases, storage, networking), operators and users?|3||||14.2.1||
+10C00-05|"Is this identification of requirements also applied to outsourced, purchased and leased application products?
+Evaluations, maintenance considerations and tests are required prior to signing contracts"|2||||14.2.1||
+10C00-06|Are the security requirements documented and reviewed by all stakeholders? |3||||14.2.1||

@@ -1,0 +1,74 @@
+<!--  --------------------------------------------------------------------------------------------------------------------
+// Copyright file="tabularization-view.component.html"
+//  © Copyright European Space Agency, 2018-2020
+//
+//  Author: Software developed by RHEA System S.A.
+//
+//  This file is subject to the terms and conditions defined in file 'LICENSE.txt', which is part of this source code package.
+//  No part of the package, including this file, may be copied, modified, propagated, or distributed
+//  except according to the terms contained in the file ‘LICENSE.txt’.
+// ------------------------------------------------------------------------------------------------------------------ -->
+
+<div class="ml-5" style="margin-left: 15px">
+  <div class="row">
+    <div class="col-md-2">
+      <nav class="navbar navbar-default navbar-static-top">
+        <div class="container-fluid">
+
+          <button style="margin-top: 5px;border: 1px solid " type="button" class="btn btn-secondary btn-xs" (click)="changeView()">
+            <b>Change Visualization</b>
+          </button>
+          <hr style="clear: both; color: black; background-color: black; height: 1px; border-width: 0;">
+          <button style="margin-top: 5px;border: 1px solid " type="button" class="btn btn-secondary btn-xs" (click)="saveAssetModel()"
+                  [disabled]="!(isValid$ | async) || !enableSaveButton || !isLockedByCurrentUser()">
+            <b>Save Asset Model</b>
+          </button>
+          <hr style="clear: both; color: black; background-color: black; height: 1px; border-width: 0;">
+        </div>
+      </nav>
+    </div>
+    <!--<div class="col-md-9">
+
+      <p-tabView>
+        <p-tabPanel *ngFor="let org of organizations; let i = index"  header="{{org.name}}">
+          <app-tab-view [organization]="org" [serverAsset]="serverAsset"></app-tab-view>
+        </p-tabPanel>
+      </p-tabView>
+    </div>-->
+    <div class="col-md-9">
+      <app-tab-view *ngIf="loaded" [serverAsset]="serverAsset"></app-tab-view>
+    </div>
+   <!-- <div class="col-md-2">
+
+    </div>-->
+   <!-- <div class="col-md-9">
+      <ul class="nav nav-tabs" id="myTab" role="tablist">
+        <li class="nav-item" *ngFor="let org of organizations; let i = index" >
+          <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">{{org.name}}</a>
+        </li>
+      </ul>
+      <div class="tab-content" id="myTabContent">
+        &lt;!&ndash;<div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">...</div>&ndash;&gt;
+        <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab" *ngFor="let org of organizations; let i = index">
+          <app-tab-view [organization]="org" [serverAsset]="serverAsset"></app-tab-view></div>
+      </div>
+    </div>-->
+  </div>
+</div>
+
+
+<p-dialog [(visible)]="blocked" modal="modal" [responsive]="true" [showHeader]="false" class="tabSpinner">
+
+  <div *ngIf="!blockedMessage">
+    <h1></h1>
+    <div class="loader"></div>
+  </div>
+
+  <div *ngIf="blockedMessage">
+
+    <p-messages [(value)]="msgsAsset"></p-messages>
+
+  </div>
+
+
+</p-dialog>

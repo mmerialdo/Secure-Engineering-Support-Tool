@@ -1,0 +1,213 @@
+<!--  --------------------------------------------------------------------------------------------------------------------
+// Copyright file="audit.component.html"
+//  © Copyright European Space Agency, 2018-2020
+//
+//  Author: Software developed by RHEA System S.A.
+//
+//  This file is subject to the terms and conditions defined in file 'LICENSE.txt', which is part of this source code package.
+//  No part of the package, including this file, may be copied, modified, propagated, or distributed
+//  except according to the terms contained in the file ‘LICENSE.txt’.
+// -------------------------------------------------------------------------------------------------------------------- -->
+<div class="container-fluid">
+
+  <div class="row" style="margin-top: 4px">
+
+    <div class="col-lg-2">
+      <p-tieredMenu [model]="audititems" class="auditMenu"
+                    [style]="{'position': 'fixed', 'overflow': 'visible', 'z-index': '999', 'width':'16%'}"></p-tieredMenu>
+    </div>
+
+    <div class="col-lg-10" *ngIf="orgTable">
+
+      <p-treeTable [value]="questionsAnswers" (onNodeExpand)="open()" (onNodeCollapse)="close()" [scrollable]="true">
+        <p-header>{{ tableHeader }}</p-header>
+        <ng-template pTemplate="header">
+          <tr>
+            <th [ngStyle]="{'width': '10%'}">Code</th>
+            <th [ngStyle]="{'width': '40%'}">Safeguard</th>
+            <th [ngStyle]="{'width': '5%'}">Value</th>
+            <th [ngStyle]="{'width': '4%'}">Previous</th>
+            <th [ngStyle]="{'width': '4%'}">Target</th>
+            <th [ngStyle]="{'width': '4%'}">Weight</th>
+            <th [ngStyle]="{'width': '4%'}">Min</th>
+            <th [ngStyle]="{'width': '4%'}">Max</th>
+            <th [ngStyle]="{'width': '12%'}">ISO2013</th>
+            <th [ngStyle]="{'width': '13%'}">User Comment</th>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-rowNode let-rowData="rowData">
+          <tr>
+            <td [ngStyle]="{'width': '10%'}">
+              <p-treeTableToggler [rowNode]="rowNode"></p-treeTableToggler>
+              {{rowData.category}}
+            </td>
+            <td [ngStyle]="{'width': '40%'}">
+              <p *ngIf="rowData.category !== 'GASF' && rowData.category !== 'MEHARI'">
+                <i class="fa fa-info-circle" (click)="info(rowData)"
+                   style="cursor:pointer;float:left; margin-right:5px; margin-top:3px"></i>{{rowData.value ?
+                rowData.value : rowData.type}}
+              </p>
+              <p *ngIf="rowData.category === 'GASF' || rowData.category === 'MEHARI'">
+                <p-radioButton name="{{rowNode.parent.data.category}}" value="{{rowData.category}}"
+                               [(ngModel)]="rowNode.parent.data.v4"
+                               (click)="onChangeSelectedGroup($event,rowNode)"></p-radioButton>
+              </p>
+            </td>
+            <td [ngStyle]="{'width': '5%'}">
+              <div *ngIf="!hideRow">
+                <div *ngIf="rowData.type === 'CATEGORY' && rowData.category.length > 3">
+                  <p-dropdown [options]="rv2List" [(ngModel)]="rowData.v1"
+                              [style]="{'min-width':0, 'width':'100%'}" appendTo="body"></p-dropdown>
+                </div>
+                <div *ngIf="rowData.type === 'QUESTION' || rowData.type === 'GASF'">
+                  <p-dropdown [options]="rv1List" [(ngModel)]="rowData.v1"
+                              (onChange)="focusDrop($event,rowNode)"
+                              [style]="{'min-width':0, 'width':'100%'}" appendTo="body"></p-dropdown>
+                </div>
+              </div>
+            </td>
+            <td [ngStyle]="{'width': '4%'}">
+              <div *ngIf="!hideRow">
+                <div *ngIf="rowData.type === 'CATEGORY' && rowData.category.length > 3">
+                  <input type="text" [(ngModel)]="rowData.previous" style="width:100%;border-width:0px 0px 1px 0px"
+                         readonly>
+                </div>
+              </div>
+            </td>
+            <td [ngStyle]="{'width': '4%'}">
+              <div *ngIf="!hideRow">
+                <div *ngIf="rowData.type === 'CATEGORY' && rowData.category.length > 3">
+                  <input type="text" [(ngModel)]="rowData.target" style="width:100%;border-width:0px 0px 1px 0px"
+                         readonly>
+                </div>
+              </div>
+            </td>
+            <td [ngStyle]="{'width': '4%'}">
+              <div *ngIf="!hideRow">
+                <div *ngIf="rowData.type === 'QUESTION' || rowData.type === 'GASF'">
+                  <input type="text" [(ngModel)]="rowData.weight" style="width:100%;border-width:0px 0px 1px 0px">
+                </div>
+              </div>
+            </td>
+            <td [ngStyle]="{'width': '4%'}">
+              <div *ngIf="!hideRow">
+                <div *ngIf="rowData.type === 'QUESTION'">
+                  <input type="text" [(ngModel)]="rowData.min" style="width:100%;border-width:0px 0px 1px 0px">
+                </div>
+              </div>
+            </td>
+            <td [ngStyle]="{'width': '4%'}">
+              <div *ngIf="!hideRow">
+                <div *ngIf="rowData.type === 'QUESTION'">
+                  <input type="text" [(ngModel)]="rowData.max" style="width:100%;border-width:0px 0px 1px 0px">
+                </div>
+              </div>
+            </td>
+            <td [ngStyle]="{'width': '12%'}">
+              <div *ngIf="!hideRow">
+                <div *ngIf="rowData.type === 'QUESTION'">
+                  <p>
+                    <i *ngIf="rowData.iso13_info && rowData.iso13_info != '[]'" class="fa fa-info-circle"
+                       (click)="infoISO(rowData)"
+                       style="cursor:pointer;float:left; margin-right:5px; margin-top:3px"></i>{{rowData.iso13}}
+                  </p>
+                </div>
+              </div>
+            </td>
+            <td [ngStyle]="{'width': '13%'}">
+              <input type="text" [(ngModel)]="rowData.commentValue" style="width:100%;border-width:0px 0px 1px 0px">
+            </td>
+          </tr>
+        </ng-template>
+      </p-treeTable>
+
+      <div>
+        <div class="col-md-1">
+          <img src="../../../assets/leftarrow.png" height="80" width="100" (click)="leftArrow()"
+               style="cursor: pointer;"/>
+        </div>
+        <div class="col-md-10"></div>
+        <div class="col-md-1">
+          <img src="../../../assets/rightarrow.png" height="80" width="100" (click)="rightArrow()"
+               style="cursor: pointer;"/>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<p-dialog header="Information" [(visible)]="displayInfo" modal="modal" width="700" [responsive]="true">
+
+  <!--<div class="row">-->
+  <div>
+    <div class="col-md-2">
+      <label>Code :</label>
+      <p>{{ code }}</p>
+    </div>
+
+    <div class="col-md-5">
+      <label>Safeguard :</label>
+      <p>{{ question }}</p>
+    </div>
+
+    <div class="col-md-5">
+      <label>User Comment :</label>
+      <p>{{ comment }}</p>
+    </div>
+  </div>
+
+  <div *ngIf="addInf" class="row">
+    <div class="col-md-12">
+      <label>Additional Information :</label>
+      <pre>{{ addInf }}</pre>
+    </div>
+  </div>
+
+  <div *ngIf="source" class="row">
+    <div class="col-md-12">
+      <label>Source :</label>
+      <pre>{{ source }}</pre>
+    </div>
+  </div>
+
+  <p-footer>
+    <div class="ui-dialog-buttonpane ui-widget-content ui-helper-clearfix">
+      <button type="button" pButton icon="fa fa-fw fa-check" (click)="displayInfo=false" label="Ok"></button>
+    </div>
+  </p-footer>
+</p-dialog>
+
+<p-dialog header="ISO Information" [(visible)]="displayInfoISO" modal="modal" width="700" [responsive]="true">
+
+  <div *ngIf="iso_info" class="row">
+    <div *ngFor="let info of iso_info" class="col-md-12">
+      <label>{{ info.ControlId }}</label>
+      <pre>
+        ClauseId : {{ info.ClauseId }}
+        Clause : {{ info.Clause }}
+        ObjectiveId : {{ info.ObjectiveId }}
+        Objective : {{ info.Objective }}
+        Control : {{ info.Control }}
+      </pre>
+    </div>
+  </div>
+
+  <p-footer>
+    <div class="ui-dialog-buttonpane ui-widget-content ui-helper-clearfix">
+      <button type="button" pButton icon="fa fa-fw fa-check" (click)="displayInfoISO=false" label="Ok"></button>
+    </div>
+  </p-footer>
+</p-dialog>
+
+<p-dialog [(visible)]="blocked" modal="modal" [responsive]="true" [showHeader]="false" class="auditSpinner">
+
+  <div *ngIf="!blockedMessage">
+    <h1></h1>
+    <div class="loader"></div>
+  </div>
+
+  <div *ngIf="blockedMessage">
+    <p-messages [(value)]="msgs"></p-messages>
+  </div>
+
+</p-dialog>

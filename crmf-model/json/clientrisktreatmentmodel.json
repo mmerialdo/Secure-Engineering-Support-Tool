@@ -1,0 +1,415 @@
+{
+	"data": [{
+		"data": {
+			"type": "PrimaryAssetCategory",
+			"primaryAssetCategory": "Service_Local_Network_Service",
+			"description": "Risk Scenarios affecting assets with Primary Category 'Local Area Network Service' and Security Impact Scope Availability",
+			"value": "Local Area Network Service",
+			"securityImpact": "Availability",
+			"tot": "98",
+			"s1": "6",
+			"s2": "14",
+			"s3": "74",
+			"s4": "4"
+		},
+		"children": [{
+			"data": {
+				"safeguardScope": "Prevention",
+				"description": "",
+				"value": "Prevention",
+				"type": "SafeguardScope",
+				"coveredScenario": 12
+			},
+			"children": [{
+				"data": {
+					"safeguardCatalogueId": "03D01",
+					"safeguardIdentifier": "2bb1c082-1173-4900-8cd6-dbb08e182150",
+					"name": "Fire risk prevention",
+					"value": "(03D01) Fire risk prevention",
+					"description": "",
+					"type": "Safeguard",
+					"currentValue": "2",
+					"targetValue": "4"
+				},
+				"children": []
+			}, {
+				"data": {
+					"safeguardCatalogueId": "03A05",
+					"safeguardIdentifier": "35a60a30-a8d4-4520-9ea7-2a3ebefd9aa0",
+					"name": "Lightning protection",
+					"value": "(03A05) Lightning protection",
+					"description": "",
+					"type": "Safeguard",
+					"currentValue": "3",
+					"targetValue": "4"
+				},
+				"children": []
+			}, {
+				"data": {
+					"safeguardCatalogueId": "03C01",
+					"safeguardIdentifier": "c5ca4c2c-e378-4775-9322-44ebba9ca389",
+					"name": "Prevention of risk of water damage",
+					"value": "(03C01) Prevention of risk of water damage",
+					"description": "",
+					"type": "Safeguard",
+					"currentValue": "",
+					"targetValue": ""
+				},
+				"children": []
+			}, {
+				"data": {
+					"safeguardCatalogueId": "03A01",
+					"safeguardIdentifier": "83f3bb14-cd37-4897-b0b1-a754519bab67",
+					"name": "Quality of energy supply",
+					"value": "(03A01) Quality of energy supply",
+					"description": "",
+					"type": "Safeguard",
+					"currentValue": "",
+					"targetValue": ""
+				},
+				"children": []
+			}, {
+				"data": {
+					"safeguardCatalogueId": "03A04",
+					"safeguardIdentifier": "9aa2da25-f7da-4741-b7f8-7ecede28695f",
+					"name": "Quality of cabling",
+					"value": "(03A04) Quality of cabling",
+					"description": "",
+					"type": "Safeguard",
+					"currentValue": "",
+					"targetValue": ""
+				},
+				"children": []
+			}, {
+				"data": {
+					"safeguardCatalogueId": "03B01",
+					"safeguardIdentifier": "973333ea-3a3f-4cb4-aea8-2374f8d43644",
+					"name": "Access rights management to sensitive locations",
+					"value": "(03B01) Access rights management to sensitive locations",
+					"description": "",
+					"type": "Safeguard",
+					"currentValue": "",
+					"targetValue": ""
+				},
+				"children": []
+			}, {
+				"data": {
+					"safeguardCatalogueId": "03B02",
+					"safeguardIdentifier": "53afe8dd-1033-4efa-9057-85ad7a378780",
+					"name": "Management of access authorizations granted to sensitive locations",
+					"value": "(03B02) Management of access authorizations granted to sensitive locations",
+					"description": "",
+					"type": "Safeguard",
+					"currentValue": "",
+					"targetValue": ""
+				},
+				"children": []
+			}, {
+				"data": {
+					"safeguardCatalogueId": "03B03",
+					"safeguardIdentifier": "628eedbc-1a22-4381-8e7b-2967f4c88869",
+					"name": "Access control to sensitive locations",
+					"value": "(03B03) Access control to sensitive locations",
+					"description": "",
+					"type": "Safeguard",
+					"currentValue": "",
+					"targetValue": ""
+				},
+				"children": []
+			}, {
+				"data": {
+					"safeguardCatalogueId": "03B04",
+					"safeguardIdentifier": "270831cd-c61c-4105-b26f-16acf63162d1",
+					"name": "Intruder detection in sensitive locations",
+					"value": "(03B04) Intruder detection in sensitive locations",
+					"description": "",
+					"type": "Safeguard",
+					"currentValue": "",
+					"targetValue": ""
+				},
+				"children": []
+			}, {
+				"data": {
+					"safeguardCatalogueId": "02A01",
+					"safeguardIdentifier": "1770ddca-d6d4-4822-9160-eff02e1d6d17",
+					"name": "Management of access rights to the site or building",
+					"value": "(02A01) Management of access rights to the site or building",
+					"description": "",
+					"type": "Safeguard",
+					"currentValue": "",
+					"targetValue": ""
+				},
+				"children": []
+			}, {
+				"data": {
+					"safeguardCatalogueId": "02A02",
+					"safeguardIdentifier": "dfd51ba1-836a-4ca8-9421-82ae02a74c60",
+					"name": "Management of access authorizations granted to the site or the building",
+					"value": "(02A02) Management of access authorizations granted to the site or the building",
+					"description": "",
+					"type": "Safeguard",
+					"currentValue": "",
+					"targetValue": ""
+				},
+				"children": []
+			}, {
+				"data": {
+					"safeguardCatalogueId": "02A03",
+					"safeguardIdentifier": "daac6d5b-2d8d-4e07-bba2-5a8c334acb35",
+					"name": "Access control to the site or the building",
+					"value": "(02A03) Access control to the site or the building",
+					"description": "",
+					"type": "Safeguard",
+					"currentValue": "",
+					"targetValue": ""
+				},
+				"children": []
+			}, {
+				"data": {
+					"safeguardCatalogueId": "02A05",
+					"safeguardIdentifier": "0115a712-5c20-4fba-ae17-f0d9ab051395",
+					"name": "Access to the loading and unloading areas (goods receipt and consignment) or to areas open to public",
+					"value": "(02A05) Access to the loading and unloading areas (goods receipt and consignment) or to areas open to public",
+					"description": "",
+					"type": "Safeguard",
+					"currentValue": "",
+					"targetValue": ""
+				},
+				"children": []
+			}],
+			"expanded": true
+		}, {
+			"data": {
+				"safeguardScope": "Confining",
+				"description": "",
+				"value": "Confining",
+				"type": "SafeguardScope",
+				"coveredScenario": 3
+			},
+			"children": [{
+				"data": {
+					"safeguardCatalogueId": "03D02",
+					"safeguardIdentifier": "f80967ba-b132-4b1e-8857-8859e763f0e5",
+					"name": "Fire detection",
+					"value": "(03D02) Fire detection",
+					"description": "",
+					"type": "Safeguard",
+					"currentValue": "",
+					"targetValue": ""
+				},
+				"children": []
+			}, {
+				"data": {
+					"safeguardCatalogueId": "03D03",
+					"safeguardIdentifier": "ff1f8e84-8791-44e6-9841-cf3ce805f685",
+					"name": "Fire extinguishing",
+					"value": "(03D03) Fire extinguishing",
+					"description": "",
+					"type": "Safeguard",
+					"currentValue": "",
+					"targetValue": ""
+				},
+				"children": []
+			}, {
+				"data": {
+					"safeguardCatalogueId": "02A04",
+					"safeguardIdentifier": "907235e6-4bba-4e25-9fbe-a35552daf062",
+					"name": "Intrusion detection to the site or the building",
+					"value": "(02A04) Intrusion detection to the site or the building",
+					"description": "",
+					"type": "Safeguard",
+					"currentValue": "",
+					"targetValue": ""
+				},
+				"children": []
+			}]
+		}, {
+			"data": {
+				"safeguardScope": "Dissuasion",
+				"description": "",
+				"value": "Dissuasion",
+				"type": "SafeguardScope",
+				"coveredScenario": 6
+			},
+			"children": [{
+				"data": {
+					"safeguardCatalogueId": "03B06",
+					"safeguardIdentifier": "9c985aeb-b971-46d1-815e-11b9459350a5",
+					"name": "Surveillance of sensitive locations",
+					"value": "(03B06) Surveillance of sensitive locations",
+					"description": "",
+					"type": "Safeguard",
+					"currentValue": "",
+					"targetValue": ""
+				},
+				"children": []
+			}, {
+				"data": {
+					"safeguardCatalogueId": "06C02",
+					"safeguardIdentifier": "b7c01296-058b-4848-8eed-2344b66780e5",
+					"name": "Authentication of administrators and operational personnel",
+					"value": "(06C02) Authentication of administrators and operational personnel",
+					"description": "",
+					"type": "Safeguard",
+					"currentValue": "",
+					"targetValue": ""
+				},
+				"children": []
+			}, {
+				"data": {
+					"safeguardCatalogueId": "06C03",
+					"safeguardIdentifier": "b25ff06b-fd4d-4d6c-9fc7-e2e1331de238",
+					"name": "Surveillance of administrative actions on the network",
+					"value": "(06C03) Surveillance of administrative actions on the network",
+					"description": "",
+					"type": "Safeguard",
+					"currentValue": "",
+					"targetValue": ""
+				},
+				"children": []
+			}]
+		}, {
+			"data": {
+				"safeguardScope": "Pallation",
+				"description": "",
+				"value": "Pallation",
+				"type": "SafeguardScope",
+				"coveredScenario": 32
+			},
+			"children": [{
+				"data": {
+					"safeguardCatalogueId": "05A06",
+					"safeguardIdentifier": "5cd10a56-4bc5-4c76-a297-bc02870b71ac",
+					"name": "Disaster Recovery Plan (DRP) of the local area network",
+					"value": "(05A06) Disaster Recovery Plan (DRP) of the local area network",
+					"description": "",
+					"type": "Safeguard",
+					"currentValue": "",
+					"targetValue": ""
+				},
+				"children": []
+			}, {
+				"data": {
+					"safeguardCatalogueId": "01E01",
+					"safeguardIdentifier": "411f2bbf-672f-4bc5-9832-cf362098c6a8",
+					"name": "Taking into account the need for business continuity",
+					"value": "(01E01) Taking into account the need for business continuity",
+					"description": "",
+					"type": "Safeguard",
+					"currentValue": "",
+					"targetValue": ""
+				},
+				"children": []
+			}, {
+				"data": {
+					"safeguardCatalogueId": "01E02",
+					"safeguardIdentifier": "9c569e68-0285-4139-bce2-39266b59e79c",
+					"name": "Business continuity Plans",
+					"value": "(01E02) Business continuity Plans",
+					"description": "",
+					"type": "Safeguard",
+					"currentValue": "",
+					"targetValue": ""
+				},
+				"children": []
+			}, {
+				"data": {
+					"safeguardCatalogueId": "05A02",
+					"safeguardIdentifier": "ac9ecd7d-3954-4933-8adb-0614eada04b3",
+					"name": "Security of the functioning of the local area network architecture",
+					"value": "(05A02) Security of the functioning of the local area network architecture",
+					"description": "",
+					"type": "Safeguard",
+					"currentValue": "4",
+					"targetValue": "4"
+				},
+				"children": []
+			}, {
+				"data": {
+					"safeguardCatalogueId": "05A03",
+					"safeguardIdentifier": "6c0cc108-3675-4f7e-8b0b-7e04adc4b423",
+					"name": "Organization of the maintenance of local area network equipment",
+					"value": "(05A03) Organization of the maintenance of local area network equipment",
+					"description": "",
+					"type": "Safeguard",
+					"currentValue": "4",
+					"targetValue": "4"
+				},
+				"children": []
+			}, {
+				"data": {
+					"safeguardCatalogueId": "03A02",
+					"safeguardIdentifier": "e2b0f46e-80ff-4471-9cf1-ddfbc57b60b4",
+					"name": "Continuity of energy supply",
+					"value": "(03A02) Continuity of energy supply",
+					"description": "",
+					"type": "Safeguard",
+					"currentValue": "",
+					"targetValue": ""
+				},
+				"children": []
+			}, {
+				"data": {
+					"safeguardCatalogueId": "03A06",
+					"safeguardIdentifier": "f4f4504d-76ab-4d67-b517-c1c1fc37f9c4",
+					"name": "Dependability of service equipment",
+					"value": "(03A06) Dependability of service equipment",
+					"description": "",
+					"type": "Safeguard",
+					"currentValue": "",
+					"targetValue": ""
+				},
+				"children": []
+			}, {
+				"data": {
+					"safeguardCatalogueId": "05A07",
+					"safeguardIdentifier": "62f16d46-6765-4556-8169-20b681adaccf",
+					"name": "Management of critical suppliers as regards a permanent maintenance service",
+					"value": "(05A07) Management of critical suppliers as regards a permanent maintenance service",
+					"description": "",
+					"type": "Safeguard",
+					"currentValue": "",
+					"targetValue": ""
+				},
+				"children": []
+			}, {
+				"data": {
+					"safeguardCatalogueId": "05A05",
+					"safeguardIdentifier": "6e6cee09-8803-4558-897a-f7fd4da11164",
+					"name": "Save and Restore plans of local area network configurations",
+					"value": "(05A05) Save and Restore plans of local area network configurations",
+					"description": "",
+					"type": "Safeguard",
+					"currentValue": "4",
+					"targetValue": "4"
+				},
+				"children": []
+			}, {
+				"data": {
+					"safeguardCatalogueId": "05A04",
+					"safeguardIdentifier": "98ea9001-01ec-4e2c-b8e4-576d5ef700c2",
+					"name": "Procedures and Recovery Plans following incidents on the local area network",
+					"value": "(05A04) Procedures and Recovery Plans following incidents on the local area network",
+					"description": "",
+					"type": "Safeguard",
+					"currentValue": "4",
+					"targetValue": "4"
+				},
+				"children": []
+			}, {
+				"data": {
+					"safeguardCatalogueId": "01C02",
+					"safeguardIdentifier": "4ca5e2d5-8900-419c-b975-d7427eb7347c",
+					"name": "Management of strategic personnel, partners and providers",
+					"value": "(01C02) Management of strategic personnel, partners and providers",
+					"description": "",
+					"type": "Safeguard",
+					"currentValue": "",
+					"targetValue": ""
+				},
+				"children": []
+			}]
+		}],
+		"expanded": true
+	}]
+}

@@ -1,0 +1,130 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+	<!DOCTYPE mapper PUBLIC '-//mybatis.org//DTD Mapper 3.0//EN'
+	  'http://mybatis.org/dtd/mybatis-3-mapper.dtd'>
+<mapper namespace='org.crmf.persistency.mapper.risk.RiskMapper'>
+	<resultMap type='SestRiskModel' id='SestRiskModel'>
+		<result property='sestobjId' column='SESTOBJ_ID' />
+		<result property='riskModelJson' column='RISK_MODEL_JSON' />
+	</resultMap>
+	<resultMap type='SeriousnessScale' id='SeriousnessScale'>
+		<result property='profileId' column='PROFILE_ID' />
+		<result property='projectId' column='PROJECT_ID' />
+		<result property='impact' column='IMPACT' />
+		<result property='likelihood' column='LIKELIHOOD' />
+		<result property='seriousness' column='SERIOUSNESS' />
+	</resultMap>
+	
+	<resultMap type='StatusImpactScale' id='StatusImpactScale'>
+		<result property='profileId' column='PROFILE_ID' />
+		<result property='projectId' column='PROJECT_ID' />
+		<result property='intrinsincImpact' column='INTRINSIC_IMPACT' />
+		<result property='securityImpact' column='SECURITY_IMPACT' />
+		<result property='confining' column='CONFINING' />
+		<result property='palliation' column='PALLIATION' />
+		<result property='calculatedImpact' column='CALCULATED_IMPACT' />
+	</resultMap>
+	
+	<resultMap type='StatusLikelihoodScale' id='StatusLikelihoodScale'>
+		<result property='profileId' column='PROFILE_ID' />
+		<result property='projectId' column='PROJECT_ID' />
+		<result property='intrinsincLikelihood' column='INTRINSIC_LIKELIHOOD' />
+		<result property='threatClass' column='CLASS' />
+		<result property='dissiuasion' column='DISSUASION' />
+		<result property='prevention' column='PREVENTION' />
+		<result property='calculatedLikelihood' column='CALCULATED_LIKELIHOOD' />
+	</resultMap>
+	<resultMap type='SestRiskScenarioReference' id='SestRiskScenarioReference'>
+		<result property='assetType' column='ASSET_TYPE' />
+		<result property='secondaryAssetType' column='SECONDARY_ASSET_TYPE' />
+		<result property='securityScope' column='SECURITY_SCOPE' />
+		<result property='vulnerabilityReferenceId' column='VULNERABILITY_REFERENCE' />
+		<result property='threatReferenceId' column='THREAT_REFERENCE' />
+		<result property='dissuasion' column='DISSUASION' />
+		<result property='prevention' column='PREVENTION' />
+		<result property='confining' column='CONFINING' />
+		<result property='palliative' column='PALLIATIVE' />
+		<result property='sestobjId' column='SESTOBJ_ID' />
+	</resultMap>
+	
+	
+	<insert id='insert' parameterType='SestRiskModel' useGeneratedKeys='true'
+		keyProperty='id' keyColumn='ID'>
+		INSERT INTO RISK_MODEL(SESTOBJ_ID, RISK_MODEL_JSON)
+		VALUES (#{sestobjId}, #{riskModelJson})
+	</insert>
+	
+	<update id='update' parameterType='map'>
+		UPDATE RISK_MODEL
+		SET
+		RISK_MODEL_JSON = #{riskModelJson}
+		WHERE SESTOBJ_ID = #{sestobjId}
+	</update>
+	
+	<select id='getByIdentifier' parameterType='String' resultMap='SestRiskModel'>
+		SELECT *
+		FROM RISK_MODEL 
+		WHERE SESTOBJ_ID = '${value}'
+	</select>
+	
+	<select id='getById' parameterType='int' resultMap='SestRiskModel'>
+		SELECT *
+		FROM RISK_MODEL
+		WHERE ID = '${value}'
+	</select>
+	
+	<select id='getSeriousnessByProjectId' parameterType='int' resultMap='SeriousnessScale'>
+		SELECT *
+		FROM SERIOUSNESS
+		WHERE PROJECT_ID = '${value}'
+	</select>
+	
+	<select id='getStatusImpactByProjectId' parameterType='int' resultMap='StatusImpactScale'>
+		SELECT *
+		FROM STATUS_IMPACT
+		WHERE PROJECT_ID = '${value}'
+	</select>
+	
+	<select id='getStatusLikelihoodByProjectId' parameterType='int' resultMap='StatusLikelihoodScale'>
+		SELECT *
+		FROM STATUS_LIKELIHOOD
+		WHERE PROJECT_ID = '${value}'
+	</select>
+
+	<insert id='insertScenarioReference' parameterType='SestRiskScenarioReference' useGeneratedKeys='true'
+		keyProperty='id' keyColumn='ID'>
+		INSERT INTO RISK_SCENARIO_REFERENCE(ASSET_TYPE, SECONDARY_ASSET_TYPE, SECURITY_SCOPE, VULNERABILITY_REFERENCE, THREAT_REFERENCE, DISSUASION, PREVENTION, CONFINING, PALLIATIVE, SESTOBJ_ID)
+		VALUES (#{assetType}, #{secondaryAssetType}, #{securityScope}, #{vulnerabilityReferenceId}, #{threatReferenceId},#{dissuasion},#{prevention}, #{confining}, #{palliative}, #{sestobjId})
+	</insert>
+	
+	<delete id='clearRiskReferenceScenario'>
+		DELETE FROM RISK_SCENARIO_REFERENCE
+	</delete>
+	
+	<select id='getRiskScenarioReference' resultMap='SestRiskScenarioReference'>
+		SELECT *
+		FROM RISK_SCENARIO_REFERENCE
+	</select>
+
+	<delete id='deleteScenarioReference' parameterType="java.util.List">
+		DELETE FROM RISK_SCENARIO_REFERENCE WHERE SESTOBJ_ID IN
+		<foreach item="item" index="index" collection="sestobjIds"
+				 open="(" separator="," close=")">
+			#{item}
+		</foreach>
+	</delete>
+
+	<update id='editScenarioReference' parameterType='SestRiskScenarioReference'>
+		UPDATE RISK_SCENARIO_REFERENCE
+		SET
+		ASSET_TYPE = #{assetType},
+		SECONDARY_ASSET_TYPE = #{secondaryAssetType},
+		SECURITY_SCOPE = #{securityScope},
+		VULNERABILITY_REFERENCE = #{vulnerabilityReferenceId},
+		THREAT_REFERENCE = #{threatReferenceId},
+		DISSUASION = #{dissuasion},
+		CONFINING = #{confining},
+		PREVENTION = #{prevention},
+		PALLIATIVE = #{palliative}
+		WHERE SESTOBJ_ID = #{sestobjId}
+	</update>
+</mapper>

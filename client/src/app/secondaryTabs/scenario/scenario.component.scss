@@ -1,0 +1,122 @@
+/* --------------------------------------------------------------------------------------------------------------------
+// Copyright file="scenario.component.css"
+//  © Copyright European Space Agency, 2018-2020
+//
+//  Author: Software developed by RHEA System S.A.
+//
+//  This file is subject to the terms and conditions defined in file 'LICENSE.txt', which is part of this source code package.
+//  No part of the package, including this file, may be copied, modified, propagated, or distributed
+//  except according to the terms contained in the file ‘LICENSE.txt’.
+// --------------------------------------------------------------------------------------------------------------------
+*/
+
+#scenarioTable .ui-datatable.ui-widget {
+  font-size: 10px !important;
+}
+
+#scenarioContainer {
+  margin-right: 1%;
+  margin-left: 1%;
+  margin-top: 4px;
+}
+
+hr {
+  display: block;
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+  margin-left: auto;
+  margin-right: auto;
+  border-style: inset;
+  border-width: 1px;
+}
+
+h1 {
+  font-size: 18px;
+}
+
+textarea {
+  resize: none;
+}
+
+.pr-column01 {
+  background-color: #bad2c8 !important;
+}
+
+.pr-column02 {
+  background-color: #bce8f1 !important;
+}
+
+.pr-column03 {
+  background-color: #96c7cf !important;
+  font-weight: bold !important;
+}
+
+.pr-column04 {
+  background-color: #ff1200 !important;
+  font-weight: bold !important;
+}
+
+.pr-columnDescription {
+  background-color: #bad2c8 !important;
+  width: 20%;
+}
+
+.pr-columnPrimaryCategory {
+  background-color: #bad2c8 !important;
+  width: 8%;
+}
+
+.pr-columnSecondaryCategory {
+  background-color: #bad2c8 !important;
+  width: 6%;
+}
+
+.ui-datatable {
+  text-align: center !important;
+}
+
+#scenarioTable .ui-datatable .ui-datatable-thead>tr>th, #scenarioTable .ui-datatable .ui-datatable-tfoot>tr>td, #scenarioTable .ui-datatable .ui-datatable-data>tr>td {
+  border-color: inherit !important;
+}
+
+body {
+  overflow: auto;
+}
+
+.loader {
+  border: 16px solid #f3f3f3;
+  /* Light grey */
+  border-top: 16px solid #067606;
+  /* Green */
+  border-radius: 50%;
+  width: 120px;
+  height: 120px;
+  animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+:host {
+  ::ng-deep {
+    .scenarioSpinner {
+
+      .ui-dialog-content.ui-widget-content {
+        overflow: hidden !important;
+        background-color: transparent !important;
+        border: transparent !important;
+        box-shadow: none !important;
+      }
+
+      .ui-shadow {
+        box-shadow: none;
+      }
+    }
+  }
+}
+

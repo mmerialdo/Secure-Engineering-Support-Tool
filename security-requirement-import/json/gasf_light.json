@@ -1,0 +1,4842 @@
+[{
+	"child_index": 1,
+	"item_id": "8e385229-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "8e21939d-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Use 128 bits keys (recommended)",
+		"2040": "0",
+		"2041": "3"
+	}
+}, {
+	"child_index": 2,
+	"item_id": "7f20b796-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "7ec3f812-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Enforce access control policy between external systems",
+		"2040": "0",
+		"2041": "2"
+	}
+}, {
+	"child_index": 6,
+	"item_id": "84b87085-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "841b4248-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Voice based authentication",
+		"2040": "0",
+		"2041": "1"
+	}
+}, {
+	"child_index": 4,
+	"item_id": "8d329e0e-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "8cd2577a-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Use at least 128 bits keys (larger values allowed)",
+		"2040": "0",
+		"2041": "3"
+	}
+}, {
+	"child_index": 6,
+	"item_id": "7e3c6db8-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "7ce8f815-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Employ boundary protection for missions and business functions",
+		"2040": "0",
+		"2041": "3"
+	}
+}, {
+	"child_index": 1,
+	"item_id": "81101c82-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "80fe6093-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Display minimal information with monitoring exception",
+		"2040": "0",
+		"2041": "1"
+	}
+}, {
+	"child_index": 2,
+	"item_id": "73b22ec2-c481-11e6-96c2-000c299c507b",
+	"item_type": 1007,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "737ba928-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Statement of Work Requirements"
+	}
+}, {
+	"child_index": 2,
+	"item_id": "8b8f2aaf-c481-11e6-96c2-000c299c507b",
+	"item_type": 1007,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "8b5801d6-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "CCSDS Cryptography"
+	}
+}, {
+	"child_index": 5,
+	"item_id": "9183a34f-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "910266ab-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Securely destroy your keys",
+		"2040": "0",
+		"2041": "2"
+	}
+}, {
+	"child_index": 3,
+	"item_id": "74bfb005-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "74a0785e-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Define backup strategy",
+		"2040": "0",
+		"2041": "0"
+	}
+}, {
+	"child_index": 8,
+	"item_id": "7d97ec52-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "7d18174e-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Block communication from non-organisationally configured hosts",
+		"2040": "0",
+		"2041": "3"
+	}
+}, {
+	"child_index": 4,
+	"item_id": "76c55a61-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "76764341-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Authenticate code prior to installation",
+		"2040": "0",
+		"2041": "2"
+	}
+}, {
+	"child_index": 1,
+	"item_id": "81b44a36-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "819f1f26-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Do not transmit passwords in clear text",
+		"2040": "0",
+		"2041": "3"
+	}
+}, {
+	"child_index": 3,
+	"item_id": "7c6fde1b-c481-11e6-96c2-000c299c507b",
+	"item_type": 1007,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "7b1ad488-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Session termination"
+	}
+}, {
+	"child_index": 3,
+	"item_id": "7c0b3c53-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "7bca393a-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Retain the session lock until the user re-establishes access",
+		"2040": "0",
+		"2041": "2"
+	}
+}, {
+	"child_index": 3,
+	"item_id": "8140e351-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "807843a8-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Identification and authentication of users",
+		"2040": "0",
+		"2041": "2"
+	}
+}, {
+	"child_index": 2,
+	"item_id": "7b1ad488-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "7ae8bd3e-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Session",
+		"2040": "0",
+		"2041": "2"
+	}
+}, {
+	"child_index": 4,
+	"item_id": "937b239f-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "8a4cec56-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Define the security layer to be used",
+		"2040": "0",
+		"2041": "2"
+	}
+}, {
+	"child_index": 1,
+	"item_id": "8dd37a97-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "8dbae948-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Use ECDSA algorithm",
+		"2040": "0",
+		"2041": "1"
+	}
+}, {
+	"child_index": 1,
+	"item_id": "79241153-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "7915e047-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Management of the software internal operations",
+		"2040": "0",
+		"2041": "2"
+	}
+}, {
+	"child_index": 2,
+	"item_id": "77e96b1e-c481-11e6-96c2-000c299c507b",
+	"item_type": 1007,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "77ca7403-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Audit processing failures"
+	}
+}, {
+	"child_index": 6,
+	"item_id": "79a48527-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "79241153-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Perform self-test",
+		"2040": "0",
+		"2041": "3"
+	}
+}, {
+	"child_index": 1,
+	"item_id": "79e164c6-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "79c8e3ef-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Input validation",
+		"2040": "0",
+		"2041": "2"
+	}
+}, {
+	"child_index": 2,
+	"item_id": "8e5b3894-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "8e21939d-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Use at least 128 bits keys (larger values allowed)",
+		"2040": "0",
+		"2041": "3"
+	}
+}, {
+	"child_index": 5,
+	"item_id": "74dbd27d-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "74a0785e-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Document compiling options",
+		"2040": "0",
+		"2041": "0"
+	}
+}, {
+	"child_index": 2,
+	"item_id": "76983617-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "76764341-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Check integrity of executable code",
+		"2040": "0",
+		"2041": "2"
+	}
+}, {
+	"child_index": 1,
+	"item_id": "7f2dfd05-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "7f20b796-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Mutually authenticate with external systems prior any exchange",
+		"2040": "0",
+		"2041": "3"
+	}
+}, {
+	"child_index": 1,
+	"item_id": "7452fd24-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "744d27f8-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Define user account management",
+		"2040": "0",
+		"2041": "0"
+	}
+}, {
+	"child_index": 3,
+	"item_id": "9149a589-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "910266ab-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Periodically change your keys",
+		"2040": "0",
+		"2041": "2"
+	}
+}, {
+	"child_index": 5,
+	"item_id": "94172f84-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "9398a86e-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Protection of records",
+		"2040": "0",
+		"2041": "2"
+	}
+}, {
+	"child_index": 2,
+	"item_id": "7d532a02-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "7d18174e-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Deny network traffic by default / allow by exception",
+		"2040": "0",
+		"2041": "3"
+	}
+}, {
+	"child_index": 2,
+	"item_id": "75f6f806-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "75db7bc8-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Manage excess capacity/bandwidth/redundancy",
+		"2040": "0",
+		"2041": "3"
+	}
+}, {
+	"child_index": 2,
+	"item_id": "7bb61e8b-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "7b8bc3c8-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Only allow certificate authorities for verification of protected sessions",
+		"2040": "0",
+		"2041": "3"
+	}
+}, {
+	"child_index": 3,
+	"item_id": "7fb01dd2-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "7f74d067-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Assign roles to users",
+		"2040": "0",
+		"2041": "2"
+	}
+}, {
+	"child_index": 4,
+	"item_id": "93001a25-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "927af1bf-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Map the authenticated identity to the account",
+		"2040": "0",
+		"2041": "3"
+	}
+}, {
+	"child_index": 3,
+	"item_id": "87f86aea-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "87a5fce6-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Minimise the number of nonsecurity included in the security isolation",
+		"2040": "0",
+		"2041": "3"
+	}
+}, {
+	"child_index": 8,
+	"item_id": "740c8a77-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "73bb8df9-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Separate development, test and operational equipment",
+		"2040": "0",
+		"2041": "0"
+	}
+}, {
+	"child_index": 2,
+	"item_id": "7ec3f812-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "7cdc52bd-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Enforce network access control policies",
+		"2040": "0",
+		"2041": "2"
+	}
+}, {
+	"child_index": 2,
+	"item_id": "812b0f50-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "807843a8-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Detect unsuccessful log-in tentative",
+		"2040": "0",
+		"2041": "2"
+	}
+}, {
+	"child_index": 7,
+	"item_id": "84d47146-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "841b4248-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Facial recognition based authentication",
+		"2040": "0",
+		"2041": "1"
+	}
+}, {
+	"child_index": 1,
+	"item_id": "738514e3-c481-11e6-96c2-000c299c507b",
+	"item_type": 1007,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "737ba928-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Contractual Requirements"
+	}
+}, {
+	"child_index": 3,
+	"item_id": "77bc9b03-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "77862352-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Enable acquirement of user information",
+		"2040": "0",
+		"2041": "2"
+	}
+}, {
+	"child_index": 5,
+	"item_id": "854ee515-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "8159f079-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Enforce an unforgeable authentication",
+		"2040": "0",
+		"2041": "3"
+	}
+}, {
+	"child_index": 1,
+	"item_id": "78136b16-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "77fcd96e-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Detect audit storage capacity reach",
+		"2040": "0",
+		"2041": "3"
+	}
+}, {
+	"child_index": 6,
+	"item_id": "7a7c141a-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "79c8e3ef-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Centralize validation approach",
+		"2040": "0",
+		"2041": "3"
+	}
+}, {
+	"child_index": 1,
+	"item_id": "8d9cb3f2-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "8d8338ac-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Minimum key length of 2048 for RSA",
+		"2040": "0",
+		"2041": "3"
+	}
+}, {
+	"child_index": 4,
+	"item_id": "7d6cb11a-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "7d18174e-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Detect and audit outgoing threatening communication",
+		"2040": "0",
+		"2041": "0"
+	}
+}, {
+	"child_index": 2,
+	"item_id": "88706000-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "883ef9ee-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Use hardware separation to facilitate process isolation",
+		"2040": "0",
+		"2041": "3"
+	}
+}, {
+	"child_index": 1,
+	"item_id": "94a0121a-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "948755a6-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Test",
+		"2040": "0",
+		"2041": "3"
+	}
+}, {
+	"child_index": 4,
+	"item_id": "8fd4382e-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "8b48980d-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Protect message externals",
+		"2040": "0",
+		"2041": "3"
+	}
+}, {
+	"child_index": 1,
+	"item_id": "738b3c0b-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "738514e3-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Information handling procedures",
+		"2040": "0",
+		"2041": "0"
+	}
+}, {
+	"child_index": 2,
+	"item_id": "7de94027-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "7ce8f815-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Connect to external networks only through managed interfaces",
+		"2040": "0",
+		"2041": "2"
+	}
+}, {
+	"child_index": 1,
+	"item_id": "809d26c9-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "808cde69-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Display access history",
+		"2040": "0",
+		"2041": "2"
+	}
+}, {
+	"child_index": 1,
+	"item_id": "8c7149ed-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "8c6692bf-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Do not truncate the MAC length",
+		"2040": "0",
+		"2041": "1"
+	}
+}, {
+	"child_index": 1,
+	"item_id": "82d7e8b7-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "82c7bfa9-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "TAN Cards",
+		"2040": "0",
+		"2041": "1"
+	}
+}, {
+	"child_index": 1,
+	"item_id": "7bd58966-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "7bca393a-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Automatically lock session after inactivity",
+		"2040": "0",
+		"2041": "2"
+	}
+}, {
+	"child_index": 4,
+	"item_id": "85052bf9-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "8196aacc-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Permit dynamic authentication association",
+		"2040": "0",
+		"2041": "3"
+	}
+}, {
+	"child_index": 2,
+	"item_id": "7dd2d7b7-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "7da393e8-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Illicit information flow management",
+		"2040": "0",
+		"2041": "3"
+	}
+}, {
+	"child_index": 1,
+	"item_id": "73bb8df9-c481-11e6-96c2-000c299c507b",
+	"item_type": 1007,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "73b22ec2-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Information systems development and maintenance"
+	}
+}, {
+	"child_index": 1,
+	"item_id": "77d70822-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "77ca7403-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Ensure system wide/time correlated audit trails",
+		"2040": "0",
+		"2041": "2"
+	}
+}, {
+	"child_index": 3,
+	"item_id": "92d78efe-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "927af1bf-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Validate certification paths",
+		"2040": "0",
+		"2041": "3"
+	}
+}, {
+	"child_index": 3,
+	"item_id": "8d14dfec-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "8cd2577a-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Use 256 bits keys",
+		"2040": "0",
+		"2041": "3"
+	}
+}, {
+	"child_index": 5,
+	"item_id": "73ef23b8-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "73bb8df9-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Use static code analysis",
+		"2040": "0",
+		"2041": "0"
+	}
+}, {
+	"child_index": 2,
+	"item_id": "78de9626-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "7893be5a-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Backup audits on separate physical systems",
+		"2040": "0",
+		"2041": "3"
+	}
+}, {
+	"child_index": 5,
+	"item_id": "907d2de4-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "8fe953a7-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Maintain chain of custody for reviewer/releaser",
+		"2040": "0",
+		"2041": "3"
+	}
+}, {
+	"child_index": 1,
+	"item_id": "7796bcb0-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "77862352-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Use standardised audit formats",
+		"2040": "0",
+		"2041": "2"
+	}
+}, {
+	"child_index": 2,
+	"item_id": "7fd958cf-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "7fb01dd2-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Assign the lowest privilege role by default",
+		"2040": "0",
+		"2041": "3"
+	}
+}, {
+	"child_index": 1,
+	"item_id": "8ed32ec6-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "8ebdd995-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Use 128 bits keys",
+		"2040": "0",
+		"2041": "3"
+	}
+}, {
+	"child_index": 1,
+	"item_id": "7565db2a-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "755b2b58-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Handling system failures",
+		"2040": "0",
+		"2041": "2"
+	}
+}, {
+	"child_index": 5,
+	"item_id": "798e0ede-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "79241153-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Provide rollback operations",
+		"2040": "0",
+		"2041": "3"
+	}
+}, {
+	"child_index": 1,
+	"item_id": "7b4a64d2-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "7b4107ac-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Permit to deny unauthorised session establishments",
+		"2040": "0",
+		"2041": "2"
+	}
+}, {
+	"child_index": 4,
+	"item_id": "86ff51a3-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "866683ca-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Separate anonymous from authenticated resources",
+		"2040": "0",
+		"2041": "3"
+	}
+}, {
+	"child_index": 1,
+	"item_id": "7935facb-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "79241153-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Check data size to protect against bufferovervflows",
+		"2040": "0",
+		"2041": "3"
+	}
+}, {
+	"child_index": 2,
+	"item_id": "7a0873c9-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "79e164c6-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Check user supplied files",
+		"2040": "0",
+		"2041": "3"
+	}
+}, {
+	"child_index": 5,
+	"item_id": "8fe953a7-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "8b48980d-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Use information non-repudiation mechanisms",
+		"2040": "0",
+		"2041": "3"
+	}
+}, {
+	"child_index": 1,
+	"item_id": "800e0ab9-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "7ffc1b93-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Permit \"emergency\" actions of unauthenticated user",
+		"2040": "0",
+		"2041": "0"
+	}
+}, {
+	"child_index": 1,
+	"item_id": "819f1f26-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "8196aacc-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Password based authentication",
+		"2040": "0",
+		"2041": "1"
+	}
+}, {
+	"child_index": 5,
+	"item_id": "89f2f90a-c481-11e6-96c2-000c299c507b",
+	"item_type": 1007,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "87650d22-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "System configurations"
+	}
+}, {
+	"child_index": 2,
+	"item_id": "82b2259e-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "8196aacc-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Token based authentication",
+		"2040": "0",
+		"2041": "1"
+	}
+}, {
+	"child_index": 2,
+	"item_id": "8cfae999-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "8cd2577a-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Use 192 bits keys",
+		"2040": "0",
+		"2041": "3"
+	}
+}, {
+	"child_index": 2,
+	"item_id": "85d0ff69-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "8140e351-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Use unique user ID",
+		"2040": "0",
+		"2041": "2"
+	}
+}, {
+	"child_index": 1,
+	"item_id": "8a769c42-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "8a61cea0-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "E-commerce",
+		"2040": "0",
+		"2041": "2"
+	}
+}, {
+	"child_index": 5,
+	"item_id": "8f9d0c5d-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "8f261b91-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Disable client-side SSL renegotiation",
+		"2040": "0",
+		"2041": "3"
+	}
+}, {
+	"child_index": 6,
+	"item_id": "73f73d88-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "73bb8df9-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Protection of system test data",
+		"2040": "0",
+		"2041": "0"
+	}
+}, {
+	"child_index": 3,
+	"item_id": "7a237eca-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "79e164c6-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Insert and check random tokens",
+		"2040": "0",
+		"2041": "3"
+	}
+}, {
+	"child_index": 1,
+	"item_id": "91d4250c-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "91bc6aa0-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Cookie based authentication",
+		"2040": "0",
+		"2041": "1"
+	}
+}, {
+	"child_index": 3,
+	"item_id": "74837d6a-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "7452fd24-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Only grant access to a subset of user accounts",
+		"2040": "0",
+		"2041": "0"
+	}
+}, {
+	"child_index": 3,
+	"item_id": "86153bf8-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "8140e351-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Use human identification challenges",
+		"2040": "0",
+		"2041": "3"
+	}
+}, {
+	"child_index": 2,
+	"item_id": "7bca393a-c481-11e6-96c2-000c299c507b",
+	"item_type": 1007,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "7b1ad488-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Session lock"
+	}
+}, {
+	"child_index": 1,
+	"item_id": "8a61cea0-c481-11e6-96c2-000c299c507b",
+	"item_type": 1007,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "8a4cec56-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Service provision security"
+	}
+}, {
+	"child_index": 3,
+	"item_id": "9318a0a5-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "91bc6aa0-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Use cryptographic bidirectional authentication",
+		"2040": "0",
+		"2041": "1"
+	}
+}, {
+	"child_index": 2,
+	"item_id": "7c952514-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "7c6fde1b-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Invalidate session identifiers at logout",
+		"2040": "0",
+		"2041": "2"
+	}
+}, {
+	"child_index": 2,
+	"item_id": "90f0d8e0-c481-11e6-96c2-000c299c507b",
+	"item_type": 1007,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "8b33c042-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Cryptography management"
+	}
+}, {
+	"child_index": 3,
+	"item_id": "8d6a57b8-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "8ba6377e-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Use DSS for digital signatures - PKI",
+		"2040": "0",
+		"2041": "1"
+	}
+}, {
+	"child_index": 2,
+	"item_id": "86973f2c-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "866683ca-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Base privileges in the system on \"least privilege\" concept",
+		"2040": "0",
+		"2041": "3"
+	}
+}, {
+	"child_index": 4,
+	"item_id": "93fbac31-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "9398a86e-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Use strong encryption for data stored on the disk",
+		"2040": "0",
+		"2041": "2"
+	}
+}, {
+	"child_index": 1,
+	"item_id": "74a449e3-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "74a0785e-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Document relevant logs",
+		"2040": "0",
+		"2041": "0"
+	}
+}, {
+	"child_index": 2,
+	"item_id": "8f261b91-c481-11e6-96c2-000c299c507b",
+	"item_type": 1007,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "8b48980d-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "SSL/TLS based authentication and encryption"
+	}
+}, {
+	"child_index": 1,
+	"item_id": "8b7056a2-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "8b5801d6-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Use Security Associations",
+		"2040": "0",
+		"2041": "2"
+	}
+}, {
+	"child_index": 1,
+	"item_id": "737ba928-c481-11e6-96c2-000c299c507b",
+	"item_type": 1007,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "root",
+	"singleFields": {
+		"2003": "Generic Requirements"
+	}
+}, {
+	"child_index": 1,
+	"item_id": "7592027b-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "757eb582-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Restore state",
+		"2040": "0",
+		"2041": "1"
+	}
+}, {
+	"child_index": 3,
+	"item_id": "7cdc52bd-c481-11e6-96c2-000c299c507b",
+	"item_type": 1007,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "7ae8bd3e-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Network"
+	}
+}, {
+	"child_index": 1,
+	"item_id": "82c7bfa9-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "82b2259e-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Static password token",
+		"2040": "0",
+		"2041": "1"
+	}
+}, {
+	"child_index": 1,
+	"item_id": "87c25158-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "87a5fce6-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Implement hardware separation mechanisms for security function isolation",
+		"2040": "0",
+		"2041": "3"
+	}
+}, {
+	"child_index": 5,
+	"item_id": "753ae0ac-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "744d27f8-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Define assumptions on system environment",
+		"2040": "0",
+		"2041": "0"
+	}
+}, {
+	"child_index": 2,
+	"item_id": "85fe203a-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "85d0ff69-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Avoid personnal information via user ID",
+		"2040": "0",
+		"2041": "3"
+	}
+}, {
+	"child_index": 2,
+	"item_id": "7776d832-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "772a532f-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Monitor inbound and outbound communication traffic",
+		"2040": "0",
+		"2041": "3"
+	}
+}, {
+	"child_index": 1,
+	"item_id": "7503486b-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "74f5f8b0-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Specification of information system connnection",
+		"2040": "0",
+		"2041": "0"
+	}
+}, {
+	"child_index": 4,
+	"item_id": "8acfad5a-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "8a61cea0-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Protect information via captchas",
+		"2040": "0",
+		"2041": "2"
+	}
+}, {
+	"child_index": 2,
+	"item_id": "8f4f4f34-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "8f261b91-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Minimum SSL version",
+		"2040": "0",
+		"2041": "3"
+	}
+}, {
+	"child_index": 4,
+	"item_id": "74d175ef-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "74a0785e-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Document the third party software licensing",
+		"2040": "0",
+		"2041": "0"
+	}
+}, {
+	"child_index": 1,
+	"item_id": "7fc67548-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "7fb01dd2-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "List and close sessions",
+		"2040": "0",
+		"2041": "3"
+	}
+}, {
+	"child_index": 2,
+	"item_id": "794dd05d-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "79241153-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Check indexes",
+		"2040": "0",
+		"2041": "3"
+	}
+}, {
+	"child_index": 2,
+	"item_id": "7a3316cc-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "79c8e3ef-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Output validation",
+		"2040": "0",
+		"2041": "2"
+	}
+}, {
+	"child_index": 5,
+	"item_id": "7645ac1b-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "755b2b58-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Provide alternative communication protocols",
+		"2040": "0",
+		"2041": "2"
+	}
+}, {
+	"child_index": 5,
+	"item_id": "8655ad46-c481-11e6-96c2-000c299c507b",
+	"item_type": 1007,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "7ae8bd3e-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "System"
+	}
+}, {
+	"child_index": 1,
+	"item_id": "8b48980d-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "8b33c042-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Protect transmitted information using cryptography or alternate protections",
+		"2040": "0",
+		"2041": "2"
+	}
+}, {
+	"child_index": 3,
+	"item_id": "7964cdb9-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "79241153-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Protect information during pre/post transmission handling",
+		"2040": "0",
+		"2041": "3"
+	}
+}, {
+	"child_index": 2,
+	"item_id": "927af1bf-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "91bc6aa0-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Digital signature based authentication (PKI)",
+		"2040": "0",
+		"2041": "1"
+	}
+}, {
+	"child_index": 6,
+	"item_id": "7d805c5d-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "7d18174e-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Route privileged network accesses",
+		"2040": "0",
+		"2041": "3"
+	}
+}, {
+	"child_index": 2,
+	"item_id": "8df69e1f-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "8b8f2aaf-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Authenticated Encryption",
+		"2040": "0",
+		"2041": "1"
+	}
+}, {
+	"child_index": 4,
+	"item_id": "77ca7403-c481-11e6-96c2-000c299c507b",
+	"item_type": 1007,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "770d5b27-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Audit operations"
+	}
+}, {
+	"child_index": 1,
+	"item_id": "77fcd96e-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "77e96b1e-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Detect audit processing failures",
+		"2040": "0",
+		"2041": "2"
+	}
+}, {
+	"child_index": 3,
+	"item_id": "841b4248-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "8196aacc-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Biometric based authentication",
+		"2040": "0",
+		"2041": "1"
+	}
+}, {
+	"child_index": 3,
+	"item_id": "88bf6857-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "87650d22-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Avoid unauthorised/unintended exposition of information",
+		"2040": "0",
+		"2041": "2"
+	}
+}, {
+	"child_index": 3,
+	"item_id": "75ae2e2a-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "7565db2a-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Fail in a known state",
+		"2040": "0",
+		"2041": "2"
+	}
+}, {
+	"child_index": 1,
+	"item_id": "8ba6377e-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "8b8f2aaf-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Authentication",
+		"2040": "0",
+		"2041": "1"
+	}
+}, {
+	"child_index": 6,
+	"item_id": "74e652b0-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "74a0785e-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Define access hardening steps",
+		"2040": "0",
+		"2041": "0"
+	}
+}, {
+	"child_index": 1,
+	"item_id": "8ce30a37-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "8cd2577a-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Use 128 bits keys",
+		"2040": "0",
+		"2041": "3"
+	}
+}, {
+	"child_index": 2,
+	"item_id": "73a7f8b1-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "7398f2f7-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Reporting security weaknesses",
+		"2040": "0",
+		"2041": "0"
+	}
+}, {
+	"child_index": 6,
+	"item_id": "9437fe6d-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "9398a86e-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Check integrity of backup files",
+		"2040": "0",
+		"2041": "2"
+	}
+}, {
+	"child_index": 5,
+	"item_id": "7ae8bd3e-c481-11e6-96c2-000c299c507b",
+	"item_type": 1007,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "7552aca3-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Access control"
+	}
+}, {
+	"child_index": 1,
+	"item_id": "8430332e-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "841b4248-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Fingerprint based authentication",
+		"2040": "0",
+		"2041": "1"
+	}
+}, {
+	"child_index": 2,
+	"item_id": "77ab77bd-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "77862352-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Audit timestamps",
+		"2040": "0",
+		"2041": "2"
+	}
+}, {
+	"child_index": 1,
+	"item_id": "8b1183e3-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "8aeef789-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Prevent unauthorised transfer when switching between classifications",
+		"2040": "0",
+		"2041": "3"
+	}
+}, {
+	"child_index": 2,
+	"item_id": "73d06569-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "73bb8df9-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Establish change management procedures",
+		"2040": "0",
+		"2041": "0"
+	}
+}, {
+	"child_index": 2,
+	"item_id": "75cf350c-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "755b2b58-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Protect resource availability",
+		"2040": "0",
+		"2041": "2"
+	}
+}, {
+	"child_index": 2,
+	"item_id": "7acd97cf-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "7aa23155-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Handle integrity loss",
+		"2040": "0",
+		"2041": "2"
+	}
+}, {
+	"child_index": 1,
+	"item_id": "7ce8f815-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "7cdc52bd-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Ensure Access Hardening",
+		"2040": "0",
+		"2041": "2"
+	}
+}, {
+	"child_index": 3,
+	"item_id": "7a4508cb-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "79c8e3ef-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Ensure a predictable behaviour on invalid inputs/outputs",
+		"2040": "0",
+		"2041": "3"
+	}
+}, {
+	"child_index": 2,
+	"item_id": "826b4278-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "81d12b14-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Ensure password minimal length",
+		"2040": "0",
+		"2041": "3"
+	}
+}, {
+	"child_index": 1,
+	"item_id": "8bbf855d-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "8ba6377e-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Hash based - HMAC algorithms",
+		"2040": "0",
+		"2041": "1"
+	}
+}, {
+	"child_index": 1,
+	"item_id": "7ed4cf3c-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "7ec3f812-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Enforce access control policy between (internal) parts of a system",
+		"2040": "0",
+		"2041": "2"
+	}
+}, {
+	"child_index": 1,
+	"item_id": "81f86dae-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "81eb0d63-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Ensure regular password renewal",
+		"2040": "0",
+		"2041": "2"
+	}
+}, {
+	"child_index": 1,
+	"item_id": "866683ca-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "8655ad46-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Enforce system access control policies",
+		"2040": "0",
+		"2041": "1"
+	}
+}, {
+	"child_index": 4,
+	"item_id": "797a2fba-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "79241153-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Perform server side data validation",
+		"2040": "0",
+		"2041": "3"
+	}
+}, {
+	"child_index": 2,
+	"item_id": "8caaebe5-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "8ba6377e-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Cipher based - CMAC algorithms",
+		"2040": "0",
+		"2041": "1"
+	}
+}, {
+	"child_index": 7,
+	"item_id": "79be3061-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "79241153-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Check data flow exchange plausibility",
+		"2040": "0",
+		"2041": "3"
+	}
+}, {
+	"child_index": 4,
+	"item_id": "8f7ff2f1-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "8f261b91-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Only use authenticated ciphers",
+		"2040": "0",
+		"2041": "3"
+	}
+}, {
+	"child_index": 1,
+	"item_id": "90d3a245-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "90b3a1c4-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Employ replay resistant authentication mechanisms",
+		"2040": "0",
+		"2041": "3"
+	}
+}, {
+	"child_index": 1,
+	"item_id": "9110ce50-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "910266ab-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Securely generate your keys",
+		"2040": "0",
+		"2041": "2"
+	}
+}, {
+	"child_index": 2,
+	"item_id": "74afc6e9-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "74a0785e-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Group and restrict access to particular service files",
+		"2040": "0",
+		"2041": "0"
+	}
+}, {
+	"child_index": 4,
+	"item_id": "7e1e6678-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "7ce8f815-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Fail securely on boundary protection devices",
+		"2040": "0",
+		"2041": "3"
+	}
+}, {
+	"child_index": 1,
+	"item_id": "929dcd48-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "927af1bf-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "X.509",
+		"2040": "0",
+		"2041": "1"
+	}
+}, {
+	"child_index": 1,
+	"item_id": "8b5801d6-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "8b48980d-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "CCSDS Space Data System Communication Cryptography and Security Protocol",
+		"2040": "0",
+		"2041": "1"
+	}
+}, {
+	"child_index": 3,
+	"item_id": "8232a327-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "81eb0d63-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Force to change temporary password",
+		"2040": "0",
+		"2041": "3"
+	}
+}, {
+	"child_index": 1,
+	"item_id": "76f79506-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "76e55e63-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Suppress code used for integration and debug logging",
+		"2040": "0",
+		"2041": "3"
+	}
+}, {
+	"child_index": 5,
+	"item_id": "7d75965b-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "7d18174e-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Restrict incoming communication traffic",
+		"2040": "0",
+		"2041": "3"
+	}
+}, {
+	"child_index": 2,
+	"item_id": "7efffd80-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "7ed4cf3c-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Deny not explicitly allowed flows between parts of a system",
+		"2040": "0",
+		"2041": "3"
+	}
+}, {
+	"child_index": 1,
+	"item_id": "8bdc56ec-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "8bbf855d-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Use SHA-256",
+		"2040": "0",
+		"2041": "1"
+	}
+}, {
+	"child_index": 2,
+	"item_id": "7befe1f5-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "7bca393a-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Permit to manually lock session",
+		"2040": "0",
+		"2041": "2"
+	}
+}, {
+	"child_index": 2,
+	"item_id": "920e10f8-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "91d4250c-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Create a new session cookies after each (re)authentication",
+		"2040": "0",
+		"2041": "3"
+	}
+}, {
+	"child_index": 3,
+	"item_id": "93e81347-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "9398a86e-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Disable client side caching pages",
+		"2040": "0",
+		"2041": "2"
+	}
+}, {
+	"child_index": 2,
+	"item_id": "74a0785e-c481-11e6-96c2-000c299c507b",
+	"item_type": 1007,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "744d27f8-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "CIG"
+	}
+}, {
+	"child_index": 2,
+	"item_id": "7827b248-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "77fcd96e-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Alert audit processing failures in real time",
+		"2040": "0",
+		"2041": "3"
+	}
+}, {
+	"child_index": 1,
+	"item_id": "7d18174e-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "7ce8f815-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Monitor and control external and internal boundaries",
+		"2040": "0",
+		"2041": "2"
+	}
+}, {
+	"child_index": 5,
+	"item_id": "7a68d56c-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "79c8e3ef-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Define and use a whitelist",
+		"2040": "0",
+		"2041": "3"
+	}
+}, {
+	"child_index": 1,
+	"item_id": "831125f1-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "82f90044-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "One-time password device token",
+		"2040": "0",
+		"2041": "1"
+	}
+}, {
+	"child_index": 1,
+	"item_id": "7f849b1d-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "7f74d067-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Use a central user rights and roles management",
+		"2040": "0",
+		"2041": "2"
+	}
+}, {
+	"child_index": 0,
+	"item_id": "root",
+	"item_type": 1000,
+	"item_version": 0,
+	"multipleFields": {},
+	"need": 3001,
+	"singleFields": {}
+}, {
+	"child_index": 1,
+	"item_id": "7dbb7732-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "7da393e8-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Use security attributes",
+		"2040": "0",
+		"2041": "3"
+	}
+}, {
+	"child_index": 1,
+	"item_id": "86a8ef98-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "86973f2c-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Avoid unnecessary access for non-privileged users",
+		"2040": "0",
+		"2041": "3"
+	}
+}, {
+	"child_index": 1,
+	"item_id": "74615e26-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "7452fd24-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Delete inactive accounts",
+		"2040": "0",
+		"2041": "0"
+	}
+}, {
+	"child_index": 1,
+	"item_id": "893b54cb-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "89282d6c-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Reveal error messages only to authorised users",
+		"2040": "0",
+		"2041": "3"
+	}
+}, {
+	"child_index": 3,
+	"item_id": "89d7b94c-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "898b7417-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Restrict security attributes modification",
+		"2040": "0",
+		"2041": "2"
+	}
+}, {
+	"child_index": 1,
+	"item_id": "877be154-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "87650d22-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Employ honeypots",
+		"2040": "0",
+		"2041": "2"
+	}
+}, {
+	"child_index": 1,
+	"item_id": "8cd2577a-c481-11e6-96c2-000c299c507b",
+	"item_type": 1007,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "8cbd9adf-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "AES keys length"
+	}
+}, {
+	"child_index": 4,
+	"item_id": "749789cc-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "7452fd24-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Change default password after installation",
+		"2040": "0",
+		"2041": "0"
+	}
+}, {
+	"child_index": 2,
+	"item_id": "7b7a2620-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "7b4a64d2-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Limit concurrent sessions overall",
+		"2040": "0",
+		"2041": "3"
+	}
+}, {
+	"child_index": 2,
+	"item_id": "7754a7a1-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "773b4a7c-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Initiate the capture of session audits at start-up",
+		"2040": "0",
+		"2041": "3"
+	}
+}, {
+	"child_index": 1,
+	"item_id": "7e7c09dd-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "7e5ec138-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Implement sub networks for publicly accessible systems",
+		"2040": "0",
+		"2041": "2"
+	}
+}, {
+	"child_index": 4,
+	"item_id": "7552aca3-c481-11e6-96c2-000c299c507b",
+	"item_type": 1007,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "737ba928-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Functional Requirements"
+	}
+}, {
+	"child_index": 4,
+	"item_id": "760bb83f-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "755b2b58-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "User state synchrony protocol for distributed systems",
+		"2040": "0",
+		"2041": "2"
+	}
+}, {
+	"child_index": 3,
+	"item_id": "8196aacc-c481-11e6-96c2-000c299c507b",
+	"item_type": 1007,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "8159f079-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Authentication types"
+	}
+}, {
+	"child_index": 2,
+	"item_id": "86ccddcd-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "86973f2c-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Restrict access to test data",
+		"2040": "0",
+		"2041": "3"
+	}
+}, {
+	"child_index": 2,
+	"item_id": "75a4414a-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "757eb582-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Restore time",
+		"2040": "0",
+		"2041": "3"
+	}
+}, {
+	"child_index": 3,
+	"item_id": "77622690-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "773b4a7c-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Privileged and unprivileged account logs",
+		"2040": "0",
+		"2041": "3"
+	}
+}, {
+	"child_index": 3,
+	"item_id": "76a86371-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "76764341-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Controls against mobile code",
+		"2040": "0",
+		"2041": "2"
+	}
+}, {
+	"child_index": 1,
+	"item_id": "80ac2bbe-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "809d26c9-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Display last unsuccessful session",
+		"2040": "0",
+		"2041": "3"
+	}
+}, {
+	"child_index": 3,
+	"item_id": "904ac0ce-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "8fe953a7-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Associate the identity of users to the information",
+		"2040": "0",
+		"2041": "3"
+	}
+}, {
+	"child_index": 1,
+	"item_id": "7dfa56f6-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "7de94027-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Route outgoing traffic through authenticated proxies",
+		"2040": "0",
+		"2041": "3"
+	}
+}, {
+	"child_index": 2,
+	"item_id": "7835f6b9-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "77e96b1e-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Take action on audit processing failures",
+		"2040": "0",
+		"2041": "2"
+	}
+}, {
+	"child_index": 3,
+	"item_id": "8284aae9-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "81d12b14-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Ensure password minimal complexity",
+		"2040": "0",
+		"2041": "3"
+	}
+}, {
+	"child_index": 2,
+	"item_id": "80e4ebba-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "808cde69-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Display warning message",
+		"2040": "0",
+		"2041": "2"
+	}
+}, {
+	"child_index": 1,
+	"item_id": "7affcdcf-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "7ae8bd3e-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Use tamperproof access control mechanisms",
+		"2040": "0",
+		"2041": "2"
+	}
+}, {
+	"child_index": 2,
+	"item_id": "80651856-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "803adb81-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Enforce user deactivation after failed attempts",
+		"2040": "0",
+		"2041": "3"
+	}
+}, {
+	"child_index": 1,
+	"item_id": "79f7ea74-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "79e164c6-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Check compliance of any received data before processing it",
+		"2040": "0",
+		"2041": "3"
+	}
+}, {
+	"child_index": 3,
+	"item_id": "9237b183-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "91d4250c-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Delete old session cookies right after use",
+		"2040": "0",
+		"2041": "3"
+	}
+}, {
+	"child_index": 2,
+	"item_id": "883ef9ee-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "87936fad-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Isolate processes",
+		"2040": "0",
+		"2041": "2"
+	}
+}, {
+	"child_index": 5,
+	"item_id": "7893be5a-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "770d5b27-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Protection of audit information",
+		"2040": "0",
+		"2041": "2"
+	}
+}, {
+	"child_index": 1,
+	"item_id": "7cbac5c7-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "7ca592da-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Display user-initiated logouts",
+		"2040": "0",
+		"2041": "3"
+	}
+}, {
+	"child_index": 6,
+	"item_id": "873569a2-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "866683ca-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Configure only needed access",
+		"2040": "0",
+		"2041": "3"
+	}
+}, {
+	"child_index": 2,
+	"item_id": "8a198386-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "89f2f90a-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Remove default installations",
+		"2040": "0",
+		"2041": "2"
+	}
+}, {
+	"child_index": 1,
+	"item_id": "8cbd9adf-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "8caaebe5-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Use AES",
+		"2040": "0",
+		"2041": "1"
+	}
+}, {
+	"child_index": 1,
+	"item_id": "85e6dae6-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "85d0ff69-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Avoid role information disclosure via user ID",
+		"2040": "0",
+		"2041": "3"
+	}
+}, {
+	"child_index": 1,
+	"item_id": "8eaaca49-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "8e95c1ad-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Use AES algorithm",
+		"2040": "0",
+		"2041": "1"
+	}
+}, {
+	"child_index": 1,
+	"item_id": "7ab39590-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "7aa23155-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Rely on MAC for integrity checks",
+		"2040": "0",
+		"2041": "2"
+	}
+}, {
+	"child_index": 4,
+	"item_id": "7915e047-c481-11e6-96c2-000c299c507b",
+	"item_type": 1007,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "7552aca3-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Processing / Data validation"
+	}
+}, {
+	"child_index": 3,
+	"item_id": "83671535-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "82b2259e-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Connected challenge-response token",
+		"2040": "0",
+		"2041": "1"
+	}
+}, {
+	"child_index": 3,
+	"item_id": "7e0d2b73-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "7ce8f815-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Enforce adherence to protocol formats",
+		"2040": "0",
+		"2041": "3"
+	}
+}, {
+	"child_index": 2,
+	"item_id": "912bc8fa-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "910266ab-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Securely transmit your keys",
+		"2040": "0",
+		"2041": "2"
+	}
+}, {
+	"child_index": 3,
+	"item_id": "74f5f8b0-c481-11e6-96c2-000c299c507b",
+	"item_type": 1007,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "744d27f8-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "ICD"
+	}
+}, {
+	"child_index": 3,
+	"item_id": "86e4609b-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "866683ca-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Base system access on only on roles",
+		"2040": "0",
+		"2041": "3"
+	}
+}, {
+	"child_index": 1,
+	"item_id": "900507d3-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "8fe953a7-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Ensure non-repudiation of origin",
+		"2040": "0",
+		"2041": "2"
+	}
+}, {
+	"child_index": 1,
+	"item_id": "7746cf34-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "773b4a7c-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Remotely view/access session audits",
+		"2040": "0",
+		"2041": "3"
+	}
+}, {
+	"child_index": 3,
+	"item_id": "807843a8-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "7f5f8af5-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Ensure secure log-on",
+		"2040": "0",
+		"2041": "2"
+	}
+}, {
+	"child_index": 5,
+	"item_id": "84935541-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "841b4248-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Iris pattern based authentication",
+		"2040": "0",
+		"2041": "1"
+	}
+}, {
+	"child_index": 3,
+	"item_id": "8a2dff92-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "89f2f90a-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Synchronise internal clocks",
+		"2040": "0",
+		"2041": "2"
+	}
+}, {
+	"child_index": 4,
+	"item_id": "7883858b-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "77ca7403-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Take least-disruptive automated actions to suspicious events",
+		"2040": "0",
+		"2041": "2"
+	}
+}, {
+	"child_index": 1,
+	"item_id": "7716a5d2-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "770d5b27-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Implement audit functions",
+		"2040": "0",
+		"2041": "2"
+	}
+}, {
+	"child_index": 4,
+	"item_id": "7f5f8af5-c481-11e6-96c2-000c299c507b",
+	"item_type": 1007,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "7ae8bd3e-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "User"
+	}
+}, {
+	"child_index": 3,
+	"item_id": "89282d6c-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "88bf6857-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Ensure that error messages do not reveal security crucial information",
+		"2040": "0",
+		"2041": "3"
+	}
+}, {
+	"child_index": 1,
+	"item_id": "7ee922e9-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "7ed4cf3c-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Authenticate physically separated parts prior any exchange",
+		"2040": "0",
+		"2041": "3"
+	}
+}, {
+	"child_index": 2,
+	"item_id": "751781df-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "74f5f8b0-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Define information flows",
+		"2040": "0",
+		"2041": "0"
+	}
+}, {
+	"child_index": 1,
+	"item_id": "81eb0d63-c481-11e6-96c2-000c299c507b",
+	"item_type": 1007,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "81d12b14-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Password lifecycle"
+	}
+}, {
+	"child_index": 4,
+	"item_id": "7c23a274-c481-11e6-96c2-000c299c507b",
+	"item_type": 1007,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "7bca393a-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Conceal information previously visible after session lock"
+	}
+}, {
+	"child_index": 1,
+	"item_id": "88533a17-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "883ef9ee-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Isolate processing threads",
+		"2040": "0",
+		"2041": "3"
+	}
+}, {
+	"child_index": 3,
+	"item_id": "8fba06ed-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "8b48980d-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Conceal/randomise communications",
+		"2040": "0",
+		"2041": "3"
+	}
+}, {
+	"child_index": 1,
+	"item_id": "7680b484-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "76764341-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Protect against unauthorised code execution",
+		"2040": "0",
+		"2041": "2"
+	}
+}, {
+	"child_index": 1,
+	"item_id": "73c503c7-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "73bb8df9-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Use the baseline document",
+		"2040": "0",
+		"2041": "0"
+	}
+}, {
+	"child_index": 6,
+	"item_id": "855f093d-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "8159f079-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Re-authentication",
+		"2040": "0",
+		"2041": "3"
+	}
+}, {
+	"child_index": 3,
+	"item_id": "73d7f61b-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "73bb8df9-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Follow security activities from GASF",
+		"2040": "0",
+		"2041": "0"
+	}
+}, {
+	"child_index": 2,
+	"item_id": "7473e18d-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "7452fd24-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Disable default accounts",
+		"2040": "0",
+		"2041": "0"
+	}
+}, {
+	"child_index": 8,
+	"item_id": "9398a86e-c481-11e6-96c2-000c299c507b",
+	"item_type": 1007,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "7552aca3-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Storage of information"
+	}
+}, {
+	"child_index": 3,
+	"item_id": "75db7bc8-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "755b2b58-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Protect against denial of service",
+		"2040": "0",
+		"2041": "2"
+	}
+}, {
+	"child_index": 8,
+	"item_id": "84e5ab73-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "841b4248-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Hand geometry based authentication",
+		"2040": "0",
+		"2041": "1"
+	}
+}, {
+	"child_index": 1,
+	"item_id": "8e0f6146-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "8df69e1f-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Use AES-GCM algorithm",
+		"2040": "0",
+		"2041": "1"
+	}
+}, {
+	"child_index": 1,
+	"item_id": "88f6951d-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "88d2e84c-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Explicitly indicate current participants",
+		"2040": "0",
+		"2041": "3"
+	}
+}, {
+	"child_index": 2,
+	"item_id": "87e24f4f-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "87a5fce6-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Isolate access control and flow control functions from other nonsecurity and security functions",
+		"2040": "0",
+		"2041": "3"
+	}
+}, {
+	"child_index": 7,
+	"item_id": "7d8be8c8-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "7d18174e-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Prevent discovery of components/devices",
+		"2040": "0",
+		"2041": "3"
+	}
+}, {
+	"child_index": 2,
+	"item_id": "8183b2f8-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "8159f079-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Multi-factor authentication",
+		"2040": "0",
+		"2041": "2"
+	}
+}, {
+	"child_index": 1,
+	"item_id": "8f380600-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "8f261b91-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Minimum key length of 128 bits",
+		"2040": "0",
+		"2041": "3"
+	}
+}, {
+	"child_index": 2,
+	"item_id": "8b33c042-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "8a4cec56-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Communication cryptography",
+		"2040": "0",
+		"2041": "2"
+	}
+}, {
+	"child_index": 5,
+	"item_id": "871aef71-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "866683ca-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Separate user from management functionalities",
+		"2040": "0",
+		"2041": "3"
+	}
+}, {
+	"child_index": 3,
+	"item_id": "834972fb-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "82f90044-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Alternate communication channel token",
+		"2040": "0",
+		"2041": "1"
+	}
+}, {
+	"child_index": 1,
+	"item_id": "808cde69-c481-11e6-96c2-000c299c507b",
+	"item_type": 1007,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "807843a8-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Log-on display restrictions"
+	}
+}, {
+	"child_index": 7,
+	"item_id": "945580ad-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "9398a86e-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Avoid information leakage of stored information",
+		"2040": "0",
+		"2041": "2"
+	}
+}, {
+	"child_index": 2,
+	"item_id": "83e97124-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "83671535-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "USB device",
+		"2040": "0",
+		"2041": "1"
+	}
+}, {
+	"child_index": 1,
+	"item_id": "75e4b9af-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "75db7bc8-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Restrict DoS attacks from internal users",
+		"2040": "0",
+		"2041": "3"
+	}
+}, {
+	"child_index": 7,
+	"item_id": "7400683b-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "73bb8df9-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Segregate duties and areas of responsibility",
+		"2040": "0",
+		"2041": "0"
+	}
+}, {
+	"child_index": 2,
+	"item_id": "772a532f-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "770d5b27-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Produce audit logs",
+		"2040": "0",
+		"2041": "2"
+	}
+}, {
+	"child_index": 1,
+	"item_id": "91f26566-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "91d4250c-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Use cookie security attributes",
+		"2040": "0",
+		"2041": "3"
+	}
+}, {
+	"child_index": 1,
+	"item_id": "83c0dd40-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "83671535-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Smartcard token",
+		"2040": "0",
+		"2041": "1"
+	}
+}, {
+	"child_index": 2,
+	"item_id": "919af77d-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "90f0d8e0-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Use secure methods to generate random numbers",
+		"2040": "0",
+		"2041": "2"
+	}
+}, {
+	"child_index": 5,
+	"item_id": "7c580289-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "7bca393a-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Enforce a lockout after failed log-in attempts",
+		"2040": "0",
+		"2041": "2"
+	}
+}, {
+	"child_index": 4,
+	"item_id": "7a54f982-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "79c8e3ef-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Check XML messages",
+		"2040": "0",
+		"2041": "3"
+	}
+}, {
+	"child_index": 6,
+	"item_id": "90b3a1c4-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "8b48980d-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Protect against interception and replay attacks",
+		"2040": "0",
+		"2041": "3"
+	}
+}, {
+	"child_index": 3,
+	"item_id": "8c38f5b5-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "8bf1e031-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Use SHA-512",
+		"2040": "0",
+		"2041": "1"
+	}
+}, {
+	"child_index": 1,
+	"item_id": "7571437f-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "7565db2a-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Provide a safe mode",
+		"2040": "0",
+		"2041": "2"
+	}
+}, {
+	"child_index": 2,
+	"item_id": "7b8bc3c8-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "7b4107ac-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Protect authenticity of communication sessions",
+		"2040": "0",
+		"2041": "2"
+	}
+}, {
+	"child_index": 3,
+	"item_id": "8403b94e-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "83671535-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "RFID token",
+		"2040": "0",
+		"2041": "1"
+	}
+}, {
+	"child_index": 4,
+	"item_id": "863b432b-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "7f5f8af5-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Separate single-sign on solutions on between zones",
+		"2040": "0",
+		"2041": "2"
+	}
+}, {
+	"child_index": 2,
+	"item_id": "87936fad-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "87650d22-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Isolate components",
+		"2040": "0",
+		"2041": "2"
+	}
+}, {
+	"child_index": 1,
+	"item_id": "7ba0dfef-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "7b8bc3c8-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Session unique identifiers",
+		"2040": "0",
+		"2041": "3"
+	}
+}, {
+	"child_index": 1,
+	"item_id": "817081f6-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "8159f079-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Single-factor authentication",
+		"2040": "0",
+		"2041": "2"
+	}
+}, {
+	"child_index": 2,
+	"item_id": "92b62482-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "927af1bf-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "PGP",
+		"2040": "0",
+		"2041": "1"
+	}
+}, {
+	"child_index": 4,
+	"item_id": "75c03944-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "7565db2a-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Limit the number of failures",
+		"2040": "0",
+		"2041": "3"
+	}
+}, {
+	"child_index": 1,
+	"item_id": "7c81d5ec-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "7c6fde1b-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Terminate network connection after session or timeout",
+		"2040": "0",
+		"2041": "2"
+	}
+}, {
+	"child_index": 5,
+	"item_id": "9356a217-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "91bc6aa0-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Provide trusted communications path between users and sensitive security function",
+		"2040": "0",
+		"2041": "3"
+	}
+}, {
+	"child_index": 2,
+	"item_id": "81d12b14-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "819f1f26-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Follow password guidelines",
+		"2040": "0",
+		"2041": "3"
+	}
+}, {
+	"child_index": 4,
+	"item_id": "7525bffa-c481-11e6-96c2-000c299c507b",
+	"item_type": 1007,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "744d27f8-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "SRN"
+	}
+}, {
+	"child_index": 3,
+	"item_id": "8c6692bf-c481-11e6-96c2-000c299c507b",
+	"item_type": 1007,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "8bbf855d-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "MAC truncation"
+	}
+}, {
+	"child_index": 2,
+	"item_id": "766a6cda-c481-11e6-96c2-000c299c507b",
+	"item_type": 1007,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "7552aca3-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Source code security"
+	}
+}, {
+	"child_index": 3,
+	"item_id": "7d5da88d-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "7d18174e-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Prevent split tunnelling with remote devices",
+		"2040": "0",
+		"2041": "3"
+	}
+}, {
+	"child_index": 3,
+	"item_id": "7feec9d3-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "7fb01dd2-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Permit user role selection at login",
+		"2040": "0",
+		"2041": "3"
+	}
+}, {
+	"child_index": 3,
+	"item_id": "7441ac93-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "741ad360-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Implement ESA compliant system",
+		"2040": "0",
+		"2041": "0"
+	}
+}, {
+	"child_index": 7,
+	"item_id": "7e5ec138-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "7ce8f815-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Separate different security domains in separate subnets",
+		"2040": "0",
+		"2041": "3"
+	}
+}, {
+	"child_index": 4,
+	"item_id": "895a3ea8-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "88bf6857-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Prevent display of default banner",
+		"2040": "0",
+		"2041": "3"
+	}
+}, {
+	"child_index": 2,
+	"item_id": "8f097c3e-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "8e95c1ad-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Alternative encryption algorithms",
+		"2040": "0",
+		"2041": "1"
+	}
+}, {
+	"child_index": 7,
+	"item_id": "87520ecf-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "866683ca-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Validate access to executable files",
+		"2040": "0",
+		"2041": "3"
+	}
+}, {
+	"child_index": 2,
+	"item_id": "8ef24fac-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "8ebdd995-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Use at least 128 bits keys (larger values allowed)",
+		"2040": "0",
+		"2041": "3"
+	}
+}, {
+	"child_index": 1,
+	"item_id": "8c07e686-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "8bf1e031-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Use SHA-224",
+		"2040": "0",
+		"2041": "1"
+	}
+}, {
+	"child_index": 5,
+	"item_id": "896cb486-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "88bf6857-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Ensure unobservability of operations",
+		"2040": "0",
+		"2041": "3"
+	}
+}, {
+	"child_index": 3,
+	"item_id": "845f27ce-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "841b4248-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Signature dynamics based authentication",
+		"2040": "0",
+		"2041": "1"
+	}
+}, {
+	"child_index": 5,
+	"item_id": "8521ce9e-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "8196aacc-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Prohibit the use of cached authenticators after time period",
+		"2040": "0",
+		"2041": "3"
+	}
+}, {
+	"child_index": 2,
+	"item_id": "8e75fcc0-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "8e0f6146-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "(Java) Should use bouncy castle library",
+		"2040": "0",
+		"2041": "3"
+	}
+}, {
+	"child_index": 3,
+	"item_id": "7aa23155-c481-11e6-96c2-000c299c507b",
+	"item_type": 1007,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "7915e047-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Integrity checks"
+	}
+}, {
+	"child_index": 3,
+	"item_id": "80fe6093-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "808cde69-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Display minimal information",
+		"2040": "0",
+		"2041": "2"
+	}
+}, {
+	"child_index": 8,
+	"item_id": "7eaafdf5-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "7ce8f815-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Disable sender feedback on protocol validation failures",
+		"2040": "0",
+		"2041": "3"
+	}
+}, {
+	"child_index": 2,
+	"item_id": "8bf1e031-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "8bbf855d-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Alternative HMAC algorithms",
+		"2040": "0",
+		"2041": "1"
+	}
+}, {
+	"child_index": 4,
+	"item_id": "73e78804-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "73bb8df9-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Compilation shall not have warnings",
+		"2040": "0",
+		"2041": "0"
+	}
+}, {
+	"child_index": 4,
+	"item_id": "8813325f-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "87a5fce6-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Avoid unnecessary module interactions",
+		"2040": "0",
+		"2041": "3"
+	}
+}, {
+	"child_index": 4,
+	"item_id": "85357ff9-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "8159f079-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Ensure strength of secrets",
+		"2040": "0",
+		"2041": "3"
+	}
+}, {
+	"child_index": 2,
+	"item_id": "7f9a0056-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "7f74d067-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Permit handover between roles",
+		"2040": "0",
+		"2041": "2"
+	}
+}, {
+	"child_index": 2,
+	"item_id": "741ad360-c481-11e6-96c2-000c299c507b",
+	"item_type": 1007,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "73b22ec2-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Regulations"
+	}
+}, {
+	"child_index": 4,
+	"item_id": "898b7417-c481-11e6-96c2-000c299c507b",
+	"item_type": 1007,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "87650d22-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Software configurations"
+	}
+}, {
+	"child_index": 4,
+	"item_id": "847260da-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "841b4248-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Retinal based authentication",
+		"2040": "0",
+		"2041": "1"
+	}
+}, {
+	"child_index": 1,
+	"item_id": "739fc6e1-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "7398f2f7-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Reporting information security events",
+		"2040": "0",
+		"2041": "0"
+	}
+}, {
+	"child_index": 2,
+	"item_id": "786441d3-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "7835f6b9-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Shutdown on major audit failure",
+		"2040": "0",
+		"2041": "3"
+	}
+}, {
+	"child_index": 1,
+	"item_id": "74254aaf-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "741ad360-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Regulation of cryptographic controls",
+		"2040": "0",
+		"2041": "0"
+	}
+}, {
+	"child_index": 6,
+	"item_id": "909b0d75-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "8fe953a7-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Validate the binding of the reviewer identity",
+		"2040": "0",
+		"2041": "3"
+	}
+}, {
+	"child_index": 4,
+	"item_id": "91635dfb-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "910266ab-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Securely access your keys",
+		"2040": "0",
+		"2041": "2"
+	}
+}, {
+	"child_index": 1,
+	"item_id": "7d2c1649-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "7d18174e-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Limit the number of external network connections",
+		"2040": "0",
+		"2041": "3"
+	}
+}, {
+	"child_index": 1,
+	"item_id": "910266ab-c481-11e6-96c2-000c299c507b",
+	"item_type": 1007,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "90f0d8e0-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Cryptographic key management"
+	}
+}, {
+	"child_index": 3,
+	"item_id": "78f4ea46-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "7893be5a-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Cryptographically protect the integrity of audit trails",
+		"2040": "0",
+		"2041": "3"
+	}
+}, {
+	"child_index": 1,
+	"item_id": "8159f079-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "8140e351-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "User authentication",
+		"2040": "0",
+		"2041": "2"
+	}
+}, {
+	"child_index": 2,
+	"item_id": "8a9885a2-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "8a61cea0-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "On-line transactions",
+		"2040": "0",
+		"2041": "2"
+	}
+}, {
+	"child_index": 1,
+	"item_id": "8d8338ac-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "8d6a57b8-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Use the RSA algorithm",
+		"2040": "0",
+		"2041": "1"
+	}
+}, {
+	"child_index": 2,
+	"item_id": "83247168-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "82f90044-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Password generator software token",
+		"2040": "0",
+		"2041": "1"
+	}
+}, {
+	"child_index": 2,
+	"item_id": "8dbae948-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "8d6a57b8-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Alternative PKI algorithms",
+		"2040": "0",
+		"2041": "1"
+	}
+}, {
+	"child_index": 2,
+	"item_id": "9021f93f-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "8fe953a7-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Ensure non-repudiation of receipt",
+		"2040": "0",
+		"2041": "2"
+	}
+}, {
+	"child_index": 1,
+	"item_id": "858aab07-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "857294f6-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Use a separate device for remote access to privileged accounts",
+		"2040": "0",
+		"2041": "2"
+	}
+}, {
+	"child_index": 2,
+	"item_id": "757eb582-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "7565db2a-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "System restore",
+		"2040": "0",
+		"2041": "2"
+	}
+}, {
+	"child_index": 4,
+	"item_id": "9338194c-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "91bc6aa0-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Employ secure name/address resolution services",
+		"2040": "0",
+		"2041": "3"
+	}
+}, {
+	"child_index": 2,
+	"item_id": "89117dd6-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "88bf6857-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Prevent display of management-related functionalities to non-privileged users",
+		"2040": "0",
+		"2041": "3"
+	}
+}, {
+	"child_index": 1,
+	"item_id": "88a52b47-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "88889906-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Deploy system/software in an isolated network",
+		"2040": "0",
+		"2041": "3"
+	}
+}, {
+	"child_index": 2,
+	"item_id": "803adb81-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "7f5f8af5-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "User deactivation/lock",
+		"2040": "0",
+		"2041": "2"
+	}
+}, {
+	"child_index": 2,
+	"item_id": "89b97590-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "898b7417-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Enforce secure values for security attributes",
+		"2040": "0",
+		"2041": "2"
+	}
+}, {
+	"child_index": 3,
+	"item_id": "82a1009a-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "819f1f26-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Store password securely",
+		"2040": "0",
+		"2041": "3"
+	}
+}, {
+	"child_index": 3,
+	"item_id": "7871a822-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "77ca7403-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Alert on unusual/unauthorised activities",
+		"2040": "0",
+		"2041": "2"
+	}
+}, {
+	"child_index": 1,
+	"item_id": "804cd34e-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "803adb81-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Automatically disable inactive accounts",
+		"2040": "0",
+		"2041": "3"
+	}
+}, {
+	"child_index": 6,
+	"item_id": "87650d22-c481-11e6-96c2-000c299c507b",
+	"item_type": 1007,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "7552aca3-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "System and software hardening"
+	}
+}, {
+	"child_index": 1,
+	"item_id": "755b2b58-c481-11e6-96c2-000c299c507b",
+	"item_type": 1007,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "7552aca3-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Reliability"
+	}
+}, {
+	"child_index": 2,
+	"item_id": "742e0ecc-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "741ad360-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Regulation on audit",
+		"2040": "0",
+		"2041": "0"
+	}
+}, {
+	"child_index": 2,
+	"item_id": "7398f2f7-c481-11e6-96c2-000c299c507b",
+	"item_type": 1007,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "738514e3-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Information security incident management"
+	}
+}, {
+	"child_index": 2,
+	"item_id": "821532c9-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "81eb0d63-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Password re-use",
+		"2040": "0",
+		"2041": "2"
+	}
+}, {
+	"child_index": 2,
+	"item_id": "8c229959-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "8bf1e031-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Use SHA-384",
+		"2040": "0",
+		"2041": "1"
+	}
+}, {
+	"child_index": 1,
+	"item_id": "78439a99-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "7835f6b9-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Permit configurable traffic volume thresholds",
+		"2040": "0",
+		"2041": "3"
+	}
+}, {
+	"child_index": 3,
+	"item_id": "8e95c1ad-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "8b8f2aaf-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Encryption",
+		"2040": "0",
+		"2041": "1"
+	}
+}, {
+	"child_index": 2,
+	"item_id": "8443b72c-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "841b4248-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Vascular pattern based authentication",
+		"2040": "0",
+		"2041": "1"
+	}
+}, {
+	"child_index": 1,
+	"item_id": "87a5fce6-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "87936fad-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Isolate security functions from nonsecurity functions",
+		"2040": "0",
+		"2041": "2"
+	}
+}, {
+	"child_index": 2,
+	"item_id": "80223230-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "7ffc1b93-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "User authentication before any action",
+		"2040": "0",
+		"2041": "0"
+	}
+}, {
+	"child_index": 1,
+	"item_id": "8e21939d-c481-11e6-96c2-000c299c507b",
+	"item_type": 1007,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "8e0f6146-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "AES-GCM key length"
+	}
+}, {
+	"child_index": 6,
+	"item_id": "76574b7a-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "755b2b58-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Provide alternative security mechanisms",
+		"2040": "0",
+		"2041": "2"
+	}
+}, {
+	"child_index": 2,
+	"item_id": "8c965937-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "8c6692bf-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Truncate the MAC length ONLY if needed",
+		"2040": "0",
+		"2041": "1"
+	}
+}, {
+	"child_index": 3,
+	"item_id": "744d27f8-c481-11e6-96c2-000c299c507b",
+	"item_type": 1007,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "737ba928-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Documentation Requirements"
+	}
+}, {
+	"child_index": 1,
+	"item_id": "773b4a7c-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "772a532f-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Produce session audits",
+		"2040": "0",
+		"2041": "3"
+	}
+}, {
+	"child_index": 1,
+	"item_id": "78a6fff4-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "7893be5a-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Write audit trails to write-once media",
+		"2040": "0",
+		"2041": "3"
+	}
+}, {
+	"child_index": 2,
+	"item_id": "85a3d981-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "857294f6-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Use a separate device for remote access to non-privileged accounts",
+		"2040": "0",
+		"2041": "2"
+	}
+}, {
+	"child_index": 8,
+	"item_id": "85b664b3-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "8159f079-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "N-factor authentication",
+		"2040": "0",
+		"2041": "2"
+	}
+}, {
+	"child_index": 2,
+	"item_id": "93caefad-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "9398a86e-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Store sensitive data in non-swappable memory",
+		"2040": "0",
+		"2041": "2"
+	}
+}, {
+	"child_index": 2,
+	"item_id": "7f49bcc8-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "7f20b796-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Deny not explicitly allowed flows between external systems",
+		"2040": "0",
+		"2041": "3"
+	}
+}, {
+	"child_index": 1,
+	"item_id": "867f500a-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "866683ca-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Use dual authorisation",
+		"2040": "0",
+		"2041": "3"
+	}
+}, {
+	"child_index": 4,
+	"item_id": "906673b3-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "8fe953a7-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Validate the binding of the information producer identity",
+		"2040": "0",
+		"2041": "3"
+	}
+}, {
+	"child_index": 4,
+	"item_id": "7ffc1b93-c481-11e6-96c2-000c299c507b",
+	"item_type": 1007,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "7f74d067-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Unauthenticated user rights"
+	}
+}, {
+	"child_index": 2,
+	"item_id": "8d4f8837-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "8caaebe5-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Use GMAC in case of Authenticated Encryption",
+		"2040": "0",
+		"2041": "1"
+	}
+}, {
+	"child_index": 1,
+	"item_id": "7b4107ac-c481-11e6-96c2-000c299c507b",
+	"item_type": 1007,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "7b1ad488-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Session establishment"
+	}
+}, {
+	"child_index": 4,
+	"item_id": "8c520a36-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "8bf1e031-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Use RIPEMD-160",
+		"2040": "0",
+		"2041": "1"
+	}
+}, {
+	"child_index": 3,
+	"item_id": "8f61fb45-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "8f261b91-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Minimum TLS version",
+		"2040": "0",
+		"2041": "3"
+	}
+}, {
+	"child_index": 7,
+	"item_id": "7a99f357-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "79c8e3ef-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Use cryptographic controls to validate data integrity",
+		"2040": "0",
+		"2041": "3"
+	}
+}, {
+	"child_index": 1,
+	"item_id": "7b58c0e9-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "7b4a64d2-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Limit concurrent sessions per user",
+		"2040": "0",
+		"2041": "3"
+	}
+}, {
+	"child_index": 3,
+	"item_id": "77862352-c481-11e6-96c2-000c299c507b",
+	"item_type": 1007,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "770d5b27-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Audit record information"
+	}
+}, {
+	"child_index": 1,
+	"item_id": "8a0697ec-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "89f2f90a-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Allocate minimum resources",
+		"2040": "0",
+		"2041": "2"
+	}
+}, {
+	"child_index": 1,
+	"item_id": "88d2e84c-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "88bf6857-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Explicitly indicate when collaborative computing devices are in usage",
+		"2040": "0",
+		"2041": "3"
+	}
+}, {
+	"child_index": 5,
+	"item_id": "8aeef789-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "8a61cea0-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Prevent unauthorised transfer via shared resources",
+		"2040": "0",
+		"2041": "2"
+	}
+}, {
+	"child_index": 1,
+	"item_id": "76764341-c481-11e6-96c2-000c299c507b",
+	"item_type": 1007,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "766a6cda-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Code execution and installation"
+	}
+}, {
+	"child_index": 2,
+	"item_id": "82f90044-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "82b2259e-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Disconnected synchronous dynamic password token",
+		"2040": "0",
+		"2041": "1"
+	}
+}, {
+	"child_index": 1,
+	"item_id": "899a7ff5-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "898b7417-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Enforce secure default values for security functions",
+		"2040": "0",
+		"2041": "2"
+	}
+}, {
+	"child_index": 3,
+	"item_id": "91bc6aa0-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "8a4cec56-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Device-to-device identification, authentication",
+		"2040": "0",
+		"2041": "2"
+	}
+}, {
+	"child_index": 3,
+	"item_id": "770d5b27-c481-11e6-96c2-000c299c507b",
+	"item_type": 1007,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "7552aca3-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Monitoring"
+	}
+}, {
+	"child_index": 1,
+	"item_id": "7f74d067-c481-11e6-96c2-000c299c507b",
+	"item_type": 1007,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "7f5f8af5-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Roles management"
+	}
+}, {
+	"child_index": 1,
+	"item_id": "7530fae3-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "7525bffa-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Provide checksum",
+		"2040": "0",
+		"2041": "0"
+	}
+}, {
+	"child_index": 9,
+	"item_id": "7da393e8-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "7d18174e-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Enforce information flow control policies between parts of a system",
+		"2040": "0",
+		"2041": "3"
+	}
+}, {
+	"child_index": 2,
+	"item_id": "76e55e63-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "766a6cda-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Source code protection",
+		"2040": "0",
+		"2041": "2"
+	}
+}, {
+	"child_index": 1,
+	"item_id": "7c2f3ccc-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "7c23a274-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Conceal information previously visible after session lock",
+		"2040": "0",
+		"2041": "1"
+	}
+}, {
+	"child_index": 1,
+	"item_id": "8ebdd995-c481-11e6-96c2-000c299c507b",
+	"item_type": 1007,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "8eaaca49-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "AES keys length"
+	}
+}, {
+	"child_index": 3,
+	"item_id": "7ca592da-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "7c6fde1b-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Provide user-initiated logout",
+		"2040": "0",
+		"2041": "2"
+	}
+}, {
+	"child_index": 7,
+	"item_id": "857294f6-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "8159f079-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Use a separate device for remote access",
+		"2040": "0",
+		"2041": "2"
+	}
+}, {
+	"child_index": 1,
+	"item_id": "946c5b33-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "945580ad-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Protect residual information",
+		"2040": "0",
+		"2041": "3"
+	}
+}, {
+	"child_index": 2,
+	"item_id": "948755a6-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "945580ad-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Protect against data mining and harvesting",
+		"2040": "0",
+		"2041": "3"
+	}
+}, {
+	"child_index": 7,
+	"item_id": "8a4cec56-c481-11e6-96c2-000c299c507b",
+	"item_type": 1007,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "7552aca3-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Communication protection"
+	}
+}, {
+	"child_index": 4,
+	"item_id": "925c8862-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "91d4250c-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Use different cookies for anonymous and authenticated pages",
+		"2040": "0",
+		"2041": "3"
+	}
+}, {
+	"child_index": 5,
+	"item_id": "88263b89-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "87a5fce6-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Implement functions as cohesive modules",
+		"2040": "0",
+		"2041": "3"
+	}
+}, {
+	"child_index": 2,
+	"item_id": "80c78c98-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "809d26c9-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Display last successful session",
+		"2040": "0",
+		"2041": "3"
+	}
+}, {
+	"child_index": 2,
+	"item_id": "7c45696c-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "7c23a274-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Permit the use of a \"transparent\" screen lock",
+		"2040": "0",
+		"2041": "1"
+	}
+}, {
+	"child_index": 1,
+	"item_id": "93aff504-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "9398a86e-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Erase memory space dedicated to sensitive data",
+		"2040": "0",
+		"2041": "2"
+	}
+}, {
+	"child_index": 5,
+	"item_id": "7e2d235c-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "7ce8f815-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Permit to dynamically isolate/segregate system components",
+		"2040": "0",
+		"2041": "3"
+	}
+}, {
+	"child_index": 3,
+	"item_id": "8ab879d7-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "8a61cea0-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Protect integrity of information published through available system",
+		"2040": "0",
+		"2041": "2"
+	}
+}, {
+	"child_index": 2,
+	"item_id": "79c8e3ef-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "7915e047-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Input and output data validation",
+		"2040": "0",
+		"2041": "2"
+	}
+}, {
+	"child_index": 3,
+	"item_id": "88889906-c481-11e6-96c2-000c299c507b",
+	"item_type": 1003,
+	"item_version": 1,
+	"multipleFields": {},
+	"need": 3001,
+	"parent_id": "87936fad-c481-11e6-96c2-000c299c507b",
+	"singleFields": {
+		"2003": "Critical and sensitive system segregation",
+		"2040": "0",
+		"2041": "2"
+	}
+}]

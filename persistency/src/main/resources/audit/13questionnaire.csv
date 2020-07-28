@@ -1,0 +1,224 @@
+13|MEHARI_ManagementProcesses|||||||
+13A|Protection of Personal Information (PPI)|||||||
+13A01|Policy and instructions related to PPI|||||||
+13A01-01|Is there a set of legal provisions and regulations concerning the protection of personal information (PPI)?|2|||E2|18.1.4|15.1.2|
+13A01-02|Is this set updated annually?|2|||E2|18.1.4|15.1.2|
+13A01-03|Is there a policy and are there directives concerning PPI?|4|||E1|18.1.4|15.1.4|
+13A01-04|Has this policy been approved by the governing bodies?|2|||E2|18.1.4|15.1.4|
+13A01-05|Does the policy indicate that PPI must be taken into consideration in the development of projects related to information technology?|4|||E2|18.1.4||
+13A01-06|Do the PPI directives cover all legal obligations, including those related to collection, access, communication, use, preservation and destruction of such information?|4|3||E2|18.1.4||
+13A01-07|Has the adequacy of the directives with respect to all the relevant laws and regulations been verified by independent audit?|4|3||E2|||
+13A01-08|Has a  manager responsible for PPI been appointed?|4|||E2|||
+13A01-09|Is the PPI manager known to all members of staff?|2|||E2|||
+13A01-10|Does the PPI policy (or the management framework) clearly define the responsibilities of the various stakeholders: the PPI manager, Digital Information Security Manager, internal control, etc.? |4|||E1|||
+13A01-11|Is there a committee related to the governing bodies that is charged with developing PPI policy and with periodically studying any related problems?|4|||E2|||
+13A01-12|If such a committee exists, is it composed of the PPI manager and representatives from senior management, security, audit, IT, legal, document management, and users?|2|||E2|||
+13A01-13|Is the PPI policy revised regularly?|2|3||E2|||
+13A02|PPI Training and Awareness Program|||||||
+13A02-01|Is there a PPI awareness and training program?|2|||E1|18.1.4||
+13A02-02|Is this program approved by the PPI manager?|2|||E2|18.1.4||
+13A02-03|Is this program offered to the staff who process information covered by the legal provisions related to PPI?|2|||E2|18.1.4||
+13A02-04|Is this program tailored to the tasks performed?|4|||E2|18.1.4||
+13A02-05|"Does this program take into account PPI issues  relating to the use of IT and telecommunications systems?
+"|4|||E2|||
+13A02-06|Does this program include training or awareness of the consequences of not respecting the legal  provisions relating to PPI?|4|||E2|||
+13A02-07|Is the level of knowledge of members of staff concerning PPI periodically evaluated by survey or other mechanism?|4|3||E3|||
+13A02-08|Are members of staff periodically reminded of the existence of this program by poster, or other communication?  |2|||E2|||
+13A02-09|Is this program revised at least every five years?|2|3||R1|||
+13A02-10|Is the enforcement of this program subject to a periodic audit?|2|3||C1|||
+13A03|Applicability of the PPI policy|||||||
+13A03-01|Have the conditions necessary for implementing the PPI policy been analyzed?|2|||C1|||
+13A03-02|Have the corresponding resources (technical and human) been put in place?|4|3||E2|||
+13A03-03|Is the level of resource necessary for the application of PPI audited regularly?|1|3||E2|||
+13A04|Monitoring the implementation of the PPI policy|||||||
+13A04-01|Is the implementation of the PPI policy audited regularly?|4|3||C1|18.1.4||
+13A04-02|Are sanctions defined in case of nonconformity or failure to apply the policy?|4|3||E2|||
+13A04-03|Have these sanctions been communicated to staff?|2|3||E2|||
+13B|"Communication of financial data
+For example, the Financial Security Law (loi Mer) in France and the Sarbanes Oxley Act in the United States"|||||||
+13B01|Policy and instructions related to Communication of financial data|||||||
+13B01-01|Is there a reference document stating the set of rules related to the collection, treatment and presentation of results leading to Communication of financial data? |4|||E3|||
+13B01-02|Is this reference document updated annually?|2|||E2|||
+13B01-03|Is there a policy and are there precise directives concerning Communication of financial data?|4|||E1|||
+13B01-04|Has this policy been approved by the governing bodies?|2|||E2|||
+13B01-05|Does the policy concerning Communication of financial data encompass all the legal requirements in that matter?|4|3||E2|||
+13B01-06|Has the upper management conducted an evaluation of the effectiveness of internal control regarding the procedures and controls ensuring that financial statements are produced in line with external regulations?|4|||E2|||
+13B01-07|"Has the quality evaluation document been evaluated and approved by financial auditors?
+This approval implies that the auditors must obtain all the necessary elements in time for them to control"|2|2||E2|||
+13B01-08|Has the upper management certified the efficiency of the procedures and controls implemented to ensure the veracity of financial statements?|2|||E2|||
+13B01-09|Is there an audit commission charged with choosing external auditors, fixing their remuneration levels and supervising their activities?|4|||E2|||
+13B01-10|"Are the members of the audit commission totally independent?
+i.e. they do not exercise any operational authority within the company, are not affiliated to any person exercising authority within the company and receive no remuneration apart from that related to their function on the audit commission"|2|2||E3|||
+13B01-11|"Does the application of this frame of reference enable all information published to be traced back?
+This includes the capacity to trace back the chain of treatments so as to identify the original  data (references to the facts, accounting data entries, ... ) and the decisions related to the origin of the information"|2|2||C1|||
+13B01-12|Has a  manager responsible for Communication of financial data been appointed?|4|||E2|||
+13B01-13|Does the policy concerning Communication of financial data (or its management framework) clearly establish the responsibilities of each of the contributors?|4|||E1|||
+13B01-14|Is there a committee related to the governing bodies that is charged with developing the Communication of financial data policy and with periodically studying any related problems?|4|||E2|||
+13B01-15|Is the Communication of financial data policy revised regularly?|2|3||E2|||
+13B02|Communication of financial data training and awareness program|||||||
+13B02-01|Is there a Communication of financial data awareness and training program?|2|||E1|||
+13B02-02|Is this program approved by the manager responsible or in charge of the Communication of financial data?|2|||E2|||
+13B02-03|Is this program available to the staff who process information covered by the legal provisions related to Communication of financial data?|2|||E2|||
+13B02-04|Is this program tailored to the tasks performed?|4|||E2|||
+13B02-05|Does this program take into account Communication of financial data issues  relating to the use of IT and telecommunications systems?|4|||E2|||
+13B02-06|Does this program include training or awareness of the consequences of not respecting the legal  provisions relating to Communication of financial data?|4|||E2|||
+13B02-07|Is the level of knowledge of members of staff concerning the Communication of financial data periodically evaluated by survey or other mechanism?|4|3||E3|||
+13B02-09|Is this program revised at least every five years?|2|3||R1|||
+13B02-10|Is the enforcement of this program subject to a periodic audit?|2|3||C1|||
+13B03|Applicability of the Communication of financial data policy|||||||
+13B03-01|Have the conditions necessary for implementing the Communication of financial data policy been analyzed?|2|||C1|||
+13B03-02|Have the corresponding resources (technical and human) been put in place?|4|3||E2|||
+13B03-03|Is the level of resource necessary for the application of Communication of financial data audited regularly?|1|3||E2|||
+13B04|Monitoring the implementation of the Communication of financial data policy|||||||
+13B04-01|Is the implementation of the Communication of financial data policy audited regularly?|4|3||C1|||
+13B04-02|Are sanctions defined in case of nonconformity or failure to apply the policy?|4|3||E2|||
+13B04-03|Have these sanctions been communicated to staff?|2|3||E2|||
+13C|Respect of regulations concerning the verification of computerized accounting (VCA)|||||||
+13C01|Preservation of accounting data and treatments |||||||
+13C01-01|"Is there a list of the types of recordings to preserve and of the procedures and protections to apply until their end of life?
+This list should consider media like : paper, microfiches, files and their protection during the requested retention period."|4|1||E2|||
+13C01-02|"Are the basic accounting data preserved in compliance with the VCA regulations?
+The elementary data are individual, not yet aggregated, data considered since their origin, for example: historic files of movements (orders, bills, stocks...), written evidences, statements, permanent data, operations of files' updates..."|4|||E2|||
+13C01-03|Are files which contain long term or reference information (accounting schemas, client files, suppliers, tariffs, products) kept in compliance with the VCA?|4|||E2|||
+13C01-04|Are operational procedures kept in compliance with VCA regulations?|4|||E2|||
+13C01-05|Are operational systems which have a direct or indirect link with the accounting system kept in compliance with VCA regulations?|4|||E2|||
+13C01-06|Are all accounting applications and applications which feed the accounting system, via intermediate or interface files, kept?|4|||E2|||
+13C01-07|Are analytical or budgetary applications used to determine expenses and incomes kept?|4|||E3|||
+13C01-08|"Are constraints related to the migration of systems and applications respected? 
+In the case of migrations, the company must be able to supply either copies of the history of each data file or the tools and processes used for converting existing data files towards the new system. It is not therefore necessary to retain a working version of the old system."|4|||C1|||
+13C02|Documentation of accounting data, procedures and treatments|||||||
+13C02-01|Is an inventory of applications and documentation likely to be checked as parts of a VCA audit kept up-to-date?|4|||E2|||
+13C02-02|"Is a complete documentation maintained which lists all IT accounting systems required?
+The documentation must contain evidence elements such as: an analysis of the information systems organization, an inventory and description of hardware used, the overall architectural concept, functional specifications, computerized applications and treatments (description of processing chains, of data and transactions, of source code used), maintenance, configuration, user documentation, operation documentation, internal control procedures, archiving plans."|4|||E2|||
+13C02-03|Is this documentation preserved as required by the regulation (either on paper or electronically)?|1|||E2|||
+13C02-04|Is this documentation updated using a precise system of follow up of documents version numbers?|4|||E2|||
+13C02-05|Is the source code of programs related to VCA accessible? |4|||E2|||
+13C02-06|Are all documents, data and transactions, subject to legal control, preserved and accessible in the host country itself?|1|||E2|||
+13C02-07|Is the retention plan for data and information, including documentation, compliant with the rules in force (duration and nature of support media)?|1|||E2|||
+13C02-08|"Do IT contracts with third parties contain a specific legal clause taking into account VCA regulations such as the availability of source code, documentation and technical assistance in the case of a VCA audit?
+Such third parties include outsourcing, software editors, suppliers, etc."|1|||E2|||
+13C02-09|Does the documentation, issued from application developments and updates, comply to VCA regulation (for all applications within the scope of VCA regulations)?|1|||E2|||
+13C02-10|In the case of company acquisitions is there a clause which guarantees the respect of obligations related to VCA?|1|||E2|||
+13C02-11|Is there a control procedure  related to VCA elements covering backup plan, operations technical documents, data, processing, version of the saved elements, etc. ?|1|||C1|||
+13C03|Verification of computerized accounting data training and awareness program|||||||
+13C03-01|Is there a VCA awareness and training program?|2|||E1|||
+13C03-02|Is this program approved by the VCA manager?|2|||E2|||
+13C03-03|Is this program offered to the staff who process information covered by the legal provisions related to VCA?|2|||E2|||
+13C03-04|Is this program tailored to the tasks performed?|4|||E2|||
+13C03-05|Does this program take into account VCA issues  relating to the use of IT and telecommunications systems?|4|||E2|||
+13C03-06|Does this program include training or awareness of the consequences of not respecting the legal  provisions relating to VCA?|4|||E2|||
+13C03-07|Is the level of knowledge of members of staff concerning VCA periodically evaluated by survey or other mechanism?|4|3||E3|||
+13C03-09|Is this program revised at least every five years?|2|3||R1|||
+13C03-10|Is the enforcement of this program subject to a periodic audit?|2|3||C1|||
+13C04|Applicability of the VCA policy|||||||
+13C04-01|Have the conditions necessary for implementing the VCA policy been analyzed?|2|||C1|||
+13C04-02|Have the corresponding resources (technical and human) been put in place?|4|3||E2|||
+13C04-03|Is the level of resource necessary for the application of VCA audited regularly?|1|3||E2|||
+13C05|Monitoring the implementation of the VCA policy|||||||
+13C05-01|Is the implementation of the VCA policy audited regularly?|4|3||C1|||
+13C05-02|Are sanctions defined in case of nonconformity or failure to apply the policy?|4|3||E2|||
+13C05-03|Have these sanctions been communicated to staff?|2|3||E2|||
+13D|Protection of intellectual property rights (IPR)|||||||
+13D01|Policy and instructions relative to the Protection of intellectual property rights|||||||
+13D01-01|Is there a collection of all applicable legal and regulatory rules and measures regarding the protection of intellectual property rights? |2|||E2|18.1.2||
+13D01-02|Is this collection revised every year?|2|||E2|18.1.2||
+13D01-03|Is there a policy and are there precise directives concerning intellectual property rights?|4|||E1|18.1.2||
+13D01-04|Are these directives explicitly forbidding the use of software without a proper license and limitation of copies of software, commercial recordings (video, audio) and documents ?|2|2||E2|18.1.2||
+13D01-05|Has this policy been approved by the governing bodies?|2|||E2|18.1.2||
+13D01-06|Does the policy concerning the protection of intellectual property rights encompass all the legal requirements in that matter?|4|3||E2|18.1.2||
+13D01-07|Has the adequacy of the directives with respect to all the relevant laws and regulations been verified by independent audit?|4|3||E2|18.1.2||
+13D01-08|Has a  manager responsible for IPR been appointed?|4|||E2|18.1.2||
+13D01-09|Is the IPR responsible manager known to all members of staff?|2|||E2|18.1.2||
+13D01-10|Does the IPR policy (or the management framework) clearly define the responsibilities of the various stakeholders?|4|||E1|18.1.2||
+13D01-11|Is there a committee related to the governing bodies that is charged with developing IPR directions and with periodically studying any related problems?|4|||E2|||
+13D01-12|Is the IPR policy revised regularly?|2|3||E2|||
+13D02|Intellectual property rights training and awareness program|||||||
+13D02-01|Is there an IPR awareness and training program?|2|||E1|18.1.2||
+13D02-02|Is this program approved by the IPR manager or respondent?|2|||E2|18.1.2||
+13D02-03|Is this program offered to the staff concerned?|2|||E2|18.1.2||
+13D02-04|Does this program take into account IPR issues  relating to the use of IT and telecommunications systems?|4|||E2|18.1.2||
+13D02-05|Does this program include training or awareness of the consequences of not respecting the legal  provisions relating to IPR?|4|||E2|||
+13D02-06|Is the level of knowledge of members of staff concerning IPR periodically evaluated by survey or other mechanism?|4|3||E3|||
+13D02-07|Is this program revised at least every five years?|2|3||R1|||
+13D02-08|Is the enforcement of this program subject to a periodic audit?|2|3||C1|||
+13D03|Applicability of the intellectual property rights policy|||||||
+13D03-01|Have the conditions necessary for implementing the IPR policy been analyzed?|2|||C1|||
+13D03-02|Have the corresponding resources (technical and human) been put in place?|4|3||E2|||
+13D03-03|Is the level of resource necessary for the application of IPR audited regularly?|1|3||E2|||
+13D04|Monitoring the implementation of the  intellectual property rights policy|||||||
+13D04-01|Is the implementation of the IPR policy audited regularly?|4|3||C1|18.1.2||
+13D04-02|Are sanctions defined in case of nonconformity or failure to apply the policy?|4|3||E2|||
+13D04-03|Have these sanctions been communicated to staff?|2|3||E2|||
+13E|Protection of computerized systems |||||||
+13E01|Policy and instructions relative to the Protection of computerized systems|||||||
+13E01-01|Is there a collection of all applicable legal and regulatory rules and measures regarding the protection of computerized systems?|2|||E2|||
+13E01-02|Is this collection revised every year?|2|||E2|||
+13E01-03|Is there a policy and are there precise directives concerning the protection of computerized systems?|4|||E1|||
+13E01-04|Has this policy been approved by the governing bodies?|2|||E2|||
+13E01-05|Does the policy concerning the protection of computerized systems encompass all the legal requirements in that matter?|4|3||E2|||
+13E01-06|Has the adequacy of the directives with respect to all the relevant laws and regulations been verified by independent audit?|4|3||E2|||
+13E01-07|Has a  manager responsible for the protection of computerized systems been appointed?|4|||E2|||
+13E01-08|Is the protection of computerized systems responsible manager known to all members of staff?|2|||E2|||
+13E01-09|Does the protection of computerized systems policy (or the management framework) clearly define the responsibilities of the various stakeholders?|4|||E1|||
+13E01-10|Is there a committee related to the governing bodies that is charged with developing directions for the protection of computerized systems and with periodically studying any related problems?|4|||E2|||
+13E01-11|Is the protection of computerized systems policy revised regularly?|2|3||E2|||
+13E02|Protection of computerized systems training and awareness program|||||||
+13E02-01|Is there a protection of computerized systems awareness and training program?|2|||E1|||
+13E02-02|Is this program approved by the protection of computerized systems manager or respondent?|2|||E2|||
+13E02-03|Is this program offered to the staff concerned?|2|||E2|||
+13E02-04|Does this program include training or awareness of the consequences of not respecting the legal  provisions relating to the protection of computerized systems?|4|||E2|||
+13E02-05|Is the level of knowledge of members of staff concerning the protection of computerized systems periodically evaluated by survey or other mechanism?|4|3||E3|||
+13E02-06|Is this program revised at least every five years?|2|3||R1|||
+13E02-07|Is the enforcement of this program subject to a periodic audit?|2|3||C1|||
+13E03|Applicability of the  protection of computerized systems policy|||||||
+13E03-01|Have the conditions necessary for implementing the protection of computerized systems policy been analyzed?|2|||C1|||
+13E03-02|Have the corresponding resources (technical and human) been put in place?|4|3||E2|||
+13E03-03|Is the level of resource necessary for the application of the protection of computerized systems audited regularly?|1|3||E2|||
+13E04|Monitoring the implementation of the protection of computerized systems policy|||||||
+13E04-01|Is the implementation of the protection of computerized systems policy audited regularly?|4|3||C1|||
+13E04-02|Are sanctions defined in case of nonconformity or failure to apply the policy?|4|3||E2|||
+13E04-03|Have these sanctions been communicated to staff?|2|3||E2|||
+13F|Human safety and protection of the environment |||||||
+13F01|Policy and instructions relative to Human safety and protection of the environment |||||||
+13F01-01|Is there a collection of all applicable legal and regulatory rules and measures relative to the human safety and protection of the environment?|2|||E2|||
+13F01-02|Is this collection revised every year?|2|||E2|||
+13F01-03|Is there a policy and are there precise directives relative to the human safety and protection of the environment?|4|||E1|||
+13F01-05|Has this policy been approved by the governing bodies?|2|||E2|||
+13F01-06|Does the policy relative to the human safety and protection of the environment encompass all the legal requirements in that matter? |4|3||E2|||
+13F01-07|Has the adequacy of the directives with respect to all the relevant laws and regulations been verified by independent audit?|4|3||E2|||
+13F01-08|Has a  manager responsible for human safety and protection of the environment been appointed?|4|||E2|||
+13F01-09|Is the responsible manager relative to the human safety and protection of the environment known to all members of staff? |2|||E2|||
+13F01-10|Does the policy (or the management framework) relative to human safety and protection of the environment clearly define the responsibilities of the various stakeholders?|4|||E1|||
+13F01-11|Is there a committee related to the governing bodies that is charged with developing directions for relative to the human safety and protection of the environment and with periodically studying any related problems? |4|||E2|||
+13F01-12|Is the policy relative to the human safety and protection of the environment revised regularly?|2|3||E2|||
+13F02|Human safety and protection of the environment training and awareness program|||||||
+13F02-01|Is there a Human safety and protection of the environment awareness and training program? |2|||E1|||
+13F02-02|Is this program approved by the Human safety and protection of the environment manager or respondent? |2|||E2|||
+13F02-03|Is this program offered to the staff concerned?|2|||E2|||
+13F02-04|Does this program include training or awareness of the consequences of not respecting the legal  provisions relating to the Human safety and protection of the environment?|4|||E2|||
+13F02-05|Is the level of knowledge of members of staff concerning the Human safety and protection of the environment periodically evaluated by survey or other mechanism? |4|3||E3|||
+13F02-06|Is this program revised at least every five years?|2|3||R1|||
+13F02-07|Is the enforcement of this program subject to a periodic audit?|2|3||C1|||
+13F03|Applicability of the Human safety and protection of the environment policy|||||||
+13F03-01|Have the conditions necessary for implementing the Human safety and protection of the environment policy been analyzed?|2|||C1|||
+13F03-02|Have the corresponding resources (technical and human) been put in place?|4|3||E2|||
+13F03-03|Is the level of resource necessary for the application of the Human safety and protection of the environment audited regularly?|1|3||E2|||
+13F04|Monitoring the implementation of the Human safety and protection of the environment policy|||||||
+13F04-01|Is the implementation of the Human safety and protection of the environment policy audited regularly?|4|3||C1|||
+13F04-02|Are sanctions defined in case of nonconformity or failure to apply the policy?|4|3||E2|||
+13F04-03|Have these sanctions been communicated to staff?|2|3||E2|||
+13G|Rules related to the use of encryption |||||||
+13G01|Policy and instructions relative to the use of encryption |||||||
+13G01-01|Is there a collection of all applicable legal and regulatory rules and measures regarding the use of encryption?|2|||E2|18.1.5||
+13G01-02|Is this collection revised every year?|2|||E2|18.1.5||
+13G01-03|Is there a policy and are there precise directives concerning the use of encryption?|4|||E1|18.1.5||
+13G01-04|Has this policy been approved by the governing bodies?|2|||E2|18.1.5||
+13G01-05|Does the policy concerning the use of encryption  encompass all the legal requirements in that matter?|4|3||E2|18.1.5||
+13G01-06|Has the adequacy of the directives with respect to all the relevant laws and regulations been verified by independent audit?|4|3||E2|18.1.5||
+13G02|Use of encryption training and awareness program|||||||
+13G02-01|Is there a use of encryption awareness and training program?|2|||E1|18.1.5||
+13G02-02|Is this program offered to the staff concerned?|2|||E2|18.1.5||
+13G03|Monitoring the implementation of the use of encryption policy|||||||
+13G03-01|Is the implementation of the use of encryption policy audited regularly?|4|3||C1|18.1.5||
+13G03-02|Are sanctions defined in case of nonconformity or failure to apply the policy?|4|3||E2|||
+13G03-03|Have these sanctions been communicated to staff?|2|3||E2|||

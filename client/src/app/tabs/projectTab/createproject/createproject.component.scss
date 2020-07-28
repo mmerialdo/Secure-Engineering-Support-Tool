@@ -1,0 +1,138 @@
+/* --------------------------------------------------------------------------------------------------------------------
+// Copyright file="createproject.component.css"
+//  © Copyright European Space Agency, 2018-2020
+//
+//  Author: Software developed by RHEA System S.A.
+//
+//  This file is subject to the terms and conditions defined in file 'LICENSE.txt', which is part of this source code package.
+//  No part of the package, including this file, may be copied, modified, propagated, or distributed
+//  except according to the terms contained in the file ‘LICENSE.txt’.
+// --------------------------------------------------------------------------------------------------------------------
+*/
+
+#projectComponentContainer {
+  width: 100%;
+  margin-top: 1%;
+}
+
+#projectMenuContainer {
+  width: 11%;
+  float: left;
+  margin-left: 0.3%;
+}
+
+#projectFormContainer {
+  width: 88%;
+  float: left;
+}
+
+.checkbox label:after, .radio label:after {
+  content: '';
+  display: table;
+  clear: both;
+}
+
+.checkbox .cr, .radio .cr {
+  position: relative;
+  display: inline-block;
+  border: 1px solid #a9a9a9;
+  border-radius: .25em;
+  width: 1.3em;
+  height: 1.3em;
+  float: left;
+  margin-right: .5em;
+}
+
+.radio .cr {
+  border-radius: 50%;
+}
+
+.checkbox .cr .cr-icon, .radio .cr .cr-icon {
+  position: absolute;
+  font-size: .8em;
+  line-height: 0;
+  top: 50%;
+  left: 20%;
+}
+
+.radio .cr .cr-icon {
+  margin-left: 0.04em;
+}
+
+.checkbox label input[type="checkbox"], .radio label input[type="radio"] {
+  display: none;
+}
+
+.checkbox label input[type="checkbox"]+.cr>.cr-icon, .radio label input[type="radio"]+.cr>.cr-icon {
+  transform: scale(3) rotateZ(-20deg);
+  opacity: 0;
+  transition: all .3s ease-in;
+}
+
+.checkbox label input[type="checkbox"]:checked+.cr>.cr-icon, .radio label input[type="radio"]:checked+.cr>.cr-icon {
+  transform: scale(1) rotateZ(0deg);
+  opacity: 1;
+}
+
+.checkbox label input[type="checkbox"]:disabled+.cr, .radio label input[type="radio"]:disabled+.cr {
+  opacity: .5;
+}
+
+hr {
+  display: block;
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+  margin-left: auto;
+  margin-right: auto;
+  border-style: inset;
+  border-width: 1px;
+}
+
+.ui-listbox-filter-container {
+  width: 100% !important;
+}
+
+.loader {
+  border: 16px solid #f3f3f3;
+  /* Light grey */
+  border-top: 16px solid #067606;
+  /* Green */
+  border-radius: 50%;
+  width: 120px;
+  height: 120px;
+  animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+textarea {
+  resize: none;
+}
+
+:host {
+  ::ng-deep {
+    .createProjectSpinner {
+
+      .ui-dialog-content.ui-widget-content {
+        overflow: hidden !important;
+        background-color: transparent !important;
+        border: transparent !important;
+        box-shadow: none !important;
+      }
+
+      .ui-shadow {
+        box-shadow: none;
+      }
+    }
+  }
+}
+
+
+

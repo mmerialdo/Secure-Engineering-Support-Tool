@@ -1,0 +1,272 @@
+9|MEHARI_ApplicationSecurity|||||||
+09A|Application access control |||||||
+09A01|Management of application data access profiles |||||||
+09A01-01|Has a management policy for access rights to data and information been established, built from an analysis of the security requirements based on the business stakes?|2|||E1|9.1.1|11.1.1|
+09A01-02|"Is access to applications and associated data defined in terms of job profiles which regroup roles or functions within the organization (a profile defines access rights available  to holders of the profile)?
+Note: in certain circumstances the notion of ""profile"" may be replaced by the notion of ""group""."|4|2||E1|9.2.3; 9.2.5; 9.4.1|11.2.2; 11.6.1|
+09A01-03|Is it possible to adjust the access rights (that establish rights attributed to a given profile), variable parameters based on the connection context such as the origin of the request or network paths used, or depending on protection means used (protocol, encryption, etc) and on the classification of the resources accessed?|4|||E2|||
+09A01-04|Do the access profiles also allow definition of working time limits and periods in the working calendar (daily hours, weekends, holidays etc.)?|2|||E3|9.4.2|11.5.6|
+09A01-05|Have these profiles and the access rights attributed to the different profiles been approved by the information owners and/or the Information Security Officer?|4|||E2|||
+09A01-06|"Are the processes of definition and management of rights attributed to profiles under strict control?
+A strict control requires that the list of people allowed to change rights attributed to profiles be strictly limited and that the implementation of these rights (e.g. into tables) be strictly secure and that there exist a reinforced access control for any modification of these rights and that any modification be logged and audited."|4|2||R1|||
+09A01-07|Is it possible to review at any time the list of profiles and the rights attributed to each profile?|2|2||C1|||
+09A01-08|Is there a regular audit, at least once a year, of the totality of rights attributed to each profile and the profile management procedures?|4|2||C1|9.2.5|11.2.4|
+09A02|Management of access authorizations to application data (granting, delegation, revocation) |||||||
+09A02-01|Does the procedure of granting access authorization to applications require the formal authorization of line management  (at a sufficiently senior level)?|4|2||E1|9.4.1|11.6.1|
+09A02-02|Are authorizations granted to named individuals and only as a function of their profile?|2|||E1||11.6.1|
+09A02-03|"Is the procedure for granting (or modification or revocation) of access rights (directly or via a profile) strictly controlled?
+A strict control requires a formal recognition of the signature (electronic or otherwise) of the requester, that the implementation of the profile attributed to users in the form of tables is highly secure and that there be a reinforced access control over the modification of such records and that any modification of records be logged and audited."|4|2|3|E2|9.2.3|11.2.2|
+09A02-04|Is there a systematic process of updating the table of access rights at the time of departure of personnel (internal or external personnel)?|4|||E2|9.2.5|11.2.4|
+09A02-05|Is there a systematic process of updating the table of access rights at the time of change of function?|4|||E3|9.2.5|11.2.4|
+09A02-06|"Is there a strictly controlled process (see below) which allows rights to be delegated, in part or in whole, to a person of choice for a determined period (in case of absence)?
+In this case, the delegated rights must no longer be available to the person who has delegated them during this time. The latter however, must have the possibility of taking them back, by which process he or she effectively ends the delegation."|4|||E3|||
+09A02-07|Is it possible to control at any time, for all users, the rights, authorizations and privileges in force?|2|||C1|||
+09A02-08|Is there a regular audit, at least once a year, of the profiles and authorizations granted to all personnel and the procedures for management of attributed profiles?|1|2||C1|9.2.5|11.2.4|
+09A03|Authentication of the access requester|||||||
+09A03-01|Does the process of distribution or modification of the user credentials guarantee that only the holder of the identifier has access (initial communication is confidential, password change is under the exclusive control of the user, etc.)?  |2|1||E1| 9.4.3|11.5.3|
+09A03-02|"Does the process of creation or modification of a user credentials respect a set of rules which ensures its intrinsic validity?
+In the case of passwords: sufficient length (8 characters or more), obligatory mixture of types of characters, frequent change (less than once a month), impossibility of reusing an old password, non-trivial word test using a dictionary, banning of ""standard systems"", first names, anagrams of user name, dates etc.
+In the case of certificates or use made of cryptographic mechanisms for authentication: a generation process evaluated or publicly recognized, encryption keys of a sufficient length etc."|4|2||E2| 9.4.3|11.2.3; 11.5.3|
+09A03-03|"Does the presentation of his credentials by the user guarantee their inviolability?
+Typing a password will always be a weak point. The only processes whose observation does not divulge information consist either of introducing an object containing a secret (smart card), or using a code which changes at every moment (token card) or using a means of which contains some biometric characteristic."|4|2||E3| 9.4.3|11.5.3|
+09A03-04|"Is there a guarantee that the credentials, used for authentication, will remain inviolable and authentic while kept or presented by the user or by the user agent?
+Passwords must be stored encrypted and a preliminary access control must be made before usage. 
+In the case of authentication using cryptographic processing, the mechanism must provide solid guarantees validated by a reference organization."|2|2|3|E2| 9.4.3|11.5.3|
+09A03-05|"Is there a guarantee that the credentials, used for authentication, will remain inviolable and authentic while transmitted between the user and the target systems?
+Transmission of a password must be encrypted or use an algorithm which introduces a variable at each transmission. 
+In the case of authentication using cryptographic processing, the mechanism must provide solid guarantees validated by a reference organization."|2|2|3|E3| 9.4.3|11.5.3|
+09A03-06|In the case of multiple incorrect authentication attempts, is there a process which automatically invalidates the user identifier, even the user workstation itself, or a slowing of the authentication process (aimed at preventing connection from an automatic routine)?|4|2||E2| 9.4.3|11.5.3|
+09A03-07|Does the procedure for the replacement of lost or mislaid user authentication means (password, token card) allow for the instant deactivation of the user account?|2|2||E2| 9.4.3|11.5.3|
+09A03-08|Does the procedure for the replacement of lost or mislaid user authentication means (password, token card) allow for an effective control of the requester's identity?|2|2||E3| 9.4.3|11.5.3|
+09A03-09|"Are authentication parameters under strict control?
+A strict control requires that people able to change the definition rules of credentials, the credentials themselves, rules of surveillance of connection attempts etc., be strictly limited and that there exists a reinforced access control to effect these modifications, that these modifications be logged and audited and that a general audit be run at least once a year of all authentication parameters."|4|2||R1|||
+09A03-10|"Are the processes that guarantee authentication under strict control?
+A strict control requires that the software used has been validated and undergoes a regular test for integrity (seal) and that there be an audit at least once a year of authentication procedures and processes (including the processes which aim to detect violations attempts and the processes which respond to these violation attempts)."|4|3||C1|||
+09A04|Access filtering and management of associations |||||||
+09A04-01|Does any access to the system require the use of an identifier recognized by the system?|1|2||E1|9.4.1|11.5.2; 11.6.1|
+09A04-02|"Is there a direct or indirect correspondence between any identifier and a real physical person?
+In the case where an application calls another one or calls a system, it may be that the application does not transfer to the target system the identifier which originally made the request. However, the link between that call and the original user identifier must remain traceable after the fact."|4|2||E1|9.4.1|11.5.2; 11.6.1|
+09A04-03|Have all generic or by-default accounts and passwords been changed or deleted?|4|2||E2||11.5.2|
+09A04-04|"Is the acceptance of the account identified by the system systematically followed by authentication control?
+Systematic authentication requires that the process be implemented for all subsystems (remote processing monitor, database management system, batch processes, etc. ), for all application requests, for all access routes and for all ports, including ports reserved for remote maintenance."|2|2||E2||11.5.2|
+09A04-05|May the authentication process be repeated during an open session for transactions considered to be sensitive?|4|||E3|9.4.2|11.5.6|
+09A04-06|Is there an automatic invalidation of the user identifier in the absence of traffic after a defined delay, which requires user re-identification and re-authentication?|4|||E3|9.4.2|11.5.5|
+09A04-07|Are there application access controls which limit the view and access to very sensitive information?|4|||E3|9.4.1|11.6.1|
+09A04-08|Is there a systematic control of the profile and connection context of the requester and of their appropriateness for the access requested?|4|2||R1|||
+09A04-09|"Is the process of definition and management of access filtering rules under strict control?
+A strict control requires that the list of persons able to change the filtering security parameters be extremely limited, and that there be a reinforced access control in order to be able to effect such modification and that any modification be logged an audited."|4|2||C1|||
+09A04-10|"Are the processes that guarantee access filtering under strict control?
+A strict control requires that the software used has been validated and undergoes a regular test for integrity (seal) and that there be an audit at least once a year of access control procedures and processes (including the processes which aim to detect change attempts and the processes which respond to these change attempts)."|4|3||R2|||
+09A05|Authentication of the application for access to sensitive applications|||||||
+09A05-01|Is there a possibility to declare applications as sensitive and, as such, requiring an authentication of the application accessed?|4|1||E2|||
+09A05-02|Is there a mechanism of authentication of the application called before access to a sensitive application from the internal network?|4|1||E2|||
+09A05-03|"Does the authentication mechanism of the accessed sensitive applications provide a recognized ""strong"" level of security?
+Notably the usage of a simple password will always be a weakness. The only methods recognized as ""strong"", that is observable without divulging information, are those based on cryptographic algorithms."|4|2||E3|||
+09A05-04|"Do the security equipment that retain credentials (e.g. passwords, calling number, etc.) use mechanisms which guarantee their impregnability and authenticity?
+Passwords must be stored encrypted and a preliminary control of the user must be made before usage.
+In the case of authentication using cryptographic procedures, the mechanism must provide solid guarantees validated by a recognized organization."|4|3||E2|||
+09A05-05|"Does the transmission of credentials (e.g. passwords, calling address, etc.) between calling user equipment and authentication systems use mechanisms which guarantee their impregnability and authenticity?
+Transmission of a password must be encrypted or use an algorithm which introduces a variable at each transmission. 
+In the case of authentication using cryptographic procedures, the mechanism must provide solid guarantees validated by a recognized organization."|4|3||E3|||
+09A05-06|Does the revoked keys management procedure guarantee that the control systems take into consideration in real time any revocation of keys?|4|2||E2|||
+09A05-07|Does the revoked keys management procedure guarantee that the control systems systematically test that the keys used have not been revoked?|4|2||E3|||
+09A05-08|"Are the processes that guarantee the authentication of the accessed entities under strict control?
+A strict control requires that the software used has been validated and undergoes a regular test for integrity (seal) and that there is an audit at least once a year of the authentication procedures and processes."|4|3||R1|||
+09B|Control of data integrity |||||||
+09B01|Sealing of sensitive data |||||||
+09B01-01|Have integrity sensitive files been identified which must be protected by sealing solutions and have such solutions been implemented at the application level?|4|||E2|||
+09B01-02|Are the seals controlled automatically by the corresponding applications?|4|2||E3|||
+09B01-03|"Does the sealing solution offer valid and solid guarantees and has it been approved by the Information Security Officer?
+The sufficient length of the key is one of the parameters to take into consideration. The recommendation of an official organization can be a confidence factor."|4|2||E3|||
+09B01-04|Do the procedures and mechanisms for storage, distribution and exchange of keys and more generally the management of keys offer a sufficient level of confidence and have they been approved by the Information Security Officer?|4|3||R1|||
+09B01-05|"Are the sealing mechanisms strictly protected against violation or change?
+In the case of hardware sealing and appliances, they should be physical protected against access to the sealing mechanisms. If a software solution is used, it must itself contain an integrity control."|4|3|3|R2|||
+09B01-06|Is shutdown or by-pass of the sealing solution immediately detected and signaled to a team available 24 hrs a day and capable of triggering an immediate reaction?|4|2||R2|||
+09B01-07|Is there a procedure detailing the actions to carry out in the case of error or alert?|3||2|R2|||
+09B01-08|Are sealing mechanisms, their parameters and associated procedures subject to regular audit?|4|3||C1|||
+09B02|Protection of integrity of exchanged data |||||||
+09B02-01|Have all data exchanges which must be protected by sealing solutions been defined and have such solutions been implemented at the application level?|4|||E2||12.2.3|
+09B02-02|Are the seals controlled automatically by the corresponding applications?|4|2||E3||12.2.3|
+09B02-03|"Does the sealing solution offer valid and solid guarantees and has it been approved by the Information Security Officer?
+The sufficient length of the key is one of the parameters to take into consideration (as a function of the algorithm). The recommendation of an official organization can be a confidence factor."|4|2||E2||12.2.3|
+09B02-04|Do the procedures and mechanisms for storage, distribution and exchange of keys and more generally the management of keys offer a sufficient level of confidence and have they been approved by the Information Security Officer?|4|3||R1|||
+09B02-05|"Are the sealing mechanisms strictly protected against violation or change?
+In the case of hardware sealing and appliances, they should be physical protected against access to the sealing mechanisms. If a software solution is used, it must itself contain an integrity control."|4|3|3|R2|||
+09B02-06|Is shutdown or by-pass of the sealing solution immediately detected and signaled to a team available 24 hrs a day or by direct call and capable of triggering an immediate reaction?|4|2||R2|||
+09B02-07|Is there a procedure detailing the actions to carry out in the case of error or alert?|3||2|R2|||
+09B02-08|Are sealing mechanisms, their parameters and associated procedures subject to regular audit?|4|3||C1|||
+09B03|Control of data entry |||||||
+09B03-01|Are sensitive data strictly controlled by the person entering them (auto-control)?|2|||E1||12.2.1|
+09B03-02|Are sensitive data subject to data entry control by another person?|4|2||E1||12.2.1|
+09B03-03|Are sensitive data subject to means allowing to ascribe their entry or modification to their author?|4|||E3||12.2.1|
+09B03-04|Are there incentives for data entry without error (individual bonuses, departmental bonuses, penalties in the case of too many errors etc.)?  |2|||E2||12.2.1|
+09B03-05|Is there an overall control of series of data items entered (sum, range, min, max, etc.)?  |4|||E2||12.2.1|
+09B03-06|Is data entry subject to coherence checks incorporated into the data entry process?|4|||E2||12.2.1|
+09B03-07|Are these additional checks (range, coherence, etc.) strongly protected against any illicit alteration ?  |4|||R1|||
+09B03-08|Have the procedures to correct data entry errors been defined?|4|||R1||12.2.1|
+09B03-09|Is the checking process subject to regular audit?|2|3||C1|||
+09B04|Permanent checks (accuracy, etc) relating to data|||||||
+09B04-01|Has a review been carried out with users to determine suitable controls of the pertinence of data entered or modified (correction in relation to data ranges, ratios between data entered independently, coherence checks, evolution and comparison with statistics) and have the corresponding controls been implemented in applications?|4|||E1||12.2.1; 12.2.4|
+09B04-02|Have control parameters (values of data ranges, etc.) been stored in tables separate from the application and which may be easily checked?|4|||E2|||
+09B04-03|"Are the processes that guarantee these permanent controls under strict control themselves?
+A strict control requires that the software used has been validated and undergoes a regular test for integrity (seal) and that there is an audit at least once a year of the control procedures and processes."|4|3||R1|||
+09B04-04|"Are the parameters of permanent controls under strict control?
+A strict control requires that the list of people able to change control parameters be strictly limited and that there be a reinforced access control in order to be able to modify these parameters and that any modification of these parameters be logged and audited."|4|2||R1|||
+09B04-05|When these controls exist, are they the integrated into an operational process for alert and processing of errors?|4|||E2|||
+09B05|Continuous (plausibility, ..) checks on data processing |||||||
+09B05-01|Have the checks that should be made to verify consistency of the data after processing by the application been analyzed with the users (test variables, ratios, evolution and comparison before and after processing, etc.), and have the corresponding checks been implemented in the applications?|4|||E1||12.2.1; 12.2.4|
+09B05-02|Are the parameters for these checks recorded in tables separated from the application code and easily verifiable?|4|||E2|||
+09B05-03|"Are the processes insuring continuous checking of the data processing under strict control?
+Strict control requires that the corresponding software is validated and is subject to a regular integrity check (sealing)  and that there is an audit at least once a year of the control process and procedures (including procedures for detecting attempts at modification and for reacting to these attempts)."|4|3||R1|||
+09B05-04|"Are the check parameters under strict control?
+Strict control requires that the list of people authorized to change the control parameters is very limited, that strong access control is applied to all modifications, and that the modifications are logged and audited. "|4|2||R1|||
+09B05-05|Are the checks that exist integrated into an operational procedure that signals and handles any errors? |4|||E2|||
+09C|Control of data confidentiality |||||||
+09C01|"Encryption of data exchanges 
+Here we consider the encryption effected directly by the application (ISO layers 6-7, prior to or during transmission)."|||||||
+09C01-01|Have the messages which must be protected by encryption solutions been defined and such solutions been implemented at the application level?|4|||E1|10.1.1|12.3.1|
+09C01-02|"Does the encryption solution offer valid and solid guarantees and has it been approved by the Information Security Officer?
+The sufficient length of the key is one of among many parameters to take into consideration (as a function of the algorithm). The recommendation of an official organization can be a confidence factor."|4|2||E2|||
+09C01-03|Does the procedure and mechanisms of storage, distribution and exchange of keys and more generally the management of the keys offer solid guarantees which merit confidence and are they approved by the Information Security Officer?|4|3||E2|10.1.2|12.3.2|
+09C01-04|"Are the encryption mechanisms strictly protected against violation or change?
+In the case of hardware encryption and appliances, they should be physical protected against access to the encryption mechanisms. If a software solution is used, it must itself contain an integrity control."|4|3|3|R2|||
+09C01-05|Is shutdown or by-pass of the encryption solution immediately detected and signaled to a team available 24 hrs a day or by direct call and capable of triggering an immediate reaction?|4|2||R1|||
+09C01-06|Are encryption mechanisms, their parameters and associated procedures subject to regular audit?|4|3||C1|||
+09C02|Encryption of stored data |||||||
+09C02-01|Have the files or storage zones which must be protected by encryption solutions been defined and have such solutions been implemented in the application architecture?|4|||E1|10.1.1|12.3.1|
+09C02-02|Is this encryption systematically applied (as a function of information classification ) and/or automatic (as a function of storage media) each time data is written to the storage media or each time the application session closes?|2|3||E2|||
+09C02-03|Is this encryption systematically applied each time files are transferred or remotely-loaded by the relevant applications?|2|3||E2|||
+09C02-04|"Does the encryption solution offer valid and solid guarantees and has it been approved by the Information Security Officer?
+The sufficient length of the key is one of among many parameters to take into consideration (as a function of the algorithm). The recommendation of an official organization can be a confidence factor."|4|2||E2|||
+09C02-05|"Do the procedures and mechanisms for storage, distribution and, more generally, management of keys offer a sufficient level of confidence and have they been approved by the Information Security Officer?
+The possibility of having to recover these data on another hardware system or another version of the operating system needs to be anticipated."|4|3||E2|10.1.2|12.3.2|
+09C02-06|"Are the encryption mechanisms strictly protected against intrusion or change?
+In the case of hardware encryption and appliances, they should be physical protected against access to the encryption mechanisms. If a software solution is used, it must itself contain an integrity control."|4|3|3|E3|||
+09C02-07|Is shutdown or by-pass of the encryption solution immediately detected and signaled to a team available 24 hrs a day or by direct call and capable of triggering an immediate reaction?|4|2||R1|||
+09C02-08|Are encryption mechanisms for stored data, their parameters and associated procedures (in particular the management and protection of keys) subject to regular audit?|4|3||C1|||
+09C03|Anti electromagnetic radiation protection|||||||
+09C03-01|Are means used to prevent radiation from equipment hosting very sensitive applications (Tempest, cable shielding, faradizations of the offices)?|2|||E2|||
+09C03-02|Are radiation levels regularly controlled for equipment hosting these sensitive applications?|2|2||E3|||
+09D|Data availability|||||||
+09D01|Very high security recording|||||||
+09D01-01|Are specific procedures applied to verify that all data recorded can be reread?|4|2||E2|||
+09D01-02|Are there procedures or an architecture of a very high security level which records all data with redundancy (RAID disks, mirroring, etc.)?  |4||3|E2|||
+09D01-03|Do these very high security procedures enable the reconstitution of data in the case of an error or readability issue for a few sectors?|4|||E3|||
+09D01-04|Have scenarios been defined for which very high security recording is to be used and has the physical protection of storage media been tested to ensure that it is suited to meet the requirements of these scenarios?|4|||E2|||
+09D02|Management of access to data files|||||||
+09D02-01|Is the list of data file formats that must be readable verified and maintained? |4|3||E1|||
+09D02-02|Are the hardware and software required for reading all these types of data files available or easily made available?|4|3||E1|||
+09D02-03|Do the procedures for allocating and customizing the mechanisms for encryption and protection of files guarantee that the files can be accessed, even in the event of the absence or departure of the file owners? |4|3||E2|||
+09D02-04|Are the means of recovering access keys or encryption keys protected against accidental or malicious loss?|4|3||E2|||
+09D02-05|Are there regular audits of these means and procedures to guarantee permanent access to the data files? |2|3||E2|||
+09E|Service continuity|||||||
+09E01|Hardware reconfiguration|||||||
+09E01-01|Has a fail-safe architecture been established, including redundancy and system mirroring for critical equipment or servers?|4|2||E2||14.1.4|
+09E01-02|"Does the implementation of this architecture guarantee the minimum performance levels required in the case of incident or failure?
+Such a guarantee supposes either that fail safe systems features are entirely automatic or that systems will detect failures and staff will have the specifications and capability to manually reconfigure failed systems."|4|2||E2|||
+09E01-03|Is there some assurance in this case that ancillary equipment (power supply, air-conditioning, etc. ) do not introduce any additional risk and do not ruin the redundancy expected from the equipment or network architecture?|2|||E3|||
+09E01-04|Does the shutdown or invalidation of any redundant equipment or failure detection system (requiring human intervention) trigger an alarm to an operational manager? |2|||R1|||
+09E01-05|Are regular tests made to demonstrate that security equipment is able to guarantee minimum performance levels required in the case of an incident or failure? |2|2||C1|||
+09E02|Application service continuity plans|||||||
+09E02-01|Have application service continuity plans been established for each business application, based on its criticality classification level?|3|||E1|17.1.2|14.1.3|
+09E02-02|Are these continuity plans compatible with the Disaster Recovery Plans for the hardware and systems used by the process or application?|3|2||E1|17.1.2|14.1.3|
+09E02-03|Do these continuity plans detail all the actions necessary to ensure service continuity between the time of an alert and the effective implementation of solutions prescribed by the Disaster Recovery Plans?|3|2||E2|17.1.2|14.1.3|
+09E02-04|Do these plans treat all the organizational aspects related to a manual emergency solution (personnel, logistic, management etc.)?|3|||E2|17.1.2|14.1.3|
+09E02-05|"Have the appropriate instructions and training been given to staff in order to deal with a ""manual"" emergency solution?"|2|||E2|17.1.2|14.1.3|
+09E02-06|Have the application service continuity plans anticipated all the procedures required for a return to normal service?|4|2||E2|17.1.2|14.1.3|
+09E02-07|Is there a plan which regroups all emergency solutions designed to overcome critical process and application shutdowns?|4|||E2|17.1.2|14.1.3|
+09E02-08|Is the crisis plan initiation compliant with the above application service continuity plan?|4|||E2|17.1.2||
+09E02-09|Are these plans regularly tested under full scale conditions (with operational data volumes) and updated at least once a year?|3|2||C1|17.1.2; 17.1.3|14.1.5|
+09E02-10|Are the updates of these plans regularly audited (at least once a year)?  |3|2||C1|||
+09E03|Management of critical applications (with regard to maintenance continuity)|||||||
+09E03-01|Have the consequences of the disappearance of an application or package editor been analyzed (in the case of failure of a bug or the need for evolution) and has a list of critical applications been deduced? |2|||E2|||
+09E03-02|For each critical application, is there a corrective solution to cope with the failure or disappearance of a supplier (consignment of maintenance documentation and source code with a trusted third party, replacement of equipment or of software by standard package etc.)?|2|||E2|||
+09E03-03|Is it certain that this corrective solution could be made operational to enable company activity to restart within a time delay sufficiently short to be acceptable to users?|2|2||E2|||
+09E03-04|Have variants to the primary solution been considered in case the latter might encounter unforeseen difficulties?|2|3||E3|||
+09E03-05|Is there a regular review of critical applications and corrective solutions envisaged?|2|3||C1|||
+09F|Control of origin and receipt of data |||||||
+09F01|Proof of origin, electronic signature |||||||
+09F01-01|Have sensitive transactions been identified which must be protected by electronic signature solutions implemented at the application level?|4|||E2|10.1.1|12.3.1|
+09F01-02|Is the conformity of signatures controlled automatically by the application?|4|2||E2|||
+09F01-03|"Does the electronic signature solution offer valid and solid guarantees and has it been approved by the Information Security Officer?
+The sufficient length of the key is one of among many parameters to take into consideration (as a function of the algorithm). The recommendation of an official organization can be a confidence factor."|4|2||E2|||
+09F01-04|Do the procedure and mechanisms of storage, distribution and exchange of keys and more generally the management of the keys offer solid guarantees which merit confidence and are they approved by the Information Security Officer?|4|3||E2|10.1.2|12.3.2|
+09F01-05|"Are the electronic signature mechanisms strictly protected against violation or change?
+In the case of hardware solution or appliance, it should be physical protected against access to the signature mechanisms. If a software solution is used, it must itself contain an integrity control."|4|3|3|R2|||
+09F01-06|Is shutdown or by-pass of the signature solution immediately detected and signaled to a team available 24 hrs a day or by direct call and capable of triggering an immediate reaction?|4|2||R1|||
+09F01-07|Is there a procedure which details the operations to carry out in the case of error or alert?|3||2|R1|||
+09F01-08|Are electronic signature mechanisms, their parameters and associated procedures subject to regular audit?|4|3||C1|||
+09F02|Prevention of message duplication and replay (numbering, sequencing) |||||||
+09F02-01|Have sensitive transactions been identified which must be protected by sequencing control solutions implemented at the application level (or at the network level)?|4|||E2|||
+09F02-02|Is the coherence of the numbers and sequences controlled automatically by the application or by the middleware used?|4|2||E2|||
+09F02-03|"Does the numbering and sequencing  solution offer valid and solid guarantees and has it been approved by the Information Security Officer?
+The recommendation of an official organization can be a confidence factor."|4|2||E2|||
+09F02-04|"Are the numbering and numbering control mechanisms strictly protected against violation or change?
+In the case of hardware solution or appliance, it should be physical protected against access to the sequencing mechanisms. If a software solution is used, it must itself contain an integrity control."|4|3|3|R2|||
+09F02-05|Is shutdown or by-pass of the numbering system immediately detected and signaled to a team available 24 hrs a day or by direct call and capable of triggering an immediate reaction?|4|2||R1|||
+09F02-06|Is there a procedure which details the operations to carry out in the case of error or alert?|3||2|R1|||
+09F02-07|Are numbering mechanisms, their parameters and associated control procedures subject to regular audit?|4|3||C1|||
+09F03|Acknowledgments of receipt|||||||
+09F03-01|"Is there a procedure which requires an acknowledgment of receipt to be sent for all sensitive messages?
+Note: in certain cases, checks may be based on the signature."|4|||E1|||
+09F03-02|Is an alert triggered when an acknowledgment of receipt is not sent (or received) for sensitive messages?|4|2||E2|||
+09F03-03|"Is the acknowledgment of receipt emitted only after the message has been effectively considered by the target application?
+No acknowledgment should be sent for a message still waiting for treatment "|4|3||E3|||
+09F03-04|Is the acknowledgment of receipt mechanism protected against all undesirable intervention?|2|3||R1|||
+09F03-05|Is there a procedure which details the operations to carry out in the case of error or alert?|3|2||R1|||
+09F03-06|Is the acknowledgment of receipt system subject to regular audit?|3|2||C1|||
+09G|Detection and management of application incident and anomalies |||||||
+09G01|Detection of application anomalies|||||||
+09G01-01|Have events or successions of events been analyzed which might reveal abnormal behavior or illicit action and, as a consequence, have specific monitoring points been identified?|4|||E2|16.1.4||
+09G01-02|Are features, detecting and recording sensitive events, installed in applications (with type of event, user identifier, date and time, etc.)?  |4||3|E2|12.6.1||
+09G01-03|Is there an audit  trail within certain sensitive processes which records the events which would enable later diagnosis of anomalies?|4||3|E3|16.1.4||
+09G01-04|Are sensitive applications provided with an automatic monitoring function dealing in real time with large numbers of abnormal events (for example many unsuccessful connection attempts on user workstations or unsuccessful attempts to use sensitive transactions)?|4||3|E3|16.1.4||
+09G01-05|Are all these diagnostic elements registered?|2|||E2|16.1.4||
+09G01-06|Are there one or more applications capable of analyzing the individual anomaly diagnostic data and triggering an alert to operational personnel?|4|2||E3|16.1.4||
+09G01-07|Does the anomaly diagnostic system trigger an alarm in real time to a permanent surveillance team able or by direct call and able to react without delay?|4||3|E3|16.1.4||
+09G01-08|For each case of alert has the expected response from the intervention team been defined and is the availability of the intervention team sufficient to face this expectation?|4|||E3|16.1.4||
+09G01-09|Are the parameters defining the elements to record and the diagnostic analysis effected on these elements strictly protected (restricted access rights and strict authentication ) against illicit modification?|4|||R2|||
+09G01-10|Does the stopping of the recording and record processing system trigger an alarm with the surveillance team?|4|||R1|||
+09G01-11|Are the procedures for recording, processing and diagnostic analysis and the availability of the intervention team regularly audited?|2|||C1|||
+09H|Security of application services and transactions|||||||
+09H01|"Securing application services on public networks
+Information involved in application services passing over public networks should be protected from fraudulent activity, contract dispute and unauthorized disclosure and modification"|||||||
+09H01-01|"Is the migration of existing services from private to public networks organized with the associated parties ?
+Attention to the risk owners and all users should be prominent and the management requirements issues central to the decision"|2||||14.1.2||
+09H01-02|Have the security requirements specific to making information available on public networks been analyzed and thus defined the necessary protections and assurance?|2|||E2|14.1.1|10.9.1|
+09H01-03|"Have the classification levels for the information and services assets received a special attention?
+The value of Personally Identifiable Information and strategic elements for the organization should be carefully established (see worksheets T1 to T3)"|4|2|||14.1.2||
+09H01-04|"Have Service level agreements for the permanence and continuity of the service been negotiated with the service providers ?
+This is very important in the case of services obtained over the cloud and appropriate penalties should be clearly understood by the organization (e.g. in the case of interruption by the provider (error, accident, strike, bankruptcy, takeover, ...)) including the capacity to recover the proprietary data "|3|2|||||
+09H01-05|"Are the protection and verification of transactions appropriately managed?
+Including payment information provided by the customer, integrity, confidentiality, protection against replay, confirmation of receipt, non-repudiation, etc. to guard against fraud."|3|2|||14.1.2||
+09H01-06|"Are Service level agreements in place concerning the confidentiality of the information treated and/or stored by the service provider?
+Means to control the agreements and to react rapidly should be guaranteed to the organization."|3|2|||14.1.1||
+09H01-07|"Have protections to the security risks associated to web access been integrated to the application?
+OWASP references 10 important threats like Injection flaws, cross site scripting and request forgery, broken sessions, insecure direct object references and cryptographic storage, security misconfiguration, failure to restrict URL access, insufficient transport layer protection, unvalidated redirects and forwards)"|4||||||
+09H01-08|"Have the likelihood of attacks and threats been specifically analyzed for the application services?
+Careful attention to  the level of the natural exposure settings in the worksheet Expo is required, firstly cyber attacks"|3||||14.1.2||
+09H01-09|Are the authentication, control of rights and logging mechanisms specifically enforced for administrative operations?|2|2|||14.1.1||
+09H01-10|"Are the mutual levels of confidence (of each other's identity, authorization, level of trust required in the integrity  and confidentiality of data exchanged) considered in regard of the requirements?
+The quality of the security services 09A to 09G above should be appropriate with the requirements of the application service."|3|2|||14.1.2||
+09H01-11|"Is there a regular review, at least once a year, of the application services and corrective solutions envisaged?
+This review shall also consider shadow applications and data on public networks"|2|2|||||
+09H02|Protecting application services transactions|||||||
+09H02-01|"Are specific security protection requirements defined and used for critical transactions attached to the application?
+Compliance with legal and regulatory requirements is imperative."|3||||14.1.3||
+09H02-02|"Is the non disclosure of critical transactions protected by using strong cryptographic controls?
+Secret authentication information of all parties should be valid and verified, communication paths between them are encrypted, protocols used are secured, storage of the transaction details are located in a protected environment."|3||||14.1.3||
+09H02-03|Is the integrity of critical transactions protected by using electronic signatures?|4||||14.1.3||
+09H02-04|Is the service of a trusted authority protected throughout the entire end-to-end certificate/signature management process?|3||||14.1.3||
+09H02-05|Are administrators and users trained on their operations, rights and responsibilities and aware of the risks with networked applications?|3|2|||||
+09H02-06|"Is there a regular review, at least once a year, of the service transactions and corrective solutions envisaged?
+This review shall also consider new threats and vulnerabilities on the applications and data on public networks"|2|2|||||
+09H03|Electronic messaging|||||||
+09H03-01|"Are there policies for the use of the various types of electronic messaging services, based on business security requirements?
+Examples: email, social networking, electronic data interchange, instant messaging, file sharing ..."|3|2|||||
+09H03-02|Is an approval and authorization process, based on the policies, in place prior to using these services?|2|2|||||
+09H03-03|Are stronger levels of authentication established for controlling access from publicly accessible networks?|3||||||
+09H03-04|"Are the exchanges requiring protection commensurate with the classification scheme adopted by the organization?
+Encryption, signature,authorized access, modification, denial of service, non repudiation."|3|2|||||
+09H03-05|"Are administrators and users trained on the operations, rights and responsibilities and aware of the risks with electronic messaging?
+Training  sessions and awareness messages should be regularly organized."|2||||||

@@ -1,0 +1,107 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+	<!DOCTYPE mapper PUBLIC '-//mybatis.org//DTD Mapper 3.0//EN'
+	  'http://mybatis.org/dtd/mybatis-3-mapper.dtd'>
+<mapper namespace='org.crmf.persistency.mapper.secrequirement.SecRequirementMapper'>
+
+	<resultMap type='SecRequirement' id='SecRequirement'>
+		<result property='elementType' column='ELEMENT_TYPE' />
+		<result property='reqId' column='REQ_ID' />
+		<result property='description' column='DESCRIPTION' />
+		<result property='sestobjId' column='SESTOBJ_ID' />
+		<result property='sysprojectId' column='SYSPROJECT_ID' />
+		<result property='sourceDescription' column='SOURCE_DESCRIPTION' />
+	</resultMap>
+	
+	<resultMap type='SecRequirementSafeguard' id='SecRequirementSafeguard'>
+		<result property='requirementId' column='SECREQUIREMENT_ID' />
+		<result property='safeguardId' column='SAFEGUARD_REFERENCE_ID' />
+		<result property='contribution' column='CONTRIBUTION' />
+	</resultMap>
+
+	<insert id='insert' parameterType='SecRequirement'
+		useGeneratedKeys='true' keyProperty='id' keyColumn='ID'>
+		INSERT INTO
+		SECREQUIREMENT_REFERENCE(ID, AUTHOR, CATEGORY, PARENT,
+		DESCRIPTION, ELEMENT_TYPE,
+		REQ_ID, LASTUPD, NOTE, SOURCE, SOURCE_DESCRIPTION,
+		STABILITY, STATUS,
+		SUBCATEGORY, TAG, TITLE, TYPOLOGY, VERSION,
+		SESTOBJ_ID, SYSPROJECT_ID, PRIORITY, SCORE)
+		VALUES (#{id}, #{author}, #{category},
+		#{parent}, #{description},
+		#{elementType}, #{reqId},
+		#{lastupd}, #{note}, #{source},
+		#{sourceDescription}, #{stability}, #{status},
+		#{subcategory},
+		#{tag},
+		#{title}, #{typology}, #{version}, #{sestobjId}, #{sysprojectId}, #{priority}, #{score})
+		ON
+		DUPLICATE KEY UPDATE
+		AUTHOR = #{author},
+		CATEGORY = #{category},
+		PARENT =
+		#{parent},
+		DESCRIPTION = #{description},
+		ELEMENT_TYPE = #{elementType},
+		LASTUPD = #{lastupd},
+		NOTE = #{note},
+		SOURCE = #{source},
+		SOURCE_DESCRIPTION = #{sourceDescription},
+		STABILITY = #{stability},
+		STATUS = #{status},
+		SUBCATEGORY = #{subcategory},
+		TAG = #{tag},
+		TITLE =
+		#{title},
+		TYPOLOGY = #{typology},
+		VERSION = #{version},
+		SYSPROJECT_ID =
+		#{sysprojectId},
+		PRIORITY = #{priority},
+		SCORE = #{score}
+	</insert>
+
+	<insert id='insertSafeguardAssoc' parameterType='SecRequirementSafeguard'>
+		INSERT INTO
+		SECREQUIREMENT_SAFEGUARD(SECREQUIREMENT_ID, SAFEGUARD_REFERENCE_ID, CONTRIBUTION) 
+		VALUES (#{requirementId},#{safeguardId},#{contribution})
+	</insert>
+	
+	<select id='getSecRequirementByReqId' resultMap='SecRequirement'
+		parameterType='String'>
+		SELECT * FROM SECREQUIREMENT_REFERENCE
+			WHERE REQ_ID = '${value}'
+	</select>
+
+	<select id='getSecRequirementById' resultMap='SecRequirement'
+			parameterType='int'>
+		SELECT * FROM SECREQUIREMENT_REFERENCE
+			WHERE ID = '${value}'
+	</select>
+
+
+	<select id='getSecRequirementByIdentifier' resultMap='SecRequirement'
+		parameterType='String'>
+		SELECT * FROM SECREQUIREMENT_REFERENCE
+			WHERE SESTOBJ_ID = '${value}'
+	</select>
+
+	<select id='getRequirementsAssocBySafeguard' resultMap='SecRequirementSafeguard'
+			parameterType='int'>
+		SELECT * FROM SECREQUIREMENT_SAFEGUARD
+			WHERE SAFEGUARD_REFERENCE_ID = '${value}'
+	</select>
+
+	<select id='getSecRequirementChildren' resultMap='SecRequirement'
+		parameterType='int'>
+		SELECT * FROM SECREQUIREMENT_REFERENCE WHERE PARENT = '${value}'
+	</select>
+
+	<delete id='deleteSecRequirementAssoc'>
+		DELETE FROM SECREQUIREMENT_SAFEGUARD
+	</delete>
+
+	<delete id='deleteSecRequirement'>
+		DELETE FROM SECREQUIREMENT_REFERENCE
+	</delete>
+</mapper>

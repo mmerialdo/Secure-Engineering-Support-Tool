@@ -1,0 +1,2392 @@
+<!--  --------------------------------------------------------------------------------------------------------------------
+// Copyright file="graph-view.component.html"
+//  © Copyright European Space Agency, 2018-2020
+//
+//  Author: Software developed by RHEA System S.A.
+//
+//  This file is subject to the terms and conditions defined in file 'LICENSE.txt', which is part of this source code package.
+//  No part of the package, including this file, may be copied, modified, propagated, or distributed
+//  except according to the terms contained in the file ‘LICENSE.txt’.
+// -------------------------------------------------------------------------------------------------------------------- -->
+
+<div id="businesstabcontainer">
+  <div id="menubusiness" class="container">
+
+    <!--<button type="button" class="btn btn-primary btn-sm" (click)="displayJSON()">Save</button>-->
+
+
+
+    <nav class="navbar navbar-default navbar-static-top">
+      <div class="container-fluid">
+        <button style="margin-top: 5px;border: 1px solid " type="button" class="btn btn-secondary btn-xs" (click)="changeView()">
+          <b>Change Visualization</b>
+        </button>
+        <hr style="clear: both; color: black; background-color: black; height: 1px; border-width: 0;">
+        <button style="margin-top: 5px;border: 1px solid " type="button" class="btn btn-secondary btn-xs" (click)="saveAssetModel()"
+                [disabled]="!enableSaveButton || !isLockedByCurrentUser()">
+          <b>Save Asset Model</b>
+        </button>
+
+        <!--<button style="margin-top: 5px;border: 1px solid " type="button" class="btn btn-secondary btn-xs" (click)="loadJSON()"><b>Load</b> </button>-->
+        <!--<button style="margin-top: 5px;border: 1px solid " type="button" class="btn btn-secondary btn-xs" (click)="rimuovo()"><b>Rimuovo</b> </button>-->
+        <!--<button style="margin-top: 5px;border: 1px solid " type="button" class="btn btn-secondary btn-xs" (click)=" getAsset()"><b>Load Asset</b> </button>-->
+
+        <hr style="clear: both; color: black; background-color: black; height: 1px; border-width: 0;">
+
+        <button style="margin-top: 5px;border: 1px solid " type="button" class="btn btn-secondary btn-xs" (click)="exportPNG()">
+          <b>Export PNG</b>
+        </button>
+
+        <hr style="clear: both; color: black; background-color: black; height: 1px; border-width: 0;">
+
+        <label>Business</label>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <ul class="nav navbar-nav">
+            <li style="margin-top: 5px">
+              <img src="../../../assets/org.png" height="20" width="30" (click)="createOrganization()" style="cursor: pointer;" />
+              <label style="cursor: pointer;" (click)="createOrganization()">
+                Organization </label>
+            </li>
+            <li style="margin-top: 5px">
+              <img src="../../../assets/process.png" height="20" width="30" (click)="createProcess()" style="cursor: pointer;" />
+              <label style="cursor: pointer;" (click)="createProcess()">
+                Process </label>
+            </li>
+            <li style="margin-top: 5px">
+              <img src="../../../assets/act.png" height="20" width="30" (click)="createActivity()" style="cursor: pointer;" />
+              <label style="cursor: pointer;" (click)="createActivity()">
+                Activity </label>
+            </li>
+            <li style="margin-top: 5px">
+              <img src="../../../assets/mal.png" height="20" width="30" (click)="createMalfunction()" style="cursor: pointer;" />
+              <label style="cursor: pointer;" (click)="createMalfunction()">
+                Malfunction </label>
+            </li>
+
+          </ul>
+        </div>
+
+        <hr style="clear: both; color: black; background-color: black; height: 1px; border-width: 0;margin-top: 10px">
+
+        <label>Assets</label>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
+          <ul class="nav navbar-nav">
+
+            <li style="margin-top: 5px">
+              <img src="../../../assets/asset.png" height="20" width="30" (click)="createAsset()" style="cursor: pointer;" />
+              <label style="cursor: pointer;margin-bottom: 15px" (click)="createAsset()"> Asset </label>
+            </li>
+
+
+          </ul>
+        </div>
+        <hr style="clear: both; color: black; background-color: black; height: 1px; border-width: 0;">
+
+        <button style="margin-top: 5px;border: 1px solid " type="button" class="btn btn-secondary btn-xs" (click)="hide()">
+          <b>Hide Selected</b>
+        </button>
+        <button style="margin-top: 5px;border: 1px solid " type="button" class="btn btn-secondary btn-xs" (click)="unhide()">
+          <b>Unhide All</b>
+        </button>
+        <hr style="clear: both; color: black; background-color: black; height: 1px; border-width: 0;">
+
+        <button style="margin-top: 5px;border: 1px solid " type="button" class="btn btn-secondary btn-xs" (click)="hideOrganizations()">
+          <b>Hide Organizations</b>
+        </button>
+        <button style="margin-top: 5px;border: 1px solid " type="button" class="btn btn-secondary btn-xs" (click)="unhideOrganizations()">
+          <b>Unhide Organizations</b>
+        </button>
+
+        <hr style="clear: both; color: black; background-color: black; height: 1px; border-width: 0;">
+
+        <button style="margin-top: 5px;border: 1px solid " type="button" class="btn btn-secondary btn-xs" (click)="hideProcesses()">
+          <b>Hide Processes</b>
+        </button>
+        <button style="margin-top: 5px;border: 1px solid " type="button" class="btn btn-secondary btn-xs" (click)="unhideProcesses()">
+          <b>Unhide Processes</b>
+        </button>
+
+        <hr style="clear: both; color: black; background-color: black; height: 1px; border-width: 0;">
+
+        <button style="margin-top: 5px;border: 1px solid " type="button" class="btn btn-secondary btn-xs" (click)="hideActivities()">
+          <b>Hide Activities</b>
+        </button>
+        <button style="margin-top: 5px;border: 1px solid " type="button" class="btn btn-secondary btn-xs" (click)="unhideActivities()">
+          <b>Unhide Activities</b>
+        </button>
+
+        <hr style="clear: both; color: black; background-color: black; height: 1px; border-width: 0;">
+
+        <button style="margin-top: 5px;border: 1px solid " type="button" class="btn btn-secondary btn-xs" (click)="hideMalfunctions()">
+          <b>Hide Malfunctions</b>
+        </button>
+        <button style="margin-top: 5px;border: 1px solid " type="button" class="btn btn-secondary btn-xs" (click)="unhideMalfunctions()">
+          <b>Unhide Malfunctions</b>
+        </button>
+
+        <hr style="clear: both; color: black; background-color: black; height: 1px; border-width: 0;">
+
+        <button style="margin-top: 5px;border: 1px solid " type="button" class="btn btn-secondary btn-xs" (click)="hideAssets()">
+          <b>Hide Assets</b>
+        </button>
+        <button style="margin-top: 5px;border: 1px solid " type="button" class="btn btn-secondary btn-xs" (click)="unhideAssets()">
+          <b>Unhide Assets</b>
+        </button>
+
+      </div>
+    </nav>
+
+  </div>
+
+
+
+  <div id="centerBus" style="max-height: 780px;overflow: scroll">
+
+
+
+    <div id="canvas-div" style="width: 5000px;height:4001px"></div>
+
+
+
+
+
+  </div>
+
+  <div id="properties" [ngSwitch]="propertyCheck">
+    <div *ngSwitchCase="'businessProcess'">
+
+      <form class="col-md-12 well" style="padding-top: 1px">
+
+        <div class="row">
+
+          <div class="col-md-12">
+
+            <h1>Business Process</h1>
+
+            <hr>
+
+          </div>
+
+        </div>
+
+
+        <div class="row">
+          <div class="col-md-11">
+
+
+
+            <div *ngIf="name!=null">
+              <label>Name :</label>
+              <p>{{ name }}</p>
+            </div>
+
+            <!-- <div *ngIf="description!=null">
+            <label>Description :</label>
+            <p style="max-width: 95%">{{description}}</p>
+            </div>
+
+            <div *ngIf="goal!=null">
+              <label>Goal :</label>
+              <p>{{goal}}</p>
+            </div>-->
+
+
+            <div *ngIf="type!=null">
+              <label>Type :</label>
+              <p>{{ type }}</p>
+            </div>
+
+            <div *ngIf="owner!=null">
+              <label>Owner :</label>
+              <p>{{ owner }}</p>
+            </div>
+
+
+          </div>
+
+
+        </div>
+
+
+
+        <div style="margin-top: 10px">
+          <button style="border:1px solid" type="button" class="btn btn-secondary btn-xs" (click)="changeMode()">
+            <b>Edit Process</b>
+          </button>
+        </div>
+
+
+        <div class="row">
+          <div class="col-md-12">
+            <hr>
+            <h1>Requirements</h1>
+            <div style="overflow: auto; width: 100%; height:100px" *ngIf="showSelectedRequirements.length>0">
+              <p-dataList [value]="showSelectedRequirements" [style]="{'height':'200px'}">
+
+                <ng-template let-primaryAssetCategory pTemplate="item">
+                  <!--{{primaryAssetCategory.name}} - {{primaryAssetCategory.category}}-->
+                  {{ primaryAssetCategory }}
+                </ng-template>
+              </p-dataList>
+            </div>
+
+            <div>
+              <button style="border:1px solid" type="button" class="btn btn-secondary btn-xs" (click)="requirementsMode()">
+                <b>Edit Requirements</b>
+              </button>
+
+            </div>
+
+
+          </div>
+
+        </div>
+      </form>
+
+
+    </div>
+    <div *ngSwitchCase="'businessActivity'">
+
+      <form class="col-md-12 well" style="padding-top: 1px">
+
+        <div class="row">
+
+          <div class="col-md-12">
+
+            <h1>Business Activity</h1>
+
+            <hr>
+
+          </div>
+
+        </div>
+
+
+        <div class="row">
+          <div class="col-md-11">
+
+            <div *ngIf="name!=null">
+              <label>Name :</label>
+              <p>{{ name }}</p>
+            </div>
+
+            <!-- <div *ngIf="description !== null">
+            <label>Description :</label>
+            <p style="max-width: 95%">{{description}}</p>
+            </div>
+
+            <div *ngIf="goal!=null">
+              <label>Goal :</label>
+              <p>{{goal}}</p>
+            </div>
+-->
+            <div *ngIf="owner!=null">
+              <label>Owner :</label>
+              <p>{{ owner }}</p>
+            </div>
+
+
+            <div style="margin-top: 10px">
+              <button style="border: 1px solid" type="button" class="btn btn-secondary btn-xs" (click)="changeMode()">
+                <b>Edit Activity</b>
+              </button>
+
+            </div>
+
+          </div>
+
+
+        </div>
+
+        <div class="row">
+          <div class="col-md-12">
+            <hr>
+            <h1>Requirements</h1>
+            <div style="overflow: auto; width: 100%; height:100px" *ngIf="showSelectedRequirements.length>0">
+              <p-dataList [value]="showSelectedRequirements" [style]="{'height':'100px'}">
+
+                <ng-template let-primaryAssetCategory pTemplate="item">
+                  <!--{{primaryAssetCategory.name}} - {{primaryAssetCategory.category}}-->
+                  {{ primaryAssetCategory }}
+                </ng-template>
+              </p-dataList>
+            </div>
+
+            <div>
+              <button style="border: 1px solid" type="button" class="btn btn-secondary btn-xs" (click)="requirementsMode()">
+                <b>Edit Requirements</b>
+              </button>
+
+            </div>
+
+
+          </div>
+
+        </div>
+
+      </form>
+
+
+    </div>
+
+    <div *ngSwitchCase="'businessOrg'">
+
+      <form class="col-md-12 well" style="padding-top: 1px">
+
+        <div class="row">
+
+          <div class="col-md-12">
+
+            <h1>Business Organization</h1>
+
+            <hr>
+
+          </div>
+
+        </div>
+
+
+        <div class="row">
+          <div class="col-md-11">
+
+            <div *ngIf="name!=null">
+              <label>Name :</label>
+              <p>{{ name }}</p>
+            </div>
+
+            <!-- <div *ngIf="description!=null">
+            <label>Description :</label>
+            <p style="max-width: 95%">{{description}}</p>
+            </div>
+
+            <div *ngIf="goal!=null">
+              <label>Goal :</label>
+              <p>{{goal}}</p>
+            </div>
+-->
+            <div *ngIf="owner!=null">
+
+              <label>Owner :</label>
+              <p>{{ owner }}</p>
+
+            </div>
+
+
+            <div style="margin-top: 10px">
+              <button style="border: 1px solid" type="button" class="btn btn-secondary btn-xs" (click)="changeMode()">
+                <b>Edit Organization</b>
+              </button>
+
+            </div>
+
+          </div>
+
+
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <hr>
+            <h1>Requirements</h1>
+            <div style="overflow: auto; width: 100%; height:100px" *ngIf="showSelectedRequirements.length>0">
+              <p-dataList [value]="showSelectedRequirements" [style]="{'height':'100px'}">
+
+                <ng-template let-primaryAssetCategory pTemplate="item">
+                  <!--{{primaryAssetCategory.name}} - {{primaryAssetCategory.category}}-->
+                  {{ primaryAssetCategory }}
+                </ng-template>
+              </p-dataList>
+            </div>
+
+            <div>
+              <button style="border: 1px solid" type="button" class="btn btn-secondary btn-xs" (click)="requirementsMode()">
+                <b>Edit Requirements</b>
+              </button>
+
+            </div>
+
+
+          </div>
+
+        </div>
+      </form>
+
+
+    </div>
+
+    <div *ngSwitchCase="'businessMalfun'">
+
+      <form class="col-md-12 well" style="padding-top: 1px">
+
+        <div class="row">
+
+          <div class="col-md-12">
+
+            <h1>Malfunction</h1>
+
+            <hr>
+
+          </div>
+
+        </div>
+
+
+        <div class="row">
+          <div class="col-md-11">
+
+            <div *ngIf="name!=null">
+              <label>Name :</label>
+              <p>{{ name }}</p>
+            </div>
+
+
+          </div>
+
+
+        </div>
+
+
+        <div class="row">
+
+          <div class="col-md-12">
+
+
+            <div *ngIf="technicalDescription!=null">
+              <label>Technical Description :</label>
+              <p style="max-width: 95%">{{ technicalDescription }}</p>
+            </div>
+
+            <div *ngIf="technicalConsequence!=null">
+              <label>Technical Consequences :</label>
+              <p>{{ technicalConsequence }}</p>
+            </div>
+
+          </div>
+
+
+        </div>
+
+        <div class="row">
+
+          <div class="col-md-6" *ngIf="malfunctionConfidenciality">
+
+            <p>Confidentiality Loss</p>
+
+
+          </div>
+
+          <div class="col-md-6" *ngIf="malfunctionAvailability">
+
+
+
+            <p>Availability Loss</p>
+
+
+          </div>
+
+
+
+        </div>
+
+
+        <div class="row">
+
+
+          <div class="col-md-6" *ngIf="malfunctionIntegrity">
+
+            <p>Integrity Loss</p>
+
+          </div>
+
+
+
+          <div class="col-md-6" *ngIf="malfunctionEfficency">
+
+
+            <p>Efficiency Loss</p>
+          </div>
+
+
+
+
+        </div>
+
+
+
+        <div style="margin-top: 10px">
+
+
+          <button style="border: 1px solid" type="button" class="btn btn-secondary btn-xs" (click)="changeMode()">
+            <b>Edit Malfunction</b>
+          </button>
+
+
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <hr>
+            <h1>Requirements</h1>
+
+            <!--to hide empty list-->
+
+            <!--<div [ngClass]="{'my-class': isClassVisible }"style="overflow: auto; width: 100%; max-height:100px;display: none">-->
+            <div style="overflow: auto; width: 100%; max-height:100px;display: none">
+              <p-dataList [value]="showSelectedRequirements" [style]="{'height':'100px'}">
+
+                <ng-template let-primaryAssetCategory pTemplate="item">
+                  <!--{{primaryAssetCategory.name}} - {{primaryAssetCategory.category}}-->
+                  {{ primaryAssetCategory }}
+                </ng-template>
+              </p-dataList>
+            </div>
+
+            <div>
+              <button style="border: 1px solid" type="button" class="btn btn-secondary btn-xs" (click)="requirementsMode()">
+                <b>Edit Requirements</b>
+              </button>
+
+            </div>
+
+
+          </div>
+
+        </div>
+
+
+      </form>
+
+
+    </div>
+    <div *ngSwitchCase="'edge'">
+
+      <form class="col-md-12 well" style="padding-top: 1px">
+
+        <div class="row">
+
+          <div class="col-md-12">
+
+            <h1>Edge</h1>
+
+            <hr>
+
+          </div>
+
+        </div>
+
+
+        <div class="row">
+          <div class="col-md-12">
+
+
+            <label>Source Node :</label>
+            <p>{{ sourceNode }}</p>
+
+            <label>Target Node :</label>
+            <p>{{ targetNode }}</p>
+
+
+            <div class="row">
+              <div class="col-md-6">
+                <label *ngIf="confindentialityEdge!=null">Confidentiality Impact:</label>
+                <p>{{ confindentialityEdge }}</p>
+
+                <label *ngIf="integrityEdge!=null">Integrity Impact:</label>
+                <p>{{ integrityEdge }}</p>
+
+              </div>
+              <div class="col-md-6">
+                <label *ngIf="availabilityEdge!=null">Availability Impact:</label>
+                <p>{{ availabilityEdge }}</p>
+
+                <label *ngIf="efficiencyEdge!=null">Efficiency Impact:</label>
+                <p>{{ efficiencyEdge }}</p>
+
+              </div>
+            </div>
+
+          </div>
+
+
+        </div>
+
+
+        <!--<div style="margin-top: 10px">
+
+
+          <button style="border: 1px solid" type="button" class="btn btn-secondary btn-sm" (click)="changeEdgeMode()"><b>Edit Edge</b></button>
+
+
+        </div>-->
+
+
+      </form>
+
+
+    </div>
+    <div *ngSwitchCase="'businessAsset'">
+
+      <form class="col-md-12 well" style="padding-top: 1px;height: auto;overflow: auto;max-height: 780px">
+
+        <div class="row">
+
+          <div class="col-md-12">
+
+            <h1>Asset</h1>
+
+            <hr>
+
+          </div>
+
+        </div>
+
+
+        <div class="row">
+          <div class="col-md-12">
+
+            <div *ngIf="name!=null">
+              <label>Name :</label>
+              <p>{{ name }}</p>
+            </div>
+
+            <div *ngIf="primaryAssetCategory.length>0">
+              <label>Primary Asset Category :</label>
+              <!--<div style="overflow: auto; width: 100%; height:100px">-->
+              <!--<p-dataList [value]="primaryAssetCategory" [style]="{'height':'100px'}">-->
+
+              <!--<ng-template let-primaryAssetCategory pTemplate="item">-->
+              <!--&lt;!&ndash;{{primaryAssetCategory.name}} - {{primaryAssetCategory.category}}&ndash;&gt;-->
+              <!--{{primaryAssetCategory}}-->
+              <!--</ng-template>-->
+              <!--</p-dataList>-->
+              <!--</div>-->
+
+              <p>{{ primaryAssetCategory[0] }}</p>
+            </div>
+
+
+            <div *ngIf="secondaryAssetCategory!=null">
+              <label>Secondary Asset Category :</label>
+              <p>{{ secondaryAssetCategory }}</p>
+            </div>
+
+
+            <div *ngIf="showMalfunction.length>0">
+              <label>Malfunctions :</label>
+
+
+              <p-dataList [value]="showMalfunction" [style]="{'height':'auto','max-height':'100px','overflow': 'auto','width': '100%'}">
+
+                <ng-template let-showMalfunction pTemplate="item">
+                  {{ showMalfunction }}
+                </ng-template>
+              </p-dataList>
+
+            </div>
+
+            <div class="row" style="margin-top: 10px">
+              <div class="col-md-6" *ngIf="assetConfidentiality!=null">
+                <label>Confidentiality Impact:</label>
+                <p>{{ assetConfidentiality }}</p>
+              </div>
+              <div class="col-md-6" *ngIf="assetIntegrity!=null">
+                <label>Integrity Impact:</label>
+                <p>{{ assetIntegrity }}</p>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-6" *ngIf="assetAvailability!=null">
+                <label>Availability Impact:</label>
+                <p>{{ assetAvailability }}</p>
+              </div>
+              <div class="col-md-6" *ngIf="assetEfficiency!=null">
+                <label>Efficiency Impact:</label>
+                <p>{{ assetEfficiency }}</p>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <div style="margin-top: 10px">
+
+
+          <button style="border: 1px solid" type="button" class="btn btn-secondary btn-xs" (click)="changeMode()">
+            <b>Edit Asset</b>
+          </button>
+
+
+        </div>
+
+        <div class="row">
+          <div class="col-md-12">
+            <hr>
+            <h1>Requirements</h1>
+            <div style="overflow: auto; width: 100%; height:100px" *ngIf="showSelectedRequirements.length>0">
+              <p-dataList [value]="showSelectedRequirements" [style]="{'height':'100px'}">
+
+                <ng-template let-primaryAssetCategory pTemplate="item">
+                  <!--{{primaryAssetCategory.name}} - {{primaryAssetCategory.category}}-->
+                  {{ primaryAssetCategory }}
+                </ng-template>
+              </p-dataList>
+            </div>
+
+            <div>
+              <button style="border: 1px solid" type="button" class="btn btn-secondary btn-xs" (click)="requirementsMode()">
+                <b>Edit Requirements</b>
+              </button>
+
+            </div>
+
+
+          </div>
+
+        </div>
+
+
+
+
+
+      </form>
+
+
+    </div>
+
+
+  </div>
+
+</div>
+
+
+<p-dialog header="Edit Requirements for {{name}} " [(visible)]="displayRequirements" modal="modal" width="1500" responsive="true">
+
+
+
+  <div class="col-md-12">
+    <div class="row">
+      <div class="col-md-2">
+
+        <div class="row">
+
+          <label style="font-size: 16px">Filter by: </label>
+
+        </div>
+
+        <div class="row">
+          <br>
+        </div>
+
+        <div class="row">
+          <label>Category</label>
+          <select [(ngModel)]="selectedCategory" (ngModelChange)="checkedCategory()" name="profile">
+            <option *ngFor="let c of categoryList" [ngValue]="c"> {{ c }} </option>
+          </select>
+        </div>
+        <div class="row">
+          <br>
+        </div>
+        <div class="row">
+
+          <label>Subcategory</label>
+
+
+          <select [(ngModel)]="selectedSubcategory" [disabled]="selectedCategory === undefined" (ngModelChange)="checkedSubCategory()"
+                  name="profile">
+            <option *ngFor="let c of subcategoryList" [ngValue]="c.subcategory"> {{ c.subcategory }} </option>
+          </select>
+
+        </div>
+
+
+
+
+      </div>
+
+
+      <div class="col-md-10">
+
+        <div style="float: left">
+
+          <div style="margin-bottom: 10px; text-align: center;font-size: 18px">
+            <b>Requirements List</b>
+          </div>
+          <p-listbox [options]="showRequirementsList" [(ngModel)]="selectedRequirement" (ngModelChange)="requirementDescription(selectedRequirement,false)"
+                     filter="filter" [style]="{'width':'500px','height':'250px','max-height':'250px', 'overflow-y':'auto'}" id="setB"></p-listbox>
+        </div>
+        <div style="float: left;margin-left: 5%;margin-top: 10%;margin-right: 5%">
+          <div class="row" style="padding-left: 30%">
+            <button type="button" class="btn btn-default btn-sm" [disabled]="selectedRequirement === undefined" (click)="addRequirement()">Add</button>
+          </div>
+
+          <div class="row">
+            <button type="button" class="btn btn-default btn-sm" [disabled]="chosenRequirement === undefined" style="margin-top: 5px"
+                    (click)="removeRequirement()">Remove</button>
+          </div>
+
+        </div>
+
+
+        <div style="float: left">
+          <div style="margin-bottom: 10px; text-align: center;font-size: 18px">
+            <b>Selected Requirements </b>
+          </div>
+          <p-listbox [options]="selectedRequirementList" [(ngModel)]="chosenRequirement" (ngModelChange)="requirementDescription(chosenRequirement,true)"
+                     filter="filter" [style]="{'width':'500px','height':'250px','max-height':'250px', 'overflow-y':'auto'}"></p-listbox>
+
+        </div>
+
+      </div>
+
+
+    </div>
+
+    <div class="container-fluid" *ngIf="selectedRequirement || chosenRequirement">
+      <div class="row">
+        <fieldset class="for-panel">
+          <legend>Requirement Detail</legend>
+          <div class="row">
+            <!-- First Column -->
+            <div class="col-xs-3">
+              <div class="row">
+                <!-- name row -->
+                <div class="col-xs-5">
+                  <label>Name:</label>
+                </div>
+                <div class="col-xs-7">
+                  <p>{{ reqName }}</p>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-xs-5">
+                  <label>Category: </label>
+                  <!-- description row -->
+                </div>
+                <div class="col-xs-7">
+                  <p>{{ reqCat }}</p>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-xs-5">
+                  <label>Sub Category: </label>
+                  <!-- description row -->
+                </div>
+                <div class="col-xs-7">
+                  <p>{{ reqSub }}</p>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-xs-5">
+                  <label>Type: </label>
+                  <!-- description row -->
+                </div>
+                <div class="col-xs-7">
+                  <p>{{ reqTyp }}</p>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-xs-5">
+                  <label>Priority: </label>
+                  <!-- description row -->
+                </div>
+                <div class="col-xs-7">
+                  <p>{{ reqPri }}</p>
+                </div>
+              </div>
+            </div>
+            <!-- Second Column -->
+            <div class="col-xs-9">
+              <!--<div class="row">  &lt;!&ndash; name row &ndash;&gt;-->
+              <!--<div class="col-xs-2">-->
+              <!--<label>Name:</label>-->
+              <!--</div>-->
+              <!--<div class="col-xs-10">-->
+              <!--<p>Joker</p>-->
+              <!--</div>-->
+              <!--</div>-->
+              <div class="row">
+                <!-- description row -->
+                <div class="col-xs-1">
+                  <label>Description: </label>
+                </div>
+
+                <!--<div class="col-xs-11">-->
+                <!--<p style="text-align:justify"><pre>{{reqDes}}</pre></p>-->
+                <!--</div>-->
+                <div class="col-xs-11">
+                  <pre>{{ reqDes }}</pre>
+                </div>
+              </div>
+            </div>
+          </div>
+        </fieldset>
+      </div>
+    </div>
+
+  </div>
+
+  <!--aggiungere qui nuova riga per la descrizione-->
+
+
+
+
+
+
+
+
+
+  <p-footer>
+    <div class="ui-dialog-buttonpane ui-widget-content ui-helper-clearfix">
+      <button type="button" pButton icon="fa fa-fw fa-close" (click)="cancelRequirements()" label="Cancel"></button>
+      <button type="button" pButton icon="fa fa-fw fa-check" (click)="addRequirements()" label="Save"></button>
+    </div>
+  </p-footer>
+</p-dialog>
+
+<p-dialog header="Edit Activity" [(visible)]="displayEditActivity" modal="modal" width="550" responsive="true">
+
+
+  <div class="row">
+    <div class="col-md-12">
+
+      <div [formGroup]="businessEditActivityForm" class="form-group">
+        <label for="nameEA">Name (*)</label>
+        <input formControlName="nameEA" [(ngModel)]="name" class="form-control" name="nameEA" id="nameEA" (ngModelChange)="checkName($event)"
+        />
+
+        <control-messages [control]="businessEditActivityForm.controls.nameEA"></control-messages>
+        <span style="color:red" *ngIf="duplicateName">This name already exists!</span>
+      </div>
+
+
+      <div [formGroup]="businessEditActivityForm" class="form-group">
+        <label for="descriptionEA">Description (*)</label>
+        <textarea formControlName="descriptionEA" [(ngModel)]="description" class="form-control" name="descriptionEA" rows="5" id="descriptionEA"></textarea>
+
+        <control-messages [control]="businessEditActivityForm.controls.descriptionEA"></control-messages>
+      </div>
+
+
+      <div [formGroup]="businessEditActivityForm" class="form-group">
+        <label for="goalEA">Goal</label>
+        <input formControlName="goalEA" [(ngModel)]="goal" class="form-control" name="goalEA" id="goalEA" />
+
+        <control-messages [control]="businessEditActivityForm.controls.goalEA"></control-messages>
+      </div>
+
+
+      <div [formGroup]="businessEditActivityForm" class="form-group">
+        <label for="ownerEA">Owner</label>
+
+
+        <select formControlName="ownerEA" class="form-control" name="ownerEA" id="ownerEA">
+          <option *ngFor="let c of ownerListActivity" [ngValue]="c.name + ' '+c.surname"> {{ c.name }} {{ c.surname }} </option>
+        </select>
+
+
+        <!--<control-messages [control]="businessEditActivityForm.controls.ownerEA"></control-messages>-->
+      </div>
+
+      <span  class="cols-sm-2 control-label">* - mandatory field</span>
+    </div>
+
+
+  </div>
+
+
+  <p-footer>
+    <div class="ui-dialog-buttonpane ui-widget-content ui-helper-clearfix">
+      <button type="button" pButton icon="fa fa-fw fa-close" (click)="this.closeEditActivityForm()" label="Cancel"></button>
+      <button type="button" pButton icon="fa fa-fw fa-check" [disabled]="!businessEditActivityForm.valid || duplicateName" (click)="this.editActivity()"
+              label="Save"></button>
+    </div>
+  </p-footer>
+</p-dialog>
+
+<p-dialog header="Edit Process" [(visible)]="displayEditProcess" modal="modal" width="550" responsive="true">
+
+
+  <div class="row">
+    <div class="col-md-12">
+
+      <div [formGroup]="businessEditElementForm" class="form-group">
+        <label for="nameEP">Name (*)</label>
+        <input formControlName="nameEP" [(ngModel)]="name" class="form-control" name="name" id="nameEP" (ngModelChange)="checkName($event)"
+        />
+        <control-messages [control]="businessEditElementForm.controls.nameEP"></control-messages>
+        <span style="color:red" *ngIf="duplicateName">This name already exists!</span>
+      </div>
+
+
+      <div [formGroup]="businessEditElementForm" class="form-group">
+        <label for="descriptionEP">Description (*)</label>
+        <textarea formControlName="descriptionEP" [(ngModel)]="description" class="form-control" name="descriptionEP" rows="5" id="descriptionEP"></textarea>
+
+        <control-messages [control]="businessEditElementForm.controls.descriptionEP"></control-messages>
+      </div>
+
+
+      <div [formGroup]="businessEditElementForm" class="form-group">
+        <label for="goalEP">Goal</label>
+        <input formControlName="goalEP" [(ngModel)]="goal" class="form-control" name="goalEP" id="goalEP" />
+
+        <control-messages [control]="businessEditElementForm.controls.goalEP"></control-messages>
+      </div>
+
+      <div [formGroup]="businessEditElementForm " class="form-group">
+        <label for="typeEP">Type (*)</label>
+        <select formControlName="typeEP" class="form-control" name="typeEP" id="typeEP">
+
+          <option>Business</option>
+          <option>Transverse</option>
+
+        </select>
+        <control-messages [control]="businessEditElementForm.controls.typeEP"></control-messages>
+
+      </div>
+
+      <div [formGroup]="businessEditElementForm" class="form-group">
+        <label for="ownerEP">Owner</label>
+
+
+        <select formControlName="ownerEP" class="form-control" name="ownerEP" id="ownerEP">
+          <option *ngFor="let c of ownerListProcess" [ngValue]="c.name +' '+ c.surname"> {{ c.name }} {{ c.surname }} </option>
+        </select>
+        <!--<control-messages [control]="businessEditElementForm.controls.ownerEP"></control-messages>-->
+      </div>
+      <span  class="cols-sm-2 control-label">* - mandatory field</span>
+
+    </div>
+
+
+  </div>
+
+
+  <p-footer>
+    <div class="ui-dialog-buttonpane ui-widget-content ui-helper-clearfix">
+      <button type="button" pButton icon="fa fa-fw fa-close" (click)="this.closeEditProForm()" label="Cancel"></button>
+      <button type="button" pButton icon="fa fa-fw fa-check" [disabled]="!businessEditElementForm.valid || duplicateName" (click)="editProcess()"
+              label="Save"></button>
+    </div>
+  </p-footer>
+</p-dialog>
+
+<p-dialog header="Edit Organization" [(visible)]="displayEditOrganization" modal="modal" width="550" responsive="true">
+
+
+  <div class="row">
+    <div class="col-md-12">
+
+      <div [formGroup]="businessEditOrgForm" class="form-group">
+        <label for="nameEO">Name (*)</label>
+        <input formControlName="nameEO" [(ngModel)]="name" class="form-control" name="nameEO" id="nameEO" (ngModelChange)="checkName($event)"
+        />
+
+        <control-messages [control]="businessEditOrgForm.controls.nameEO"></control-messages>
+        <span style="color:red" *ngIf="duplicateName">This name already exists!</span>
+      </div>
+
+
+      <div [formGroup]="businessEditOrgForm" class="form-group">
+        <label for="descriptionEO">Description (*)</label>
+        <textarea formControlName="descriptionEO" [(ngModel)]="description" class="form-control" name="descriptionEO" rows="5" id="descriptionEO"></textarea>
+
+        <control-messages [control]="businessEditOrgForm.controls.descriptionEO"></control-messages>
+      </div>
+
+
+      <div [formGroup]="businessEditOrgForm" class="form-group">
+        <label for="goalEO">Goal</label>
+        <input formControlName="goalEO" [(ngModel)]="goal" class="form-control" name="goalEO" id="goalEO" />
+
+        <control-messages [control]="businessEditOrgForm.controls.goalEO"></control-messages>
+      </div>
+
+      <div [formGroup]="businessEditOrgForm" class="form-group">
+        <label for="ownerEO">Owner</label>
+
+        <select formControlName="ownerEO" class="form-control" name="ownerEA" id="ownerEO">
+          <option *ngFor="let c of ownerListOrganization" [ngValue]="c.name +' '+ c.surname"> {{ c.name }} {{ c.surname }} </option>
+        </select>
+        <!--<control-messages [control]="businessEditOrgForm.controls.ownerEO"></control-messages>-->
+      </div>
+      <span  class="cols-sm-2 control-label">* - mandatory field</span>
+
+
+
+    </div>
+
+
+  </div>
+
+
+  <p-footer>
+    <div class="ui-dialog-buttonpane ui-widget-content ui-helper-clearfix">
+      <button type="button" pButton icon="fa fa-fw fa-close" (click)="this.closeEditOrgForm()" label="Cancel"></button>
+      <button type="button" pButton icon="fa fa-fw fa-check" [disabled]="!businessEditOrgForm.valid || duplicateName" (click)="editOrg()"
+              label="Save"></button>
+    </div>
+  </p-footer>
+</p-dialog>
+
+<p-dialog header="Edit Malfunction" [(visible)]="displayEditMalfunction" modal="modal" width="1050" responsive="true">
+
+
+  <div class="row">
+    <div class="col-md-12">
+
+      <div [formGroup]="businessEditMalfunctioForm" class="form-group">
+        <label for="nameEA">Name (*)</label>
+        <input formControlName="nameEM" [(ngModel)]="name" class="form-control" name="nameEA" id="nameEM" (ngModelChange)="checkName($event)"
+        />
+
+        <control-messages [control]="businessEditMalfunctioForm.controls.nameEM"></control-messages>
+        <span style="color:red" *ngIf="duplicateName">This name already exists!</span>
+      </div>
+
+
+
+    </div>
+
+
+  </div>
+
+
+  <div class="row">
+
+    <div class="col-md-6">
+
+      <h1>Technical</h1>
+      <hr>
+
+      <div [formGroup]="businessEditMalfunctioForm" class="form-group">
+        <label for="descriptionET">Description</label>
+        <textarea formControlName="descriptionET" [(ngModel)]="technicalDescription" rows="4" class="form-control" name="descriptionET"
+                  id="descriptionET"> </textarea>
+
+        <!--<control-messages [control]="businessEditMalfunctioForm.controls.descriptionET"></control-messages>-->
+      </div>
+
+
+      <div [formGroup]="businessEditMalfunctioForm" class="form-group">
+        <label for="consE">Consequences</label>
+        <textarea formControlName="consE" [(ngModel)]="technicalConsequence" rows="4" class="form-control" name="consE" id="consE"> </textarea>
+
+        <!--<control-messages [control]="businessEditMalfunctioForm.controls.consE"></control-messages>-->
+      </div>
+
+      <div class="col-md-6">
+
+        <label>
+          <input #confiLossE type="checkbox" [checked]="malfunctionConfidenciality" (change)="malfunctionConfidenciality= confiLossE.checked"> Confidentiality Loss
+        </label>
+
+        <label>
+          <input #avaLossE type="checkbox" [checked]="malfunctionAvailability" (change)="malfunctionAvailability= avaLossE.checked"> Availability Loss
+        </label>
+
+      </div>
+
+
+      <div class="col-md-6">
+
+        <label>
+          <input #inteLossE type="checkbox" [checked]="malfunctionIntegrity" (change)="malfunctionIntegrity= inteLossE.checked"> Integrity Loss
+        </label>
+
+        <label>
+          <input #effLossE type="checkbox" [checked]="malfunctionEfficency" (change)="malfunctionEfficency= effLossE.checked"> Efficiency Loss
+        </label>
+      </div>
+
+
+    </div>
+
+    <div class="col-md-6">
+
+      <h1>Functional</h1>
+      <hr>
+
+
+      <div [formGroup]="businessEditMalfunctioForm" class="form-group">
+        <label for="descriptionEF">Description</label>
+        <textarea formControlName="descriptionEF" [(ngModel)]="functionalDescription" rows="4" class="form-control" name="descriptionEF"
+                  id="descriptionEF"> </textarea>
+        <!--<p *ngIf="!editMode"> Suppory MCS </p>-->
+        <!--<control-messages [control]="businessEditMalfunctioForm.controls.descriptionEF"></control-messages>-->
+      </div>
+
+
+      <div [formGroup]="businessEditMalfunctioForm" class="form-group">
+        <label for="consEF">Consequences</label>
+        <textarea formControlName="consEF" [(ngModel)]="functionalConsequence" rows="4" class="form-control" name="consEF" id="consEF"> </textarea>
+        <!--<p *ngIf="!editMode"> Suppory MCS </p>-->
+        <!--<control-messages [control]="businessEditMalfunctioForm.controls.consEF"></control-messages>-->
+      </div>
+
+
+      <div [formGroup]="businessEditMalfunctioForm" class="form-group">
+        <label for="typeEF">Functional Malfunction Type (*)</label>
+        <i class="fa fa-info-circle" (click)="infoMalfunctionType()" style="cursor:pointer;margin-left:1px;"></i>
+        <select formControlName="typeEF" class="form-control" name="typeEF" id="typeEF">
+
+
+          <option value="Completeness_Lack">Completeness Lack</option>
+          <option value="Compliance_Lack">Compliance Lack</option>
+          <option value="Control_Lack">Control Lack</option>
+          <option value="Correctness_Lack">Correctness Lack</option>
+          <option value="Discretion_Lack">Discretion Lack</option>
+          <option value="Incorrect_Timing">Incorrect Timing</option>
+
+        </select>
+        <control-messages [control]="businessEditMalfunctioForm.controls.typeEF"></control-messages>
+
+      </div>
+
+
+    </div>
+
+  </div>
+
+
+  <div class="row">
+
+    <div class="col-md-12">
+
+      <span class="h1">Seriousness</span> (*)
+      <hr>
+
+      <div class="col-md-3">
+
+        <div [formGroup]="businessEditMalfunctioForm" class="form-group">
+          <label for="lowE" style="color: green">Low</label>
+          <i class="fa fa-info-circle" (click)="infoSeriousness()" style="cursor:pointer;margin-left:1px;"></i>
+          <textarea formControlName="lowE" [(ngModel)]="low" class="form-control" rows="3" name="lowE" id="lowE" [readonly]="(!malfunctionEfficency&& !malfunctionIntegrity && !malfunctionConfidenciality&& !malfunctionAvailability)"> </textarea>
+
+
+        </div>
+
+
+      </div>
+
+      <div class="col-md-3">
+
+        <div [formGroup]="businessEditMalfunctioForm" class="form-group">
+          <label for="mediumE" style="color: #ffdb00">Medium</label>
+          <i class="fa fa-info-circle" (click)="infoSeriousness()" style="cursor:pointer;margin-left:1px;"></i>
+          <textarea formControlName="mediumE" [(ngModel)]="medium" rows="3" class="form-control" name="mediumE" id="mediumE" [readonly]="(!malfunctionEfficency&& !malfunctionIntegrity && !malfunctionConfidenciality&& !malfunctionAvailability)"> </textarea>
+
+
+        </div>
+
+
+      </div>
+
+      <div class="col-md-3">
+
+        <div [formGroup]="businessEditMalfunctioForm" class="form-group">
+          <label for="highE" style="color: orange">High</label>
+          <i class="fa fa-info-circle" (click)="infoSeriousness()" style="cursor:pointer;margin-left:1px;"></i>
+          <textarea formControlName="highE" [(ngModel)]="high" rows="3" class="form-control" name="highE" id="highE" [readonly]="(!malfunctionEfficency&& !malfunctionIntegrity && !malfunctionConfidenciality&& !malfunctionAvailability)"> </textarea>
+
+
+        </div>
+
+
+      </div>
+
+      <div class="col-md-3">
+
+        <div [formGroup]="businessEditMalfunctioForm" class="form-group">
+          <label for="criticalE" style="color: red">Critical</label>
+          <i class="fa fa-info-circle" (click)="infoSeriousness()" style="cursor:pointer;margin-left:1px;"></i>
+          <textarea formControlName="criticalE" [(ngModel)]="critical" rows="3" class="form-control" name="criticalE" id="criticalE"
+                    [readonly]="(!malfunctionEfficency&& !malfunctionIntegrity && !malfunctionConfidenciality&& !malfunctionAvailability)"> </textarea>
+          <!--<p *ngIf="!editMode"> Suppory MCS </p>-->
+
+        </div>
+
+
+      </div>
+
+
+      <span  class="cols-sm-2 control-label">* - mandatory field</span>
+    </div>
+
+  </div>
+
+
+  <p-footer>
+    <div class="ui-dialog-buttonpane ui-widget-content ui-helper-clearfix">
+      <button type="button" pButton icon="fa fa-close" (click)="closeEditMalForm()" label="Cancel"></button>
+      <button type="button" pButton icon="fa fa-check" [disabled]="(!businessEditMalfunctioForm.valid || (!malfunctionEfficency&& !malfunctionIntegrity && !malfunctionConfidenciality&& !malfunctionAvailability)|| ((low ===null || low ==='' )&&(medium ===null || medium ==='' )&&(high ===null || high ==='' )&&(critical ===null || critical ==='' ) )|| duplicateName )"
+              (click)="editMal()" label="Save"></button>
+    </div>
+  </p-footer>
+
+</p-dialog>
+<p-dialog header="Edit Edge" [(visible)]="displayEditEdge" modal="modal" width="600" responsive="true">
+
+
+  <div class="row">
+    <div class="col-md-6">
+
+      <div [formGroup]="businessEditEdgeForm" class="form-group">
+        <label for="sourceNode">Source Node</label>
+        <input formControlName="sourceNode" [(ngModel)]="sourceNode" class="form-control" name="sourceNode" id="sourceNode" readonly/>
+
+        <control-messages [control]="businessEditEdgeForm.controls.sourceNode"></control-messages>
+      </div>
+
+    </div>
+
+    <div class="col-md-6">
+
+      <div [formGroup]="businessEditEdgeForm" class="form-group">
+        <label for="targetNode">Target Node</label>
+        <input formControlName="targetNode" [(ngModel)]="targetNode" class="form-control" name="targetNode" id="targetNode" readonly/>
+
+        <control-messages [control]="businessEditEdgeForm.controls.targetNode"></control-messages>
+      </div>
+
+    </div>
+
+
+  </div>
+
+
+  <div class="row">
+
+    <div class="col-md-6">
+
+      <label>
+        <input *ngIf="thereIsMalf" type="checkbox" disabled value="BusinessAnalyst">
+        <input #confiEdge *ngIf="!thereIsMalf" type="checkbox" (change)="edgeConfidentiality= confiEdge.checked"> Confidentiality
+      </label>
+
+
+      <div [formGroup]="businessEditEdgeForm" class="form-group">
+        <label for="impactLevel">Impact Level</label>
+        <select formControlName="impactLevel" class="form-control" name="impactLevel" id="impactLevel">
+
+
+          <option value=null></option>
+          <option value="Low">Low</option>
+          <option value="Medium">Medium</option>
+          <option value="High">High</option>
+          <option value="Critical">Critical</option>
+
+
+        </select>
+        <control-messages [control]="businessEditEdgeForm.controls.impactLevel" *ngIf="!edgeConfidentiality"></control-messages>
+
+      </div>
+    </div>
+
+
+    <div class="col-md-6">
+
+      <label>
+        <input *ngIf="thereIsMalf" type="checkbox" disabled value="BusinessAnalyst">
+        <input #inteEdge *ngIf="!thereIsMalf" type="checkbox" (change)="edgeIntegrity= inteEdge.checked"> Integrity
+      </label>
+
+
+      <div [formGroup]="businessEditEdgeForm" class="form-group">
+        <label for="impactIntLevel">Impact Level</label>
+        <select ng-disabled="!edgeIntegrity" formControlName="impactIntLevel" class="form-control" name="impactIntLevel" id="impactIntLevel">
+
+
+          <option value=null></option>
+          <option value="Low">Low</option>
+          <option value="Medium">Medium</option>
+          <option value="High">High</option>
+          <option value="Critical">Critical</option>
+
+
+        </select>
+        <control-messages [control]="businessEditEdgeForm.controls.impactIntLevel"></control-messages>
+
+      </div>
+
+    </div>
+
+
+  </div>
+
+
+  <div class="row">
+
+    <div class="col-md-6">
+
+      <label>
+        <input type="checkbox" *ngIf="thereIsMalf" disabled value="BusinessAnalyst">
+        <input #avaEdge type="checkbox" *ngIf="!thereIsMalf" (change)="edgeAvailability= avaEdge.checked"> Availability
+      </label>
+
+
+      <div [formGroup]="businessEditEdgeForm" class="form-group">
+        <label for="impactAvaLevel">Impact Level</label>
+        <select formControlName="impactAvaLevel" class="form-control" name="impactAvaLevel" id="impactAvaLevel">
+
+
+          <option value=null></option>
+          <option value="Low">Low</option>
+          <option value="Medium">Medium</option>
+          <option value="High">High</option>
+          <option value="Critical">Critical</option>
+
+
+        </select>
+        <control-messages [control]="businessEditEdgeForm.controls.impactAvaLevel"></control-messages>
+
+      </div>
+
+    </div>
+
+    <div class="col-md-6">
+
+      <label>
+        <input type="checkbox" *ngIf="thereIsMalf" disabled value="BusinessAnalyst">
+        <input #effeEdge type="checkbox" *ngIf="!thereIsMalf" (change)="edgeEfficency= effeEdge.checked"> Efficiency
+      </label>
+
+
+      <div [formGroup]="businessEditEdgeForm" class="form-group">
+        <label for="impactEffeLevel">Impact Level</label>
+        <select formControlName="impactEffeLevel" class="form-control" name="impactEffeLevel" id="impactEffeLevel">
+
+
+          <option value=null></option>
+          <option value="Low">Low</option>
+          <option value="Medium">Medium</option>
+          <option value="High">High</option>
+          <option value="Critical">Critical</option>
+
+
+        </select>
+        <control-messages [control]="businessEditEdgeForm.controls.impactEffeLevel"></control-messages>
+
+      </div>
+
+    </div>
+
+
+  </div>
+
+  <p-footer>
+    <div class="ui-dialog-buttonpane ui-widget-content ui-helper-clearfix">
+      <button type="button" pButton icon="fa fa-fw fa-close" (click)="this.displayEditEdge=false" label="Cancel"></button>
+      <button type="button" pButton icon="fa fa-fw fa-check" (click)="editEdge()" label="Save"></button>
+    </div>
+  </p-footer>
+
+</p-dialog>
+<p-dialog header="Edit Asset" [(visible)]="displayEditAsset" modal="modal" width="1600" responsive="true">
+
+
+  <div class="row">
+    <div class="col-md-3">
+
+      <div [formGroup]="businessEditAssetForm" class="form-group">
+        <label for="assetName">Name (*)</label>
+        <input formControlName="assetName" [(ngModel)]="name" class="form-control" name="assetName" id="assetName" (ngModelChange)="checkName($event)"
+        />
+
+        <control-messages [control]="businessEditAssetForm.controls.assetName"></control-messages>
+        <span style="color:red" *ngIf="duplicateName">This name already exists!</span>
+      </div>
+
+
+      <div [formGroup]="businessEditAssetForm" class="form-group">
+        <label for="ownAsset">Owner</label>
+
+
+        <select formControlName="ownAsset" class="form-control" name="ownAsset" id="ownAsset">
+          <option *ngFor="let c of ownerListAsset" [ngValue]="c.name+' '+c.surname"> {{ c.name }} {{ c.surname }} </option>
+        </select>
+        <!--<control-messages [control]="businessEditAssetForm.controls.ownAsset"></control-messages>-->
+      </div>
+
+    </div>
+
+    <div class="col-md-4">
+
+      <div [formGroup]="businessEditAssetForm" class="form-group">
+        <label for="desAsset">Description (*)</label>
+        <textarea formControlName="desAsset" [(ngModel)]="assetDescription" rows="8" class="form-control" name="desAsset" id="desAsset"> </textarea>
+
+        <control-messages [control]="businessEditAssetForm.controls.desAsset"></control-messages>
+      </div>
+
+    </div>
+
+    <div class="col-md-5">
+
+      <div class="form-group">
+        <label>Malfunctions</label>
+        <p-listbox [options]="associatedMalf" [(ngModel)]="selectedMalfunction" multiple="multiple" checkbox="checkbox" filter="filter"
+                   [style]="{'width':'100%', 'max-height':'300px'}"></p-listbox>
+
+      </div>
+
+    </div>
+
+
+  </div>
+
+  <div class="col-md-12">
+    <div class="row">
+
+      <h1 style="font-size: 18px">Primary Asset Category</h1>
+      <hr>
+
+      <div class="col-md-4">
+
+        <div class="form-group">
+          <label>Data (*)</label>
+          <i class="fa fa-info-circle" (click)="infoDataAsset()" style="cursor:pointer;margin-left:1px;"></i>
+          <select [(ngModel)]="selectedCategoryData" name="dataPrymaryAsset" id="dataPrymaryAsset" class="form-control" [disabled]="selectedCategoryCompli!='' || selectedCategoryService!=''">
+
+            <option *ngFor="let c of primaryAssetConf" [ngValue]="c"> {{ c }} </option>
+
+
+          </select>
+
+        </div>
+      </div>
+
+
+      <div class="col-md-4">
+
+        <div class="form-group">
+          <label>Services</label>
+          <i class="fa fa-info-circle" (click)="infoServicesAsset()" style="cursor:pointer;margin-left:1px;"></i>
+
+          <select [(ngModel)]="selectedCategoryService" name="servicesPrymaryAsset" id="servicesPrymaryAsset" class="form-control"
+                  [disabled]="selectedCategoryCompli!='' || selectedCategoryData!=''">
+
+            <option *ngFor="let c of primaryAssetInt" [ngValue]="c"> {{ c }} </option>
+
+
+          </select>
+
+
+
+        </div>
+
+      </div>
+
+
+      <div class="col-md-4">
+
+        <div class="form-group">
+          <label>Compliance to Regulations</label>
+          <i class="fa fa-info-circle" (click)="infoManagementAsset()" style="cursor:pointer;margin-left:1px;"></i>
+
+          <select [(ngModel)]="selectedCategoryCompli" name="compliPrymaryAsset" id="compliPrymaryAsset" class="form-control" [disabled]="selectedCategoryService!='' || selectedCategoryData!=''">
+
+            <option *ngFor="let c of primaryAssetAva" [ngValue]="c"> {{ c }} </option>
+
+
+          </select>
+
+
+        </div>
+
+      </div>
+
+
+    </div>
+
+    <div class="row">
+
+      <h1 style="font-size: 18px">Secondary Asset Category</h1>
+      <hr>
+
+      <div class="col-md-4">
+
+
+        <div class="form-group">
+          <label for="secAsset">Secondary Asset Category (*)</label>
+          <i class="fa fa-info-circle" (click)="infoSecondaryAsset()" style="cursor:pointer;margin-left:1px;"></i>
+          <!--<select formControlName="secAsset" class="form-control" name="secAsset" id="secAsset" >-->
+          <select [(ngModel)]="selectedSecondary" class="form-control" name="secAsset" id="secAsset" [disabled]="selectedCategoryData === '' && selectedCategoryService === '' && selectedCategoryCompli === ''">
+
+            <option value=""></option>
+            <option value="Personnel" *ngIf="selectedCategoryService === 'Service_User_Workspace'">Personnel</option>
+
+            <option value="Hardware" *ngIf="selectedCategoryService === 'Service_Telecommunication_Service' || selectedCategoryService === 'Service_Extended_Network_Service' || selectedCategoryService === 'Service_Local_Network_Service'
+
+                                    || selectedCategoryService === 'Service_Application_Service' || selectedCategoryService === 'Service_Shared_Service' || selectedCategoryService === 'Service_User_Hardware' || selectedCategoryService === 'Service_Common_Service'
+                                    || selectedCategoryService === 'Service_Web_editing_Service'">
+              Hardware</option>
+
+            <option value="Software_Off_the_Shelf" *ngIf="selectedCategoryService === 'Service_Application_Service'||selectedCategoryService === 'Service_Shared_Service' ||selectedCategoryService === 'Service_User_Hardware'
+                                                 ||selectedCategoryService === 'Service_Common_Service' || selectedCategoryService === 'Service_Web_editing_Service'">
+              Software_Off_the_Shelf</option>
+
+            <option value="Premise" *ngIf="selectedCategoryService === 'Service_User_Workspace'">Premise</option>
+
+            <option value="Data_File" *ngIf="selectedCategoryData === 'Data_DataFile_Database'|| selectedCategoryData === 'Data_Shared_Office_File'|| selectedCategoryData === 'Data_Personal_Office_File'||selectedCategoryData === 'Data_Digital_Mail'||selectedCategoryData === 'Data_IT_Archive'
+                                    ||selectedCategoryData === 'Data_Published_Data'">
+              Data_File</option>
+
+            <option value="Data_Message" *ngIf="selectedCategoryData === 'Data_Exchanged_Message' || selectedCategoryData === 'Data_Digital_Mail' || selectedCategoryData === 'Data_Physical_Mail'">Data_Message</option>
+
+            <option value="Software_Configuration" *ngIf="selectedCategoryService === 'Service_Telecommunication_Service' || selectedCategoryService === 'Service_Extended_Network_Service' || selectedCategoryService === 'Service_Local_Network_Service'
+                                                 || selectedCategoryService === 'Service_Application_Service' || selectedCategoryService === 'Service_Shared_Service' || selectedCategoryService === 'Service_User_Hardware' || selectedCategoryService === 'Service_Common_Service'
+                                                 || selectedCategoryService === 'Service_Web_editing_Service'">
+              Software_Configuration</option>
+
+            <option value="Policy" *ngIf="selectedCategoryCompli === 'Compliance_Policy_Personal_Information_Protection' || selectedCategoryCompli === 'Compliance_Policy_Financial_Communication' || selectedCategoryCompli === 'Compliance_Policy_Digital_Accounting_Control'
+                                                 || selectedCategoryCompli === 'Compliance_Policy_Intellectual_Property' || selectedCategoryCompli === 'Compliance_Policy_Protection_Of_Information_Systems' || selectedCategoryCompli === 'Compliance_Policy_People_And_Environment_Safety'">
+              Policy</option>
+
+            <option value="Electronic_Media" *ngIf="selectedCategoryData === 'Data_DataFile_Database'|| selectedCategoryData === 'Data_Shared_Office_File'|| selectedCategoryData === 'Data_Personal_Office_File'||selectedCategoryService === 'Service_Application_Service'||selectedCategoryData === 'Data_IT_Archive'
+                                    ||selectedCategoryData === 'Data_Published_Data' || selectedCategoryService === 'Service_Shared_Service' || selectedCategoryService === 'Service_Common_Service' || selectedCategoryService === 'Service_Web_editing_Service'">
+              Electronic_Media</option>
+
+            <option value="Non_Electronic_Media" *ngIf="selectedCategoryData === 'Data_Physical_File' || selectedCategoryData === 'Data_Physical_Mail' || selectedCategoryData === 'Data_Physical_Archive'">
+              Non_Electronic_Media</option>
+
+            <!--<option value="Communication_Network">Communication_Network</option>-->
+
+            <option value="Software_Custom" *ngIf="selectedCategoryService === 'Service_Application_Service' || selectedCategoryService === 'Service_Shared_Service' || selectedCategoryService === 'Service_User_Hardware' || selectedCategoryService === 'Service_Common_Service'
+                                                 || selectedCategoryService === 'Service_Web_editing_Service'">
+              Software_Custom</option>
+
+            <option value="Hardware_Configuration" *ngIf="selectedCategoryService === 'Service_Telecommunication_Service' || selectedCategoryService === 'Service_Extended_Network_Service' || selectedCategoryService === 'Service_Local_Network_Service'
+                                                 || selectedCategoryService === 'Service_Application_Service' || selectedCategoryService === 'Service_Shared_Service' || selectedCategoryService === 'Service_Common_Service'
+                                                 || selectedCategoryService === 'Service_Web_editing_Service'">
+              Hardware_Configuration</option>
+
+            <option value="Auxiliary_Equipment" *ngIf="selectedCategoryService === 'Service_Telecommunication_Service' || selectedCategoryService === 'Service_Extended_Network_Service' || selectedCategoryService === 'Service_Local_Network_Service'
+                                                 || selectedCategoryService === 'Service_Application_Service' || selectedCategoryService === 'Service_Shared_Service' || selectedCategoryService === 'Service_Common_Service'
+                                                 || selectedCategoryService === 'Service_Web_editing_Service'">
+              Auxiliary_Equipment</option>
+
+            <!--<option value="Firmware">Firmware</option>-->
+
+            <option value="Service_Access_Mean" *ngIf="selectedCategoryService === 'Service_Application_Service' || selectedCategoryService === 'Service_Shared_Service' || selectedCategoryService === 'Service_Common_Service'">
+              Service_Access_Mean</option>
+
+            <option value="Data_Access_Mean" *ngIf="selectedCategoryData === 'Data_DataFile_Database'|| selectedCategoryData === 'Data_Shared_Office_File'|| selectedCategoryData === 'Data_Personal_Office_File'||selectedCategoryData === 'Data_IT_Archive'">
+              Data_Access_Mean</option>
+
+
+          </select>
+          <!--<control-messages [control]="businessEditAssetForm.controls.secAsset"></control-messages>-->
+        </div>
+      </div>
+
+    </div>
+
+    <div class="row" *ngIf="assetConfidentiality !=null || assetIntegrity !=null || assetAvailability !=null || assetEfficiency !=null  ">
+
+      <h1 style="font-size: 18px">Impact Level</h1>
+      <hr>
+
+      <div class="col-md-3" *ngIf="assetConfidentiality !=null">
+
+        <label>Confidentiality Impact:</label>
+        <p> {{ assetConfidentiality }}</p>
+
+      </div>
+
+      <div class="col-md-3" *ngIf="assetIntegrity !=null">
+
+        <label>Integrity Impact:</label>
+        <p>{{ assetIntegrity }}</p>
+      </div>
+
+      <div class="col-md-3" *ngIf="assetAvailability !=null">
+
+        <label>Availability Impact:</label>
+        <p>{{ assetAvailability }}</p>
+      </div>
+
+      <div class="col-md-3" *ngIf="assetEfficiency !=null">
+
+        <label>Efficiency Impact:</label>
+        <p> {{ assetEfficiency }}</p>
+      </div>
+
+    </div>
+    <div class="row col-md-3"><br><span>* - mandatory field</span></div>
+
+
+  </div>
+
+
+  <p-footer>
+    <div class="ui-dialog-buttonpane ui-widget-content ui-helper-clearfix">
+      <button type="button" pButton icon="fa fa-close" (click)="this.closeEditAssetForm()" label="Cancel"></button>
+      <button type="button" pButton icon="fa fa-check" [disabled]="!businessEditAssetForm.valid || duplicateName || (selectedCategoryData === '' && selectedCategoryService === '' && selectedCategoryCompli === '') || selectedSecondary === '' || selectedSecondary === null || selectedSecondary === undefined "
+              (click)="editAsset()" label="Save"></button>
+    </div>
+  </p-footer>
+
+</p-dialog>
+
+
+<p-confirmDialog header="Confirmation" icon="fa fa-exclamation-triangle" width="425" [closable]="false" #cd>
+  <p-footer>
+
+    <button type="button" pButton icon="fa fa-fw fa-check" label="Ok" (click)="cd.accept()"></button>
+  </p-footer>
+</p-confirmDialog>
+
+<p-dialog [(visible)]="blocked" modal="modal" [responsive]="true" [showHeader]="false" class="businessSpinner">
+
+  <div *ngIf="!blockedMessage">
+    <h1></h1>
+    <div class="loader"></div>
+  </div>
+
+  <div *ngIf="blockedMessage">
+
+    <p-messages [(value)]="msgsAsset"></p-messages>
+
+  </div>
+
+</p-dialog>
+
+
+<p-dialog header="Seriousness" [(visible)]="showSeriousnessInfo" modal="modal" width="700" [responsive]="true">
+
+  <div class="row">
+    <div class=WordSection1>
+
+      <p class=MsoListParagraph style='margin-left:36.0pt'>
+        <span style='font-family:
+Symbol'>·
+          <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          </span>
+        </span>
+        <b>Seriousness Level 4: Vital </b>
+      </p>
+
+      <p class=MsoListParagraph style='margin-left:36.0pt;text-indent:0cm'>At this level, the potential risk is very serious, and even the existence and survival of the organization (or at least
+        one of its main BPs) is in danger.  If such a Malfunction were to occur, it would concern the entire workforce. For
+        organizations, such as public services, whose function cannot be questioned, this level of seriousness could well
+        lead to a transfer to another department, or to the private sector.   In human medicine, this would be the equivalent
+        of an “extremely bad” accident or illness, or where doctors reserve their judgment.  Should the organization survive
+        such a Malfunction, there would be serious and durable consequences. </p>
+
+      <p class=MsoListParagraph style='margin-left:36.0pt'>
+        <span style='font-family:
+Symbol'>·
+          <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          </span>
+        </span>
+        <b>Seriousness Level 3: Very Serious </b>
+      </p>
+
+      <p class=MsoListParagraph style='margin-left:36.0pt;text-indent:0cm'>These Malfunctions are considered very serious at the level of the organization, although its future would not be at
+        risk.  At this seriousness level, all (or, at least, a large part) of the personnel is concerned, in working conditions
+        and social relations, but their jobs are not directly at risk. In terms of public image, this level of Malfunction
+        often damages the organization’s reputation to such an extent that it would take several months to restore it, even
+        if the financial impact cannot be precisely evaluated.  Accidents that lead to months of organizational disorder
+        for an enterprise would also be evaluated at this level.
+      </p>
+
+      <p class=MsoListParagraph style='margin-left:36.0pt'>
+        <span style='font-family:
+Symbol'>·
+          <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          </span>
+        </span>
+        <b>Seriousness Level 2: Serious </b>
+      </p>
+
+      <p class=MsoListParagraph style='margin-left:36.0pt;text-indent:0cm'>Malfunctions at this level would have a clear impact on the organization’s operations, results or image, but are globally
+        manageable.  Only a limited part of the staff would be involved in dealing with the consequences of the Malfunction,
+        with a significant impact on their working conditions. </p>
+
+      <p class=MsoListParagraph style='margin-left:36.0pt'>
+        <span style='font-family:
+Symbol'>·
+          <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          </span>
+        </span>
+        <b>Seriousness Level 1: Not significant  </b>
+      </p>
+
+      <p class=MsoListParagraph style='margin-left:36.0pt;text-indent:0cm'>At this level, any resulting damage would have no significant impact on the results or image of the organization, even
+        if some staff members are deeply involved in re-establishing the original status.</p>
+
+    </div>
+  </div>
+
+  <p-footer>
+    <div class="ui-dialog-buttonpane ui-widget-content ui-helper-clearfix">
+      <button type="button" pButton icon="fa fa-fw fa-check" (click)="showSeriousnessInfo=false" label="Close"></button>
+    </div>
+
+  </p-footer>
+</p-dialog>
+
+
+<p-dialog header="Functional Malfunction Type" [(visible)]="showMalfunctionTypeInfo" modal="modal" width="700" [responsive]="true">
+
+  <div class="row">
+    <div class=WordSection1>
+      <p class=MsoNormal>
+        <a name="OLE_LINK15"></a>
+        <a name="OLE_LINK14">
+          <span lang=EN-CA>At the functional level, the goal is to identify potential Malfunctions that have a significant impact on the organization’s
+            activities. These will typically be malfunctions in the processes. The following generic profile criteria of
+            a process malfunction will usually apply: </span>
+        </a>
+      </p>
+      <p class=MsoListParagraph style='margin-left:36.0pt'>
+        <span style='font-family:
+Symbol'>·
+          <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          </span>
+        </span>
+        <b>Incorrect timing</b>: the tasks or activities that are planned are not completed in time;  </p>
+      <p class=MsoListParagraph style='margin-left:36.0pt'>
+        <span style='font-family:
+Symbol'>·
+          <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          </span>
+        </span>
+        <b>Lack of compliance</b>: the tasks or activities that are planned are not completed in accordance with the specifications;
+      </p>
+      <p class=MsoListParagraph style='margin-left:36.0pt'>
+        <span style='font-family:
+Symbol'>·
+          <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          </span>
+        </span>
+        <b>Lack of completeness</b>: the tasks or activities that are planned are only partially completed (although the parts
+        that are complete are as specified); </p>
+      <p class=MsoListParagraph style='margin-left:36.0pt'>
+        <span style='font-family:
+Symbol'>·
+          <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          </span>
+        </span>
+        <b>Lack of correctness</b>: additional tasks or activities are performed that were not planned or specified; </p>
+      <p class=MsoListParagraph style='margin-left:36.0pt'>
+        <span style='font-family:
+Symbol'>·
+          <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          </span>
+        </span>
+        <b>Lack of discretion</b>: information is improperly disclosed while the tasks or activities are performed;  </p>
+      <p class=MsoListParagraph style='margin-left:36.0pt'>
+        <span style='font-family:
+Symbol'>·
+          <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          </span>
+        </span>
+        <b>Lack of Control</b>: the tasks or activities are performed and completed as planned but without any control or visibility
+        of their execution.</p>
+
+    </div>
+  </div>
+
+  <p-footer>
+    <div class="ui-dialog-buttonpane ui-widget-content ui-helper-clearfix">
+      <button type="button" pButton icon="fa fa-fw fa-check" (click)="showMalfunctionTypeInfo=false" label="Close"></button>
+    </div>
+
+  </p-footer>
+</p-dialog>
+
+<p-dialog header="Primary Asset Type - Data" [(visible)]="showAssetPrimaryDataTypeInfo" modal="modal" width="700" [responsive]="true">
+
+  <div class="row">
+    <div class=WordSection1>
+      <p class=MsoNormal>
+        <u>
+          <span lang=EN-CA>Primary assets categorization correspond to functional needs, while secondary assets categorization correspond,
+            on a physical and concrete level, to the means required to meet functional needs.</span>
+        </u>
+      </p>
+      <p class=MsoNormal>
+        <span lang=EN-CA>&nbsp;</span>
+      </p>
+      <p class=MsoNormal>
+        <b>
+          <span lang=EN-CA>Assets of the category Data</span>
+        </b>
+      </p>
+      <p class=MsoListParagraph style='margin-left:.5in'>
+        <span lang=EN-GB style='font-family:Symbol'>·
+          <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          </span>
+        </span>
+        <span lang=EN-GB>Data files or databases associated to applications
+        </span>
+      </p>
+      <p class=MsoListParagraph style='margin-left:.5in'>
+        <span lang=EN-GB style='font-family:Symbol'>·
+          <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          </span>
+        </span>
+        <span lang=EN-GB>Exchanges data, screens, data individually sensitive
+        </span>
+      </p>
+      <p class=MsoListParagraph style='margin-left:.5in'>
+        <span lang=EN-GB style='font-family:Symbol'>·
+          <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          </span>
+        </span>
+        <span lang=EN-GB>Office related files</span>
+      </p>
+      <p class=MsoListParagraph style='margin-left:.5in'>
+        <span lang=EN-GB style='font-family:Symbol'>·
+          <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          </span>
+        </span>
+        <span lang=EN-GB>Written or printed information available to users and personal archives</span>
+      </p>
+      <p class=MsoListParagraph style='margin-left:.5in'>
+        <span lang=EN-GB style='font-family:Symbol'>·
+          <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          </span>
+        </span>
+        <span lang=EN-GB>Mail (Classical or electronic) and faxes</span>
+      </p>
+      <p class=MsoListParagraph style='margin-left:.5in'>
+        <span lang=EN-GB style='font-family:Symbol'>·
+          <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          </span>
+        </span>
+        <span lang=EN-GB>Archives (physical and IT)</span>
+      </p>
+      <p class=MsoListParagraph style='margin-left:.5in;text-indent:0in'>
+        <span lang=EN-GB>&nbsp;</span>
+      </p>
+      <p class=MsoNormal>
+        <span lang=EN-CA>Within the SEST tool, Data Primary Category has been subdivided in the following:</span>
+      </p>
+      <p class=MsoListParagraph style='margin-left:.5in'>
+        <span lang=EN-GB style='font-family:Symbol'>·
+          <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          </span>
+        </span>
+        <b>
+          <span lang=EN-GB>Data_DataFile_Database</span>
+        </b>
+        <span lang=EN-GB> (Data files and data bases accessed by applications)</span>
+      </p>
+      <p class=MsoListParagraph style='margin-left:.5in'>
+        <span lang=EN-GB style='font-family:Symbol'>·
+          <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          </span>
+        </span>
+        <b>
+          <span lang=EN-GB>Data_Shared_Office_File</span>
+        </b>
+        <span lang=EN-GB> (Shared office files and data)</span>
+      </p>
+      <p class=MsoListParagraph style='margin-left:.5in'>
+        <span lang=EN-GB style='font-family:Symbol'>·
+          <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          </span>
+        </span>
+        <b>
+          <span lang=EN-GB>Data_Personal_Office_File</span>
+        </b>
+        <span lang=EN-GB> (Personal office files and data)</span>
+      </p>
+      <p class=MsoListParagraph style='margin-left:.5in'>
+        <span lang=EN-GB style='font-family:Symbol'>·
+          <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          </span>
+        </span>
+        <b>
+          <span lang=EN-GB>Data_Physical_File</span>
+        </b>
+        <span lang=EN-GB> (Written or printed files and data)</span>
+      </p>
+      <p class=MsoListParagraph style='margin-left:.5in'>
+        <span lang=EN-GB style='font-family:Symbol'>·
+          <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          </span>
+        </span>
+        <b>
+          <span lang=EN-GB>Data_Exchanged_Message</span>
+        </b>
+        <span lang=EN-GB> (Exchanged messages, screen views, data individually sensitive)</span>
+      </p>
+      <p class=MsoListParagraph style='margin-left:.5in'>
+        <span lang=EN-GB style='font-family:Symbol'>·
+          <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          </span>
+        </span>
+        <b>
+          <span lang=EN-GB>Data_Digital_Mail</span>
+        </b>
+        <span lang=EN-GB>
+          (Electronic mailing)</span>
+      </p>
+      <p class=MsoListParagraph style='margin-left:.5in'>
+        <span lang=EN-GB style='font-family:Symbol'>·
+          <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          </span>
+        </span>
+        <b>
+          <span lang=EN-GB>Data_Physical_Mail</span>
+        </b>
+        <span lang=EN-GB> (Written or printed mailing)</span>
+      </p>
+      <p class=MsoListParagraph style='margin-left:.5in'>
+        <span lang=EN-GB style='font-family:Symbol'>·
+          <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          </span>
+        </span>
+        <b>
+          <span lang=EN-GB>Data_Physical_Archive</span>
+        </b>
+        <span lang=EN-GB> (Physical data archive)</span>
+      </p>
+      <p class=MsoListParagraph style='margin-left:.5in'>
+        <span lang=EN-GB style='font-family:Symbol'>·
+          <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          </span>
+        </span>
+        <b>
+          <span lang=EN-GB>Data_IT_Archive</span>
+        </b>
+        <span lang=EN-GB>
+          (Digital data archive)</span>
+      </p>
+      <p class=MsoListParagraph style='margin-left:.5in'>
+        <span lang=EN-GB style='font-family:Symbol'>·
+          <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          </span>
+        </span>
+        <b>
+          <span lang=EN-GB>Data_Published_Data</span>
+        </b>
+        <span lang=EN-GB>
+          (Data and information published on public or internal sites)</span>
+      </p>
+    </div>
+  </div>
+
+  <p-footer>
+    <div class="ui-dialog-buttonpane ui-widget-content ui-helper-clearfix">
+      <button type="button" pButton icon="fa fa-fw fa-check" (click)="showAssetPrimaryDataTypeInfo=false" label="Close"></button>
+    </div>
+
+  </p-footer>
+</p-dialog>
+
+<p-dialog header="Primary Asset Type - Services" [(visible)]="showAssetPrimaryServicesTypeInfo" modal="modal" width="700"
+          [responsive]="true">
+
+  <div class="row">
+    <div class=WordSection1>
+      <p class=MsoNormal>
+        <u>
+          <span lang=EN-CA>Primary assets categorization correspond to functional needs, while secondary assets categorization correspond,
+            on a physical and concrete level, to the means required to meet functional needs.</span>
+        </u>
+      </p>
+      <p class=MsoNormal>
+        <span lang=EN-CA>&nbsp;</span>
+      </p>
+      <p class=MsoNormal>
+        <b>
+          <span lang=EN-CA>Assets of the category Services</span>
+        </b>
+      </p>
+      <p class=MsoListParagraph style='margin-left:.25in'>
+        <span lang=EN-GB style='font-family:Symbol'>·
+          <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          </span>
+        </span>
+        <span lang=EN-GB>Network services</span>
+      </p>
+      <p class=MsoListParagraph style='margin-left:.25in'>
+        <span lang=EN-GB style='font-family:Symbol'>·
+          <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          </span>
+        </span>
+        <span lang=EN-GB>Application services</span>
+      </p>
+      <p class=MsoListParagraph style='margin-left:.25in'>
+        <span lang=EN-GB style='font-family:Symbol'>·
+          <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          </span>
+        </span>
+        <span lang=EN-GB>Common/shared office services</span>
+      </p>
+      <p class=MsoListParagraph style='margin-left:.25in'>
+        <span lang=EN-GB style='font-family:Symbol'>·
+          <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          </span>
+        </span>
+        <span lang=EN-GB>Common system services: emailing, archiving, printing, edition, etc.</span>
+      </p>
+      <p class=MsoListParagraph style='margin-left:.25in'>
+        <span lang=EN-GB style='font-family:Symbol'>·
+          <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          </span>
+        </span>
+        <span lang=EN-GB>User interface services and peripherals (PC, local printers, peripherals, specific interfaces, etc.)</span>
+      </p>
+      <p class=MsoListParagraph style='margin-left:.25in'>
+        <span lang=EN-GB style='font-family:Symbol'>·
+          <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          </span>
+        </span>
+        <span lang=EN-GB>Telecommunication services (voice, faxes, video-conferencing, etc.)</span>
+      </p>
+      <p class=MsoListParagraph style='margin-left:.25in'>
+        <span lang=EN-GB style='font-family:Symbol'>·
+          <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          </span>
+        </span>
+        <span lang=EN-GB>Common services for the working environment of the staff (offices, power supply, air</span>
+      </p>
+      <p class=MsoListParagraph style='margin-left:.25in'>
+        <span lang=EN-GB style='font-family:Symbol'>·
+          <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          </span>
+        </span>
+        <span lang=EN-GB>conditioning, etc.)</span>
+      </p>
+      <p class=MsoListParagraph style='margin-left:.25in'>
+        <span lang=EN-GB style='font-family:Symbol'>·
+          <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          </span>
+        </span>
+        <span lang=EN-GB>Classical mail services and treatment</span>
+      </p>
+      <p class=MsoListParagraph style='margin-left:.75in;text-indent:0in'>
+        <span lang=EN-GB>&nbsp;</span>
+      </p>
+      <p class=MsoNormal>
+        <span lang=EN-CA>Within the SEST tool, Services Primary Category has been subdivided in the following:</span>
+      </p>
+      <p class=MsoListParagraph style='margin-left:.25in'>
+        <span lang=EN-GB style='font-family:Symbol'>·
+          <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          </span>
+        </span>
+        <b>
+          <span lang=EN-GB>Service_User_Workspace</span>
+        </b>
+        <span lang=EN-GB> (User workspace and environment)</span>
+      </p>
+      <p class=MsoListParagraph style='margin-left:.25in'>
+        <span lang=EN-GB style='font-family:Symbol'>·
+          <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          </span>
+        </span>
+        <b>
+          <span lang=EN-GB>Service_Telecommunication_Service</span>
+        </b>
+        <span lang=EN-GB> (Telecommunication Services)</span>
+      </p>
+      <p class=MsoListParagraph style='margin-left:.25in'>
+        <span lang=EN-GB style='font-family:Symbol'>·
+          <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          </span>
+        </span>
+        <b>
+          <span lang=EN-GB>Service_Extended_Network_Service</span>
+        </b>
+        <span lang=EN-GB> (Extended Network Service)</span>
+      </p>
+      <p class=MsoListParagraph style='margin-left:.25in'>
+        <span lang=EN-GB style='font-family:Symbol'>·
+          <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          </span>
+        </span>
+        <b>
+          <span lang=EN-GB>Service_Local_Network_Service</span>
+        </b>
+        <span lang=EN-GB> (Local Area Network Service)</span>
+      </p>
+      <p class=MsoListParagraph style='margin-left:.25in'>
+        <span lang=EN-GB style='font-family:Symbol'>·
+          <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          </span>
+        </span>
+        <b>
+          <span lang=EN-GB>Service_Application_Service</span>
+        </b>
+        <span lang=EN-GB> (Services provided by applications)</span>
+      </p>
+      <p class=MsoListParagraph style='margin-left:.25in'>
+        <span lang=EN-GB style='font-family:Symbol'>·
+          <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          </span>
+        </span>
+        <b>
+          <span lang=EN-GB>Service_Shared_Service</span>
+        </b>
+        <span lang=EN-GB> (Shared office Services)</span>
+      </p>
+      <p class=MsoListParagraph style='margin-left:.25in'>
+        <span lang=EN-GB style='font-family:Symbol'>·
+          <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          </span>
+        </span>
+        <b>
+          <span lang=EN-GB>Service_User_Hardware</span>
+        </b>
+        <span lang=EN-GB> (Equipment provided to end users)</span>
+      </p>
+      <p class=MsoListParagraph style='margin-left:.25in'>
+        <span lang=EN-GB style='font-family:Symbol'>·
+          <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          </span>
+        </span>
+        <b>
+          <span lang=EN-GB>Service_Common_Service</span>
+        </b>
+        <span lang=EN-GB> (Common system Services)</span>
+      </p>
+      <p class=MsoListParagraph style='margin-left:.25in'>
+        <span lang=EN-GB style='font-family:Symbol'>·
+          <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          </span>
+        </span>
+        <b>
+          <span lang=EN-GB>Service_Web_editing_Service</span>
+        </b>
+        <span lang=EN-GB>  (Web editing Service (internal or public)</span>
+      </p>
+      <p class=MsoListParagraph style='margin-left:.25in;text-indent:0in'>
+        <span lang=EN-GB>&nbsp;</span>
+      </p>
+
+    </div>
+
+  </div>
+
+  <p-footer>
+    <div class="ui-dialog-buttonpane ui-widget-content ui-helper-clearfix">
+      <button type="button" pButton icon="fa fa-fw fa-check" (click)="showAssetPrimaryServicesTypeInfo=false" label="Close"></button>
+    </div>
+
+  </p-footer>
+</p-dialog>
+
+<p-dialog header="Primary Asset Type - Management" [(visible)]="showAssetPrimaryManagementTypeInfo" modal="modal" width="1000"
+          [responsive]="true">
+
+  <div class="row">
+    <div class=WordSection1>
+      <p class=MsoNormal>
+        <u>
+          <span lang=EN-CA>Primary assets categorization correspond to functional needs, while secondary assets categorization correspond,
+            on a physical and concrete level, to the means required to meet functional needs.</span>
+        </u>
+      </p>
+      <p class=MsoNormal>
+        <span lang=EN-CA>&nbsp;</span>
+      </p>
+      <p class=MsoNormal>
+        <b>
+          <span lang=EN-CA>Assets of the category Management processes
+          </span>
+        </b>
+      </p>
+      <p class=MsoListParagraph style='margin-left:.25in'>
+        <span lang=EN-GB style='font-family:Symbol'>·
+          <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          </span>
+        </span>
+        <span lang=EN-GB>Processes related to laws, regulations and contractual requirements</span>
+      </p>
+      <p class=MsoListParagraph style='margin-left:.25in'>
+        <span lang=EN-GB style='font-family:Symbol'>·
+          <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          </span>
+        </span>
+        <span lang=EN-GB>Processes for the management of information security
+        </span>
+      </p>
+      <p class=MsoNormal>
+        <span lang=EN-CA>&nbsp;</span>
+      </p>
+      <p class=MsoNormal>
+        <span lang=EN-CA>Within the SEST tool, Management Primary Category has been subdivided in the following:</span>
+      </p>
+      <p class=MsoListParagraph style='margin-left:.25in'>
+        <span lang=EN-GB style='font-family:Symbol'>·
+          <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          </span>
+        </span>
+        <b>
+          <span lang=EN-GB>Compliance_Policy_Personal_Information_Protection</span>
+        </b>
+        <span lang=EN-GB> (Compliance to law or regulations relative to personal information protection)
+        </span>
+      </p>
+      <p class=MsoListParagraph style='margin-left:.25in'>
+        <span lang=EN-GB style='font-family:Symbol'>·
+          <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          </span>
+        </span>
+        <b>
+          <span lang=EN-GB>Compliance_Policy_Financial_Communication</span>
+        </b>
+        <span lang=EN-GB> (Compliance to law or regulations relative to financial communication)
+        </span>
+      </p>
+      <p class=MsoListParagraph style='margin-left:.25in'>
+        <span lang=EN-GB style='font-family:Symbol'>·
+          <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          </span>
+        </span>
+        <b>
+          <span lang=EN-GB>Compliance_Policy_Digital_Accounting_Control</span>
+        </b>
+        <span lang=EN-GB> (Compliance to law or regulations relative to digital accounting control)
+        </span>
+      </p>
+      <p class=MsoListParagraph style='margin-left:.25in'>
+        <span lang=EN-GB style='font-family:Symbol'>·
+          <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          </span>
+        </span>
+        <b>
+          <span lang=EN-GB>Compliance_Policy_Intellectual_Property</span>
+        </b>
+        <span lang=EN-GB> (Compliance to law or regulations relative to intellectual property)
+        </span>
+      </p>
+      <p class=MsoListParagraph style='margin-left:.25in'>
+        <span lang=EN-GB style='font-family:Symbol'>·
+          <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          </span>
+        </span>
+        <b>
+          <span lang=EN-GB>Compliance_Policy_Protection_Of_Information_Systems</span>
+        </b>
+        <span lang=EN-GB> (Compliance to law or regulations relative to the protection of information systems)</span>
+      </p>
+      <p class=MsoListParagraph style='margin-left:.25in'>
+        <span lang=EN-GB style='font-family:Symbol'>·
+          <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          </span>
+        </span>
+        <b>
+          <span lang=EN-GB>Compliance_Policy_People_And_Environment_Safety</span>
+        </b>
+        <span lang=EN-GB> (Compliance to law or regulations relative to people safety and protection of environment)</span>
+      </p>
+    </div>
+  </div>
+
+  <p-footer>
+    <div class="ui-dialog-buttonpane ui-widget-content ui-helper-clearfix">
+      <button type="button" pButton icon="fa fa-fw fa-check" (click)="showAssetPrimaryManagementTypeInfo=false" label="Close"></button>
+    </div>
+
+  </p-footer>
+</p-dialog>
+

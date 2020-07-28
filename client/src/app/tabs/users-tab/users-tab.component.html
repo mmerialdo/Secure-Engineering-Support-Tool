@@ -1,0 +1,180 @@
+<!--  --------------------------------------------------------------------------------------------------------------------
+// Copyright file="users-tab.component.html"
+//  © Copyright European Space Agency, 2018-2020
+//
+//  Author: Software developed by RHEA System S.A.
+//
+//  This file is subject to the terms and conditions defined in file 'LICENSE.txt', which is part of this source code package.
+//  No part of the package, including this file, may be copied, modified, propagated, or distributed
+//  except according to the terms contained in the file ‘LICENSE.txt’.
+// -------------------------------------------------------------------------------------------------------------------- -->
+
+<div class="container-fluid">
+  <div class="row" style="margin-top: 10px">
+    <div class="col-lg-2">
+      <p-menu [model]="items" [style]="{'width': '100%'}"></p-menu>
+    </div>
+    <div class="col-lg-10" [ngSwitch]="case">
+      <div *ngSwitchCase="'view1'">
+
+        <p-table [value]="users" selectionMode="single" #dt [rows]="20" [paginator]="true" (onRowExpand)="expandUserRow($event)" dataKey="email"
+                 (onRowSelect)="onRowSelect($event)" (onRowUnselect)="onRowUnselect($event)" [metaKeySelection]="false"
+                 expandableRows="true" rowExpandMode="single" id="usersTable">
+
+          <ng-template pTemplate="header">
+            <tr>
+              <th style="width: 3em"></th>
+              <th *ngFor="let col of usersListCols">
+                {{col.header}}
+              </th>
+            </tr>
+          </ng-template>
+          <ng-template pTemplate="body" let-user let-expanded="expanded">
+            <tr [pSelectableRow]="user">
+              <td>
+                <a href="#" [pRowToggler]="user">
+                  <i [ngClass]="expanded ? 'pi pi-chevron-down' : 'pi pi-chevron-right'"></i>
+                </a>
+              </td>
+              <td *ngFor="let col of usersListCols">
+                {{user[col.field]}}
+              </td>
+            </tr>
+          </ng-template>
+          <ng-template let-user pTemplate="rowexpansion">
+
+            <div class="container">
+              <div class="row">
+                <div *ngFor="let roles of listRoles" class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+                  <div class="offer offer-danger">
+                    <div class="shape">
+                      <div class="shape-text">
+                        <span class="glyphicon glyphicon-user"></span>
+                      </div>
+                    </div>
+                    <div class="offer-content">
+                      <h3 class="lead">
+                        <b>
+                          {{roles.id}}
+                        </b>
+                      </h3>
+                      <p *ngFor="let subItem of roles['rol']">
+                        {{subItem}}
+                        <br>
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </ng-template>
+        </p-table>
+
+      </div>
+
+      <div *ngSwitchCase="'view2'">
+
+        <form class="col-md-11 well">
+          <div class="row">
+            <div class="col-md-6">
+
+              <div [formGroup]="edituserForm" class="form-group">
+                <label for="firstname">Firstname</label>
+                <!--<input formControlName="firstname" type="text" class="form-control" name="firstname" id="firstname"  value="ciao"/>-->
+                <input type="text" name="firstname" value="John" id="firstname" class="form-control" formControlName="firstname">
+                <control-messages [control]="edituserForm.controls.firstname"></control-messages>
+              </div>
+
+            </div>
+            <div class="col-md-6">
+
+              <div [formGroup]="edituserForm" class="form-group">
+                <label for="username">Username</label>
+                <input formControlName="username" type="text" class="form-control" name="username" id="username" value="selectedUser.Username"
+                />
+                <control-messages [control]="edituserForm.controls.username"></control-messages>
+              </div>
+
+            </div>
+          </div>
+
+          <div class="row">
+
+            <div class="col-md-6">
+
+              <div [formGroup]="edituserForm" class="form-group">
+                <label for="surname">Surname</label>
+                <input formControlName="surname" type="text" class="form-control" name="surname" id="surname" value="selectedUser.Surname"
+                />
+                <control-messages [control]="edituserForm.controls.surname"></control-messages>
+              </div>
+
+            </div>
+
+            <div class="col-md-6">
+
+              <div [formGroup]="edituserForm" class="form-group">
+                <label for="email">Email</label>
+                <input formControlName="email" type="text" class="form-control" name="email" id="email" value="selectedUser.Email" />
+                <control-messages [control]="edituserForm.controls.email"></control-messages>
+              </div>
+
+
+            </div>
+
+          </div>
+
+          <div class="row">
+
+            <div class="col-md-6">
+
+              <div [formGroup]="edituserForm" class="form-group">
+                <label for="profile">Profile</label>
+                <select formControlName="profile" class="form-control" name="profile" id="profile">
+
+                  <option value="GeneralUser">General User </option>
+                  <option value="ProjectManager">Project Manager </option>
+
+                </select>
+
+              </div>
+
+            </div>
+
+            <div class="col-md-6">
+              <button type="button" class="btn btn-primary btn-sm" (click)="displayPassword()">Change Password</button>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-6"></div>
+            <div class="col-md-9"></div>
+            <div class="col-md-3">
+              <button type="button" class="btn btn-primary btn-sm" style="float: right" (click)="sendEditUser()" [disabled]="!edituserForm.valid">Save</button>
+              <button type="button" class="btn btn-primary btn-sm" (click)="changeCase()" style="float: right;margin-right: 5px">Back</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="openRegister">
+  <app-register (sendFeed)="sendFeed($event)">
+  </app-register>
+</div>
+<p-confirmDialog width="425"></p-confirmDialog>
+
+<p-dialog [(visible)]="blocked" modal="modal" [responsive]="true" [showHeader]="false" class="userSpinner">
+
+  <div *ngIf="blockedMessage">
+
+    <p-messages [(value)]="msgsAsset"></p-messages>
+
+  </div>
+</p-dialog>
+
+<user-password *ngIf="displayEditPassword" displayEditPassword="{{displayEditPassword}}"
+               username="{{selectedUser.Username}}" (closePopup)="onClose($event)"></user-password>
+<p-toast position="center"></p-toast>

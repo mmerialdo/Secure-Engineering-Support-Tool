@@ -1,0 +1,44 @@
+<!--  --------------------------------------------------------------------------------------------------------------------
+// Copyright file="login.component.html"
+//  © Copyright European Space Agency, 2018-2020
+//
+//  Author: Software developed by RHEA System S.A.
+//
+//  This file is subject to the terms and conditions defined in file 'LICENSE.txt', which is part of this source code package.
+//  No part of the package, including this file, may be copied, modified, propagated, or distributed
+//  except according to the terms contained in the file ‘LICENSE.txt’.
+// -------------------------------------------------------------------------------------------------------------------- -->
+
+<div class="container">
+  <div class="card card-container">
+
+    <img id="profile-img" class="profile-img-card" src="//ssl.gstatic.com/accounts/ui/avatar_2x.png" />
+    <p id="profile-name" class="profile-name-card"></p>
+    <form class="form-signin">
+      <span id="reauth-user" class="reauth-user"></span>
+      <input type="text" id="inputUser" class="form-control" placeholder="Username" [(ngModel)]="username" name="username">
+      <input type="password" id="inputPassword" class="form-control" placeholder="Password" [(ngModel)]="password" name="password">
+      <span style="color:red" *ngIf="showError">{{ errorMessage }}</span>
+
+      <button class="btn btn-lg btn-primary btn-block btn-signin" type="submit" id="loginButton" (click)="login()">Sign in</button>
+    </form>
+  </div>
+</div>
+<!--<p-toast position="center"></p-toast>-->
+
+<p-dialog header="Password Expired - Please ask the Administrator to reset it" [(visible)]="displayEditPassword" modal="modal" width="550" responsive="true"
+  [closable]="false" id="pswExpired">
+
+  <p-footer>
+    <div class="ui-dialog-buttonpane ui-widget-content ui-helper-clearfix">
+      <button type="button" pButton icon="fa-close" (click)="closeForm()" label="Ok"></button>
+
+    </div>
+  </p-footer>
+</p-dialog>
+
+<p-dialog [(visible)]="blockedLogin" modal="modal" [responsive]="true" [showHeader]="false" class="loginSpinner">
+  <div>
+    <div class="loader"></div>
+  </div>
+</p-dialog>

@@ -1,0 +1,82 @@
+<!--  --------------------------------------------------------------------------------------------------------------------
+// Copyright file="edit-process.component.html"
+//  © Copyright European Space Agency, 2018-2020
+//
+//  Author: Software developed by RHEA System S.A.
+//
+//  This file is subject to the terms and conditions defined in file 'LICENSE.txt', which is part of this source code package.
+//  No part of the package, including this file, may be copied, modified, propagated, or distributed
+//  except according to the terms contained in the file ‘LICENSE.txt’.
+// ------------------------------------------------------------------------------------------------------------------ -->
+
+<p-dialog header="{{isNew?'New Process':'Edit Process'}}" [(visible)]="displayEditProcess" modal="modal" width="550"
+          responsive="true" (onHide)="cancel()">
+
+  <div class="row">
+    <div class="col-md-12">
+
+      <div [formGroup]="businessEditElementForm" class="form-group">
+        <label for="nameEP">Name (*)</label>
+        <input formControlName="nameEP" [(ngModel)]="name" class="form-control" name="name" id="nameEP"
+               (ngModelChange)="checkName($event)"
+        />
+        <control-messages [control]="businessEditElementForm.controls.nameEP"></control-messages>
+        <span style="color:red" *ngIf="duplicateName">This name already exists!</span>
+      </div>
+
+
+      <div [formGroup]="businessEditElementForm" class="form-group">
+        <label for="descriptionEP">Description (*)</label>
+        <textarea formControlName="descriptionEP" [(ngModel)]="description" class="form-control" name="descriptionEP"
+                  rows="5" id="descriptionEP"></textarea>
+
+        <control-messages [control]="businessEditElementForm.controls.descriptionEP"></control-messages>
+      </div>
+
+
+      <div [formGroup]="businessEditElementForm" class="form-group">
+        <label for="goalEP">Goal</label>
+        <input formControlName="goalEP" [(ngModel)]="goal" class="form-control" name="goalEP" id="goalEP"/>
+
+        <control-messages [control]="businessEditElementForm.controls.goalEP"></control-messages>
+      </div>
+
+      <div [formGroup]="businessEditElementForm " class="form-group">
+        <label for="typeEP">Type (*)</label>
+        <select formControlName="typeEP" class="form-control" name="typeEP" id="typeEP">
+
+          <option>Business</option>
+          <option>Transverse</option>
+
+        </select>
+        <control-messages [control]="businessEditElementForm.controls.typeEP"></control-messages>
+
+      </div>
+
+      <div [formGroup]="businessEditElementForm" class="form-group">
+        <label for="ownerEP">Owner</label>
+
+
+        <select formControlName="ownerEP" class="form-control" name="ownerEP" id="ownerEP">
+          <option *ngFor="let c of ownerListProcess"
+                  [ngValue]="c.name +' '+ c.surname"> {{ c.name }} {{ c.surname }} </option>
+        </select>
+        <!--<control-messages [control]="businessEditElementForm.controls.ownerEP"></control-messages>-->
+      </div>
+      <span class="cols-sm-2 control-label">* - mandatory field</span>
+
+    </div>
+
+
+  </div>
+
+
+  <p-footer>
+    <div class="ui-dialog-buttonpane ui-widget-content ui-helper-clearfix">
+      <button type="button" pButton icon="fa fa-fw fa-close" (click)="closeEditProForm()" label="Cancel"></button>
+      <button type="button" pButton icon="fa fa-fw fa-check"
+              [disabled]="!businessEditElementForm.valid || duplicateName" (click)="saveOrEditProcess()"
+              label="Save"></button>
+    </div>
+  </p-footer>
+</p-dialog>

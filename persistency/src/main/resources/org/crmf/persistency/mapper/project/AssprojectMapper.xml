@@ -1,0 +1,85 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+	<!DOCTYPE mapper PUBLIC '-//mybatis.org//DTD Mapper 3.0//EN'
+	  'http://mybatis.org/dtd/mybatis-3-mapper.dtd'>
+<mapper namespace='org.crmf.persistency.mapper.project.AssprojectMapper'>
+
+	<resultMap type='Assproject' id='Assproject'>
+		<result property='sestobjId' column='SESTOBJ_ID' />
+		<result property='creationTime' column='CREATION_TIME' />
+		<result property='updateTime' column='UPDATE_TIME' />
+		<result property='sysprojectId' column='SYSPROJECT_ID' />
+		<result property='templateId' column='TEMPLATE_ID' />
+		<result property='profileId' column='PROFILE_ID' />
+	</resultMap>
+
+	<insert id='insert' parameterType='Assproject' useGeneratedKeys='true'
+		keyProperty='id' keyColumn='ID'>
+		INSERT INTO ASSPROJECT(NAME, DESCRIPTION,
+		METHODOLOGY, CREATION_TIME, UPDATE_TIME, STATUS, USERPM,
+		SYSPROJECT_ID, TEMPLATE_ID, PROFILE_ID, SESTOBJ_ID)
+		VALUES (#{name},
+		#{description}, #{methodology}, NOW(), NOW(), #{status},
+		#{userpm}, #{sysprojectId}, #{templateId}, #{profileId}, #{sestobjId})
+	</insert>
+
+	<update id='update' parameterType='Assproject'>
+		UPDATE ASSPROJECT
+		SET
+		NAME = #{name},
+		DESCRIPTION = #{description},
+		METHODOLOGY = #{methodology},
+		UPDATE_TIME = NOW(),
+		STATUS = #{status},
+		USERPM = #{userpm},
+		TEMPLATE_ID = #{templateId},
+		PROFILE_ID = #{profileId}
+		WHERE SESTOBJ_ID = #{sestobjId}
+	</update>
+
+	<select id='getById' parameterType='int' resultMap='Assproject'>
+		SELECT *
+		FROM
+		ASSPROJECT
+		WHERE ID = '${value}'
+	</select>
+
+	<select id='getIdByIdentifier' parameterType='String'
+		resultType='Integer'>
+		SELECT id
+		FROM ASSPROJECT
+		WHERE SESTOBJ_ID = '${value}'
+	</select>
+
+	<select id='getByIdentifier' parameterType='String' resultMap='Assproject'>
+		SELECT *
+		FROM ASSPROJECT
+		WHERE SESTOBJ_ID = '${value}'
+	</select>
+
+	<select id='getByProfileId' parameterType='String' resultMap='Assproject'>
+		SELECT *
+		FROM ASSPROJECT
+		WHERE PROFILE_ID = '${value}'
+	</select>
+
+	<select id='getByTemplateId' parameterType='String' resultMap='Assproject'>
+		SELECT *
+		FROM ASSPROJECT
+		WHERE TEMPLATE_ID = '${value}'
+	</select>
+
+	<delete id='delete' parameterType='int'>
+		DELETE FROM ASSPROJECT WHERE
+		ID =
+		'${value}'
+	</delete>
+
+	<delete id='deleteByIdentifier' parameterType='String'>
+		DELETE FROM
+		ASSPROJECT WHERE SESTOBJ_ID = '${value}'
+	</delete>
+
+	<select id='getAll' resultMap='Assproject'>
+		SELECT * FROM ASSPROJECT
+	</select>
+</mapper>

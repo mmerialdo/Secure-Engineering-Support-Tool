@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:cxf="http://camel.apache.org/schema/cxf"
+	xsi:schemaLocation="
+    http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+    http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring.xsd
+    http://camel.apache.org/schema/cxf http://camel.apache.org/schema/cxf/camel-cxf.xsd
+  ">
+
+	<bean id="audit" class="org.crmf.model.utility.AuditBuilder"/>
+	<bean id="assproject" class="org.crmf.model.utility.AssProjectBuilder"/>
+	<bean id="filter" class="org.crmf.model.utility.GenericFilterBuilder"/>
+
+	<bean id="gson" class="org.apache.camel.component.gson.GsonDataFormat">
+		<property name="unmarshalType" value="org.crmf.model.audit.Audit" />
+	</bean>
+
+	<bean id="gsonAssProject" class="org.apache.camel.component.gson.GsonDataFormat">
+		<property name="unmarshalType" value="org.crmf.model.riskassessment.AssessmentProject" />
+	</bean>
+
+	<bean id="gsonGenericFilter" class="org.apache.camel.component.gson.GsonDataFormat">
+		<property name="unmarshalType" value="org.crmf.model.utility.GenericFilter" />
+	</bean>
+
+
+	<camelContext id="converter-context" xmlns="http://camel.apache.org/schema/spring">
+
+		<route id="convertAudit">
+			<from uri="direct:convertAudit" />
+			<bean ref="audit" method="getObject" />
+			<marshal ref="gson"/>
+			<bean ref="audit" method="printGson" />
+			<to uri="file://json?fileName=audit.json" />
+		</route>
+		<route id="convertAssProject">
+			<from uri="direct:convertAssProject" />
+			<bean ref="assproject" method="getObject" />
+			<marshal ref="gsonAssProject"/>
+			<bean ref="assproject" method="printGson" />
+			<to uri="file://json?fileName=assproject.json" />
+		</route>
+		<route id="convertGenericFilter">
+			<from uri="direct:convertGenericFilter" />
+			<bean ref="filter" method="getObject" />
+			<marshal ref="gsonGenericFilter"/>
+			<bean ref="filter" method="printGson" />
+			<to uri="file://json?fileName=filter.json" />
+		</route>
+
+	</camelContext>
+
+</beans>

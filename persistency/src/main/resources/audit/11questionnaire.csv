@@ -1,0 +1,220 @@
+11|MEHARI_UserWorkEquipment|||||||
+11A|Security of the operational procedures  for the whole set of users' equipment|||||||
+11A01|Control of the installation of new  software or system versions on the users' equipment|||||||
+11A01-01|Are the decisions to change or update users' software versions subject to a control procedure (registration, planning, formal approval, communication to all concerned individuals, etc.)?|4|||E1|12.1.2; 12.1.3; 12.6.2|10.1.2; 10.3.1|
+11A01-02|Are the new versions validated on pilot equipment before general installation throughout the user stations?|2|||E2|12.6.2||
+11A01-03|Is the remotely ordered validation of new installations on users' equipment reserved to a limited list of administrators in charge of users work equipment? |2|||E2|12.6.2||
+11A01-04|Are security parameters and configuration rules of user equipment listed in detail and regularly updated?|4|||E3|12.6.2; 14.2.9|10.3.2|
+11A01-05|Are security parameters and configuration rules controlled following any configuration evolution of user equipment?|4|||E3|12.6.2; 14.2.9|10.3.2|
+11A01-06|Has the eventual impact of the user equipment configuration changes regarding the continuity plans been considered?|2|||E2|12.6.2; 14.2.9|10.3.2|
+11A01-07|Are all the control procedures related to user configurations subject to a periodic audit?|2|3||C1|||
+11A02|Control of the compliance of user configurations |||||||
+11A02-01|"Has a list of authorized software for the user equipment been established?
+This list should state the reference versions authorized and the possible parameterization options accepted. "|4|||E2|||
+11A02-02|"Has a list of additional equipment authorized on the user work stations been established?
+This list should contain the authorized reference versions and possibly the parameter options used "|4|||E2|||
+11A02-03|Are these lists protected against untimely or illicit alteration by a robust sealing process?|2|||R2|||
+11A02-04|Are the rights provided to users preventing them to modify the system configurations of their equipment (addition of hardware or software)? |4|||E2|||
+11A02-05|Is the conformity of the hardware configurations for user workstations regularly controlled relatively to the authorized options? |4|2||E3|18.2.3|15.2.2|
+11A02-06|Is the conformity of the software configurations for user workstations regularly controlled relatively to the authorized options? |4|2||E3|18.2.3|15.2.2|
+11A02-07|Does the inhibition of the control process trigger an alarm to a manager?|4|3||E3|||
+11A02-08|Is it also controlled that the users do not possess the access rights required for the installation of additional hardware or software?|2|3||E3|||
+11A02-09|Are the processes of control themselves subject to regular audits?|4|||C1|||
+11A03|Control of software and software package licenses |||||||
+11A03-01|Does the security policy state that it is strictly forbidden to load any piece of software on workstations without a proper license?|4|||E1|18.1.2|15.1.2|
+11A03-02|Is a permanent inventory held up to date of the software officially installed and declared on each work station?|2|||E2|18.1.2|15.1.2|
+11A03-03|Is there a regular control of the conformity of the software installed to those declared or that they possess an authorized license? |4|2||E2|18.1.2|15.1.2|
+11A03-04|Are these controls covering the equipment base?|2||3|E3|||
+11A03-05|Is the application of these controls subject to a regular audit?|2||3|C1|||
+11A04|Conformity control of the reference programs (source and executable) for user software |||||||
+11A04-01|Does the IT operation  manage a reference for each software product installed on the user workstations (source code and executable)? |4|2||E1|12.5.1|12.4.1|
+11A04-02|Is this reference version protected against untimely or illicit alteration (media signed and kept by a responsible person of high rank, electronic sealing, etc.)? |2|||R1|||
+11A04-03|Is this protection considered as inviolable (cryptographic sealing approved by the CISO)? |4|||R2|||
+11A04-04|Is there an automatic control of the sealing (or, at least, a deposited signature) for each new installation of a user workstation? |4|||R2|||
+11A04-05|Is a check made of the proof of origin and integrity of received maintenance module or a new version, from the editor or the manufacturer (for operating systems)?  |4|||E2|||
+11A04-06|Are there regular audits of protection procedures for reference programs? |4|||C1|||
+11A05|Management of service suppliers and providers relating to the operation and  handling of the user workstations base |||||||
+11A05-01|Is it regularly ensured that the security services allocated to suppliers or providers for the operation and handling of the user workstations are efficiently implemented and maintained by them?|4|||C1|15.1.3|10.2.1|
+11A05-02|Is it ensured that the service suppliers or providers for the operation and handling of the user workstations have efficiently prepared the appropriate arrangements to ensure that the services are provided as agreed?|2|||E2|15.1.3|10.2.1|
+11A05-03|Is the respect of the security provisions by the suppliers or providers regularly reviewed?|4|||E1|15.1.3; 15.2.1|10.2.2|
+11A05-04|Is there any mechanism to ensure that the suppliers and providers report and document any security incident concerning operation and handling of user workstations?|4|||E2|15.1.3; 15.2.1|10.2.2|
+11A05-05|Is there a regular review of these incidents or malfunctions with the concerned suppliers and providers?|2|||E2|15.2.1|10.2.2|
+11A05-06|Are any changes in the contract relationship (obligations, service levels, etc.) analyzed for resulting potential risks?|2|||E3|15.2.2|10.2.3|
+11B|Protection of workstations|||||||
+11B01|Control of access to workstations|||||||
+11B01-01|Is access to the workstation itself (even for local use) protected by a password or authentication system?|4|||E1|||
+11B01-02|"Does the process of creation or modification of user authentication means respect a set of rules which ensures its intrinsic validity?
+In the case of passwords: sufficient length (8 characters or more), mandatory mixture of types of characters,  frequent change (less than once a month), impossibility of reusing an old password, non-trivial word test using a dictionary, banning of ""standard systems"", first names, anagrams of user name, dates etc. In the case of authentication based on cryptographic mechanisms and of certificates: a generation process evaluated or publicly recognized, encryption keys  of a sufficient length etc."|4|||E1||11.2.3|
+11B01-03|"Does the process of providing credentials for authentication (like user password) guarantee its inviolability?
+The usage of a password will always be a weak point. The only process which does not divulge observable information consists either of introducing an object containing a secret (smart card), or using a code which changes at every moment (token card type SecureId) or providing some biometric character."|4|||E2|||
+11B01-04|Is the authentication process permanent (smart card)? |2|||E2|||
+11B01-05|If the authentication process is not permanent, must it be reinitialized after a short period of inactivity?|2|||E2|||
+11B01-06|Is the workstation protected against the installation of software by anyone apart from workstation administrators?|2|||E1|||
+11B01-07|Is there a procedure allowing an authorized administrator to access to the workstation in the event of departure or of disappearance of its holder?|2|||E2|||
+11B01-08|Are the workstations protected against any use by  individuals other than the incumbent (particularly if the workstation is left temporarily, for more than 10 min for example)?|3|||E2|11.2.8|11.3.2|
+11B01-09|Is the shutdown of the access control system detected dynamically at the time of connection to the enterprise network?|2|||R1|||
+11B01-10|Are the procedures and services for access control subject to regular audit?|3|||C1|||
+11B02|Work effected off company premises|||||||
+11B02-01|"Have a security policy and associated recommendations relative to working off premises been established?
+The recommendations and directives should cover the precautions to take working at home, when on business travel, on public transport and should cover the protection of mobile computers, the usage of firewalls and up to date antivirus software, connections to public or third party networks, precautions to take concerning written documents, instant message services, telephone and conversations."|4|||E1|6.2.1; 6.2.2; 11.2.6|9.2.5; 11.7.1; 11.7.2|Working off-premises is prohibited.
+11B02-02|"Have a security policy and recommendations relative to teleworking using remote connections to the office network) been established?
+The recommendations and instructions should cover the precautions and means to implement and cover the security of the connection to the company network (reinforced authentication, VPN, etc.), possible restriction of access authorizations, precautions concerning the use of personal workstations by individuals other than the incumbent (family, friends, etc.)."|4|||E1|6.2.2|11.7.2|Working off-premises is prohibited.
+11B02-03|Does the security policy formally forbid to carry out of the premises documents classified or carrying a value of proof?|4|||E2|6.2.1; 11.2.6|9.2.5; 11.71|
+11B02-04|"Are personnel likely to work off site made aware of and receive training on the measures to be applied in order to protect documents, systems and the data they contain?
+These measures cover physical and logical  protection against theft as well as disclosure or unauthorized access by family members as well as by other persons."|4|||E2|6.2.2|9.2.5; 11.71|
+11B02-05|Are the only computing systems used off site those belonging to the company, and configured specifically for that purpose (in particular if they permit an access to the internal network)?|2|||E2||11.7.2|No remote access is permitted or possible.
+11B02-06|Is the configuration of computing systems used for work outside company buildings (portable computers) regularly checked?|3|||C1|||
+11B03|Use of personal equipment or external equipment (not owned by the organization)|||||||
+11B03-01|Has an exhaustive analysis of all the work situations or professional exchanges using equipment that does not belong to the organization been performed? |4|||E2|||
+11B03-02|Has an exhaustive analysis of all the external peripheral connection possibilities to the Information Systems of the organization (USB ports, bluetooth, etc...)?|4|||E2|||
+11B03-03|"Are these analysis regularly updated?
+A technological survey should be effected so as to improve knowledge of new types of devices and new vulnerabilities. "|2|||C2|||
+11B03-04|"Has a security policy regarding the use of personal equipment for work purposes been deduced from them?
+The instructions should consider the introduction and use of personal equipment such as laptops, PDAs, external disks, optical supports, USB keys, etc."|2|||E2|6.2.2|6.1.4; 11.7.2|
+11B03-05|"Have means of control regarding the use of personal equipment been defined and implemented?
+Such as specific parameters of the operating systems, filtering capabilities, etc."|2|||E2||6.1.4|
+11B03-06|Are the means of control protected against untimely or illicit alteration?|2|||R1|||
+11B03-07|Is there a regular audit of the procedures and means of control?|2|||C1|||
+11C|Protection of data on the workstation |||||||
+11C01|Protection of the confidentiality of data on the workstation or on a data server (logical disk for the workstation)|||||||
+11C01-01|Is confidential data stored encrypted, whether on the user workstation or hosted on a data server (logical disk)?|4|||E2|6.2.1; 10.1.1|11.7.1; 12.3.1|
+11C01-02|Are all elements of the encryption process securely protected against any alteration, modification or inhibition?|3|||E3|||
+11C01-03|Are workstations equipped with an effective file erasing system which ensures that any file deleted (whether from a local or shared disk) cannot be subsequently reread?|4|||E2|||
+11C01-04|Are workstations equipped with a true and efficient system which erases temporary files after their use (whether on a local or a shared disk)?|4|||E2|||
+11C01-05|Is the process or the directives concerning file encryption extended to messages and message attachments? |4|||E2|||
+11C01-06|Does the process or the directives concerning file encryption extended to information residing on the address book? |2|||E3|||
+11C01-07|Have users received an appropriate training on file encryption and erasing systems, indicating in particular the rules to follow to ensure that encryption is not circumvented?|2|||E3|||
+11C01-08|Are regular audits carried out on the usage of file encryption and erasing facilities by users?|3|||C1|||
+11C02|Protection of the confidentiality of data stored on removable media|||||||
+11C02-01|Is confidential data stored encrypted on removable media? |4|||E2|||
+11C02-02|Are the elements used for the encryption process protected strongly against any illicit alteration, modification or blocking ? |4|||E3|||
+11C02-03|Is the encryption process applied whichever media type (external disk, USB key, PDA, etc.)?|4|||E2|||
+11C03|Confidentiality considerations during maintenance operations on user workstations |||||||
+11C03-01|Is there a procedure which details the actions to carry out before calling maintenance to ensure that unauthorized staff do not gain access to sensitive information which may be stored on the workstation (physical erasing of sensitive data and of temporary files, retaining of disks etc.)?|4|||E2|11.2.7|9.2.6|
+11C03-02|Is there a written procedure and a binding clause in personnel maintenance contracts stipulating that any storage media which contained sensitive data be destroyed before disposal?|2|||E2|||
+11C03-03|Is there a procedure of checking for system integrity after maintenance intervention (absence of spyware, or trojans etc.)?|3|||E2|||
+11C03-04|Are the procedures described above mandatory under all circumstances and do any exemptions require the signature of senior management?|3|||R2|||
+11C03-05|Are the above procedures subject to regular audit?|3|||C2|||
+11C04|Protection of the integrity of files stored on workstations or on data servers (logical disk for workstations)|||||||
+11C04-01|"Are integrity sensitive files (whether stored on workstations or hosted on a data server) write-protected and is there an  integrity control mechanism?
+Such a mechanism may authorize the creation of modifiable working copies while guaranteeing the integrity of the original"|4|||E2|||
+11C04-02|Are the components of the integrity control process security protected against any alteration, modification or inhibition?|3|||R2|||
+11C04-03|Is the process or the directives concerning integrity control extended to messages and message attachments? |4|||E2|||
+11C04-04|Is the process or the directives concerning integrity control extended to information contained in address books|4|||E3|||
+11C04-05|Have users undergone training on integrity control means indicating in particular the rules to respect such that integrity control cannot be circumvented?|2|||E2|||
+11C04-06|Are regular audits carried out on the usage of means of integrity control by users?|3|||C2|||
+11C05|Security of Email and Electronic Information Exchanges|||||||
+11C05-01|Is there a security policy specific to emails defining precautions for use and security measures to implement?|2|||E1|13.2.3|10.8.4|
+11C05-02|"Does this policy state the rules concerning the use of email address out of the internal space (internet site, forum, etc...)?
+It is advisable to use aliases rather than professional email address "|2|||E2|||
+11C05-03|Does this policy impose that message sent with a high importance be systematically requesting an acknowledgment of receipt controlled by the sender?|3|||E2|||
+11C05-04|Is there also a security policy attached to various other electronic exchange of information (telephonic or video conference, cooperative work, document sharing, FTP services, instant messaging, etc.) defining the security measure and precautions  to implement?|2|||E1|13.2.3|10.8.5|
+11C05-05|Is an encrypted electronic messaging service implemented?|3|||E2|13.2.3|10.8.4|
+11C05-06|Is a digital signature service been implemented?|3|||E3|13.2.3|10.8.4|
+11C05-07|"Is a service in charge of collection and  treatment of undesirable messages?
+Undesirable messages (spams, virus, false virus alerts, etc...) must be immediately sent to this service, which will estimate the threat and put in place counter measures: specific filtering, internal warning, etc..."|3|||E3|||
+11C05-08|Are regular audits carried out on the procedures and instructions concerning email and electronic exchanges security? |2|||C1|||
+11C06|Protection of documents printed on shared printers|||||||
+11C06-01|Are the shared printers located in rooms with controlled access? |2||||||
+11C06-02|Is the access control system considered as sufficiently strong?|4||||||
+11C06-03|Is the access to the printer's room reserved to persons of the same service sharing the same rights? |4||||||
+11C06-04|Is it possible for this personnel to cancel, if necessary, a printout in the waiting list?|4||||||
+11C06-05|Is it possible for this personnel to destroy printed documents put on scrap in a secure way?|4||||||
+11C06-06|Are regular audits conducted on the protective measures for printouts from a shared printer? |2||||||
+11D|Service continuity of the work environment|||||||
+11D01|Organization of user hardware maintenance|||||||
+11D01-01|Is all computing hardware covered by a maintenance contract (personal computers, peripherals, etc.)?|2|||E1|11.2.4|9.2.4|
+11D01-02|Are there specific maintenance contracts for all hardware requiring a high availability and for which repair or swap is required swiftly?|2|||E1|||
+11D01-03|Do these maintenance contracts include specific obligation to provide an equivalent equipment? |3|||E1|||
+11D01-04|Do the maintenance contracts include specific obligations stipulating maximum intervention and reparation times which are compatible with availability requirements?|2|||E1|||
+11D01-05|Are maintenance contracts, selection of service providers and the associated maintenance procedures regularly audited?|3|||C1|||
+11D02|Organization of  user software maintenance (system, middleware and application)|||||||
+11D02-01|Are there maintenance contracts for all software installed on user workstations?|2|||E1|||
+11D02-02|Is a technical support center available for each software supplier which guarantees rapid and qualified telephone support?|2|||E1|||
+11D02-03|Are there specific maintenance contracts for all software requiring high availability and for which standard repair times are not acceptable?|2|||E1|||
+11D02-04|Are maintenance contracts, selection of service providers and the associated procedures regularly audited?|3|||C1|||
+11D03|Users' configurations backup plans|||||||
+11D03-01|Has it been established a backup plan including all the configuration parameters of the user workstations?|4|||E1|12.3.1|10.5.1|
+11D03-02|Is this backup plan included into automated operational processes?|2|3||E2|12.3.1|10.5.1|
+11D03-03|Is there a regular test that the backup of the configuration parameters of the user workstations allow the effective rebuild of the user working environment  upon a new station or a complete restoring, within time limits compatible to the business requirements?|4|2||E2|12.3.1; 17.1.2; 17.1.3|10.5.1; 14.1.5|
+11D03-04|"Are the production routines which ensure backups of user configurations protected, against illicit or undue modification, by secure mechanisms? 
+Such mechanisms might be electronic seal or any equivalent modification detection system."|4|3||R1|12.3.1|10.5.1|
+11D03-05|Are user configuration backup plans and procedures subject to regular audit?|2|3||C1|||
+11D04|Backup plans for user data stored on data servers|||||||
+11D04-01|Is all user data stored on data servers systematically backed up?|4|3||E1|12.3.1|10.5.1|
+11D04-02|Has the frequency of backups been communicated to users?|2|||E1|12.3.1|10.5.1|
+11D04-03|Are several generations of save files available in order to guard against missing or unreadable files, by organizing, for example a rotation of backup media?|2|||E2|12.3.1|10.5.1|
+11D04-04|Is a complete quarterly or six-monthly backup set kept to serve as an emergency archive?|2|||E2|12.3.1|10.5.1|
+11D04-05|Are the backup procedures, for office data stored on servers, subject to a regular audit?|3|||C1|||
+11D05|Backup plan for data stored on user workstations.|||||||
+11D05-01|Are the users made aware and trained to backup operations for sensitive data possibly stored in their workstation? |3|||E1|6.2.1; 12.3.1|10.5.1|
+11D05-02|Is all user data (stored on workstations) systematically backed up (by users, at a fixed frequency or when connecting to the internal network)?|4|||E1|12.3.1|10.5.1; 11.7.1|
+11D05-03|Do users also have the possibility to effect a backup themselves if necessary?|4|||E1|12.3.1|10.5.1|
+11D05-04|Are several generations of saved files available in order to guard against missing or unreadable files, by organizing, for example a rotation of backup media?|2|||E2|12.3.1|10.5.1|
+11D05-05|Is a complete quarterly or six-monthly backup set kept to serve as an emergency archive?|2|||E2|12.3.1|10.5.1|
+11D05-06|Are the backup procedures for user data subject to a regular audit?|3|||C1|||
+11D06|Anti virus (malware, unauthorized executable code, etc.) protection for user workstations.|||||||
+11D06-01|Has it been defined a policy to prevent risks of attack from malevolent codes (virus, Trojan Horse, worms, etc.) like prohibit the use of unauthorized software, protection measures during file retrieval via external networks and reviews of installed software?|2|||E1|12.2.1|10.4.1|
+11D06-02|Are user workstations equipped with a means to protect from viruses and malware?|4|||E1|||
+11D06-03|"Is the anti virus product regularly updated?
+With internet, new threats are instantaneous thus forcing to control at least every day of the existence of a corrective update"|2|||E1|||
+11D06-04|Is there a regular and automatic analysis of all the files on the workstations?|2|||E2|||
+11D06-05|"Have actions to be taken by users' support team in case of an attack by malevolent code (alert, confinement measures, triggering of a crisis management process, etc.) been defined?
+"|3|||E2|12.2.1|10.4.1|
+11D06-06|Is it possible for the users' support team to make, at any time, a complete check of the users' workstation base? |2|||E2|||
+11D06-07|Has it been defined a policy and protection measures to fight against unauthorized executable codes (applets, ActiveX controls, etc.) (blocking or environment control where the codes execute, control of accessible resources by mobile codes, issuer authentication, etc.)?|3|||E2|12.2.1|10.4.2|
+11D06-08|Is the activation and update of anti-virus systems on workstations regularly audited?|3|||C1|||
+11D07|Recovery Plans for the users' workstations|||||||
+11D07-01|Have all the scenarios which may impact the users' workstation base been considered and, for each scenario, the consequences in terms of service unavailability for users?|4|||E1|17.1.2|14.1.3|
+11D07-02|"Has it been defined,  to resolve each scenario identified above,  a sequence of minimal services recovery in accordance with user requirements?
+The user services need to be considered qualitatively and quantitatively (percentage of the base to be reinstalled)"|4|2||E2|17.1.2|14.1.3|
+11D07-03|Has an activity recovery solution been defined and implemented to resolve each scenario identified above, in accordance with user requirements?|4||2|E1|17.1.2|14.1.3|
+11D07-04|"Are the technical, organizational and human resources sufficient to address the organization's requirements?
+This means being able to correct personnel deficiencies"|4|||E2|17.1.2|14.1.3|
+11D07-05|"Are the technical, organizational and human resources educated to address the organization's requirements?
+This implies to train appropriately all concerned staff."|4|||E2|17.1.2|14.1.3|
+11D07-06|Are all these solutions for the continuity of users' services related to the workstations base described in detail in Disaster Recovery Plans including the conditions for triggering the plan, the actions to execute, the priorities, the actors to mobilize and their contact details? |4|||E1|17.1.2|14.1.3|
+11D07-07|Are these plans tested at least once a year?|4|2||E2|17.1.2; 17.1.3|14.1.5|
+11D07-08|"Are above tests able to guarantee the  capacity of the recovery solution to cope, under full operational load, the minimum services required by users?
+The tests required to obtain this guarantee are preferably full scale tests of each variant of scenario, involving all users. The results of the tests have to be registered and analyzed in order to improve the capability of the organization to answer to the situations considered. "|4|3||E2|17.1.2; 17.1.3|14.1.5|
+11D07-09|If the recovery solutions include delivery of hardware components (which cannot be triggered during tests), is there a contractual commitment by the manufacturer or any relevant third party (distributor) to deliver the replacement hardware within fixed and anticipated time limits as stated in the recovery plan?|4|2||E2|||
+11D07-10|Are the existence, the pertinence and the updates of the users' workstations Recovery Plans regularly controlled?|2|3||C1|||
+11D07-11|Is the updating of the above procedures within the recovery plan subject to regular audit?|2|3||C1|||
+11D08|Access management to office data and files|||||||
+11D08-01|Is the list of office file formats, that are required to be accessible, kept up to date?|4|3||E1|||
+11D08-02|Are the necessary hardware and software elements required for the access to all the types of office files put in archive available or easily made available? |4|3||E1|||
+11D08-03|Do the procedures of allocation and personalization of office files encryption and protection capabilities guarantee  possibilities to access the files, even if their owners are absent or have left the organization?|4|3||E2|||
+11D08-04|Are the recovery capabilities of the access or encryption keys protected against accidental or malevolent unavailability?|4|3||E2|||
+11D08-05|Are there regular audits of the mechanisms and procedures that guarantee the continuity of access to office files? |2|3||E2|||
+11E| Control of administrative rights|||||||
+11E01|Management of privileged access rights granted on user workstations  (administrative rights)|||||||
+11E01-01|Have profiles been defined, within users workstation operations staff, corresponding to each type of activity (assistance, installation, maintenance, etc.)?|1|||E1|6.1.2; 9.2.3; 9.2.5|10.1.3; 11.2.2|
+11E01-02|For each profile have the necessary rights and privileges been defined? |4|2||E1|6.1.2|10.1.3|
+11E01-03|Does the process of attributing special rights require the formal authorization of management (or the manager responsible for external service providers) at a sufficiently high level?|4|2||E2|6.1.2|10.1.3|
+11E01-04|Is the process of attributing special rights allocated only in relation to the profile of the holder?|4|2||E2|6.1.2|10.1.3|
+11E01-05|"Is the process of granting (modification or revocation) of special rights to an individual strictly controlled?
+A strict control requires a formal recognition of the signature (electronic or not) of the requester, that there be a tight control of access in order to attribute or modify such rights and that any modification of special rights be logged and audited."|4|2|3|R1|9.2.3; 9.2.5|11.2.2|
+11E01-06|Is there a systematic process of removal of special rights at the time of departure or role change of user support operations staff?|2|||E2|9.2.5|11.2.4|
+11E01-07|Is there a regular audit, at least once a year, of all special rights attributed ?|1|2||C1|9.2.5|11.2.4|
+11E02|Authentication and control of the access rights of administrators and operational personnel |||||||
+11E02-01|Is the authentication of the administrator required before taking control of a user workstation? |4||4|E2|6.1.2||
+11E02-02|"Is the authentication protocol used for administrators or holders of special rights considered to be secure?
+An authentication protocol is considered secure if it is not susceptible to being broken by a listening device on the network or rendered inoperable by specialists tools (in particular password crack tools). Such security usually uses cryptographic methods."|4||4|E2|6.1.2||
+11E02-03|"Are the rules, for instance in the case of passwords, considered to be very strict?
+Strict rules impose the use of tested non-trivial passwords, using a mixture of different types of characters and of a reasonable length (ten characters). It is desirable that these rules have been approved by the Information Security Officer"|2|||E2|6.1.2||
+11E02-04|Is there a consistent control of the administrator's rights, of its context, and of the suitability of this context with the requested access, as per formal rules of access control?|4|||E2|6.1.2||
+11E02-05|"Are authentication parameters under strict control?
+A strict control requires that the list of people able to change authentication rules, the credentials themselves and the surveillance rules of connection attempts be strictly limited, that there be a reinforced access control in order to be able to modify these rights and that any modification of these rights be logged and audited and that there be a general audit at least once a year of all authentication parameters."|4|2||R1|||
+11E02-06|"Are the processes that guarantee authentication under strict control? 
+A strict control requires that the software used has been validated and undergoes a regular test for integrity (seal) and that there is an audit at least once a year of the authentication procedures and processes."|4|3||R1|||
+11E02-07|Is there a regular audit of the procedures of  the security parameters attached to protecting profiles and rights? |4|3||C1|||
+11E03|Surveillance of system administrators' actions over the users' workstations|||||||
+11E03-01|Has a detailed analysis been carried out of the events and operations carried out with administrative rights on the users' workstations which may potentially have an impact on system security? |2|||E2|12.4.3|10.10.4|
+11E03-02|Are these events recorded as well as all parameters which may be useful for their subsequent analysis? |4|||E2|12.4.3|10.10.4|
+11E03-03|Is there a system able to detect any modification or deletion of a past record and to immediately trigger an alarm to a manager? |4|2||E3|12.4.3|10.10.4|
+11E03-04|Is there a summary of these records enabling management to detect abnormal behavior?|4||3|E3|12.4.3|10.10.4|
+11E03-05|Is there a system enabling the detection of any modification of recording parameters and to immediately trigger an alarm to a manager? |4|2||E3|12.4.3|10.10.4|
+11E03-06|Does any inhibition of the recording and processing of the logged events system trigger an alarm to a manager? |4|||E3|12.4.3|10.10.4|
+11E03-07|Are all records or summary analysis protected against any falsification or destruction?|2|||E2|12.4.3|10.10.4|
+11E03-08|Are all records or summary analysis kept for a long period?|2|||E2|12.4.3|10.10.4|
+11E03-09|Are the procedures, which record and process privileged operations, regularly audited? |2|||C1|12.4.3|10.10.4|

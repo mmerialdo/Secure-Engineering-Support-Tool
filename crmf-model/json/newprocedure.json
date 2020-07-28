@@ -1,0 +1,676 @@
+{
+  "name": "Test Procedure",
+  "phase": "Initial",
+  "status": "OnGoing",
+  "assetModel": {
+    "creationTime": "",
+    "updateTime": "",
+    "identifier": "92611faf-67f0-4b07-a910-8e68dd9bd150",
+    "objType": "AssetModel",
+    "graphJson": [
+      {
+        "type": "draw2d.shape.node.End",
+        "id": "d25bcb0a-5c92-4d8b-b433-356a6ad39b48",
+        "x": 200,
+        "y": 70,
+        "width": 100,
+        "height": 60,
+        "alpha": 1,
+        "angle": 0,
+        "userData": {},
+        "cssClass": "organization",
+        "ports": [
+          {
+            "type": "draw2d.InputPort",
+            "id": "dfb0dab0-e23c-cdb8-2f4f-41b6634cec13",
+            "width": 10,
+            "height": 10,
+            "alpha": 1,
+            "angle": 0,
+            "userData": {},
+            "cssClass": "draw2d_InputPort",
+            "bgColor": "#4F6870",
+            "color": "#1B1B1B",
+            "stroke": 1,
+            "maxFanOut": 9007199254740991,
+            "name": "input0",
+            "port": "draw2d.InputPort",
+            "locator": "draw2d.layout.locator.BottomLocator"
+          }
+        ],
+        "bgColor": "#E0E0E0",
+        "color": "#000000",
+        "stroke": 1,
+        "radius": 0,
+        "labels": [
+          {
+            "type": "draw2d.shape.basic.Label",
+            "id": "1896565b-42de-6dd8-a671-4654d5c2ffcd",
+            "x": 1,
+            "y": 1,
+            "width": 36,
+            "height": 23,
+            "alpha": 1,
+            "angle": 0,
+            "userData": {},
+            "cssClass": "draw2d_shape_basic_Label",
+            "ports": [],
+            "bgColor": "none",
+            "color": "#E0E0E0",
+            "stroke": 1,
+            "radius": 0,
+            "text": "ORG",
+            "outlineStroke": 0,
+            "outlineColor": "none",
+            "fontSize": 12,
+            "fontColor": "#080808",
+            "locator": "draw2d.layout.locator.XYAbsPortLocator"
+          },
+          {
+            "type": "draw2d.shape.basic.Label",
+            "id": "69a539b8-c3a4-3bca-460f-72dbe394cbb0",
+            "x": 45.5,
+            "y": 25.5,
+            "width": 10,
+            "height": 10,
+            "alpha": 1,
+            "angle": 0,
+            "userData": {},
+            "cssClass": "draw2d_shape_basic_Label",
+            "ports": [],
+            "bgColor": "none",
+            "color": "#E0E0E0",
+            "stroke": 1,
+            "radius": 0,
+            "text": "",
+            "outlineStroke": 0,
+            "outlineColor": "none",
+            "fontSize": 12,
+            "fontColor": "#080808",
+            "locator": "draw2d.layout.locator.CenterLocator"
+          }
+        ]
+      },
+      {
+        "type": "draw2d.shape.node.End",
+        "id": "8976dff8-f47b-717a-247a-e89d65000330",
+        "x": 361,
+        "y": 153,
+        "width": 100,
+        "height": 60,
+        "alpha": 1,
+        "angle": 0,
+        "userData": {},
+        "cssClass": "process",
+        "ports": [
+          {
+            "type": "draw2d.InputPort",
+            "id": "713dba92-58a9-3331-6c18-ee0ab546ef30",
+            "width": 10,
+            "height": 10,
+            "alpha": 1,
+            "angle": 0,
+            "userData": {},
+            "cssClass": "draw2d_InputPort",
+            "bgColor": "#4F6870",
+            "color": "#1B1B1B",
+            "stroke": 1,
+            "maxFanOut": 9007199254740991,
+            "name": "input0",
+            "port": "draw2d.InputPort",
+            "locator": "draw2d.layout.locator.BottomLocator"
+          },
+          {
+            "type": "draw2d.OutputPort",
+            "id": "ae3969f6-427b-42f1-f6f2-61c9c0e48d27",
+            "width": 10,
+            "height": 10,
+            "alpha": 1,
+            "angle": 0,
+            "userData": {},
+            "cssClass": "draw2d_OutputPort",
+            "bgColor": "#4F6870",
+            "color": "#1B1B1B",
+            "stroke": 1,
+            "maxFanOut": 9007199254740991,
+            "name": "output0",
+            "port": "draw2d.OutputPort",
+            "locator": "draw2d.layout.locator.TopLocator"
+          }
+        ],
+        "bgColor": "#D3E1FF",
+        "color": "#000000",
+        "stroke": 1,
+        "radius": 0,
+        "labels": [
+          {
+            "type": "draw2d.shape.basic.Label",
+            "id": "7a21865c-2191-38ab-eaf3-5b6de8b9fb36",
+            "x": 1,
+            "y": 1,
+            "width": 27,
+            "height": 23,
+            "alpha": 1,
+            "angle": 0,
+            "userData": {},
+            "cssClass": "draw2d_shape_basic_Label",
+            "ports": [],
+            "bgColor": "none",
+            "color": "#D3E1FF",
+            "stroke": 1,
+            "radius": 0,
+            "text": "BP",
+            "outlineStroke": 0,
+            "outlineColor": "none",
+            "fontSize": 12,
+            "fontColor": "#080808",
+            "locator": "draw2d.layout.locator.XYAbsPortLocator"
+          },
+          {
+            "type": "draw2d.shape.basic.Label",
+            "id": "ed3b6759-72a8-aefa-da02-0ed61348d754",
+            "x": 45.5,
+            "y": 25.5,
+            "width": 10,
+            "height": 10,
+            "alpha": 1,
+            "angle": 0,
+            "userData": {},
+            "cssClass": "draw2d_shape_basic_Label",
+            "ports": [],
+            "bgColor": "none",
+            "color": "#D3E1FF",
+            "stroke": 1,
+            "radius": 0,
+            "text": "",
+            "outlineStroke": 0,
+            "outlineColor": "none",
+            "fontSize": 12,
+            "fontColor": "#080808",
+            "locator": "draw2d.layout.locator.CenterLocator"
+          }
+        ]
+      },
+      {
+        "type": "draw2d.shape.node.End",
+        "id": "4559805c-9792-3107-959f-6703c720655f",
+        "x": 283,
+        "y": 251,
+        "width": 100,
+        "height": 60,
+        "alpha": 1,
+        "angle": 0,
+        "userData": {},
+        "cssClass": "activity",
+        "ports": [
+          {
+            "type": "draw2d.InputPort",
+            "id": "9deb158d-824f-8f42-d593-67699ece84f5",
+            "width": 10,
+            "height": 10,
+            "alpha": 1,
+            "angle": 0,
+            "userData": {},
+            "cssClass": "draw2d_InputPort",
+            "bgColor": "#4F6870",
+            "color": "#1B1B1B",
+            "stroke": 1,
+            "maxFanOut": 9007199254740991,
+            "name": "input0",
+            "port": "draw2d.InputPort",
+            "locator": "draw2d.layout.locator.BottomLocator"
+          },
+          {
+            "type": "draw2d.OutputPort",
+            "id": "13467560-a7c7-429f-99e7-b710e5112bb0",
+            "width": 10,
+            "height": 10,
+            "alpha": 1,
+            "angle": 0,
+            "userData": {},
+            "cssClass": "draw2d_OutputPort",
+            "bgColor": "#4F6870",
+            "color": "#1B1B1B",
+            "stroke": 1,
+            "maxFanOut": 9007199254740991,
+            "name": "output0",
+            "port": "draw2d.OutputPort",
+            "locator": "draw2d.layout.locator.TopLocator"
+          }
+        ],
+        "bgColor": "#E6F1F5",
+        "color": "#000000",
+        "stroke": 1,
+        "radius": 0,
+        "labels": [
+          {
+            "type": "draw2d.shape.basic.Label",
+            "id": "35427d58-8781-8710-a3de-d66c02ef1db0",
+            "x": 1,
+            "y": 1,
+            "width": 27,
+            "height": 23,
+            "alpha": 1,
+            "angle": 0,
+            "userData": {},
+            "cssClass": "draw2d_shape_basic_Label",
+            "ports": [],
+            "bgColor": "none",
+            "color": "#E6F1F5",
+            "stroke": 1,
+            "radius": 0,
+            "text": "BA",
+            "outlineStroke": 0,
+            "outlineColor": "none",
+            "fontSize": 12,
+            "fontColor": "#080808",
+            "locator": "draw2d.layout.locator.XYAbsPortLocator"
+          },
+          {
+            "type": "draw2d.shape.basic.Label",
+            "id": "80bb8cbf-06da-9d12-c4bf-8fc0952d3f7f",
+            "x": 45.5,
+            "y": 25.5,
+            "width": 10,
+            "height": 10,
+            "alpha": 1,
+            "angle": 0,
+            "userData": {},
+            "cssClass": "draw2d_shape_basic_Label",
+            "ports": [],
+            "bgColor": "none",
+            "color": "#E6F1F5",
+            "stroke": 1,
+            "radius": 0,
+            "text": "",
+            "outlineStroke": 0,
+            "outlineColor": "none",
+            "fontSize": 12,
+            "fontColor": "#080808",
+            "locator": "draw2d.layout.locator.CenterLocator"
+          }
+        ]
+      },
+      {
+        "type": "draw2d.shape.node.End",
+        "id": "976dfe28-df2f-29c8-5bad-e50a9ab4a29c",
+        "x": 249,
+        "y": 342,
+        "width": 60,
+        "height": 60,
+        "alpha": 1,
+        "angle": 0,
+        "userData": {},
+        "cssClass": "malfunction",
+        "ports": [
+          {
+            "type": "draw2d.InputPort",
+            "id": "26722fb1-2397-b378-e9ea-1ace0d6ed90a",
+            "width": 10,
+            "height": 10,
+            "alpha": 1,
+            "angle": 0,
+            "userData": {},
+            "cssClass": "draw2d_InputPort",
+            "bgColor": "#4F6870",
+            "color": "#1B1B1B",
+            "stroke": 1,
+            "maxFanOut": 9007199254740991,
+            "name": "input0",
+            "port": "draw2d.InputPort",
+            "locator": "draw2d.layout.locator.BottomLocator"
+          },
+          {
+            "type": "draw2d.OutputPort",
+            "id": "d63f47eb-8bae-daa8-e0c5-c4275c9aafad",
+            "width": 10,
+            "height": 10,
+            "alpha": 1,
+            "angle": 0,
+            "userData": {},
+            "cssClass": "draw2d_OutputPort",
+            "bgColor": "#4F6870",
+            "color": "#1B1B1B",
+            "stroke": 1,
+            "maxFanOut": 9007199254740991,
+            "name": "output0",
+            "port": "draw2d.OutputPort",
+            "locator": "draw2d.layout.locator.TopLocator"
+          }
+        ],
+        "bgColor": "#FFFFFF",
+        "color": "#000000",
+        "stroke": 1,
+        "radius": 0,
+        "labels": [
+          {
+            "type": "draw2d.shape.basic.Label",
+            "id": "9e5da3d9-7070-722a-886c-d227d70e267b",
+            "x": 1,
+            "y": 1,
+            "width": 35,
+            "height": 23,
+            "alpha": 1,
+            "angle": 0,
+            "userData": {},
+            "cssClass": "draw2d_shape_basic_Label",
+            "ports": [],
+            "bgColor": "none",
+            "color": "#FFFFFF",
+            "stroke": 1,
+            "radius": 0,
+            "text": "MAL",
+            "outlineStroke": 0,
+            "outlineColor": "none",
+            "fontSize": 12,
+            "fontColor": "#080808",
+            "locator": "draw2d.layout.locator.XYAbsPortLocator"
+          },
+          {
+            "type": "draw2d.shape.basic.Label",
+            "id": "129c88f6-99c5-2f3b-4eee-f6d5216d1077",
+            "x": 25.5,
+            "y": 25.5,
+            "width": 10,
+            "height": 10,
+            "alpha": 1,
+            "angle": 0,
+            "userData": {},
+            "cssClass": "draw2d_shape_basic_Label",
+            "ports": [],
+            "bgColor": "none",
+            "color": "#FFFFFF",
+            "stroke": 1,
+            "radius": 0,
+            "text": "",
+            "outlineStroke": 0,
+            "outlineColor": "none",
+            "fontSize": 12,
+            "fontColor": "#080808",
+            "locator": "draw2d.layout.locator.CenterLocator"
+          }
+        ]
+      },
+      {
+        "type": "draw2d.Connection",
+        "id": "a8a6ec29-7013-3916-60ba-f4127aeb4df7",
+        "alpha": 1,
+        "angle": 0,
+        "userData": {},
+        "cssClass": "draw2d_Connection",
+        "stroke": 2,
+        "color": "#787878",
+        "outlineStroke": 0,
+        "outlineColor": "none",
+        "policy": "draw2d.policy.line.LineSelectionFeedbackPolicy",
+        "vertex": [
+          {
+            "x": 333,
+            "y": 251
+          },
+          {
+            "x": 411,
+            "y": 213
+          }
+        ],
+        "router": "draw2d.layout.connection.DirectRouter",
+        "radius": 3,
+        "source": {
+          "node": "4559805c-9792-3107-959f-6703c720655f",
+          "port": "output0"
+        },
+        "target": {
+          "node": "8976dff8-f47b-717a-247a-e89d65000330",
+          "port": "input0"
+        }
+      },
+      {
+        "type": "draw2d.Connection",
+        "id": "220af7ee-58be-d620-6314-d150a4e11f93",
+        "alpha": 1,
+        "angle": 0,
+        "userData": {},
+        "cssClass": "draw2d_Connection",
+        "stroke": 2,
+        "color": "#787878",
+        "outlineStroke": 0,
+        "outlineColor": "none",
+        "policy": "draw2d.policy.line.LineSelectionFeedbackPolicy",
+        "vertex": [
+          {
+            "x": 279,
+            "y": 342
+          },
+          {
+            "x": 333,
+            "y": 311
+          }
+        ],
+        "router": "draw2d.layout.connection.DirectRouter",
+        "radius": 3,
+        "source": {
+          "node": "976dfe28-df2f-29c8-5bad-e50a9ab4a29c",
+          "port": "output0"
+        },
+        "target": {
+          "node": "4559805c-9792-3107-959f-6703c720655f",
+          "port": "input0"
+        }
+      },
+      {
+        "type": "draw2d.Connection",
+        "id": "a61cb7b3-ee38-5944-963c-d1222d06f478",
+        "alpha": 1,
+        "angle": 0,
+        "userData": {},
+        "cssClass": "draw2d_Connection",
+        "stroke": 2,
+        "color": "#787878",
+        "outlineStroke": 0,
+        "outlineColor": "none",
+        "policy": "draw2d.policy.line.LineSelectionFeedbackPolicy",
+        "vertex": [
+          {
+            "x": 411,
+            "y": 153
+          },
+          {
+            "x": 250,
+            "y": 130
+          }
+        ],
+        "router": "draw2d.layout.connection.DirectRouter",
+        "radius": 3,
+        "source": {
+          "node": "8976dff8-f47b-717a-247a-e89d65000330",
+          "port": "output0"
+        },
+        "target": {
+          "node": "d25bcb0a-5c92-4d8b-b433-356a6ad39b48",
+          "port": "input0"
+        }
+      }
+    ],
+    "edges": [
+      {
+        "operationalWeight": 0.0,
+        "identifier": "d469efaa-98ce-454f-9cb6-8d1d928bc8bf",
+        "objType": "AssetModel",
+        "businessImpactWeights": [],
+        "source": "2fbdc2d9-23a1-4745-a20e-74122cf0b14f",
+        "target": "e7e2c7bb-d054-4c8a-852a-9681430d1f93",
+        "securityImpacts": []
+      },
+      {
+        "operationalWeight": 0.0,
+        "identifier": "51ecf9d6-014e-4c3b-ba7f-40e043d47b2f",
+        "objType": "AssetModel",
+        "businessImpactWeights": [],
+        "source": "e7e2c7bb-d054-4c8a-852a-9681430d1f93",
+        "target": "92ccd8b4-8d80-49ec-9aee-8a1a39e52fac",
+        "securityImpacts": []
+      },
+      {
+        "operationalWeight": 0.0,
+        "identifier": "f662aa7c-6b22-49d1-ab49-a2b5f2968f7c",
+        "objType": "AssetModel",
+        "businessImpactWeights": [],
+        "source": "92ccd8b4-8d80-49ec-9aee-8a1a39e52fac",
+        "target": "f5bd5f0c-f533-47d0-a706-660759e55fc6",
+        "securityImpacts": []
+      },
+      {
+        "operationalWeight": 0.0,
+        "identifier": "a3863eb1-d7d5-4c21-aeea-b67ad6a141bc",
+        "objType": "AssetModel",
+        "businessImpactWeights": [],
+        "source": "92ccd8b4-8d80-49ec-9aee-8a1a39e52fac",
+        "target": "42605102-2b52-4f44-b159-3ae28489da28",
+        "securityImpacts": [
+          {
+            "impact": "HIGH",
+            "scope": "Availability",
+            "tecnicalImpacts": [
+              "puppa iperbolica",
+              "secondap uppa"
+            ]
+          },
+          {
+            "impact": "HIGH",
+            "scope": "Integrity",
+            "tecnicalImpacts": [
+              "puppa iperbolica",
+              "secondap uppa"
+            ]
+          }
+        ]
+      }
+    ],
+    "nodes": [
+      {
+        "objType": "AssetModel",
+        "assessmentNode": false,
+        "goal": "",
+        "description": "",
+        "name": "Operations Ground Segment for Euclid",
+        "systemParticipantOwnerId": "xxxedfuogtruh",
+        "identifier": "2fbdc2d9-23a1-4745-a20e-74122cf0b14f",
+        "nodeType": "Organization",
+        "relatedRequirementsIds": [],
+        "children": [
+          "d469efaa-98ce-454f-9cb6-8d1d928bc8bf"
+        ],
+        "parents": [
+          "d469efaa-98ce-454f-9cb6-8d1d928bc8bf"
+        ]
+      },
+      {
+        "type": "Business",
+        "objType": "AssetModel",
+        "assessmentNode": false,
+        "goal": "",
+        "description": "",
+        "name": "Mission Execution",
+        "systemParticipantOwnerId": "iuhiuhuihiuh",
+        "identifier": "e7e2c7bb-d054-4c8a-852a-9681430d1f93",
+        "nodeType": "BusinessProcess",
+        "relatedRequirementsIds": [],
+        "children": [
+          "51ecf9d6-014e-4c3b-ba7f-40e043d47b2f"
+        ],
+        "parents": [
+          "51ecf9d6-014e-4c3b-ba7f-40e043d47b2f"
+        ]
+      },
+      {
+        "objType": "AssetModel",
+        "assessmentNode": false,
+        "goal": "",
+        "description": "blablabla bla bla",
+        "name": "Science Data Management",
+        "systemParticipantOwnerId": "yyuuiyiuy",
+        "identifier": "92ccd8b4-8d80-49ec-9aee-8a1a39e52fac",
+        "nodeType": "BusinessActivity",
+        "relatedRequirementsIds": [],
+        "children": [
+          "f662aa7c-6b22-49d1-ab49-a2b5f2968f7c",
+          "a3863eb1-d7d5-4c21-aeea-b67ad6a141bc"
+        ],
+        "parents": [
+          "f662aa7c-6b22-49d1-ab49-a2b5f2968f7c",
+          "a3863eb1-d7d5-4c21-aeea-b67ad6a141bc"
+        ]
+      },
+      {
+        "assetCategory": "",
+        "functionalConsequence": "not possible for Flight Dynamics to perform analyses on TM frames",
+        "functionalDescription": "not possible for Flight Dynamics to perform analyses on TM frames",
+        "technicalConsequence": "not possible to perform analyses on TM frames to support Orbit Determination, Manoeuvre",
+        "technicalDescription": "Telemetry data with incorrect format is supplied to Flight Dynamics",
+        "functionalType": "Compliance_Lack",
+        "weight": 0.0,
+        "technicalTypes": [
+          "Integrity_Loss",
+          "Availability_Loss"
+        ],
+        "scales": [
+          {
+            "seriousness": "HIGH",
+            "description": "not having correct data seriously affects mission goals or even leads to loss of SC"
+          }
+        ],
+        "objType": "AssetModel",
+        "assessmentNode": false,
+        "goal": "",
+        "description": "",
+        "name": "Unavailability of science data storage",
+        "systemParticipantOwnerId": "",
+        "identifier": "f5bd5f0c-f533-47d0-a706-660759e55fc6",
+        "nodeType": "Malfunction",
+        "relatedRequirementsIds": [],
+        "children": [],
+        "parents": []
+      },
+      {
+        "securityImpacts": [
+          {
+            "impact": "HIGH",
+            "scope": "Availability",
+            "tecnicalImpacts": []
+          },
+          {
+            "impact": "HIGH",
+            "scope": "Integrity",
+            "tecnicalImpacts": [
+              "puppa iperbolica",
+              "secondap uppa"
+            ]
+          }
+        ],
+        "businessImpactWeights": [],
+        "category": "Software_Off_the_Shelf",
+        "cost": 0,
+        "primaryCategories": [
+          "Data_DataFile_Database",
+          "Data_IT_Archive"
+        ],
+        "malfunctionsIds": [
+          "f5bd5f0c-f533-47d0-a706-660759e55fc6"
+        ],
+        "objType": "AssetModel",
+        "assessmentNode": false,
+        "goal": "",
+        "description": "bla bla bla bla",
+        "name": "",
+        "systemParticipantOwnerId": "tyfytftyfytf",
+        "identifier": "42605102-2b52-4f44-b159-3ae28489da28",
+        "nodeType": "Asset",
+        "relatedRequirementsIds": [],
+        "children": [],
+        "parents": []
+      }
+    ]
+  },
+  "identifier": "db99593e-dda9-4d5d-abc5-1a5cb7dece9a",
+  "objType": "AssessmentProcedure"
+}

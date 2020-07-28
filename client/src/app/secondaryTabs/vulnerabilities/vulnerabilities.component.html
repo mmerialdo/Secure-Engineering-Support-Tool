@@ -1,0 +1,489 @@
+<!--  --------------------------------------------------------------------------------------------------------------------
+// Copyright file="vulnerabilities.component.html"
+//  © Copyright European Space Agency, 2018-2020
+//
+//  Author: Software developed by RHEA System S.A.
+//
+//  This file is subject to the terms and conditions defined in file 'LICENSE.txt', which is part of this source code package.
+//  No part of the package, including this file, may be copied, modified, propagated, or distributed
+//  except according to the terms contained in the file ‘LICENSE.txt’.
+// -------------------------------------------------------------------------------------------------------------------- -->
+
+<div id="vulnerabilitytabcontainer">
+  <div id="menuvulnerability" class="container">
+
+    <nav class="navbar navbar-default navbar-static-top">
+      <div class="container-fluid">
+
+        <button style="margin-top: 5px;border: 1px solid " type="button" class="btn btn-secondary btn-xs"
+                (click)="createRiskModel(idAssets)"
+                [disabled]="!enableSaveButton || !thereAreChanges || !isLockedByCurrentUser()">
+          <b>Save Vulnerability Model</b>
+        </button>
+
+        <hr>
+
+        <p-tree [value]="files" [style]="{'width': '100%', 'background-color': 'transparent', 'border': 'transparent'}"
+                selectionMode="checkbox" [(selection)]="selectedFiles"
+                (onNodeSelect)="nodeSelect($event)" (onNodeUnselect)="nodeUnselect($event)"></p-tree>
+
+        <div style="margin-top: 10px;margin-bottom: 5px">
+          <button style="border:1px solid" type="button" class="btn btn-secondary btn-xs"
+                  [disabled]="selectedFiles.length===0 " (click)="addAssets()">
+            <b>Select Assets</b>
+          </button>
+        </div>
+
+      </div>
+
+      <div *ngIf="showAssetDetails">
+
+        <form class="col-md-12" style="padding-top: 5px;height: 780px;overflow: auto">
+          <div class="row">
+            <div class="col-md-12" s>
+              <hr>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-12">
+
+              <label>Name :</label>
+              <p>{{ nameAsset }}</p>
+
+              <label>Primary Asset Category :</label>
+              <p>{{ primaryAssetCategory }}</p>
+
+              <label style="margin-top: 10px">Secondary Asset Category :</label>
+              <p>{{ secondCat }}</p>
+
+              <div *ngIf="confidentiality!=null">
+                <label style="margin-top: 10px">Confidentiality Impact:</label>
+                <p>{{ confidentiality }}</p>
+
+              </div>
+
+              <div *ngIf="integrity!=null">
+                <label>Integrity Impact:</label>
+                <p>{{ integrity }}</p>
+              </div>
+
+              <div *ngIf="availability!=null">
+                <label>Availability Impact:</label>
+                <p>{{ availability }}</p>
+              </div>
+
+              <div *ngIf="efficiency!=null">
+                <label>Efficiency Impact:</label>
+                <p>{{ efficiency }}</p>
+              </div>
+
+            </div>
+          </div>
+
+          <div class="row" *ngIf="showSelectedRequirements.length>0">
+            <div class="col-md-12">
+              <hr>
+              <label>Requirements</label>
+              <div style="overflow: auto; width: 100%; height:100px">
+                <p-dataList [value]="showSelectedRequirements" id="vulnRequirements">
+
+                  <ng-template let-primaryAssetCategory pTemplate="item">
+                    <!--{{primaryAssetCategory.name}} - {{primaryAssetCategory.category}}-->
+                    {{ primaryAssetCategory }}
+                  </ng-template>
+                </p-dataList>
+              </div>
+
+            </div>
+
+          </div>
+
+        </form>
+
+      </div>
+
+    </nav>
+
+  </div>
+
+  <div id="centerVul" style="max-height: 780px;overflow: scroll">
+
+
+    <div id="canvas-div" style="width: 4000px;height:4001px"></div>
+
+  </div>
+
+  <div id="propertiesVul" [ngSwitch]="repository">
+
+    <form class="col-md-12 well" style="padding-top: 1px;max-height: 780px;overflow: auto">
+
+      <div class="row">
+
+        <div class="col-md-12">
+
+          <label>Vulnerabilities Repository :</label>
+
+          <select [(ngModel)]="selectedRepository" (ngModelChange)="checkedRepository()" class="form-control"
+                  name="repository" id="repository">
+
+            <option *ngFor="let c of repositoryList" [ngValue]="c"> {{ c }}</option>
+
+          </select>
+
+          <p-tree [value]="mehariVulns"
+                  [style]="{'width': '100%', 'background-color': 'transparent', 'border': 'transparent'}"
+                  selectionMode="checkbox" [(selection)]="selectedVulnArray"
+                  (onNodeSelect)="vulSelect($event)"
+                  (onNodeUnselect)="vulUnselect($event)"></p-tree>
+
+          <div style="margin-top: 10px">
+            <button style="border:1px solid" type="button" class="btn btn-secondary btn-xs"
+                    [disabled]="selectedAsset === undefined  || selectedVulnArray.length === 0 "
+                    (click)="addVulnerabilities()">
+              <b>Select Vulnerabilities</b>
+            </button>
+          </div>
+
+        </div>
+      </div>
+
+      <div *ngIf="showDetails">
+        <div class="row">
+
+          <div class="col-md-12">
+
+            <hr>
+
+            <label>Vulnerability Details</label>
+
+
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-6">
+
+
+            <label>Name :</label>
+            <p>{{ nameVul }} </p>
+
+          </div>
+
+          <div class="col-md-6">
+
+            <label>Catalogue :</label>
+            <p>{{ catalogueVul }}</p>
+
+
+          </div>
+
+        </div>
+
+        <div class="row">
+          <div class="col-md-6">
+
+
+            <label>Affected Asset Categories :</label>
+            <p-dataList [value]="affectedCategories" id="affectedCategoriesMenuVul">
+              <ng-template let-affectedCategories pTemplate="item">
+                {{ affectedCategories }}
+              </ng-template>
+            </p-dataList>
+
+          </div>
+
+          <div class="col-md-6" *ngIf="associatedThreats.length>0">
+
+            <label>Associated Threats :</label>
+            <p-dataList [value]="associatedThreats" id="associatedThreatsMenuVul"
+                        [style]="{'height':'auto','max-height':'100px','overflow-y': 'auto','width': '100%'}">
+              <ng-template let-associatedThreats pTemplate="item">
+                {{ associatedThreats }}
+              </ng-template>
+            </p-dataList>
+          </div>
+        </div>
+
+        <div class="row" style="margin-top: 5px">
+          <div class="col-md-12">
+            <label>Description :</label>
+            <p>{{ descriptionVul }} </p>
+          </div>
+        </div>
+
+        <div class="row">
+
+          <div class="col-md-12">
+            <hr>
+            <label>Vulnerability Score</label>
+          </div>
+        </div>
+
+
+        <div class="row">
+          <div class="col-md-4">
+            <label>Score :</label>
+            <p>{{ scoreVul }} </p>
+          </div>
+
+          <div class="col-md-4">
+            <label>Exploitability:</label>
+            <p>{{ exploiVul }} </p>
+          </div>
+
+          <div class="col-md-4">
+            <label>Scoring Type:</label>
+            <p>{{ scoringVul }} </p>
+          </div>
+        </div>
+
+        <div class="row" *ngIf="conVul!=null || avaVul!=null">
+          <div class="col-md-6" *ngIf="conVul!=null">
+            <label>Confidentiality Damage:</label>
+            <p>{{ conVul }} </p>
+          </div>
+
+          <div class="col-md-6" *ngIf="avaVul!=null">
+
+            <label>Availability Damage:</label>
+            <p>{{ avaVul }} </p>
+          </div>
+        </div>
+
+        <div class="row" *ngIf="intVul!=null || effVul!=null">
+          <div class="col-md-6" *ngIf="intVul!=null">
+            <label>Integrity Damage:</label>
+            <p>{{ intVul }} </p>
+          </div>
+
+          <div class="col-md-6" *ngIf="effVul!=null">
+            <label>Efficency Damage:</label>
+            <p>{{ effVul }} </p>
+          </div>
+
+        </div>
+
+        <div class="row">
+          <div class="col-md-12">
+            <label>Description:</label>
+            <p>{{ descriptionScore }} </p>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+
+</div>
+
+<p-dialog header="Edit Vulnerabilities" [(visible)]="displayEditVulnerability" modal="modal" width="1000"
+          responsive="true"
+          [closable]="false">
+
+  <div class="row">
+    <div class="col-md-6">
+      <p-listbox [options]="associatedVulnerabilities" [(ngModel)]="selectedVulnerability"
+                 (click)="changeInformation(selectedVulnerability)"
+                 filter="filter" [style]="{'width':'100%','height':'290px','max-height':'290px', 'overflow-y':'auto'}"
+                 id="setB"></p-listbox>
+      <button style="margin-top: 10px;border: 1px solid " type="button" class="btn btn-secondary btn-xs"
+              [disabled]="selectedVulnerability === undefined"
+              (click)="deleteVulnerability(selectedVulnerability)">
+        <b>Remove Vulnerability</b>
+      </button>
+
+    </div>
+
+    <div class="col-md-6" *ngIf="selectedVulnerability!=undefined">
+
+      <div class="row">
+        <div class="col-md-4">
+          <label>Name :</label>
+          <p>{{ nameVulForm }}</p>
+        </div>
+
+        <div class="col-md-4">
+          <label>Catalogue :</label>
+          <p>{{ catalogueVulForm }}</p>
+        </div>
+
+        <div class="col-md-4">
+          <label>Catalogue Id:</label>
+          <p>{{ catalogueIDVulForm }}</p>
+        </div>
+
+      </div>
+
+      <div class="row">
+        <div class="col-md-6">
+          <label>Affected Asset Categories :</label>
+          <p-dataList [value]="affectedCategoriesForm" id="affectedCategoriesFormVuln">
+            <ng-template let-affectedCategoriesForm pTemplate="item">
+              {{ affectedCategoriesForm }}
+            </ng-template>
+          </p-dataList>
+        </div>
+
+        <div class="col-md-6">
+          <label>Associated Threats :</label>
+          <p-dataList [value]="associatedThreatsForm" id="associatedThreatsFormVuln" class=".ui-datalist-data"
+                      [style]="{'height':'auto','max-height':'100px','overflow-y': 'auto','width': '100%'}">
+            <ng-template let-associatedThreatsForm pTemplate="item">
+              {{ associatedThreatsForm }}
+            </ng-template>
+          </p-dataList>
+        </div>
+      </div>
+
+      <div class="row" style="margin-top: 5px">
+        <div class="col-md-12">
+          <div [formGroup]="vulnerabilityForm" class="form-group">
+            <label for="descriptionVuln">Vulnerability Description :</label>
+            <textarea formControlName="descriptionVuln" class="form-control" name="descriptionVuln" rows="4"
+                      id="descriptionVuln"></textarea>
+            <control-messages [control]="vulnerabilityForm.controls.descriptionVuln"></control-messages>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row" *ngIf="selectedVulnerability!=undefined">
+
+    <div class="col-md-12" *ngIf="selectedVulnerability!=undefined">
+      <label style="margin-top: 10px">Vulnerability Score</label>
+      <hr>
+    </div>
+  </div>
+
+  <div class="row" *ngIf="selectedVulnerability!=undefined">
+    <div class="col-md-7">
+      <div class="row">
+        <div class="col-md-4">
+          <div [formGroup]="vulnerabilityForm" class="form-group">
+            <label for="scoVul">Score </label>
+            <select formControlName="scoVul" [ngModel]="selectedScore" class="form-control" name="scoVul" id="scoVul">
+
+              <option *ngFor="let score of  scoreList" [ngValue]="score">{{ score }}</option>
+            </select>
+            <control-messages [control]="vulnerabilityForm.controls.scoVul"></control-messages>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div [formGroup]="vulnerabilityForm" class="form-group">
+            <label for="explVul">Exploitability</label>
+            <select formControlName="explVul" [ngModel]="selectedExploitability" class="form-control" name="explVul"
+                    id="explVul">
+
+              <option *ngFor="let exploitabilityVul of  exploitabilityList"
+                      [ngValue]="exploitabilityVul">{{  exploitabilityVul }}
+              </option>
+            </select>
+            <control-messages [control]="vulnerabilityForm.controls.explVul"></control-messages>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+
+          <label>Scoring Type :</label>
+          <p>{{ scoringVulForm }}</p>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-3">
+          <div [formGroup]="vulnerabilityForm" class="form-group">
+            <label for="confVul">Confidentiality </label>
+            <select formControlName="confVul" [(ngModel)]="selectedConfidentialityVul" class="form-control"
+                    name="confVul" id="confVul">
+
+              <option *ngFor="let confidentiality of confidentialityList"
+                      [ngValue]="confidentiality">{{ confidentiality }}
+              </option>
+            </select>
+          </div>
+        </div>
+
+        <div class="col-md-3">
+
+          <div [formGroup]="vulnerabilityForm" class="form-group">
+            <label for="avaVul">Availability </label>
+            <select formControlName="avaVul" [(ngModel)]="selectedAvailabilityVul" class="form-control" name="avaVul"
+                    id="avaVul">
+
+              <option *ngFor="let availability of availabilityList" [ngValue]="availability">{{ availability }}</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="col-md-3">
+
+          <div [formGroup]="vulnerabilityForm" class="form-group">
+            <label for="intVul">Integrity </label>
+            <select formControlName="intVul" [(ngModel)]="selectedIntegrityVul" class="form-control" name="intVul"
+                    id="intVul">
+
+              <option *ngFor="let integrityV of integrityList" [ngValue]="integrityV">{{ integrityV }}</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="col-md-3">
+
+          <div [formGroup]="vulnerabilityForm" class="form-group">
+            <label for="effVul">Efficiency </label>
+            <select formControlName="effVul" [(ngModel)]="selectedEfficiencyVul" class="form-control" name="effVul"
+                    id="effVul">
+
+              <option *ngFor="let efficiency of efficiencyList" [ngValue]="efficiency">{{ efficiency }}</option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-5">
+
+      <div [formGroup]="vulnerabilityForm" class="form-group">
+        <label for="scoredesVul">Score Description :</label>
+        <textarea formControlName="scoredesVul" class="form-control" name="scoredesVul" rows="4" id="scoredesVul"
+                  disabled></textarea>
+        <control-messages [control]="vulnerabilityForm.controls.scoredesVul"></control-messages>
+      </div>
+
+    </div>
+
+  </div>
+
+  <p-footer>
+    <div class="ui-dialog-buttonpane ui-widget-content ui-helper-clearfix row">
+      <div class="col-md-6 text-left">
+        <button type="button" pButton icon="fa fa-fw fa-copy" (click)="addVulnerabilitiesToCache()"
+                [disabled]="!associatedVulnerabilities ||  associatedVulnerabilities.length < 1" label="Copy"></button>
+        <button type="button" pButton icon="fa fa-fw fa-paste" (click)="fetchVulnerabilitiesFromCache()"
+                [disabled]="!(copied$ | async)" label="Paste"></button>
+        <button type="button" pButton icon="fa fa-fw fa-paste" (click)="fetchVulnerabilitiesToAll()"
+                [disabled]="!associatedVulnerabilities || associatedVulnerabilities.length < 1"
+                label="Copy to all empty"></button>
+      </div>
+      <div class="col-md-6">
+        <button type="button" pButton icon="fa fa-fw fa-close" (click)="closeForm()" label="Cancel"></button>
+        <button type="button" pButton icon="fa fa-fw fa-check" (click)="modifiedBeforeToSave(selectedVulnerability)"
+                label="Save"></button>
+      </div>
+    </div>
+  </p-footer>
+
+</p-dialog>
+
+<p-confirmDialog width="425"></p-confirmDialog>
+
+<p-dialog [(visible)]="blocked" modal="modal" [responsive]="true" [showHeader]="false" class="vulnSpinner">
+
+  <div>
+    <h1></h1>
+    <div class="loader"></div>
+  </div>
+</p-dialog>
+<p-toast [style]="{marginTop: '80px'}" position="top-center" key="tc"></p-toast>

@@ -1,0 +1,605 @@
+/* --------------------------------------------------------------------------------------------------------------------
+// Copyright file="SafeguardModelManagerInput.java"
+//  © Copyright European Space Agency, 2018-2020
+//
+//  Author: Software developed by RHEA System S.A.
+// 
+//  This file is subject to the terms and conditions defined in file 'LICENSE.txt', which is part of this source code package. 
+//  No part of the package, including this file, may be copied, modified, propagated, or distributed 
+//  except according to the terms contained in the file ‘LICENSE.txt’.
+// --------------------------------------------------------------------------------------------------------------------
+*/
+
+package org.crmf.core.safeguardmodel.manager;
+
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.UUID;
+
+import org.crmf.model.audit.Answer;
+import org.crmf.model.audit.AnswerTypeEnum;
+import org.crmf.model.audit.Audit;
+import org.crmf.model.audit.AuditTypeEnum;
+import org.crmf.model.audit.Question;
+import org.crmf.model.audit.QuestionTypeEnum;
+import org.crmf.model.audit.Questionnaire;
+import org.crmf.model.audit.SestAuditModel;
+import org.crmf.model.audit.SestQuestionnaireModel;
+import org.crmf.model.general.SESTObjectTypeEnum;
+import org.crmf.model.requirement.SecurityRequirement;
+import org.crmf.model.riskassessment.AssessmentProcedure;
+import org.crmf.model.riskassessment.AssessmentProject;
+import org.crmf.model.riskassessment.AssessmentStatusEnum;
+import org.crmf.model.riskassessment.PhaseEnum;
+import org.crmf.model.riskassessment.SafeguardModel;
+import org.crmf.model.riskassessmentelements.ElementTypeEnum;
+import org.crmf.model.riskassessmentelements.RiskScenarioReference;
+import org.crmf.model.riskassessmentelements.Safeguard;
+import org.crmf.model.riskassessmentelements.SafeguardScopeEnum;
+import org.crmf.model.riskassessmentelements.SafeguardScoreEnum;
+import org.crmf.model.riskassessmentelements.SafeguardSourceEnum;
+import org.crmf.model.utility.GenericFilter;
+import org.crmf.model.utility.GenericFilterEnum;
+import org.crmf.model.utility.audit.AuditModelSerializerDeserializer;
+import org.crmf.model.utility.audit.QuestionnaireModelSerializerDeserializer;
+import org.crmf.model.utility.safeguardmodel.SafeguardModelSerializerDeserializer;
+import org.crmf.persistency.mapper.project.AssprocedureServiceInterface;
+import org.crmf.persistency.mapper.risk.RiskServiceInterface;
+import org.crmf.persistency.mapper.safeguard.SafeguardServiceInterface;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+//This class is called by the Proxy and manages the entrypoint for the business logic (including the interactions with the Persistency) related to the SafeguardModel
+public class SafeguardModelManagerInput implements SafeguardModelManagerInputInterface {
+  // the logger of SafeguardModelManagerInput class
+  private static final Logger LOG = LoggerFactory.getLogger(SafeguardModelManagerInput.class.getName());
+  // Safeguard service variable of persistency component
+  private SafeguardServiceInterface safeguardService;
+  // Procedure service variable of persistency component
+  private AssprocedureServiceInterface assprocedureService;
+  private RiskServiceInterface riskModelService;
+
+  public static final String regexQuestionnaire = "\\d+";
+  public static final String regexCategory1 = "\\d+[A-Z]";
+  public static final String regexCategory2 = "\\d+[A-Z]\\d+";
+  public static final String regexQuestion = "\\d+[A-Z]+\\d+-\\d+";
+
+  private boolean modelUpdated = false;
+
+  @Override
+  public String loadSafeguardModel(GenericFilter filter) throws Exception {
+    // get the procedure identifier passed in input
+    String procedureIdentifier = filter.getFilterValue(GenericFilterEnum.PROCEDURE);
+    LOG.debug("loadSafeguardModel:: input procedure filter = " + procedureIdentifier);
+
+    // if the value of procedure identifier is not null
+    if (procedureIdentifier != null) {
+      // retrieve the assessment procedure associated to the procedure
+      // identifier in input
+      AssessmentProcedure procedure = assprocedureService.getByIdentifierFull(procedureIdentifier);
+
+      // retrieve the safeguard model identifier associated to the
+      // retrieved assessment procedure
+      String sestobjId = procedure.getSafeguardModel().getIdentifier();
+
+      // return the json safeguard model associated to the
+      // safeguard model identifier retrieved
+      return safeguardService.getByIdentifier(sestobjId).getSafeguardModelJson();
+    } else
+      throw new Exception("Incorrect procedure identifier in input");
+  }
+
+  // This method is called when an Audit is modified. The goal is to updateQuestionnaireJSON
+  // the SafeguardModel of all OnGoing AssessmentProcedure
+  @Override
+  public void editSafeguardModel(AssessmentProject project) {
+    LOG.info("SafeguardModelManagerInput about to editSafeguardModel for project: " + project.getIdentifier());
+
+    for (AssessmentProcedure procedure : project.getProcedures()) {
+      if (procedure.getStatus().equals(AssessmentStatusEnum.OnGoing)) {
+        modelUpdated = false;
+
+        editSafeguardModelforProcedure(procedure, project.getAudits());
+
+        if (modelUpdated) {
+          // Here we have to save both the AssessmentProcedure and the
+          // SafeguardModel
+          DateFormat df = new SimpleDateFormat("dd/MM/yyyy HH:mm");
+          Date now = new Date();
+
+          procedure.getSafeguardModel().setUpdateTime(df.format(now));
+
+          LOG.info("editSafeguardModel about to updateQuestionnaireJSON SafeguardModel");
+          SafeguardModelSerializerDeserializer serialiser = new SafeguardModelSerializerDeserializer();
+          safeguardService.update(serialiser.getJSONStringFromSM(procedure.getSafeguardModel()),
+            procedure.getSafeguardModel().getIdentifier());
+
+          LOG.info("editSafeguardModel about to updateQuestionnaireJSON AssessmentProcedure");
+          procedure.setUpdateTime(df.format(now));
+          assprocedureService.update(procedure);
+        }
+      }
+    }
+  }
+
+  // This method is called when a new procedure is created. The existing Audit
+  // is transformed into a SafeguardModel for the Procedure
+  //As can be seen, we don't use the SafeguardModel from the template, because the SafeguardModel (and the Audit) is the same for each procedure  in the project
+  @Override
+  public SafeguardModel createSafeguardModel(SafeguardModel safeguards, AssessmentProject project) {
+    LOG.info("SafeguardModelManagerInput about to createSafeguardModel for SafeguardModel: "
+      + safeguards.getIdentifier());
+    SestAuditModel audit = null;
+
+    for (SestAuditModel aAudit : project.getAudits()) {
+      if (aAudit.getType().equals(AuditTypeEnum.SECURITY)) {
+        audit = aAudit;
+        break;
+      }
+    }
+
+    if (audit == null) {
+      LOG.error("createSafeguardModel Security audit null, unable to create SafeguardModel for a new procedure");
+      return safeguards;
+    }
+
+    // Here we need to create Safeguards with respect to the Answers in the
+    // Audit
+    safeguards = createSafeguardsInAudit(safeguards, audit);
+
+    LOG.info("SafeguardModelManagerInput about to Load all existing risk Scenarios References");
+    // Load of all existing risk Scenarios References
+    ArrayList<RiskScenarioReference> allRsr = riskModelService.getRiskScenarioReference();
+
+    // It is necessary to check and assign to each Safeguard its
+    // SafeguardScopeEnum. We then check all the RiskScenarioReferences in
+    // order to be able to assign each Safeguard to the correct group
+    for (RiskScenarioReference rsr : allRsr) {
+      String dissuasion = rsr.getDissuasion();
+      String prevention = rsr.getPrevention();
+      String confining = rsr.getConfining();
+      String palliative = rsr.getPalliative();
+
+      for (Safeguard safeguard : safeguards.getSafeguards()) {
+        if (safeguard.getScope() != null) {
+          continue;
+        }
+        if (dissuasion.contains(safeguard.getCatalogueId())) {
+          safeguard.setScope(SafeguardScopeEnum.Dissuasion);
+          break;
+        }
+        if (prevention.contains(safeguard.getCatalogueId())) {
+          safeguard.setScope(SafeguardScopeEnum.Prevention);
+          break;
+        }
+        if (confining.contains(safeguard.getCatalogueId())) {
+          safeguard.setScope(SafeguardScopeEnum.Confining);
+          break;
+        }
+        if (palliative.contains(safeguard.getCatalogueId())) {
+          safeguard.setScope(SafeguardScopeEnum.Pallation);
+          break;
+        }
+      }
+
+    }
+
+    return safeguards;
+  }
+
+  // This method is called when an Audit is modified. The goal is to updateQuestionnaireJSON
+  // the SafeguardModel and the RiskModel of an OnGoing AssessmentProcedure
+  private void editSafeguardModelforProcedure(AssessmentProcedure procedure, ArrayList<SestAuditModel> audits) {
+    LOG.info("SafeguardModelManagerInput about to editSafeguardModel for procedure: " + procedure.getIdentifier());
+    SestAuditModel audit = null;
+
+    for (SestAuditModel aAudit : audits) {
+      LOG.info("SafeguardModelManagerInput " + aAudit);
+      LOG.info("SafeguardModelManagerInput " + aAudit.getType());
+      LOG.info("SafeguardModelManagerInput " + aAudit.getProjectId());
+      LOG.info("SafeguardModelManagerInput " + aAudit.getIdentifier());
+      if (aAudit.getType().equals(AuditTypeEnum.SECURITY)) {
+        audit = aAudit;
+        break;
+      }
+    }
+
+    if (audit == null) {
+      LOG.error("editSafeguardModelforProcedure Security audit null, unable to updateQuestionnaireJSON SafeguardModel");
+      return;
+    }
+
+    // Here we compare the actual SafeguardModel and the Audit in order to
+    // updateQuestionnaireJSON the SafeguardModel with respect to the actual Audit
+    SafeguardModel safeguards = procedure.getSafeguardModel();
+    LOG.info("editSafeguardModelforProcedure about to editSafeguardModel with identifier: "
+      + safeguards.getIdentifier());
+
+    procedure.setSafeguardModel(editSafeguardModel(safeguards, audit));
+    LOG.info("editSafeguardModelforProcedure SafeguardModel with identifier: " + safeguards.getIdentifier()
+      + " has been updated");
+  }
+
+  // This methods compares an existing SafeguardModel with respect to an Audit
+  private SafeguardModel editSafeguardModel(SafeguardModel safeguards, SestAuditModel auditModel) {
+    LOG.info("SafeguardModelManagerInput about to editSafeguardModel for SafeguardModel with id: "
+      + safeguards.getIdentifier() + " and Audit with id: " + auditModel.getIdentifier());
+    // If we don't create a Safeguard, we must go back in the tree. It can't
+    // exists a Safeguard with children but without a value (every safeguard
+    // with children with values must have a value)
+
+    AuditModelSerializerDeserializer converter = new AuditModelSerializerDeserializer();
+    Audit audit = converter.getAuditFromAuditModel(auditModel, true);
+
+    ArrayList<Safeguard> updatedSafeguards = new ArrayList<>();
+    for (Safeguard safeguard : safeguards.getSafeguards()) {
+      // Here we check all safeguard from SafeguardModel with respect to
+      // the Audit. If a safeguard from the audit has been updated, it is
+      // updated in the safeguard model
+      // The SafeguardModel encompasses all the Audit entries (they can
+      // have a value or not)
+
+      for (Questionnaire questionnaire : audit.getQuestionnaires()) {
+        for (Question question : questionnaire.getQuestions()) {
+          if (checkSafeguardInQuestion(safeguard, question)) {
+            LOG.info("SafeguardModelManagerInput safeguard found " + safeguard.getScore());
+          }
+        }
+      }
+      updatedSafeguards.add(safeguard);
+    }
+    LOG.info("SafeguardModelManagerInput safeguard found " + updatedSafeguards.size());
+    safeguards.setSafeguards(updatedSafeguards);
+
+    return safeguards;
+  }
+
+  private SafeguardModel createSafeguardsInAudit(SafeguardModel safeguards, SestAuditModel audit) {
+    LOG.info("checkNewSafeguardsInAudit SafeguardModel identifier: " + safeguards.getIdentifier()
+      + " audit identifier: " + audit.getIdentifier());
+    for (SestQuestionnaireModel questionnaire : audit.getSestQuestionnaireModel()) {
+      safeguards = createSafeguardsInQuestionnaire(safeguards, questionnaire);
+    }
+
+    return safeguards;
+  }
+
+  private SafeguardModel createSafeguardsInQuestionnaire(SafeguardModel safeguards, SestQuestionnaireModel questionnaireJSON) {
+    LOG.info("checkNewSafeguardInQuestionnaire SafeguardModel identifier: " + safeguards.getIdentifier()
+      + " questionnaire with category ");
+    QuestionnaireModelSerializerDeserializer converter = new QuestionnaireModelSerializerDeserializer();
+    Questionnaire questionnaire = converter.getQuestionnaireFromJSONString(questionnaireJSON.getQuestionnaireModelJson());
+    for (Question question : questionnaire.getQuestions()) {
+
+      safeguards.setSafeguards(createSafeguardInQuestion(safeguards.getSafeguards(), question));
+    }
+    return safeguards;
+  }
+
+  private ArrayList<Safeguard> createSafeguardInQuestion(ArrayList<Safeguard> safeguards, Question question) {
+
+    LOG.info("checkNewSafeguardInQuestion question with category " + question.getCategory());
+
+    if (question.getType().equals(QuestionTypeEnum.CATEGORY)) {
+
+      // We check if this question is not a Safeguard, but a Category of Safeguards
+      if (question.getCategory().matches(regexCategory2)) {
+        // This is a Safeguard
+        Safeguard safeguard = null;
+        for (Safeguard savedSafeguard : safeguards) {
+
+          if (savedSafeguard.getCatalogueId().equals(question.getCategory())) {
+            safeguard = savedSafeguard;
+            break;
+          }
+        }
+
+        if (safeguard == null) {
+          // The Safeguard is not in our SafeguardModel, so we may
+          // have to add it (if the Answers have a value)
+          safeguard = createNewSafeguard(question);
+          if (safeguard != null) {
+            safeguards.add(safeguard);
+            modelUpdated = true;
+          } else {
+            // If we don't create a Safeguard, we must go back in
+            // the tree. It can't exists a Safeguard with children
+            // but without a value (every safeguard with children
+            // with values must have a value)
+            return safeguards;
+          }
+        }
+
+        // We need to check if the Question has children. In case,
+        // we may add children to the Safeguard
+        // The questions children are GASF question
+        LOG.info("question.getChildren().size() " + question.getChildren().size());
+        if (question.getChildren() != null && question.getChildren().size() > 0) {
+
+          ArrayList<SecurityRequirement> securityRequirements = new ArrayList<SecurityRequirement>();
+          for (Question innerQuestion : question.getChildren()) {
+            securityRequirements = createAndCheckSecurityRequirementInQuestion(
+              safeguard.getRelatedSecurityRequirements(), innerQuestion);
+          }
+          safeguard.setRelatedSecurityRequirements(securityRequirements);
+        }
+
+      } else {
+        for (Question innerQuestion : question.getChildren()) {
+          safeguards = createSafeguardInQuestion(safeguards, innerQuestion);
+        }
+      }
+
+    }
+
+    return safeguards;
+  }
+
+  private ArrayList<SecurityRequirement> createAndCheckSecurityRequirementInQuestion(
+    ArrayList<SecurityRequirement> securityRequirements, Question question) {
+
+    LOG.info("createAndCheckSecurityRequirementInQuestion " + question.getCategory());
+
+    boolean found = false;
+    if (securityRequirements != null && securityRequirements.size() > 0) {
+      for (SecurityRequirement securityRequirement : securityRequirements) {
+
+        if (securityRequirement.getId().equals(question.getCategory())) {
+          checkSecurityRequirement(question, securityRequirement);
+          found = true;
+        }
+      }
+
+      if (!found) {
+        // The SecurityRequirement is not in our SafeguardModel, so we may
+        // have to add it
+        SecurityRequirement securityRequirement = createNewSecurityRequirement(question);
+        if (securityRequirement != null) {
+          securityRequirements.add(securityRequirement);
+          modelUpdated = true;
+
+          // We need to check if the Question has children. In case,
+          // we may add children to the SecurityRequirement
+          if (question.getChildren() != null && question.getChildren().size() > 0) {
+
+
+            ArrayList<SecurityRequirement> securityRequirementsChild = new ArrayList<SecurityRequirement>();
+            for (Question innerQuestion : question.getChildren()) {
+              securityRequirementsChild = createAndCheckSecurityRequirementInQuestion(
+                securityRequirementsChild, innerQuestion);
+            }
+            securityRequirement.setChildren(securityRequirementsChild);
+          }
+        }
+      }
+    }
+    return securityRequirements;
+  }
+
+  private Safeguard createNewSafeguard(Question question) {
+    LOG.info("createNewSafeguard with category " + question.getCategory());
+    Safeguard safeguard = new Safeguard();
+
+    for (Answer answer : question.getAnswers()) {
+      LOG.info("answer " + answer.getType());
+      if (answer.getType().equals(AnswerTypeEnum.MEHARI_R_V1)) {
+
+        LOG.info("answer " + answer.getValue());
+        LOG.info("answer " + getScoreValueSafeguard(answer));
+        safeguard.setScore(getScoreValueSafeguard(answer));
+      }
+      if (answer.getType().equals(AnswerTypeEnum.Comment)) {
+        safeguard.setUserDescription(answer.getValue());
+      }
+      if (answer.getType().equals(AnswerTypeEnum.Description)) {
+        safeguard.setDescription(answer.getValue());
+      }
+    }
+    UUID uuid = UUID.randomUUID();
+    safeguard.setIdentifier(uuid.toString());
+
+    safeguard.setCatalogue(SafeguardSourceEnum.MEHARI);
+    safeguard.setCatalogueId(question.getCategory());
+    safeguard.setName(question.getValue());
+    safeguard.setElementType(ElementTypeEnum.Element);
+    safeguard.setObjType(SESTObjectTypeEnum.SafeguardModel);
+    safeguard.setPhase(PhaseEnum.Initial);
+
+    LOG.info("createNewSafeguard question with category " + question.getCategory() + " Safeguard with identifier: "
+      + safeguard.getIdentifier());
+
+    return safeguard;
+  }
+
+  private SafeguardScoreEnum getScoreValueSafeguard(Answer answer) {
+    // If the Question has not been answered, we add a Safeguard
+    // with LOW value
+    if (answer.getValue() == null || answer.getValue().equals("")) {
+      return SafeguardScoreEnum.NONE;
+    } else {
+      int answerValue = Integer.parseInt(answer.getValue());
+
+      switch (answerValue) {
+        case 1:
+          return SafeguardScoreEnum.LOW;
+        case 2:
+          return SafeguardScoreEnum.MEDIUM;
+        case 3:
+          return SafeguardScoreEnum.HIGH;
+        case 4:
+          return SafeguardScoreEnum.VERY_HIGH;
+        default:
+          return SafeguardScoreEnum.NONE;
+      }
+    }
+  }
+
+  private SafeguardScoreEnum getScoreValueSecurityRequirement(Answer answer) {
+    // If the Question has not been answered, we add a Safeguard
+    // with LOW value
+    if (answer.getValue() == null || answer.getValue().equals("")) {
+      return SafeguardScoreEnum.NONE;
+    } else {
+      int answerValue = Integer.parseInt(answer.getValue());
+
+      switch (answerValue) {
+        case 1:
+          return SafeguardScoreEnum.LOW;
+        default:
+          return SafeguardScoreEnum.NONE;
+      }
+    }
+  }
+
+  private SecurityRequirement createNewSecurityRequirement(Question question) {
+    LOG.info("createNewSecurityRequirement with category " + question.getCategory());
+    LOG.info("createNewSecurityRequirement with category " + question.getAnswers().size());
+    SecurityRequirement secreq = new SecurityRequirement();
+
+    for (Answer answer : question.getAnswers()) {
+      LOG.info("createNewSecurityRequirement answer.getType() " + answer.getType());
+      LOG.info("createNewSecurityRequirement answer.getDescription() " + answer.getValue());
+      if (answer.getType().equals(AnswerTypeEnum.MEHARI_R_V1)) {
+
+        secreq.setScore(getScoreValueSecurityRequirement(answer));
+      }
+      if (answer.getType().equals(AnswerTypeEnum.Comment)) {
+        secreq.setUserDescription(answer.getValue());
+      }
+      if (answer.getType().equals(AnswerTypeEnum.Description)) {
+        secreq.setDescription(answer.getValue());
+      }
+    }
+    UUID uuid = UUID.randomUUID();
+    secreq.setIdentifier(uuid.toString());
+
+    secreq.setId(question.getCategory());
+    secreq.setTitle(question.getValue());
+    secreq.setElementType(ElementTypeEnum.Element);
+    secreq.setObjType(SESTObjectTypeEnum.SafeguardModel);
+
+    LOG.info("createNewSecurityRequirement question with category " + question.getCategory()
+      + " SecurityRequirement with identifier: " + secreq.getIdentifier() + ", score : " + secreq.getScore());
+
+    return secreq;
+  }
+
+  private SecurityRequirement checkSecurityRequirement(Question question, SecurityRequirement secreq) {
+    LOG.info("updateNewSecurityRequirement with category " + question.getCategory());
+    LOG.info("updateNewSecurityRequirement with category " + question.getAnswers().size());
+
+    for (Answer answer : question.getAnswers()) {
+      LOG.info("updateNewSecurityRequirement answer.getType() " + answer.getType());
+      if (answer.getType().equals(AnswerTypeEnum.MEHARI_R_V1)) {
+
+        if (answer.getValue() != null && secreq.getScore() != null
+          && !answer.getValue().equals(String.valueOf(secreq.getScore().getScore()))) {
+          LOG.info("updateNewSecurityRequirement answer.getDescription() " + answer.getValue());
+          secreq.setScore(getScoreValueSecurityRequirement(answer));
+          modelUpdated = true;
+        }
+      }
+      if (answer.getType().equals(AnswerTypeEnum.Comment)) {
+        secreq.setUserDescription(answer.getValue());
+      }
+    }
+
+    LOG.info("updateNewSecurityRequirement question with category " + question.getCategory()
+      + " SecurityRequirement with identifier: " + secreq.getIdentifier() + ", score : " + secreq.getScore());
+
+    return secreq;
+  }
+
+  /*
+   Checks if safeguard is the same as question and sets answers and other
+   parameters. Returns true if found, false otherwise.
+   */
+  private boolean checkSafeguardInQuestion(Safeguard safeguard, Question question) {
+
+    if (safeguard.getCatalogueId().equals(question.getCategory())) {
+
+      LOG.info("checkSafeguardInQuestion Safeguard with id: " + safeguard.getCatalogueId()
+        + " question with category " + question.getCategory());
+      LOG.info("checkSafeguardInQuestion question.getAnswers() " + question.getAnswers().size());
+
+      for (Answer answer : question.getAnswers()) {
+        if (answer.getType().equals(AnswerTypeEnum.MEHARI_R_V1)) {
+
+          LOG.info("checkSafeguardInQuestion answer.getDescription() " + answer.getValue());
+          SafeguardScoreEnum score = getScoreValueSafeguard(answer);
+
+          if (!safeguard.getScore().equals(score)) {
+            safeguard.setScore(score);
+            LOG.info("checkSafeguardInQuestion set score " + score);
+            modelUpdated = true;
+          }
+        }
+        if (answer.getType().equals(AnswerTypeEnum.Comment)) {
+          if (safeguard.getUserDescription() != null && answer.getValue() != null
+            && !safeguard.getUserDescription().equals(answer.getValue())) {
+            safeguard.setUserDescription(answer.getValue());
+            modelUpdated = true;
+          } else {
+            if (answer.getValue() != null) {
+              safeguard.setUserDescription(answer.getValue());
+              modelUpdated = true;
+            }
+          }
+        }
+      }
+      safeguard.setName(question.getValue());
+      //safeguard.setDescription("");// TODO we have to add a description
+
+      // We need to check if the Question has children. In case,
+      // we may add children to the Safeguard
+      // #changed : the questions children are GASF question
+      LOG.info("question.getChildren().size() " + question.getChildren().size());
+      if (question.getChildren() != null && question.getChildren().size() > 0) {
+
+        ArrayList<SecurityRequirement> securityRequirements = new ArrayList<SecurityRequirement>();
+        for (Question innerQuestion : question.getChildren()) {
+          securityRequirements = createAndCheckSecurityRequirementInQuestion(
+            safeguard.getRelatedSecurityRequirements(), innerQuestion);
+        }
+        safeguard.setRelatedSecurityRequirements(securityRequirements);
+      }
+
+      LOG.info("checkSafeguardInQuestion return true ");
+      return true;
+    } else {
+      for (Question innerQuestion : question.getChildren()) {
+
+        if (checkSafeguardInQuestion(safeguard, innerQuestion))
+          return true;
+      }
+    }
+    return false;
+  }
+
+  public SafeguardServiceInterface getSafeguardService() {
+    return safeguardService;
+  }
+
+  public void setSafeguardService(SafeguardServiceInterface safeguardService) {
+    this.safeguardService = safeguardService;
+  }
+
+  public AssprocedureServiceInterface getAssprocedureService() {
+    return assprocedureService;
+  }
+
+  public void setAssprocedureService(AssprocedureServiceInterface assprocedureService) {
+    this.assprocedureService = assprocedureService;
+  }
+
+  public RiskServiceInterface getRiskModelService() {
+    return riskModelService;
+  }
+
+  public void setRiskModelService(RiskServiceInterface riskModelService) {
+    this.riskModelService = riskModelService;
+  }
+
+}

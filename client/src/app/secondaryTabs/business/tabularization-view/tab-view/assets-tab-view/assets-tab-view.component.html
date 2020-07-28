@@ -1,0 +1,80 @@
+<!--------------------------------------------------------------------------------------------------------------------
+// Copyright file="abstract-tab-view.component.html"
+//  © Copyright European Space Agency, 2018-2020
+//
+//  Author: Software developed by RHEA System S.A.
+//
+//  This file is subject to the terms and conditions defined in file 'LICENSE.txt', which is part of this source code package.
+//  No part of the package, including this file, may be copied, modified, propagated, or distributed
+//  except according to the terms contained in the file ‘LICENSE.txt’.
+// ------------------------------------------------------------------------------------------------------------------ -->
+
+<p-table #dt [columns]="cols" [value]="dataRows" dataKey="assets" [(selection)]="selected"
+         editMode="row" (onEditComplete)="editName($event)" [scrollable]="true" [style]="{width:'100%'}"
+         [scrollHeight]=rowsNumber>
+  <ng-template pTemplate="colgroup" let-columns>
+    <colgroup>
+      <col [style.width]="cols.length > 1 ? '3em' : '0.6em'">
+      <col *ngFor="let col of columns" style="width:150px">
+      <col [style.width]="cols.length > 1 ? '4em' : '0.6em'">
+    </colgroup>
+  </ng-template>
+  <ng-template pTemplate="header" let-columns>
+    <tr>
+      <th style="width: 3em">
+        <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
+      </th>
+      <th *ngFor="let col of columns">
+        {{ col.header }}
+      </th>
+      <th style="width: 4em; text-align: center;">
+        <!-- <button pButton type="button" icon="pi pi-cog"></button>-->
+      </th>
+    </tr>
+    <tr>
+      <th>
+      </th>
+      <th>
+        <div class="ui-inputgroup">
+          <span class="ui-inputgroup-addon"><i class="pi pi-search" style="line-height: 1.25;"></i></span>
+          <input pInputText type="text" (input)="dt.filter($event.target.value, 'assets', 'contains')" class="my-input">
+        </div>
+      </th>
+      <th *ngFor="let col of columns">
+      </th>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-rowData let-columns="columns" let-ri="rowIndex">
+    <tr [pSelectableRow]="rowData">
+      <td>
+        <p-tableCheckbox [value]="rowData"></p-tableCheckbox>
+      </td>
+      <td *ngFor="let col of columns" [pEditableColumn]="rowData" [pEditableColumnField]="rowData[col.field]">
+        <p-cellEditor>
+          <ng-template pTemplate="input" >
+            <div *ngIf="col.field === 'assets';else rest" >  <input pInputText [(ngModel)]="rowData[col.field]" /> </div>
+            <ng-template #rest><span>&nbsp;</span>
+              <p-checkbox [disabled]="disableFlag" [(ngModel)]=rowData[col.field] binary="true" (ngModelChange)="edit($event, ri, col, rowData[col.field])"></p-checkbox>
+            </ng-template>
+          </ng-template>
+          <ng-template pTemplate="output">
+            <strong>
+            <div  [style.background-color]="assetColor(rowData)" *ngIf="col.field === 'assets' ;else rest" > {{ rowData[col.field] }} </div>
+            </strong>
+            <ng-template #rest><input type="checkbox" [checked]=rowData[col.field]></ng-template>
+          </ng-template>
+        </p-cellEditor>
+      </td>
+      <td><i class="fas fa-pen-square"></i>
+        <button pButton type="button" class="ui-button-warning" icon="pi pi-pencil" (click)="showDialogToEdit(rowData)"></button>
+      </td>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="summary" let-rowData>
+    <div style="text-align:left">
+      <button type="button" pButton icon="fa fa-plus" (click)="showDialogToAdd()"></button><span>&nbsp;&nbsp;</span>
+      <button type="button" pButton icon="fa fa-minus" (click)="deleteAssets()"></button>
+    </div>
+  </ng-template>
+</p-table>
+<app-edit-asset [serverAsset]="serverAsset"></app-edit-asset>

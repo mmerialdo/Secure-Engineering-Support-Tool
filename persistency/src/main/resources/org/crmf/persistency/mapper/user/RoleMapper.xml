@@ -1,0 +1,49 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+	<!DOCTYPE mapper PUBLIC '-//mybatis.org//DTD Mapper 3.0//EN'
+	  'http://mybatis.org/dtd/mybatis-3-mapper.dtd'>
+<mapper namespace='org.crmf.persistency.mapper.user.RoleMapper'>
+
+	<resultMap type='Role' id='Role'>
+		<result property='projectId' column='PROJECT_ID' />
+		<result property='userId' column='USER_ID' />
+	</resultMap>
+
+	<insert id='insert' parameterType='Role' useGeneratedKeys='true'
+		keyProperty='id' keyColumn='ID'>
+		INSERT INTO ROLE(ROLE, USER_ID, PROJECT_ID)
+		VALUES (#{role}, #{userId}, #{projectId})
+	</insert>
+
+	<select id='getByIdentifier' parameterType='String' resultType='String'>
+		SELECT *
+		FROM ROLE
+		WHERE SESTOBJ_ID = '${value}'
+	</select>
+
+	<select id='getByUserId' resultMap='Role'>
+		SELECT *
+		FROM ROLE
+		WHERE USER_ID = #{userId}
+	</select>
+
+	<select id='getByUserIdentifierAndProjectIdentifier' resultMap='Role'>
+		SELECT *
+		FROM ROLE
+		WHERE
+		<if test="projectId != null and projectId !='' ">
+			PROJECT_ID = (SELECT ID FROM ASSPROJECT WHERE SESTOBJ_ID =
+			#{projectId})
+			<if test="userId != null and userId !='' ">
+				AND
+			</if>
+		</if>
+		<if test="userId != null and userId !='' ">
+			USER_ID = (SELECT ID FROM SESTUSER WHERE SESTOBJ_ID = #{userId})
+		</if>
+	</select>
+
+	<delete id='delete'>
+		DELETE FROM ROLE WHERE USER_ID = #{userId} AND PROJECT_ID = #{projectId}
+	</delete>
+
+</mapper>

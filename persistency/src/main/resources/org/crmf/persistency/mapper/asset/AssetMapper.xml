@@ -1,0 +1,35 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+	<!DOCTYPE mapper PUBLIC '-//mybatis.org//DTD Mapper 3.0//EN'
+	  'http://mybatis.org/dtd/mybatis-3-mapper.dtd'>
+<mapper namespace='org.crmf.persistency.mapper.asset.AssetMapper'>
+	<resultMap type='SestAssetModel' id='SestAssetModel'>
+		<result property='sestobjId' column='SESTOBJ_ID' />
+		<result property='assetModelJson' column='ASSET_MODEL_JSON' />
+	</resultMap>
+	
+	<insert id='insert' parameterType='SestAssetModel' useGeneratedKeys='true'
+		keyProperty='id' keyColumn='ID'>
+		INSERT INTO ASSET_MODEL(SESTOBJ_ID, ASSET_MODEL_JSON)
+		VALUES (#{sestobjId}, #{assetModelJson})
+	</insert>
+	
+	<update id='update' parameterType='map'>
+		UPDATE ASSET_MODEL
+		SET
+		ASSET_MODEL_JSON = #{assetModelJson}
+		WHERE SESTOBJ_ID = #{sestobjId}
+	</update>
+	
+	<select id='getByIdentifier' parameterType='String' resultMap='SestAssetModel'>
+		SELECT *
+		FROM ASSET_MODEL 
+		WHERE SESTOBJ_ID = '${value}'
+	</select>
+	
+	<select id='getById' parameterType='int' resultMap='SestAssetModel'>
+		SELECT *
+		FROM ASSET_MODEL
+		WHERE ID = '${value}'
+	</select>
+
+</mapper>

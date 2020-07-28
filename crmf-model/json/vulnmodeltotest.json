@@ -1,0 +1,123 @@
+{
+    "vulnerabilities": [
+        {
+            "affectedAssetsCategories": [
+                "Software_Configuration"
+            ],
+            "assessmentVulnerability": false,
+            "author": "author",
+            "canBeSelected": true,
+            "catalogue": "MEHARI",
+            "catalogueId": "Cfl.alt",
+            "causalNature": "Implicit",
+            "children": [],
+            "description": "Alteration",
+            "elementType": "Element",
+            "introductoryPhases": [],
+            "lastUpdate": "08/08/2017 10:00",
+            "name": "Cfl.alt",
+            "phase": "Initial",
+            "rawText": "rawText",
+            "referenceUrls": [],
+            "relatedCatalogueIds": [],
+            "relatedVulnerabilities": [],
+            "associatedThreats": [],
+            "score": {
+                "exploitabilityBasic": "VERY_HIGH",
+                "consequences": [
+                    {
+                        "description": "Possibility of alteration of software configurations (software and parameters)",
+                        "securityImpacts": [
+                            {
+                                "impact": "CRITICAL",
+                                "scope": "Availability",
+                                "technicalImpacts": []
+                            },
+                            {
+                                "impact": "CRITICAL",
+                                "scope": "Integrity",
+                                "technicalImpacts": []
+                            }
+                        ]
+                    }
+                ],
+                "exploitability": "VERY_HIGH",
+                "score": "HIGH",
+                "scoringType": "RHEA"
+            },
+            "applicablePlatform": {
+                "architecturalParadigms": "architecturalParadigms",
+                "hardwareArchitectures": "hardwareArchitectures",
+                "operatingSystems": "operatingSystems",
+                "platformNotes": "platformNotes",
+                "products": "products",
+                "programmingLanguages": "programmingLanguages",
+                "technologyClasses": "technologyClasses"
+            },
+            "detectionMethods": [],
+            "mitigations": [],
+            "relatedSecurityRequirements": [],
+            "identifier": "76ab4d2d-5114-4daa-bc0f-b1a0c18c6664",
+            "objType": "VulnerabilityModel"
+        },
+        {
+            "affectedAssetsCategories": [
+                "Software_Configuration"
+            ],
+            "assessmentVulnerability": false,
+            "author": "author",
+            "canBeSelected": true,
+            "catalogue": "MEHARI",
+            "catalogueId": "Cfl.bug",
+            "causalNature": "Implicit",
+            "children": [],
+            "description": "Failure",
+            "elementType": "Element",
+            "introductoryPhases": [],
+            "lastUpdate": "08/08/2017 10:00",
+            "name": "Cfl.bug",
+            "phase": "Initial",
+            "rawText": "rawText",
+            "referenceUrls": [],
+            "relatedCatalogueIds": [],
+            "relatedVulnerabilities": [],
+            "associatedThreats": [],
+            "score": {
+                "exploitabilityBasic": "VERY_HIGH",
+                "consequences": [
+                    {
+                        "description": "Possibility of software failure (bug)",
+                        "securityImpacts": [
+                            {
+                                "impact": "CRITICAL",
+                                "scope": "Availability",
+                                "technicalImpacts": []
+                            }
+                        ]
+                    }
+                ],
+                "exploitability": "VERY_HIGH",
+                "score": "HIGH",
+                "scoringType": "RHEA"
+            },
+            "applicablePlatform": {
+                "architecturalParadigms": "architecturalParadigms",
+                "hardwareArchitectures": "hardwareArchitectures",
+                "operatingSystems": "operatingSystems",
+                "platformNotes": "platformNotes",
+                "products": "products",
+                "programmingLanguages": "programmingLanguages",
+                "technologyClasses": "technologyClasses"
+            },
+            "detectionMethods": [],
+            "mitigations": [],
+            "relatedSecurityRequirements": [],
+            "identifier": "ace596c1-6af8-4fb8-9dfe-7f1bd856c95d",
+            "objType": "VulnerabilityModel"
+        }
+    ],
+    "creationTime": "",
+    "updateTime": "",
+    "identifier": "",
+    "objType": "VulnerabilityModel"
+}

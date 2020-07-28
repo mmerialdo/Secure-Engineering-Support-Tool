@@ -1,0 +1,511 @@
+<!--  --------------------------------------------------------------------------------------------------------------------
+// Copyright file="createproject.component.html"
+//  © Copyright European Space Agency, 2018-2020
+//
+//  Author: Software developed by RHEA System S.A.
+//
+//  This file is subject to the terms and conditions defined in file 'LICENSE.txt', which is part of this source code package.
+//  No part of the package, including this file, may be copied, modified, propagated, or distributed
+//  except according to the terms contained in the file ‘LICENSE.txt’.
+// -------------------------------------------------------------------------------------------------------------------- -->
+<div class="container-fluid">
+
+  <div class="row" style="margin-top: 10px">
+
+    <div class="col-lg-2">
+      <p-menu [model]="projectMenu" [style]="{'width': '100%'}"></p-menu>
+    </div>
+
+    <div class="col-lg-10" [ngSwitch]="projectStep">
+
+      <div *ngSwitchCase="'form'">
+
+        <form class="col-md-11 well">
+          <div class="row">
+            <div class="col-md-6">
+
+              <div [formGroup]="projectForm" class="form-group">
+                <label for="name">Name (*)</label>
+                <input formControlName="name" type="text" class="form-control" name="name" id="name" />
+                <control-messages [control]="projectForm.controls.name"></control-messages>
+              </div>
+
+
+              <div [formGroup]="projectForm" class="form-group">
+
+                <!--Add it to show info-->
+                <label for="profile">Profile (*)</label>
+                <i class="fa fa-info-circle" (click)="infoProf()" style="cursor:pointer;margin-left:1px;"></i>
+
+
+                <select [(ngModel)]="selectedProfile" (ngModelChange)="checkedTemplate()" formControlName="profile" class="form-control"
+                        name="profile" id="profile">
+                  <option *ngFor="let c of profilesList" [ngValue]="c.identifier"> {{ c.name }} </option>
+                </select>
+                <control-messages [control]="projectForm.controls.profile"></control-messages>
+              </div>
+
+
+              <div [formGroup]="projectForm" class="form-group">
+                <label for="template">Template (*)</label>
+                <i class="fa fa-info-circle" (click)="infoTemplate()" style="cursor:pointer;margin-left:1px;"></i>
+                <select [(ngModel)]="selectedTemplate" formControlName="template" class="form-control" name="template" id="template">
+
+                  <option *ngFor="let c of templateList" [ngValue]="c.identifier"> {{ c.name }}</option>
+
+                </select>
+                <control-messages [control]="projectForm.controls.template"></control-messages>
+              </div>
+              <div class="col-md-3">
+                <button type="button" class="btn btn-primary btn-sm" [disabled]="!projectForm.valid" (click)="userManStep()">Users Management</button>
+              </div>
+              <div class="col-md-6">
+                <div style="overflow-y: auto; width: 3in; height:200px">
+                  <p-dataList [value]="selectedList" [style]="{'height':'100px'}">
+
+                    <p-header>Selected Users</p-header>
+                    <ng-template let-users pTemplate="item">
+                      {{ users.value }}
+                    </ng-template>
+                  </p-dataList>
+                </div>
+              </div>
+              <div class="col-md-1">
+                <button type="button" class="btn btn-primary btn-sm " (click)="systProjStep()" [disabled]="!projectForm.valid">System project</button>
+              </div>
+
+
+            </div>
+
+            <div class="col-md-6">
+              <div [formGroup]="projectForm" class="form-group">
+
+                <label for="description">Description (*)</label>
+
+                <textarea formControlName="description" class="form-control" name="description" rows="11" id="description"></textarea>
+                <control-messages [control]="projectForm.controls.description"></control-messages>
+              </div>
+
+            </div>
+          </div>
+          <span  class="cols-sm-2 control-label">* - mandatory field</span>
+        </form>
+
+
+      </div>
+
+      <div *ngSwitchCase="'userman'">
+
+        <div class="col-md-12 well">
+
+          <div class="col-md-5">
+
+            <!--<div style="float: left">-->
+
+            <div style="margin-bottom: 10px; text-align: center;font-size: 18px">
+              <b>Users List</b>
+            </div>
+            <p-listbox [options]="usersM" [(ngModel)]="selectedUser" (click)="deselectSecondList(selectedUser)"
+                       filter="filter" [style]="{'width':'100%','height':'250px','max-height':'250px', 'overflow-y':'auto'}" [listStyle]="{'max-height':'200px'}"
+                       id="setB"></p-listbox>
+            <!--</div>-->
+
+          </div>
+
+          <div class="col-md-2">
+
+
+            <div style="margin-left: 40%;margin-top: 40%;margin-right: 40%">
+              <div class="row" style="padding-left: 24%">
+                <button type="button" class="btn btn-primary btn-sm" [disabled]="selectedUser===null" (click)="showRoles()">Add</button>
+              </div>
+              <div class="row" style="padding-left: 24%">
+                <button type="button" class="btn btn-primary btn-sm" [disabled]="chosenUser===null" style="margin-top: 5px" (click)="editRoles(chosenUser)">Edit</button>
+              </div>
+              <div class="row">
+                <button type="button" class="btn btn-primary btn-sm" [disabled]="chosenUser===null" style="margin-top: 5px" (click)="removeUser(chosenUser)">Remove</button>
+              </div>
+
+            </div>
+
+
+
+
+          </div>
+
+          <div class="col-md-5">
+
+            <!--<div style="float: left">-->
+            <div style="margin-bottom: 10px; text-align: center;font-size: 18px">
+              <b>Selected Users </b>
+            </div>
+            <p-listbox [options]="selectedList" [(ngModel)]="chosenUser" (click)="deselectFirstList()"
+                       [style]="{'width':'100%','height':'250px','max-height':'250px', 'overflow-y':'auto'}" [listStyle]="{'max-height':'250px'}"></p-listbox>
+
+            <!--</div>-->
+
+            <div class="to-bottom">
+              <button type="button" class="btn btn-primary btn-sm" style="margin-top: 5px;float:right" (click)="backForm()">Back</button>
+
+            </div>
+
+          </div>
+
+
+        </div>
+
+
+        <div *ngIf="selectedUser">
+
+          <!--<div class="col-md-11 well">
+
+
+          </div>-->
+
+
+        </div>
+
+        <div *ngIf="chosenUser">
+
+
+          <!--<div class="col-md-11 well">
+
+
+                 </div>-->
+
+        </div>
+
+
+
+
+
+      </div>
+
+      <div *ngSwitchCase="'systproj'">
+
+        <form class="col-md-11 well">
+          <div class="row">
+
+            <div class="col-md-12">
+
+              <h1>System Project</h1>
+              <hr>
+            </div>
+
+          </div>
+
+
+
+          <div class="row">
+            <div class="col-md-6">
+
+              <div [formGroup]="systemprojectForm" class="form-group">
+                <label for="names">Name</label>
+                <input formControlName="names" type="text" class="form-control" name="names" id="names" />
+                <control-messages [control]="systemprojectForm.controls.names"></control-messages>
+              </div>
+
+
+              <div [formGroup]="systemprojectForm" class="form-group">
+                <label for="mandate">Mandate</label>
+                <i class="fa fa-info-circle" (click)="infoMandate()" style="cursor:pointer;margin-left:1px;"></i>
+                <input formControlName="mandate" type="text" class="form-control" name="mandate" id="mandate" />
+                <control-messages [control]="systemprojectForm.controls.mandate"></control-messages>
+              </div>
+
+              <div>
+
+                <label for="mandate">System participants</label>
+
+              </div>
+
+              <div class="row">
+                <div class="col-md-4">
+                  <div style="overflow-y: auto; width: 220px; height:250px">
+                    <!--<p-dataList [value]="sysusers"[style]="{'height':'100px'}" >-->
+                    <!--<ng-template let-users pTemplate="item">-->
+                    <!--{{users}}-->
+                    <!--</ng-template>-->
+                    <!--</p-dataList>-->
+                    <p-listbox [options]="sysusers" [(ngModel)]="selectedPartecipant" filter="filter"
+                               [style]="{'width':'220px','height':'250px','max-height':'250px', 'overflow-y':'auto'}"
+                               name="systempartecipants" id="systempartecipants"></p-listbox>
+
+                  </div>
+
+                </div>
+
+                <div class="col-md-3">
+                  <button type="button" class="btn btn-primary btn-sm" (click)="showDialog()">Add</button>
+                  <button type="button" class="btn btn-primary btn-sm" [disabled]="selectedPartecipant===null" (click)="removePartecipant(selectedPartecipant)">Remove</button>
+                </div>
+
+                <div class="col-md-6">
+
+                </div>
+              </div>
+
+
+
+            </div>
+
+            <div class="col-md-6">
+              <div [formGroup]="systemprojectForm" class="form-group">
+                <label for="scope">Scope</label>
+                <i class="fa fa-info-circle" (click)="infoScope()" style="cursor:pointer;margin-left:1px;"></i>
+                <textarea formControlName="scope" class="form-control" name="scope" rows="5" id="scope"></textarea>
+                <control-messages [control]="systemprojectForm.controls.scope"></control-messages>
+              </div>
+
+              <div [formGroup]="systemprojectForm" class="form-group">
+                <label for="descriptions">Description</label>
+                <textarea formControlName="descriptions" class="form-control" name="descriptions" rows="5" id="descriptions"></textarea>
+                <control-messages [control]="systemprojectForm.controls.descriptions"></control-messages>
+              </div>
+
+            </div>
+          </div>
+
+          <!--<div class="row">-->
+
+          <!--<div class="col-md-12">-->
+
+          <!--<h1>Documents</h1>-->
+          <!--<hr>-->
+          <!--</div>-->
+
+          <!--</div>-->
+
+          <!--<div class="row">-->
+
+          <!--<div class="col-md-6">-->
+
+          <!--<div class="row">-->
+
+          <!--<div class="col-md-7">-->
+
+          <!--<p-fileUpload name="myfile[]" url="http://192.168.2.9/sysrequirement/upload"  (onError)="onBasicUpload($event)" multiple="multiple" >-->
+
+          <!--&lt;!&ndash;<ng-template pTemplate type="content">&ndash;&gt;-->
+          <!--&lt;!&ndash;<ul *ngIf="uploadedFiles.length">&ndash;&gt;-->
+          <!--&lt;!&ndash;<li *ngFor="let file of uploadedFiles">{{file.name}} - {{file.size}} bytes</li>&ndash;&gt;-->
+          <!--&lt;!&ndash;</ul>&ndash;&gt;-->
+          <!--&lt;!&ndash;</ng-template>&ndash;&gt;-->
+
+
+
+          <!--</p-fileUpload>-->
+          <!--</div>-->
+
+          <!--<div class="col-md-3">-->
+
+
+          <!--</div>-->
+
+          <!--<div class="col-md-6"></div>-->
+
+
+          <!--</div>-->
+
+          <!--</div>-->
+          <!--<div class="col-md-6"></div>-->
+
+          <!--</div>-->
+
+          <div class="row">
+
+            <div class="col-md-6"></div>
+            <div class="col-md-10"></div>
+
+            <div class="col-md-2">
+
+
+
+              <button type="button" class="btn btn-primary btn-sm" style="float: right" (click)="createSystemProject()" [disabled]="!systemprojectForm.valid">Save System Project</button>
+              <button type="button" class="btn btn-primary btn-sm" style="float: right;margin-right: 5px" (click)="formStepSyst()">Back</button>
+
+
+            </div>
+
+
+          </div>
+
+
+
+        </form>
+
+
+        <p-dialog header="New System Partecipant" [(visible)]="display" modal="modal" width="300" responsive="true">
+          <div class="row">
+            <div class="col-md-12">
+              <div [formGroup]="systempartecipansForm" class="form-group">
+                <label for="partecipansname">Name</label>
+                <input formControlName="partecipansname" type="text" class="form-control" name="partecipansname" id="partecipansname" />
+                <control-messages [control]="systempartecipansForm.controls.partecipansname"></control-messages>
+              </div>
+
+              <div [formGroup]="systempartecipansForm" class="form-group">
+                <label for="surname">Surname</label>
+                <input formControlName="surname" type="text" class="form-control" name="surname" id="surname" />
+                <control-messages [control]="systempartecipansForm.controls.surname"></control-messages>
+              </div>
+
+              <div [formGroup]="systempartecipansForm" class="form-group">
+                <label for="role">Role</label>
+                <input formControlName="role" type="text" class="form-control" name="role" id="role" />
+                <control-messages [control]="systempartecipansForm.controls.role"></control-messages>
+              </div>
+            </div>
+          </div>
+
+          <p-footer>
+            <div class="ui-dialog-buttonpane ui-widget-content ui-helper-clearfix">
+              <button type="button" pButton icon="fa fa-fw fa-close" (click)="display=false" label="Cancel"></button>
+              <button type="button" pButton icon="fa fa-fw fa-check" [disabled]="!systempartecipansForm.valid" (click)="addSystemPartecipant()"
+                      label="Add"></button>
+            </div>
+          </p-footer>
+        </p-dialog>
+
+
+
+
+      </div>
+
+
+    </div>
+  </div>
+
+</div>
+
+<p-dialog header="User Role" [(visible)]="displayRole" modal="modal" width="300" responsive="true" [closable]="false">
+  <div class=".col-sm-12">
+    <p-radioButton class="row row-no-gutters" name="roleGroupAdd" value="RiskAnalyst" label="Risk Analyst"
+                   [(ngModel)]="selectedRole"></p-radioButton>
+    <p-radioButton class="row row-no-gutters" name="roleGroupAdd" value="Reviewer" label="Reviewer" [(ngModel)]="selectedRole"></p-radioButton>
+  </div>
+
+  <p-footer>
+    <div class="ui-dialog-buttonpane ui-widget-content ui-helper-clearfix">
+      <button type="button" pButton icon="fa fa-fw fa-close" (click)="backRoles()" label="Cancel"></button>
+      <button type="button" pButton icon="fa fa-fw fa-check" [disabled]="!selectedRole" (click)="addUser(selectedUser)"
+              label="Ok"></button>
+    </div>
+  </p-footer>
+</p-dialog>
+
+<p-dialog header="Edit User Role" [(visible)]="displayRoleEdit" modal="modal" width="300" responsive="true"
+          [closable]="false">
+  <div class=".col-sm-12">
+    <p-radioButton class="row row-no-gutters" name="roleGroupEdit" value="RiskAnalyst" label="Risk Analyst"
+                   [(ngModel)]="selectedRole"></p-radioButton>
+    <p-radioButton class="row row-no-gutters" name="roleGroupEdit" value="Reviewer" label="Reviewer" [(ngModel)]="selectedRole"></p-radioButton>
+  </div>
+
+  <p-footer>
+    <div class="ui-dialog-buttonpane ui-widget-content ui-helper-clearfix">
+      <button type="button" pButton icon="fa fa-fw fa-close" (click)="backRoles()" label="Cancel"></button>
+      <button type="button" pButton icon="fa fa-fw fa-check" [disabled]="!selectedRole" (click)="editUser()"
+              label="Ok"></button>
+    </div>
+  </p-footer>
+</p-dialog>
+
+
+<p-dialog [(visible)]="blocked" modal="modal" [responsive]="true" [showHeader]="false" class="createProjectSpinner">
+
+  <div *ngIf="!blockedMessage">
+    <h1></h1>
+    <div class="loader"></div>
+  </div>
+
+  <div *ngIf="blockedMessage">
+
+    <p-messages [(value)]="msgsAsset"></p-messages>
+
+  </div>
+
+
+</p-dialog>
+
+<!--Add it to show the info-->
+
+<p-dialog header="Info" [(visible)]="showProfileInfo" modal="modal" width="600" [responsive]="true">
+
+  <div class="row">
+    <div class="col-md-12">
+
+      <p>Each Risk Assessment Project must be based on a Risk Assessment Profile.</p>
+
+    </div>
+  </div>
+
+
+  <p-footer>
+    <div class="ui-dialog-buttonpane ui-widget-content ui-helper-clearfix">
+      <button type="button" pButton icon="fa fa-fw fa-check" (click)="showProfileInfo=false" label="Close"></button>
+    </div>
+
+  </p-footer>
+</p-dialog>
+
+<p-dialog header="Info" [(visible)]="showTemplateInfo" modal="modal" width="600" [responsive]="true">
+
+  <div class="row">
+    <div class="col-md-12">
+
+      <p>The Risk Assessment Template is necessary for creating the Risk Assessment Project: Asset Model, Vulnerability Model,
+        Threat Model and RiskModel of the Risk Assessment Procedures can be generated following the selected Risk Assessment
+        Template.</p>
+
+    </div>
+  </div>
+
+
+  <p-footer>
+    <div class="ui-dialog-buttonpane ui-widget-content ui-helper-clearfix">
+      <button type="button" pButton icon="fa fa-fw fa-check" (click)="showTemplateInfo=false" label="Close"></button>
+    </div>
+
+  </p-footer>
+</p-dialog>
+
+<p-dialog header="Info" [(visible)]="showMandateInfo" modal="modal" width="600" [responsive]="true">
+
+  <div class="row">
+    <div class="col-md-12">
+
+      <p>In every risk assessment activity it is important to state who empowered the analysts with the mandate of analysing
+        the System Engineering Project</p>
+
+    </div>
+  </div>
+
+
+  <p-footer>
+    <div class="ui-dialog-buttonpane ui-widget-content ui-helper-clearfix">
+      <button type="button" pButton icon="fa fa-fw fa-check" (click)="showMandateInfo=false" label="Close"></button>
+    </div>
+
+  </p-footer>
+</p-dialog>
+
+<p-dialog header="Info" [(visible)]="showScopeInfo" modal="modal" width="600" [responsive]="true">
+
+  <div class="row">
+    <div class="col-md-12">
+
+      <p>In every risk assessment activity it is important to state the scope of the risk assessment. In other words, the analysts
+        need to know which part(s) of the system under risk assessment must be considered during the activities</p>
+
+    </div>
+  </div>
+
+
+  <p-footer>
+    <div class="ui-dialog-buttonpane ui-widget-content ui-helper-clearfix">
+      <button type="button" pButton icon="fa fa-fw fa-check" (click)="showScopeInfo=false" label="Close"></button>
+    </div>
+
+  </p-footer>
+</p-dialog>

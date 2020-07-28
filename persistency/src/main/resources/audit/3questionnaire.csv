@@ -1,0 +1,167 @@
+3|MEHARI_SecurityPremises|||||||
+03A|General Maintenance|||||||
+03A01|Quality of energy supply|||||||
+03A01-01|Does the energy supply conform to the maximum load levels specified by installed equipment suppliers and with a sufficient margin?|2|||E2|11.2.2|9.2.2|
+03A01-02|Is there an electricity regulation system which includes at least an uninterruptible power supply for the most sensitive equipment?|4|||E2|11.2.2|9.2.2|
+03A01-03|Are there backup batteries (supplying one or more uninterruptible power supplies) guaranteeing sufficient autonomy that equipment shuts down safely and properly?|2|||E2|11.2.2|9.2.2|
+03A01-04|Is the energy supply system fitted with a control system which signals to the intervention team any partial or complete failure of equipment (disconnection of batteries, insufficient charge, uninterruptible supply system shutdown etc.)?|2|3||R1|||
+03A01-05|Are energy regulation systems checked frequently (battery capacities in particular) in comparison to system requirements (autonomy needed to ensure a proper shutdown)?|2||3|C2|||
+03A01-06|Is the regular replacement of intermediate batteries effected in accordance to the manufacturers' specifications?|2|2||E2|||
+03A02|Continuity of energy supply|||||||
+03A02-01|Has a documented policy been established relative to the requirements about power supply continuity (and all fluids in general)?|1|2||E1|11.2.2|9.2.2|
+03A02-02|Is there a backup energy supply capable of guaranteeing service continuity of critical equipment (making use a generator and sufficient independent supply of fuel or independent energy feed)?|4||2|E1|11.2.2|9.2.2|
+03A02-03|Is the backup system tested regularly in order to define the appropriate load required (retaining only critical equipment load levels)?|4|||C1|||
+03A02-04|Is the start-up routine for the backup system tested regularly and its compatibility with the requirements of service continuity (tests include system run-down and eventual reconfiguration needed)?|4|2||E2|||
+03A02-05|Is the backup energy supply system equipped with an alarm which signals to the intervention team any partial unavailability or failure of equipment (failure of the backup system, low fuel, shutdown of detection or switching system etc.)? |2|3||R1|||
+03A03|Air conditioning security|||||||
+03A03-01|Is there an air conditioning system which regulates air quality (temperature, pressure, water content, dust) corresponding to the specifications of builders of installed equipment?|4|||E2|11.2.2|9.2.2|
+03A03-02|Is the air conditioning system regularly tested to ensure that it will continue to function even in the worst climatic conditions possible?|4|||C1|||
+03A03-03|Will the air conditioning system continue to function within the specifications despite a simple component failure (sufficient equipment redundancy, backup air conditioning system etc.)?|2|||E3|11.2.2|9.2.2|
+03A03-04|Is the capacity of the air conditioning system tested regularly in spite of a simple equipment failure and under the worst possible climatic conditions?|1|3||C2|||
+03A03-05|Is there a redundancy system for the most critical air conditioning equipments? |4|||E2|||
+03A03-06|Is the accidental or deliberately caused failure (shutdown) of the air conditioning system detected and signaled to an intervention team able to react swiftly?|2|2||R1|||
+03A03-07|Is the security of the air-conditioning system (detection of failure, shutdown, intervention procedures) subject to a regular audit?|2|3||C1|||
+03A04|Quality of cabling|||||||
+03A04-01|Is a file maintained detailing all cable paths and bays (with a backup copy) and associated cabling cabinets and their characteristics?|4|||E1|11.2.3|9.2.3|
+03A04-02|Are the cables individually labeled at each end?|2|||E2|11.2.3|9.2.3|
+03A04-03|Is cabling protected from accident risk (protected conduit ends)?|4|||E2|11.2.3|9.2.3|
+03A04-04|Are high and low voltage circuits properly separated?|2|||E1|11.2.3|9.2.3|
+03A04-05|Is cabling quality and protection checked regularly?|2|3||C1|||
+03A04-06|Is the update of the cabling map regularly audited?|2|2||C1|||
+03A05|Lightning protection|||||||
+03A05-01|Is the building protected by a lightning arrester?|4|||E1|||
+03A05-02|Are electrical circuits and cabling protected against surges and against lightning by specialized equipment?|4|||E1|||
+03A05-03|Is circuit protection equipment checked regularly?|2|3||C1|||
+03A06|Dependability of service equipment |||||||
+03A06-01|Is there a complete and accurate list of all the service equipment required by the IT and communications systems (cold water, air, specific supplies, etc)?|4|||E2||9.2.2|
+03A06-02|"Is each equipment covered by a maintenance contract tailored to the requirements of the expected service? 
+"|4|||C1|||
+03A06-03|For the most critical services, is there system redundancy or a rapid replacement capability? |4|||E2|||
+03A06-04|Are all outages, whether unplanned (breakdown) or planned (stoppage), of service equipment detected and flagged to an intervention team for rapid reaction? |2|2||R1|||
+03A06-05|Is the dependability of service equipment (detection of breakdown or outage, intervention procedures, etc) audited regularly? |2|3||C1|||
+03B|Control of access to sensitive locations (other than office zones)|||||||
+03B01|Access rights management to sensitive locations|||||||
+03B01-01|"Are permanent or semi permanent (for a specific length of time) access rights to sensitive locations defined in relation to standard profiles accounting for the function and status of staff?
+These profiles should consider technical, telecom, general maintenance or security staff, fire brigade, service providers, students or visitors, etc."|4|2|2|E1|11.1.2|9.1.2|
+03B01-02|Have an inventory and a classification of all the types of sensitive locations been taken?|4|||E2|||
+03B01-03|Has, for each sensitive location or type of location, a manager been named to maintain up-to-date security access rights attributed to each category of personnel and has each of the managers taken up their post?|4|||E1|||
+03B01-04|Do these persons in charge actually assuming this function and do they provide reports to the CISO about it?|4|2||E2|||
+03B01-05|Do the profiles also allow definition of working time limits (daily hours and periods in the working calendar, weekends, holidays etc.)?|4|||E2|||
+03B01-06|Are these rights and profiles as defined above protected against alteration or falsification during their storage or when transferred between decision makers and the personnel in charge of implementing the rights?|1|3||R1|||
+03B01-07|Is there a regular audit or inspection, at least once a year, of all rights given to the various categories of personnel and of the management processes for these rights as well?|1|3||C1|11.1.2|9.1.2|
+03B02|Management of access authorizations granted to sensitive locations|||||||
+03B02-01|Does the procedure of granting permanent or temporary access authorizations require the formal authorization of line management or of the unit managing external contractors (at a sufficiently senior level)?|4|2||E1|||
+03B02-02|"Is the procedure for granting (or modification or revocation) of access authorizations, for each type of sensitive location, documented and strictly controlled?
+A strict control requires a formal recognition of the signature (electronic or otherwise) of the requester, that the implementation of the profile attributed to users is highly secure and that each operation is recorded (mentioning the date of issue of the badge and its length of validity) that there be a reinforced access control over the modification of such records and that all record modifications be logged and audited."|4|2||E2|||
+03B02-03|Are access authorizations granted to named individuals as a function of profile and materialized by a badge or a card or a key?|4|||E2|||
+03B02-04|Are badges or cards which represent access authorizations personalized using the name of the holder and his or her photograph?|4|||E2|||
+03B02-05|Can the list of access authorizations and corresponding profile be reviewed at any time?|4|2||E3|||
+03B02-06|Is there a rapid and systematic process of attribution and revocation of access authorizations (with invalidation of the badge in automatic control systems) and the return of the badge or corresponding card at time of change of site (if access rights depend on the site), departure from the company or at the end of a contract and applied both to internal and external staff?|2|2||E2|||
+03B02-07|"Are keys or badges stored in a locked secure box or cupboard resistant to break in?
+ For example: certified safes"|4|2||E2|||
+03B02-08|Is it prohibited to enter the sensitive premises with means of photo, video, or audio taping?|1|||E3|11.1.5|9.1.5|
+03B02-09|Is there a regular audit, at least once a year, of all the badges attributed to all categories of staff and of the pertinence of the corresponding authorizations? |1|2||C1|||
+03B02-10|Is there a procedure enabling the subsequent detection of irregularities in the management of access authorizations (badge or card not returned, usage of a lost badge, false badge etc.)?|4|||C2|||
+03B03|Access control to sensitive locations|||||||
+03B03-01|Is use made of an automatic system controlling access to sensitive locations?|4|||E1|11.1.2; 11.1.5|9.1.2; 9.1.5|
+03B03-02|"Does authentication employ user-related data that cannot be falsified (smart cards or biometric data for example)?
+For example :(smart cards, biometric data, digital key, ..."|4||3|E3|||
+03B03-03|"Does the access control system guarantee that all personnel entering the location are verified?
+For example: double door limiting the number of people entering to one-at-a-time or a process which prohibits the usage of a badge by more than one person etc."|4||3|E2|||
+03B03-04|Is control assured of all entry and exit points including both normal exits and others such as windows accessible from outside, emergency exits, potential access via raised flooring and false ceilings?|4|3||E2|||
+03B03-05|Are the automatic access control systems under 24 hr surveillance enabling the detection of a failure, a system deactivation or the usage of emergency exits in real time?|2|2||R1|||
+03B03-06|Is there a procedure or automatic alert enabling the immediate intervention of security personnel in the case of a shutdown alarm of the access control system (or usage of emergency exit)?|2|2||R2|||
+03B03-07|Is there an audit procedure enabling the detection of irregularities in the access control procedures (audit of procedures and parameters of access control systems, audit of exceptions and of interventions etc.)?|2|3||C1|||
+03B04|Intruder detection in sensitive locations|||||||
+03B04-01|Is there an operational on site intrusion detection system for sensitive locations linked to a 24 hr monitoring center?|4|2||E1|||
+03B04-02|Does this system detect all attempts to force open locked exits (windows and doors), all opening of emergency exits and all normal exits abnormally kept open?|4|2||E2|||
+03B04-03|Does this system detect the presence of personnel outside of normal working hours?|4|2||E2|||
+03B04-04|Is this system backed up by a video and audio control system which allows the security team to make a first analysis or dismiss uncertainty from a distance?|4|3||E3|||
+03B04-05|Is the surveillance team dedicated to its task, having only security responsibilities and are any alarms immediately detected treated as the highest priority?|4|3||E3|||
+03B04-06|In the case of an intrusion detection alarm, does the surveillance team have the possibility of sending out an intervention team without delay to verify the cause of the alarm and to take appropriate action?|4|2||E2|||
+03B04-07|Has the security team sufficient resources to cover the eventuality of multiple alarms set off intentionally?|4|3||E3|||
+03B04-08|Is there an advisory document clearly stating exactly what action to take in the case of each alarm envisaged?|2|||E2|||
+03B04-09|Is the intrusion detection system itself under surveillance (alarm in the case of shutdown, auto-surveillance by camera etc.)?|2|3||R1|||
+03B04-10|Are intrusion control points and procedures for reaction to intrusions audited regularly?|2|3||C1|||
+03B05|Perimeter monitoring (surveillance of entry points and surroundings of sensitive locations)|||||||
+03B05-01|Is the perimeter or surroundings of sensitive locations under complete and coherent surveillance by video or direct visual means?|4|||E2|||
+03B05-02|Is the surveillance team dedicated to its task, having only security responsibilities and are any alarms immediately detected and treated as the highest priority?|4|3||E3|||
+03B05-03|In the case of an alarm, does the surveillance team have the possibility of sending out an intervention team without delay to verify the cause of the alarm and to take appropriate action?|4|||E2|||
+03B05-04|Has the security team sufficient resources to cover the eventuality of multiple alarms set off intentionally?|4|3||E3|||
+03B05-05|Is there an advisory document clearly stating exactly what action to take in the case of each alarm envisaged?|2|||E2|||
+03B05-06|Is video surveillance material recorded and kept for a long period?|1|||E3|||
+03B05-07|Is the intrusion detection system itself under surveillance (alarm in the case of shutdown, auto-surveillance by camera etc.)?|2|3||R1|||
+03B05-08|Are surveillance and intervention procedures audited regularly?|2|3||C1|||
+03B06|Surveillance of sensitive locations|||||||
+03B06-01|For sensitive locations, is there an additional, complete and coherent, video surveillance system which detects movement inside the sensitive location and able to detect abnormal behavior?|4||3|E2|11.1.5|9.1.5|
+03B06-02|Is the surveillance team dedicated to its task, having only security responsibilities and are any alarms detected immediately treated as the highest priority?|4|3||E3|||
+03B06-03|In the case of an alarm, does the surveillance team have the possibility of sending out an intervention team without delay to verify the cause of the alarm and to take appropriate action?|2|2||E2|||
+03B06-04|Has the security team sufficient resources to cover the eventuality of multiple alarms set off intentionally?|4|3||E3|||
+03B06-05|Is the security surveillance team also on duty at times when cleaning of sensitive locations is done?|4|2||E2|||
+03B06-06|Is video surveillance material recorded and kept for a long period?|1|||E3|||
+03B06-07|Is the intrusion detection system itself under surveillance (alarm in the case of shutdown, auto-surveillance by camera etc.)?|2|3||R1|||
+03B06-08|Are procedures for surveillance and intervention in the case of abnormal behavior audited regularly?|2|3||C1|||
+03B07|Cabling access control|||||||
+03B07-01|Is physical access to cabling protected (specific conduits difficult to access or kept locked)?|2|2||E2|||
+03B07-02|Are all cable paths kept under video surveillance with alerts in the case of abnormal presence (to signal to staff which screen to pay particular attention to)?|4|3||E3|||
+03B07-03|Are locations where it would be possible to place a parasitic device on a LAN or WAN under reinforced security (named personnel with badge access, biometric security)?|2|2||E2|||
+03B07-04|Are locations where it would be possible to place a parasitic device on a LAN or WAN under video surveillance as soon as accessed (with an alert to surveillance personnel)?|2|3||E2|||
+03B07-05|"Are there regular security audits of cabling?
+including effective control of access to conducts, audit of access rights attributed and the intervention procedures on violation of rights, inspection of locations where parasitic devices could be placed."|2|3||C1|||
+03B08|Location of sensitive premises.|||||||
+03B08-01|Are the sensitive premises located in areas not accessible to the public?|1|||E2|11.1.3|9.1.3|
+03B08-02|Are the data processing premises exempt of all exterior indication of their content?|1|||E2|11.1.3|9.1.3|
+03B08-03|Is the location of sensitive premises not displayed in telephone directories?|1|||E2|11.1.3|9.1.3|
+03C|Security against water damage|||||||
+03C01|Prevention of risk of water damage|||||||
+03C01-01|"Has there been a systematic and exhaustive analysis of all the possible points at which water might enter?
+For example: position of locations relative to natural overflows in the case of flood or violent storms, flooding from floors above, rupture of hidden or exposed pipes, usage of fire extinguisher systems, overflow of water evacuation conduits, untimely start of humidifier systems etc."|4|2||E2|11.1.4|9.1.4|
+03C01-02|"Have each of the possible water entry points been determined as low risk or have measures been taken to ensure that the risk of flooding is very low?
+For example: pre-emptive fire extinguisher systems, one way valves on exhaust pipes, independent measurement of humidity, etc."|4|||E3|||
+03C01-03|Are each of the various systems to avoid water damage protected from shutdown and under constant monitoring?|2|3||R2|||
+03C01-04|Is there a regular audit of the proper implementation of the measures to prevent water damage and methods to ensure that they remain pertinent (verification of risk analysis)?|2|3||C2|||
+03C02|Detection of water damage|||||||
+03C02-01|Are there humidity detectors near to sensitive equipment (in particular in raised flooring) linked to a 24 hr monitoring center?|4|||E2|11.1.4|9.1.4|
+03C02-02|Are there water detectors nearby sensitive equipment (in particular in raised flooring) linked to a 24 hr monitoring center?|4|||E2|11.1.4|9.1.4|
+03C02-03|Is there a water leakage detection system on the floor above the location of sensitive equipment linked to a 24 hr monitoring center?|4|||E3|11.1.4|9.1.4|
+03C02-04|"Does the security desk have the possibility of sending in a rapid intervention team which has sufficient means to act?
+For example: knowledge of the location of water cut off points and protected shunts, computers with up-to-date piping plans and cut off points, plastic covers in order to protect equipment etc."|2|2||E2|||
+03C02-05|Has the security team sufficient resources to cover the eventuality of multiple alarms set off intentionally?|4|3||E3|||
+03C02-06|Is there an advisory document clearly stating exactly what action to take in the case of each alarm envisaged?|2|3||E2|||
+03C02-07|In any shutdown of detection systems systematically signaled to a 24 hr monitoring center?|2|||R1|||
+03C02-08|Is the detection equipment regularly tested and are procedures and intervention capabilities regularly audited?|2|3||C1|||
+03C02-09|Are procedures and intervention capabilities regularly audited?|2|||C1|||
+03C03|Water evacuation|||||||
+03C03-01|Are there permanent means for evacuating water (pumps, natural drain-ways etc.) and a team able to use them effectively?|2|||E2|||
+03C03-02|Is the shutdown of any water evacuation system signaled immediately to a 24 hr monitoring center?|2|2|3|E2|||
+03C03-03|Are water evacuation systems regularly tested? |2||3|E2|||
+03C03-04|Are procedures and intervention capabilities regularly audited?|2||3|C2|||
+03D|Fire security|||||||
+03D01|Fire risk prevention|||||||
+03D01-01|"Has an in-depth and systematic analysis been carried out of all fire risks?
+For example: short circuits in cables, the effect of lightning, staff smoking areas, normal electrical equipment, heating equipment, fire spread from outside, spread via technical conduits or via the air conditioning system etc."|4|2||E2|11.1.4|9.1.4|
+03D01-02|"Has it been possible to evaluate each risk as highly improbable or taken action to render the risk of fire starting or spreading highly improbable?
+For example: protection of cables in specially adapted conduits, separation of transmission cables from energy supply cables, protection of sensitive equipment from lightning strikes, smoking ban, fire resistant bins, non-inflammable materials, protection of electrical circuits by differential circuit breakers, fire detection equipment in nearby locations and in risers etc."|4|||E3|||
+03D01-03|Are the different fire protection systems protected from shutdown and under continual monitoring?|2|3||R2|||
+03D01-04|"Is there a regular audit of the electric cabling due to changes of the power supply configurations?
+For example: control of possible hot points using an infrared camera"|4|||C2|||
+03D01-05|Is there a regular audit of the proper implementation of fire prevention measures and methods to ensure that they remain pertinent?|2|3||C2|||
+03D02|Fire detection|||||||
+03D02-01|Is there an automatic fire detection system for sensitive locations (raised floors and false ceilings if they exist)?|2|||E1|11.1.4|9.1.4|
+03D02-02|Does the fire detection system have at least two types of detector (for example ionic and optical smoke detector)?|4||2|E2|||
+03D02-03|Are the automatic detectors linked to a 24 hr monitoring center, equipped with a system which clearly identifies the location of the alarms which have been set off?|2|||E2|||
+03D02-04|Is any shutdown of fire detection systems systematically signaled to a 24 hr monitoring center?|4|2||R1|||
+03D02-05|Is the detection equipment regularly tested? and are procedures and intervention capabilities regularly audited?|2|3||C1|||
+03D02-06|Are procedures and intervention capabilities regularly audited?|2|3||C1|||
+03D03|Fire extinguishing|||||||
+03D03-01|Is the monitoring center able to rapidly send in a team which has sufficient means to act (precise diagnosis of the situation, manual extinguishers, triggering of automatic extinguishers, emergency call)?|2|1||E1|||
+03D03-02|Has the security team sufficient resources to cover the eventuality of multiple alarms?|2|3||E2|||
+03D03-03|Is there an advisory document clearly stating exactly what action to take in the case of each alarm envisaged?|2|3||E2|||
+03D03-04|Is there specific and regular training of intervention personnel?|4|||E2|||
+03D03-05|Are all mobile fire extinguishers regularly controlled by a competent authority (filling, usage manuals, risk reduction, location etc.)?|1|||E2|||
+03D03-06|Are sensitive locations protected by an automatic extinguishing system (air, raised floors, false ceilings)?|4|2||E2|11.1.4|9.1.4|
+03D03-07|Are automatic extinguishing systems regularly maintained and tested by approved specialists?|2|||E2|||
+03D03-08|Is the shutdown of an automatic fire extinguisher system immediately signaled to a 24 hr monitoring center?|4|2||R1|||
+03D03-09|Is there an installation of armed fire taps near to computer rooms and is this installation periodically and regularly verified and maintained?|4|||E1|||
+03D03-10|Is the intervention time of the fire brigade under 15 minutes?|2|||E2|||
+03D03-11|Are regular tests of fire extinguishing equipment and procedures carried out and intervention capabilities regularly audited?|2|3||C1|||

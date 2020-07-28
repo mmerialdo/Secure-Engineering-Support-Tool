@@ -1,0 +1,155 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+	<!DOCTYPE mapper PUBLIC '-//mybatis.org//DTD Mapper 3.0//EN'
+	  'http://mybatis.org/dtd/mybatis-3-mapper.dtd'>
+<mapper namespace='org.crmf.persistency.mapper.general.CleanDatabaseMapper'>
+
+	<delete id='deleteSestObj' >
+		DELETE FROM SESTOBJ
+	</delete>
+	<delete id='deletePermissiongroup' >
+		DELETE FROM PERMISSIONGROUP
+	</delete>
+	<delete id='deletePermissiongroupSestobj' >
+		DELETE FROM PERMISSIONGROUP_SESTOBJ
+	</delete>
+	<delete id='deleteUser' >
+		DELETE FROM SESTUSER
+	</delete>
+	<delete id='deleteUserPsw' >
+		DELETE FROM SESTUSER_PSW
+	</delete>
+	<delete id='deleteRole' >
+		DELETE FROM ROLE
+	</delete>
+	<delete id='deleteAssproject' >
+		DELETE FROM ASSPROJECT
+	</delete>
+	<delete id='deleteAssprofileTemplate' >
+		DELETE FROM ASSPROFILE_TEMPLATE
+	</delete>
+	<delete id='deleteAssprofile' >
+		DELETE FROM ASSPROFILE
+	</delete>
+	<delete id='deleteAsstemplate' >
+		DELETE FROM ASSTEMPLATE
+	</delete>
+	<delete id='deleteAssprocedure' >
+		DELETE FROM ASSPROCEDURE
+	</delete>	
+	<delete id='deleteSyspartecipant' >
+		DELETE FROM SYSPARTICIPANT
+	</delete>
+	<delete id='deleteSysproject' >
+		DELETE FROM SYSPROJECT
+	</delete>
+	<delete id='deleteQuestionnaireModel' >
+		DELETE FROM QUESTIONNAIRE_MODEL
+	</delete>
+	<delete id='deleteAssauditDefault' >
+		DELETE FROM ASSAUDIT_DEFAULT
+	</delete>
+	<delete id='deleteAssaudit' >
+		DELETE FROM ASSAUDIT
+	</delete>
+	<delete id='deleteAssetModel' >
+		DELETE FROM ASSET_MODEL
+	</delete>
+	<delete id='deleteVulnerabilityModel' >
+		DELETE FROM VULNERABILITY_MODEL
+	</delete>
+	<delete id='deleteThreatModel' >
+		DELETE FROM THREAT_MODEL
+	</delete>
+	<delete id='deleteRiskModel' >
+		DELETE FROM RISK_MODEL
+	</delete>
+	<delete id='deleteRiskScenarioReference' >
+		DELETE FROM RISK_SCENARIO_REFERENCE
+	</delete>
+	<delete id='deleteSafeguardModel' >
+		DELETE FROM SAFEGUARD_MODEL
+	</delete>
+
+	<delete id='cleanSestObj' >
+		DELETE FROM SESTOBJ WHERE (OBJTYPE =
+		'VulnerabilityModel' AND
+		IDENTIFIER NOT IN (SELECT SESTOBJ_ID from
+		VULNERABILITY_MODEL UNION SELECT
+		SESTOBJ_ID from
+		VULNERABILITY_REFERENCE)) OR
+		(OBJTYPE =
+		'AssetModel' AND
+		IDENTIFIER NOT IN (SELECT SESTOBJ_ID from
+		ASSET_MODEL)) OR
+		(OBJTYPE = 'AssessmentProject'
+		AND
+		IDENTIFIER NOT IN (SELECT SESTOBJ_ID from ASSPROJECT UNION SELECT
+		SESTOBJ_ID
+		FROM SYSPROJECT)) OR
+		(OBJTYPE =
+		'AssessmentTemplate' AND
+		IDENTIFIER NOT IN (SELECT SESTOBJ_ID from
+		ASSTEMPLATE)) OR
+		(OBJTYPE = 'SafeguardModel'
+		AND
+		IDENTIFIER NOT IN (SELECT SESTOBJ_ID from SAFEGUARD_MODEL)) OR
+		(OBJTYPE = 'RiskTreatmentModel' AND
+		IDENTIFIER NOT IN (SELECT SESTOBJ_ID from RISKTREATMENT_MODEL)) OR
+		(OBJTYPE = 'Audit' AND
+		IDENTIFIER NOT IN
+		(SELECT SESTOBJ_ID from ASSAUDIT UNION SELECT SESTOBJ_ID FROM
+		QUESTIONNAIRE_MODEL UNION SELECT
+		SESTOBJ_ID FROM SECREQUIREMENT_REFERENCE)) OR
+		(OBJTYPE = 'AssessmentProcedure' AND
+		IDENTIFIER NOT IN (SELECT SESTOBJ_ID from ASSPROCEDURE))
+	</delete>
+	
+	<delete id='cleanAsset' >
+		DELETE FROM ASSET_MODEL WHERE (
+		ID NOT IN (SELECT ASSET_ID from
+		ASSPROCEDURE UNION SELECT
+		ASSET_ID from ASSTEMPLATE))
+	</delete>
+		
+	<delete id='cleanVulnerability' > 	
+		DELETE FROM VULNERABILITY_MODEL WHERE (
+		ID NOT IN (SELECT VULNERABILITY_ID from
+		ASSPROCEDURE UNION SELECT
+		VULNERABILITY_ID from ASSTEMPLATE))
+	</delete>
+		
+	<delete id='cleanThreat' >	
+		DELETE FROM THREAT_MODEL WHERE (
+		ID NOT IN (SELECT THREAT_ID from
+		ASSPROCEDURE UNION SELECT
+		THREAT_ID from ASSTEMPLATE))
+	</delete>
+		
+	<delete id='cleanSafeguard' > 		
+		DELETE FROM SAFEGUARD_MODEL WHERE (
+		ID NOT IN (SELECT SAFEGUARD_ID from
+		ASSPROCEDURE UNION SELECT
+		SAFEGUARD_ID from ASSTEMPLATE))
+	</delete>
+		
+	<delete id='cleanRiskModel' > 	
+		DELETE FROM RISK_MODEL WHERE (
+		ID NOT IN (SELECT RISKMODEL_ID from
+		ASSPROCEDURE UNION SELECT
+		RISKMODEL_ID from ASSTEMPLATE))
+	</delete>
+		
+	<delete id='cleanRiskTreatment' > 	
+		DELETE FROM RISKTREATMENT_MODEL WHERE (
+		ID NOT IN (SELECT RISKTREATMENTMODEL_ID from
+		ASSPROCEDURE))
+	</delete>
+
+	<delete id='cleanVulnerabilityReference' >
+		DELETE FROM VULNERABILITY_REFERENCE
+	</delete>
+
+	<delete id='cleanThreatReference' >
+		DELETE FROM THREAT_REFERENCE
+	</delete>
+</mapper>

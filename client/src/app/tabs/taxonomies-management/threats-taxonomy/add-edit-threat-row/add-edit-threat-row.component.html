@@ -1,0 +1,178 @@
+<!--------------------------------------------------------------------------------------------------------------------
+// Copyright file="add-edit-threat-row.component.html"
+//  © Copyright European Space Agency, 2018-2020
+//
+//  Author: Software developed by RHEA System S.A.
+//
+//  This file is subject to the terms and conditions defined in file 'LICENSE.txt', which is part of this source code package.
+//  No part of the package, including this file, may be copied, modified, propagated, or distributed
+//  except according to the terms contained in the file ‘LICENSE.txt’.
+// -------------------------------------------------------------------------------------------------------------------->
+
+<p-dialog header="{{ labelPopUp }}" [(visible)]="showPopup" modal="modal" [style]="{width: '800px'}" responsive="true" (onHide)="onClose()" appendTo="body">
+<div class="container-fluid">
+  <form [formGroup]="form" novalidate>
+    <div class="row">
+
+      <div class="col-lg-4">
+
+        <div class="row">
+          <div class="col-lg-12">
+            <h5><b>Name*</b></h5>
+            <textarea rows="3" cols="22" pInputTextarea formControlName="name"></textarea>
+            <control-messages [control]="form.controls.name"></control-messages>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-lg-12">
+            <h5><b>Description* <i class="fa fa-info-circle" pTooltip="Fill the elements below in order to have the description"></i></b></h5>
+            <textarea rows="3" cols="22" pInputTextarea formControlName="description"></textarea>
+            <control-messages [control]="form.controls.description"></control-messages>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="col-lg-4" style="margin-top: 9px">
+        <label>Affected Assets Categories*</label>
+        <p-listbox [options]="secondaryCategories" optionLabel="value" [multiple]="true" [checkbox]="true" formControlName="affectedAssetsCategories"
+                   (onChange)="filterThreats()" [filter]="true" [listStyle]="{'max-height':'150px'}" [style]="{'width':'100%'}">
+        </p-listbox>
+      </div>
+      <div class="col-lg-4" style="margin-top: 9px">
+        <label>Associated Vulnerabilities*</label>
+        <p-listbox [options]="filteredVulnerabilities$ | async" [multiple]="true" [checkbox]="true" formControlName="associatedVulnerabilities"
+                   [filter]="true" optionLabel="value" [listStyle]="{'max-height':'150px'}" [style]="{'width':'100%'}"
+        >
+        </p-listbox>
+      </div>
+    </div>
+    <div class="row" style="margin-top: 5px">
+      <div class="col-lg-4">
+        <label>Catalogue Id* <i class="fa fa-info-circle" pTooltip="Fill the elements below in order to have the catalogue Id"></i></label>
+        <input pInputText type="text" style="width: 95%" formControlName="catalogueId">
+        <control-messages [control]="form.controls.catalogueId"></control-messages>
+      </div>
+      <div class="col-lg-4">
+        <label>Threat Class*</label>
+        <p-dropdown [options]="threatClasses" formControlName="threatClass" placeholder="Select a Value" [showClear]="true" [style]="{'min-width':0, 'width':'100%'}"></p-dropdown>
+        <control-messages [control]="form.controls.threatClass"></control-messages>
+      </div>
+      <div class="col-lg-4" [formGroup]="form.get('score')">
+        <label>Likelihood*</label>
+        <p-dropdown [options]="impacts" formControlName="likelihood" placeholder="Select a Value" [showClear]="true" [style]="{'min-width':0, 'width':'100%'}"></p-dropdown>
+        <control-messages [control]="form.get('score.likelihood')"></control-messages>
+      </div>
+    </div>
+  <div class="row">
+    <div class="col-lg-6">
+      <label >Event</label>
+      <hr>
+    </div>
+    <div class="col-lg-6">
+      <label >Actor</label>
+      <hr>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-6" [formGroup]="form.get('event')">
+      <div class="col-lg-5">
+        <h5><b>Name*</b></h5>
+        <p-autoComplete formControlName="name" [inputStyle]="{'width':'100%'}" [suggestions]="filteredEvents"
+                        (completeMethod)="filterEvents($event)" (onSelect)="selectEventDescription($event)" (onKeyUp)="selectEvent($event)"></p-autoComplete>
+        <control-messages [control]="form.get('event.name')"></control-messages>
+      </div>
+      <div class="col-lg-7">
+        <h5><b>Description*</b></h5>
+        <textarea rows="2" cols="20" pInputTextarea formControlName="description" (keyup)="createCatalogueIdandDescription()"></textarea>
+        <control-messages [control]="form.get('event.description')"></control-messages>
+      </div>
+    </div>
+    <div class="col-lg-6" [formGroup]="form.get('actor')">
+      <div class="col-lg-5">
+        <h5><b>Name</b></h5>
+        <p-autoComplete formControlName="name" [inputStyle]="{'width':'100%'}" [suggestions]="filteredActors"
+                        (completeMethod)="filterActors($event)" (onSelect)="selectActorDescription($event)" (onKeyUp)="selectActor($event)"></p-autoComplete>
+      </div>
+      <div class="col-lg-7">
+        <h5><b>Description</b></h5>
+        <textarea rows="2" cols="20" pInputTextarea formControlName="description" (keyup)="createCatalogueIdandDescription()"></textarea>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-6">
+      <label >Process</label>
+      <hr>
+    </div>
+    <div class="col-lg-6">
+      <label >Access</label>
+      <hr>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-6" [formGroup]="form.get('process')">
+      <div class="col-lg-5">
+        <h5><b>Name</b></h5>
+        <p-autoComplete formControlName="name" [inputStyle]="{'width':'100%'}" [suggestions]="filteredProcesses"
+                        (completeMethod)="filterProcesses($event)" (onSelect)="selectProcessDescription($event)" (onKeyUp)="selectProcess($event)"></p-autoComplete>
+      </div>
+      <div class="col-lg-7">
+        <h5><b>Description</b></h5>
+        <textarea rows="2" cols="20" pInputTextarea formControlName="description" (keyup)="createCatalogueIdandDescription()"></textarea>
+      </div>
+    </div>
+    <div class="col-lg-6" [formGroup]="form.get('access')">
+      <div class="col-lg-5">
+        <h5><b>Name</b></h5>
+        <p-autoComplete formControlName="name" [inputStyle]="{'width':'100%'}" [suggestions]="filteredAccesses"
+                        (completeMethod)="filterAccesses($event)" (onSelect)="selectAccessDescription($event)" (onKeyUp)="selectAccess($event)"></p-autoComplete>
+      </div>
+      <div class="col-lg-7">
+        <h5><b>Description</b></h5>
+        <textarea rows="2" cols="20" pInputTextarea formControlName="description" (keyup)="createCatalogueIdandDescription()"></textarea>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-6">
+      <label >Place</label>
+      <hr>
+    </div>
+    <div class="col-lg-6">
+      <label >Time</label>
+      <hr>
+    </div>
+  </div>
+  <div class="row" style="margin-bottom: 5px">
+    <div class="col-lg-6" [formGroup]="form.get('place')">
+      <div class="col-lg-5">
+        <h5><b>Name</b></h5>
+        <p-autoComplete formControlName="name" [inputStyle]="{'width':'100%'}" [suggestions]="filteredPlaces"
+                        (completeMethod)="filterPlaces($event)" (onSelect)="selectPlaceDescription($event)" (onKeyUp)="selectPlace($event)"></p-autoComplete>
+      </div>
+      <div class="col-lg-7">
+        <h5><b>Description</b></h5>
+        <textarea rows="2" cols="20" pInputTextarea formControlName="description" (keyup)="createCatalogueIdandDescription()"></textarea>
+      </div>
+    </div>
+    <div class="col-lg-6" [formGroup]="form.get('time')">
+      <div class="col-lg-5">
+        <h5><b>Name</b></h5>
+        <p-autoComplete formControlName="name" [inputStyle]="{'width':'100%'}" [suggestions]="filteredTimes"
+                        (completeMethod)="filterTimes($event)" (onSelect)="selectTimeDescription($event)" (onKeyUp)="selectTime($event)"></p-autoComplete>
+      </div>
+      <div class="col-lg-7">
+        <h5><b>Description</b></h5>
+        <textarea rows="2" cols="20" pInputTextarea formControlName="description" (keyup)="createCatalogueIdandDescription()"></textarea>
+      </div>
+    </div>
+  </div>
+  </form>
+</div>
+  <p-footer>
+    <button type="button" pButton icon="pi pi-times" label="Cancel" (click)="showPopup = false"></button>
+    <button type="button" pButton icon="pi pi-check" label="Save" [disabled]="!form.valid" (click)="onSave()"></button>
+  </p-footer>
+</p-dialog>

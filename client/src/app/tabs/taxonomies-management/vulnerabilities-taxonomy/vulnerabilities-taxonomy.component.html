@@ -1,0 +1,172 @@
+<!--------------------------------------------------------------------------------------------------------------------
+// Copyright file="vulnerability-taxonomy.component.html"
+//  © Copyright European Space Agency, 2018-2020
+//
+//  Author: Software developed by RHEA System S.A.
+//
+//  This file is subject to the terms and conditions defined in file 'LICENSE.txt', which is part of this source code package.
+//  No part of the package, including this file, may be copied, modified, propagated, or distributed
+//  except according to the terms contained in the file ‘LICENSE.txt’.
+// -------------------------------------------------------------------------------------------------------------------->
+
+<div class="row" style="margin-top: 4px" *ngIf="vulnerabilities$ | async as taxonomies">
+  <div [ngClass]="selectedTaxonomy.length === 1 ? 'col-lg-9' : 'col-lg-12'">
+    <p-table #dt [value]="taxonomies" [(selection)]="selectedTaxonomy" [responsive]="true" [rows]="10" [paginator]="true"
+        [tableStyle]="{'font-size':'12px'}"  [resizableColumns]="true" [autoLayout]="true"
+             selectionMode="multiple" [metaKeySelection]="true">
+  <ng-template pTemplate="header">
+    <tr>
+      <th>Name</th>
+      <th>Catalogue Id</th>
+      <th>Damage</th>
+      <th>Security Impacts</th>
+      <th>Description</th>
+    </tr>
+    <tr>
+      <th>
+        <div class="ui-inputgroup">
+          <span class="ui-inputgroup-addon"><i class="pi pi-search" style="line-height: 1.25;"></i></span>
+          <input pInputText type="text" (input)="dt.filter($event.target.value, 'name', 'startsWith')"  class="my-input">
+        </div>
+      </th>
+      <th>
+        <div class="ui-inputgroup">
+          <span class="ui-inputgroup-addon"><i class="pi pi-search" style="line-height: 1.25;"></i></span>
+          <input pInputText type="text" (input)="dt.filter($event.target.value, 'catalogueId', 'startsWith')" class="my-input">
+        </div>
+      </th>
+      <th>
+        <div class="ui-inputgroup">
+          <span class="ui-inputgroup-addon"><i class="pi pi-search" style="line-height: 1.25;"></i></span>
+          <input pInputText type="text" (input)="dt.filter($event.target.value, 'description', 'startsWith')" class="my-input" >
+        </div>
+      </th>
+      <th>
+<!--        <p-dropdown [options]="impacts" (onChange)="dt.filter($event.value, 'score.consequences[0].securityImpacts', 'in')"-->
+<!--                    appendTo="body" placeholder="Select a Value" [showClear]="true" [style]="{'min-width':0, 'width':'90%'}"></p-dropdown>-->
+      </th>
+      <th>
+<!--        <div class="ui-inputgroup">-->
+<!--          <span class="ui-inputgroup-addon"><i class="pi pi-search" style="line-height: 1.25;"></i></span>-->
+<!--          <input pInputText type="text" (input)="dt.filter($event.target.value, 'score.consequences[0].description', 'startsWith')" class="my-input">-->
+<!--        </div>-->
+      </th>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-taxonomy let-rowIndex="rowIndex">
+    <tr [pSelectableRow]="taxonomy" [pSelectableRowIndex]="rowIndex">
+<!--      <td>-->
+<!--        <p-tableCheckbox [value]="taxonomy"></p-tableCheckbox>-->
+<!--      </td>-->
+      <td>
+        {{taxonomy.name}}<span>&nbsp;&nbsp;</span><i class="fa fa-user-plus fa-xs" *ngIf="taxonomy.catalogue === 'CUSTOM'" pTooltip="Customized by {{taxonomy.author}}"></i>
+      </td>
+      <td>
+        {{taxonomy.catalogueId}}
+      </td>
+      <td>
+        {{taxonomy.description}}
+      </td>
+      <td>
+        <span *ngFor="let impact of taxonomy.score.consequences[0].securityImpacts">{{ impact.scope }}<span>&nbsp;&nbsp;</span></span>
+      </td>
+
+      <td>
+<!--       DA SETTARE ANCHE CAMPO PER FILTRO-->
+        {{taxonomy.score.consequences[0].description}}
+      </td>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="summary" let-rowData *ngIf="isAdmin">
+    <div style="text-align:left">
+      <button type="button" pButton icon="fa fa-plus" (click)="showDialog('Create')"></button><span>&nbsp;&nbsp;</span>
+      <button type="button" pButton icon="fa fa-edit"(click)="showDialog('Edit')" *ngIf="selectedTaxonomy.length === 1"></button><span>&nbsp;&nbsp;</span>
+      <button type="button" pButton icon="fa fa-minus" (click)="removeTaxonomy()"  *ngIf="selectedTaxonomy.length > 0"></button>
+    </div>
+  </ng-template>
+
+</p-table >
+  </div>
+  <div class="col-lg-3 well" *ngIf="selectedTaxonomy.length === 1">
+    <div class="container-fluid">
+      <div class="row">
+        <label style="font-size: 18px">Vulnerabilty Details</label>
+      </div>
+      <div class="row">
+        <div class="col-lg-6">
+          <label>Name:</label>
+          <p>{{ selectedTaxonomy[0].name}}</p>
+        </div>
+        <div class="col-lg-6">
+          <label>Catalogue Id:</label>
+          <p>{{ selectedTaxonomy[0].catalogueId}}</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-12">
+          <label>Damage:</label>
+          <p>{{ selectedTaxonomy[0].description}}</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-12">
+          <label>Author:</label>
+          <p>{{ selectedTaxonomy[0].author}}</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <label>Affected Asset Categories :</label>
+          <p-dataList [value]="selectedTaxonomy[0].affectedAssetsCategories" [style]="{'font-size':'11px', 'max-height': '70px', 'overflow-y':'auto'}">
+            <ng-template let-affectedCategories pTemplate="item">
+              {{ affectedCategories }}
+            </ng-template>
+          </p-dataList>
+        </div>
+      </div>
+      <div class="row">
+
+        <div class="col-md-12" *ngIf="selectedTaxonomy[0].associatedThreats.length>0">
+          <label>Associated Threats :</label>
+          <p-dataList [value]="selectedTaxonomy[0].associatedThreats" [style]="{'font-size':'11px', 'max-height': '70px', 'overflow-y':'auto'}" >
+            <ng-template let-associatedThreats pTemplate="item">
+              {{ associatedThreats }}
+            </ng-template>
+          </p-dataList>
+        </div>
+      </div>
+      <div class="row">
+        <label style="font-size: 16px; margin-top: 5px">Vulnerability Score</label>
+        <hr>
+      </div>
+
+      <div class="row">
+        <div class="col-lg-6" *ngFor="let impactScope of selectedTaxonomy[0].score.consequences[0].securityImpacts">
+            <label>{{ impactScope.scope}}:</label>
+            <p>{{ impactScope.impact}}</p>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-lg-12">
+          <label>Description:</label>
+          <p style="max-height: 60px; overflow-y: auto">{{ selectedTaxonomy[0].score.consequences[0].description }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<p-confirmDialog key="account" [style]="{width: '50vw'}"></p-confirmDialog>
+
+<app-add-edit-row
+  [taxonomy]="{operation: this.currentOperation, value: this.selectedTaxonomy}"
+  (closePopUp)="onClose($event)"
+  *ngIf="showPopup"
+></app-add-edit-row>
+
+<p-toast position="center"></p-toast>
+
+
+
+

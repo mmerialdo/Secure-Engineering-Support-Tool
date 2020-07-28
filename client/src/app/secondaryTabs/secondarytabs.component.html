@@ -1,0 +1,38 @@
+<!--  --------------------------------------------------------------------------------------------------------------------
+// Copyright file="secondarytabs.component.html"
+//  © Copyright European Space Agency, 2018-2020
+//
+//  Author: Software developed by RHEA System S.A.
+//
+//  This file is subject to the terms and conditions defined in file 'LICENSE.txt', which is part of this source code package.
+//  No part of the package, including this file, may be copied, modified, propagated, or distributed
+//  except according to the terms contained in the file ‘LICENSE.txt’.
+// -------------------------------------------------------------------------------------------------------------------- -->
+
+<div>
+
+  <p-tabMenu [model]="tabsItems" [activeItem]=currentSecondaryTab></p-tabMenu>
+
+
+</div>
+<div *ngIf="selectedTab !== 0 && selectedTab !== 1 && lockedBy">
+  <p-toolbar [style]="{'height':'25px'}" class="lockBar">
+
+    <div class="row">
+      <div class="col-lg-4">
+
+      </div>
+      <div class="col-lg-4" style="display: flex; justify-content: center ; margin-top: 1px">
+        <span><b>Locked by {{lockedBy}}</b></span>
+      </div>
+      <div class="col-lg-4" style="display: flex; justify-content: end; margin-top: 4px" *ngIf="isPM()">
+
+        <button class="fa fa-lock fa-lg" pTooltip="Lock View" tooltipPosition="left"
+                style="cursor:pointer;" (click)="lockView()"></button>
+        <!-- button class="fa fa-unlock fa-lg" pTooltip="Unlock View" tooltipPosition="left" style="cursor:pointer;"
+                (click)="unlockView()"></button -->
+      </div>
+    </div>
+  </p-toolbar>
+</div>
+<router-outlet></router-outlet>

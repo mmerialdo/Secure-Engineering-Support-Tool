@@ -1,0 +1,425 @@
+8|MEHARI_ITProductionEnvironment|||||||
+08A|Security of operational procedures |||||||
+08A01|Consideration of security in relation with operational personnel (permanent and temporary staff)|||||||
+08A01-01|"Is there a security policy, specifically aimed at operations personnel, related to information systems?
+This policy should cover the requirements for the protection of information as well as the protection of physical assets and processes and mention the forbidden behaviors"|4|||E1|11.2.1|9.2.1|
+08A01-02|Is information systems operations personnel required to sign contract clauses of adherence to that security policy (no matter their status: permanent or temporary staff, students, etc.)?|4|||E2|||
+08A01-03|Do these clauses make clear that the obligation to respect that security policy applies to information at large (whichever the support : paper, magnetic, optical, etc.)?|2|2||E2|||
+08A01-04|"Do these clauses make clear, if necessary and legally possible, that the obligation to respect the security policy applies without limitation in time?
+This applies, in particular, to the clauses concerning confidentiality, they may (and often must) continue after the end of the contract linking (directly or indirectly) the employee or  service provider or partner to the company"|4|2||E3|||
+08A01-05|Do these clauses make clear that the personnel has an obligation not to tolerate any action contrary to security from other people?|4|3||E3|||
+08A01-06|"Does the signature of these clauses represent a formal commitment?
+In order to achieve a formal commitment, the personnel should explicitly state that his/her signature implies having understood and accepted the security policy"|4|3||E2|||
+08A01-07|"Are these same clauses obligatory for contractors working on systems operations?
+Practically, the contractors should ensure that their personnel sign individually and explicitly under the same conditions than internal staff. "|4|2||E2|||
+08A01-08|Is there a mandatory and well adapted training course aimed at systems operation personnel?|2|||E2|||
+08A01-09|Are the security policy compliance agreements, signed by personnel, securely kept (at least in a locked cupboard )?  |2|3||R1|||
+08A01-10|Are the security policy compliance agreements, signed by external contractors, securely kept (at least in a locked cupboard )?  |2|3||R1|||
+08A01-11|Is there a regular audit, at least once a year, of the effective application of the signature procedure by  operational personnel (directly employed by the company or indirectly through a service company) ?  |2|3||C1|||
+08A02|Control of the operational tools and utilities|||||||
+08A02-01|Have different profiles been defined for the systems operation staff (administration and management of configurations, administration of security equipment, monitoring, audit and investigation)? |4|||E1|12.6.2||
+08A02-02|Are all members of systems operation staff attributed with one of these profiles? |4|||E2|12.6.2||
+08A02-03|Have all the sensitive system tools and utilities (rights administration, configuration management, backups, copies, hot restarts, etc.) been exhaustively audited and listed for each profile?|4|||E2| 9.4.4; 12.6.2|11.5.4|
+08A02-04|Is it possible only for holders of a certain profile to use the corresponding tools and utilities subsequent to proper strong authentication (smart card or token card)?|2|2||E3| 9.4.4; 12.6.2|11.5.4|
+08A02-05|Is it forbidden to create or add sensitive tools or utilities without formal authorization?|2|2||E2| 9.4.4; 12.6.2|11.5.4|
+08A02-06|Is there a regular automated check to enforce this rule which triggers an alert to an appropriate manager?|2|2||E3| 9.4.4|11.5.4|
+08A02-07|Does the segregation of rights of systems operation staff prevent undue modification of sensitive tools or utilities or at least, is there an automatic routine which checks that no modification has been made and which may trigger an alert to a manager if so?|4|2||E3| 9.4.4|11.5.4|
+08A02-08|Are the granting of administrative profiles and the implementation of the aforementioned security measures subject to regular audit?|2|2||C1|||
+08A03|"Acceptance control of systems introduction or modification
+Systems here include operating systems, applications and associated middleware"|||||||
+08A03-01|Are the decisions to change or update equipment and systems significantly subject to a control procedure (registration, planning, formal approval, communication to all concerned individuals, etc.)?|4|||E1|12.1.2; 12.6.2|10.1.2|
+08A03-02|Are the change decisions based on an analysis of the capacity of the new equipment and systems to ensure the required load and take into account the evolution of foreseeable requests?|2|||E2|12.1.3; 12.6.2|10.3.1|
+08A03-03|Do the installations take into account physical protection (protected access, no direct external view on equipments, no multiple physical threats, weather conditions, protection against thunderbolts, protection against dust, etc.)?|2|||E2|11.2.1; 14.2.2|9.2.1; 12.5.1|
+08A03-04|Is any new or modified functionality linked to a new system or new version of a system, systematically documented before moving into production?|4|2||E2|12.5.1; 12.6.2; 14.2.2|12.4.1; 12.5.1|
+08A03-05|Is such new functionality (or change in functionality), linked to a new system or new version of a system, formally and systematically reviewed in conjunction with the IT security function?|2|||E2|12.5.1; 12.6.2; 14.2.9|12.4.1; 10.3.2|
+08A03-06|Does this review include an analysis of the risks that may  result from the changes? |2|2||E2|12.5.1; 12.6.2; 14.2.9|12.4.1; 10.3.2|
+08A03-07|Have system operations staff received formal appropriate training in risk analysis?|1|||E3|||
+08A03-08|May the operation staff obtain an appropriate support specially competent on risk analysis? |4|||E3|||
+08A03-09|Are the security measures, determined to counter the new identified risks, formally reviewed before implementation?|4|2||E3|14.2.9|10.3.2|
+08A03-10|Are security parameters and configuration rules (deletion of generic accounts, changing of any default passwords, blocking of unauthorized communications ports, setting of access rights and authentication parameters, etc.) listed in detail and regularly updated?|4|||E3|14.2.9|11.4.4; 10.3.2|
+08A03-11|Are the security parameters and configuration rules controlled prior to any start of production of a new version? |4|||E3|14.2.9|11.4.4; 10.3.2|
+08A03-12|Has the eventual impact of the systems' changes regarding the continuity plans been considered?|2|||E2|14.2.9|10.3.2|
+08A03-13|Are any exemptions from the prerequisite risk analysis and control of security parameters subject to strict procedures, including a signature from senior management?|4|||R1|12.5.1|12.4.1|
+08A03-14|Can the start of production of new systems and applications be only carried out by  operations personnel?|2|2||E3|12.5.1|12.4.1; 6.1.4|
+08A03-15|Is the start of  production of new versions of systems or applications possible by the use of a defined validation and authorization process? |2|2||E3|12.5.1|12.4.1; 6.1.4|
+08A03-16|Are the start of production control procedures regularly audited?|2|3||C1|||
+08A04|Control of maintenance operations|||||||
+08A04-01|Is a trace of all maintenance operations kept?|1|||E2|11.2.4|9.2.4|
+08A04-02|Are all maintenance operations required to terminate with a systematic control of security parameters (as defined at time of start of production)?|4|2||E2|||
+08A04-03|Are all maintenance operations required to terminate with a systematic control of the recording parameters for security events and the life span of records?|4|3||E3|||
+08A04-04|Are all maintenance operations required to terminate with a systematic control of system administration parameters (required profile, authentication type, removal of standard logins etc.)?|4|3||E3|||
+08A04-05|Is a formal exemption, signed by a responsible manager, required if the above mentioned procedures are not observed? |4|||E3|||
+08A04-06|Is the effective implementation of these controls regularly audited?|2|3||C1|||
+08A05|Confidentiality considerations during maintenance of the production systems|||||||
+08A05-01|Is there a procedure describing, in detail, all the operations to execute before contacting maintenance in order to prevent maintenance staff gaining access to operational production data (disconnection of disk arrays and cartridges, deletion of operational data etc.)?|4|||E1|11.2.4; 11.2.7|9.2.4; 9.2.6|
+08A05-02|Is there a binding clause in maintenance personnel contracts stipulating that any storage media which contained sensitive data be destroyed before disposal?|4|||E2|11.2.4; 11.2.7|9.2.4; 9.2.6|
+08A05-03|Is there a procedure of checking for system integrity after maintenance intervention (absence of spyware, or trojans etc.)?|2|||E2|||
+08A05-04|Is a formal exemption, signed by a responsible manager, required if the above mentioned procedures are not observed? |2|3||E3|||
+08A05-05|Are the above procedures subject to regular audit?|2|3||C1|||
+08A06|Control of remote maintenance|||||||
+08A06-01|In the case of remote maintenance, is the remote maintenance desk's access subject to a secure authentication procedure?|2||2|E2||11.4.4|
+08A06-02|In the case of remote maintenance, are maintenance staff subject to a secure authentication procedure?|4||2|E2||11.4.4|
+08A06-03|Is there a set of procedures covering the granting and revocation of access rights for remote maintenance operatives and the granting of rights in urgent situations?|2|||E3||11.4.4|
+08A06-04|Have the procedures and protocols for transmission and retention of secret conventions (in the case of remote maintenance) been approved by the Information Security Officer or a qualified specialist?|4|||E3|||
+08A06-05|Does the usage of the remote maintenance line require the prior agreement (for each usage) of system operations personnel (upon request by the manufacturer or editor specifying the nature, date and time of the intervention)?|4|3||E3||11.4.4|
+08A06-06|Are data or command exchanges during remote maintenance protected by encryption?|4||2|E3|||
+08A06-07|Are data or command exchanges during remote maintenance protected by integrity control (signing)?  |4||2|E3|||
+08A06-08|"Is the usage of the remote maintenance line under strict control?
+A strict control supposes that each use of the line, the name of the maintenance operative and the actions carried out is registered, and that there be a subsequent audit of the appropriateness of the actions and their conformity with the rules laid down by maintenance managers."|4|3||E2|||
+08A06-09|Is the equipment accessible for remote maintenance protected against deactivation or modification of the access conditions for remote maintenance (e.g. by the triggering of an alarm)? |2|2||R1|||
+08A06-10|Are control procedures for remote maintenance regularly audited?|2|3||C1|||
+08A07|Protection of sensitive printed documents and reports|||||||
+08A07-01|Are all sensitive documents and reports printed in secure premises?|4|||E1|||
+08A07-02|Are all sensitive documents and reports protected against diversion while being produced?|4|3||E1|||
+08A07-03|Are all sensitive documents and reports protected against diversion while waiting for distribution?|4|3||E1|||
+08A07-04|Does the distribution system for printouts and reports ensure protection against theft (locked cabinets and carrying cases during transportation)?|4|3||E2|||
+08A07-05|Does the distribution system for printouts and reports ensure protection against prying consultation?|4|3||E2|||
+08A07-06|Does the distribution system for printouts and reports require the addressee to be authenticated prior to their delivery?|4|3||E3|||
+08A07-07|Are printed documents and reports labeled anonymously without showing any particular classification?|4|||E2|||
+08A07-08|Are these measures adapted to the maximum security level of the information within (temporary storage in locked strong boxes and hand delivery for very sensitive information)?  |4|||E2|||
+08A07-09|Are sensitive printed documents and reports put on the scrap destroyed in a secure way so that they cannot be exploited?|4|3||E2|||
+08A07-10|Are the security procedures for distribution of printed material regularly audited?|2|3||C1|||
+08A08|Management of Operating Procedures for IT production|||||||
+08A08-01|Do the operating procedures result from the study of the overall cases to be covered by said procedure (normal operating cases and incidents)?|4|||E2|12.1.1|10.1.1|
+08A08-02|Are the operating procedures documented and kept up to date?|4|||E2|12.1.1|10.1.1|
+08A08-03|Are the operating procedures readily available upon request by any accredited individual?|4|||E2|12.1.1|10.1.1|
+08A08-04|Is the IT operation Management required to approve changes to procedures ?|4|||E2|12.1.1|10.1.1|
+08A08-05|Are these procedures protected from unauthorized alterations?|2|||R1|||
+08A08-06|Are the operating procedures audited regularly for authenticity and relevance?|2|||C1|||
+08A09|Management of service suppliers and providers relating to IT operations|||||||
+08A09-01|Is it regularly ensured that the security services allocated to suppliers or providers are efficiently implemented and maintained by them?|4|||E1|15.1.3|10.2.1|
+08A09-02|Is it ensured that the service suppliers or providers  have efficiently prepared the appropriate arrangements to ensure that the services are provided as agreed?|2|||E2|15.1.3|10.2.1|
+08A09-03|Is the respect of the security provisions by the suppliers or providers regularly reviewed?|4|||C1|15.1.3; 15.2.1|10.2.2|
+08A09-04|Is it ensured that the suppliers and providers report and document any security incident concerning information or systems?|4|||E2|15.2.1|10.2.2|
+08A09-05|Is there a regular review of these incidents or malfunctions with the concerned suppliers and providers?|2|||E2|15.2.1|10.2.2|
+08A09-06|Are any changes in the contract relationship (obligations, service levels, etc.) analyzed for resulting potential risks?|2|||E3|15.2.2|10.2.3|
+08B|Control of hardware and software configurations|||||||
+08B01|Conformity control of systems parameters and configurations |||||||
+08B01-01|"Is there a document (or a set of documents ) or an operational procedure which describes all security parameters for the systems?
+Such a document should be derived from the security policy and describe all the filtering rules decided. It should also mention the reference to the system versions so as to check the status of the updates."|4|2||E1|||
+08B01-02|Does this document require that all generic or by default accounts be deleted and their list established? |4|2||E2||11.4.4|
+08B01-03|"Are the system versions, fixes and parameters updated regularly in line with latest information?
+This should be done in cooperation with expert authorities (specialized audits, subscription to a service center, regular consultation with CERTs, etc.) "|2|3||E2|12.6.1|10.7.4|
+08B01-04|Does the resulting document or procedure impose a synchronization feature, based on a reliable time reference?|4|||E3|12.4.4|10.10.6|
+08B01-05|Are these reference documents protected, by secure methods, against untimely or illicit alteration (signing)?  |2|3||R1||10.7.4|
+08B01-06|Is the integrity of system configurations checked, regularly (at least weekly) if not at each system start-up, against the configuration theoretically expected?|4|2||E3|18.2.3|15.2.2|
+08B01-07|Are regular audits carried out of the  compliance to the specifications for security parameters?|2|||R1|18.2.3|15.2.2|
+08B01-08|Are regular audits carried out of the exception and escalation procedures in the case of difficulty or installation problems?|2|||R1|18.2.3|15.2.2|
+08B01-09|Are the development and test environments separated from the operational environments?|1|||C1|||
+08B02|Conformity control of operational software configurations (including packages)|||||||
+08B02-01|"Is there a document (or a set of documents ) or an operational procedure which describes the security parameters for all applications?
+These parameters should result from the security architecture retained for the applications"|4|2||E1|||
+08B02-02|Is this document updated for each change of version?|2|2||E2|||
+08B02-03|Does this document require that all generic or by default accounts be deleted and their list established?|4|2||E2|||
+08B02-04|"Are the application software versions, fixes and parameters updated regularly in line with latest information?
+This should be done in cooperation with expert authorities (specialized audits, subscription to a service center, regular consultation with CERTs, etc.)"|2|3||E2|12.6.1|10.7.4; 12.6.1|
+08B02-05|Are these reference documents protected, by secure methods, against untimely or illicit alteration (signing)?  |4|2||R1||10.7.4|
+08B02-06|Is the integrity of application configurations regularly checked against the configuration theoretically expected (weekly)?|4|2||E3|18.2.3|10.7.4; 15.2.2|
+08B02-07|Are regular audits carried out of possible differences between the security parameters expected and effectively implemented?|2|||R1|18.2.3|15.2.2|
+08B02-08|Are regular audits carried out of the exception and escalation procedures in the case of difficulty or installation problems?|2|||R1|18.2.3|15.2.2|
+08B03| Conformity control of reference programs (source code and executables) |||||||
+08B03-01|Do IT operations manage a reference version for each product installed in production (source code and executables)?  |4|2||E1|12.5.1|12.4.1|Managed by SGBL for core banking.
+08B03-02|Is this reference version protected against all possible illicit or untimely modification (signed media kept by a senior manager, electronic signing, etc.)?  |2|||R1|||
+08B03-03|Is this protection considered to be inviolable (signing by cryptographic algorithm approved by the Information Security Officer)?  |4|||R2|||
+08B03-04|Is the protective seal controlled automatically (otherwise it may be an authoritative signature) at each new installation?|4|||R2|||
+08B03-05|Is a check made of the proof of origin and integrity of received maintenance module or a new version, from the editor or the manufacturer (for operating systems)?  |4|||E2|||
+08B03-06|Are the signing and signing control tools protected against any unauthorized usage?|4|||R2|||
+08B03-07|Does the inhibition of the automatic control of seals trigger an alarm to a manager?|4|||E3|||
+08B03-08|Are there regular audits of protection procedures for reference programs? |4|||C1|||
+08C| Management of storage media for data and programs|||||||
+08C01|Management of storage media|||||||
+08C01-01|Are all media removals from the media library controlled by a dedicated person or department responsible for the media handling?|4|||E1|8.3.1|10.7.1|
+08C01-02|Are media returns after use by the operations controlled by the same person or department?|4|||E2|8.3.1|10.7.1|
+08C01-03|Is the removal of storage media systematically registered (date and time, individual responsible for media, etc.) ?|4|||E2|8.3.1|10.7.1|
+08C01-04|Is the disposal of storage media systematically registered (date and time, individual responsible for media, etc.) ?|4|||E2|8.3.1; 8.3.2|10.7.1; 10.7.2|
+08C01-05|Is there a procedure to erase data on media before exit or disposal?|1|||E3|8.3.1; 11.2.7|10.7.1; 9.2.6|
+08C01-06|Are any missing items systematically subject to a search procedure and a follow-on form included in the overall operational dashboard?|4|||E2|||
+08C01-07|Are all movements of storage media into or out of the library strictly controlled with respect to production systems planning? |4|||E3|||
+08C01-08|"Are the files related to storage media management under strict control?
+A strict control requires that people authorized to access the files be registered and in limited number, that there be a reinforced access control to be able to modify the files and that any modification be logged and audited."|4|2||R1|||
+08C01-09|"Are the processes which ensure the management of storage media under strict control?
+A strict control requires to control that the software has been effectively, that a regular data integrity test (seal) be performed and that there is an audit, at least once a year, of media management procedures and processes (including handling the anomalies detected in the course of storage media management)."|4|3||C1|||
+08C02|Labeling of storage media (live, backups and archives)|||||||
+08C02-01|Are magnetic media marked neutrally without any mention of their classification level?|4|||E1|||
+08C02-02|"Are the files accompanying the marking system (files which make the link between the label of the media and its contents) under strict control?
+A strict control requires that people authorized to access the files be registered and in limited number, that there be a reinforced access control to be able to modify them and that any modification be logged and audited."|4|2||E2|||
+08C02-03|"Are the processes which ensure the management of storage media marking under strict control?
+A strict control requires that the software used has been validated and undergoes a regular test for integrity (seal) and that there is an audit at least once a year of support media marking procedures and processes (including a management of anomalies detected in the course of support media marking).
+This presupposes that there be a document which details all of the requirements of support media marking."|4|3||C1|||
+08C03|Physical security of media kept on site|||||||
+08C03-01|Is there an automatic and systematic access control to the location used for on site storage of operation media?|4|||E1|||
+08C03-02|Does authentication, for access control to the storage rooms of production media, employ user related data that cannot be falsified (smart cards or biometric data for example)?|4||3|E2|||
+08C03-03|Does the access control system guarantee that all personnel entering the location are verified (double door limiting the number of people entering to one-at-a-time, process which prohibits the usage of a badge by more than one person etc.)?|4||3|E2|||
+08C03-04|In addition to access control for the normal exits, is there a specific control for non authorized exits (windows accessible from outside, emergency exits, potential access via false panels, flooring and ceilings, etc)?|4||3|E3|||
+08C03-05|Are the automatic access control systems under 24 hr surveillance enabling to detect in real time the failure or deactivation of the system or the usage of emergency exits?|2|2||R1|||
+08C03-06|Is there an audit procedure enabling later to uncover irregularities in the access control procedures (audit of procedures and parameters of access control systems, audit of exceptions and of interventions etc.)?|2|3||C1|||
+08C03-07|Is there an operational intrusion detection system for the storage locations, linked to a 24 hr monitoring center?|4|2||R2|||Off-site media is stored in a branch.
+08C03-08|Are the on site locations for production storage media placed under 24 hours surveillance (video surveillance of the location itself)?|4|3||R2|||
+08C03-09|Is the transfer of production media, between the production and on site storage locations, under strict control (specific moving procedures, secured containers etc.)?  |2|||E2|||
+08C03-10|Is the storage location of production storage media protected against accidental risk (fire detection and extinguisher equipment, protection from water damage, etc.)?  |4|||E2|||
+08C03-11|Is the storage location for production storage media regulated and supervised for temperature and humidity?|4|||E2|8.3.1|10.7.1|
+08C03-12|Are the automatic fire, flood and humidity detection systems, under 24 hour operational control enabling to detect in real time a failure, a deactivation or an alarm?|2|2||R1|||
+08C03-13|Is there a procedure or automatic routine which triggers the immediate intervention of specialized personnel in the case of an alarm (of the access control system or the incident detection system)?|2|2||C1|||
+08C04|Physical security of storage media (kept in an external site)|||||||
+08C04-01|Is use made of a specialized company, which offers contractual guarantees of security, for the storage of archives outside the production site?|4|||E1|||
+08C04-02|Does the contract signed with the outside media storage company ensure a high level of security (strong access authentication, control of access points and emergency exits, intrusion detection, video surveillance, protection against natural risk, intervention team, etc.)?  |4|3||E2|||
+08C04-03|Does the procedure used for the transfer of sensitive media to the external storage location require a high level of security (like secure containers and transporters accredited by the company)?|4|||E2|8.3.3|10.8.3|
+08C04-04|Are there contractual clauses or annex clauses, which stipulate the conditions of restitution of storage media, guaranteeing that the person to whom to the media is returned has the correct authorization even in the case of an emergency procedure? |4|||E3|||
+08C04-05|Is there a regular audit of the security measures used by the company ensuring the external storage of archives and backups?|2|3||C2|||
+08C04-06|Is there a regular audit of the management procedures related to storage media (transport and return)?  |2|3||C1|||
+08C04-07|Is there a regular audit of the contractual clauses specifying relations with the company ensuring the external storage of archives and backups?  |2|3||C1|||
+08C05|Verification and turnover of archive storage media |||||||
+08C05-01|Are the storage media which retain data for long periods (archives) regularly verified (as a function of the frequency of updates and the classification of the information)?|4|||E2|||
+08C05-02|Are the storage media which retain data for long periods (archives) periodically copied to new storage media with the maintenance of an inventory and redundancy of media?|4|||E2|||
+08C05-03|Is there a regular verification of the technical compatibility between the storage media and the operational solution used to effect restoration of data?|2|||E3|||
+08C05-04|Are regular tests carried out of archived media readability? |4|||E2|||
+08C05-05|Do the reread tests contain controls of the authenticity of the information stored?|4|||E3|||
+08C05-06|"Are the files used for the management of storage media rotation and sampling under strict control?
+A strict control requires that people authorized to access the files be registered and in limited number, that there be a reinforced access control to be able to modify them and that any modification be logged and audited."|4|3||R2|||
+08C05-07|Are the procedures concerning the verification of archived storage media regularly audited? |2|3|||||
+08C06|Security of storage networks (SAN : Storage Area Network and NAS) |||||||
+08C06-01|Are the storage networks physically or logically isolated from other data networks? |4|||E1|||
+08C06-02|Are the storage networks protected by a firewall which only allows data and administrative flows related to storage?|4|2||E1|||
+08C06-03|Is access to storage bays subject to strong authentication, for authorized elements (servers and administration stations)?|4|3||E2|||
+08C06-04|Do the data storage protocols contain a protection against replay?|2|||E3|||
+08C06-05|Is data stored using a storage network encrypted before transmission to the network? |4||3|E3|10.1.1|12.3.1|
+08C06-06|"Do the solutions, protecting access to data stored on the storage network, offer valid and solid guarantees?   
+A cryptographic solution with keys of sufficient length is one of among many parameters to take into consideration (as a function of the algorithm) . 
+The recommendation of an official organization can be a confidence factor. At least the solution should have been approved b the CISO."|2|2||E2|||
+08C06-07|Are the security mechanisms for access to data protected against infraction or alteration? |4|3||R1|||
+08C06-08|Is the switching off or bypass of security mechanisms immediately detected and signaled to a responsible team?|4|2||R1|||
+08C06-09|Is this team available 24 hrs a day and capable of intervening immediately?|4|2||R1|||
+08C06-10|Is there a procedure detailing the actions to carry out in the case of error or alert?|3|||C1|||
+08C07|Physical Security of Transiting Medias |||||||
+08C07-01|Are the transfer of medias between sites (internal or external) strictly controlled (specific procedures, follow-up or secured containers, etc.) ?|2|||E1|8.3.3|10.8.3|
+08C07-02|Are the medias marked anonymously, without reference to any classification, while in transit? |4|||E2|||
+08C07-03|Is any abnormality or media loss immediately reported?|2|||E2|||
+08C07-04|Is any abnormality or media loss followed by an investigation?|2|||E2|||
+08C07-05|Are the media transfers regularly audited?|2|3||C1|||
+08D|Service continuity |||||||
+08D01|Organization of hardware maintenance (for operational equipment)|||||||
+08D01-01|Is all equipment covered by a maintenance contract?|2|||E1|11.2.4|9.2.4|
+08D01-02|Are there specific maintenance contracts for all hardware which require a high availability and for which the replacement must be made within limited delays? |4|||E2|||
+08D01-03|Do the contracts stipulate maximum delays before intervention and compatible with the requirements of availability?|4|2||E2|||
+08D01-04|Do the contracts detail the required time slots and days of intervention (24h/7d for example) compatible with the requirements of availability?|4|2||E3|||
+08D01-05|Do the contracts stipulate the conditions of escalation in case of difficulty?|4|3||R1|||
+08D01-06|"Do the contracts detail specific clauses for when the hardware downtime exceeds the specific times stipulated (penalties, hardware replacement, etc.)?
+It is desirable that these clauses be general and apply to all cases no matter what the reasons (technical difficulty, staff strikes, etc.)
+"|4|3||E3|||
+08D01-07|Do the maintenance contracts anticipate the complete replacement of equipment in the case of important damage which might not be taken into consideration by reparative maintenance? |4|||E3|||
+08D01-08|Are the maintenance contracts, the choice of subcontractors and associated maintenance procedures subject to regular audit?|2|3||C1|||
+08D02|Organization of software maintenance (systems, middleware and applications) |||||||
+08D02-01|Are there maintenance contracts for all acquired software products (systems software, middleware and applications)?  |4|||E1|||
+08D02-02|Do the suppliers provide a technical software support center which guarantees a quick and competent telephone assistance?|2|||E2|||
+08D02-03|Do the software maintenance contracts anticipate the regular release of new versions taking into account all applicable fixes to the product?|4|||E2|||
+08D02-04|Are there specific maintenance contracts for software products (systems, middleware and applications) which require corrective delays that standard maintenance cannot cover?|4|||E2|||
+08D02-05|Do these contracts detail specific maximum intervention delays, compatible with the availability requirements?|4|2||E2|||
+08D02-06|Do the contracts detail the required time slots and days of intervention (24h/7d for example) compatible with the requirements of availability?|4|2||E3|||
+08D02-07|Do the contracts stipulate the conditions of escalation in case of difficulty?|4|3||R1|||
+08D02-08|"Do the contracts specify specific clauses when system downtime exceeds specific durations stipulated (penalties, replacement of hardware, etc.)?
+It is desirable that these clauses be general and apply to all cases no matter what the reasons (technical difficulty, staff strikes, etc.)"|4|3||E3|||
+08D02-09|Are the maintenance contracts, the choice of subcontractors and associated maintenance procedures subject to regular audit?|2|3||C1|||
+08D03|Application recovery procedures and plans following incidents during operation|||||||
+08D03-01|"Has a list been established, for all applications, of incidents which could occur during production and, for each of these, the seriousness of possible consequences?
+Critical consequences may relate to data consistency and continuity of service"|4|||E1|||
+08D03-02|For each incident during operation have the corresponding diagnostic means been identified?|4|||E2|||
+08D03-03|For each incident during operation, has a solution been established as well as the operations to carry out by system operation personnel?|4|||E2|||
+08D03-04|For each possible incident during operation, have an acceptable resolution delay and an escalation procedure been determined in the case of failure or lateness of the anticipated corrective actions?|2|||E3|||
+08D03-05|Are the diagnostic means, needed by system operation personnel, protected against any possible inhibition or unauthorized modification? |2|3||R1|||
+08D03-06|Are the corrective means, needed by system operation personnel, to solve a critical operation incident protected against any possible inhibition or unauthorized modification? |2|3||R2|||
+08D03-07|Are there regular tests concerning the efficiency of the procedures and facilities which survey and diagnose the applications' operation?|2|||C1|||
+08D03-08|Are there regular checks concerning the update of the corresponding documentation?|2|||C2|||
+08D03-09|Are regular tests made of the effective capacity to restore data and  restart the application after an incident during operation? |2|3||C1|||
+08D03-10|For encrypted data retrieval, does the Key Management provide the recovery for lost or altered keys?|2|||E3|10.1.2|12.3.2|
+08D04|Backup of software configurations (system, applications and configuration parameters)|||||||
+08D04-01|Has a backup plan been established which covers all programs and defines all objects to save and the frequency of backups?|4|||E1|12.3.1|10.5.1|
+08D04-02|Does the plan also cover system and middleware configuration parameters to save?|4|3||E2|12.3.1|10.5.1|
+08D04-03|Does the plan also cover application parameters to save?|4|3||E2|12.3.1|10.5.1|
+08D04-04|Is the plan implemented by automatic production routines?|2|3||E2|12.3.1|10.5.1|
+08D04-05|"Are there regular tests that the backup copies of programs (source code and/or executables) enable the effective restoration of the production environment at any time?
+These tests should consider all the backups (including documentation and parameters files) of legitimate elements."|4|2||E2|12.3.1; 17.1.2; 17.1.3|10.5.1; 14.1.5|
+08D04-06|"Are the production routines which ensure backups protected, against illicit or undue modification, by secure mechanisms? 
+Such mechanisms might be electronic seal or any equivalent modification detection system."|4|3||R1|12.3.1|10.5.1|
+08D04-07|Are regular tests made of the readability of backups?|2|3||R2|12.3.1|10.5.1|
+08D04-08|Are all software backup plans and procedures subject to regular audit?|2|3||C1|||
+08D05|Backup of application data |||||||
+08D05-01|Has a preliminary study been made, in conjunction with the users, to identify the scenarios which backups must be able to cover?|1|||E1|12.3.1|10.5.1|
+08D05-02|"Has an analysis been carried out with the users in order to define for each file the maximum acceptable time between two backups? 
+These studies are to be based on the capacity to rebuild lost information and permit to define the required backup cycle "|2|||E1|12.3.1|10.5.1|
+08D05-03|Have studies been made of the necessary synchronization between bound backups for all platforms in order to ensure the proper functioning of the resumed applications and the coherence of the data necessary for this resumption?|2|||E1|12.3.1|10.5.1|
+08D05-04|From above studies, have the various procedures been recorded in a backup plan comprising, for each class of files, the frequency, the details of constitution and the necessary synchronizations?|4|2||E2|12.3.1|10.5.1|
+08D05-05|Does the backup plan integrate a control plan pointing out the various control points (size of files, duration, reread, etc.) and their frequency?|2|||E3|12.3.1|10.5.1|
+08D05-06|Does the control plan mention the actions to effect in the case of incident or anomaly?|2|||E3|12.3.1|10.5.1|
+08D05-07|"Is the backup plan updated each time the operation's environment is changed?
+Updates should occur in particular at the time of addition or modification of applications"|2|||E2|12.3.1|10.5.1|
+08D05-08|Has the backup plan been translated to automatic operational routines? |2|||E2|12.3.1|10.5.1|
+08D05-09|Are regular controls carried out to ensure that a restart or start up is possible from the backups made (i.e. a complete test which verifies all functionality and the absence of synchronization or coherence problems)?  |4|2||E2|12.3.1; 17.1.2; 17.1.3|10.5.1; 14.1.5|
+08D05-10|"Are production routines which effect backups under strict control with regard to illicit or undue modification?
+A strict control requires a reinforced access control to modify these routines, a logging and an audit of all modification and/or an integrity control by electronic signing of the automatic operational routines."|4|3||R1|12.3.1|10.5.1|
+08D05-11|Do the data saving and retention procedures offer guarantees of compliance to regulations and commitments from the organization regarding confidentiality and integrity?|1|||E3|12.3.1|10.5.1|
+08D05-12|Are there regular tests to reread backups of application data? |2|3||E2|12.3.1|10.5.1|
+08D05-13|Are several generations of files systematically kept in order to guard against any losses or illegibility by organizing, for example, the rotation of backup storage media? |4|||E3|12.3.1|10.5.1|
+08D05-14|Are all data backup plans and procedures regularly audited? |2|3||C1|||
+08D06|Disaster Recovery Planning for IT operations|||||||
+08D06-01|Have all the scenarios which may impact the IT infrastructure and services been considered and, for each scenario, the consequences in terms of service unavailability for users?|4|||E1|17.1.2|14.1.3|
+08D06-02|"For each scenario, and in agreement with the users, have a list and schedule of IT service resume been defined?
+Loss of information, means to reconstruct them and temporary operational procedures must be considered."|4|2||E2|17.1.2|14.1.3|
+08D06-03|Has an activity recovery solution been defined and implemented to resolve each scenario identified above, in accordance with user requirements?|4||2|E1|17.1.2|14.1.3|
+08D06-04|"Are the technical, organizational and human resources sufficient to address the organization's requirements for IT continuity?
+This means being able to correct personnel deficiencies"|4|||E2|17.1.2|14.1.3|
+08D06-05|"Are the technical, organizational and human resources educated to address the organization's requirements for IT continuity?
+This implies to train appropriately all concerned staff."|4|||E2|17.1.2|14.1.3|
+08D06-06|Are all these solutions described in detail in Disaster Recovery Plans including the conditions for triggering the plan, the actions to execute, the priorities, the actors to mobilize and their contact details? |4|||E1|17.1.2|14.1.3|
+08D06-07|Are these plans tested at least once a year?|4|2||E2|17.1.2; 17.1.3|14.1.5|
+08D06-08|"Are above tests able to guarantee that the staff capacity and the recovery systems can cope, under full operational load, the minimum IT services required by users?
+The tests required to obtain this guarantee are preferably full scale tests of each variant of scenario, involving all users. The results of the tests have to be registered and analyzed in order to improve the capability of the organization to answer to the situations considered. "|4|3||E2|17.1.2; 17.1.3|14.1.5|
+08D06-09|If the recovery solutions include delivery of hardware components (which cannot be triggered during tests), is there a contractual commitment by the manufacturer or any relevant third party (leaser, broker, distributor) to deliver the replacement hardware within fixed and anticipated time limits as stated in the recovery plan?|4|2||E2|||
+08D06-10|Has the unavailability or failure of the recovery facility been considered and has a replacement solution been defined and validated (second level recovery)?|2|3||E2|||
+08D06-11|Has this (second level  recovery) solution been validated?|2|3||E3|||
+08D06-12|Is the recovery solution usable for an unlimited duration and, if not, has a follow on replacement solution been established?|2|3||E3|||
+08D06-13|Are the existence, the pertinence and the updates of the IT services Recovery Plans regularly controlled?|2|3||C1|||
+08D06-14|Is the updating of the above procedures within the recovery plan subject to regular audit?|2|3||C1|||
+08D07|Anti virus protection for production servers |||||||
+08D07-01|Have the measures to be taken by the IT staff been defined so as to prevent, detect and correct any attacks by malicious code (virus, spyware, other)?|2|3||E2|12.2.1|10.4.1|
+08D07-02|Are production servers (including office and mail servers) protected by anti virus or malicious code software? |4|||E1|12.2.1|10.4.1|
+08D07-03|Are several antivirus software (from different editors) simultaneously operating for the protection of the operation servers?|4|||E2|||
+08D07-04|Are antivirus software products regularly and automatically updated (daily)?|4|2||E2|||
+08D07-05|Is a subscription held with an emergency response center able to warn and anticipate large scale virus attacks for which the installed antivirus software is not yet up to date?|4|3||E3|||
+08D07-06|Is there an emergency committee which can be implemented quickly in the case of alert or detection of viral infection? |4|3||E2|||
+08D07-07|Is the activation and the update of antivirus software on servers subject to regular audit?|2|3||C1|||
+08D08|Management of critical systems (regarding maintenance continuity) |||||||
+08D08-01|"Have the consequences of the disappearance of a supplier been analyzed (in the case of failure, a bug or change requirement) and has a list of critical systems been established? 
+This is valid for hardware, software or service providers"|2|||E2|||
+08D08-02|For all critical systems, has a corrective solution been analyzed to cope with the failure or disappearance of a supplier (consignment of maintenance documentation or source code with a trusted third party, hardware replacement by standard market solutions etc.)?|2|||E2|||
+08D08-03|Is there a guarantee that the corrective solutions could be made operational within time delays compatible with the continuity of the business and accepted by the users?|2|2||E2|||
+08D08-04|Have variants to the primary solution been considered in case it might encounter unforeseen difficulties?|2|3||E3|||
+08D08-05|Is there a regular review of critical systems and corrective solutions envisaged?|2|3||C1|||
+08D09|Off site emergency (recourse) backups |||||||
+08D09-01|Are all software backups and configuration files, which enable the restoration of the production environment, also saved at a location off premises (recourse backup)?|4|3||E1|||
+08D09-02|Are all data saved for backup also saved at a location off premises (recourse backup)?|4|2||E1|||
+08D09-03|Are regular tests carried out that these emergency backups can be read?|2|3||E2|||
+08D10|Maintaining user accounts|||||||
+08D10-01|Has it been defined with the users the maximum acceptable delay for reinstating their rights  following the  accidental or deliberate blocking of their accounts (application, system, or network?|4|||E1|||
+08D10-02|Is the procedure to follow if an account is blocked defined? |4|||E2|||
+08D10-03|Is this procedure known to users? |2|||E2|||
+08D10-04|Does this procedure respect the maximum acceptable delay in the case of isolated blockage of several accounts (denial of service attack)? |2|2||E2|||
+08D10-05|Is the possibility of simultaneous blockage of many accounts allowed for? |4|3||E3|||
+08D10-06|Has the procedure to follow if many accounts are simultaneously blocked been defined with users? |4|3||E3|||
+08D10-07|Are user account preservation procedures audited regularly?|2|2||C1|||
+08E|Management and handling of incidents |||||||
+08E01|Online detection and treatment of IT related abnormal events and incidents|||||||
+08E01-01|Has a detailed analysis been carried out of the events or succession of events which may reveal abnormal behaviors or illicit actions and, as a consequence, have specific monitoring indicators or control points been identified?|4|||E2|16.1.4||
+08E01-02|Is the system equipped with an automatic real time monitoring system in the case of an accumulation of abnormal events (for example unsuccessful connection attempts on non-open ports)?|4|||E3|16.1.4||
+08E01-03|Is there one application able to analyze the individual anomaly diagnostic data and trigger an alert to operational personnel?|4|||E3|16.1.4||
+08E01-04|Is there, within operational personnel, a team or individual available 24 hrs a day and capable of reacting in the case of an alert after this application has detected an anomaly?|4|2||E3|16.1.4||
+08E01-05|Has the expected response time from the surveillance team been defined for each case of alert and are its availability and staffing level sufficient to meet these expectations?|4|||E3|16.1.4||
+08E01-06|Are the alarm definition parameters strictly protected (restricted access rights and strong authentication) against illicit modification?|4|3||R1|||
+08E01-07|Does the shutdown of the alarm system trigger an alert with the surveillance team?|4|3||R1|||
+08E01-08|Are all the elements which enabled the detection of an anomaly or incident archived (on disk, cassette or DON etc.)?|2|||E2|||
+08E01-09|Are the procedures of detection of the anomalies and the availability of the surveillance team subject to regular audit?|2|3||C1|||
+08E02|Offline management of traces, logs and event journals|||||||
+08E02-01|Has a detailed analysis been carried out of the events or succession of events which may have an impact on security (refused connections,  reconfigurations, changes in performance, access to sensitive data or tools etc.)?|2|||E1|||
+08E02-02|Are these events recorded as well as the parameters useful for their subsequent analysis?|4|||E1|||
+08E02-03|Is there an application able to analyze these records as well as performance measurements and to infer statistics, a dashboard, anomaly diagnostics, etc. for examination by a competent team?|4|2|3|E2|||
+08E02-04|Is the structure in charge of the analysis of these summaries (or incident logs and security related events) obliged to do so at regular intervals and does it have sufficient availability?|4|||E2|||
+08E02-05|Has the expected reaction from the surveillance team been defined for each case of alert and is its availability level sufficient to meet these expectations?|4|||E3|||
+08E02-06|Are the parameters defining the elements to record and the summaries effected on these elements strictly protected against unauthorized change (limited rights and strong authentication)?|4|||R1|||
+08E02-07|Is any inhibition of the recording and processing system immediately signaled to the surveillance team?|4|||R1|||
+08E02-08|Are the records and summary analyses kept for a long period?|2|||E2|||
+08E02-09|Are the procedures for recording, processing and analysis of the records and summaries as well as the availability of the analysis and corrective team subject to regular audit?|2|||C1|||
+08E03|Management of system and application incidents|||||||
+08E03-01|Is there a hot-line charged with taking and recording calls and to log and escalate all incidents?|2|||E1|16.1.5||
+08E03-02|Is this hot-line team available 24 hours a day?|2|||E2|16.1.5||
+08E03-03|Is there a system to support incident management?|1|||E2|16.1.5||
+08E03-04|Does this system centralize incidents detected both by operational personnel and by users?|4|2||E2|16.1.5||
+08E03-05|Does the system cater for a systematic follow-up of necessary actions?|4|||E3|16.1.5||
+08E03-06|Does this system incorporate a categorization of incidents with statistics generation and dashboards destined for use by the Information Security Officer?|4|||E3|16.1.5||
+08E03-07|"Is the incident management system strictly controlled with regard to unauthorized or inadvertent modification?
+A strict control requires a reinforced protection in order to modify records and an audit trail of all modifications of records or protection by electronic seal on all records modification."|4|3||R1|||
+08E03-08|Is each major incident on systems or applications subject to a specific follow-up (nature and description, priority, technical solution, progress analysis, expected resolution lead time etc.)?|4|||E2|16.1.1||
+08F| Control of administrative rights|||||||
+08F01|Control of administrative access rights granted on systems|||||||
+08F01-01|Have profiles been defined, within IT operations staff, corresponding to each type of activity (system administration, administration of security equipment, system monitoring, management of data storage and backup functions etc.)?|1|||E1|6.1.2; 9.2.3; 9.2.5|10.1.3; 11.2.2|
+08F01-02|For each profile have the necessary rights and privileges been defined? |4|2||E1|6.1.2|10.1.3|
+08F01-03|Does the process of attributing special rights require the formal authorization of management (or the manager responsible for external service providers) at a sufficiently high level?|4|2||E2|6.1.2|10.1.3|
+08F01-04|Is the process of attributing special rights allocated only in relation to the profile of the holder?|4|2||E2|6.1.2|10.1.3|
+08F01-05|"Is the process of granting (modification or revocation) of special rights to an individual strictly controlled?
+A strict control requires a formal recognition of the signature (electronic or not) of the requestor, that there be a tight control of access in order to attribute or modify such rights and that any modification of special rights be logged and audited."|4|2|3|R1|9.2.3; 9.2.5|11.2.2|
+08F01-06|Is there a systematic process of removal of special rights at the time of departure or role change of IT operations staff?|2|||E2|9.2.5|11.2.4|
+08F01-07|Is there a regular audit, at least once a year, of all special rights attributed ?|1|2||C1|9.2.5|11.2.4|
+08F02|Authentication of administrators and operational personnel  |||||||
+08F02-01|"Is the authentication protocol used for administrators or holders of special rights considered to be secure?
+An authentication protocol is considered secure if it is not susceptible to being broken by a listening device on the network or rendered inoperable by specialists tools (in particular password crack tools ). Such security usually uses cryptographic methods."|4||4|E2|||
+08F02-02|"Are the rules, for instance in the case of passwords, considered to be very strict?
+Strict rules impose the use of tested non-trivial passwords, using a mixture of different types of characters and of a reasonable length (ten characters). It is desirable that these rules have been approved by the Information Security Officer"|2|||E2|||
+08F02-03|Is there a consistent control of the administrator's rights, of its context, and of the suitability of this context with the requested access, as per formal rules of access control?|4|||E2|||
+08F02-04|"Are authentication parameters under strict control?
+A strict control requires that the list of people able to change authentication rules, the credentials themselves and the surveillance rules of connection attempts be strictly limited, that there be a reinforced access control in order to be able to modify these rights and that any modification of these rights be logged and audited and that there be a general audit at least once a year of all authentication parameters."|4|2||R1|||
+08F02-05|"Are the processes that guarantee authentication under strict control? 
+A strict control requires that the software used has been validated and undergoes a regular test for integrity (seal) and that there is an audit at least once a year of the authentication procedures and processes."|4|3||R1|||
+08F02-06|Is there a regular audit of the privileged profiles effectively granted?|4|3||C1|9.2.5|11.2.4|
+08F02-07|Is there a regular audit of the procedures of granting privileged rights and the security parameters attached to protecting profiles and rights?  |4|3||C1|||
+08F03|Surveillance of system administrators' actions|||||||
+08F03-01|Has a detailed analysis been carried out of the events and operations carried out with administrative rights which may potentially have an impact on system security (configuration of security systems, access to sensitive information, usage of sensitive tools, download or modification of administrative tools etc.)?|2|||E2|12.4.3|10.10.4; 10.6.1|
+08F03-02|Are these events recorded as well as all parameters which may be useful for their subsequent analysis? |4|||E2|12.4.3|10.10.4; 10.6.1|
+08F03-03|Is there a system able to detect any modification or deletion of a past record and to immediately trigger an alarm to a manager? |4|2||E3|12.4.3|10.10.4|
+08F03-04|Is there a summary of these records enabling management to detect abnormal behavior?|4||3|E3|12.4.3|10.10.4|
+08F03-05|Is there a system enabling the detection of any modification of recording parameters and to immediately trigger an alarm to a manager? |4|2||E3|12.4.3|10.10.4|
+08F03-06|Does any inhibition of the recording and processing of the logged events system trigger an alarm to a manager? |4|||E3|12.4.3|10.10.4|
+08F03-07|Are all records or summary analyses protected against any falsification or destruction?|2|||E2|12.4.3|10.10.4|
+08F03-08|Are all records or summary analyses kept for a long period?|2|||E2||10.10.4|
+08F03-09|Are the procedures, which record and process privileged operations, regularly audited? |2|||C1||10.10.4|
+08G|Audit and control Procedures relative to Information Systems|||||||
+08G01|Operation of Audit Control|||||||
+08G01-01|Have requirements and enforced procedures for the audit of IT systems been enacted by Management?|4|||E2|12.7.1|15.3.1|
+08G01-02|"Are the rules related to Information System audits, relevant procedures and associated responsibilities defined and documented?
+The restrictions concern the type of access to data and applications, the authorized controls and processing, the deletion of sensitive data obtained, the flagging of certain operations, ... and the empowerment of the individuals conducting the audits. "|3|||E2|12.7.1|15.3.1|
+08G01-03|Are the auditors independent of the concerned activities?|2|||E2|12.7.1|15.3.1|
+08G01-04|Are audit operations conducted for critical data recorded?|2|||E3|12.7.1|15.3.1|
+08G02|Protection of Tools and Audit Results|||||||
+08G02-01|"Are the audit tools protected to avoid any unauthorized or malevolent use?
+This applies particularly to intrusion testing and vulnerability assessments."|3|||E2||15.3.2|
+08G02-02|Are the audit results protected against any modification or disclosure?|3|||E2||15.3.2|
+08G02-03|"Are the auditors' activities delimited?
+Such a delimitation is especially recommended regarding external auditors"|2|||E2||15.3.2|
+08H|Management of IT related archives|||||||
+08H01|Organization of the management for IT archives|||||||
+08H01-01|Is there an organization in charge of archiving IT files that require to be kept over a long period? |4|||E2|||
+08H01-02|Is there a procedure forcing users to use this archiving service for all the files that require to be kept over a long period? |4|||E2|||
+08H01-03|Has a list of conditions been established and updated by each owner of data requiring to be archived concerning the archiving rules?|4|1||E1|||
+08H01-04|"Are the requirements for external (legal and regulatory) and internal archiving defined and tackled by the entity owning the data and accepted by the top management at the highest level? 
+The consequences (legal, financial, image) of non compliance (partial or total) of the archiving requirements must be endorsed by the board of managers."|4|||E1|16.1.7; 18.1.3|13.2.3; 15.1.3|
+08H01-05|"Are service agreements negotiated with the IT department, considered as agents only for the data?
+Each agreement must state the requirements: content of the archives, retention duration, durability, capacity to trace, imputability, non disclosure, procedures and delay for disposal, administrative constraints, etc.
+A clear separation must be stated between the content of the archives, under responsibility of the owner of data, and the container (media, disks, tapes, cartridges) under the responsibility of the IT department."|4|1||E2|18.1.3|15.1.3|
+08H01-06|Are the resources necessary for archiving the data known and financed over the longer term?|2|1||E2|18.1.3|15.1.3|
+08H01-07|Are there regular readability tests of the archives?|4|||C1|||
+08H01-08|"Are the possible modifications resulting from technological or regulatory evolutions, that may modify the content or the containers of the archives,  taken into account, documented and accepted by the management? 
+These evolutions cannot be avoided on the long term and all the external regulations must be respected in order to guarantee the conformity of the data to the original ones."|4|2||E2|||
+08H01-09|Is the existence of the hardware and software tools for the processing of the archives regularly controlled?|2|||C1|||
+08H01-10|"Is there a regular control of the procedures stated for the archiving and any deviation related to the data owners? 
+The controls must also look for eliminating the possibilities of fraud involving the persons in charge of the operations as well as those who may have an access to the contents or the containers. "|4|2||C1|||
+08H01-11|Are all the procedures concerning the archiving policy audited regularly? |4|3|||||
+08H02|IT Archives access management|||||||
+08H02-01|Have the requirements and procedures to be followed to access the archives been specified by management? |2|||E2||15.3.1|
+08H02-02|Does each archive or set of archives have a designated owner?|4|||E2|||
+08H02-03|Are requests for extracts from the archives accepted only from the designated owner? |4|2||E2|||
+08H02-04|Is a request from the owner subject to authentication? |4|2||E2|||
+08H02-05|Is this authentication check considered to be strong?|4|3||E3|||
+08H02-06|Given that users do not have access to the archives, does the archival department always keep the original version? |4|3||E3|||
+08H02-07|Is access to the archives by archival personnel subject to strong authentication? |4|3||E3|||
+08H02-08|Is each access recorded in a secure manner?|4|3||E3|||
+08H02-09|Is transfer of an archive or of a copy to the requester carried out in a secure manner? |4|3||E3|||
+08H02-10|Are the conditions of access to the archives and the associated security systems audited regularly|3|2||C1|||
+08H03|Management of IT archive safety|||||||
+08H03-01|Are the archive storage locations equipped with suitable fire detection and extinction systems and water leakage detection and evacuation? |3|2||E2|||
+08H03-02|Are the archive storage locations equipped with an access control system backed up with intruder detectors?|3|||E2|||
+08H03-03|"Are the archive storage locations under video surveillance when not occupied?
+"|2|3||E2|||
+08H03-04|"Are the archive storage locations under permanent video surveillance?
+"|2|3||E2|||
+08H03-05|Are archive media labeled without reference to the content?|3|||E2|||
+08H03-06| Are the index tables used to associate content to an archive media number  inaccessible to the staff managing the archive media?|3|3||E2|||
+08H03-07|Are these index tables backed up?|3|3||E2|||
+08H03-08|Does stopping or interrupting the safety systems (fire, water, access control, intrusion detection) cause an alarm at a monitoring center for rapid intervention?|3|3||R1|||
+08H03-09|Are the storage conditions for archives and the associated safety systems audited regularly?|3|2||C1|||

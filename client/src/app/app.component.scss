@@ -1,0 +1,98 @@
+/* --------------------------------------------------------------------------------------------------------------------
+// Copyright file="app.component.css"
+//  © Copyright European Space Agency, 2018-2020
+//
+//  Author: Software developed by RHEA System S.A.
+//
+//  This file is subject to the terms and conditions defined in file 'LICENSE.txt', which is part of this source code package.
+//  No part of the package, including this file, may be copied, modified, propagated, or distributed
+//  except according to the terms contained in the file ‘LICENSE.txt’.
+// --------------------------------------------------------------------------------------------------------------------
+*/
+
+h1 {
+  text-align: center;
+  color: white;
+  font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+  font-size: 3.5em;
+}
+
+/*for the user glyph*/
+
+.round {
+  display: inline-block;
+  height: 30px;
+  width: 30px;
+  line-height: 30px;
+  -moz-border-radius: 15px;
+  border-radius: 15px;
+  background-color: #222;
+  color: #222;
+  text-align: center;
+}
+
+.round.round-lg {
+  height: 32px;
+  width: 32px;
+  line-height: 34px;
+  -moz-border-radius: 20px;
+  border-radius: 20px;
+  font-size: 1.3em;
+}
+
+.round.blue {
+  background-color: #ffffff;
+}
+
+#logoutButton {
+  float: right;
+  margin-top: 10px;
+  margin-right: 10px;
+}
+
+#logoutIcon {
+  float: right;
+  margin-top: 10px;
+  margin-right: 2px;
+}
+
+.loader {
+  border: 16px solid #f3f3f3;
+  /* Light grey */
+  border-top: 16px solid #067606;
+  /* Green */
+  border-radius: 50%;
+  width: 120px;
+  height: 120px;
+  animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+:host {
+  ::ng-deep {
+    .appSpinner {
+
+      .ui-dialog-content.ui-widget-content {
+        overflow: hidden !important;
+        background-color: transparent !important;
+        border: transparent !important;
+        box-shadow: none !important;
+      }
+
+      .ui-shadow {
+        box-shadow: none;
+      }
+    }
+  }
+}
+
+
+
