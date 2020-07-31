@@ -1,6 +1,34 @@
 # Secure-Engineering-Support-Tool
 The ESA GSTP SEST tool is intended to first support the space systems development challenges encountered by the European Space Agency (ESA) programs, where cyber-security is already an established concern.  The SEST tool will help bridging the gap between system and software engineering processes and equivalent security processes that exist today within ESA.
 
+== Artefact ==
+
+SEST - Version 2.0
+
+== Version ==
+
+V2.0 - 31/07/20 - 
+
+== Organization == 
+
+RHEA System S.A.
+
+== Project == 
+
+GSTP Secure Engineering Support Tool (SEST)
+
+== Point of Contact == 
+
+Matteo Merialdo (m.merialdo@rheagroup.com)
+
+== Authors == 
+
+Matteo Merialdo
+
+== Description ==
+
+Installation and configuration guide can be found in ESA-DOPS-STU-MAN-0002 deliverable (SEST Software User Manual).
+
 
 # License
 The Secure Engineering Support Tool is **licensed** under the **[European Space Agency Public License - v2.0]**.
