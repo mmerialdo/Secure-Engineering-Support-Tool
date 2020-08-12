@@ -1,5 +1,4 @@
 -- --------------------------------------------------------
--- Host:                         172.16.100.163
 -- Server version:               10.1.44-MariaDB-0ubuntu0.18.04.1 - Ubuntu 18.04
 -- Server OS:                    debian-linux-gnu
 -- HeidiSQL Version:             10.2.0.5599
