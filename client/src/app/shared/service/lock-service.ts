@@ -20,17 +20,14 @@ import {Subscription} from 'rxjs/internal/Subscription';
 @Injectable()
 export class LockService {
 
-  constructor(private dataService: DataService) {
-  }
-
   public lockedBy: BehaviorSubject<string> = new BehaviorSubject<string>('');
   public viewIdentifier: BehaviorSubject<string> = new BehaviorSubject<string>('');
-  checkTimerSubscriber: Subscription;
-  intervalId;
 
-    changeData(identifier: any, lockedBy: any) {
-    this.viewIdentifier.next(identifier);
-    this.lockedBy.next(lockedBy);
+  private intervalId;
+  private subscriptions: Subscription[] = [];
+
+  constructor(private dataService: DataService) {
+    this.startTimer();
   }
 
   addLockForced(identifier: string) {
@@ -44,10 +41,9 @@ export class LockService {
     } else {
       this.changeData(identifier, lockedBy);
     }
-    this.startTimer(identifier);
   }
 
-  addLockSendRequest(identifier: string) {
+  private addLockSendRequest(identifier: string) {
     const filterLock = {
       'filterMap': {
         'IDENTIFIER': identifier,
@@ -62,9 +58,44 @@ export class LockService {
     });
   }
 
+  private changeData(identifier: any, lockedBy: any) {
+    this.viewIdentifier.next(identifier);
+    this.lockedBy.next(lockedBy);
+  }
+
+  startTimer() {
+    if (this.intervalId) {
+      clearInterval(this.intervalId);
+    }
+    this.intervalId = interval(10000);
+    this.subscriptions.push(
+      this.intervalId.subscribe((val) => {
+        const identifier = this.viewIdentifier.getValue();
+        this.checkLocker(identifier);
+      }));
+  }
+
+  private checkLocker(identifier: String) {
+    if (identifier && identifier !== '') {
+      const filterLock = {
+        'filterMap': {
+          'IDENTIFIER': identifier
+        }
+      };
+      this.dataService.getlock(filterLock).pipe(take(1)).subscribe(responseLockedBy => {
+          if (this.lockedBy.getValue() !== responseLockedBy) {
+            this.changeData(identifier, responseLockedBy);
+          }
+        }
+      );
+    }
+  }
+
   removeLock(identifier: string) {
 
-    if (sessionStorage.getItem('loggedUsername') === this.lockedBy.getValue()) {
+    const actualLockedBy = this.lockedBy.getValue();
+    this.changeData('', '');
+    if (sessionStorage.getItem('loggedUsername') === actualLockedBy) {
       const filterUnlock = {
         'filterMap': {
           'IDENTIFIER': identifier,
@@ -74,35 +105,14 @@ export class LockService {
       };
       this.dataService.unlock(filterUnlock).pipe(take(1)).subscribe();
     }
-
-    this.changeData(identifier, '');
-    this.stopTimer();
-  }
-
-  startTimer(identifier: string) {
-    if (this.intervalId) {
-      clearInterval(this.intervalId);
-    }
-    this.intervalId = interval(30000);
-    this.checkTimerSubscriber = interval(30000).subscribe((val) => {
-      const filterLock = {
-        'filterMap': {
-          'IDENTIFIER': identifier
-        }
-      };
-      this.dataService.getlock(filterLock).pipe(take(1)).subscribe(responseLockedBy => {
-          if (this.lockedBy !== responseLockedBy) {
-            this.changeData(identifier, responseLockedBy);
-          }
-        }
-      );
-    });
   }
 
   stopTimer() {
-    if (this.checkTimerSubscriber) {
-      clearInterval(this.intervalId);
-      this.checkTimerSubscriber.unsubscribe();
-    }
+    clearInterval(this.intervalId);
+  }
+
+  ngOnDestroy() {
+    this.stopTimer();
+    this.subscriptions.forEach(s => s.unsubscribe());
   }
 }

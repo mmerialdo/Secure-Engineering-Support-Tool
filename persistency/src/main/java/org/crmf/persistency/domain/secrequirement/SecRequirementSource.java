@@ -14,33 +14,33 @@ package org.crmf.persistency.domain.secrequirement;
 
 public class SecRequirementSource {
 
-    private Integer requirementId;
+  private Integer requirementId;
 
-    private String secrequirementSource;
+  private String secrequirementSource;
 
-    private String secrequirementSourceReference;
+  private String secrequirementSourceReference;
 
-	public Integer getRequirementId() {
-		return requirementId;
-	}
+  public Integer getRequirementId() {
+    return requirementId;
+  }
 
-	public void setRequirementId(Integer requirementId) {
-		this.requirementId = requirementId;
-	}
+  public void setRequirementId(Integer requirementId) {
+    this.requirementId = requirementId;
+  }
 
-	public String getSecrequirementSource() {
-		return secrequirementSource;
-	}
+  public String getSecrequirementSource() {
+    return secrequirementSource;
+  }
 
-	public void setSecrequirementSource(String secrequirementSource) {
-		this.secrequirementSource = secrequirementSource;
-	}
+  public void setSecrequirementSource(String secrequirementSource) {
+    this.secrequirementSource = secrequirementSource;
+  }
 
-	public String getSecrequirementSourceReference() {
-		return secrequirementSourceReference;
-	}
+  public String getSecrequirementSourceReference() {
+    return secrequirementSourceReference;
+  }
 
-	public void setSecrequirementSourceReference(String secrequirementSourceReference) {
-		this.secrequirementSourceReference = secrequirementSourceReference;
-	}
+  public void setSecrequirementSourceReference(String secrequirementSourceReference) {
+    this.secrequirementSourceReference = secrequirementSourceReference;
+  }
 }

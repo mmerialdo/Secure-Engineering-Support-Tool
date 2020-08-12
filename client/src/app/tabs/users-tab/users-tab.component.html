@@ -33,7 +33,7 @@
             <tr [pSelectableRow]="user">
               <td>
                 <a href="#" [pRowToggler]="user">
-                  <i [ngClass]="expanded ? 'pi pi-chevron-down' : 'pi pi-chevron-right'"></i>
+                  <em [ngClass]="expanded ? 'pi pi-chevron-down' : 'pi pi-chevron-right'"></em>
                 </a>
               </td>
               <td *ngFor="let col of usersListCols">
@@ -54,9 +54,9 @@
                     </div>
                     <div class="offer-content">
                       <h3 class="lead">
-                        <b>
+                        <strong>
                           {{roles.id}}
-                        </b>
+                        </strong>
                       </h3>
                       <p *ngFor="let subItem of roles['rol']">
                         {{subItem}}

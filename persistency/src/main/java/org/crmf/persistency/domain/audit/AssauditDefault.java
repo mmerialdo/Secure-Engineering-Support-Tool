@@ -14,74 +14,74 @@ package org.crmf.persistency.domain.audit;
 
 public class AssauditDefault {
 
-	private Integer id;
-	
-	private String avalue;
+  private Integer id;
 
-	private String atype;
+  private String avalue;
 
-	private String questioncategory;
-	
-	private String parentcategory;
-	
-	private String answers;
-	
-	private String description;
+  private String atype;
 
-	public Integer getId() {
-		return id;
-	}
+  private String questioncategory;
 
-	public void setId(Integer id) {
-		this.id = id;
-	}
+  private String parentcategory;
 
-	public String getParentcategory() {
-		return parentcategory;
-	}
+  private String answers;
 
-	public void setParentcategory(String parentcategory) {
-		this.parentcategory = parentcategory;
-	}
+  private String description;
 
-	public String getQuestioncategory() {
-		return questioncategory;
-	}
+  public Integer getId() {
+    return id;
+  }
 
-	public void setQuestioncategory(String questioncategory) {
-		this.questioncategory = questioncategory;
-	}
+  public void setId(Integer id) {
+    this.id = id;
+  }
 
-	public String getAnswers() {
-		return answers;
-	}
+  public String getParentcategory() {
+    return parentcategory;
+  }
 
-	public void setAnswers(String answers) {
-		this.answers = answers;
-	}
+  public void setParentcategory(String parentcategory) {
+    this.parentcategory = parentcategory;
+  }
 
-	public String getAvalue() {
-		return avalue;
-	}
+  public String getQuestioncategory() {
+    return questioncategory;
+  }
 
-	public void setAvalue(String avalue) {
-		this.avalue = avalue;
-	}
+  public void setQuestioncategory(String questioncategory) {
+    this.questioncategory = questioncategory;
+  }
 
-	public String getAtype() {
-		return atype;
-	}
+  public String getAnswers() {
+    return answers;
+  }
 
-	public void setAtype(String atype) {
-		this.atype = atype;
-	}
+  public void setAnswers(String answers) {
+    this.answers = answers;
+  }
 
-	public String getDescription() {
-		return description;
-	}
+  public String getAvalue() {
+    return avalue;
+  }
 
-	public void setDescription(String description) {
-		this.description = description;
-	}
-	
+  public void setAvalue(String avalue) {
+    this.avalue = avalue;
+  }
+
+  public String getAtype() {
+    return atype;
+  }
+
+  public void setAtype(String atype) {
+    this.atype = atype;
+  }
+
+  public String getDescription() {
+    return description;
+  }
+
+  public void setDescription(String description) {
+    this.description = description;
+  }
+
 }

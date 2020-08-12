@@ -18,7 +18,7 @@
         <button style="margin-top: 5px;border: 1px solid " type="button" class="btn btn-secondary btn-xs"
                 (click)="createRiskModel(idAssets)"
                 [disabled]="!enableSaveButton || !thereAreChanges || !isLockedByCurrentUser()">
-          <b>Save Vulnerability Model</b>
+          <strong>Save Vulnerability Model</strong>
         </button>
 
         <hr>
@@ -30,7 +30,7 @@
         <div style="margin-top: 10px;margin-bottom: 5px">
           <button style="border:1px solid" type="button" class="btn btn-secondary btn-xs"
                   [disabled]="selectedFiles.length===0 " (click)="addAssets()">
-            <b>Select Assets</b>
+            <strong>Select Assets</strong>
           </button>
         </div>
 
@@ -94,24 +94,16 @@
                   </ng-template>
                 </p-dataList>
               </div>
-
             </div>
-
           </div>
-
         </form>
-
       </div>
-
     </nav>
-
   </div>
 
   <div id="centerVul" style="max-height: 780px;overflow: scroll">
 
-
     <div id="canvas-div" style="width: 4000px;height:4001px"></div>
-
   </div>
 
   <div id="propertiesVul" [ngSwitch]="repository">
@@ -141,7 +133,7 @@
             <button style="border:1px solid" type="button" class="btn btn-secondary btn-xs"
                     [disabled]="selectedAsset === undefined  || selectedVulnArray.length === 0 "
                     (click)="addVulnerabilities()">
-              <b>Select Vulnerabilities</b>
+              <strong>Select Vulnerabilities</strong>
             </button>
           </div>
 
@@ -150,51 +142,35 @@
 
       <div *ngIf="showDetails">
         <div class="row">
-
           <div class="col-md-12">
-
             <hr>
-
             <label>Vulnerability Details</label>
-
-
           </div>
         </div>
 
         <div class="row">
           <div class="col-md-6">
-
-
             <label>Name :</label>
             <p>{{ nameVul }} </p>
-
           </div>
 
           <div class="col-md-6">
-
             <label>Catalogue :</label>
             <p>{{ catalogueVul }}</p>
-
-
           </div>
-
         </div>
 
         <div class="row">
           <div class="col-md-6">
-
-
             <label>Affected Asset Categories :</label>
             <p-dataList [value]="affectedCategories" id="affectedCategoriesMenuVul">
               <ng-template let-affectedCategories pTemplate="item">
                 {{ affectedCategories }}
               </ng-template>
             </p-dataList>
-
           </div>
 
           <div class="col-md-6" *ngIf="associatedThreats.length>0">
-
             <label>Associated Threats :</label>
             <p-dataList [value]="associatedThreats" id="associatedThreatsMenuVul"
                         [style]="{'height':'auto','max-height':'100px','overflow-y': 'auto','width': '100%'}">
@@ -213,13 +189,11 @@
         </div>
 
         <div class="row">
-
           <div class="col-md-12">
             <hr>
             <label>Vulnerability Score</label>
           </div>
         </div>
-
 
         <div class="row">
           <div class="col-md-4">
@@ -289,7 +263,7 @@
       <button style="margin-top: 10px;border: 1px solid " type="button" class="btn btn-secondary btn-xs"
               [disabled]="selectedVulnerability === undefined"
               (click)="deleteVulnerability(selectedVulnerability)">
-        <b>Remove Vulnerability</b>
+        <strong>Remove Vulnerability</strong>
       </button>
 
     </div>

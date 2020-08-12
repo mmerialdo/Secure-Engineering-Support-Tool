@@ -12,13 +12,13 @@
 
 package org.crmf.riskmodel.manager;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.crmf.model.riskassessment.AssessmentProcedure;
 import org.crmf.model.riskassessmentelements.RiskScenarioReference;
 import org.crmf.model.utility.GenericFilter;
 import org.crmf.model.utility.ModelObject;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public interface RiskModelManagerInputInterface {
 

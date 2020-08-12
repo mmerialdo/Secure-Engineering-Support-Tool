@@ -12,11 +12,6 @@
 
 package org.crmf.model.utility.assetmodel;
 
-import java.lang.reflect.Type;
-
-import org.crmf.model.riskassessmentelements.ImpactEnum;
-import org.crmf.model.riskassessmentelements.MalfunctionValueScale;
-
 import com.google.gson.JsonDeserializationContext;
 import com.google.gson.JsonDeserializer;
 import com.google.gson.JsonElement;
@@ -24,19 +19,24 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
 import com.google.gson.JsonSerializationContext;
 import com.google.gson.JsonSerializer;
+import org.crmf.model.riskassessmentelements.ImpactEnum;
+import org.crmf.model.riskassessmentelements.MalfunctionValueScale;
+
+import java.lang.reflect.Type;
 
 //This class manages the deserialization of MalfunctionValueScale classes
 class MalfunctionValueScaleInstanceCreator implements JsonDeserializer<MalfunctionValueScale> , JsonSerializer<MalfunctionValueScale> {
-	
+
+	public static final String SERIOUSNESS = "seriousness";
+	public static final String DESCRIPTION = "description";
+
 	@Override
 	public JsonElement serialize(MalfunctionValueScale mal, Type arg1, JsonSerializationContext context) {
 		
 		JsonObject jsonObject = new JsonObject();
 		
-		jsonObject.addProperty("seriousness", mal.getSeriousness().toString());
-		jsonObject.addProperty("description", mal.getDescription());
-	
-		
+		jsonObject.addProperty(SERIOUSNESS, mal.getSeriousness().toString());
+		jsonObject.addProperty(DESCRIPTION, mal.getDescription());
 		
 		return jsonObject;
 	}
@@ -48,8 +48,8 @@ class MalfunctionValueScaleInstanceCreator implements JsonDeserializer<Malfuncti
 
 		MalfunctionValueScale malfunctionValueScale = new MalfunctionValueScale();
 
-		if (!jsonObject.get("seriousness").isJsonNull()) {
-			String seriousness = jsonObject.get("seriousness").getAsString();
+		if (!jsonObject.get(SERIOUSNESS).isJsonNull()) {
+			String seriousness = jsonObject.get(SERIOUSNESS).getAsString();
 
 			if (seriousness.equals("")) {
 				malfunctionValueScale.setSeriousness(ImpactEnum.LOW);
@@ -61,8 +61,8 @@ class MalfunctionValueScaleInstanceCreator implements JsonDeserializer<Malfuncti
 			malfunctionValueScale.setSeriousness(ImpactEnum.LOW);
 		}
 
-		if (!jsonObject.get("description").isJsonNull()) {
-			String description = jsonObject.get("description").getAsString();
+		if (!jsonObject.get(DESCRIPTION).isJsonNull()) {
+			String description = jsonObject.get(DESCRIPTION).getAsString();
 			malfunctionValueScale.setDescription(description);
 		}
 

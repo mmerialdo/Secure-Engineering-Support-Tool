@@ -12,19 +12,19 @@
 
 package org.crmf.persistency.mapper.user;
 
-import java.util.List;
-
 import org.apache.ibatis.annotations.Param;
 import org.crmf.persistency.domain.user.Role;
+
+import java.util.List;
 
 //This interface allows the bundle to invoke the SQL methods within the RoleMapper.xml (via the ibatis API)
 public interface RoleMapper {
 
-	int insert(Role role);
-	
-	void delete(@Param("userId") Integer userId, @Param("projectId") Integer projectId);
+  int insert(Role role);
 
-	List<Role> getByUserId(@Param("userId") Integer userId);
+  void delete(@Param("userId") Integer userId, @Param("projectId") Integer projectId);
 
-	List<Role> getByUserIdentifierAndProjectIdentifier(@Param("userId") String userId, @Param("projectId") String projectId);
+  List<Role> getByUserId(@Param("userId") Integer userId);
+
+  List<Role> getByUserIdentifierAndProjectIdentifier(@Param("userId") String userId, @Param("projectId") String projectId);
 }

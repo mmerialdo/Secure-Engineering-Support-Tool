@@ -17,13 +17,13 @@ import org.apache.shiro.mgt.SecurityManager;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class CustomSecurityUtils{
+public class CustomSecurityUtils {
 
-	private static final Logger LOG = LoggerFactory.getLogger(CustomSecurityUtils.class.getName());
+  private static final Logger LOG = LoggerFactory.getLogger(CustomSecurityUtils.class.getName());
 
-    public static CustomSecurityUtils setSecurityManagerMine(SecurityManager securityManager) {
-		LOG.info("------------------- CustomSecurityUtils [ setSecurityManager ... ]");
-    	SecurityUtils.setSecurityManager(securityManager);
-		return new CustomSecurityUtils();
-    }
+  public static CustomSecurityUtils setSecurityManagerMine(SecurityManager securityManager) {
+    LOG.info("------------------- CustomSecurityUtils [ setSecurityManager ... ]");
+    SecurityUtils.setSecurityManager(securityManager);
+    return new CustomSecurityUtils();
+  }
 }

@@ -55,7 +55,6 @@ export class AppComponent implements OnDestroy {
   constructor(private changeTabService: ChangeTabService, private router: Router, private dataService: DataService,
               private messageService: MessageService) {
 
-    console.log('-------------------APP-------------');
     router.events
       .pipe(filter(e => e instanceof NavigationEnd))
       .subscribe((e: NavigationEnd) => {
@@ -106,8 +105,6 @@ export class AppComponent implements OnDestroy {
           }
         }
       ));
-
-    console.log('-------------------APP after-------------');
   }
 
   backProjectsList() {
@@ -120,12 +117,10 @@ export class AppComponent implements OnDestroy {
 
   displayPassword() {
     this.displayEditPassword = true;
-    console.log('displayEditPassword ' + this.displayEditPassword);
   }
 
   onClose(value) {
     this.displayEditPassword = false;
-    console.log('onClose ' + value);
     if (value === 'SUCCESS') {
       this.messageService.add({severity: 'success', summary: 'Success Message', detail: 'Password updated!'});
     }
@@ -133,7 +128,6 @@ export class AppComponent implements OnDestroy {
     if (value === 'FAILED') {
       this.messageService.add({severity: 'error', summary: 'Error Message', detail: 'Password update failed!'});
     }
-    console.log('onClose ' + this.displayEditPassword);
   }
 
   logout() {

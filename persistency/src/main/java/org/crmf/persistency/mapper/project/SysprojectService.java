@@ -25,95 +25,95 @@ import org.slf4j.LoggerFactory;
 //This class manages the database interactions related to the SystemProject
 public class SysprojectService implements SysprojectServiceInterface {
 
-	private static final Logger LOG = LoggerFactory.getLogger(SysprojectService.class.getName());
-	PersistencySessionFactory sessionFactory;
-	SysparticipantService syspService;
+  private static final Logger LOG = LoggerFactory.getLogger(SysprojectService.class.getName());
+  PersistencySessionFactory sessionFactory;
+  SysparticipantService syspService;
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see
-	 * org.crmf.persistency.mapper.project.SysprojectServiceInterface#insert(org
-	 * .crmf.model.riskassessment.SystemProject)
-	 */
-	@Override
-	public Integer insert(SystemProject sysprojectDM) throws Exception {
-		SqlSession sqlSession = sessionFactory.getSession();
+  /*
+   * (non-Javadoc)
+   *
+   * @see
+   * org.crmf.persistency.mapper.project.SysprojectServiceInterface#insert(org
+   * .crmf.model.riskassessment.SystemProject)
+   */
+  @Override
+  public Integer insert(SystemProject sysprojectDM) throws Exception {
+    SqlSession sqlSession = sessionFactory.getSession();
 
-		LOG.info("Insert SysProject");
-		SysProject project = new SysProject();
-		project.convertFromModel(sysprojectDM);
+    LOG.info("Insert SysProject");
+    SysProject project = new SysProject();
+    project.convertFromModel(sysprojectDM);
 
-		Sestobj sestobj = null;
-		try {
-			SysprojectMapper projectMapper = sqlSession.getMapper(SysprojectMapper.class);
-			SestobjMapper sestobjMapper = sqlSession.getMapper(SestobjMapper.class);
+    Sestobj sestobj = null;
+    try {
+      SysprojectMapper projectMapper = sqlSession.getMapper(SysprojectMapper.class);
+      SestobjMapper sestobjMapper = sqlSession.getMapper(SestobjMapper.class);
 
-			sestobj = new Sestobj();
-			sestobj.setObjtype(SESTObjectTypeEnum.AssessmentProject.name());
-			sestobjMapper.insert(sestobj);
-			LOG.info("Insert sestObject identifier ");
+      sestobj = new Sestobj();
+      sestobj.setObjtype(SESTObjectTypeEnum.AssessmentProject.name());
+      sestobjMapper.insert(sestobj);
+      LOG.info("Insert sestObject identifier ");
 
-			project.setSestobjId(sestobj.getIdentifier());
-			projectMapper.insert(project);
+      project.setSestobjId(sestobj.getIdentifier());
+      projectMapper.insert(project);
 
-			sqlSession.commit();
-		} catch (Exception ex) {
-			LOG.error(ex.getMessage());
-			sqlSession.rollback();
-			return null;
-		} finally {
-			sqlSession.close();
-		}
+      sqlSession.commit();
+    } catch (Exception ex) {
+      LOG.error(ex.getMessage());
+      sqlSession.rollback();
+      return null;
+    } finally {
+      sqlSession.close();
+    }
 
-		if (sysprojectDM.getParticipants() != null) {
-			try {
-				syspService.insert(sysprojectDM.getParticipants(), project.getId());
-			} catch (Exception ex) {
-				LOG.error(ex.getMessage());
-			}
-		}
-		return project.getId();
-	}
+    if (sysprojectDM.getParticipants() != null) {
+      try {
+        syspService.insert(sysprojectDM.getParticipants(), project.getId());
+      } catch (Exception ex) {
+        LOG.error(ex.getMessage());
+      }
+    }
+    return project.getId();
+  }
 
-	@Override
-	public void update(SystemProject sysprojectDM) {
+  @Override
+  public void update(SystemProject sysprojectDM) {
 
-		SqlSession sqlSession = sessionFactory.getSession();
+    SqlSession sqlSession = sessionFactory.getSession();
 
-		LOG.info("Update SysProject");
-		SysProject project = new SysProject();
-		project.convertFromModel(sysprojectDM);
+    LOG.info("Update SysProject");
+    SysProject project = new SysProject();
+    project.convertFromModel(sysprojectDM);
 
-		try {
-			SysprojectMapper projectMapper = sqlSession.getMapper(SysprojectMapper.class);
+    try {
+      SysprojectMapper projectMapper = sqlSession.getMapper(SysprojectMapper.class);
 
-			projectMapper.update(project);
-			sqlSession.commit();
+      projectMapper.update(project);
+      sqlSession.commit();
 
-			syspService.update(sysprojectDM.getParticipants(), project.getId());
-		} catch (Exception ex) {
-			LOG.error(ex.getMessage());
-			sqlSession.rollback();
-		} finally {
-			sqlSession.close();
-		}
-	}
+      syspService.update(sysprojectDM.getParticipants(), project.getId());
+    } catch (Exception ex) {
+      LOG.error(ex.getMessage());
+      sqlSession.rollback();
+    } finally {
+      sqlSession.close();
+    }
+  }
 
-	public PersistencySessionFactory getSessionFactory() {
-		return sessionFactory;
-	}
+  public PersistencySessionFactory getSessionFactory() {
+    return sessionFactory;
+  }
 
-	public void setSessionFactory(PersistencySessionFactory sessionFactory) {
-		this.sessionFactory = sessionFactory;
-	}
+  public void setSessionFactory(PersistencySessionFactory sessionFactory) {
+    this.sessionFactory = sessionFactory;
+  }
 
-	public SysparticipantService getSyspService() {
-		return syspService;
-	}
+  public SysparticipantService getSyspService() {
+    return syspService;
+  }
 
-	public void setSyspService(SysparticipantService syspService) {
-		this.syspService = syspService;
-	}
+  public void setSyspService(SysparticipantService syspService) {
+    this.syspService = syspService;
+  }
 
 }

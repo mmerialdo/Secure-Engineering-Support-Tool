@@ -12,15 +12,15 @@
 
 package org.crmf.proxy.core.safeguardmodel.manager.rest;
 
+import org.crmf.model.utility.GenericFilter;
+
 import javax.ws.rs.Consumes;
 import javax.ws.rs.POST;
 import javax.ws.rs.Produces;
 
-import org.crmf.model.utility.GenericFilter;
-
 public interface SafeguardModelManagerRestServerInterface {
-	@POST
-	@Produces("application/json")
-    @Consumes("text/html") 
-	String loadSafeguardModel(GenericFilter filter) throws Exception;
+  @POST
+  @Produces("application/json")
+  @Consumes("text/html")
+  String loadSafeguardModel(GenericFilter filter) throws Exception;
 }

@@ -35,15 +35,6 @@ public class AssessmentTemplate extends SESTObject {
 	private SafeguardModel safeguardModel;
 	private RiskModel riskModel;
 
-
-	public AssessmentTemplate() {
-
-	}
-
-	public void finalize() throws Throwable {
-		super.finalize();
-	}
-
 	public String getCreationTime() {
 		return creationTime;
 	}

@@ -19,11 +19,4 @@ public class CVESecurityImpact {
 	private CVECIAImpactRequirementEnum impactRequirement;
 	private SecurityImpactScopeEnum scope;
 
-	public CVESecurityImpact(){
-
-	}
-
-	public void finalize() throws Throwable {
-
-	}
 }

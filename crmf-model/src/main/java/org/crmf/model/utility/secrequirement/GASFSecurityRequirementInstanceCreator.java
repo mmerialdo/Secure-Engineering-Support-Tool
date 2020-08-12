@@ -12,22 +12,19 @@
 
 package org.crmf.model.utility.secrequirement;
 
-import java.lang.reflect.Type;
-import java.util.Set;
-import java.util.UUID;
-
-import org.crmf.model.general.SESTObjectTypeEnum;
-import org.crmf.model.requirement.RequirementSourceEnum;
-import org.crmf.model.requirement.SecurityRequirement;
-import org.crmf.model.requirement.SecurityRequirementSource;
-import org.crmf.model.riskassessmentelements.ElementTypeEnum;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 import com.google.gson.JsonDeserializationContext;
 import com.google.gson.JsonDeserializer;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
+import org.crmf.model.general.SESTObjectTypeEnum;
+import org.crmf.model.requirement.RequirementSourceEnum;
+import org.crmf.model.requirement.SecurityRequirement;
+import org.crmf.model.riskassessmentelements.ElementTypeEnum;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import java.lang.reflect.Type;
+import java.util.UUID;
 
 //The json structure to be returned to the client is quite different
 //from the Java GASFSecurityRequirement structure

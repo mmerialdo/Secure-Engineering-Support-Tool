@@ -12,14 +12,6 @@
 
 package org.crmf.model;
 
-import java.io.BufferedWriter;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.UUID;
-
 import org.crmf.model.general.SESTObjectTypeEnum;
 import org.crmf.model.riskassessment.RiskModel;
 import org.crmf.model.riskassessmentelements.ImpactEnum;
@@ -29,7 +21,17 @@ import org.crmf.model.riskassessmentelements.SecurityImpactScopeEnum;
 import org.crmf.model.utility.riskmodel.RiskModelSerializerDeserializer;
 import org.junit.Test;
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.UUID;
+
 public class RiskModelSerialize {
+
+	public static final String DD_MM_YYYY_HH_MM = "dd/MM/yyyy HH:mm";
 
 	@Test
 	public void serializeRiskModel() throws IOException {
@@ -39,7 +41,7 @@ public class RiskModelSerialize {
 		UUID uuid = UUID.randomUUID();
 		rm.setIdentifier(uuid.toString());
 		
-		DateFormat df = new SimpleDateFormat("dd/MM/yyyy HH:mm");
+		DateFormat df = new SimpleDateFormat(DD_MM_YYYY_HH_MM);
 		Date now = new Date();
 		rm.setCreationTime(df.format(now));
 		rm.setUpdateTime(df.format(now));

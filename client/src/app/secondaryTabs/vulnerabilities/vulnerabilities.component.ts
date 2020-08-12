@@ -23,7 +23,7 @@ import {UUID} from 'angular2-uuid';
 import {select, Store} from '@ngrx/store';
 import {take} from 'rxjs/operators';
 import {fetchCopiedVulnerabilitiesStatus, selectVulnerabilitiesFromCache} from '../../shared/store/reducers/vulnerabilities.reducer';
-import {copyVulnerabilities, pasteVulnerabilities, resetVulnerabilities} from '../../shared/store/actions/vulnerabilities.actions';
+import {copyVulnerabilities} from '../../shared/store/actions/vulnerabilities.actions';
 import {Observable} from 'rxjs/internal/Observable';
 import {LockService} from '../../shared/service/lock-service';
 import {ModelObject} from '../../model-object';
@@ -31,6 +31,8 @@ import {ModelObject} from '../../model-object';
 declare var draw2d: any;
 
 declare var CollapsibleShape: any;
+
+declare var clickCollapsible: any;
 
 declare var window: any;
 
@@ -47,79 +49,40 @@ export class VulnerabilitiesComponent implements OnInit, OnDestroy {
   public thereAreChanges = false;
 
   canvas: any;
-
   // asset edges
   public edges: any;
-
   // asset nodes
   public nodes: any;
-
   // id selected Asset
   public currentId;
-
   // List vulnerabilities of the selected asset
   public stringVul;
-
   public row = 0;
   public column = 0;
-
   files: TreeNode[];
   public selectedFiles = [];
-
-
   public mehariVulns: TreeNode[];
-
   public selectedVulnArray = [];
-
-  public ajson = [];
-
   public tot: any;
-
   public mehari;
-
   public vulnerabilityModel;
-
   public riskModel;
-
-
   // list of all associated vulnerabilities
   public vulnerabilitiesList = [];
-
-
   // it is used for temporary modifies
   public modifiedVulnerabilitiesList = [];
-
-
   // to show different repository div
   public repository = 'mehari';
-
-
   // list vulnerabilities repositories
   public repositoryList = [];
-
   // selected Repository
   public selectedRepository;
-
-
   public selectedAsset;
-
-
   // array that contains the association assets id and vulnerabilities for the vulnerabilities model
   public idAssets = [];
-
-  // array that contains the association assets id and vulnerabilities for the vulnerabilities model modified by user
-  public idAssetsModified = [];
-
-
-  // array that contains the association assets id and vulnerabilities for the the vulnerabilities trees selection
-  public graphicVulnerabilities = [];
-
   // it is used for temporary modifies
   public oldIdVul;
-
-
   // they are used to show vulnerabilities' details
-
   public showDetails = false;
   public affectedCategories = [];
   public associatedThreats = [];
@@ -134,10 +97,7 @@ export class VulnerabilitiesComponent implements OnInit, OnDestroy {
   public conVul;
   public effVul;
   public descriptionScore;
-
-
   // they are used to show Assets' details
-
   public showAssetDetails = false;
   public nameAsset;
   public primaryAssetCategory;
@@ -147,24 +107,13 @@ export class VulnerabilitiesComponent implements OnInit, OnDestroy {
   public availability;
   public efficiency;
   public showSelectedRequirements = [];
-
-
   // they are used to show vulnerabilities' details in the form
-
   public affectedCategoriesForm = [];
   public associatedThreatsForm = [];
-  // public descriptionVul;
   public nameVulForm;
   public catalogueVulForm;
   public catalogueIDVulForm;
-  // public scoreVul;
   public scoringVulForm;
-  // public exploiVul;
-  // public avaVul;
-  // public intVul;
-  // public conVul;
-  // public effVul;
-  // public descriptionScore;
 
   public selectedIntegrityVul;
   public integrityList = [];
@@ -180,25 +129,18 @@ export class VulnerabilitiesComponent implements OnInit, OnDestroy {
   public exploitabilityList = [];
 
   public scoreDescriptionForm;
-
   // to show Edit Vulnerabilities form
   public displayEditVulnerability = false;
-
-
   // to show associated Vulnerability List in the form
   public associatedVulnerabilities: SelectItem[];
-
   // selected associated vulnerability
   public selectedVulnerability;
-
   // form to edit the vulnerabilities
   vulnerabilityForm: any;
-
   public blocked = false;
 
   // to show messages
   msgsVuln: Message[] = [];
-
   // to show the requirements names
   public requirementsList: any;
   public copied$: Observable<boolean>;
@@ -238,13 +180,9 @@ export class VulnerabilitiesComponent implements OnInit, OnDestroy {
       'avaVul': ['', Validators.required],
       'effVul': ['', Validators.required],
       'scoredesVul': ['', Validators.required]
-
-
     });
 
-    // this.repositoryList=["MEHARI","CWE"];
     this.repositoryList = ['ALL', 'MEHARI', 'CUSTOM'];
-
     this.integrityList = ['', 'LOW', 'MEDIUM', 'HIGH', 'CRITICAL'];
     this.confidentialityList = ['', 'LOW', 'MEDIUM', 'HIGH', 'CRITICAL'];
     this.efficiencyList = ['', 'LOW', 'MEDIUM', 'HIGH', 'CRITICAL'];
@@ -262,16 +200,11 @@ export class VulnerabilitiesComponent implements OnInit, OnDestroy {
     const uuid = UUID.UUID();
   }
 
-  // function return true if find any vulnerabilities in array which doesn't have second category in affected categories
-  validatePasteVulnerabilities(vulnerabilities: Array<any>, secCat: string): boolean {
-    return vulnerabilities.some(vulnerability => !vulnerability.value[0].affectedAssetsCategories.filter(cat => cat).some(cat => cat === secCat));
-  }
-
   addVulnerabilitiesToCache(): void {
     const cachedVulnerabilities = JSON.parse(JSON.stringify(this.associatedVulnerabilities));
     this.store.dispatch(copyVulnerabilities({cachedVulnerabilities}));
     this.displayEditVulnerability = false;
-    this.messageService.add({key: 'tc', severity: 'warn', summary: 'Info Message', detail: 'Vulnerabilities Copied'});
+    this.messageService.add({key: 'tc', severity: 'info', summary: 'Info Message', detail: 'Vulnerabilities Copied'});
   }
 
   fetchVulnerabilitiesToAll(): void {
@@ -279,7 +212,7 @@ export class VulnerabilitiesComponent implements OnInit, OnDestroy {
     const figure = this.canvas.getFigures().data;
 
     const list = this.associatedVulnerabilities.map(item => ({name: item.label, data: item.value}));
-    this.idAssetsModified.forEach(asset => {
+    this.idAssets.forEach(asset => {
       if (!asset.vulnerabilities || asset.vulnerabilities.length <= 0) {
         let text = '';
         const foundFigure = figure.find(fig => fig.id == asset.identifier);
@@ -293,31 +226,20 @@ export class VulnerabilitiesComponent implements OnInit, OnDestroy {
         foundFigure.children.data[1].figure.setText(text);
       }
     });
-
     this.changeColor();
     this.closeForm();
-    this.idAssets = this.idAssetsModified;
   }
 
   fetchVulnerabilitiesFromCache(): void {
     const paste = this.store.pipe(select(selectVulnerabilitiesFromCache)).pipe(take(1)).subscribe(vulnerabilities => {
       this.fetchVulnerabilities(vulnerabilities);
     });
+    this.closeForm();
   }
 
   fetchVulnerabilities(vulnerabilities: any): void {
-    this.associatedVulnerabilities = vulnerabilities;
-    if (this.validatePasteVulnerabilities(vulnerabilities, this.secondCat) === true) {
-      this.messageService.add({key: 'tc', severity: 'warn', summary: 'Info Message', detail: VulnerabilitiesComponent.WARN_NO_ASSET_MATCH});
-    }
-    const indexId = this.idAssets.findIndex((i) => i.identifier === this.currentId);
-    const list = vulnerabilities.map(item => ({name: item.label, data: item.value}));
-    this.idAssets[indexId].vulnerabilities = list;
-
-    const indexIdMod = this.idAssetsModified.findIndex((r) => r.identifier === this.currentId);
-    this.idAssetsModified[indexIdMod].vulnerabilities = list;
-    const text = this.idAssets[indexId].vulnerabilities.map(el => el.name).join('\n');
-    this.stringVul.setText(text);
+    const list = vulnerabilities.map(item => ({label: item.label, data: item.value}));
+    this.showVulnerabilities(this.selectedAsset, list);
   }
 
   setPermission() {
@@ -338,19 +260,18 @@ export class VulnerabilitiesComponent implements OnInit, OnDestroy {
 
   clearMessage() {
     this.msgsVuln = [];
-    this.blocked = false;
   }
 
   // create the space to draw the cards
   createGraph() {
 
+    this.createTree();
     this.canvas = new draw2d.Canvas('canvas-div');
 
     const MyPolicy = draw2d.policy.canvas.CanvasPolicy.extend({
       NAME: 'MyPolicy',
       init: function () {
         this._super();
-
       },
       onClick: function (the, mouseX, mouseY, shiftKey, ctrlKey) {
         this._super(the, mouseX, mouseY, shiftKey, ctrlKey);
@@ -360,11 +281,8 @@ export class VulnerabilitiesComponent implements OnInit, OnDestroy {
 
     const policy = new MyPolicy();
     this.canvas.installEditPolicy(policy);
-    this.createTree();
     this.setPermission();
-    this.blocked = false;
   }
-
 
   // to create a widget
   createVuln(s: string, id: string) {
@@ -394,28 +312,25 @@ export class VulnerabilitiesComponent implements OnInit, OnDestroy {
     figure.on('removed', function (emitter, event) {
 
       window.angularComponentRef.removeComponent(emitter);
-
     });
     this.canvas.add(figure);
     this.checkedRiskModel(id, figure);
   }
 
-
   // returns list of all the vulnerabilities already associated
   checkedRiskModel(id, figure) {
 
     const vul = [];
-
-    for (const i in this.riskModel.scenarios) {
-
-      if (this.riskModel.scenarios[i].assetId === id) {
-
+    for (const scenario of this.riskModel.scenarios) {
+      if (scenario.assetId === id) {
+        const vulnIdentifier = scenario.vulnerabilityId;
         const index = this.vulnerabilityModel.vulnerabilities.findIndex((n) =>
-          n.identifier === this.riskModel.scenarios[i].vulnerabilityId);
-        vul.push(this.vulnerabilityModel.vulnerabilities[index]);
+          n.identifier === vulnIdentifier);
+        if (!vul.find(item => item.identifier === vulnIdentifier)) {
+          vul.push(this.vulnerabilityModel.vulnerabilities[index]);
+        }
       }
     }
-
 
     this.buildLeaf(vul, figure);
   }
@@ -502,9 +417,7 @@ export class VulnerabilitiesComponent implements OnInit, OnDestroy {
     }
 
     this.selectedVulnArray = [];
-    const a = [];
-    a.push(figure);
-    this.selectedAsset = a;
+    this.selectedAsset = figure;
 
     for (const leaf in leaves) {
       for (const k in leaves[leaf].children) {
@@ -517,13 +430,14 @@ export class VulnerabilitiesComponent implements OnInit, OnDestroy {
       }
     }
 
-    this.showVulnerabilities();
+    this.showVulnerabilities(this.selectedAsset, this.selectedVulnArray);
+    this.selectedVulnArray = [];
+    this.selectedAsset = undefined;
   }
 
   addAssets() {
 
     for (const i in this.selectedFiles) {
-
       if (this.selectedFiles[i].data !== null && this.selectedFiles[i].data.nodeType === 'Asset') {
 
         // The widget of the asset is not already in the canvas
@@ -540,16 +454,6 @@ export class VulnerabilitiesComponent implements OnInit, OnDestroy {
               'secondaryCategory': this.selectedFiles[i].data.category,
               'vulnerabilities': []
             });
-            this.graphicVulnerabilities.push({
-              'identifier': this.selectedFiles[i].data.identifier,
-              'secondaryCategory': this.selectedFiles[i].data.category,
-              'vulnerabilities': []
-            });
-            this.idAssetsModified.push({
-              'identifier': this.selectedFiles[i].data.identifier,
-              'secondaryCategory': this.selectedFiles[i].data.category,
-              'vulnerabilities': []
-            });
           }
           this.createVuln(this.selectedFiles[i].label, this.selectedFiles[i].data.identifier);
         }
@@ -558,118 +462,109 @@ export class VulnerabilitiesComponent implements OnInit, OnDestroy {
     this.thereAreChanges = true;
   }
 
-  showVulnerabilities() {
+  showVulnerabilities(selectedAsset: any, selectedVulnerabilitiesArray: any[]) {
 
-    // ids' list of the associated vulnerabilities
-    const idVul = [];
-    for (const j in this.selectedAsset) {
+    let vulnLabel = '';
+    const assVuln = [];
+    let isMatchingAssetCategory = true;
+    // for each selected vulnerability
+    for (const selectedVulnerability of selectedVulnerabilitiesArray) {
+      // it checks if the leaf is a vulnerability
+      if ((selectedVulnerability.data[0].nodeType === 'Vulnerability') && (selectedVulnerability.data[0].canBeSelected)) {
 
-      let vulnLabel = '';
+        // It checks if the vulnerability is already in the VulnerabilityModel
+        // If it is, it is better to use the Vulnerability in the VulnerabilityModel
+        // because it may be updated with respect to the selected vulnerability
+        const vulnCatalogueId = selectedVulnerability.data[0].catalogueId;
+        for (const vulnId in this.vulnerabilityModel.vulnerabilities) {
+          if (this.vulnerabilityModel.vulnerabilities[vulnId].catalogueId === vulnCatalogueId) {
 
-      const assVuln = [];
-
-      // for each selected vulnerability
-      for (const i in this.selectedVulnArray) {
-        // it checks if the leaf is a vulnerability
-        if ((this.selectedVulnArray[i].data[0].nodeType === 'Vulnerability') && (this.selectedVulnArray[i].data[0].canBeSelected)) {
-
-          // It checks if the vulnerability is already in the VulnerabilityModel
-          // If it is, it is better to use the Vulnerability in the VulnerabilityModel
-          // because it may be updated with respect to the selected vulnerability
-          const vulnCatalogueId = this.selectedVulnArray[i].data[0].catalogueId;
-          for (const vulnId in this.vulnerabilityModel.vulnerabilities) {
-            if (this.vulnerabilityModel.vulnerabilities[vulnId].catalogueId === vulnCatalogueId) {
-
-              this.selectedVulnArray[i].data[0].score = this.vulnerabilityModel.vulnerabilities[vulnId].score;
-              this.selectedVulnArray[i].data[0].description = this.vulnerabilityModel.vulnerabilities[vulnId].description;
-            }
-          }
-
-          // it checks if the current selected node belongs to the nodes array of the assets view
-          const k = this.nodes.findIndex(nod => nod.identifier === this.selectedAsset[j].id);
-          if (k !== -1) {
-            // to avoid duplicates
-            // it checks if the current array nodes/vulnerabilities contains the current selected node
-            const indexIdAsset = this.idAssets.findIndex(id => id.identifier === this.nodes[k].identifier);
-            // it checks if the array nodes/vulnerabilities already contains the selected vulnerability
-            const index = this.idAssets[indexIdAsset].vulnerabilities.findIndex(vul =>
-              vul.data[0].catalogueId === this.selectedVulnArray[i].data[0].catalogueId);
-
-            if (index === -1) {
-
-              const indexVul = assVuln.findIndex(indAssVul =>
-                indAssVul.data[0].catalogueId === this.selectedVulnArray[i].data[0].catalogueId);
-
-              // to avoid duplicates when we are loading "old" vulnerabilities of the risk model
-              if (indexVul === -1) {
-
-                if (this.selectedAsset[j].children.data[1].figure.getText().length > 0) {
-                  vulnLabel = this.selectedAsset[j].children.data[1].figure.getText();
-                }
-
-                const same = this.checkSameCategory(this.nodes[k].category, this.selectedVulnArray[i].data[0].affectedAssetsCategories);
-
-                if (same) {
-                  const indexOldVuln = this.vulnerabilitiesList.findIndex(z =>
-                    z.data[0].identifier === this.selectedVulnArray[i].data[0].identifier);
-
-                  if (indexOldVuln === -1) {
-                    this.vulnerabilitiesList.push({
-                      'name': this.selectedVulnArray[i].label,
-                      'data': this.selectedVulnArray[i].data
-                    });
-                    assVuln.push({'name': this.selectedVulnArray[i].label, 'data': this.selectedVulnArray[i].data});
-                  } else {
-                    assVuln.push({'name': this.selectedVulnArray[i].label, 'data': this.vulnerabilitiesList[indexOldVuln].data});
-                  }
-
-                  if (vulnLabel === '') {
-                    vulnLabel = vulnLabel + this.selectedVulnArray[i].label;
-                    this.selectedAsset[j].children.data[1].figure.setText(vulnLabel);
-                  } else {
-                    vulnLabel = vulnLabel + '\n' + this.selectedVulnArray[i].label;
-                    this.selectedAsset[j].children.data[1].figure.setText(vulnLabel);
-                  }
-
-                  for (const h in this.graphicVulnerabilities) {
-                    if (this.graphicVulnerabilities[h].identifier === this.selectedAsset[j].id) {
-                      this.graphicVulnerabilities[h].vulnerabilities.push(this.selectedVulnArray[i]);
-                    }
-                  }
-                }
-              }
-            } else {
-              for (const oldString in this.idAssets[indexIdAsset].vulnerabilities) {
-
-                if (vulnLabel === '') {
-                  vulnLabel = vulnLabel + this.idAssets[indexIdAsset].vulnerabilities[oldString].data[0].name;
-                } else {
-
-                  if (vulnLabel.indexOf(this.idAssets[indexIdAsset].vulnerabilities[oldString].data[0].name) === -1) {
-                    vulnLabel = vulnLabel + '\n' + this.idAssets[indexIdAsset].vulnerabilities[oldString].data[0].name;
-                  }
-                }
-              }
-              this.selectedAsset[j].children.data[1].figure.setText(vulnLabel);
-            }
+            selectedVulnerability.data[0].score = this.vulnerabilityModel.vulnerabilities[vulnId].score;
+            selectedVulnerability.data[0].description = this.vulnerabilityModel.vulnerabilities[vulnId].description;
           }
         }
-      }
 
-      for (const q in this.idAssets) {
+        // it checks if the current selected node belongs to the nodes array of the assets view
+        const k = this.nodes.findIndex(nod => nod.identifier === selectedAsset.id);
+        if (k !== -1) {
+          // to avoid duplicates
+          // it checks if the current array nodes/vulnerabilities contains the current selected node
+          const indexIdAsset = this.idAssets.findIndex(id => id.identifier === this.nodes[k].identifier);
+          // it checks if the array nodes/vulnerabilities already contains the selected vulnerability
+          const index = this.idAssets[indexIdAsset].vulnerabilities.findIndex(vul =>
+            vul.data[0].catalogueId === selectedVulnerability.data[0].catalogueId);
 
-        if (this.idAssets[q].identifier === this.selectedAsset[j].id) {
-          for (const fg in assVuln) {
-            this.idAssets[q].vulnerabilities.push(assVuln[fg]);
-            this.idAssetsModified[q].vulnerabilities.push(assVuln[fg]);
+          if (index === -1) {
+
+            const indexVul = assVuln.findIndex(indAssVul =>
+              indAssVul.data[0].catalogueId === selectedVulnerability.data[0].catalogueId);
+
+            // to avoid duplicates when we are loading "old" vulnerabilities of the risk model
+            if (indexVul === -1) {
+
+              if (selectedAsset.children.data[1].figure.getText().length > 0) {
+                vulnLabel = selectedAsset.children.data[1].figure.getText();
+              }
+
+              const same = this.checkSameCategory(this.nodes[k].category, selectedVulnerability.data[0].affectedAssetsCategories);
+
+              if (same) {
+                const indexOldVuln = this.vulnerabilitiesList.findIndex(z =>
+                  z.data[0].identifier === selectedVulnerability.data[0].identifier);
+
+                if (indexOldVuln === -1) {
+                  this.vulnerabilitiesList.push({
+                    'name': selectedVulnerability.label,
+                    'data': selectedVulnerability.data
+                  });
+                  assVuln.push({'name': selectedVulnerability.label, 'data': selectedVulnerability.data});
+                } else {
+                  assVuln.push({'name': selectedVulnerability.label, 'data': this.vulnerabilitiesList[indexOldVuln].data});
+                }
+
+                if (vulnLabel === '') {
+                  vulnLabel = vulnLabel + selectedVulnerability.label;
+                  selectedAsset.children.data[1].figure.setText(vulnLabel);
+                } else {
+                  vulnLabel = vulnLabel + '\n' + selectedVulnerability.label;
+                  selectedAsset.children.data[1].figure.setText(vulnLabel);
+                }
+
+              } else {
+                isMatchingAssetCategory = false;
+              }
+            }
+          } else {
+            for (const oldString of this.idAssets[indexIdAsset].vulnerabilities) {
+
+              if (vulnLabel === '') {
+                vulnLabel = vulnLabel + oldString.data[0].name;
+              } else {
+                if (vulnLabel.indexOf(oldString.data[0].name) === -1) {
+                  vulnLabel = vulnLabel + '\n' + oldString.data[0].name;
+                }
+              }
+            }
+            selectedAsset.children.data[1].figure.setText(vulnLabel);
           }
         }
       }
     }
 
-    this.selectedVulnArray = [];
+    for (const q in this.idAssets) {
+
+      if (this.idAssets[q].identifier === selectedAsset.id) {
+        for (const fg in assVuln) {
+          this.idAssets[q].vulnerabilities.push(assVuln[fg]);
+        }
+      }
+    }
+    if (!isMatchingAssetCategory) {
+
+      this.messageService.add({key: 'tc', severity: 'info', summary: 'Info Message', detail: VulnerabilitiesComponent.WARN_NO_ASSET_MATCH});
+    }
+
     this.setColor(this.idAssets);
-    this.selectedAsset = undefined;
   }
 
 
@@ -677,106 +572,94 @@ export class VulnerabilitiesComponent implements OnInit, OnDestroy {
 
     const idVul = [];
 
-    // for each selected widget
-    for (const j in this.selectedAsset) {
+    let vulnLabel = '';
+    const assVuln = [];
+    // for each selected vulnerability
+    for (const i in this.selectedVulnArray) {
 
-      let vulnLabel = '';
+      // it checks if the leaf is a vulnerability
+      if ((this.selectedVulnArray[i].data[0].nodeType === 'Vulnerability') && (this.selectedVulnArray[i].data[0].canBeSelected)) {
 
-      const assVuln = [];
+        // It checks if the vulnerability is already in the VulnerabilityModel
+        // If it is, it is better to use the Vulnerability in the VulnerabilityModel
+        // because it may be updated with respect to the selected vulnerability
+        const vulnCatalogueId = this.selectedVulnArray[i].data[0].catalogueId;
 
-      // for each selected vulnerability
-      for (const i in this.selectedVulnArray) {
+        for (const vulnId in this.vulnerabilityModel.vulnerabilities) {
+          if (this.vulnerabilityModel.vulnerabilities[vulnId].catalogueId === vulnCatalogueId) {
 
-        // it checks if the leaf is a vulnerability
-        if ((this.selectedVulnArray[i].data[0].nodeType === 'Vulnerability') && (this.selectedVulnArray[i].data[0].canBeSelected)) {
-
-          // It checks if the vulnerability is already in the VulnerabilityModel
-          // If it is, it is better to use the Vulnerability in the VulnerabilityModel
-          // because it may be updated with respect to the selected vulnerability
-          const vulnCatalogueId = this.selectedVulnArray[i].data[0].catalogueId;
-
-          for (const vulnId in this.vulnerabilityModel.vulnerabilities) {
-            if (this.vulnerabilityModel.vulnerabilities[vulnId].catalogueId === vulnCatalogueId) {
-
-              this.selectedVulnArray[i].data[0].score = this.vulnerabilityModel.vulnerabilities[vulnId].score;
-              this.selectedVulnArray[i].data[0].description = this.vulnerabilityModel.vulnerabilities[vulnId].description;
-            }
+            this.selectedVulnArray[i].data[0].score = this.vulnerabilityModel.vulnerabilities[vulnId].score;
+            this.selectedVulnArray[i].data[0].description = this.vulnerabilityModel.vulnerabilities[vulnId].description;
           }
+        }
 
-          // it checks if the current selected node belongs to the nodes array of the assets view
-          const k = this.nodes.findIndex(nod => nod.identifier === this.selectedAsset[j].id);
-          if (k !== -1) {
+        // it checks if the current selected node belongs to the nodes array of the assets view
+        const k = this.nodes.findIndex(nod => nod.identifier === this.selectedAsset.id);
+        if (k !== -1) {
 
-            // to avoid duplicates
-            // it checks if the current array nodes/vulnerabilities contains the current selected node
-            const indexIdAsset = this.idAssets.findIndex(id => id.identifier === this.nodes[k].identifier);
-            // it checks if the array nodes/vulnerabilities already contains the selected vulnerability
-            const index = this.idAssets[indexIdAsset].vulnerabilities.findIndex(vul =>
-              vul.data[0].catalogueId === this.selectedVulnArray[i].data[0].catalogueId);
+          // to avoid duplicates
+          // it checks if the current array nodes/vulnerabilities contains the current selected node
+          const indexIdAsset = this.idAssets.findIndex(id => id.identifier === this.nodes[k].identifier);
+          // it checks if the array nodes/vulnerabilities already contains the selected vulnerability
+          const index = this.idAssets[indexIdAsset].vulnerabilities.findIndex(vul =>
+            vul.data[0].catalogueId === this.selectedVulnArray[i].data[0].catalogueId);
 
-            if (index === -1) {
+          if (index === -1) {
 
-              const indexVul = assVuln.findIndex(indAssVul =>
-                indAssVul.data[0].catalogueId === this.selectedVulnArray[i].data[0].catalogueId);
+            const indexVul = assVuln.findIndex(indAssVul =>
+              indAssVul.data[0].catalogueId === this.selectedVulnArray[i].data[0].catalogueId);
 
-              // to avoid duplicates when we are loading "old" vulnerabilities of the risk model
-              if (indexVul === -1) {
+            // to avoid duplicates when we are loading "old" vulnerabilities of the risk model
+            if (indexVul === -1) {
 
-                if (this.selectedAsset[j].children.data[1].figure.getText().length > 0) {
-                  vulnLabel = this.selectedAsset[j].children.data[1].figure.getText();
-                }
-                const same = this.checkSameCategory(this.nodes[k].category, this.selectedVulnArray[i].data[0].affectedAssetsCategories);
-                // It is possible to add the vulnerability
-                if (same) {
-                  const indexOldVuln = this.vulnerabilitiesList.findIndex(z =>
-                    z.data[0].identifier === this.selectedVulnArray[i].data[0].identifier);
-
-                  if (indexOldVuln === -1) {
-                    this.vulnerabilitiesList.push({
-                      'name': this.selectedVulnArray[i].label,
-                      'data': this.selectedVulnArray[i].data
-                    });
-                    assVuln.push({'name': this.selectedVulnArray[i].label, 'data': this.selectedVulnArray[i].data});
-                  } else {
-                    assVuln.push({'name': this.selectedVulnArray[i].label, 'data': this.vulnerabilitiesList[indexOldVuln].data});
-                  }
-                  if (vulnLabel === '') {
-                    vulnLabel = vulnLabel + this.selectedVulnArray[i].label;
-                    this.selectedAsset[j].children.data[1].figure.setText(vulnLabel);
-                  } else {
-                    vulnLabel = vulnLabel + '\n' + this.selectedVulnArray[i].label;
-                    this.selectedAsset[j].children.data[1].figure.setText(vulnLabel);
-                  }
-                  for (const h in this.graphicVulnerabilities) {
-                    if (this.graphicVulnerabilities[h].identifier === this.selectedAsset[j].id) {
-                      this.graphicVulnerabilities[h].vulnerabilities.push(this.selectedVulnArray[i]);
-                    }
-                  }
-                }
+              if (this.selectedAsset.children.data[1].figure.getText().length > 0) {
+                vulnLabel = this.selectedAsset.children.data[1].figure.getText();
               }
-            } else {
+              const same = this.checkSameCategory(this.nodes[k].category, this.selectedVulnArray[i].data[0].affectedAssetsCategories);
+              // It is possible to add the vulnerability
+              if (same) {
+                const indexOldVuln = this.vulnerabilitiesList.findIndex(z =>
+                  z.data[0].identifier === this.selectedVulnArray[i].data[0].identifier);
 
-              for (const oldString in this.idAssets[indexIdAsset].vulnerabilities) {
-                if (vulnLabel === '') {
-                  vulnLabel = vulnLabel + this.idAssets[indexIdAsset].vulnerabilities[oldString].data[0].name;
+                if (indexOldVuln === -1) {
+                  this.vulnerabilitiesList.push({
+                    'name': this.selectedVulnArray[i].label,
+                    'data': this.selectedVulnArray[i].data
+                  });
+                  assVuln.push({'name': this.selectedVulnArray[i].label, 'data': this.selectedVulnArray[i].data});
                 } else {
-                  if (vulnLabel.indexOf(this.idAssets[indexIdAsset].vulnerabilities[oldString].data[0].name) === -1) {
-                    vulnLabel = vulnLabel + '\n' + this.idAssets[indexIdAsset].vulnerabilities[oldString].data[0].name;
-                  }
+                  assVuln.push({'name': this.selectedVulnArray[i].label, 'data': this.vulnerabilitiesList[indexOldVuln].data});
+                }
+                if (vulnLabel === '') {
+                  vulnLabel = vulnLabel + this.selectedVulnArray[i].label;
+                  this.selectedAsset.children.data[1].figure.setText(vulnLabel);
+                } else {
+                  vulnLabel = vulnLabel + '\n' + this.selectedVulnArray[i].label;
+                  this.selectedAsset.children.data[1].figure.setText(vulnLabel);
                 }
               }
-              this.selectedAsset[j].children.data[1].figure.setText(vulnLabel);
             }
+          } else {
+
+            for (const oldString in this.idAssets[indexIdAsset].vulnerabilities) {
+              if (vulnLabel === '') {
+                vulnLabel = vulnLabel + this.idAssets[indexIdAsset].vulnerabilities[oldString].data[0].name;
+              } else {
+                if (vulnLabel.indexOf(this.idAssets[indexIdAsset].vulnerabilities[oldString].data[0].name) === -1) {
+                  vulnLabel = vulnLabel + '\n' + this.idAssets[indexIdAsset].vulnerabilities[oldString].data[0].name;
+                }
+              }
+            }
+            this.selectedAsset.children.data[1].figure.setText(vulnLabel);
           }
         }
       }
+    }
 
-      for (const q in this.idAssets) {
-        if (this.idAssets[q].identifier === this.selectedAsset[j].id) {
-          for (const fg in assVuln) {
-            this.idAssets[q].vulnerabilities.push(assVuln[fg]);
-            this.idAssetsModified[q].vulnerabilities.push(assVuln[fg]);
-          }
+    for (const q in this.idAssets) {
+      if (this.idAssets[q].identifier === this.selectedAsset.id) {
+        for (const fg in assVuln) {
+          this.idAssets[q].vulnerabilities.push(assVuln[fg]);
         }
       }
     }
@@ -887,13 +770,10 @@ export class VulnerabilitiesComponent implements OnInit, OnDestroy {
 
       if (impact !== '') {
 
-        for (const h in this.selectedAsset) {
+        if (array[i].identifier === this.selectedAsset.id) {
 
-          if (array[i].identifier === this.selectedAsset[h].id) {
-
-            this.selectedAsset[h].setColor(this.correspondingColor(impact));
-            this.selectedAsset[h].children.data[0].figure.setBackgroundColor(this.correspondingColor(impact));
-          }
+          this.selectedAsset.setColor(this.correspondingColor(impact));
+          this.selectedAsset.children.data[0].figure.setBackgroundColor(this.correspondingColor(impact));
         }
       }
     }
@@ -906,12 +786,8 @@ export class VulnerabilitiesComponent implements OnInit, OnDestroy {
     this.effVul = null;
     this.intVul = null;
 
-
     const index = -1;
     if (event.node.data[0].nodeType === 'Vulnerability') {
-
-      // this.natureVul=event.node.data[0].causalNature;
-      // this.phaseVul=event.node.data[0].phase;
 
       for (const i in event.node.data[0].score.consequences) {
         for (const j in event.node.data[0].score.consequences[i].securityImpacts) {
@@ -992,21 +868,13 @@ export class VulnerabilitiesComponent implements OnInit, OnDestroy {
   maxImpact(oldImp: string, newImp: string): string {
 
     if (newImp === 'CRITICAL') {
-
       oldImp = 'CRITICAL';
-
     } else if ((newImp === 'HIGH') && (oldImp !== 'CRITICAL')) {
-
       oldImp = 'HIGH';
-
     } else if ((newImp === 'MEDIUM') && (oldImp !== 'CRITICAL') && (oldImp !== 'HIGH')) {
-
       oldImp = 'MEDIUM';
-
     } else if ((newImp === 'LOW') && (oldImp !== 'CRITICAL') && (oldImp !== 'HIGH') && (oldImp !== 'MEDIUM')) {
-
       oldImp = 'LOW';
-
     }
     return oldImp;
 
@@ -1015,22 +883,21 @@ export class VulnerabilitiesComponent implements OnInit, OnDestroy {
   changeColor() {
     const figure = this.canvas.getFigures().data;
 
-    for (const i in this.idAssetsModified) {
+    for (const i in this.idAssets) {
 
       let impact = '';
       const totalImpact = [];
 
-      const assetImpact = this.nodes[this.nodes.findIndex((n) => n.identifier === this.idAssetsModified[i].identifier)].securityImpacts;
+      const assetImpact = this.nodes[this.nodes.findIndex((n) => n.identifier === this.idAssets[i].identifier)].securityImpacts;
 
-      for (const y in this.idAssetsModified[i].vulnerabilities) {
-        for (const j in this.idAssetsModified[i].vulnerabilities[y].data[0].score.consequences) {
-          for (const k in this.idAssetsModified[i].vulnerabilities[y].data[0].score.consequences[j].securityImpacts) {
+      for (const y in this.idAssets[i].vulnerabilities) {
+        for (const j in this.idAssets[i].vulnerabilities[y].data[0].score.consequences) {
+          for (const k in this.idAssets[i].vulnerabilities[y].data[0].score.consequences[j].securityImpacts) {
 
             for (const ai in assetImpact) {
 
-              if (this.idAssetsModified[i].vulnerabilities[y].data[0].score.consequences[j].securityImpacts[k].scope ===
+              if (this.idAssets[i].vulnerabilities[y].data[0].score.consequences[j].securityImpacts[k].scope ===
                 assetImpact[ai].scope) {
-
                 impact = this.maxImpact(impact, assetImpact[ai].impact);
               }
             }
@@ -1039,8 +906,7 @@ export class VulnerabilitiesComponent implements OnInit, OnDestroy {
       }
       for (const fig in figure) {
 
-        if (this.idAssetsModified[i].identifier === figure[fig].id) {
-
+        if (this.idAssets[i].identifier === figure[fig].id) {
           figure[fig].setColor(this.correspondingColor(impact));
           figure[fig].children.data[0].figure.setBackgroundColor(this.correspondingColor(impact));
         }
@@ -1064,20 +930,16 @@ export class VulnerabilitiesComponent implements OnInit, OnDestroy {
     this.efficiency = null;
     this.confidentiality = null;
 
-
     if (event.node.data.nodeType === 'Asset') {
       this.nameAsset = event.node.data.name;
       this.secondCat = event.node.data.category;
       this.primaryAssetCategory = event.node.data.primaryCategories[0];
 
-
       const requirementsName = [];
       for (const req in event.node.data.relatedRequirementsIds) {
 
         const reqInd = this.requirementsList.findIndex(reqI => reqI.identifier === event.node.data.relatedRequirementsIds[req]);
-
         if (reqInd !== -1) {
-
           requirementsName.push(this.requirementsList[reqInd].id);
         }
       }
@@ -1085,24 +947,19 @@ export class VulnerabilitiesComponent implements OnInit, OnDestroy {
       this.showSelectedRequirements = requirementsName;
 
       for (const i in event.node.data.securityImpacts) {
-
         if (event.node.data.securityImpacts[i].scope === 'Availability') {
-
           this.availability = event.node.data.securityImpacts[i].impact;
         }
 
         if (event.node.data.securityImpacts[i].scope === 'Integrity') {
-
           this.integrity = event.node.data.securityImpacts[i].impact;
         }
 
         if (event.node.data.securityImpacts[i].scope === 'Efficiency') {
-
           this.efficiency = event.node.data.securityImpacts[i].impact;
         }
 
         if (event.node.data.securityImpacts[i].scope === 'Confidentiality') {
-
           this.confidentiality = event.node.data.securityImpacts[i].impact;
         }
       }
@@ -1129,8 +986,7 @@ export class VulnerabilitiesComponent implements OnInit, OnDestroy {
       this.showDetails = false;
     } else {
 
-      // group of selected assets
-      this.selectedAsset = value.canvas.selection.all.data;
+      this.selectedAsset = value.canvas.selection.all.data[0];
       const j = this.nodes.findIndex(i => i.identifier === value.id);
 
       this.integrity = null;
@@ -1151,7 +1007,6 @@ export class VulnerabilitiesComponent implements OnInit, OnDestroy {
       this.showSelectedRequirements = requirementsName;
       this.secondCat = this.nodes[j].category;
 
-
       for (const imp in this.nodes[j].securityImpacts) {
 
         if (this.nodes[j].securityImpacts[imp].scope === 'Integrity') {
@@ -1168,7 +1023,7 @@ export class VulnerabilitiesComponent implements OnInit, OnDestroy {
         }
       }
 
-      if ((this.selectedAsset.length === 1) && (value.cssClass === 'draw2d_shape_basic_Label')) {
+      if (value.cssClass === 'draw2d_shape_basic_Label') {
         // it could be usefull to change the vulnerabilities list
         this.stringVul = value;
 
@@ -1201,7 +1056,6 @@ export class VulnerabilitiesComponent implements OnInit, OnDestroy {
       if (id === this.idAssets[i].identifier) {
 
         this.idAssets.splice(Number(i), 1);
-        this.idAssetsModified.splice(Number(i), 1);
         break;
       }
     }
@@ -1216,7 +1070,6 @@ export class VulnerabilitiesComponent implements OnInit, OnDestroy {
     }
 
     if (this.canvas.getFigures().data.length === 0) {
-
       this.thereAreChanges = false;
     }
   }
@@ -1331,6 +1184,7 @@ export class VulnerabilitiesComponent implements OnInit, OnDestroy {
         this.files.push(org);
       }
     }
+    this.blocked = false;
   }
 
   associatedProcess(id): Object {
@@ -1457,13 +1311,6 @@ export class VulnerabilitiesComponent implements OnInit, OnDestroy {
         const indexVuln = this.idAssets[indexId].vulnerabilities.findIndex((v) =>
           ((v.data[0].identifier === data[0].identifier) && (v.data[0].catalogueId === data[0].catalogueId)));
         this.idAssets[indexId].vulnerabilities.splice(indexVuln, 1);
-
-        const indexIdMod = this.idAssetsModified.findIndex((r) => r.identifier === this.currentId);
-
-        const indexVulnMod = this.idAssetsModified[indexIdMod].vulnerabilities.findIndex((x) =>
-          ((x.data[0].identifier === data[0].identifier) && (x.data[0].catalogueId === data[0].catalogueId)));
-
-        this.idAssetsModified[indexIdMod].vulnerabilities.splice(indexVulnMod, 1);
 
         // to understand if we have to delete the vulnerabilities in vulnerabilitieslist(the other assets do not contain this vulnerability)
         let count = 0;
@@ -1737,13 +1584,13 @@ export class VulnerabilitiesComponent implements OnInit, OnDestroy {
   replaceVulnerability() {
 
     for (const k in this.modifiedVulnerabilitiesList) {
-      for (const j in this.idAssetsModified) {
+      for (const j in this.idAssets) {
 
-        let a = this.idAssetsModified[j].vulnerabilities.findIndex(i =>
+        let a = this.idAssets[j].vulnerabilities.findIndex(i =>
           i.data[0].identifier === this.modifiedVulnerabilitiesList[k].data[0].identifier);
 
         if (a !== -1) {
-          this.idAssetsModified[j].vulnerabilities[a] = this.modifiedVulnerabilitiesList[k];
+          this.idAssets[j].vulnerabilities[a] = this.modifiedVulnerabilitiesList[k];
           a = -1;
         }
       }
@@ -1757,8 +1604,8 @@ export class VulnerabilitiesComponent implements OnInit, OnDestroy {
     this.oldIdVul = undefined;
     this.selectedVulnerability = undefined;
     this.displayEditVulnerability = false;
+    this.vulnerabilityForm.reset();
   }
-
 
   editVulnerability() {
     if (this.modifiedVulnerabilitiesList.length > 0) {
@@ -1839,7 +1686,6 @@ export class VulnerabilitiesComponent implements OnInit, OnDestroy {
             this.mehari = response;
             this.createMehariTree();
           }, err => {
-            this.blocked = false;
             throw err;
           }
         ));
@@ -1864,7 +1710,11 @@ export class VulnerabilitiesComponent implements OnInit, OnDestroy {
             'PROJECT': sessionStorage.getItem('idProject')
           }
         };
+        this.createGraph();
         this.getRequirements(JSON.stringify(a));
+      }, err => {
+        this.blocked = false;
+        throw err;
       }));
   }
 
@@ -1894,7 +1744,6 @@ export class VulnerabilitiesComponent implements OnInit, OnDestroy {
       }
     };
 
-    this.blocked = true;
     this.subscriptions.push(
       this.dataService.loadVulnerabilityModel(JSON.stringify(a)).subscribe((response: ModelObject) => {
         this.vulnerabilityModel = JSON.parse(response.jsonModel);
@@ -1953,8 +1802,8 @@ export class VulnerabilitiesComponent implements OnInit, OnDestroy {
       this.dataService.updateRiskModel(JSON.stringify(completeList, null, 2)).subscribe(response => {
         this.blocked = false;
         this.showSuccess();
-        if ((JSON.parse(JSON.stringify(response))).otherModelsStatus === 'UPDATED') {
-
+        if (JSON.parse(response).otherModelsStatus === 'UPDATED') {
+          this.idAssets = [];
           this.canvas.clear();
           this.getAsset();
         } else {
@@ -1997,12 +1846,10 @@ export class VulnerabilitiesComponent implements OnInit, OnDestroy {
     this.subscriptions.push(
       this.dataService.loadRequirementsById(JSON.stringify(a)).subscribe(response => {
         this.requirementsList = response;
-        this.createGraph();
       }));
   }
 
   isLockedByCurrentUser() {
-    console.log(this.lockService.lockedBy.getValue() === sessionStorage.getItem('loggedUsername'));
     return this.lockService.lockedBy.getValue() === sessionStorage.getItem('loggedUsername');
   }
 

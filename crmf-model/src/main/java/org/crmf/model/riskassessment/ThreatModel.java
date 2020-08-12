@@ -12,10 +12,10 @@
 
 package org.crmf.model.riskassessment;
 
-import java.util.ArrayList;
-
 import org.crmf.model.general.SESTObject;
 import org.crmf.model.riskassessmentelements.Threat;
+
+import java.util.ArrayList;
 
 public class ThreatModel extends SESTObject {
 
@@ -25,12 +25,9 @@ public class ThreatModel extends SESTObject {
 	private ArrayList<Threat> threats;
 
 	public ThreatModel(){
-		threats = new ArrayList<Threat>();
+		threats = new ArrayList<>();
 	}
 
-	public void finalize() throws Throwable {
-		super.finalize();
-	}
 	public String getUpdateTime(){
 		return updateTime;
 	}

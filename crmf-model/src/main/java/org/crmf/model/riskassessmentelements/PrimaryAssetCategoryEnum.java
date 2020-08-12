@@ -13,10 +13,6 @@
 
 package org.crmf.model.riskassessmentelements;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
 public enum PrimaryAssetCategoryEnum {
 	Data_DataFile_Database("Data files and data bases accessed by applications"),
 	Data_Shared_Office_File("Shared office files and data"),
@@ -38,7 +34,7 @@ public enum PrimaryAssetCategoryEnum {
 	Service_Shared_Service("Shared office Services"),
 	Service_User_Hardware("Equipment provided to end users"),
 	Service_Common_Service("Common system Services"),
-	Service_Web_editing_Service ("Web editing Service (internal or public)"),
+	Service_Web_editing_Service("Web editing Service (internal or public)"),
 
 	Compliance_Policy_Personal_Information_Protection("Compliance to law or regulations relative to personal information protection"),
 	Compliance_Policy_Financial_Communication("Compliance to law or regulations relative to financial communication"),
@@ -51,35 +47,8 @@ public enum PrimaryAssetCategoryEnum {
 	public String getValue() {
 	    return value;
 	}
-	private PrimaryAssetCategoryEnum(String value) {
+	PrimaryAssetCategoryEnum(String value) {
 	  this.value = value;
 	}
-
-	public static final List<PrimaryAssetCategoryEnum> PRIMARY_ASSET_CATEGORY_LIST = Arrays.asList(
-		Data_DataFile_Database,
-		Data_Shared_Office_File,
-		Data_Personal_Office_File,
-		Data_Physical_File,
-		Data_Exchanged_Message,
-		Data_Digital_Mail,
-		Data_Physical_Mail,
-		Data_Physical_Archive,
-		Data_IT_Archive,
-		Data_Published_Data,
-		Service_User_Workspace,
-		Service_Telecommunication_Service,
-		Service_Extended_Network_Service,
-		Service_Local_Network_Service,
-		Service_Application_Service,
-		Service_Shared_Service,
-		Service_User_Hardware,
-		Service_Common_Service,
-		Service_Web_editing_Service,
-		Compliance_Policy_Personal_Information_Protection.
-		Compliance_Policy_Financial_Communication,
-		Compliance_Policy_Digital_Accounting_Control,
-		Compliance_Policy_Intellectual_Property,
-		Compliance_Policy_Protection_Of_Information_Systems,
-		Compliance_Policy_People_And_Environment_Safety);
 }
 

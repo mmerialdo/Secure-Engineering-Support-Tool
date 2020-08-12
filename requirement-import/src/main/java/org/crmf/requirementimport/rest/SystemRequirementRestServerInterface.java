@@ -12,15 +12,14 @@
 
 package org.crmf.requirementimport.rest;
 
-import java.util.List;
+import org.crmf.model.utility.GenericFilter;
 
 import javax.ws.rs.Consumes;
 import javax.ws.rs.FormParam;
 import javax.ws.rs.POST;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
-
-import org.crmf.model.utility.GenericFilter;
+import java.util.List;
 
 public interface SystemRequirementRestServerInterface {
 

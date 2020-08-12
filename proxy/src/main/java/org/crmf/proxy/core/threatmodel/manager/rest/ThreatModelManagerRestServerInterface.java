@@ -12,14 +12,13 @@
 
 package org.crmf.proxy.core.threatmodel.manager.rest;
 
-import javax.ws.rs.Consumes;
-import javax.ws.rs.POST;
-import javax.ws.rs.Produces;
-
 import org.crmf.model.riskassessmentelements.Threat;
 import org.crmf.model.utility.GenericFilter;
 import org.crmf.model.utility.ModelObject;
 
+import javax.ws.rs.Consumes;
+import javax.ws.rs.POST;
+import javax.ws.rs.Produces;
 import java.util.List;
 
 public interface ThreatModelManagerRestServerInterface {

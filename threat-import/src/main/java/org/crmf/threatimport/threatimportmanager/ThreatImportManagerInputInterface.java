@@ -17,7 +17,8 @@ import org.apache.cxf.jaxrs.ext.multipart.Attachment;
 import org.crmf.model.riskassessmentelements.ThreatSourceEnum;
 
 public interface ThreatImportManagerInputInterface {
-	
-	void importThreats(ThreatSourceEnum source) throws Exception;
-	void importThreatsFromInput(Attachment attachmentFile) throws Exception;
+
+  void importThreats(ThreatSourceEnum source) throws Exception;
+
+  void importThreatsFromInput(Attachment attachmentFile) throws Exception;
 }

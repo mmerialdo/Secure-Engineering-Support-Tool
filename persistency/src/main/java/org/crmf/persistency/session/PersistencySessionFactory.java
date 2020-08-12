@@ -12,14 +12,6 @@
 
 package org.crmf.persistency.session;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.Reader;
-import java.net.URL;
-import java.util.Properties;
-
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -49,91 +41,99 @@ import org.osgi.framework.BundleContext;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.Reader;
+import java.net.URL;
+import java.util.Properties;
+
 public class PersistencySessionFactory {
 
-	private static final Logger LOG = LoggerFactory.getLogger(PersistencySessionFactory.class.getName());
+  private static final Logger LOG = LoggerFactory.getLogger(PersistencySessionFactory.class.getName());
 
-	private SqlSessionFactory sessionFactory;
-	private BundleContext context;
+  private SqlSessionFactory sessionFactory;
+  private BundleContext context;
 
-	public void createSessionFactory() {
+  public void createSessionFactory() {
 
-		String pathConfig = "config".concat(File.separator).concat("config_test.xml");
-		LOG.info("pathConfig " + pathConfig);
-		Reader reader = null;
-		Properties prop = null;
-		try {
-			if (context == null) { //if not OSGI bundle -> unit test or Spring configuration
-				reader = Resources.getResourceAsReader(pathConfig);
-			} else {
-				prop = new Properties();
-				prop.load(new FileInputStream("etc".concat(File.separator).concat("SEST.cfg")));
-				
-				URL url = context.getBundle().getEntry("config/config.xml");
-				if (url != null) {
-					reader = new InputStreamReader(url.openStream());
-				} else {
-					LOG.error("Unvalid path " + pathConfig);
-					return;
-				}
-			}
-			LOG.info("reader " + reader);
-			
-			this.sessionFactory = new SqlSessionFactoryBuilder().build(reader, prop);
-			this.sessionFactory.getConfiguration().addMapper(UserMapper.class);
-			this.sessionFactory.getConfiguration().addMapper(SestobjMapper.class);
-			this.sessionFactory.getConfiguration().addMapper(RoleMapper.class);
-			this.sessionFactory.getConfiguration().addMapper(CleanDatabaseMapper.class);
-			this.sessionFactory.getConfiguration().addMapper(AssprocedureMapper.class);
-			this.sessionFactory.getConfiguration().addMapper(AssprofileMapper.class);
-			this.sessionFactory.getConfiguration().addMapper(AssprojectMapper.class);
-			this.sessionFactory.getConfiguration().addMapper(AsstemplateMapper.class);
-			this.sessionFactory.getConfiguration().addMapper(SysprojectMapper.class);
-			this.sessionFactory.getConfiguration().addMapper(SysparticipantMapper.class);
-			this.sessionFactory.getConfiguration().addMapper(AssAuditDefaultMapper.class);
-			this.sessionFactory.getConfiguration().addMapper(QuestionnaireMapper.class);
-			this.sessionFactory.getConfiguration().addMapper(AssAuditMapper.class);
-			this.sessionFactory.getConfiguration().addMapper(RequirementMapper.class);
-			this.sessionFactory.getConfiguration().addMapper(AssetMapper.class);
-			this.sessionFactory.getConfiguration().addMapper(VulnerabilityMapper.class);
-			this.sessionFactory.getConfiguration().addMapper(ThreatMapper.class);
-			this.sessionFactory.getConfiguration().addMapper(RiskMapper.class);
-			this.sessionFactory.getConfiguration().addMapper(SafeguardMapper.class);
-			this.sessionFactory.getConfiguration().addMapper(SecRequirementMapper.class);
-			this.sessionFactory.getConfiguration().addMapper(RiskTreatmentMapper.class);
-			
-		} catch (IOException e) {
-			LOG.error(e.getMessage());
-		} finally {
-			try {
-				if (reader != null)
-					reader.close();
-			} catch (IOException e) {
-				LOG.error(e.getMessage());
-			}
-		}
-	}
+    String pathConfig = "config".concat(File.separator).concat("config_test.xml");
+    LOG.info("pathConfig " + pathConfig);
+    Reader reader = null;
+    Properties prop = null;
+    try {
+      if (context == null) { //if not OSGI bundle -> unit test or Spring configuration
+        reader = Resources.getResourceAsReader(pathConfig);
+      } else {
+        prop = new Properties();
+        prop.load(new FileInputStream("etc".concat(File.separator).concat("SEST.cfg")));
 
-	public SqlSession getSession() {
+        URL url = context.getBundle().getEntry("config/config.xml");
+        if (url != null) {
+          reader = new InputStreamReader(url.openStream());
+        } else {
+          LOG.error("Unvalid path " + pathConfig);
+          return;
+        }
+      }
+      LOG.info("reader " + reader);
 
-		SqlSession session = this.sessionFactory.openSession();
-		return session;
-	}
+      this.sessionFactory = new SqlSessionFactoryBuilder().build(reader, prop);
+      this.sessionFactory.getConfiguration().addMapper(UserMapper.class);
+      this.sessionFactory.getConfiguration().addMapper(SestobjMapper.class);
+      this.sessionFactory.getConfiguration().addMapper(RoleMapper.class);
+      this.sessionFactory.getConfiguration().addMapper(CleanDatabaseMapper.class);
+      this.sessionFactory.getConfiguration().addMapper(AssprocedureMapper.class);
+      this.sessionFactory.getConfiguration().addMapper(AssprofileMapper.class);
+      this.sessionFactory.getConfiguration().addMapper(AssprojectMapper.class);
+      this.sessionFactory.getConfiguration().addMapper(AsstemplateMapper.class);
+      this.sessionFactory.getConfiguration().addMapper(SysprojectMapper.class);
+      this.sessionFactory.getConfiguration().addMapper(SysparticipantMapper.class);
+      this.sessionFactory.getConfiguration().addMapper(AssAuditDefaultMapper.class);
+      this.sessionFactory.getConfiguration().addMapper(QuestionnaireMapper.class);
+      this.sessionFactory.getConfiguration().addMapper(AssAuditMapper.class);
+      this.sessionFactory.getConfiguration().addMapper(RequirementMapper.class);
+      this.sessionFactory.getConfiguration().addMapper(AssetMapper.class);
+      this.sessionFactory.getConfiguration().addMapper(VulnerabilityMapper.class);
+      this.sessionFactory.getConfiguration().addMapper(ThreatMapper.class);
+      this.sessionFactory.getConfiguration().addMapper(RiskMapper.class);
+      this.sessionFactory.getConfiguration().addMapper(SafeguardMapper.class);
+      this.sessionFactory.getConfiguration().addMapper(SecRequirementMapper.class);
+      this.sessionFactory.getConfiguration().addMapper(RiskTreatmentMapper.class);
 
-	public SqlSessionFactory getSessionFactory() {
-		return sessionFactory;
-	}
+    } catch (IOException e) {
+      LOG.error(e.getMessage());
+    } finally {
+      try {
+        if (reader != null)
+          reader.close();
+      } catch (IOException e) {
+        LOG.error(e.getMessage());
+      }
+    }
+  }
 
-	public void setSessionFactory(SqlSessionFactory sessionFactory) {
-		this.sessionFactory = sessionFactory;
-	}
+  public SqlSession getSession() {
 
-	public BundleContext getContext() {
-		return context;
-	}
+    SqlSession session = this.sessionFactory.openSession();
+    return session;
+  }
 
-	public void setContext(BundleContext context) {
-		this.context = context;
-	}
+  public SqlSessionFactory getSessionFactory() {
+    return sessionFactory;
+  }
+
+  public void setSessionFactory(SqlSessionFactory sessionFactory) {
+    this.sessionFactory = sessionFactory;
+  }
+
+  public BundleContext getContext() {
+    return context;
+  }
+
+  public void setContext(BundleContext context) {
+    this.context = context;
+  }
 
 }

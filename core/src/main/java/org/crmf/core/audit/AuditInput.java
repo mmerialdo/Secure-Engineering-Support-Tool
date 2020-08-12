@@ -12,16 +12,12 @@
 
 package org.crmf.core.audit;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
 import org.crmf.core.safeguardmodel.manager.SafeguardModelManagerInputInterface;
 import org.crmf.model.audit.Audit;
 import org.crmf.model.audit.AuditTypeEnum;
+import org.crmf.model.audit.Question;
 import org.crmf.model.audit.SestAuditModel;
 import org.crmf.model.audit.SestQuestionnaireModel;
-import org.crmf.model.audit.Question;
 import org.crmf.model.riskassessment.AssessmentProcedure;
 import org.crmf.model.riskassessment.AssessmentProject;
 import org.crmf.model.riskassessment.AssessmentStatusEnum;
@@ -30,13 +26,15 @@ import org.crmf.model.utility.audit.AuditModelSerializerDeserializer;
 import org.crmf.model.utility.audit.QuestionnaireModelSerializerDeserializer;
 import org.crmf.persistency.mapper.audit.AssAuditServiceInterface;
 import org.crmf.persistency.mapper.audit.QuestionnaireServiceInterface;
-import org.crmf.persistency.mapper.general.SestObjService;
-import org.crmf.persistency.mapper.general.SestObjServiceInterface;
 import org.crmf.persistency.mapper.project.AssprocedureServiceInterface;
 import org.crmf.persistency.mapper.project.AssprojectServiceInterface;
 import org.crmf.riskmodel.manager.RiskModelManagerInputInterface;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 //This class is called by the Proxy and manages the entrypoint for the business logic (including the interactions with the Persistency) related to the Audit
 public class AuditInput implements AuditInputInterface {
@@ -72,7 +70,7 @@ public class AuditInput implements AuditInputInterface {
   @Override
   public void editSafeguardModel(AssessmentProject project) {
     try {
-      LOG.info("editSafeguardModel about to start the updateQuestionnaireJSON of the SafeguardModel for project with id: " + project.getIdentifier());
+      LOG.info("editSafeguardModel about to start the updateQuestionnaireJSON of the SafeguardModel for project with id: {} ", project.getIdentifier());
 
       //Loading the full set of procedures for this assessmentproject
       project.setProcedures((ArrayList<AssessmentProcedure>) assprocedureService.getByProjectIdentifier(project.getIdentifier()));
@@ -93,14 +91,14 @@ public class AuditInput implements AuditInputInterface {
   @Override
   public SestAuditModel loadAudit(String identifier, AuditTypeEnum type, boolean includeModels) {
 
-    LOG.info("loadAudit : " + identifier + ", type : " + type);
+    LOG.info("loadAudit : {}, type : {}", identifier, type);
     return assauditService.getByProjectAndType(identifier,
       (type != null ? type : AuditTypeEnum.SECURITY), includeModels);
   }
 
   @Override
   public ModelObject loadQuestionnaire(String identifier) {
-    LOG.info("loadQuestionnaire : " + identifier);
+    LOG.info("loadQuestionnaire : {} ", identifier);
     QuestionnaireModelSerializerDeserializer converter = new QuestionnaireModelSerializerDeserializer();
     SestQuestionnaireModel questionnaireModel = questionnaireService.getByIdentifier(identifier);
     String json = converter.getClientJSONStringFromQuestionnaireModel(questionnaireModel);

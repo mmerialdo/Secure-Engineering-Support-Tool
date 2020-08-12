@@ -103,7 +103,7 @@ export class SafeguardDefinitionComponent implements OnInit, OnDestroy {
     const splitParentheses = formulaToCheck.split(')');
     const splitParenthesesLength = splitParentheses.length - 1;
     formulaToCheck = splitParentheses.join('');
-    const splitMaxMin = formulaToCheck.split(/max\(|min\(/);
+    const splitMaxMin = formulaToCheck.split(/max\(|min\(/i);
     const splitMaxMinLenght = splitMaxMin.length - 1;
     formulaToCheck = splitMaxMin.join('');
     formulaToCheck = formulaToCheck.split(/\d{2}[A-Z]{1}\d{2}\;/).join('');

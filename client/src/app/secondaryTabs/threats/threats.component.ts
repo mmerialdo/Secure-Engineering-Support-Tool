@@ -95,14 +95,8 @@ export class ThreatsComponent implements OnInit, OnDestroy {
 
   public selectedAsset;
 
-  // array that contains the association assets id and vulnerabilities for the vulnerabilities model
+  // array that contains the association assets id and threats for the threats model
   public idAssets = [];
-
-  // array that contains the association assets id and vulnerabilities for the vulnerabilities model modified by user
-  public idAssetsModified = [];
-
-  // array that contains the association assets id and vulnerabilities for the the vulnerabilities trees selection
-  public graphicVulnerabilities = [];
 
   // it is used for temporary modifies
   public oldIdVul;
@@ -270,33 +264,33 @@ export class ThreatsComponent implements OnInit, OnDestroy {
     figure.forEach(asset => {
       const text = asset.children.data[2].figure.getText();
       if (!text || text !== '') {
-        this.addThreatsWithCheck(asset, list);
+        this.addThreatsWithCheck(asset, list, false);
       }
     });
 
     this.changeColor();
     this.closeForm();
-    this.idAssets = this.idAssetsModified;
   }
 
   addThreatsToCache(): void {
     const cachedThreats = JSON.parse(JSON.stringify(this.associatedVulnerabilities));
     this.store.dispatch(copyThreats({cachedThreats}));
     this.displayEditVulnerability = false;
-    this.messageService.add({key: 'tc', severity: 'warn', summary: 'Info Message', detail: 'Threats Copied'});
+    this.messageService.add({key: 'tc', severity: 'info', summary: 'Info Message', detail: 'Threats Copied'});
   }
 
   fetchThreatsFromCache(): void {
     const paste = this.store.pipe(select(selectThreatsFromCache)).pipe(take(1)).subscribe(threats => {
       this.fetchThreats(threats);
     });
+    this.closeForm();
   }
 
   fetchThreats(threats: any): void {
 
     const list = threats.map(item => ({label: item.label, data: item.value}));
     for (const asset of this.selectedAsset) {
-      this.addThreatsWithCheck(asset, list);
+      this.addThreatsWithCheck(asset, list, true);
     }
   }
 
@@ -313,7 +307,6 @@ export class ThreatsComponent implements OnInit, OnDestroy {
 
     this.canvas = new draw2d.Canvas('canvas-div');
 
-
     // this.canvas.installEditPolicy(new draw2d.policy.canvas.ReadOnlySelectionPolicy( ));
 
     const MyPolicy = draw2d.policy.canvas.CanvasPolicy.extend({
@@ -324,20 +317,14 @@ export class ThreatsComponent implements OnInit, OnDestroy {
       },
       onClick: function (the, mouseX, mouseY, shiftKey, ctrlKey) {
         this._super(the, mouseX, mouseY, shiftKey, ctrlKey);
-
         window.angularComponentRef.componentFn(the);
-
       }
     });
 
-
     const policy = new MyPolicy();
     this.canvas.installEditPolicy(policy);
-
     this.createTree();
-
     this.setPermission();
-
     this.blocked = false;
   }
 
@@ -380,7 +367,6 @@ export class ThreatsComponent implements OnInit, OnDestroy {
     this.checkedRiskModelThreat(id, figure);
   }
 
-
   // returns list of all the vulnerabilities already associated
   checkedRiskModel(id): string {
 
@@ -395,14 +381,10 @@ export class ThreatsComponent implements OnInit, OnDestroy {
 
           vulnerabilityRisk.push(this.riskModel.scenarios[i].vulnerabilityId);
         }
-
       }
     }
 
-
     return this.labelsFromRisk(vulnerabilityRisk, id);
-
-
   }
 
 
@@ -412,15 +394,10 @@ export class ThreatsComponent implements OnInit, OnDestroy {
     let string = '';
     const vulnList = [];
 
-
     for (const i in riskVulnList) {
 
-
       for (const j in this.vulnerabilityModel.vulnerabilities) {
-
-
         if (riskVulnList[i] === this.vulnerabilityModel.vulnerabilities[j].identifier) {
-
 
           if (string === '') {
             string = string + this.vulnerabilityModel.vulnerabilities[j].name;
@@ -428,15 +405,11 @@ export class ThreatsComponent implements OnInit, OnDestroy {
 
             string = string + '\n' + this.vulnerabilityModel.vulnerabilities[j].name;
           }
-
         }
-
       }
     }
 
-
     return string;
-
   }
 
   // returns list of all the threats already associated
@@ -444,56 +417,37 @@ export class ThreatsComponent implements OnInit, OnDestroy {
 
     const threat = [];
 
-
     for (const i in this.riskModel.scenarios) {
 
       if (this.riskModel.scenarios[i].assetId === id) {
-
         // vulnerabilityRisk.push(this.riskModel.scenarios[i].vulnerabilityId)
         const index = this.threatModel.threats.findIndex((n) => n.identifier === this.riskModel.scenarios[i].threatId);
 
         if ((this.threatModel.threats[index] != '') && (this.threatModel.threats[index] != undefined) && (this.threatModel.threats[index] != null)) {
           threat.push(this.threatModel.threats[index]);
         }
-
       }
     }
 
-    // console.log(threat)
     this.buildLeafThreat(threat, figure);
-
-
   }
 
   buildLeafThreat(threat, figure) {
 
-    // console.log("buildLeafThreat")
-    // console.log(threat);
-    // console.log(figure);
     const leaves = [];
-
     let cat = [];
-
     for (const i in threat) {
-
 
       cat = this.findaffectedAssetsCategories(threat[i].affectedAssetsCategories);
 
-
       for (const j in threat[i].affectedAssetsCategories) {
         const a = threat[i].affectedAssetsCategories[j];
-
-
         let indexOfLabel = -1;
-
-
         indexOfLabel = leaves.findIndex(i => i.label === a);
-
 
         if (indexOfLabel === -1) {
           const array = [];
           let obj = {};
-
 
           array.push({
             'label': threat[i].name, 'data': [{
@@ -521,19 +475,13 @@ export class ThreatsComponent implements OnInit, OnDestroy {
               'associatedVulnerabilities': threat[i].associatedVulnerabilities,
               'applicablePlatform': threat[i].applicablePlatform,
               'mitigations': threat[i].mitigations,
-
-
               'objType': 'ThreatModel'
-
             }]
           });
           obj = {'label': a, 'data': [{'nodeType': 'Category'}], 'children': array};
 
           leaves.push(obj);
-
-
         } else {
-
 
           leaves[indexOfLabel].children.push({
             'label': threat[i].name, 'data': [{
@@ -565,76 +513,43 @@ export class ThreatsComponent implements OnInit, OnDestroy {
               'objType': 'ThreatModel'
             }]
           });
-
         }
-
       }
-
     }
-
-    // console.log(leaves);
 
     this.selectedThreatArray = [];
     const a = [];
     a.push(figure);
     this.selectedAsset = a;
 
-    // console.log(this.selectedAsset);
-
-
     for (const leaf in leaves) {
 
-      // this.selectedThreatArray.push(leaves[leaf])
-
       for (const k in leaves[leaf].children) {
-
         const indexOfThreat = this.selectedThreatArray.findIndex(i => i.label === leaves[leaf].children[k].label);
-
-        // console.log(indexOfThreat)
-
         if (indexOfThreat === -1) {
           this.selectedThreatArray.push(leaves[leaf].children[k]);
         }
-
-
       }
-
     }
 
-    // console.log(this.selectedThreatArray);
     this.addThreats();
-
   }
 
 
   addAssets() {
 
-    // console.log("addAssets");
     for (const i in this.selectedFiles) {
-
-      // this.selectedNodesArray.push(this.selectedFiles[i])
 
       if (this.selectedFiles[i].data != null && this.selectedFiles[i].data.nodeType === 'Asset') {
 
         if (this.canvas.getFigures().data.findIndex(uni => uni.id === this.selectedFiles[i].data.identifier) === -1) {
 
           let index = -1;
-
           const a = this.selectedFiles[i].data.identifier;
           index = this.idAssets.findIndex(i => i.identifier === a);
 
           if (index === -1) {
             this.idAssets.push({
-              'identifier': this.selectedFiles[i].data.identifier,
-              'secondaryCategory': this.selectedFiles[i].data.category,
-              'vulnerabilities': []
-            });
-            this.graphicVulnerabilities.push({
-              'identifier': this.selectedFiles[i].data.identifier,
-              'secondaryCategory': this.selectedFiles[i].data.category,
-              'vulnerabilities': []
-            });
-            this.idAssetsModified.push({
               'identifier': this.selectedFiles[i].data.identifier,
               'secondaryCategory': this.selectedFiles[i].data.category,
               'vulnerabilities': []
@@ -652,14 +567,17 @@ export class ThreatsComponent implements OnInit, OnDestroy {
   addThreats() {
 
     for (const asset of this.selectedAsset) {
-      this.addThreatsWithCheck(asset, this.selectedThreatArray);
+      this.addThreatsWithCheck(asset, this.selectedThreatArray, true);
     }
   }
 
-  private addThreatsWithCheck(asset: any, threatsList: any[]) {
+  private addThreatsWithCheck(asset: any, threatsList: any[], showMessage: boolean) {
     const idVul = [];
     let string = '';
     const assVuln = [];
+    let isMatchingAssetCategory = true;
+    let isMatchingVulnerability = true;
+    let hasVulnerability = true;
 
     for (const threat of threatsList) {
 
@@ -762,27 +680,14 @@ export class ThreatsComponent implements OnInit, OnDestroy {
                         string = string + '\n' + threat.label;
                         asset.children.data[2].figure.setText(string);
                       }
-
-                      for (const h in this.graphicVulnerabilities) {
-                        if (this.graphicVulnerabilities[h].identifier === asset.id) {
-                          this.graphicVulnerabilities[h].vulnerabilities.push(threat);
-                          // this.graphicVulnerabilities[h].vulnerabilities.push(threat.parent);
-                        }
-                      }
                     } else {
-                      this.blocked = true;
-                      this.blockedMessage = true;
-                      this.showInfo(ThreatsComponent.WARN_NO_VULN_MATCH);
+                      isMatchingVulnerability = false;
                     }
                   } else {
-                    this.blocked = true;
-                    this.blockedMessage = true;
-                    this.showInfo(ThreatsComponent.WARN_NO_VULNERABILITIES);
+                    hasVulnerability = false;
                   }
                 } else {
-                  this.blocked = true;
-                  this.blockedMessage = true;
-                  this.showInfo(ThreatsComponent.WARN_NO_ASSET_MATCH);
+                  isMatchingAssetCategory = false;
                 }
               }
             } else {
@@ -804,10 +709,7 @@ export class ThreatsComponent implements OnInit, OnDestroy {
           }
 
         } else {
-
-          this.blocked = true;
-          this.blockedMessage = true;
-          this.showInfo(ThreatsComponent.WARN_NO_VULNERABILITIES);
+          hasVulnerability = false;
         }
       }
     }
@@ -819,8 +721,18 @@ export class ThreatsComponent implements OnInit, OnDestroy {
         for (const fg in assVuln) {
 
           this.idAssets[q].vulnerabilities.push(assVuln[fg]);
-          this.idAssetsModified[q].vulnerabilities.push(assVuln[fg]);
         }
+      }
+    }
+    if (showMessage) {
+      if (!isMatchingVulnerability) {
+        this.showInfo(ThreatsComponent.WARN_NO_VULN_MATCH);
+      }
+      if (!hasVulnerability) {
+        this.showInfo(ThreatsComponent.WARN_NO_VULNERABILITIES);
+      }
+      if (!isMatchingAssetCategory) {
+        this.showInfo(ThreatsComponent.WARN_NO_ASSET_MATCH);
       }
     }
 
@@ -1060,45 +972,30 @@ export class ThreatsComponent implements OnInit, OnDestroy {
 
 
     if (newImp === 'VERY_HIGH') {
-
       oldImp = 'VERY_HIGH';
-
-
     } else if ((newImp === 'HIGH') && (oldImp != 'VERY_HIGH')) {
-
       oldImp = 'HIGH';
-
-
     } else if ((newImp === 'MEDIUM') && (oldImp != 'VERY_HIGH') && (oldImp != 'HIGH')) {
-
       oldImp = 'MEDIUM';
-
-
     } else if ((newImp === 'LOW') && (oldImp != 'VERY_HIGH') && (oldImp != 'HIGH') && (oldImp != 'MEDIUM')) {
-
       oldImp = 'LOW';
     }
     return oldImp;
-
   }
 
 
   changeColor() {
 
     const figure = this.canvas.getFigures().data;
-
-    for (const i in this.idAssetsModified) {
+    for (const i in this.idAssets) {
 
       let likelihood = '';
-
-      for (const j in this.idAssetsModified[i].vulnerabilities) {
-        likelihood = this.maxImpact(likelihood, this.idAssetsModified[i].vulnerabilities[j].data[0].score.likelihood);
+      for (const j in this.idAssets[i].vulnerabilities) {
+        likelihood = this.maxImpact(likelihood, this.idAssets[i].vulnerabilities[j].data[0].score.likelihood);
       }
 
       for (const fig in figure) {
-
-        if (this.idAssetsModified[i].identifier === figure[fig].id) {
-
+        if (this.idAssets[i].identifier === figure[fig].id) {
           figure[fig].setColor(this.correspondingColor(likelihood));
           figure[fig].children.data[0].figure.setBackgroundColor(this.correspondingColor(likelihood));
         }
@@ -1112,15 +1009,10 @@ export class ThreatsComponent implements OnInit, OnDestroy {
     if (this.selectedThreatArray.length === 0) {
       this.showDetails = false;
     }
-
   }
-
 
   // event when a tree node is selected
   nodeSelect(event) {
-
-    /*console.log("nodeSelect")
-    console.log(event)*/
 
     this.availability = null;
     this.integrity = null;
@@ -1140,10 +1032,8 @@ export class ThreatsComponent implements OnInit, OnDestroy {
         const reqInd = this.requirementsList.findIndex(reqI => reqI.identifier === event.node.data.relatedRequirementsIds[req]);
 
         if (reqInd != -1) {
-
           requirementsName.push(this.requirementsList[reqInd].id);
         }
-
       }
 
       this.showSelectedRequirements = requirementsName;
@@ -1151,25 +1041,18 @@ export class ThreatsComponent implements OnInit, OnDestroy {
       for (const i in event.node.data.securityImpacts) {
 
         if (event.node.data.securityImpacts[i].scope === 'Availability') {
-
           this.availability = event.node.data.securityImpacts[i].impact;
-
         }
 
         if (event.node.data.securityImpacts[i].scope === 'Integrity') {
-
           this.integrity = event.node.data.securityImpacts[i].impact;
-
         }
 
         if (event.node.data.securityImpacts[i].scope === 'Efficiency') {
-
           this.efficiency = event.node.data.securityImpacts[i].impact;
-
         }
 
         if (event.node.data.securityImpacts[i].scope === 'Confidentiality') {
-
           this.confidentiality = event.node.data.securityImpacts[i].impact;
         }
       }
@@ -1195,23 +1078,14 @@ export class ThreatsComponent implements OnInit, OnDestroy {
       icon: 'fa fa-trash',
       accept: () => {
 
-        // console.log(this.vulnerabilitiesList);
         // to delete the threat in the other  data structures
-
         const index = this.associatedVulnerabilities.findIndex((n) => ((n.value[0].identifier === data[0].identifier) && (n.value[0].catalogueId === data[0].catalogueId)));
 
         this.associatedVulnerabilities.splice(index, 1);
 
         const indexId = this.idAssets.findIndex((i) => i.identifier === this.currentId);
         const indexVuln = this.idAssets[indexId].vulnerabilities.findIndex((v) => ((v.data[0].identifier === data[0].identifier) && (v.data[0].catalogueId === data[0].catalogueId)));
-        // console.log("splice asset")
         this.idAssets[indexId].vulnerabilities.splice(indexVuln, 1);
-
-
-        const indexIdMod = this.idAssetsModified.findIndex((r) => r.identifier === this.currentId);
-        const indexVulnMod = this.idAssetsModified[indexIdMod].vulnerabilities.findIndex((x) => ((x.data[0].identifier === data[0].identifier) && (x.data[0].catalogueId === data[0].catalogueId)));
-
-        this.idAssetsModified[indexIdMod].vulnerabilities.splice(indexVulnMod, 1);
 
         // to understand if we have to delete the threat in threat list (the other assets do not contain this threat)
         let count = 0;
@@ -1312,18 +1186,14 @@ export class ThreatsComponent implements OnInit, OnDestroy {
       this.efficiency = null;
       this.availability = null;
       this.nameAsset = this.nodes[j].name;
-
       this.primaryAssetCategory = this.nodes[j].primaryCategories[0];
-
       this.secondCat = this.nodes[j].category;
 
       const requirementsName = [];
       for (const req in this.nodes[j].relatedRequirementsIds) {
 
         const reqInd = this.requirementsList.findIndex(reqI => reqI.identifier === this.nodes[j].relatedRequirementsIds[req]);
-
         if (reqInd != -1) {
-
           requirementsName.push(this.requirementsList[reqInd].id);
         }
       }
@@ -1334,27 +1204,18 @@ export class ThreatsComponent implements OnInit, OnDestroy {
       for (const imp in this.nodes[j].securityImpacts) {
 
         if (this.nodes[j].securityImpacts[imp].scope === 'Integrity') {
-
           this.integrity = this.nodes[j].securityImpacts[imp].impact;
-
         }
 
         if (this.nodes[j].securityImpacts[imp].scope === 'Availability') {
-
           this.availability = this.nodes[j].securityImpacts[imp].impact;
-
         }
         if (this.nodes[j].securityImpacts[imp].scope === 'Efficiency') {
-
           this.efficiency = this.nodes[j].securityImpacts[imp].impact;
-
         }
         if (this.nodes[j].securityImpacts[imp].scope === 'Confidentiality') {
-
           this.confidentiality = this.nodes[j].securityImpacts[imp].impact;
-
         }
-
       }
 
 
@@ -1371,31 +1232,20 @@ export class ThreatsComponent implements OnInit, OnDestroy {
 
             for (const vul in this.idAssets[k].vulnerabilities) {
 
-
               this.associatedVulnerabilities.push({
                 'label': this.idAssets[k].vulnerabilities[vul].name,
                 'value': this.idAssets[k].vulnerabilities[vul].data
               });
-
             }
-
           }
-
         }
 
         this.modifiedVulnerabilitiesList = JSON.parse(JSON.stringify(this.vulnerabilitiesList));
-
         this.selectedVulnerability = undefined;
-
         this.displayEditVulnerability = true;
-
       }
-
-
       this.showAssetDetails = true;
     }
-
-
   }
 
   removeAsset(value) {
@@ -1403,13 +1253,9 @@ export class ThreatsComponent implements OnInit, OnDestroy {
     const id = value.identifier;
 
     for (const i in this.idAssets) {
-
       if (id === this.idAssets[i].identifier) {
-
         this.idAssets.splice(parseInt(i), 1);
-        this.idAssetsModified.splice(parseInt(i), 1);
         break;
-
       }
     }
 
@@ -1423,11 +1269,8 @@ export class ThreatsComponent implements OnInit, OnDestroy {
     }
 
     if (this.canvas.getFigures().data.length === 0) {
-
       this.thereAreChanges = false;
     }
-
-
   }
 
   findaffectedAssetsCategories(array): any {
@@ -1445,30 +1288,19 @@ export class ThreatsComponent implements OnInit, OnDestroy {
 
   createThreatsTree() {
 
-
     this.threatTree = [];
-
     let cat = [];
-
     for (const i in this.threatsList.threats) {
 
-
       cat = this.findaffectedAssetsCategories(this.threatsList.threats[i].affectedAssetsCategories);
-
       for (const j in this.threatsList.threats[i].affectedAssetsCategories) {
         const a = this.threatsList.threats[i].affectedAssetsCategories[j];
-
-
         let indexOfLabel = -1;
-
-
         indexOfLabel = this.threatTree.findIndex(i => i.label === a);
-
 
         if (indexOfLabel === -1) {
           const array = [];
           let obj = {};
-
 
           array.push({
             'label': this.threatsList.threats[i].name, 'data': [{
@@ -1496,19 +1328,13 @@ export class ThreatsComponent implements OnInit, OnDestroy {
               'associatedVulnerabilities': this.threatsList.threats[i].associatedVulnerabilities,
               'applicablePlatform': this.threatsList.threats[i].applicablePlatform,
               'mitigations': this.threatsList.threats[i].mitigations,
-
-
               'objType': 'ThreatModel'
-
             }]
           });
           obj = {'label': a, 'data': [{'nodeType': 'Category'}], 'children': array};
 
           this.threatTree.push(obj);
-
-
         } else {
-
 
           this.threatTree[indexOfLabel].children.push({
             'label': this.threatsList.threats[i].name, 'data': [{
@@ -1536,17 +1362,12 @@ export class ThreatsComponent implements OnInit, OnDestroy {
               'associatedVulnerabilities': this.threatsList.threats[i].associatedVulnerabilities,
               'applicablePlatform': this.threatsList.threats[i].applicablePlatform,
               'mitigations': this.threatsList.threats[i].mitigations,
-
               'objType': 'ThreatModel'
             }]
           });
-
         }
-
       }
-
     }
-
   }
 
   // algorith to create the assets tree
@@ -1562,10 +1383,8 @@ export class ThreatsComponent implements OnInit, OnDestroy {
 
           org.label = this.nodes[i].name;
         }
-
         org.data = {'nodeType': 'Organization'};
         for (const j in this.nodes[i].children) {
-
           org.children.push(this.associatedProcess(this.nodes[i].children[j]));
         }
         this.files.push(org);
@@ -1748,13 +1567,9 @@ export class ThreatsComponent implements OnInit, OnDestroy {
               this.associatedVulnerabilitiesForm.push(this.modifiedVulnerabilitiesList[mod].data[0].associatedVulnerabilities[j]);
             }
           }
-
         }
-
       }
     }
-
-
   }
 
 
@@ -1771,9 +1586,6 @@ export class ThreatsComponent implements OnInit, OnDestroy {
         this.modifiedVulnerabilitiesList[old].data[0].score.score = this.threatForm.value.scoTh;
       }
     }
-
-    // this.editVulnerability();
-
     this.oldIdVul = undefined;
     this.selectedVulnerability = undefined;
 
@@ -1788,17 +1600,11 @@ export class ThreatsComponent implements OnInit, OnDestroy {
 
   // replace old vulnerabilities with the new(modified by user) in the idAssets(combination between assets and their associated vulnerabilities)
   replaceVulnerability() {
-    // console.log("replaceVulnerability");
     for (const k in this.modifiedVulnerabilitiesList) {
-
-      for (const j in this.idAssetsModified) {
-
-
-        let a = this.idAssetsModified[j].vulnerabilities.findIndex(i => i.data[0].identifier === this.modifiedVulnerabilitiesList[k].data[0].identifier);
-
+      for (const j in this.idAssets) {
+        let a = this.idAssets[j].vulnerabilities.findIndex(i => i.data[0].identifier === this.modifiedVulnerabilitiesList[k].data[0].identifier);
         if (a != -1) {
-
-          this.idAssetsModified[j].vulnerabilities[a] = this.modifiedVulnerabilitiesList[k];
+          this.idAssets[j].vulnerabilities[a] = this.modifiedVulnerabilitiesList[k];
           a = -1;
         }
       }
@@ -1840,8 +1646,6 @@ export class ThreatsComponent implements OnInit, OnDestroy {
   }
 
   closeForm() {
-    // console.log("closeForm");
-
     this.modifiedVulnerabilitiesList = JSON.parse(JSON.stringify(this.vulnerabilitiesList));
 
     this.oldIdVul = undefined;
@@ -1858,7 +1662,6 @@ export class ThreatsComponent implements OnInit, OnDestroy {
       this.vulnerabilitiesList = JSON.parse(JSON.stringify(this.modifiedVulnerabilitiesList));
     }
     this.updateThreatModel();
-    // console.log(this.threatModel)
     this.createRiskModel(this.idAssets);
   }
 
@@ -1871,22 +1674,15 @@ export class ThreatsComponent implements OnInit, OnDestroy {
       for (const j in this.riskModel.scenarios) {
 
         if ((this.riskModel.scenarios[j].vulnerabilityId === null || this.riskModel.scenarios[j].vulnerabilityId === '')) {
-         continue;
+          continue;
         }
-
         if ((idAssets[i].identifier === this.riskModel.scenarios[j].assetId)) {
-
           if ((this.riskModel.scenarios[j].threatId === null || this.riskModel.scenarios[j].threatId === '')) {
-
-            /*console.log("Selected Asset widget:")
-            console.log(idAssets[i])*/
-
             // If I'm putting some threats for the first time with the corresponding vulnerabilites
             if (idAssets[i].vulnerabilities.length != 0) {
               // The asset has some assigned threats. I need to check if these threats are compatible with the vulnerabilities of the Asset
 
               let vulnerabilityCatalogueId = '';
-
               for (const t in this.vulnerabilityModel.vulnerabilities) {
 
                 if (this.riskModel.scenarios[j].vulnerabilityId === this.vulnerabilityModel.vulnerabilities[t].identifier) {
@@ -1894,43 +1690,29 @@ export class ThreatsComponent implements OnInit, OnDestroy {
                   break;
                 }
               }
-
-              // console.log(vulnerabilityCatalogueId);
-
               if (vulnerabilityCatalogueId === '') {
-                /*console.log("Scenario with a vulnerability not in the Vulnerability Model:");
-                console.log(this.riskModel.scenarios[j].identifier);*/
                 continue;
               }
 
               for (const k in idAssets[i].vulnerabilities) {
 
                 let applicableThreat = false;
-
                 for (const f in idAssets[i].vulnerabilities[k].data[0].associatedVulnerabilities) {
 
                   if (idAssets[i].vulnerabilities[k].data[0].associatedVulnerabilities[f] === vulnerabilityCatalogueId) {
                     applicableThreat = true;
                     break;
-
                   }
                 }
 
                 if (applicableThreat) {
-
-                  /*console.log("Applicable threat");
-                  console.log(idAssets[i].vulnerabilities[k]);*/
-
                   // The old Risk Scenario (with an empty threat is not useful anymore, since I'm creating a number of Scenarios with the same vulnerability but all the selected threats
                   if (toDelete.indexOf(this.riskModel.scenarios[j].identifier) === -1) {
-                    /*console.log("To delete");
-                    console.log(this.riskModel.scenarios[j].identifier);*/
                     toDelete.push(this.riskModel.scenarios[j].identifier);
                   }
 
                   // This threat can match with the vulnerability from the RiskScenario
                   // console.log("Adding Risk Scenario");
-
                   this.riskModel.scenarios.push({
                     'objType': 'RiskModel',
                     'identifier': UUID.UUID(),
@@ -1943,13 +1725,9 @@ export class ThreatsComponent implements OnInit, OnDestroy {
                     'vulnerabilityId': this.riskModel.scenarios[j].vulnerabilityId
                   });
                 }
-
               }
             }
-
           } else {
-            /*console.log("Scenario already existing")
-            console.log(this.riskModel.scenarios[j]);*/
             let threatToKeep = false;
             for (const k in idAssets[i].vulnerabilities) {
               if (this.riskModel.scenarios[j].threatId === idAssets[i].vulnerabilities[k].data[0].identifier) {
@@ -1960,8 +1738,6 @@ export class ThreatsComponent implements OnInit, OnDestroy {
 
             if (!threatToKeep) {
               if (toDelete.indexOf(this.riskModel.scenarios[j].identifier) === -1) {
-                /*console.log("To delete");
-                console.log(this.riskModel.scenarios[j].identifier);*/
                 toDelete.push(this.riskModel.scenarios[j].identifier);
               }
             }
@@ -1976,7 +1752,6 @@ export class ThreatsComponent implements OnInit, OnDestroy {
         if (this.riskModel.scenarios[j].identifier === toDelete[t]) {
           toDeleteIndexes.push(j);
           break;
-
         }
       }
     }
@@ -1986,8 +1761,6 @@ export class ThreatsComponent implements OnInit, OnDestroy {
     }
     this.sendThreatModel();
   }
-
-  // REST
 
   checkedRepository() {
 
@@ -2035,12 +1808,7 @@ export class ThreatsComponent implements OnInit, OnDestroy {
   }
 
   showInfo(s: string) {
-    this.msgsThreats = [];
-    this.msgsThreats.push({severity: 'info', summary: 'Warning!', detail: s});
-
-    setTimeout(() => {
-      this.clearMessage();
-    }, 4000);
+    this.messageService.add({key: 'tc', severity: 'info', summary: 'Info Message', detail: s});
   }
 
   clearMessage() {
@@ -2051,8 +1819,6 @@ export class ThreatsComponent implements OnInit, OnDestroy {
 
   getVulnerabilityModel() {
 
-    // console.log("get vuln")
-
     const a = {
       'filterMap': {
         'PROCEDURE': sessionStorage.getItem('idProcedure'),
@@ -2062,7 +1828,6 @@ export class ThreatsComponent implements OnInit, OnDestroy {
 
     this.subscriptions.push(
       this.dataService.loadVulnerabilityModel(JSON.stringify(a)).subscribe((response: ModelObject) => {
-
         this.vulnerabilityModel = JSON.parse(response.jsonModel);
         this.getRiskModel();
       }));
@@ -2070,7 +1835,6 @@ export class ThreatsComponent implements OnInit, OnDestroy {
   }
 
   getRiskModelAfterUpdate() {
-
 
     const a = {
       'filterMap': {
@@ -2087,8 +1851,6 @@ export class ThreatsComponent implements OnInit, OnDestroy {
   }
 
   getRiskModel() {
-
-    // console.log("get risk")
 
     const a = {
       'filterMap': {
@@ -2113,7 +1875,6 @@ export class ThreatsComponent implements OnInit, OnDestroy {
 
   getThreatModel() {
 
-    // console.log("get threat")
     const a = {
       'filterMap': {
         'PROCEDURE': sessionStorage.getItem('idProcedure'),
@@ -2136,7 +1897,6 @@ export class ThreatsComponent implements OnInit, OnDestroy {
 
   getAsset() {
 
-    // console.log("get asset");
     this.blocked = true;
 
     const a = {
@@ -2163,8 +1923,6 @@ export class ThreatsComponent implements OnInit, OnDestroy {
 
   sendRiskModel() {
 
-    // console.log("Invoking Send Risk")
-
     let completeList = {};
 
     this.blocked = true;
@@ -2175,16 +1933,15 @@ export class ThreatsComponent implements OnInit, OnDestroy {
 
         this.blockedMessage = true;
         this.showSuccess();
-        if ((JSON.parse(JSON.stringify(response))).otherModelsStatus === 'UPDATED') {
+        debugger;
+        if (JSON.parse(response).otherModelsStatus === 'UPDATED') {
+          this.idAssets = [];
           this.canvas.clear();
           this.getAsset();
         } else {
           this.getRiskModelAfterUpdate();
         }
       }));
-
-    // console.log(this.riskModel)
-
   }
 
   sendThreatModel() {

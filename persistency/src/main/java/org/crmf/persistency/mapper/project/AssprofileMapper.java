@@ -12,9 +12,9 @@
 
 package org.crmf.persistency.mapper.project;
 
-import java.util.List;
-
 import org.crmf.persistency.domain.project.AssProfile;
+
+import java.util.List;
 
 //This interface allows the bundle to invoke the SQL methods within the AssprofileMapper.xml (via the ibatis API)
 public interface AssprofileMapper {

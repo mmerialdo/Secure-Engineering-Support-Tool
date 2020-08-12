@@ -12,22 +12,21 @@
 
 package org.crmf.persistency.mapper.requirement;
 
-import java.util.List;
-
-import org.crmf.model.requirement.ProjectRequirement;
 import org.crmf.model.requirement.Requirement;
+
+import java.util.List;
 
 public interface RequirementServiceInterface {
 
-	public void insertSysRequirement(ProjectRequirement requirement, String sysprojectIdentifier);
+  void insertSysRequirement(Requirement requirement, String sysprojectIdentifier);
 
-	public void deleteSysRequirement(Requirement requirement);
-	
-	public List<Requirement> getByIds(List<String> ids);
+  void deleteSysRequirement(Requirement requirement);
 
-	public List<Requirement> getBySysProject(String sysprojectIdentifier);
+  List<Requirement> getByIds(List<String> ids);
 
-	public List<Requirement> getBySysProjectAndFile(String sysprojectIdentifier, String filename);
-	
-	public List<String> getFilenameByProject(String sysprojectIdentifier);
+  List<Requirement> getBySysProject(String sysprojectIdentifier);
+
+  List<Requirement> getBySysProjectAndFile(String sysprojectIdentifier, String filename);
+
+  List<String> getFilenameByProject(String sysprojectIdentifier);
 }

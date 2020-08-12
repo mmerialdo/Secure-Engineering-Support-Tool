@@ -15,7 +15,6 @@ import org.crmf.model.riskassessment.SafeguardModel;
 import org.crmf.model.riskassessment.SystemProject;
 import org.crmf.model.riskassessment.ThreatModel;
 import org.crmf.model.riskassessment.VulnerabilityModel;
-import org.crmf.model.riskassessmentelements.ImpactEnum;
 import org.crmf.model.user.User;
 import org.crmf.model.utility.assetmodel.AssetModelSerializerDeserializer;
 import org.crmf.model.utility.riskmodel.RiskModelSerializerDeserializer;
@@ -23,7 +22,6 @@ import org.crmf.model.utility.risktreatmentmodel.RiskTreatmentModelSerializerDes
 import org.crmf.model.utility.safeguardmodel.SafeguardModelSerializerDeserializer;
 import org.crmf.model.utility.threatmodel.ThreatModelSerializerDeserializer;
 import org.crmf.model.utility.vulnerabilitymodel.VulnerabilityModelSerializerDeserializer;
-import org.crmf.reportgenerator.manager.ReportGeneratorLightDOCX;
 
 public class writeProcedure {
 	private static final String PREFIX = "report_";

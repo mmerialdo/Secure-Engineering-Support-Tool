@@ -12,19 +12,19 @@
 
 package org.crmf.persistency.mapper.riskassesment;
 
-import java.util.List;
-
 import org.crmf.persistency.domain.riskassesment.RiskAssesment;
+
+import java.util.List;
 
 public interface RiskAssesmentMapper {
 
-	void insertRiskAssesment(RiskAssesment riskassesment);
+  void insertRiskAssesment(RiskAssesment riskassesment);
 
-	RiskAssesment getRiskAssesmentById(Integer riskassesmentId);
+  RiskAssesment getRiskAssesmentById(Integer riskassesmentId);
 
-	List<RiskAssesment> getAllRiskAssesments();
+  List<RiskAssesment> getAllRiskAssesments();
 
-	void updatRiskAssesment(RiskAssesment riskassesment);
+  void updatRiskAssesment(RiskAssesment riskassesment);
 
-	void deleteRiskAssesment(Integer riskassesmentId);
+  void deleteRiskAssesment(Integer riskassesmentId);
 }

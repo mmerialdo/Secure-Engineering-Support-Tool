@@ -12,24 +12,18 @@
 
 package org.crmf.model.audit;
 
-import java.util.ArrayList;
-
 import org.crmf.model.general.SESTObject;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class Questionnaire extends SESTObject {
 
 	private String category;
 	private String index;
 	private QuestionnaireTypeEnum type;
-	private ArrayList<Question> questions = new ArrayList<>();
+	private List<Question> questions = new ArrayList<>();
 
-	public Questionnaire(){
-
-	}
-
-	public void finalize() throws Throwable {
-		super.finalize();
-	}
 	public String getIndex(){
 		return index;
 	}
@@ -54,11 +48,11 @@ public class Questionnaire extends SESTObject {
 		this.category = category;
 	}
 
-	public ArrayList<Question> getQuestions() {
+	public List<Question> getQuestions() {
 		return questions;
 	}
 
-	public void setQuestions(ArrayList<Question> questions) {
+	public void setQuestions(List<Question> questions) {
 		this.questions = questions;
 	}
 

@@ -12,9 +12,9 @@
 
 package org.crmf.persistency.mapper.project;
 
-import java.util.List;
-
 import org.crmf.model.riskassessment.AssessmentProcedure;
+
+import java.util.List;
 
 public interface AssprocedureServiceInterface {
 

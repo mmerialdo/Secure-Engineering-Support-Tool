@@ -12,32 +12,33 @@
 
 package org.crmf.model.riskassessmentelements;
 
-import java.util.ArrayList;
-
 import org.crmf.model.general.SESTObject;
 import org.crmf.model.requirement.SecurityRequirement;
 import org.crmf.model.riskassessment.PhaseEnum;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Threat extends SESTObject {
 
-	private ArrayList<SecondaryAssetCategoryEnum> affectedAssetsCategories;
+	private List<SecondaryAssetCategoryEnum> affectedAssetsCategories;
 	private boolean assessmentThreat;
 	private String author;
 	private boolean canBeSelected;
 	private ThreatSourceEnum catalogue;
 	private String catalogueId;
-	private ArrayList<Threat> children;
+	private List<Threat> children;
 	private String description;
 	private ElementTypeEnum elementType;
 	private String lastUpdate;
 	private String name;
 	private PhaseEnum phase;
-	private ArrayList<String> prerequisites;
+	private List<String> prerequisites;
 	private String rawText;
-	private ArrayList<String> referenceUrls;
-	private ArrayList<Threat> relatedThreats;
+	private List<String> referenceUrls;
+	private List<Threat> relatedThreats;
 	private ThreatClassEnum threatClass;
-	private ArrayList<String> associatedVulnerabilities;
+	private List<String> associatedVulnerabilities;
 	private ApplicablePlatform applicablePlatform;
 	private ThreatActor actor;
 	private ThreatEvent event;
@@ -46,8 +47,8 @@ public class Threat extends SESTObject {
 	private ThreatTime time;
 	private ThreatAccess access;
 	private ThreatProcess process;
-	private ArrayList<Mitigation> mitigations;
-	private ArrayList<SecurityRequirement> relatedSecurityRequirements;
+	private List<Mitigation> mitigations;
+	private List<SecurityRequirement> relatedSecurityRequirements;
 
 	public Threat(){
 		affectedAssetsCategories = new ArrayList<SecondaryAssetCategoryEnum>();
@@ -58,11 +59,6 @@ public class Threat extends SESTObject {
 		children = new ArrayList<Threat>();
 		relatedSecurityRequirements = new ArrayList<SecurityRequirement>();
 	}
-
-	public void finalize() throws Throwable {
-		super.finalize();
-	}
-	
 
 	public boolean isAssessmentThreat() {
 		return assessmentThreat;
@@ -88,11 +84,11 @@ public class Threat extends SESTObject {
 		this.catalogueId = catalogueId;
 	}
 
-	public ArrayList<Threat> getChildren() {
+	public List<Threat> getChildren() {
 		return children;
 	}
 
-	public void setChildren(ArrayList<Threat> children) {
+	public void setChildren(List<Threat> children) {
 		this.children = children;
 	}
 
@@ -136,11 +132,11 @@ public class Threat extends SESTObject {
 		this.phase = phase;
 	}
 
-	public ArrayList<String> getPrerequisites() {
+	public List<String> getPrerequisites() {
 		return prerequisites;
 	}
 
-	public void setPrerequisites(ArrayList<String> prerequisites) {
+	public void setPrerequisites(List<String> prerequisites) {
 		this.prerequisites = prerequisites;
 	}
 
@@ -152,19 +148,19 @@ public class Threat extends SESTObject {
 		this.rawText = rawText;
 	}
 
-	public ArrayList<String> getReferenceUrls() {
+	public List<String> getReferenceUrls() {
 		return referenceUrls;
 	}
 
-	public void setReferenceUrls(ArrayList<String> referenceUrls) {
+	public void setReferenceUrls(List<String> referenceUrls) {
 		this.referenceUrls = referenceUrls;
 	}
 
-	public ArrayList<Threat> getRelatedThreats() {
+	public List<Threat> getRelatedThreats() {
 		return relatedThreats;
 	}
 
-	public void setRelatedThreats(ArrayList<Threat> relatedThreats) {
+	public void setRelatedThreats(List<Threat> relatedThreats) {
 		this.relatedThreats = relatedThreats;
 	}
 
@@ -176,11 +172,11 @@ public class Threat extends SESTObject {
 		this.threatClass = threatClass;
 	}
 
-	public ArrayList<String> getAssociatedVulnerabilities() {
+	public List<String> getAssociatedVulnerabilities() {
 		return associatedVulnerabilities;
 	}
 
-	public void setAssociatedVulnerabilities(ArrayList<String> associatedVulnerabilities) {
+	public void setAssociatedVulnerabilities(List<String> associatedVulnerabilities) {
 		this.associatedVulnerabilities = associatedVulnerabilities;
 	}
 
@@ -201,19 +197,19 @@ public class Threat extends SESTObject {
 		this.score = score;
 	}
 
-	public ArrayList<Mitigation> getMitigations() {
+	public List<Mitigation> getMitigations() {
 		return mitigations;
 	}
 
-	public void setMitigations(ArrayList<Mitigation> mitigations) {
+	public void setMitigations(List<Mitigation> mitigations) {
 		this.mitigations = mitigations;
 	}
 
-	public ArrayList<SecondaryAssetCategoryEnum> getAffectedAssetsCategories() {
+	public List<SecondaryAssetCategoryEnum> getAffectedAssetsCategories() {
 		return affectedAssetsCategories;
 	}
 
-	public void setAffectedAssetsCategories(ArrayList<SecondaryAssetCategoryEnum> affectedAssetsCategories) {
+	public void setAffectedAssetsCategories(List<SecondaryAssetCategoryEnum> affectedAssetsCategories) {
 		this.affectedAssetsCategories = affectedAssetsCategories;
 	}
 
@@ -273,11 +269,11 @@ public class Threat extends SESTObject {
 		this.canBeSelected = canBeSelected;
 	}
 
-	public ArrayList<SecurityRequirement> getRelatedSecurityRequirements() {
+	public List<SecurityRequirement> getRelatedSecurityRequirements() {
 		return relatedSecurityRequirements;
 	}
 
-	public void setRelatedSecurityRequirements(ArrayList<SecurityRequirement> relatedSecurityRequirements) {
+	public void setRelatedSecurityRequirements(List<SecurityRequirement> relatedSecurityRequirements) {
 		this.relatedSecurityRequirements = relatedSecurityRequirements;
 	}
 

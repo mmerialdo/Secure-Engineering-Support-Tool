@@ -16,15 +16,6 @@ public class UserSession {
 
 	private String expirationTime;
 
-	public UserSession(){
-
-	}
-
-	public void finalize()
-	  throws Throwable{
-
-	}
-
 	public String getExpirationTime(){
 		return expirationTime;
 	}

@@ -12,13 +12,6 @@
 
 package org.crmf.model.utility.commonserialization;
 
-import java.lang.reflect.Type;
-import java.util.ArrayList;
-
-import org.crmf.model.riskassessmentelements.ImpactEnum;
-import org.crmf.model.riskassessmentelements.SecurityImpact;
-import org.crmf.model.riskassessmentelements.SecurityImpactScopeEnum;
-
 import com.google.gson.JsonArray;
 import com.google.gson.JsonDeserializationContext;
 import com.google.gson.JsonDeserializer;
@@ -27,17 +20,27 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
 import com.google.gson.JsonSerializationContext;
 import com.google.gson.JsonSerializer;
+import org.crmf.model.riskassessmentelements.ImpactEnum;
+import org.crmf.model.riskassessmentelements.SecurityImpact;
+import org.crmf.model.riskassessmentelements.SecurityImpactScopeEnum;
+
+import java.lang.reflect.Type;
+import java.util.ArrayList;
 
 //This class manages the serialization/deserialization of SecurityImpact classes
 public class SecurityImpactInstanceCreator implements JsonDeserializer<SecurityImpact> , JsonSerializer<SecurityImpact> {
-	
+
+	public static final String IMPACT = "impact";
+	public static final String SCOPE = "scope";
+	public static final String TECNICAL_IMPACTS = "tecnicalImpacts";
+
 	@Override
 	public JsonElement serialize(SecurityImpact securityImpact, Type arg1, JsonSerializationContext context) {
 		
 		JsonObject jsonObject = new JsonObject();
 		
-		jsonObject.addProperty("impact", securityImpact.getImpact().toString());
-		jsonObject.addProperty("scope", securityImpact.getScope().toString());
+		jsonObject.addProperty(IMPACT, securityImpact.getImpact().toString());
+		jsonObject.addProperty(SCOPE, securityImpact.getScope().toString());
 		
         JsonArray technicalImpacts = new JsonArray();
 		
@@ -46,7 +49,7 @@ public class SecurityImpactInstanceCreator implements JsonDeserializer<SecurityI
         	technicalImpacts.add(item);
 		});
 	
-        jsonObject.add("tecnicalImpacts", technicalImpacts);
+        jsonObject.add(TECNICAL_IMPACTS, technicalImpacts);
 		
 		return jsonObject;
 	}
@@ -57,10 +60,10 @@ public class SecurityImpactInstanceCreator implements JsonDeserializer<SecurityI
 		JsonObject jsonObject = json.getAsJsonObject();
 
 		SecurityImpact securityImpact = new SecurityImpact();
-		securityImpact.setTechnicalImpacts(new ArrayList<String>());
+		securityImpact.setTechnicalImpacts(new ArrayList<>());
 
-		if (!jsonObject.get("impact").isJsonNull()) {
-			String impact = jsonObject.get("impact").getAsString();
+		if (!jsonObject.get(IMPACT).isJsonNull()) {
+			String impact = jsonObject.get(IMPACT).getAsString();
 
 			if (impact.equals("")) {
 				securityImpact.setImpact(ImpactEnum.LOW);
@@ -77,8 +80,8 @@ public class SecurityImpactInstanceCreator implements JsonDeserializer<SecurityI
 			securityImpact.setImpact(ImpactEnum.LOW);
 		}
 
-		if (!jsonObject.get("scope").isJsonNull()) {
-			String scope = jsonObject.get("scope").getAsString();
+		if (!jsonObject.get(SCOPE).isJsonNull()) {
+			String scope = jsonObject.get(SCOPE).getAsString();
 
 			if (scope.equals("")) {
 				securityImpact.setScope(SecurityImpactScopeEnum.Other);
@@ -107,8 +110,8 @@ public class SecurityImpactInstanceCreator implements JsonDeserializer<SecurityI
 			securityImpact.setScope(SecurityImpactScopeEnum.Other);
 		}
 
-		if (!jsonObject.get("tecnicalImpacts").isJsonNull()) {
-			JsonArray technicalImpacts = jsonObject.get("tecnicalImpacts").getAsJsonArray();
+		if (!jsonObject.get(TECNICAL_IMPACTS).isJsonNull()) {
+			JsonArray technicalImpacts = jsonObject.get(TECNICAL_IMPACTS).getAsJsonArray();
 
 			technicalImpacts.forEach(item -> {
 				String technicalImpact = item.getAsString();

@@ -12,10 +12,10 @@
 
 package org.crmf.model.riskassessment;
 
-import java.util.ArrayList;
-
 import org.crmf.model.general.SESTObject;
 import org.crmf.model.riskassessmentelements.Safeguard;
+
+import java.util.ArrayList;
 
 public class SafeguardModel extends SESTObject {
 
@@ -27,9 +27,6 @@ public class SafeguardModel extends SESTObject {
 		safeguards = new ArrayList<>();
 	}
 
-	public void finalize() throws Throwable {
-		super.finalize();
-	}
 	public String getUpdateTime(){
 		return updateTime;
 	}

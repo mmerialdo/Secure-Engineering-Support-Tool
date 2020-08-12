@@ -18,7 +18,7 @@
 
         <div class="row">
           <div class="col-lg-12">
-            <h5><b>Name*</b></h5>
+            <h5><strong>Name*</strong></h5>
             <textarea rows="3" cols="22" pInputTextarea formControlName="name"></textarea>
             <control-messages [control]="form.controls.name"></control-messages>
           </div>
@@ -26,7 +26,7 @@
 
         <div class="row">
           <div class="col-lg-12">
-            <h5><b>Description* <i class="fa fa-info-circle" pTooltip="Fill the elements below in order to have the description"></i></b></h5>
+            <h5><strong>Description* <i class="fa fa-info-circle" pTooltip="Fill the elements below in order to have the description"></i></strong></h5>
             <textarea rows="3" cols="22" pInputTextarea formControlName="description"></textarea>
             <control-messages [control]="form.controls.description"></control-messages>
           </div>
@@ -78,25 +78,25 @@
   <div class="row">
     <div class="col-lg-6" [formGroup]="form.get('event')">
       <div class="col-lg-5">
-        <h5><b>Name*</b></h5>
+        <h5><strong>Name*</strong></h5>
         <p-autoComplete formControlName="name" [inputStyle]="{'width':'100%'}" [suggestions]="filteredEvents"
                         (completeMethod)="filterEvents($event)" (onSelect)="selectEventDescription($event)" (onKeyUp)="selectEvent($event)"></p-autoComplete>
         <control-messages [control]="form.get('event.name')"></control-messages>
       </div>
       <div class="col-lg-7">
-        <h5><b>Description*</b></h5>
+        <h5><strong>Description*</strong></h5>
         <textarea rows="2" cols="20" pInputTextarea formControlName="description" (keyup)="createCatalogueIdandDescription()"></textarea>
         <control-messages [control]="form.get('event.description')"></control-messages>
       </div>
     </div>
     <div class="col-lg-6" [formGroup]="form.get('actor')">
       <div class="col-lg-5">
-        <h5><b>Name</b></h5>
+        <h5><strong>Name</strong></h5>
         <p-autoComplete formControlName="name" [inputStyle]="{'width':'100%'}" [suggestions]="filteredActors"
                         (completeMethod)="filterActors($event)" (onSelect)="selectActorDescription($event)" (onKeyUp)="selectActor($event)"></p-autoComplete>
       </div>
       <div class="col-lg-7">
-        <h5><b>Description</b></h5>
+        <h5><strong>Description</strong></h5>
         <textarea rows="2" cols="20" pInputTextarea formControlName="description" (keyup)="createCatalogueIdandDescription()"></textarea>
       </div>
     </div>
@@ -114,23 +114,23 @@
   <div class="row">
     <div class="col-lg-6" [formGroup]="form.get('process')">
       <div class="col-lg-5">
-        <h5><b>Name</b></h5>
+        <h5><strong>Name</strong></h5>
         <p-autoComplete formControlName="name" [inputStyle]="{'width':'100%'}" [suggestions]="filteredProcesses"
                         (completeMethod)="filterProcesses($event)" (onSelect)="selectProcessDescription($event)" (onKeyUp)="selectProcess($event)"></p-autoComplete>
       </div>
       <div class="col-lg-7">
-        <h5><b>Description</b></h5>
+        <h5><strong>Description</strong></h5>
         <textarea rows="2" cols="20" pInputTextarea formControlName="description" (keyup)="createCatalogueIdandDescription()"></textarea>
       </div>
     </div>
     <div class="col-lg-6" [formGroup]="form.get('access')">
       <div class="col-lg-5">
-        <h5><b>Name</b></h5>
+        <h5><strong>Name</strong></h5>
         <p-autoComplete formControlName="name" [inputStyle]="{'width':'100%'}" [suggestions]="filteredAccesses"
                         (completeMethod)="filterAccesses($event)" (onSelect)="selectAccessDescription($event)" (onKeyUp)="selectAccess($event)"></p-autoComplete>
       </div>
       <div class="col-lg-7">
-        <h5><b>Description</b></h5>
+        <h5><strong>Description</strong></h5>
         <textarea rows="2" cols="20" pInputTextarea formControlName="description" (keyup)="createCatalogueIdandDescription()"></textarea>
       </div>
     </div>
@@ -148,23 +148,23 @@
   <div class="row" style="margin-bottom: 5px">
     <div class="col-lg-6" [formGroup]="form.get('place')">
       <div class="col-lg-5">
-        <h5><b>Name</b></h5>
+        <h5><strong>Name</strong></h5>
         <p-autoComplete formControlName="name" [inputStyle]="{'width':'100%'}" [suggestions]="filteredPlaces"
                         (completeMethod)="filterPlaces($event)" (onSelect)="selectPlaceDescription($event)" (onKeyUp)="selectPlace($event)"></p-autoComplete>
       </div>
       <div class="col-lg-7">
-        <h5><b>Description</b></h5>
+        <h5><strong>Description</strong></h5>
         <textarea rows="2" cols="20" pInputTextarea formControlName="description" (keyup)="createCatalogueIdandDescription()"></textarea>
       </div>
     </div>
     <div class="col-lg-6" [formGroup]="form.get('time')">
       <div class="col-lg-5">
-        <h5><b>Name</b></h5>
+        <h5><strong>Name</strong></h5>
         <p-autoComplete formControlName="name" [inputStyle]="{'width':'100%'}" [suggestions]="filteredTimes"
                         (completeMethod)="filterTimes($event)" (onSelect)="selectTimeDescription($event)" (onKeyUp)="selectTime($event)"></p-autoComplete>
       </div>
       <div class="col-lg-7">
-        <h5><b>Description</b></h5>
+        <h5><strong>Description</strong></h5>
         <textarea rows="2" cols="20" pInputTextarea formControlName="description" (keyup)="createCatalogueIdandDescription()"></textarea>
       </div>
     </div>

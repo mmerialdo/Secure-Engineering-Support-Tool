@@ -20,21 +20,21 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 //This class represents the entry point of the OSGi bundle
 public class RiskModelMain {
 
-	private static final Logger LOG = LoggerFactory.getLogger(RiskModelMain.class.getName());
-	
-	public static void main(String[] args) {
+  private static final Logger LOG = LoggerFactory.getLogger(RiskModelMain.class.getName());
 
-		ApplicationContext context = new ClassPathXmlApplicationContext("config_spring.xml");
-		
-		while(!Thread.currentThread().isInterrupted()){
-			try {
-				Thread.sleep(10000);
-			} catch (InterruptedException e) {
-				Thread.currentThread().interrupt();
-				LOG.info("InterruptedException");
-			}
-		}
-		((ClassPathXmlApplicationContext)context).close();
-	}
+  public static void main(String[] args) {
+
+    ApplicationContext context = new ClassPathXmlApplicationContext("config_spring.xml");
+
+    while (!Thread.currentThread().isInterrupted()) {
+      try {
+        Thread.sleep(10000);
+      } catch (InterruptedException e) {
+        Thread.currentThread().interrupt();
+        LOG.info("InterruptedException");
+      }
+    }
+    ((ClassPathXmlApplicationContext) context).close();
+  }
 
 }

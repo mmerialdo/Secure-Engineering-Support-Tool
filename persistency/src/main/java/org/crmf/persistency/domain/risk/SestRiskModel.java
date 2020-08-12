@@ -19,45 +19,45 @@ import org.slf4j.LoggerFactory;
 
 public class SestRiskModel {
 
-	private static final Logger LOG = LoggerFactory.getLogger(SestRiskModel.class.getName());
-	private Integer id;
-	private String sestobjId;
-	private String riskModelJson;
+  private static final Logger LOG = LoggerFactory.getLogger(SestRiskModel.class.getName());
+  private Integer id;
+  private String sestobjId;
+  private String riskModelJson;
 
-	public Integer getId() {
-		return id;
-	}
+  public Integer getId() {
+    return id;
+  }
 
-	public void setId(Integer id) {
-		this.id = id;
-	}
+  public void setId(Integer id) {
+    this.id = id;
+  }
 
-	public String getSestobjId() {
-		return sestobjId;
-	}
+  public String getSestobjId() {
+    return sestobjId;
+  }
 
-	public void setSestobjId(String sestobjId) {
-		this.sestobjId = sestobjId;
-	}
+  public void setSestobjId(String sestobjId) {
+    this.sestobjId = sestobjId;
+  }
 
-	public String getRiskModelJson() {
-		return riskModelJson;
-	}
+  public String getRiskModelJson() {
+    return riskModelJson;
+  }
 
-	public void setRiskModelJson(String riskModelJson) {
-		this.riskModelJson = riskModelJson;
-	}
+  public void setRiskModelJson(String riskModelJson) {
+    this.riskModelJson = riskModelJson;
+  }
 
-	public RiskModel convertToModel() {
-		LOG.info("SestRiskModel convertToModel");
-		try {
-			RiskModelSerializerDeserializer riskModelDeserializer = new RiskModelSerializerDeserializer();
+  public RiskModel convertToModel() {
+    LOG.info("SestRiskModel convertToModel");
+    try {
+      RiskModelSerializerDeserializer riskModelDeserializer = new RiskModelSerializerDeserializer();
 
-			return riskModelDeserializer.getRMFromJSONString(this.getRiskModelJson());
-		} catch (Exception ex) {
-			LOG.error("Unable to deserialize risk model!!! "+this.getSestobjId(), ex);
-			return null;
-		}
-	}
+      return riskModelDeserializer.getRMFromJSONString(this.getRiskModelJson());
+    } catch (Exception ex) {
+      LOG.error("Unable to deserialize risk model!!! " + this.getSestobjId(), ex);
+      return null;
+    }
+  }
 
 }

@@ -13,16 +13,14 @@
 package org.crmf.persistency.mapper.audit;
 
 import org.apache.ibatis.session.SqlSession;
-import org.crmf.model.audit.Question;
-import org.crmf.model.general.SESTObjectTypeEnum;
 import org.crmf.model.audit.SestQuestionnaireModel;
+import org.crmf.model.general.SESTObjectTypeEnum;
 import org.crmf.persistency.domain.general.Sestobj;
 import org.crmf.persistency.mapper.general.SestobjMapper;
 import org.crmf.persistency.session.PersistencySessionFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.util.ArrayList;
 import java.util.List;
 
 //This class manages the database interactions related to the QuestionnaireJSON

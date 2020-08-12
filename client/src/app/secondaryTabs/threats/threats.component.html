@@ -17,7 +17,7 @@
         <button style="margin-top: 5px;border: 1px solid " type="button" class="btn btn-secondary btn-xs"
                 (click)="editThreat()"
                 [disabled]="!enableSaveButton || !thereAreChanges || !isLockedByCurrentUser()">
-          <b>Save Threat Model</b>
+          <strong>Save Threat Model</strong>
         </button>
         <hr>
 
@@ -27,7 +27,7 @@
         <div style="margin-top: 10px;margin-bottom: 5px">
           <button style="border:1px solid" type="button" class="btn btn-secondary btn-xs"
                   [disabled]="selectedFiles.length===0 " (click)="addAssets()">
-            <b>Select Assets</b>
+            <strong>Select Assets</strong>
           </button>
         </div>
 
@@ -120,7 +120,7 @@
               <button style="border:1px solid" type="button" class="btn btn-secondary btn-xs"
                       [disabled]="selectedAsset === undefined || selectedThreatArray.length === 0"
                       (click)="addThreats()">
-                <b>Select Threats</b>
+                <strong>Select Threats</strong>
               </button>
             </div>
           </div>
@@ -230,7 +230,7 @@
 
             <button style="border:1px solid" type="button" (click)="displayThreatInformation=true"
                     class="btn btn-secondary btn-xs">
-              <b>Further Information</b>
+              <strong>Further Information</strong>
             </button>
           </div>
         </div>
@@ -533,7 +533,7 @@
       <button style="margin-bottom: 5px; margin-top: 5px;border: 1px solid " type="button"
               class="btn btn-secondary btn-xs" [disabled]="selectedVulnerability === undefined"
               (click)="deleteVulnerability(selectedVulnerability)">
-        <b>Remove Threat</b>
+        <strong>Remove Threat</strong>
       </button>
 
     </div>

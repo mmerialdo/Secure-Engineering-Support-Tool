@@ -12,11 +12,6 @@
 
 package org.crmf.model.utility.assetmodel;
 
-import java.lang.reflect.Type;
-
-import org.crmf.model.riskassessmentelements.NodeTypeEnum;
-import org.crmf.model.riskassessmentelements.Organization;
-
 import com.google.gson.JsonDeserializationContext;
 import com.google.gson.JsonDeserializer;
 import com.google.gson.JsonElement;
@@ -24,27 +19,28 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
 import com.google.gson.JsonSerializationContext;
 import com.google.gson.JsonSerializer;
+import org.crmf.model.riskassessmentelements.NodeTypeEnum;
+import org.crmf.model.riskassessmentelements.Organization;
+
+import java.lang.reflect.Type;
 
 //This class manages the deserialization of Organization classes
-class OrganizationInstanceCreator implements JsonDeserializer<Organization> , JsonSerializer<Organization> {
-	
-	@Override
-	public JsonElement serialize(Organization organization, Type arg1, JsonSerializationContext context) {
-		
-		JsonObject jsonObject = new JsonObject();
-		
-		
-		
-		return jsonObject;
-	}
+class OrganizationInstanceCreator implements JsonDeserializer<Organization>, JsonSerializer<Organization> {
 
-	@Override
-	public Organization deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context)
-			throws JsonParseException {
-		Organization organization = new Organization();
-		organization.setNodeType(NodeTypeEnum.Organization);
+  @Override
+  public JsonElement serialize(Organization organization, Type arg1, JsonSerializationContext context) {
+    JsonObject jsonObject = new JsonObject();
 
-		return organization;
-	}
+    return jsonObject;
+  }
+
+  @Override
+  public Organization deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context)
+    throws JsonParseException {
+    Organization organization = new Organization();
+    organization.setNodeType(NodeTypeEnum.Organization);
+
+    return organization;
+  }
 
 }

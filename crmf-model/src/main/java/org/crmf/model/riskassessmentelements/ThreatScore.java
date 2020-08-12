@@ -20,14 +20,6 @@ public class ThreatScore {
 	private ThreatScoreEnum score;
 	private ArrayList<SecurityImpact> securityImpacts;
 
-	public ThreatScore(){
-
-	}
-
-	public void finalize() throws Throwable {
-
-	}
-	
 	public LikelihoodEnum getLikelihood() {
 		return likelihood;
 	}

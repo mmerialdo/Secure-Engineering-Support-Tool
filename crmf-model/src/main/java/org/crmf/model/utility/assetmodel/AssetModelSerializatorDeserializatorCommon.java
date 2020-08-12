@@ -16,42 +16,54 @@ import org.crmf.model.general.SESTObjectTypeEnum;
 
 public class AssetModelSerializatorDeserializatorCommon {
 
-	    //This method returns the SESTObjectTypeEnum corresponding to the String in the argument 
+	public static final String USER = "User";
+	public static final String ASSESSMENT_PROFILE = "AssessmentProfile";
+	public static final String THREAT_MODEL = "ThreatModel";
+	public static final String SAFEGUARD_MODEL = "SafeguardModel";
+	public static final String ASSESSMENT_PROJECT = "AssessmentProject";
+	public static final String RISK_MODEL = "RiskModel";
+	public static final String RISK_TREATMENT_MODEL = "RiskTreatmentModel";
+	public static final String AUDIT = "Audit";
+	public static final String ASSET_MODEL = "AssetModel";
+	public static final String VULNERABILITY_MODEL = "VulnerabilityModel";
+	public static final String ASSESSMENT_TEMPLATE = "AssessmentTemplate";
+
+	//This method returns the SESTObjectTypeEnum corresponding to the String in the argument
 		public static SESTObjectTypeEnum getSESTObjecType(String objTypeString){
 			if(objTypeString.equals("")){
 				return SESTObjectTypeEnum.AssetModel;
 			}
-			else if(objTypeString.equals("User")){
+			else if(objTypeString.equals(USER)){
 				return SESTObjectTypeEnum.User;
 			}
-			else if(objTypeString.equals("AssessmentProfile")){
+			else if(objTypeString.equals(ASSESSMENT_PROFILE)){
 				return SESTObjectTypeEnum.AssessmentProfile;
 			}
-			else if(objTypeString.equals("ThreatModel")){
+			else if(objTypeString.equals(THREAT_MODEL)){
 				return SESTObjectTypeEnum.ThreatModel;
 			}
-			else if(objTypeString.equals("SafeguardModel")){
+			else if(objTypeString.equals(SAFEGUARD_MODEL)){
 				return SESTObjectTypeEnum.SafeguardModel;
 			}
-			else if(objTypeString.equals("AssessmentProject")){
+			else if(objTypeString.equals(ASSESSMENT_PROJECT)){
 				return SESTObjectTypeEnum.AssessmentProject;
 			}
-			else if(objTypeString.equals("RiskModel")){
+			else if(objTypeString.equals(RISK_MODEL)){
 				return SESTObjectTypeEnum.RiskModel;
 			}
-			else if(objTypeString.equals("RiskTreatmentModel")){
+			else if(objTypeString.equals(RISK_TREATMENT_MODEL)){
 				return SESTObjectTypeEnum.RiskTreatmentModel;
 			}
-			else if(objTypeString.equals("Audit")){
+			else if(objTypeString.equals(AUDIT)){
 				return SESTObjectTypeEnum.Audit;
 			}
-			if(objTypeString.equals("AssetModel")){
+			if(objTypeString.equals(ASSET_MODEL)){
 				return SESTObjectTypeEnum.AssetModel;
 			}
-			else if(objTypeString.equals("VulnerabilityModel")){
+			else if(objTypeString.equals(VULNERABILITY_MODEL)){
 				return SESTObjectTypeEnum.VulnerabilityModel;
 			}
-			else if(objTypeString.equals("AssessmentTemplate")){
+			else if(objTypeString.equals(ASSESSMENT_TEMPLATE)){
 				return SESTObjectTypeEnum.AssessmentTemplate;
 			}
 			else{

@@ -35,7 +35,7 @@
 
         <div class="row">
           <div class="col-lg-12">
-            <h5><b>Damage*</b></h5>
+            <h5><strong>Damage*</strong></h5>
             <textarea rows="4" cols="22" pInputTextarea formControlName="description"></textarea>
             <control-messages [control]="form.controls.description"></control-messages>
           </div>
@@ -88,7 +88,7 @@
 
     <div class="row" [formGroup]="form.get('score')">
       <div class="col-lg-12" >
-        <h5><b>Description*</b></h5>
+        <h5><strong>Description*</strong></h5>
         <textarea rows="5" cols="84" formControlName="description" pInputTextarea ></textarea>
         <control-messages [control]="form.get('score.description')"></control-messages>
       </div>

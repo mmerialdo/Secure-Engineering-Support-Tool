@@ -12,15 +12,15 @@
 
 package org.crmf.proxy.core.riskassessment.project.rest;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.crmf.core.riskassessment.project.manager.AssessmentProcedureInputInterface;
 import org.crmf.model.riskassessment.AssessmentProcedure;
 import org.crmf.model.riskassessment.AssessmentProject;
 import org.crmf.model.utility.GenericFilter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import java.util.ArrayList;
+import java.util.List;
 
 //This class manages the business logic behind the webservices related to the AssessmentProcedures management
 public class AssessmentProcedureRestServer
@@ -32,7 +32,7 @@ public class AssessmentProcedureRestServer
   @Override
   public String createAssessmentProcedure(AssessmentProject procedurePrj) throws Exception {
     try {
-      LOG.info("createAssessmentProcedure, procedure with name " + procedurePrj.getProcedures().get(0),
+      LOG.info("createAssessmentProcedure, procedure with name {}", procedurePrj.getProcedures().get(0),
         procedurePrj.getName());
 
       String result = procedureInput.createAssessmentProcedure(procedurePrj.getProcedures().get(0),
@@ -51,7 +51,7 @@ public class AssessmentProcedureRestServer
   @Override
   public void editAssessmentProcedure(AssessmentProcedure procedure) throws Exception {
     try {
-      LOG.info("editAssessmentProject, project with name " + procedure.getName());
+      LOG.info("editAssessmentProject, project with name {}", procedure.getName());
 
       procedureInput.editAssessmentProcedure(procedure);
     } catch (Exception e) {
@@ -63,7 +63,7 @@ public class AssessmentProcedureRestServer
   @Override
   public String deleteAssessmentProcedure(String identifier) throws Exception {
     try {
-      LOG.info("deleteAssessmentProcedure, procedure with identifier " + identifier);
+      LOG.info("deleteAssessmentProcedure, procedure with identifier {}", identifier);
 
       procedureInput.deleteAssessmentProcedure(identifier);
 
@@ -89,12 +89,12 @@ public class AssessmentProcedureRestServer
 
   @Override
   public List<String> loadAssessmentProcedure(GenericFilter filter) throws Exception {
-    List<String> jsonProcedures = new ArrayList<String>();
+    List<String> jsonProcedures = new ArrayList<>();
 
-    LOG.info("loadAssessmentProcedure " + filter);
+    LOG.info("loadAssessmentProcedure {}", filter);
     try {
       List<AssessmentProcedure> procedures = procedureInput.loadAssessmentProcedure(filter);
-      LOG.info("loadAssessmentProcedure procedures size: " + procedures.size());
+      LOG.info("loadAssessmentProcedure procedures size: {}", procedures.size());
 
       if (procedures != null) {
         for (AssessmentProcedure p : procedures)

@@ -12,14 +12,9 @@
 
 package org.crmf.riskmodel.manager;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.UUID;
-
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonObject;
 import org.crmf.model.general.SESTObjectTypeEnum;
 import org.crmf.model.requirement.SecurityRequirement;
 import org.crmf.model.riskassessment.AssessmentProcedure;
@@ -31,7 +26,6 @@ import org.crmf.model.riskassessment.ThreatModel;
 import org.crmf.model.riskassessment.VulnerabilityModel;
 import org.crmf.model.riskassessmentelements.Asset;
 import org.crmf.model.riskassessmentelements.Consequence;
-import org.crmf.model.riskassessmentelements.GeneralScore;
 import org.crmf.model.riskassessmentelements.ImpactEnum;
 import org.crmf.model.riskassessmentelements.LikelihoodEnum;
 import org.crmf.model.riskassessmentelements.RiskScenario;
@@ -56,7 +50,6 @@ import org.crmf.persistency.domain.risk.SeriousnessScale;
 import org.crmf.persistency.domain.risk.StatusImpactScale;
 import org.crmf.persistency.domain.risk.StatusLikelihoodScale;
 import org.crmf.persistency.mapper.asset.AssetServiceInterface;
-import org.crmf.persistency.mapper.general.SestObjService;
 import org.crmf.persistency.mapper.general.SestObjServiceInterface;
 import org.crmf.persistency.mapper.project.AssprocedureServiceInterface;
 import org.crmf.persistency.mapper.project.AssprojectServiceInterface;
@@ -69,14 +62,19 @@ import org.crmf.riskmodel.utility.SecurityMeasuresInterpreter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonObject;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+import java.util.UUID;
 
 //The sest-risk-model bundle holds the business logic related to the management of the risk assessment analysis and treatment. It is separated from the sest-core bundle in order to concentrate here
 //the risk assessment logic which may depend on the selected risk assessment methodology
 public class RiskModelManagerInput implements RiskModelManagerInputInterface {
   private static final Logger LOG = LoggerFactory.getLogger(RiskModelManagerInput.class.getName());
+  public static final String DD_MM_YYYY_HH_MM = "dd/MM/yyyy HH:mm";
 
   private AssprocedureServiceInterface assprocedureService;
   private AssprojectServiceInterface assprojectService;
@@ -992,7 +990,7 @@ public class RiskModelManagerInput implements RiskModelManagerInputInterface {
 
   private void saveModels(AssessmentProcedure procedure) {
     LOG.info("RiskModelManagerInput saveModels");
-    DateFormat df = new SimpleDateFormat("dd/MM/yyyy HH:mm");
+    DateFormat df = new SimpleDateFormat(DD_MM_YYYY_HH_MM);
     Date now = new Date();
 
     procedure.getRiskModel().setUpdateTime(df.format(now));
@@ -1135,7 +1133,7 @@ public class RiskModelManagerInput implements RiskModelManagerInputInterface {
 
         //This should not happen
         if (treatment.getCurrentSeriousness().getScore() < treatment.getResultingSeriousness().getScore()) {
-          LOG.error("harmonizeRiskTreatmentModel RiskTreatment with identifier: " + treatment.getIdentifier() + " with CurrentSeriousness < than ResultingSeriousness. This should not happen here");
+          LOG.error("harmonizeRiskTreatmentModel RiskTreatment with identifier: {} with CurrentSeriousness < than ResultingSeriousness. This should not happen here", treatment.getIdentifier());
           modelsRiskTreatmentUpdated = true;
           treatment.setResultingSeriousness(treatment.getCurrentSeriousness());
         }
@@ -1144,7 +1142,7 @@ public class RiskModelManagerInput implements RiskModelManagerInputInterface {
         if (!scenario.isExcluded() && scenario.getScenarioResult().equals(ScenarioResultEnum.Reduce) && !scenario.getAssetId().equals("") &&
           !scenario.getVulnerabilityId().equals("") && !scenario.getThreatId().equals("")) {
 
-          LOG.error("harmonizeRiskTreatmentModel RiskScenario with identifier: " + scenario.getIdentifier() + " not existing in RiskTreatmentModel. This should not happen here");
+          LOG.error("harmonizeRiskTreatmentModel RiskScenario with identifier: {} not existing in RiskTreatmentModel. This should not happen here ", scenario.getIdentifier());
 
         }
       }
@@ -1187,7 +1185,7 @@ public class RiskModelManagerInput implements RiskModelManagerInputInterface {
         getSecurityRequirementsHashMap(securityRequirementMap,
           innerSecurityRequirement);
       }
-      LOG.info("resultingSecurityRequirementMap size " + securityRequirementMap.size());
+      LOG.info("resultingSecurityRequirementMap size {} ", securityRequirementMap.size());
     }
   }
 
@@ -1199,7 +1197,7 @@ public class RiskModelManagerInput implements RiskModelManagerInputInterface {
       SecurityRequirement requirement = securityRequirementMap.get(innerRequirement.getIdentifier());
 
       if (requirement == null) {
-        LOG.error("Client resulting requirement not existing. SecurityRequirement with identifier: " + innerRequirement.getIdentifier());
+        LOG.error("Client resulting requirement not existing. SecurityRequirement with identifier: {} ", innerRequirement.getIdentifier());
         continue;
       }
 
@@ -1233,7 +1231,7 @@ public class RiskModelManagerInput implements RiskModelManagerInputInterface {
       Safeguard safeguard = safeguardMap.get(resultingSafeguard.getIdentifier());
 
       if (safeguard == null) {
-        LOG.error("Resulting Safeguard with identifier " + resultingSafeguard.getIdentifier() + " not existing in SafeguardModel");
+        LOG.error("Resulting Safeguard with identifier {} not existing in SafeguardModel" + resultingSafeguard.getIdentifier());
         continue;
       }
 
@@ -1247,7 +1245,7 @@ public class RiskModelManagerInput implements RiskModelManagerInputInterface {
         SecurityRequirement requirement = securityRequirementMap.get(resultingRequirement.getIdentifier());
 
         if (requirement == null) {
-          LOG.error("Client resulting requirement not existing. SecurityRequirement with identifier: " + resultingRequirement.getIdentifier());
+          LOG.error("Client resulting requirement not existing. SecurityRequirement with identifier: {} ", resultingRequirement.getIdentifier());
           continue;
         }
 
@@ -1378,7 +1376,7 @@ public class RiskModelManagerInput implements RiskModelManagerInputInterface {
     //This method checks and assigns Safeguard Ids to the proper scenario (palliation etc computation will be done in the completeRiskModel method)
     for (RiskScenario scenario : risks.getScenarios()) {
       if (scenario.getAssetId().equals("") || scenario.getVulnerabilityId().equals("") || scenario.getThreatId().equals("")) {
-        LOG.info("checkSafeguardModel RiskScenario with identifier " + scenario.getIdentifier() + " unable to compute Security Measures values since the RiskScenario is not complete");
+        LOG.info("checkSafeguardModel RiskScenario with identifier {} unable to compute Security Measures values since the RiskScenario is not complete", scenario.getIdentifier());
         continue;
       }
 
@@ -1438,7 +1436,7 @@ public class RiskModelManagerInput implements RiskModelManagerInputInterface {
       }
       if (!threatInScenario) {
 
-        LOG.info("checkThreatModel scenarioToDelete due to reference to non existing threat " + scenario.getIdentifier());
+        LOG.info("checkThreatModel scenarioToDelete due to reference to non existing threat {} ", scenario.getIdentifier());
         scenariosToDelete.add(scenario);
       }
 
@@ -1480,7 +1478,7 @@ public class RiskModelManagerInput implements RiskModelManagerInputInterface {
 
       if (!categoryExisting) {
         //The asset secondary category is not among the threat-allowed categories. the scenario must be removed
-        LOG.info("checkThreatModel scenarioToDelete due to secondary asset category not compliant with threat " + scenario.getIdentifier());
+        LOG.info("checkThreatModel scenarioToDelete due to secondary asset category not compliant with threat {} ", scenario.getIdentifier());
         scenariosToDelete.add(scenario);
         continue;
       }
@@ -1503,7 +1501,7 @@ public class RiskModelManagerInput implements RiskModelManagerInputInterface {
 
       if (!vulnerabilityExisting) {
         //Each threat can be only related to specific vulnerabilities. If not, the scenario must be removed
-        LOG.info("checkThreatModel scenarioToDelete due to vulnerability not compliant with threat " + scenario.getIdentifier());
+        LOG.info("checkThreatModel scenarioToDelete due to vulnerability not compliant with threat {} ", scenario.getIdentifier());
         scenariosToDelete.add(scenario);
         continue;
       }
@@ -1526,7 +1524,7 @@ public class RiskModelManagerInput implements RiskModelManagerInputInterface {
       }
 
       if (!threatInScenario) {
-        LOG.info("checkThreatModel threatToDelete " + threat.getIdentifier());
+        LOG.info("checkThreatModel threatToDelete {} ", threat.getIdentifier());
         threatsToDelete.add(threat);
       }
 
@@ -1753,15 +1751,15 @@ public class RiskModelManagerInput implements RiskModelManagerInputInterface {
     return scenario;
   }
 
-  public String insertRiskScenarioReference(RiskScenarioReference riskScenarioReference) throws Exception{
+  public String insertRiskScenarioReference(RiskScenarioReference riskScenarioReference) throws Exception {
     return this.riskModelService.insertRiskScenarioReference(riskScenarioReference);
   }
 
-  public void deleteRiskScenarioReference(List<String> identifier) throws Exception{
+  public void deleteRiskScenarioReference(List<String> identifier) throws Exception {
     this.riskModelService.deleteRiskScenarioReference(identifier);
   }
 
-  public void editRiskScenarioReference(RiskScenarioReference riskScenarioReference) throws Exception{
+  public void editRiskScenarioReference(RiskScenarioReference riskScenarioReference) throws Exception {
     this.riskModelService.editRiskScenarioReference(riskScenarioReference);
   }
 

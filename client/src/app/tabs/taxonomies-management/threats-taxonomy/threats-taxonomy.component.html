@@ -11,7 +11,7 @@
 
 <div class="row" style="margin-top: 4px" *ngIf="threats$ | async as taxonomies">
   <div [ngClass]="selectedTaxonomies.length === 1 ? 'col-lg-9' : 'col-lg-12'">
-    <p-table #dt [value]="taxonomies" [(selection)]="selectedTaxonomies" [responsive]="true" [rows]="10" [paginator]="true"
+    <p-table #dt [value]="taxonomies" [(selection)]="selectedTaxonomies" [responsive]="true" [rows]="20" [paginator]="true"
              [tableStyle]="{'font-size':'12px'}"  [resizableColumns]="true" [autoLayout]="true"
              selectionMode="multiple" [metaKeySelection]="true">
       <ng-template pTemplate="header">

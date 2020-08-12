@@ -18,45 +18,45 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 public class SestAssetModel {
-	private static final Logger LOG = LoggerFactory.getLogger(SestAssetModel.class.getName());
-	private Integer id;
-	private String sestobjId;
-	private String assetModelJson;
+  private static final Logger LOG = LoggerFactory.getLogger(SestAssetModel.class.getName());
+  private Integer id;
+  private String sestobjId;
+  private String assetModelJson;
 
-	public Integer getId() {
-		return id;
-	}
+  public Integer getId() {
+    return id;
+  }
 
-	public void setId(Integer id) {
-		this.id = id;
-	}
+  public void setId(Integer id) {
+    this.id = id;
+  }
 
-	public String getSestobjId() {
-		return sestobjId;
-	}
+  public String getSestobjId() {
+    return sestobjId;
+  }
 
-	public void setSestobjId(String sestobjId) {
-		this.sestobjId = sestobjId;
-	}
+  public void setSestobjId(String sestobjId) {
+    this.sestobjId = sestobjId;
+  }
 
-	public String getAssetModelJson() {
-		return assetModelJson;
-	}
+  public String getAssetModelJson() {
+    return assetModelJson;
+  }
 
-	public void setAssetModelJson(String assetModelJson) {
-		this.assetModelJson = assetModelJson;
-	}
+  public void setAssetModelJson(String assetModelJson) {
+    this.assetModelJson = assetModelJson;
+  }
 
-	public AssetModel convertToModel() {
-		LOG.info("SestAssetModel convertToModel");
-		try {
-			AssetModelSerializerDeserializer assetModelDeserializer = new AssetModelSerializerDeserializer();
+  public AssetModel convertToModel() {
+    LOG.info("SestAssetModel convertToModel");
+    try {
+      AssetModelSerializerDeserializer assetModelDeserializer = new AssetModelSerializerDeserializer();
 
-			return assetModelDeserializer.getAMFromJSONString(this.getAssetModelJson());
-		} catch (Exception ex) {
-			LOG.error("Unable to deserialize asset model!!! "+this.getSestobjId(), ex);
-			return null;
-		}
-	}
+      return assetModelDeserializer.getAMFromJSONString(this.getAssetModelJson());
+    } catch (Exception ex) {
+      LOG.error("Unable to deserialize asset model!!! " + this.getSestobjId(), ex);
+      return null;
+    }
+  }
 
 }

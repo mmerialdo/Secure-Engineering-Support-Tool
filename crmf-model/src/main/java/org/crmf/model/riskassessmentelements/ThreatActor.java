@@ -23,15 +23,6 @@ public class ThreatActor {
 	private ActorExpertiseEnum resources;
 	private ActorExpertiseEnum skills;
 
-
-	public ThreatActor(){
-
-	}
-
-	public void finalize() throws Throwable {
-		super.finalize();
-	}
-
 	public ThreatSourceEnum getCatalogue() {
 		return catalogue;
 	}

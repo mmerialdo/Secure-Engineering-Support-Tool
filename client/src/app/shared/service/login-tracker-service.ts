@@ -27,7 +27,6 @@ export class LoginTrackerService {
   }
 
   startSessionTimer(timeoutValue: number, timeoutWarning: number) {
-    console.log('start session timer');
     const warningTime = timeoutValue - timeoutWarning;
     const timerObservable = this.timerReset.pipe(
       startWith(0),
@@ -37,8 +36,6 @@ export class LoginTrackerService {
   }
 
   restartSessionTimer() {
-    console.log('restart timer');
-    console.log(this.timerReset);
     if (this.timerReset) {
       this.timerReset.next(void 0);
     }

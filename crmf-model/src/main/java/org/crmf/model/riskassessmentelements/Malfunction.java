@@ -25,14 +25,6 @@ public class Malfunction extends Node {
 	private ArrayList<TechnicalMalfunctionTypeEnum> technicalTypes;
 	private ArrayList<MalfunctionValueScale> scales;
 
-	public Malfunction(){
-
-	}
-
-	public void finalize() throws Throwable {
-		super.finalize();
-	}
-
 	public String getFunctionalConsequence() {
 		return functionalConsequence;
 	}

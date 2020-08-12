@@ -15,7 +15,6 @@ package org.crmf.core.safeguardmodel.manager;
 import org.crmf.model.riskassessment.AssessmentProject;
 import org.crmf.model.riskassessment.SafeguardModel;
 import org.crmf.model.utility.GenericFilter;
-import org.crmf.model.utility.ModelObject;
 
 public interface SafeguardModelManagerInputInterface {
 	String loadSafeguardModel(GenericFilter filter) throws Exception;

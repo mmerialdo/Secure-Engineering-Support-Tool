@@ -20,11 +20,4 @@ public class Mitigation {
 	private String strategy;
 	private String url;
 
-	public Mitigation(){
-
-	}
-
-	public void finalize() throws Throwable {
-
-	}
 }//end Mitigation

@@ -45,11 +45,11 @@
   </div>
   <div class="col-md-12">
     <div class="row">
-      <h1 style="font-size: 18px">Primary Asset Category</h1>
+      <h1 style="font-size: 18px">Primary Asset Category (*)</h1>
       <hr>
       <div class="col-md-4">
         <div class="form-group">
-          <label>Data (*)</label>
+          <label>Data</label>
           <i class="fa fa-info-circle" (click)="infoDataAsset()" style="cursor:pointer;margin-left:1px;"></i>
           <select [(ngModel)]="selectedCategoryData" name="dataPrymaryAsset" id="dataPrymaryAsset" class="form-control" [disabled]="selectedCategoryCompli!='' || selectedCategoryService!=''">
             <option *ngFor="let c of primaryAssetConf" [ngValue]="c"> {{ c }} </option>
@@ -77,11 +77,11 @@
       </div>
     </div>
     <div class="row">
-      <h1 style="font-size: 18px">Secondary Asset Category</h1>
+      <h1 style="font-size: 18px">Secondary Asset Category (*)</h1>
       <hr>
       <div class="col-md-4">
         <div class="form-group">
-          <label for="secAsset">Secondary Asset Category (*)</label>
+          <label for="secAsset">Secondary Asset Category</label>
           <i class="fa fa-info-circle" (click)="infoSecondaryAsset()" style="cursor:pointer;margin-left:1px;"></i>
           <!--<select formControlName="secAsset" class="form-control" name="secAsset" id="secAsset" >-->
           <select [(ngModel)]="selectedSecondary" class="form-control" name="secAsset" id="secAsset" [disabled]="selectedCategoryData === '' && selectedCategoryService === '' && selectedCategoryCompli === ''">
@@ -215,9 +215,9 @@
         <span lang=EN-CA>&nbsp;</span>
       </p>
       <p class=MsoNormal>
-        <b>
+        <strong>
           <span lang=EN-CA>Assets of the category Data</span>
-        </b>
+        </strong>
       </p>
       <p class=MsoListParagraph style='margin-left:.5in'>
         <span lang=EN-GB style='font-family:Symbol'>·
@@ -274,9 +274,9 @@
           <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </span>
         </span>
-        <b>
+        <strong>
           <span lang=EN-GB>Data_DataFile_Database</span>
-        </b>
+        </strong>
         <span lang=EN-GB> (Data files and data bases accessed by applications)</span>
       </p>
       <p class=MsoListParagraph style='margin-left:.5in'>
@@ -284,9 +284,9 @@
           <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </span>
         </span>
-        <b>
+        <strong>
           <span lang=EN-GB>Data_Shared_Office_File</span>
-        </b>
+        </strong>
         <span lang=EN-GB> (Shared office files and data)</span>
       </p>
       <p class=MsoListParagraph style='margin-left:.5in'>
@@ -294,9 +294,9 @@
           <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </span>
         </span>
-        <b>
+        <strong>
           <span lang=EN-GB>Data_Personal_Office_File</span>
-        </b>
+        </strong>
         <span lang=EN-GB> (Personal office files and data)</span>
       </p>
       <p class=MsoListParagraph style='margin-left:.5in'>
@@ -304,9 +304,9 @@
           <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </span>
         </span>
-        <b>
+        <strong>
           <span lang=EN-GB>Data_Physical_File</span>
-        </b>
+        </strong>
         <span lang=EN-GB> (Written or printed files and data)</span>
       </p>
       <p class=MsoListParagraph style='margin-left:.5in'>
@@ -314,9 +314,9 @@
           <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </span>
         </span>
-        <b>
+        <strong>
           <span lang=EN-GB>Data_Exchanged_Message</span>
-        </b>
+        </strong>
         <span lang=EN-GB> (Exchanged messages, screen views, data individually sensitive)</span>
       </p>
       <p class=MsoListParagraph style='margin-left:.5in'>
@@ -324,9 +324,9 @@
           <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </span>
         </span>
-        <b>
+        <strong>
           <span lang=EN-GB>Data_Digital_Mail</span>
-        </b>
+        </strong>
         <span lang=EN-GB>
           (Electronic mailing)</span>
       </p>
@@ -335,9 +335,9 @@
           <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </span>
         </span>
-        <b>
+        <strong>
           <span lang=EN-GB>Data_Physical_Mail</span>
-        </b>
+        </strong>
         <span lang=EN-GB> (Written or printed mailing)</span>
       </p>
       <p class=MsoListParagraph style='margin-left:.5in'>
@@ -345,9 +345,9 @@
           <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </span>
         </span>
-        <b>
+        <strong>
           <span lang=EN-GB>Data_Physical_Archive</span>
-        </b>
+        </strong>
         <span lang=EN-GB> (Physical data archive)</span>
       </p>
       <p class=MsoListParagraph style='margin-left:.5in'>
@@ -355,9 +355,9 @@
           <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </span>
         </span>
-        <b>
+        <strong>
           <span lang=EN-GB>Data_IT_Archive</span>
-        </b>
+        </strong>
         <span lang=EN-GB>
           (Digital data archive)</span>
       </p>
@@ -366,9 +366,9 @@
           <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </span>
         </span>
-        <b>
+        <strong>
           <span lang=EN-GB>Data_Published_Data</span>
-        </b>
+        </strong>
         <span lang=EN-GB>
           (Data and information published on public or internal sites)</span>
       </p>
@@ -397,9 +397,9 @@
         <span lang=EN-CA>&nbsp;</span>
       </p>
       <p class=MsoNormal>
-        <b>
+        <strong>
           <span lang=EN-CA>Assets of the category Services</span>
-        </b>
+        </strong>
       </p>
       <p class=MsoListParagraph style='margin-left:.25in'>
         <span lang=EN-GB style='font-family:Symbol'>·
@@ -475,9 +475,9 @@
           <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </span>
         </span>
-        <b>
+        <strong>
           <span lang=EN-GB>Service_User_Workspace</span>
-        </b>
+        </strong>
         <span lang=EN-GB> (User workspace and environment)</span>
       </p>
       <p class=MsoListParagraph style='margin-left:.25in'>
@@ -485,9 +485,9 @@
           <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </span>
         </span>
-        <b>
+        <strong>
           <span lang=EN-GB>Service_Telecommunication_Service</span>
-        </b>
+        </strong>
         <span lang=EN-GB> (Telecommunication Services)</span>
       </p>
       <p class=MsoListParagraph style='margin-left:.25in'>
@@ -495,9 +495,9 @@
           <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </span>
         </span>
-        <b>
+        <strong>
           <span lang=EN-GB>Service_Extended_Network_Service</span>
-        </b>
+        </strong>
         <span lang=EN-GB> (Extended Network Service)</span>
       </p>
       <p class=MsoListParagraph style='margin-left:.25in'>
@@ -505,9 +505,9 @@
           <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </span>
         </span>
-        <b>
+        <strong>
           <span lang=EN-GB>Service_Local_Network_Service</span>
-        </b>
+        </strong>
         <span lang=EN-GB> (Local Area Network Service)</span>
       </p>
       <p class=MsoListParagraph style='margin-left:.25in'>
@@ -515,9 +515,9 @@
           <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </span>
         </span>
-        <b>
+        <strong>
           <span lang=EN-GB>Service_Application_Service</span>
-        </b>
+        </strong>
         <span lang=EN-GB> (Services provided by applications)</span>
       </p>
       <p class=MsoListParagraph style='margin-left:.25in'>
@@ -525,9 +525,9 @@
           <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </span>
         </span>
-        <b>
+        <strong>
           <span lang=EN-GB>Service_Shared_Service</span>
-        </b>
+        </strong>
         <span lang=EN-GB> (Shared office Services)</span>
       </p>
       <p class=MsoListParagraph style='margin-left:.25in'>
@@ -535,9 +535,9 @@
           <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </span>
         </span>
-        <b>
+        <strong>
           <span lang=EN-GB>Service_User_Hardware</span>
-        </b>
+        </strong>
         <span lang=EN-GB> (Equipment provided to end users)</span>
       </p>
       <p class=MsoListParagraph style='margin-left:.25in'>
@@ -545,9 +545,9 @@
           <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </span>
         </span>
-        <b>
+        <strong>
           <span lang=EN-GB>Service_Common_Service</span>
-        </b>
+        </strong>
         <span lang=EN-GB> (Common system Services)</span>
       </p>
       <p class=MsoListParagraph style='margin-left:.25in'>
@@ -555,9 +555,9 @@
           <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </span>
         </span>
-        <b>
+        <strong>
           <span lang=EN-GB>Service_Web_editing_Service</span>
-        </b>
+        </strong>
         <span lang=EN-GB>  (Web editing Service (internal or public)</span>
       </p>
       <p class=MsoListParagraph style='margin-left:.25in;text-indent:0in'>
@@ -590,10 +590,10 @@
         <span lang=EN-CA>&nbsp;</span>
       </p>
       <p class=MsoNormal>
-        <b>
+        <strong>
           <span lang=EN-CA>Assets of the category Management processes
           </span>
-        </b>
+        </strong>
       </p>
       <p class=MsoListParagraph style='margin-left:.25in'>
         <span lang=EN-GB style='font-family:Symbol'>·
@@ -621,9 +621,9 @@
           <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </span>
         </span>
-        <b>
+        <strong>
           <span lang=EN-GB>Compliance_Policy_Personal_Information_Protection</span>
-        </b>
+        </strong>
         <span lang=EN-GB> (Compliance to law or regulations relative to personal information protection)
         </span>
       </p>
@@ -632,9 +632,9 @@
           <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </span>
         </span>
-        <b>
+        <strong>
           <span lang=EN-GB>Compliance_Policy_Financial_Communication</span>
-        </b>
+        </strong>
         <span lang=EN-GB> (Compliance to law or regulations relative to financial communication)
         </span>
       </p>
@@ -643,9 +643,9 @@
           <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </span>
         </span>
-        <b>
+        <strong>
           <span lang=EN-GB>Compliance_Policy_Digital_Accounting_Control</span>
-        </b>
+        </strong>
         <span lang=EN-GB> (Compliance to law or regulations relative to digital accounting control)
         </span>
       </p>
@@ -654,9 +654,9 @@
           <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </span>
         </span>
-        <b>
+        <strong>
           <span lang=EN-GB>Compliance_Policy_Intellectual_Property</span>
-        </b>
+        </strong>
         <span lang=EN-GB> (Compliance to law or regulations relative to intellectual property)
         </span>
       </p>
@@ -665,9 +665,9 @@
           <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </span>
         </span>
-        <b>
+        <strong>
           <span lang=EN-GB>Compliance_Policy_Protection_Of_Information_Systems</span>
-        </b>
+        </strong>
         <span lang=EN-GB> (Compliance to law or regulations relative to the protection of information systems)</span>
       </p>
       <p class=MsoListParagraph style='margin-left:.25in'>
@@ -675,9 +675,9 @@
           <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </span>
         </span>
-        <b>
+        <strong>
           <span lang=EN-GB>Compliance_Policy_People_And_Environment_Safety</span>
-        </b>
+        </strong>
         <span lang=EN-GB> (Compliance to law or regulations relative to people safety and protection of environment)</span>
       </p>
     </div>
@@ -704,10 +704,10 @@
         <span lang=EN-CA>&nbsp;</span>
       </p>
       <p class=MsoNormal>
-        <b>
+        <strong>
           <span lang=EN-CA>Among the Secondary Asset Category possibilities
           </span>
-        </b>
+        </strong>
         <span lang=EN-CA>:</span>
       </p>
       <p class=MsoListParagraph style='margin-left:.5in'>
@@ -715,9 +715,9 @@
           <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </span>
         </span>
-        <b>
+        <strong>
           <span lang=EN-GB>Personnel </span>
-        </b>
+        </strong>
         <span lang=EN-GB>(human resource involved in the Business Activity)</span>
       </p>
       <p class=MsoListParagraph style='margin-left:.5in'>
@@ -725,9 +725,9 @@
           <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </span>
         </span>
-        <b>
+        <strong>
           <span lang=EN-GB>Hardware </span>
-        </b>
+        </strong>
         <span lang=EN-GB>(Any hardware supporting the Service)</span>
       </p>
       <p class=MsoListParagraph style='margin-left:.5in'>
@@ -735,9 +735,9 @@
           <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </span>
         </span>
-        <b>
+        <strong>
           <span lang=EN-GB>Software_Off_the_Shelf </span>
-        </b>
+        </strong>
         <span lang=EN-GB>(any COTS software application supporting the Service)</span>
       </p>
       <p class=MsoListParagraph style='margin-left:.5in'>
@@ -745,9 +745,9 @@
           <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </span>
         </span>
-        <b>
+        <strong>
           <span lang=EN-GB>Premise </span>
-        </b>
+        </strong>
         <span lang=EN-GB>(physical premise supporting the User Workspace Service)</span>
       </p>
       <p class=MsoListParagraph style='margin-left:.5in'>
@@ -755,9 +755,9 @@
           <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </span>
         </span>
-        <b>
+        <strong>
           <span lang=EN-GB>Data_File</span>
-        </b>
+        </strong>
         <span lang=EN-GB> (Logical entities: files or databases)</span>
       </p>
       <p class=MsoListParagraph style='margin-left:.5in'>
@@ -765,9 +765,9 @@
           <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </span>
         </span>
-        <b>
+        <strong>
           <span lang=EN-GB>Data_Message </span>
-        </b>
+        </strong>
         <span lang=EN-GB>(Logical entities: transiting data packets or messages)</span>
       </p>
       <p class=MsoListParagraph style='margin-left:.5in'>
@@ -775,9 +775,9 @@
           <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </span>
         </span>
-        <b>
+        <strong>
           <span lang=EN-GB>Software_Configuration </span>
-        </b>
+        </strong>
         <span lang=EN-GB>(Configuration of the software application supporting the Service)</span>
       </p>
       <p class=MsoListParagraph style='margin-left:.5in'>
@@ -785,9 +785,9 @@
           <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </span>
         </span>
-        <b>
+        <strong>
           <span lang=EN-GB>Policy </span>
-        </b>
+        </strong>
         <span lang=EN-GB>(Internal guidelines and procedures)</span>
       </p>
       <p class=MsoListParagraph style='margin-left:.5in'>
@@ -795,9 +795,9 @@
           <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </span>
         </span>
-        <b>
+        <strong>
           <span lang=EN-GB>Electronic_Media </span>
-        </b>
+        </strong>
         <span lang=EN-GB>(Physical electronic media)</span>
       </p>
       <p class=MsoListParagraph style='margin-left:.5in'>
@@ -805,9 +805,9 @@
           <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </span>
         </span>
-        <b>
+        <strong>
           <span lang=EN-GB>Non_Electronic_Media </span>
-        </b>
+        </strong>
         <span lang=EN-GB>(Physical non-electronic media –paper document for example)</span>
       </p>
       <p class=MsoListParagraph style='margin-left:.5in'>
@@ -815,9 +815,9 @@
           <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </span>
         </span>
-        <b>
+        <strong>
           <span lang=EN-GB>Software_Custom </span>
-        </b>
+        </strong>
         <span lang=EN-GB>(any internally-developed software application supporting the Service)</span>
       </p>
       <p class=MsoListParagraph style='margin-left:.5in'>
@@ -825,9 +825,9 @@
           <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </span>
         </span>
-        <b>
+        <strong>
           <span lang=EN-GB>Hardware_Configuration </span>
-        </b>
+        </strong>
         <span lang=EN-GB>(Configuration of the hardware supporting the Service)</span>
       </p>
       <p class=MsoListParagraph style='margin-left:.5in'>
@@ -835,9 +835,9 @@
           <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </span>
         </span>
-        <b>
+        <strong>
           <span lang=EN-GB>Auxiliary_Equipment </span>
-        </b>
+        </strong>
         <span lang=EN-GB>(Auxiliary hardware supporting the Service – fridges, air conditioning, etc.)</span>
       </p>
       <p class=MsoListParagraph style='margin-left:.5in'>
@@ -845,9 +845,9 @@
           <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </span>
         </span>
-        <b>
+        <strong>
           <span lang=EN-GB>Service_Access_Mean </span>
-        </b>
+        </strong>
         <span lang=EN-GB>(Means for accessing the Service –physical or logical)</span>
       </p>
       <p class=MsoListParagraph style='margin-left:.5in'>
@@ -855,9 +855,9 @@
           <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </span>
         </span>
-        <b>
+        <strong>
           <span lang=EN-GB>Data_Access_Mean </span>
-        </b>
+        </strong>
         <span lang=EN-GB>(Means for accessing data: keys –physical or logical)</span>
       </p>
 

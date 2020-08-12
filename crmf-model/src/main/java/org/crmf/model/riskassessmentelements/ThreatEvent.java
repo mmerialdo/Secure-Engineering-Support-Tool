@@ -19,15 +19,6 @@ public class ThreatEvent{
 	private String description;
 	private String name;
 
-
-	public ThreatEvent(){
-
-	}
-
-	public void finalize() throws Throwable {
-		super.finalize();
-	}
-
 	public ThreatSourceEnum getCatalogue() {
 		return catalogue;
 	}

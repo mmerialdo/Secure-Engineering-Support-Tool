@@ -12,15 +12,6 @@
 
 package org.crmf.model.utility.assetmodel;
 
-import java.lang.reflect.Type;
-import java.util.ArrayList;
-
-import org.crmf.model.general.SESTObjectTypeEnum;
-import org.crmf.model.riskassessmentelements.BusinessImpact;
-import org.crmf.model.riskassessmentelements.Edge;
-import org.crmf.model.riskassessmentelements.Node;
-import org.crmf.model.riskassessmentelements.SecurityImpact;
-
 import com.google.gson.JsonArray;
 import com.google.gson.JsonDeserializationContext;
 import com.google.gson.JsonDeserializer;
@@ -29,6 +20,13 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
 import com.google.gson.JsonSerializationContext;
 import com.google.gson.JsonSerializer;
+import org.crmf.model.general.SESTObjectTypeEnum;
+import org.crmf.model.riskassessmentelements.Edge;
+import org.crmf.model.riskassessmentelements.Node;
+import org.crmf.model.riskassessmentelements.SecurityImpact;
+
+import java.lang.reflect.Type;
+import java.util.ArrayList;
 
 //This class manages the deserialization of Edge classes
 class EdgeInstanceCreator implements JsonDeserializer<Edge>, JsonSerializer<Edge> {
@@ -107,8 +105,8 @@ class EdgeInstanceCreator implements JsonDeserializer<Edge>, JsonSerializer<Edge
 			edge.setObjType(SESTObjectTypeEnum.AssetModel);
 		}
 
-		edge.setBusinessImpactWeights(new ArrayList<BusinessImpact>());
-		edge.setSecurityImpacts(new ArrayList<SecurityImpact>());
+		edge.setBusinessImpactWeights(new ArrayList<>());
+		edge.setSecurityImpacts(new ArrayList<>());
 
 		if (!jsonObject.get("securityImpacts").isJsonNull()) {
 			JsonArray securityImpacts = jsonObject.get("securityImpacts").getAsJsonArray();

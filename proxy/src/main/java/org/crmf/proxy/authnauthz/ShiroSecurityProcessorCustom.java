@@ -12,11 +12,7 @@
 
 package org.crmf.proxy.authnauthz;
 
-import java.nio.charset.StandardCharsets;
-import java.util.ArrayList;
-import java.util.Base64;
-import java.util.List;
-
+import com.google.gson.Gson;
 import org.apache.camel.AsyncCallback;
 import org.apache.camel.CamelAuthorizationException;
 import org.apache.camel.Exchange;
@@ -42,7 +38,10 @@ import org.crmf.model.utility.GenericFilterEnum;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.google.gson.Gson;
+import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
+import java.util.Base64;
+import java.util.List;
 
 //This class extends Apache Camel processor in order to manage authentication and authorization 
 public class ShiroSecurityProcessorCustom extends DelegateAsyncProcessor {

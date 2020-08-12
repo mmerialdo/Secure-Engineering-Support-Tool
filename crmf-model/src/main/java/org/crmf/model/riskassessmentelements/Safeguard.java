@@ -12,12 +12,12 @@
 
 package org.crmf.model.riskassessmentelements;
 
-import java.util.ArrayList;
-
 import org.crmf.model.general.SESTObject;
-import org.crmf.model.requirement.ProjectRequirement;
+import org.crmf.model.requirement.Requirement;
 import org.crmf.model.requirement.SecurityRequirement;
 import org.crmf.model.riskassessment.PhaseEnum;
+
+import java.util.ArrayList;
 
 public class Safeguard extends SESTObject {
 
@@ -33,7 +33,7 @@ public class Safeguard extends SESTObject {
 	private SafeguardScopeEnum scope;
 	private ArrayList<Safeguard> children;
 	private ArrayList<SecurityRequirement> relatedSecurityRequirements;
-	private ArrayList<ProjectRequirement> relatedProjectRequirements;
+	private ArrayList<Requirement> relatedProjectRequirements;
 	private ArrayList<SafeguardScore> scores;
 
 
@@ -42,10 +42,6 @@ public class Safeguard extends SESTObject {
 		relatedSecurityRequirements = new ArrayList<>();
 		relatedProjectRequirements = new ArrayList<>();
 		score = SafeguardScoreEnum.LOW;
-	}
-
-	public void finalize() throws Throwable {
-		super.finalize();
 	}
 
 	public boolean isAssessmentSafeguard() {
@@ -163,11 +159,11 @@ public class Safeguard extends SESTObject {
 		this.relatedSecurityRequirements = relatedSecurityRequirements;
 	}
 
-	public ArrayList<ProjectRequirement> getRelatedProjectRequirements() {
+	public ArrayList<Requirement> getRelatedProjectRequirements() {
 		return relatedProjectRequirements;
 	}
 
-	public void setRelatedProjectRequirements(ArrayList<ProjectRequirement> relatedProjectRequirements) {
+	public void setRelatedProjectRequirements(ArrayList<Requirement> relatedProjectRequirements) {
 		this.relatedProjectRequirements = relatedProjectRequirements;
 	}
 

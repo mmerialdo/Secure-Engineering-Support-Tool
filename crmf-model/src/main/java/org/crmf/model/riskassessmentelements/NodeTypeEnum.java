@@ -14,8 +14,8 @@ package org.crmf.model.riskassessmentelements;
 
 public enum NodeTypeEnum {
 	BusinessProcess,
-		BusinessActivity,
-		Organization,
-		Asset,
-		Malfunction
+	BusinessActivity,
+	Organization,
+	Asset,
+	Malfunction
 }

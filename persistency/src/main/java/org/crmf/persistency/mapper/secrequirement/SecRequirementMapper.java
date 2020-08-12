@@ -12,27 +12,27 @@
 
 package org.crmf.persistency.mapper.secrequirement;
 
-import java.util.List;
-
 import org.crmf.persistency.domain.secrequirement.SecRequirement;
 import org.crmf.persistency.domain.secrequirement.SecRequirementSafeguard;
 
+import java.util.List;
+
 //This interface allows the bundle to invoke the SQL methods within the SecRequirementMapper.xml (via the ibatis API)
 public interface SecRequirementMapper {
-	
-	void insert(SecRequirement requirement);
 
-	void insertSafeguardAssoc(SecRequirementSafeguard requirementSafeguard);
+  void insert(SecRequirement requirement);
 
-	List<SecRequirementSafeguard> getRequirementsAssocBySafeguard(int safeguardId);
+  void insertSafeguardAssoc(SecRequirementSafeguard requirementSafeguard);
 
-	SecRequirement getSecRequirementById(Integer id);
+  List<SecRequirementSafeguard> getRequirementsAssocBySafeguard(int safeguardId);
 
-	SecRequirement getSecRequirementByReqId(String gasfId);
-	
-	SecRequirement getSecRequirementByIdentifier(String identifier);
+  SecRequirement getSecRequirementById(Integer id);
 
-	void deleteSecRequirementAssoc();
+  SecRequirement getSecRequirementByReqId(String gasfId);
 
-	void deleteSecRequirement();
+  SecRequirement getSecRequirementByIdentifier(String identifier);
+
+  void deleteSecRequirementAssoc();
+
+  void deleteSecRequirement();
 }

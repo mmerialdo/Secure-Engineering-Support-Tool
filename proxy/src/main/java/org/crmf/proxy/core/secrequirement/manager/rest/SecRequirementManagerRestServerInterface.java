@@ -13,10 +13,9 @@
 package org.crmf.proxy.core.secrequirement.manager.rest;
 
 import javax.ws.rs.POST;
-import javax.ws.rs.Produces;
 
 public interface SecRequirementManagerRestServerInterface {
 
-	@POST
-	void importGasfRequirement() throws Exception;
+  @POST
+  void importGasfRequirement() throws Exception;
 }

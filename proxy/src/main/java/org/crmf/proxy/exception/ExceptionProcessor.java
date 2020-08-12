@@ -19,15 +19,15 @@ public class ExceptionProcessor implements Processor {
     Exception cause = exchange.getException();
     LOG.error("Exception : " + exchange.getException());
 
-  //  exchange.getIn().setBody(cause);
-  //  exchange.getIn().setFault(true);
+    //  exchange.getIn().setBody(cause);
+    //  exchange.getIn().setFault(true);
 
     Message outMessage = exchange.getIn();
     outMessage.setHeader(org.apache.cxf.message.Message.RESPONSE_CODE, 500);
     outMessage.setHeader(Exchange.HTTP_RESPONSE_CODE, 200);
-  //  outMessage.setHeader("Access-Control-Allow-Origin", "*");
-  //  outMessage.setHeader("Access-Control-Allow-Methods", "PUT, GET, POST, DELETE, OPTIONS");
-  //  outMessage.setHeader("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization, CamelHttpResponseCode");
+    //  outMessage.setHeader("Access-Control-Allow-Origin", "*");
+    //  outMessage.setHeader("Access-Control-Allow-Methods", "PUT, GET, POST, DELETE, OPTIONS");
+    //  outMessage.setHeader("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization, CamelHttpResponseCode");
     //
     outMessage.setFault(true);
 

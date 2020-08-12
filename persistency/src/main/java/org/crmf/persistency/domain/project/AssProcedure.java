@@ -12,11 +12,6 @@
 
 package org.crmf.persistency.domain.project;
 
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-
 import org.crmf.model.general.SESTObjectTypeEnum;
 import org.crmf.model.riskassessment.AssessmentProcedure;
 import org.crmf.model.riskassessment.AssessmentStatusEnum;
@@ -24,7 +19,13 @@ import org.crmf.model.riskassessment.PhaseEnum;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 public class AssProcedure {
+  public static final String DD_MM_YYYY_HH_MM = "dd/MM/yyyy HH:mm";
   private Integer id;
 
   private Date creationTime;
@@ -55,7 +56,7 @@ public class AssProcedure {
 
   private String sestobjId;
 
-  DateFormat df = new SimpleDateFormat("dd/MM/yyyy HH:mm");
+  DateFormat df = new SimpleDateFormat(DD_MM_YYYY_HH_MM);
 
   private static final Logger LOG = LoggerFactory.getLogger(AssProcedure.class.getName());
 

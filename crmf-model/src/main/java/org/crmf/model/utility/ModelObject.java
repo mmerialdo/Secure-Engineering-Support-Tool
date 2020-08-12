@@ -27,7 +27,8 @@ public class ModelObject {
 		return jsonModel;
 	}
 	public void setJsonModel(String jsonModel) {
-		LOG.info("ModelObject setJsonModel:: jsonModel = "+jsonModel);
+		LOG.info("ModelObject setJsonModel:: jsonModel = {} ",
+			jsonModel.substring(0, (jsonModel.length() > 500 ? 500 : jsonModel.length())));
 		this.jsonModel = jsonModel;
 	}
 	public String getObjectIdentifier() {

@@ -31,11 +31,4 @@ public class CVEScore extends VulnerabilityScore {
 	private CVETargetDistributionEnum targetDistribution;
 	private ArrayList<CVESecurityImpact> securityImpacts;
 
-	public CVEScore(){
-
-	}
-
-	public void finalize() throws Throwable {
-		super.finalize();
-	}
 }

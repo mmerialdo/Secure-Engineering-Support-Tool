@@ -12,16 +12,6 @@
 
 package org.crmf.model.utility.assetmodel;
 
-import java.lang.reflect.Type;
-import java.util.ArrayList;
-
-import org.crmf.model.riskassessmentelements.Asset;
-import org.crmf.model.riskassessmentelements.BusinessImpact;
-import org.crmf.model.riskassessmentelements.NodeTypeEnum;
-import org.crmf.model.riskassessmentelements.PrimaryAssetCategoryEnum;
-import org.crmf.model.riskassessmentelements.SecondaryAssetCategoryEnum;
-import org.crmf.model.riskassessmentelements.SecurityImpact;
-
 import com.google.gson.JsonArray;
 import com.google.gson.JsonDeserializationContext;
 import com.google.gson.JsonDeserializer;
@@ -30,10 +20,25 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
 import com.google.gson.JsonSerializationContext;
 import com.google.gson.JsonSerializer;
+import org.crmf.model.riskassessmentelements.Asset;
+import org.crmf.model.riskassessmentelements.NodeTypeEnum;
+import org.crmf.model.riskassessmentelements.PrimaryAssetCategoryEnum;
+import org.crmf.model.riskassessmentelements.SecondaryAssetCategoryEnum;
+import org.crmf.model.riskassessmentelements.SecurityImpact;
+
+import java.lang.reflect.Type;
+import java.util.ArrayList;
 
 //This class manages the serialization/deserialization of Asset classes
 class AssetInstanceCreator implements JsonDeserializer<Asset> , JsonSerializer<Asset> {
-	
+
+	public static final String CATEGORY = "category";
+	public static final String COST = "cost";
+	public static final String BUSINESS_IMPACT_WEIGHTS = "businessImpactWeights";
+	public static final String PRIMARY_CATEGORIES = "primaryCategories";
+	public static final String MALFUNCTIONS_IDS = "malfunctionsIds";
+	public static final String SECURITY_IMPACTS = "securityImpacts";
+
 	@Override
 	public JsonElement serialize(Asset asset, Type arg1, JsonSerializationContext context) {
 		
@@ -49,18 +54,18 @@ class AssetInstanceCreator implements JsonDeserializer<Asset> , JsonSerializer<A
 			}
 		});
 		
-		jsonObject.add("securityImpacts", securityImpacts);
+		jsonObject.add(SECURITY_IMPACTS, securityImpacts);
 		
 		JsonArray businessImpacts = new JsonArray();
-		jsonObject.add("businessImpactWeights", businessImpacts);
+		jsonObject.add(BUSINESS_IMPACT_WEIGHTS, businessImpacts);
 		
 		if(asset.getCategory() != null){
-			jsonObject.addProperty("category", asset.getCategory().toString());
+			jsonObject.addProperty(CATEGORY, asset.getCategory().toString());
 		}
 		else{
-			jsonObject.addProperty("category", SecondaryAssetCategoryEnum.Data_File.toString());
+			jsonObject.addProperty(CATEGORY, SecondaryAssetCategoryEnum.Data_File.toString());
 		}
-		jsonObject.addProperty("cost", asset.getCost());
+		jsonObject.addProperty(COST, asset.getCost());
 		
 		
 		JsonArray primaryCategories = new JsonArray();
@@ -71,7 +76,7 @@ class AssetInstanceCreator implements JsonDeserializer<Asset> , JsonSerializer<A
 			
 		});
 		
-		jsonObject.add("primaryCategories", primaryCategories);
+		jsonObject.add(PRIMARY_CATEGORIES, primaryCategories);
 		
 		
 		JsonArray malfunctionsIds = new JsonArray();
@@ -82,7 +87,7 @@ class AssetInstanceCreator implements JsonDeserializer<Asset> , JsonSerializer<A
 			
 		});
 		
-		jsonObject.add("malfunctionsIds", malfunctionsIds);
+		jsonObject.add(MALFUNCTIONS_IDS, malfunctionsIds);
 		
 		
 		
@@ -96,22 +101,21 @@ class AssetInstanceCreator implements JsonDeserializer<Asset> , JsonSerializer<A
 
 		Asset asset = new Asset();
 		asset.setNodeType(NodeTypeEnum.Asset);
-		asset.setBusinessImpacts(new ArrayList<BusinessImpact>());
-		asset.setMalfunctionsIds(new ArrayList<String>());
-		asset.setSecurityImpacts(new ArrayList<SecurityImpact>());
-		asset.setPrimaryCategories(new ArrayList<PrimaryAssetCategoryEnum>());
+		asset.setBusinessImpacts(new ArrayList<>());
+		asset.setMalfunctionsIds(new ArrayList<>());
+		asset.setSecurityImpacts(new ArrayList<>());
+		asset.setPrimaryCategories(new ArrayList<>());
 
-		JsonArray securityImpacts = jsonObject.get("securityImpacts").getAsJsonArray();
+		JsonArray securityImpacts = jsonObject.get(SECURITY_IMPACTS).getAsJsonArray();
 
 		securityImpacts.forEach(item -> {
-			JsonElement obj = (JsonElement) item;
-			SecurityImpact securityImpact = context.deserialize(obj, SecurityImpact.class);
+			SecurityImpact securityImpact = context.deserialize(item, SecurityImpact.class);
 
 			asset.getSecurityImpacts().add(securityImpact);
 		});
 
-		if (!jsonObject.get("category").isJsonNull()) {
-			String assetCategory = jsonObject.get("category").getAsString();
+		if (!jsonObject.get(CATEGORY).isJsonNull()) {
+			String assetCategory = jsonObject.get(CATEGORY).getAsString();
 
 			asset.setCategory(SecondaryAssetCategoryEnum.valueOf(assetCategory));
 			
@@ -120,14 +124,14 @@ class AssetInstanceCreator implements JsonDeserializer<Asset> , JsonSerializer<A
 			asset.setCategory(SecondaryAssetCategoryEnum.Data_File);
 		}
 
-		if (!jsonObject.get("cost").isJsonNull()) {
-			asset.setCost(jsonObject.get("cost").getAsInt());
+		if (!jsonObject.get(COST).isJsonNull()) {
+			asset.setCost(jsonObject.get(COST).getAsInt());
 		} else {
 			asset.setCost(0);
 		}
 
-		if (!jsonObject.get("primaryCategories").isJsonNull()) {
-			JsonArray primaryCategories = jsonObject.get("primaryCategories").getAsJsonArray();
+		if (!jsonObject.get(PRIMARY_CATEGORIES).isJsonNull()) {
+			JsonArray primaryCategories = jsonObject.get(PRIMARY_CATEGORIES).getAsJsonArray();
 
 			primaryCategories.forEach(item -> {
 				String primaryCategory = item.getAsString();
@@ -139,7 +143,7 @@ class AssetInstanceCreator implements JsonDeserializer<Asset> , JsonSerializer<A
 			});
 		}
 
-		JsonArray malfunctionsIds = jsonObject.get("malfunctionsIds").getAsJsonArray();
+		JsonArray malfunctionsIds = jsonObject.get(MALFUNCTIONS_IDS).getAsJsonArray();
 
 		malfunctionsIds.forEach(item -> {
 			String malfunctionId = item.getAsString();
@@ -148,7 +152,5 @@ class AssetInstanceCreator implements JsonDeserializer<Asset> , JsonSerializer<A
 		});
 
 		return asset;
-
 	}
-
 }

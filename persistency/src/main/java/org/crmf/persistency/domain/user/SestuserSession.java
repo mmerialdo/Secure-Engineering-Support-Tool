@@ -13,43 +13,43 @@
 package org.crmf.persistency.domain.user;
 
 public class SestuserSession {
-    private Integer id;
+  private Integer id;
 
-    private String expTime;
+  private String expTime;
 
-    private String sessionId;
+  private String sessionId;
 
-    private Integer userId;
+  private Integer userId;
 
-    public Integer getId() {
-        return id;
-    }
+  public Integer getId() {
+    return id;
+  }
 
-    public void setId(Integer id) {
-        this.id = id;
-    }
+  public void setId(Integer id) {
+    this.id = id;
+  }
 
-    public String getExpTime() {
-        return expTime;
-    }
+  public String getExpTime() {
+    return expTime;
+  }
 
-    public void setExpTime(String expTime) {
-        this.expTime = expTime == null ? null : expTime.trim();
-    }
+  public void setExpTime(String expTime) {
+    this.expTime = expTime == null ? null : expTime.trim();
+  }
 
-    public String getSessionId() {
-        return sessionId;
-    }
+  public String getSessionId() {
+    return sessionId;
+  }
 
-    public void setSessionId(String sessionId) {
-        this.sessionId = sessionId == null ? null : sessionId.trim();
-    }
+  public void setSessionId(String sessionId) {
+    this.sessionId = sessionId == null ? null : sessionId.trim();
+  }
 
-    public Integer getUserId() {
-        return userId;
-    }
+  public Integer getUserId() {
+    return userId;
+  }
 
-    public void setUserId(Integer userId) {
-        this.userId = userId;
-    }
+  public void setUserId(Integer userId) {
+    this.userId = userId;
+  }
 }

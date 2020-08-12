@@ -12,16 +12,6 @@
 
 package org.crmf.requirementimport.rest;
 
-import java.io.InputStream;
-import java.util.ArrayList;
-import java.util.List;
-import javax.ws.rs.Consumes;
-import javax.ws.rs.POST;
-import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
-import javax.ws.rs.core.MediaType;
-
-import org.apache.cxf.attachment.AttachmentDeserializer;
 import org.apache.cxf.jaxrs.ext.multipart.Attachment;
 import org.apache.cxf.jaxrs.ext.multipart.MultipartBody;
 import org.crmf.model.utility.GenericFilter;
@@ -29,6 +19,15 @@ import org.crmf.model.utility.GenericFilterEnum;
 import org.crmf.requirementimport.processor.SystemRequirementExcelProcessor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import javax.ws.rs.Consumes;
+import javax.ws.rs.POST;
+import javax.ws.rs.Path;
+import javax.ws.rs.Produces;
+import javax.ws.rs.core.MediaType;
+import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.List;
 
 //This class manages the webservices invoked by the SEST Client
 public class SystemRequirementRestServer {

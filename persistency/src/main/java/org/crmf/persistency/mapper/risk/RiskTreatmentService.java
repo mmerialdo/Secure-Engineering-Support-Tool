@@ -24,92 +24,92 @@ import org.slf4j.LoggerFactory;
 //This class manages the database interactions related to the RiskTreatmentModel
 public class RiskTreatmentService implements RiskTreatmentServiceInterface {
 
-	private static final Logger LOG = LoggerFactory.getLogger(RiskTreatmentService.class.getName());
-	PersistencySessionFactory sessionFactory;
-	
-	@Override
-	public void insert(String riskTreatmentModelJson, String sestobjId) {
-		SqlSession sqlSession = sessionFactory.getSession();
-		LOG.info("Insert Risk Treatment Model");
+  private static final Logger LOG = LoggerFactory.getLogger(RiskTreatmentService.class.getName());
+  PersistencySessionFactory sessionFactory;
 
-		Sestobj sestobj = null;
-		
-		try {
-			//create a new Risk Treatment Mapper
-			RiskTreatmentMapper riskMapper = sqlSession.getMapper(RiskTreatmentMapper.class);
-			SestobjMapper sestobjMapper = sqlSession.getMapper(SestobjMapper.class);
-			
-			//create a new sestObj with the identifier in input and type RiskModel
-			LOG.info("Insert sestObject");
-			sestobj = new Sestobj();
-			sestobj.setObjtype(SESTObjectTypeEnum.RiskTreatmentModel.name());
-			sestobj.setIdentifier(sestobjId);
-			sestobjMapper.insertWithIdentifier(sestobj);
-			
-			
-			//use the Risk Mapper to insert the Risk Model
-			SestRiskTreatmentModel riskTreatmentModel= new SestRiskTreatmentModel();
-			riskTreatmentModel.setRiskTreatmentModelJson(riskTreatmentModelJson);
-			riskTreatmentModel.setSestobjId(sestobjId);
-			riskMapper.insert(riskTreatmentModel);
-			sqlSession.commit();
-		} catch (Exception ex) {
-			LOG.error(ex.getMessage());
-			sqlSession.rollback();
-		} finally {
-			sqlSession.close();
-		}
-	}
+  @Override
+  public void insert(String riskTreatmentModelJson, String sestobjId) {
+    SqlSession sqlSession = sessionFactory.getSession();
+    LOG.info("Insert Risk Treatment Model");
 
-	@Override
-	public void update(String riskTreatmentModelJson, String sestobjId) {
-		SqlSession sqlSession = sessionFactory.getSession();
-		LOG.info("updateQuestionnaireJSON Risk Treatment Model");
+    Sestobj sestobj = null;
 
-		try {
-			//create a new Risk Treatment Mapper
-			RiskTreatmentMapper riskTreatmentMapper = sqlSession.getMapper(RiskTreatmentMapper.class);
-			//use the Risk Treatment Mapper to insert the Risk Model
-			riskTreatmentMapper.update(riskTreatmentModelJson, sestobjId);
-			sqlSession.commit();
-		} catch (Exception ex) {
-			LOG.error(ex.getMessage());
-			sqlSession.rollback();
-		} finally {
-			sqlSession.close();
-		}
-	}
+    try {
+      //create a new Risk Treatment Mapper
+      RiskTreatmentMapper riskMapper = sqlSession.getMapper(RiskTreatmentMapper.class);
+      SestobjMapper sestobjMapper = sqlSession.getMapper(SestobjMapper.class);
 
-	@Override
-	public SestRiskTreatmentModel getByIdentifier(String sestobjId) {
-		SqlSession sqlSession = sessionFactory.getSession();
-		LOG.info("get By Identifier -  Risk Treatment Model");
-		SestRiskTreatmentModel riskTreatmentModel;
+      //create a new sestObj with the identifier in input and type RiskModel
+      LOG.info("Insert sestObject");
+      sestobj = new Sestobj();
+      sestobj.setObjtype(SESTObjectTypeEnum.RiskTreatmentModel.name());
+      sestobj.setIdentifier(sestobjId);
+      sestobjMapper.insertWithIdentifier(sestobj);
 
-		try {
-			//create a new Risk Treatment Mapper
-			RiskTreatmentMapper riskTreatmentMapper = sqlSession.getMapper(RiskTreatmentMapper.class);
-			//use the Risk Treatment Mapper to insert the Risk Model
-			riskTreatmentModel = riskTreatmentMapper.getByIdentifier(sestobjId);
-			LOG.info("get By Identifier -  Risk Treatment Model returned: "+riskTreatmentModel);
-			sqlSession.commit();
-		} catch (Exception ex) {
-			LOG.error(ex.getMessage());
-			sqlSession.rollback();
-			return null;
-		} finally {
-			sqlSession.close();
-		}
-		
-		return riskTreatmentModel;
-	}
 
-	public PersistencySessionFactory getSessionFactory() {
-		return sessionFactory;
-	}
+      //use the Risk Mapper to insert the Risk Model
+      SestRiskTreatmentModel riskTreatmentModel = new SestRiskTreatmentModel();
+      riskTreatmentModel.setRiskTreatmentModelJson(riskTreatmentModelJson);
+      riskTreatmentModel.setSestobjId(sestobjId);
+      riskMapper.insert(riskTreatmentModel);
+      sqlSession.commit();
+    } catch (Exception ex) {
+      LOG.error(ex.getMessage());
+      sqlSession.rollback();
+    } finally {
+      sqlSession.close();
+    }
+  }
 
-	public void setSessionFactory(PersistencySessionFactory sessionFactory) {
-		this.sessionFactory = sessionFactory;
-	}
+  @Override
+  public void update(String riskTreatmentModelJson, String sestobjId) {
+    SqlSession sqlSession = sessionFactory.getSession();
+    LOG.info("updateQuestionnaireJSON Risk Treatment Model");
+
+    try {
+      //create a new Risk Treatment Mapper
+      RiskTreatmentMapper riskTreatmentMapper = sqlSession.getMapper(RiskTreatmentMapper.class);
+      //use the Risk Treatment Mapper to insert the Risk Model
+      riskTreatmentMapper.update(riskTreatmentModelJson, sestobjId);
+      sqlSession.commit();
+    } catch (Exception ex) {
+      LOG.error(ex.getMessage());
+      sqlSession.rollback();
+    } finally {
+      sqlSession.close();
+    }
+  }
+
+  @Override
+  public SestRiskTreatmentModel getByIdentifier(String sestobjId) {
+    SqlSession sqlSession = sessionFactory.getSession();
+    LOG.info("get By Identifier -  Risk Treatment Model");
+    SestRiskTreatmentModel riskTreatmentModel;
+
+    try {
+      //create a new Risk Treatment Mapper
+      RiskTreatmentMapper riskTreatmentMapper = sqlSession.getMapper(RiskTreatmentMapper.class);
+      //use the Risk Treatment Mapper to insert the Risk Model
+      riskTreatmentModel = riskTreatmentMapper.getByIdentifier(sestobjId);
+      LOG.info("get By Identifier -  Risk Treatment Model returned: " + riskTreatmentModel);
+      sqlSession.commit();
+    } catch (Exception ex) {
+      LOG.error(ex.getMessage());
+      sqlSession.rollback();
+      return null;
+    } finally {
+      sqlSession.close();
+    }
+
+    return riskTreatmentModel;
+  }
+
+  public PersistencySessionFactory getSessionFactory() {
+    return sessionFactory;
+  }
+
+  public void setSessionFactory(PersistencySessionFactory sessionFactory) {
+    this.sessionFactory = sessionFactory;
+  }
 
 }

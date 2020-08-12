@@ -16,66 +16,66 @@ import org.crmf.model.user.UserRole;
 import org.crmf.model.user.UserRoleEnum;
 
 public class Role {
-    private Integer id;
+  private Integer id;
 
-    private String role;
+  private String role;
 
-    private Integer userId;
+  private Integer userId;
 
-    private Integer projectId;
+  private Integer projectId;
 
-    public Integer getId() {
-        return id;
-    }
+  public Integer getId() {
+    return id;
+  }
 
-    public void setId(Integer id) {
-        this.id = id;
-    }
+  public void setId(Integer id) {
+    this.id = id;
+  }
 
-    public String getRole() {
-        return role;
-    }
+  public String getRole() {
+    return role;
+  }
 
-    public void setRole(String role) {
-        this.role = role == null ? null : role.trim();
-    }
+  public void setRole(String role) {
+    this.role = role == null ? null : role.trim();
+  }
 
-    public Integer getUserId() {
-        return userId;
-    }
+  public Integer getUserId() {
+    return userId;
+  }
 
-    public void setUserId(Integer userId) {
-        this.userId = userId;
-    }
+  public void setUserId(Integer userId) {
+    this.userId = userId;
+  }
 
-    public Integer getProjectId() {
-        return projectId;
-    }
+  public Integer getProjectId() {
+    return projectId;
+  }
 
-    public void setProjectId(Integer projectId) {
-        this.projectId = projectId;
-    }
+  public void setProjectId(Integer projectId) {
+    this.projectId = projectId;
+  }
 
-	public UserRole convertToModel() {
+  public UserRole convertToModel() {
 
-		UserRole role = new UserRole();
-		role.setRole(UserRoleEnum.valueOf(this.getRole()));
-		//role.setProject(this.getProjectId());
+    UserRole role = new UserRole();
+    role.setRole(UserRoleEnum.valueOf(this.getRole()));
+    //role.setProject(this.getProjectId());
 
-		return role;
-	}
+    return role;
+  }
 
-	public void convertFromModel(UserRole role) {
+  public void convertFromModel(UserRole role) {
 
-		this.setRole(role.getRole().name());
+    this.setRole(role.getRole().name());
 //		this.setUserId(userId);
 //		this.setProjectId(role.getProject().getId..);
 //		this.setId(id);
-	}
+  }
 
-	@Override
-	public String toString() {
-		return "Role [id=" + id + ", role=" + role + ", userId=" + userId + ", projectId=" + projectId + "]";
-	}
-	
+  @Override
+  public String toString() {
+    return "Role [id=" + id + ", role=" + role + ", userId=" + userId + ", projectId=" + projectId + "]";
+  }
+
 }

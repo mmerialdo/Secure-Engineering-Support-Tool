@@ -12,16 +12,17 @@
 
 package org.crmf.model.utility.riskmodel;
 
+import org.crmf.model.riskassessment.RiskModel;
+
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.UUID;
 
-import org.crmf.model.riskassessment.RiskModel;
-
 //This class is responsible for cloning RiskModels from Json strings and POJO
 public class RiskModelCloner {
-private String identifier;
+	public static final String DD_MM_YYYY_HH_MM = "dd/MM/yyyy HH:mm";
+	private String identifier;
 	
 	public RiskModel clone(RiskModel rm){
 		
@@ -33,7 +34,7 @@ private String identifier;
 		UUID uuid = UUID.randomUUID();
 		rmNew.setIdentifier(uuid.toString());
 		
-		DateFormat df = new SimpleDateFormat("dd/MM/yyyy HH:mm");
+		DateFormat df = new SimpleDateFormat(DD_MM_YYYY_HH_MM);
 		Date now = new Date();
 		rmNew.setCreationTime(df.format(now));
 		rmNew.setUpdateTime(df.format(now));
@@ -50,7 +51,7 @@ public String clone(String rmJson){
 		
 		UUID uuid = UUID.randomUUID();
 		rm.setIdentifier(uuid.toString());
-		DateFormat df = new SimpleDateFormat("dd/MM/yyyy HH:mm");
+		DateFormat df = new SimpleDateFormat(DD_MM_YYYY_HH_MM);
 		Date now = new Date();
 		rm.setCreationTime(df.format(now));
 		rm.setUpdateTime(df.format(now));

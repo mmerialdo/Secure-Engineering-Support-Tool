@@ -11,8 +11,6 @@
 */
 package org.crmf.riskmodel.manager;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 import org.apache.cxf.jaxrs.ext.multipart.Attachment;
 import org.apache.cxf.jaxrs.ext.multipart.MultipartBody;
 import org.crmf.model.general.SESTObjectTypeEnum;
@@ -28,7 +26,6 @@ import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
-import javax.xml.crypto.Data;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -40,6 +37,7 @@ import java.util.List;
 public class RiskScenarioImportExportRestServer {
 
   private static final Logger LOG = LoggerFactory.getLogger(RiskScenarioImportExportRestServer.class.getName());
+  public static final String DD_MM_YYYY_HH_MM = "dd/MM/yyyy HH:mm";
 
   private RiskServiceInterface riskDBService;
   private RiskScenariosReferenceImporter riskScenariosImporter;
@@ -50,18 +48,24 @@ public class RiskScenarioImportExportRestServer {
   public File exportRiskScenario() throws IOException {
     LOG.info("exportRiskScenario ");
     FileOutputStream fos = null;
-    File fileToReturn = new File("exportThreat.temp");
+    File fileToReturn = new File("exportRiskScenario.temp");
+    fileToReturn.deleteOnExit();
     try {
-      LOG.info("exportRiskScenaris ");
-      fileToReturn.createNewFile();
+      if (!fileToReturn.exists()) {
+        boolean created = fileToReturn.createNewFile();
+        if (!created) {
+          LOG.error("Unable to create export RiskScenario file");
+          return null;
+        }
+      }
       fos = new FileOutputStream(fileToReturn);
       List<RiskScenarioReference> scenarios = riskDBService.getRiskScenarioReference();
-      if (scenarios != null && scenarios.size() > 0) {
+      if (scenarios != null && !scenarios.isEmpty()) {
         RiskScenarioReferenceModelSerializerDeserializer rmSerDes = new RiskScenarioReferenceModelSerializerDeserializer();
         RiskScenarioReferenceModel rmmodel = new RiskScenarioReferenceModel();
         rmmodel.setScenarios(scenarios);
 
-        DateFormat df = new SimpleDateFormat("dd/MM/yyyy HH:mm");
+        DateFormat df = new SimpleDateFormat(DD_MM_YYYY_HH_MM);
         rmmodel.setCreationTime(df.format(new Date()));
         rmmodel.setUpdateTime(df.format(new Date()));
         rmmodel.setObjType(SESTObjectTypeEnum.RiskModel);

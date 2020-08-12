@@ -26,8 +26,6 @@ export class ChangeTabService {
 
   changeTab(data: boolean) {
 
-    console.log('change tab');
-    console.log(data);
     this.subTab.next(data);
   }
 

@@ -12,9 +12,9 @@
 
 package org.crmf.model.riskassessmentelements;
 
-import java.util.ArrayList;
-
 import org.crmf.model.general.SESTObject;
+
+import java.util.ArrayList;
 
 public class RiskScenario extends SESTObject {
 
@@ -46,17 +46,13 @@ public class RiskScenario extends SESTObject {
 	private String vulnerabilityId;
 
 	public RiskScenario(){
-		safeguardIds = new ArrayList<String>();
+		safeguardIds = new ArrayList<>();
 		excluded = false;
 		scenarioResult = ScenarioResultEnum.Reduce;
 		dissuasion = SafeguardEffectiveness.LOW;
 		prevention = SafeguardEffectiveness.LOW;
 		confining = SafeguardEffectiveness.LOW;
 		palliation = SafeguardEffectiveness.LOW;
-	}
-
-	public void finalize() throws Throwable {
-		super.finalize();
 	}
 
 	public ImpactEnum getCalculatedImpact() {

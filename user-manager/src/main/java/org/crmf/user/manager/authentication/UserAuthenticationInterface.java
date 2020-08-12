@@ -12,11 +12,9 @@
 
 package org.crmf.user.manager.authentication;
 
-import org.crmf.model.utility.GenericFilter;
-
 public interface UserAuthenticationInterface {
 
-	String getPasswordForUser(String username);
+  String getPasswordForUser(String username);
 
-	boolean isPasswordExpired(String username);
+  boolean isPasswordExpired(String username);
 }

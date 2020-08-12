@@ -12,9 +12,6 @@
 
 package org.crmf.persistency.mapper.project;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.apache.ibatis.session.SqlSession;
 import org.crmf.model.general.SESTObjectTypeEnum;
 import org.crmf.model.riskassessment.AssessmentTemplate;
@@ -34,6 +31,9 @@ import org.crmf.persistency.mapper.vulnerability.VulnerabilityMapper;
 import org.crmf.persistency.session.PersistencySessionFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import java.util.ArrayList;
+import java.util.List;
 
 //This class manages the database interactions related to the AssessmentTemplate
 public class AsstemplateService implements AsstemplateServiceInterface {
@@ -267,7 +267,7 @@ public class AsstemplateService implements AsstemplateServiceInterface {
 	public List<AssessmentTemplate> getAll() {
 		LOG.info("called getAll");
 		SqlSession sqlSession = sessionFactory.getSession();
-		List<AssessmentTemplate> templatesToSend = new ArrayList<AssessmentTemplate>();
+		List<AssessmentTemplate> templatesToSend = new ArrayList<>();
 		try {
 			AsstemplateMapper asstemplateMapper = sqlSession.getMapper(AsstemplateMapper.class);
 			List<AssTemplate> templates = asstemplateMapper.getAll();
@@ -290,7 +290,7 @@ public class AsstemplateService implements AsstemplateServiceInterface {
 
 		LOG.info("called getByMethodology "+methodology);
 		SqlSession sqlSession = sessionFactory.getSession();
-		List<AssessmentTemplate> templatesToSend = new ArrayList<AssessmentTemplate>();
+		List<AssessmentTemplate> templatesToSend = new ArrayList<>();
 		try {
 			AsstemplateMapper asstemplateMapper = sqlSession.getMapper(AsstemplateMapper.class);
 			List<AssTemplate> templates = asstemplateMapper.getByMethodology(methodology);
@@ -313,7 +313,7 @@ public class AsstemplateService implements AsstemplateServiceInterface {
 
 		LOG.info("called getByProfileIdentifier "+identifier);
 		SqlSession sqlSession = sessionFactory.getSession();
-		List<AssessmentTemplate> templatesToSend = new ArrayList<AssessmentTemplate>();
+		List<AssessmentTemplate> templatesToSend = new ArrayList<>();
 		try {
 			AsstemplateMapper asstemplateMapper = sqlSession.getMapper(AsstemplateMapper.class);
 			List<AssTemplate> templates = asstemplateMapper.getByProfileIdentifier(identifier);

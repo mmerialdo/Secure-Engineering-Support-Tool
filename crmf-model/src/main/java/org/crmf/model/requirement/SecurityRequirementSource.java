@@ -15,10 +15,6 @@ package org.crmf.model.requirement;
 public class SecurityRequirementSource {
 	private String source;
 	private String sourceReference;
-	
-	public SecurityRequirementSource(){
-		
-	}
 
 	public String getSource() {
 		return source;

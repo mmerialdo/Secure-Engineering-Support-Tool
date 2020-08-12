@@ -28,10 +28,6 @@ public class RiskScenarioReferenceModel extends SESTObject {
 		scenarios = new ArrayList<RiskScenarioReference>();
 	}
 
-	public void finalize() throws Throwable {
-		super.finalize();
-	}
-
 	public String getCreationTime() {
 		return creationTime;
 	}

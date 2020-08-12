@@ -12,10 +12,10 @@
 
 package org.crmf.model.riskassessment;
 
-import java.util.ArrayList;
-
 import org.crmf.model.general.SESTObject;
 import org.crmf.model.riskassessmentelements.RiskScenario;
+
+import java.util.ArrayList;
 
 public class RiskModel extends SESTObject {
 
@@ -24,11 +24,7 @@ public class RiskModel extends SESTObject {
 	private ArrayList<RiskScenario> scenarios;
 
 	public RiskModel(){
-		scenarios = new ArrayList<RiskScenario>();
-	}
-
-	public void finalize() throws Throwable {
-		super.finalize();
+		scenarios = new ArrayList<>();
 	}
 
 	public String getCreationTime() {

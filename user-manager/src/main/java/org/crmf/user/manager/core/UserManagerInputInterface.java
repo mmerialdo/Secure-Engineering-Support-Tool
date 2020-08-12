@@ -12,9 +12,9 @@
 
 package org.crmf.user.manager.core;
 
-import java.util.List;
-
 import org.crmf.model.user.User;
+
+import java.util.List;
 
 public interface UserManagerInputInterface {
 

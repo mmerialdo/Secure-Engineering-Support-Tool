@@ -13,12 +13,13 @@
 
 <div class="row">
   <div class="col-md-3">
-    <img src="../../../assets/leftarrow.png" *ngIf="backArrow" height="60" width="90" (click)="backProjectsList()" style="cursor: pointer;float: left;margin-top: 2%;margin-left: 2%"
+    <img src="../../../assets/leftarrow.png" *ngIf="backArrow" height="60" width="90" (click)="backProjectsList()"
+         alt="back" style="cursor: pointer;float: left;margin-top: 2%;margin-left: 2%"
     />
   </div>
   <div class="col-md-6">
     <img src="../../../assets/2018-01-11-Secure-Engineering-Support-Tool-Logo-White.png" width="190" height="95" style="margin-bottom: 3px"
-      class="center-block img-responsive" />
+      class="center-block img-responsive" alt="SEST"/>
     <!--<h1>{{title}}</h1>-->
   </div>
   <div class="col-md-3" *ngIf="showLogout">
@@ -31,10 +32,10 @@
     </div>
     <div style="float: right; margin-top: 8px; margin-right: 10px">
       <p style="margin-top: 0em; margin-bottom: 0em; line-height: normal; text-align: center">
-        <b>{{ username}}</b>
+        <strong>{{ username}}</strong>
       </p>
       <p style="margin-top: 0em; margin-bottom: 0em; line-height: normal">
-        <b style="font-size: 11px">{{  profile }}</b>
+        <strong style="font-size: 11px">{{  profile }}</strong>
       </p>
     </div>
   </div>

@@ -19,22 +19,22 @@
     <nav class="navbar navbar-default navbar-static-top">
       <div class="container-fluid">
         <button style="margin-top: 5px;border: 1px solid " type="button" class="btn btn-secondary btn-xs" (click)="changeView()">
-          <b>Change Visualization</b>
+          <strong>Change Visualization</strong>
         </button>
         <hr style="clear: both; color: black; background-color: black; height: 1px; border-width: 0;">
         <button style="margin-top: 5px;border: 1px solid " type="button" class="btn btn-secondary btn-xs" (click)="saveAssetModel()"
                 [disabled]="!enableSaveButton || !isLockedByCurrentUser()">
-          <b>Save Asset Model</b>
+          <strong>Save Asset Model</strong>
         </button>
 
-        <!--<button style="margin-top: 5px;border: 1px solid " type="button" class="btn btn-secondary btn-xs" (click)="loadJSON()"><b>Load</b> </button>-->
-        <!--<button style="margin-top: 5px;border: 1px solid " type="button" class="btn btn-secondary btn-xs" (click)="rimuovo()"><b>Rimuovo</b> </button>-->
-        <!--<button style="margin-top: 5px;border: 1px solid " type="button" class="btn btn-secondary btn-xs" (click)=" getAsset()"><b>Load Asset</b> </button>-->
+        <!--<button style="margin-top: 5px;border: 1px solid " type="button" class="btn btn-secondary btn-xs" (click)="loadJSON()"><strong>Load</strong> </button>-->
+        <!--<button style="margin-top: 5px;border: 1px solid " type="button" class="btn btn-secondary btn-xs" (click)="rimuovo()"><strong>Rimuovo</strong> </button>-->
+        <!--<button style="margin-top: 5px;border: 1px solid " type="button" class="btn btn-secondary btn-xs" (click)=" getAsset()"><strong>Load Asset</strong> </button>-->
 
         <hr style="clear: both; color: black; background-color: black; height: 1px; border-width: 0;">
 
         <button style="margin-top: 5px;border: 1px solid " type="button" class="btn btn-secondary btn-xs" (click)="exportPNG()">
-          <b>Export PNG</b>
+          <strong>Export PNG</strong>
         </button>
 
         <hr style="clear: both; color: black; background-color: black; height: 1px; border-width: 0;">
@@ -43,23 +43,24 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul class="nav navbar-nav">
             <li style="margin-top: 5px">
-              <img src="../../../assets/org.png" height="20" width="30" (click)="createOrganization()" style="cursor: pointer;" />
+              <img src="../../../assets/org.png" height="20" width="30" (click)="createOrganization()"
+                   style="cursor: pointer;" alt="organization"/>
               <label style="cursor: pointer;" (click)="createOrganization()">
                 Organization </label>
             </li>
             <li style="margin-top: 5px">
               <img src="../../../assets/process.png" height="20" width="30" (click)="createProcess()" style="cursor: pointer;" />
-              <label style="cursor: pointer;" (click)="createProcess()">
+              <label style="cursor: pointer;" (click)="createProcess()" alt="process">
                 Process </label>
             </li>
             <li style="margin-top: 5px">
               <img src="../../../assets/act.png" height="20" width="30" (click)="createActivity()" style="cursor: pointer;" />
-              <label style="cursor: pointer;" (click)="createActivity()">
+              <label style="cursor: pointer;" (click)="createActivity()" alt="activity">
                 Activity </label>
             </li>
             <li style="margin-top: 5px">
               <img src="../../../assets/mal.png" height="20" width="30" (click)="createMalfunction()" style="cursor: pointer;" />
-              <label style="cursor: pointer;" (click)="createMalfunction()">
+              <label style="cursor: pointer;" (click)="createMalfunction()" alt="malfunction">
                 Malfunction </label>
             </li>
 
@@ -74,7 +75,7 @@
 
             <li style="margin-top: 5px">
               <img src="../../../assets/asset.png" height="20" width="30" (click)="createAsset()" style="cursor: pointer;" />
-              <label style="cursor: pointer;margin-bottom: 15px" (click)="createAsset()"> Asset </label>
+              <label style="cursor: pointer;margin-bottom: 15px" (click)="createAsset()" alt="asset"> Asset </label>
             </li>
 
 
@@ -83,54 +84,54 @@
         <hr style="clear: both; color: black; background-color: black; height: 1px; border-width: 0;">
 
         <button style="margin-top: 5px;border: 1px solid " type="button" class="btn btn-secondary btn-xs" (click)="hide()">
-          <b>Hide Selected</b>
+          <strong>Hide Selected</strong>
         </button>
         <button style="margin-top: 5px;border: 1px solid " type="button" class="btn btn-secondary btn-xs" (click)="unhide()">
-          <b>Unhide All</b>
+          <strong>Unhide All</strong>
         </button>
         <hr style="clear: both; color: black; background-color: black; height: 1px; border-width: 0;">
 
         <button style="margin-top: 5px;border: 1px solid " type="button" class="btn btn-secondary btn-xs" (click)="hideOrganizations()">
-          <b>Hide Organizations</b>
+          <strong>Hide Organizations</strong>
         </button>
         <button style="margin-top: 5px;border: 1px solid " type="button" class="btn btn-secondary btn-xs" (click)="unhideOrganizations()">
-          <b>Unhide Organizations</b>
+          <strong>Unhide Organizations</strong>
         </button>
 
         <hr style="clear: both; color: black; background-color: black; height: 1px; border-width: 0;">
 
         <button style="margin-top: 5px;border: 1px solid " type="button" class="btn btn-secondary btn-xs" (click)="hideProcesses()">
-          <b>Hide Processes</b>
+          <strong>Hide Processes</strong>
         </button>
         <button style="margin-top: 5px;border: 1px solid " type="button" class="btn btn-secondary btn-xs" (click)="unhideProcesses()">
-          <b>Unhide Processes</b>
+          <strong>Unhide Processes</strong>
         </button>
 
         <hr style="clear: both; color: black; background-color: black; height: 1px; border-width: 0;">
 
         <button style="margin-top: 5px;border: 1px solid " type="button" class="btn btn-secondary btn-xs" (click)="hideActivities()">
-          <b>Hide Activities</b>
+          <strong>Hide Activities</strong>
         </button>
         <button style="margin-top: 5px;border: 1px solid " type="button" class="btn btn-secondary btn-xs" (click)="unhideActivities()">
-          <b>Unhide Activities</b>
+          <strong>Unhide Activities</strong>
         </button>
 
         <hr style="clear: both; color: black; background-color: black; height: 1px; border-width: 0;">
 
         <button style="margin-top: 5px;border: 1px solid " type="button" class="btn btn-secondary btn-xs" (click)="hideMalfunctions()">
-          <b>Hide Malfunctions</b>
+          <strong>Hide Malfunctions</strong>
         </button>
         <button style="margin-top: 5px;border: 1px solid " type="button" class="btn btn-secondary btn-xs" (click)="unhideMalfunctions()">
-          <b>Unhide Malfunctions</b>
+          <strong>Unhide Malfunctions</strong>
         </button>
 
         <hr style="clear: both; color: black; background-color: black; height: 1px; border-width: 0;">
 
         <button style="margin-top: 5px;border: 1px solid " type="button" class="btn btn-secondary btn-xs" (click)="hideAssets()">
-          <b>Hide Assets</b>
+          <strong>Hide Assets</strong>
         </button>
         <button style="margin-top: 5px;border: 1px solid " type="button" class="btn btn-secondary btn-xs" (click)="unhideAssets()">
-          <b>Unhide Assets</b>
+          <strong>Unhide Assets</strong>
         </button>
 
       </div>
@@ -211,7 +212,7 @@
 
         <div style="margin-top: 10px">
           <button style="border:1px solid" type="button" class="btn btn-secondary btn-xs" (click)="changeMode()">
-            <b>Edit Process</b>
+            <strong>Edit Process</strong>
           </button>
         </div>
 
@@ -232,7 +233,7 @@
 
             <div>
               <button style="border:1px solid" type="button" class="btn btn-secondary btn-xs" (click)="requirementsMode()">
-                <b>Edit Requirements</b>
+                <strong>Edit Requirements</strong>
               </button>
 
             </div>
@@ -288,7 +289,7 @@
 
             <div style="margin-top: 10px">
               <button style="border: 1px solid" type="button" class="btn btn-secondary btn-xs" (click)="changeMode()">
-                <b>Edit Activity</b>
+                <strong>Edit Activity</strong>
               </button>
 
             </div>
@@ -314,7 +315,7 @@
 
             <div>
               <button style="border: 1px solid" type="button" class="btn btn-secondary btn-xs" (click)="requirementsMode()">
-                <b>Edit Requirements</b>
+                <strong>Edit Requirements</strong>
               </button>
 
             </div>
@@ -374,7 +375,7 @@
 
             <div style="margin-top: 10px">
               <button style="border: 1px solid" type="button" class="btn btn-secondary btn-xs" (click)="changeMode()">
-                <b>Edit Organization</b>
+                <strong>Edit Organization</strong>
               </button>
 
             </div>
@@ -399,7 +400,7 @@
 
             <div>
               <button style="border: 1px solid" type="button" class="btn btn-secondary btn-xs" (click)="requirementsMode()">
-                <b>Edit Requirements</b>
+                <strong>Edit Requirements</strong>
               </button>
 
             </div>
@@ -467,7 +468,7 @@
 
         <div class="row">
 
-          <div class="col-md-6" *ngIf="malfunctionConfidenciality">
+          <div class="col-md-6" *ngIf="malfunctionConfidentiality">
 
             <p>Confidentiality Loss</p>
 
@@ -516,7 +517,7 @@
 
 
           <button style="border: 1px solid" type="button" class="btn btn-secondary btn-xs" (click)="changeMode()">
-            <b>Edit Malfunction</b>
+            <strong>Edit Malfunction</strong>
           </button>
 
 
@@ -541,7 +542,7 @@
 
             <div>
               <button style="border: 1px solid" type="button" class="btn btn-secondary btn-xs" (click)="requirementsMode()">
-                <b>Edit Requirements</b>
+                <strong>Edit Requirements</strong>
               </button>
 
             </div>
@@ -612,7 +613,7 @@
         <!--<div style="margin-top: 10px">
 
 
-          <button style="border: 1px solid" type="button" class="btn btn-secondary btn-sm" (click)="changeEdgeMode()"><b>Edit Edge</b></button>
+          <button style="border: 1px solid" type="button" class="btn btn-secondary btn-sm" (click)="changeEdgeMode()"><strong>Edit Edge</strong></button>
 
 
         </div>-->
@@ -713,7 +714,7 @@
 
 
           <button style="border: 1px solid" type="button" class="btn btn-secondary btn-xs" (click)="changeMode()">
-            <b>Edit Asset</b>
+            <strong>Edit Asset</strong>
           </button>
 
 
@@ -735,7 +736,7 @@
 
             <div>
               <button style="border: 1px solid" type="button" class="btn btn-secondary btn-xs" (click)="requirementsMode()">
-                <b>Edit Requirements</b>
+                <strong>Edit Requirements</strong>
               </button>
 
             </div>
@@ -810,7 +811,7 @@
         <div style="float: left">
 
           <div style="margin-bottom: 10px; text-align: center;font-size: 18px">
-            <b>Requirements List</b>
+            <strong>Requirements List</strong>
           </div>
           <p-listbox [options]="showRequirementsList" [(ngModel)]="selectedRequirement" (ngModelChange)="requirementDescription(selectedRequirement,false)"
                      filter="filter" [style]="{'width':'500px','height':'250px','max-height':'250px', 'overflow-y':'auto'}" id="setB"></p-listbox>
@@ -830,7 +831,7 @@
 
         <div style="float: left">
           <div style="margin-bottom: 10px; text-align: center;font-size: 18px">
-            <b>Selected Requirements </b>
+            <strong>Selected Requirements </strong>
           </div>
           <p-listbox [options]="selectedRequirementList" [(ngModel)]="chosenRequirement" (ngModelChange)="requirementDescription(chosenRequirement,true)"
                      filter="filter" [style]="{'width':'500px','height':'250px','max-height':'250px', 'overflow-y':'auto'}"></p-listbox>
@@ -1179,7 +1180,7 @@
       <div class="col-md-6">
 
         <label>
-          <input #confiLossE type="checkbox" [checked]="malfunctionConfidenciality" (change)="malfunctionConfidenciality= confiLossE.checked"> Confidentiality Loss
+          <input #confiLossE type="checkbox" [checked]="malfunctionConfidentiality" (change)="malfunctionConfidentiality= confiLossE.checked"> Confidentiality Loss
         </label>
 
         <label>
@@ -1262,7 +1263,7 @@
         <div [formGroup]="businessEditMalfunctioForm" class="form-group">
           <label for="lowE" style="color: green">Low</label>
           <i class="fa fa-info-circle" (click)="infoSeriousness()" style="cursor:pointer;margin-left:1px;"></i>
-          <textarea formControlName="lowE" [(ngModel)]="low" class="form-control" rows="3" name="lowE" id="lowE" [readonly]="(!malfunctionEfficency&& !malfunctionIntegrity && !malfunctionConfidenciality&& !malfunctionAvailability)"> </textarea>
+          <textarea formControlName="lowE" [(ngModel)]="low" class="form-control" rows="3" name="lowE" id="lowE" [readonly]="(!malfunctionEfficency&& !malfunctionIntegrity && !malfunctionConfidentiality&& !malfunctionAvailability)"> </textarea>
 
 
         </div>
@@ -1275,7 +1276,7 @@
         <div [formGroup]="businessEditMalfunctioForm" class="form-group">
           <label for="mediumE" style="color: #ffdb00">Medium</label>
           <i class="fa fa-info-circle" (click)="infoSeriousness()" style="cursor:pointer;margin-left:1px;"></i>
-          <textarea formControlName="mediumE" [(ngModel)]="medium" rows="3" class="form-control" name="mediumE" id="mediumE" [readonly]="(!malfunctionEfficency&& !malfunctionIntegrity && !malfunctionConfidenciality&& !malfunctionAvailability)"> </textarea>
+          <textarea formControlName="mediumE" [(ngModel)]="medium" rows="3" class="form-control" name="mediumE" id="mediumE" [readonly]="(!malfunctionEfficency&& !malfunctionIntegrity && !malfunctionConfidentiality&& !malfunctionAvailability)"> </textarea>
 
 
         </div>
@@ -1288,7 +1289,7 @@
         <div [formGroup]="businessEditMalfunctioForm" class="form-group">
           <label for="highE" style="color: orange">High</label>
           <i class="fa fa-info-circle" (click)="infoSeriousness()" style="cursor:pointer;margin-left:1px;"></i>
-          <textarea formControlName="highE" [(ngModel)]="high" rows="3" class="form-control" name="highE" id="highE" [readonly]="(!malfunctionEfficency&& !malfunctionIntegrity && !malfunctionConfidenciality&& !malfunctionAvailability)"> </textarea>
+          <textarea formControlName="highE" [(ngModel)]="high" rows="3" class="form-control" name="highE" id="highE" [readonly]="(!malfunctionEfficency&& !malfunctionIntegrity && !malfunctionConfidentiality&& !malfunctionAvailability)"> </textarea>
 
 
         </div>
@@ -1302,7 +1303,7 @@
           <label for="criticalE" style="color: red">Critical</label>
           <i class="fa fa-info-circle" (click)="infoSeriousness()" style="cursor:pointer;margin-left:1px;"></i>
           <textarea formControlName="criticalE" [(ngModel)]="critical" rows="3" class="form-control" name="criticalE" id="criticalE"
-                    [readonly]="(!malfunctionEfficency&& !malfunctionIntegrity && !malfunctionConfidenciality&& !malfunctionAvailability)"> </textarea>
+                    [readonly]="(!malfunctionEfficency&& !malfunctionIntegrity && !malfunctionConfidentiality&& !malfunctionAvailability)"> </textarea>
           <!--<p *ngIf="!editMode"> Suppory MCS </p>-->
 
         </div>
@@ -1320,7 +1321,7 @@
   <p-footer>
     <div class="ui-dialog-buttonpane ui-widget-content ui-helper-clearfix">
       <button type="button" pButton icon="fa fa-close" (click)="closeEditMalForm()" label="Cancel"></button>
-      <button type="button" pButton icon="fa fa-check" [disabled]="(!businessEditMalfunctioForm.valid || (!malfunctionEfficency&& !malfunctionIntegrity && !malfunctionConfidenciality&& !malfunctionAvailability)|| ((low ===null || low ==='' )&&(medium ===null || medium ==='' )&&(high ===null || high ==='' )&&(critical ===null || critical ==='' ) )|| duplicateName )"
+      <button type="button" pButton icon="fa fa-check" [disabled]="(!businessEditMalfunctioForm.valid || (!malfunctionEfficency&& !malfunctionIntegrity && !malfunctionConfidentiality&& !malfunctionAvailability)|| ((low ===null || low ==='' )&&(medium ===null || medium ==='' )&&(high ===null || high ==='' )&&(critical ===null || critical ==='' ) )|| duplicateName )"
               (click)="editMal()" label="Save"></button>
     </div>
   </p-footer>
@@ -1765,7 +1766,7 @@ Symbol'>·
           <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </span>
         </span>
-        <b>Seriousness Level 4: Vital </b>
+        <strong>Seriousness Level 4: Vital </strong>
       </p>
 
       <p class=MsoListParagraph style='margin-left:36.0pt;text-indent:0cm'>At this level, the potential risk is very serious, and even the existence and survival of the organization (or at least
@@ -1781,7 +1782,7 @@ Symbol'>·
           <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </span>
         </span>
-        <b>Seriousness Level 3: Very Serious </b>
+        <strong>Seriousness Level 3: Very Serious </strong>
       </p>
 
       <p class=MsoListParagraph style='margin-left:36.0pt;text-indent:0cm'>These Malfunctions are considered very serious at the level of the organization, although its future would not be at
@@ -1798,7 +1799,7 @@ Symbol'>·
           <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </span>
         </span>
-        <b>Seriousness Level 2: Serious </b>
+        <strong>Seriousness Level 2: Serious </strong>
       </p>
 
       <p class=MsoListParagraph style='margin-left:36.0pt;text-indent:0cm'>Malfunctions at this level would have a clear impact on the organization’s operations, results or image, but are globally
@@ -1811,7 +1812,7 @@ Symbol'>·
           <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </span>
         </span>
-        <b>Seriousness Level 1: Not significant  </b>
+        <strong>Seriousness Level 1: Not significant  </strong>
       </p>
 
       <p class=MsoListParagraph style='margin-left:36.0pt;text-indent:0cm'>At this level, any resulting damage would have no significant impact on the results or image of the organization, even
@@ -1847,14 +1848,14 @@ Symbol'>·
           <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </span>
         </span>
-        <b>Incorrect timing</b>: the tasks or activities that are planned are not completed in time;  </p>
+        <strong>Incorrect timing</strong>: the tasks or activities that are planned are not completed in time;  </p>
       <p class=MsoListParagraph style='margin-left:36.0pt'>
         <span style='font-family:
 Symbol'>·
           <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </span>
         </span>
-        <b>Lack of compliance</b>: the tasks or activities that are planned are not completed in accordance with the specifications;
+        <strong>Lack of compliance</strong>: the tasks or activities that are planned are not completed in accordance with the specifications;
       </p>
       <p class=MsoListParagraph style='margin-left:36.0pt'>
         <span style='font-family:
@@ -1862,7 +1863,7 @@ Symbol'>·
           <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </span>
         </span>
-        <b>Lack of completeness</b>: the tasks or activities that are planned are only partially completed (although the parts
+        <strong>Lack of completeness</strong>: the tasks or activities that are planned are only partially completed (although the parts
         that are complete are as specified); </p>
       <p class=MsoListParagraph style='margin-left:36.0pt'>
         <span style='font-family:
@@ -1870,21 +1871,21 @@ Symbol'>·
           <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </span>
         </span>
-        <b>Lack of correctness</b>: additional tasks or activities are performed that were not planned or specified; </p>
+        <strong>Lack of correctness</strong>: additional tasks or activities are performed that were not planned or specified; </p>
       <p class=MsoListParagraph style='margin-left:36.0pt'>
         <span style='font-family:
 Symbol'>·
           <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </span>
         </span>
-        <b>Lack of discretion</b>: information is improperly disclosed while the tasks or activities are performed;  </p>
+        <strong>Lack of discretion</strong>: information is improperly disclosed while the tasks or activities are performed;  </p>
       <p class=MsoListParagraph style='margin-left:36.0pt'>
         <span style='font-family:
 Symbol'>·
           <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </span>
         </span>
-        <b>Lack of Control</b>: the tasks or activities are performed and completed as planned but without any control or visibility
+        <strong>Lack of Control</strong>: the tasks or activities are performed and completed as planned but without any control or visibility
         of their execution.</p>
 
     </div>
@@ -1912,9 +1913,9 @@ Symbol'>·
         <span lang=EN-CA>&nbsp;</span>
       </p>
       <p class=MsoNormal>
-        <b>
+        <strong>
           <span lang=EN-CA>Assets of the category Data</span>
-        </b>
+        </strong>
       </p>
       <p class=MsoListParagraph style='margin-left:.5in'>
         <span lang=EN-GB style='font-family:Symbol'>·
@@ -1971,9 +1972,9 @@ Symbol'>·
           <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </span>
         </span>
-        <b>
+        <strong>
           <span lang=EN-GB>Data_DataFile_Database</span>
-        </b>
+        </strong>
         <span lang=EN-GB> (Data files and data bases accessed by applications)</span>
       </p>
       <p class=MsoListParagraph style='margin-left:.5in'>
@@ -1981,9 +1982,9 @@ Symbol'>·
           <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </span>
         </span>
-        <b>
+        <strong>
           <span lang=EN-GB>Data_Shared_Office_File</span>
-        </b>
+        </strong>
         <span lang=EN-GB> (Shared office files and data)</span>
       </p>
       <p class=MsoListParagraph style='margin-left:.5in'>
@@ -1991,9 +1992,9 @@ Symbol'>·
           <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </span>
         </span>
-        <b>
+        <strong>
           <span lang=EN-GB>Data_Personal_Office_File</span>
-        </b>
+        </strong>
         <span lang=EN-GB> (Personal office files and data)</span>
       </p>
       <p class=MsoListParagraph style='margin-left:.5in'>
@@ -2001,9 +2002,9 @@ Symbol'>·
           <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </span>
         </span>
-        <b>
+        <strong>
           <span lang=EN-GB>Data_Physical_File</span>
-        </b>
+        </strong>
         <span lang=EN-GB> (Written or printed files and data)</span>
       </p>
       <p class=MsoListParagraph style='margin-left:.5in'>
@@ -2011,9 +2012,9 @@ Symbol'>·
           <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </span>
         </span>
-        <b>
+        <strong>
           <span lang=EN-GB>Data_Exchanged_Message</span>
-        </b>
+        </strong>
         <span lang=EN-GB> (Exchanged messages, screen views, data individually sensitive)</span>
       </p>
       <p class=MsoListParagraph style='margin-left:.5in'>
@@ -2021,9 +2022,9 @@ Symbol'>·
           <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </span>
         </span>
-        <b>
+        <strong>
           <span lang=EN-GB>Data_Digital_Mail</span>
-        </b>
+        </strong>
         <span lang=EN-GB>
           (Electronic mailing)</span>
       </p>
@@ -2032,9 +2033,9 @@ Symbol'>·
           <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </span>
         </span>
-        <b>
+        <strong>
           <span lang=EN-GB>Data_Physical_Mail</span>
-        </b>
+        </strong>
         <span lang=EN-GB> (Written or printed mailing)</span>
       </p>
       <p class=MsoListParagraph style='margin-left:.5in'>
@@ -2042,9 +2043,9 @@ Symbol'>·
           <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </span>
         </span>
-        <b>
+        <strong>
           <span lang=EN-GB>Data_Physical_Archive</span>
-        </b>
+        </strong>
         <span lang=EN-GB> (Physical data archive)</span>
       </p>
       <p class=MsoListParagraph style='margin-left:.5in'>
@@ -2052,9 +2053,9 @@ Symbol'>·
           <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </span>
         </span>
-        <b>
+        <strong>
           <span lang=EN-GB>Data_IT_Archive</span>
-        </b>
+        </strong>
         <span lang=EN-GB>
           (Digital data archive)</span>
       </p>
@@ -2063,9 +2064,9 @@ Symbol'>·
           <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </span>
         </span>
-        <b>
+        <strong>
           <span lang=EN-GB>Data_Published_Data</span>
-        </b>
+        </strong>
         <span lang=EN-GB>
           (Data and information published on public or internal sites)</span>
       </p>
@@ -2095,9 +2096,9 @@ Symbol'>·
         <span lang=EN-CA>&nbsp;</span>
       </p>
       <p class=MsoNormal>
-        <b>
+        <strong>
           <span lang=EN-CA>Assets of the category Services</span>
-        </b>
+        </strong>
       </p>
       <p class=MsoListParagraph style='margin-left:.25in'>
         <span lang=EN-GB style='font-family:Symbol'>·
@@ -2173,9 +2174,9 @@ Symbol'>·
           <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </span>
         </span>
-        <b>
+        <strong>
           <span lang=EN-GB>Service_User_Workspace</span>
-        </b>
+        </strong>
         <span lang=EN-GB> (User workspace and environment)</span>
       </p>
       <p class=MsoListParagraph style='margin-left:.25in'>
@@ -2183,9 +2184,9 @@ Symbol'>·
           <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </span>
         </span>
-        <b>
+        <strong>
           <span lang=EN-GB>Service_Telecommunication_Service</span>
-        </b>
+        </strong>
         <span lang=EN-GB> (Telecommunication Services)</span>
       </p>
       <p class=MsoListParagraph style='margin-left:.25in'>
@@ -2193,9 +2194,9 @@ Symbol'>·
           <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </span>
         </span>
-        <b>
+        <strong>
           <span lang=EN-GB>Service_Extended_Network_Service</span>
-        </b>
+        </strong>
         <span lang=EN-GB> (Extended Network Service)</span>
       </p>
       <p class=MsoListParagraph style='margin-left:.25in'>
@@ -2203,9 +2204,9 @@ Symbol'>·
           <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </span>
         </span>
-        <b>
+        <strong>
           <span lang=EN-GB>Service_Local_Network_Service</span>
-        </b>
+        </strong>
         <span lang=EN-GB> (Local Area Network Service)</span>
       </p>
       <p class=MsoListParagraph style='margin-left:.25in'>
@@ -2213,9 +2214,9 @@ Symbol'>·
           <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </span>
         </span>
-        <b>
+        <strong>
           <span lang=EN-GB>Service_Application_Service</span>
-        </b>
+        </strong>
         <span lang=EN-GB> (Services provided by applications)</span>
       </p>
       <p class=MsoListParagraph style='margin-left:.25in'>
@@ -2223,9 +2224,9 @@ Symbol'>·
           <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </span>
         </span>
-        <b>
+        <strong>
           <span lang=EN-GB>Service_Shared_Service</span>
-        </b>
+        </strong>
         <span lang=EN-GB> (Shared office Services)</span>
       </p>
       <p class=MsoListParagraph style='margin-left:.25in'>
@@ -2233,9 +2234,9 @@ Symbol'>·
           <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </span>
         </span>
-        <b>
+        <strong>
           <span lang=EN-GB>Service_User_Hardware</span>
-        </b>
+        </strong>
         <span lang=EN-GB> (Equipment provided to end users)</span>
       </p>
       <p class=MsoListParagraph style='margin-left:.25in'>
@@ -2243,9 +2244,9 @@ Symbol'>·
           <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </span>
         </span>
-        <b>
+        <strong>
           <span lang=EN-GB>Service_Common_Service</span>
-        </b>
+        </strong>
         <span lang=EN-GB> (Common system Services)</span>
       </p>
       <p class=MsoListParagraph style='margin-left:.25in'>
@@ -2253,9 +2254,9 @@ Symbol'>·
           <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </span>
         </span>
-        <b>
+        <strong>
           <span lang=EN-GB>Service_Web_editing_Service</span>
-        </b>
+        </strong>
         <span lang=EN-GB>  (Web editing Service (internal or public)</span>
       </p>
       <p class=MsoListParagraph style='margin-left:.25in;text-indent:0in'>
@@ -2289,10 +2290,10 @@ Symbol'>·
         <span lang=EN-CA>&nbsp;</span>
       </p>
       <p class=MsoNormal>
-        <b>
+        <strong>
           <span lang=EN-CA>Assets of the category Management processes
           </span>
-        </b>
+        </strong>
       </p>
       <p class=MsoListParagraph style='margin-left:.25in'>
         <span lang=EN-GB style='font-family:Symbol'>·
@@ -2320,9 +2321,9 @@ Symbol'>·
           <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </span>
         </span>
-        <b>
+        <strong>
           <span lang=EN-GB>Compliance_Policy_Personal_Information_Protection</span>
-        </b>
+        </strong>
         <span lang=EN-GB> (Compliance to law or regulations relative to personal information protection)
         </span>
       </p>
@@ -2331,9 +2332,9 @@ Symbol'>·
           <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </span>
         </span>
-        <b>
+        <strong>
           <span lang=EN-GB>Compliance_Policy_Financial_Communication</span>
-        </b>
+        </strong>
         <span lang=EN-GB> (Compliance to law or regulations relative to financial communication)
         </span>
       </p>
@@ -2342,9 +2343,9 @@ Symbol'>·
           <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </span>
         </span>
-        <b>
+        <strong>
           <span lang=EN-GB>Compliance_Policy_Digital_Accounting_Control</span>
-        </b>
+        </strong>
         <span lang=EN-GB> (Compliance to law or regulations relative to digital accounting control)
         </span>
       </p>
@@ -2353,9 +2354,9 @@ Symbol'>·
           <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </span>
         </span>
-        <b>
+        <strong>
           <span lang=EN-GB>Compliance_Policy_Intellectual_Property</span>
-        </b>
+        </strong>
         <span lang=EN-GB> (Compliance to law or regulations relative to intellectual property)
         </span>
       </p>
@@ -2364,9 +2365,9 @@ Symbol'>·
           <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </span>
         </span>
-        <b>
+        <strong>
           <span lang=EN-GB>Compliance_Policy_Protection_Of_Information_Systems</span>
-        </b>
+        </strong>
         <span lang=EN-GB> (Compliance to law or regulations relative to the protection of information systems)</span>
       </p>
       <p class=MsoListParagraph style='margin-left:.25in'>
@@ -2374,9 +2375,9 @@ Symbol'>·
           <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </span>
         </span>
-        <b>
+        <strong>
           <span lang=EN-GB>Compliance_Policy_People_And_Environment_Safety</span>
-        </b>
+        </strong>
         <span lang=EN-GB> (Compliance to law or regulations relative to people safety and protection of environment)</span>
       </p>
     </div>

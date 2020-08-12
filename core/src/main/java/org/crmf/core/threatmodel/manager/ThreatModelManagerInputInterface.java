@@ -13,7 +13,6 @@
 package org.crmf.core.threatmodel.manager;
 
 import org.crmf.model.riskassessmentelements.Threat;
-import org.crmf.model.riskassessmentelements.Vulnerability;
 import org.crmf.model.utility.GenericFilter;
 import org.crmf.model.utility.ModelObject;
 

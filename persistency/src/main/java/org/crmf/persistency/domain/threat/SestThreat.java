@@ -13,14 +13,12 @@
 package org.crmf.persistency.domain.threat;
 
 import org.crmf.model.riskassessment.PhaseEnum;
-import org.crmf.model.riskassessmentelements.ElementTypeEnum;
 import org.crmf.model.riskassessmentelements.LikelihoodEnum;
 import org.crmf.model.riskassessmentelements.Threat;
 import org.crmf.model.riskassessmentelements.ThreatClassEnum;
 import org.crmf.model.riskassessmentelements.ThreatScore;
 import org.crmf.model.riskassessmentelements.ThreatScoreEnum;
 import org.crmf.model.riskassessmentelements.ThreatSourceEnum;
-import org.crmf.persistency.domain.vulnerability.SestVulnerability;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -31,6 +29,7 @@ import java.util.Date;
 
 public class SestThreat {
   private static final Logger LOG = LoggerFactory.getLogger(SestThreat.class.getName());
+  public static final String DD_MM_YYYY_HH_MM = "dd/MM/yyyy HH:mm";
   private Integer id;
   private String sestobjId;
   private String likelihood;
@@ -140,7 +139,7 @@ public class SestThreat {
     threat.setCatalogue(ThreatSourceEnum.valueOf(this.catalogue));
     threat.setThreatClass(ThreatClassEnum.valueOf(this.threatClass));
     threat.setIdentifier(this.sestobjId);
-    DateFormat df = new SimpleDateFormat("dd/MM/yyyy HH:mm");
+    DateFormat df = new SimpleDateFormat(DD_MM_YYYY_HH_MM);
     String threatDate = df.format(this.updateTime);
     threat.setLastUpdate(threatDate);
 
@@ -158,18 +157,18 @@ public class SestThreat {
     this.setLikelihood(threat.getScore().getLikelihood().name());
     this.setScore(threat.getScore().getScore().name());
     this.setScore(threat.getScore().getLikelihood().name());
-		this.setPhase(threat.getPhase().name());
+    this.setPhase(threat.getPhase().name());
     this.setThreatClass(threat.getThreatClass().name());
     this.setName(threat.getName());
-		this.setCatalogue(threat.getCatalogue().name());
+    this.setCatalogue(threat.getCatalogue().name());
     this.setCatalogueId(threat.getCatalogueId());
     this.setSestobjId(threat.getIdentifier());
 
     try {
-      DateFormat df = new SimpleDateFormat("dd/MM/yyyy HH:mm");
+      DateFormat df = new SimpleDateFormat(DD_MM_YYYY_HH_MM);
       Date vulnerabilityDate = threat.getLastUpdate() != null ? df.parse(threat.getLastUpdate()) : new Date();
       this.setUpdateTime(vulnerabilityDate);
-    } catch(ParseException pe) {
+    } catch (ParseException pe) {
       LOG.info("Unable to parse date " + threat.getLastUpdate());
     }
   }

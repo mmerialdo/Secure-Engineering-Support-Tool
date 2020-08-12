@@ -17,28 +17,28 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 //This class manages the business logic behind the webservices related to the SecurityRequirements management
-public class SecRequirementManagerRestServer implements SecRequirementManagerRestServerInterface{
+public class SecRequirementManagerRestServer implements SecRequirementManagerRestServerInterface {
 
-	private GASFInputInterface secrequirementInput;
-	private static final Logger LOG = LoggerFactory.getLogger(SecRequirementManagerRestServer.class.getName());
-	
-	@Override
-	public void importGasfRequirement() throws Exception {
-		try{
-			LOG.info("importGasfRequirement");
-			secrequirementInput.importGASFRequirementsFull();
-		} catch (Exception e) {
-			LOG.info("importGasfRequirement:: exception " + e.getMessage());
-			throw new Exception("COMMAND_EXCEPTION", e);
-		}
-	}
+  private GASFInputInterface secrequirementInput;
+  private static final Logger LOG = LoggerFactory.getLogger(SecRequirementManagerRestServer.class.getName());
 
-	public GASFInputInterface getSecrequirementInput() {
-		return secrequirementInput;
-	}
+  @Override
+  public void importGasfRequirement() throws Exception {
+    try {
+      LOG.info("importGasfRequirement");
+      secrequirementInput.importGASFRequirementsFull();
+    } catch (Exception e) {
+      LOG.info("importGasfRequirement:: exception " + e.getMessage());
+      throw new Exception("COMMAND_EXCEPTION", e);
+    }
+  }
 
-	public void setSecrequirementInput(GASFInputInterface secrequirementInput) {
-		this.secrequirementInput = secrequirementInput;
-	}
+  public GASFInputInterface getSecrequirementInput() {
+    return secrequirementInput;
+  }
+
+  public void setSecrequirementInput(GASFInputInterface secrequirementInput) {
+    this.secrequirementInput = secrequirementInput;
+  }
 
 }

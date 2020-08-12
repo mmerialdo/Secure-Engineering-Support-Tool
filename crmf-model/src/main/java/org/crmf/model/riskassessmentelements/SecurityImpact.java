@@ -24,10 +24,6 @@ public class SecurityImpact {
 		technicalImpacts = new ArrayList<>();
 	}
 
-	public void finalize() throws Throwable {
-
-	}
-
 	public ImpactEnum getImpact() {
 		return impact;
 	}

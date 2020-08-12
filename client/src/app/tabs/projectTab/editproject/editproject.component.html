@@ -103,7 +103,7 @@
             <!--<div style="float: left">-->
 
             <div style="margin-bottom: 10px; text-align: center;font-size: 18px">
-              <b>Users List</b>
+              <strong>Users List</strong>
             </div>
             <p-listbox [options]="usersM" [(ngModel)]="selectedUser" (click)="deselectSecondList(selectedUser)"
                        filter="filter" [style]="{'width':'100%','height':'250px','max-height':'250px', 'overflow-y':'auto'}" [listStyle]="{'max-height':'200px'}"
@@ -141,7 +141,7 @@
 
             <!--<div style="float: left">-->
             <div style="margin-bottom: 10px; text-align: center;font-size: 18px">
-              <b>Selected Users </b>
+              <strong>Selected Users </strong>
             </div>
             <p-listbox [options]="selectedList" [(ngModel)]="chosenUser" (click)="deselectFirstList()"
                        [style]="{'width':'100%','height':'250px','max-height':'250px', 'overflow-y':'auto'}" [listStyle]="{'max-height':'250px'}"></p-listbox>
@@ -206,7 +206,7 @@
 
               <div [formGroup]="systemprojectForm" class="form-group">
                 <label for="mandate">Mandate (*)</label>
-                <i class="fa fa-info-circle" (click)="infoMandate(node)" style="cursor:pointer;margin-left:1px;"></i>
+                <em class="fa fa-info-circle" (click)="infoMandate(node)" style="cursor:pointer;margin-left:1px;"></em>
                 <input formControlName="mandate" type="text" class="form-control" name="mandate" id="mandate"/>
                 <control-messages [control]="systemprojectForm.controls.mandate"></control-messages>
               </div>
@@ -246,7 +246,7 @@
             <div class="col-md-6">
               <div [formGroup]="systemprojectForm" class="form-group">
                 <label for="scope">Scope (*)</label>
-                <i class="fa fa-info-circle" (click)="infoScope(node)" style="cursor:pointer;margin-left:1px;"></i>
+                <em class="fa fa-info-circle" (click)="infoScope(node)" style="cursor:pointer;margin-left:1px;"></em>
                 <textarea formControlName="scope" class="form-control" name="scope" rows="5" id="scope"></textarea>
                 <control-messages [control]="systemprojectForm.controls.scope"></control-messages>
               </div>
@@ -305,7 +305,7 @@
                   <div class="ui-grid ui-grid-responsive ui-fluid" style="border-bottom:1px solid #D5D5D5;">
                     <div class="row">
                       <div class="col-xs-12">
-                        <b>{{ filename }}</b>
+                        <strong>{{ filename }}</strong>
                       </div>
                     </div>
                   </div>

@@ -12,12 +12,9 @@
 
 package org.crmf.persistency.mapper.project;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
 import org.apache.ibatis.session.SqlSession;
 import org.crmf.model.audit.AuditTypeEnum;
+import org.crmf.model.audit.SestAuditModel;
 import org.crmf.model.general.SESTObjectTypeEnum;
 import org.crmf.model.riskassessment.AssessmentProfile;
 import org.crmf.model.riskassessment.AssessmentProject;
@@ -25,7 +22,6 @@ import org.crmf.model.riskassessment.AssessmentTemplate;
 import org.crmf.model.riskassessment.SystemParticipant;
 import org.crmf.model.riskassessment.SystemProject;
 import org.crmf.model.user.User;
-import org.crmf.model.audit.SestAuditModel;
 import org.crmf.persistency.domain.general.Sestobj;
 import org.crmf.persistency.domain.project.AssProfile;
 import org.crmf.persistency.domain.project.AssProject;
@@ -42,6 +38,10 @@ import org.crmf.persistency.mapper.user.UserMapper;
 import org.crmf.persistency.session.PersistencySessionFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 //This class manages the database interactions related to the AssessmentProject
 public class AssprojectService implements AssprojectServiceInterface {
@@ -244,7 +244,7 @@ public class AssprojectService implements AssprojectServiceInterface {
       SestAuditModel audit = auditService.getByProjectAndType(project.getSestobjId(), AuditTypeEnum.SECURITY, true);
       if (audit != null) {
         LOG.info("getting audit " + audit.getId());
-        projectToSend.setAudits(new ArrayList<SestAuditModel>(Arrays.asList(audit)));
+        projectToSend.setAudits(new ArrayList<>(Arrays.asList(audit)));
       }
 
     } catch (Exception ex) {
@@ -256,7 +256,7 @@ public class AssprojectService implements AssprojectServiceInterface {
 
     try {
       LOG.info("getByIdentifierFull users " + identifier);
-      ArrayList<User> users = new ArrayList<User>(roleService.getByProjectIdentifier(identifier));
+      ArrayList<User> users = new ArrayList<>(roleService.getByProjectIdentifier(identifier));
       LOG.info("getByIdentifierFull users " + users.size());
       projectToSend.setUsers(users);
     } catch (Exception e) {
@@ -280,7 +280,7 @@ public class AssprojectService implements AssprojectServiceInterface {
     AsstemplateMapper templateMapper = sqlSession.getMapper(AsstemplateMapper.class);
     UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
 
-    List<AssessmentProject> projectsToSend = new ArrayList<AssessmentProject>();
+    List<AssessmentProject> projectsToSend = new ArrayList<>();
     try {
       List<AssProject> projects = projectMapper.getAll();
 

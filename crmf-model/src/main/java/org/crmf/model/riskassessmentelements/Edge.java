@@ -12,9 +12,9 @@
 
 package org.crmf.model.riskassessmentelements;
 
-import java.util.ArrayList;
-
 import org.crmf.model.general.SESTObject;
+
+import java.util.ArrayList;
 
 public class Edge extends SESTObject {
 
@@ -23,14 +23,6 @@ public class Edge extends SESTObject {
 	private Node source;
 	private Node target;
 	private ArrayList<BusinessImpact> businessImpactWeights;
-
-	public Edge(){
-		
-	}
-
-	public void finalize() throws Throwable {
-		super.finalize();
-	}
 
 	public float getOperationalWeight() {
 		return operationalWeight;

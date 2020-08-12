@@ -12,21 +12,20 @@
 
 package org.crmf.proxy.core.riskassessment.project.rest;
 
-import java.util.List;
-
-import javax.ws.rs.POST;
-import javax.ws.rs.Produces;
-
 import org.crmf.model.requirement.Requirement;
 import org.crmf.model.utility.GenericFilter;
 
+import javax.ws.rs.POST;
+import javax.ws.rs.Produces;
+import java.util.List;
+
 public interface SystemProjectRequirementRestServerInterface {
 
-	@POST
-	@Produces("application/json")
-	List<Requirement> loadProjectRequirement(GenericFilter filter) throws Exception;
+  @POST
+  @Produces("application/json")
+  List<Requirement> loadProjectRequirement(GenericFilter filter) throws Exception;
 
-	@POST
-	@Produces("application/json")
-    List<Requirement> loadProjectRequirementByIds(List<String> ids) throws Exception;
+  @POST
+  @Produces("application/json")
+  List<Requirement> loadProjectRequirementByIds(List<String> ids) throws Exception;
 }

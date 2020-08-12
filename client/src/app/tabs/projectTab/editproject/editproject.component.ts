@@ -153,7 +153,6 @@ export class EditprojectComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
 
-    console.log('ProjectComponent edit');
     const a = {'filterMap': {'PROJECT': sessionStorage.getItem('idProject')}};
     this.getProject(JSON.stringify(a));
   }
@@ -169,8 +168,6 @@ export class EditprojectComponent implements OnInit, OnDestroy {
 
   systProjStep() {
 
-
-    // console.log("sys project");
     this.actualForm = this.projectForm.value;
 
     this.projectStep = 'systproj';
@@ -256,7 +253,6 @@ export class EditprojectComponent implements OnInit, OnDestroy {
 
   editUser() {
 
-    console.log('event ' + this.chosenUser);
     let id = this.chosenUser;
     let a = 0;
 
@@ -359,7 +355,6 @@ export class EditprojectComponent implements OnInit, OnDestroy {
 
   editProject() {
 
-    // console.log(this.projectID)
     const projMan = {'identifier': '8e56ce50-7ea2-11e7-96f1-0200c0a80208'};
 
     const systemArray = {
@@ -374,10 +369,6 @@ export class EditprojectComponent implements OnInit, OnDestroy {
       'users': this.roles,
       'projectManager': this.project.projectManager
     };
-
-
-    // console.log(systemArray)
-
 
     this.blocked = true;
     this.editproject(systemArray);
@@ -453,7 +444,6 @@ export class EditprojectComponent implements OnInit, OnDestroy {
 
     this.subscriptions.push(
       this.dataService.insertProject(s).subscribe(response => {
-        console.log(response);
         this.router.navigate(['/tool/projects']);
       }));
   }
@@ -503,8 +493,6 @@ export class EditprojectComponent implements OnInit, OnDestroy {
     this.subscriptions.push(
       this.dataService.loadProject(s).subscribe(response => {
         this.project = response;
-        // console.log(response)
-
 
         this.projectID = this.project.identifier;
         this.projectForm.controls['name'].setValue(this.project.name);
@@ -514,11 +502,6 @@ export class EditprojectComponent implements OnInit, OnDestroy {
 
         this.profilesList.push({'name': this.project.profile.name, 'identifier': this.project.profile.identifier});
         this.templateList.push({'name': this.project.template.name, 'identifier': this.project.template.identifier});
-
-
-        // console.log(this.profilesList)
-
-        // if(this.project.systemProject.length>0){
 
         this.systemprojectForm.controls['names'].setValue(this.project.systemProject.name);
         this.systemprojectForm.controls['mandate'].setValue(this.project.systemProject.mandate);
@@ -579,11 +562,6 @@ export class EditprojectComponent implements OnInit, OnDestroy {
   }
 
   firstList() {
-
-
-    // console.log("first")
-
-    // console.log(this.selectedList)
 
     if ((this.usersM.length === 0) && (this.selectedList.length === 0)) {
 
@@ -784,8 +762,6 @@ export class EditprojectComponent implements OnInit, OnDestroy {
 
           this.filenames = response;
         }, err => {
-          // console.log('response ' + err);
-          // console.log(err.error);
         }
       ));
   }

@@ -12,12 +12,11 @@
 
 package org.crmf.model.riskassessment;
 
-import java.util.ArrayList;
-
-import org.crmf.model.audit.Audit;
 import org.crmf.model.audit.SestAuditModel;
 import org.crmf.model.general.SESTObject;
 import org.crmf.model.user.User;
+
+import java.util.ArrayList;
 
 public class AssessmentProject extends SESTObject {
 
@@ -35,13 +34,6 @@ public class AssessmentProject extends SESTObject {
 	private User projectManager;
 	private ArrayList<SestAuditModel> audits;
 
-	public AssessmentProject(){
-
-	}
-
-	public void finalize() throws Throwable {
-		super.finalize();
-	}
 	public String getCreationTime(){
 		return creationTime;
 	}

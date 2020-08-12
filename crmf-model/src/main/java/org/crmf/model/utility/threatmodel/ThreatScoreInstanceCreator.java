@@ -87,7 +87,7 @@ public class ThreatScoreInstanceCreator implements JsonDeserializer<ThreatScore>
     gsonBuilder.serializeNulls();
     Gson gson = gsonBuilder.create();
 
-    ArrayList<SecurityImpact> impactsArray = new ArrayList<SecurityImpact>();
+    ArrayList<SecurityImpact> impactsArray = new ArrayList<>();
 
     if (jsonObject.has("securityImpacts")) {
       JsonArray secImpacts = jsonObject.get("securityImpacts").getAsJsonArray();

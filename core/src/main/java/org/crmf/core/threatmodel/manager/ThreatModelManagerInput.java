@@ -15,12 +15,10 @@ package org.crmf.core.threatmodel.manager;
 
 import org.crmf.model.riskassessment.AssessmentProcedure;
 import org.crmf.model.riskassessmentelements.Threat;
-import org.crmf.model.riskassessmentelements.ThreatSourceEnum;
 import org.crmf.model.utility.GenericFilter;
 import org.crmf.model.utility.GenericFilterEnum;
 import org.crmf.model.utility.ModelObject;
 import org.crmf.model.utility.TaxonomyReferenceBuilder;
-import org.crmf.persistency.mapper.general.SestObjService;
 import org.crmf.persistency.mapper.general.SestObjServiceInterface;
 import org.crmf.persistency.mapper.project.AssprocedureServiceInterface;
 import org.crmf.persistency.mapper.threat.ThreatServiceInterface;
@@ -41,7 +39,7 @@ public class ThreatModelManagerInput implements ThreatModelManagerInputInterface
 	
 	@Override
 	public void editThreatModel(String threatModelJson, String threatModelIdentifier) {
-		LOG.info("editThreatModel with identifier: " + threatModelIdentifier + " and Json" + threatModelJson.substring(0, (threatModelJson.length() > 1000 ? 1000 : threatModelJson.length())));
+		LOG.info("editThreatModel with identifier: {} and Json {}", threatModelIdentifier, threatModelJson.substring(0, (threatModelJson.length() > 1000 ? 1000 : threatModelJson.length())));
 		// updateQuestionnaireJSON the json threat model whose identifier is the threat model identifier in input
 		threatService.update(threatModelJson, threatModelIdentifier);
 
@@ -70,8 +68,9 @@ public class ThreatModelManagerInput implements ThreatModelManagerInputInterface
 			modelObject.setObjectIdentifier(sestobjId);
 			modelObject.setLockedBy(sestObjService.getByIdentifier(sestobjId).getLockedBy());
 			return modelObject;
-		} else
+		} else {
 			throw new Exception("Incorrect procedure identifier in input");
+		}
 	}
 	
 	@Override
@@ -79,7 +78,7 @@ public class ThreatModelManagerInput implements ThreatModelManagerInputInterface
 		// This method load all threats saved in the database, for a given Catalogue (MEHARI, etc..)
 		String catalogue = filter.getFilterValue(GenericFilterEnum.METHODOLOGY);
 		String fullString = filter.getFilterValue(GenericFilterEnum.FULL);
-		LOG.info("loadThreatRepository " + catalogue);
+		LOG.info("loadThreatRepository {}", catalogue);
 		return threatService.getThreatRepository(catalogue).getThreatModelJson();
 	}
 

@@ -12,49 +12,49 @@
 
 package org.crmf.secreqimport;
 
-import java.util.Timer;
-import java.util.TimerTask;
-
 import org.osgi.framework.BundleActivator;
 import org.osgi.framework.BundleContext;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.util.Timer;
+import java.util.TimerTask;
+
 //This class is needed in order to start the OSGi bundle
 //The sest-security-requirement-import bundle holds the business logic related to the import of security requirements
 //At the end of the SEST project this package only implemented the import of security requirements from the GASF tool via a REST API, but it can be extended in order to use also other sources
 public class SecurityRequirementImportActivator implements BundleActivator {
-	private static final Logger LOG = LoggerFactory.getLogger(SecurityRequirementImportActivator.class.getName());
-	private volatile boolean running = true;
-	
-	public void start(BundleContext context) throws Exception {
+  private static final Logger LOG = LoggerFactory.getLogger(SecurityRequirementImportActivator.class.getName());
+  private volatile boolean running = true;
 
-		LOG.info("SecurityRequirementImportActivator [ Starting bundle ... ]");
+  public void start(BundleContext context) throws Exception {
 
-		Timer timer = new Timer();
-		timer.schedule(new TimerTask() {
-			
-			@Override
-			public void run() {
+    LOG.info("SecurityRequirementImportActivator [ Starting bundle ... ]");
 
-				while (running) {
+    Timer timer = new Timer();
+    timer.schedule(new TimerTask() {
 
-					try {
-						Thread.sleep(60 * 1000L);
-					} catch (InterruptedException e) {
-						Thread.currentThread().interrupt();
-						LOG.info("InterruptedException");
-					}
-				}
-			}
-		} , 1000);
-		LOG.info("SecurityRequirementImportActivator [ After timer schedule ... ]");
-	}
+      @Override
+      public void run() {
 
-	public void stop(BundleContext context) throws Exception {
+        while (running) {
 
-		LOG.info("SecurityRequirementImportActivator [ Stop ]");
-		running = false;
-	}
+          try {
+            Thread.sleep(60 * 1000L);
+          } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
+            LOG.info("InterruptedException");
+          }
+        }
+      }
+    }, 1000);
+    LOG.info("SecurityRequirementImportActivator [ After timer schedule ... ]");
+  }
+
+  public void stop(BundleContext context) throws Exception {
+
+    LOG.info("SecurityRequirementImportActivator [ Stop ]");
+    running = false;
+  }
 
 }

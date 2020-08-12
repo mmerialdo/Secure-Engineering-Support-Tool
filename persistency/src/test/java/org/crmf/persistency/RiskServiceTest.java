@@ -27,7 +27,6 @@ import org.crmf.model.riskassessmentelements.ThreatScoreEnum;
 import org.crmf.model.riskassessmentelements.ThreatSourceEnum;
 import org.crmf.model.riskassessmentelements.Vulnerability;
 import org.crmf.model.riskassessmentelements.VulnerabilityExploitabilityEnum;
-import org.crmf.model.riskassessmentelements.VulnerabilityScore;
 import org.crmf.model.riskassessmentelements.VulnerabilityScoreEnum;
 import org.crmf.model.riskassessmentelements.VulnerabilitySourceEnum;
 import org.crmf.persistency.mapper.general.CleanDatabaseService;

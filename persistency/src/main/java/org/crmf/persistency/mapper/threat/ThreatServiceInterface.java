@@ -14,7 +14,6 @@ package org.crmf.persistency.mapper.threat;
 
 import org.crmf.model.riskassessment.ThreatModel;
 import org.crmf.model.riskassessmentelements.Threat;
-import org.crmf.model.riskassessmentelements.Vulnerability;
 import org.crmf.persistency.domain.threat.SestThreatModel;
 
 import java.util.List;
@@ -33,9 +32,9 @@ public interface ThreatServiceInterface {
 
   Integer retrieveThreatReferenceId(String catalogueId);
 
-  String insertThreatReference(Threat threatModelJson) throws Exception ;
+  String insertThreatReference(Threat threatModelJson) throws Exception;
 
-  void deleteThreatReference(List<String> identifier) throws Exception ;
+  void deleteThreatReference(List<String> identifier) throws Exception;
 
-  void editThreatReference(Threat threat) throws Exception ;
+  void editThreatReference(Threat threat) throws Exception;
 }

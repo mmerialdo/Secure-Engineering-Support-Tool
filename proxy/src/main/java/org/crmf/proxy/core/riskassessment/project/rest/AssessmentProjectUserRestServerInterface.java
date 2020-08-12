@@ -12,14 +12,14 @@
 
 package org.crmf.proxy.core.riskassessment.project.rest;
 
+import org.crmf.model.riskassessment.AssessmentProject;
+
 import javax.ws.rs.Consumes;
 import javax.ws.rs.POST;
 
-import org.crmf.model.riskassessment.AssessmentProject;
-
 public interface AssessmentProjectUserRestServerInterface {
 
-    @POST
-    @Consumes("application/json") 
-	public void editAssessmentProjectUserRoles(AssessmentProject project);
+  @POST
+  @Consumes("application/json")
+  public void editAssessmentProjectUserRoles(AssessmentProject project);
 }

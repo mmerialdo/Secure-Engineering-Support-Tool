@@ -20,13 +20,6 @@ public class SystemParticipant extends SESTObject {
 	private String role;
 	private String surname;
 
-	public SystemParticipant(){
-
-	}
-
-	public void finalize() throws Throwable {
-		super.finalize();
-	}
 	public String getName(){
 		return name;
 	}

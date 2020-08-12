@@ -12,9 +12,9 @@
 
 package org.crmf.model.user;
 
-import java.util.List;
-
 import org.crmf.model.general.SESTObject;
+
+import java.util.List;
 
 public class PermissionGroup {
 
@@ -30,10 +30,6 @@ public class PermissionGroup {
 	public PermissionGroup(PermissionTypeEnum pType, String pUserId){
        this.type = pType;
        this.userId = pUserId;
-	}
-
-	public void finalize() throws Throwable {
-
 	}
 
 	public PermissionTypeEnum getType(){

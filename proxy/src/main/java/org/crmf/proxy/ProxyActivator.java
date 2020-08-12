@@ -12,51 +12,51 @@
 
 package org.crmf.proxy;
 
-import java.util.Timer;
-import java.util.TimerTask;
-
 import org.osgi.framework.BundleActivator;
 import org.osgi.framework.BundleContext;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.util.Timer;
+import java.util.TimerTask;
+
 //This class is needed in order to start the OSGi bundle
 //The sest-report-generator bundle holds the business logic related to the management of the webservices for the interactions with the SEST Client
 public class ProxyActivator implements BundleActivator {
 
-	private static final Logger LOG = LoggerFactory.getLogger(ProxyActivator.class.getName());
+  private static final Logger LOG = LoggerFactory.getLogger(ProxyActivator.class.getName());
 
-	private static String iniResourcePath = "shirobase.ini";
-	private volatile boolean running = true;
+  private static String iniResourcePath = "shirobase.ini";
+  private volatile boolean running = true;
 
-	public void start(BundleContext context) throws Exception {
+  public void start(BundleContext context) throws Exception {
 
-		LOG.info("ProxyActivator [ Starting bundle ... ]");
-		
-		Timer timer = new Timer();
-		timer.schedule(new TimerTask() {
-			
-			@Override
-			public void run() {
+    LOG.info("ProxyActivator [ Starting bundle ... ]");
 
-				while (running) {
+    Timer timer = new Timer();
+    timer.schedule(new TimerTask() {
 
-					try {
-						Thread.sleep(60 * 1000L);
-					} catch (InterruptedException e) {
-						Thread.currentThread().interrupt();
-						LOG.info("InterruptedException");
-					}
-				}
-			}
-		} , 1000);
-		LOG.info("ProxyActivator [ After timer schedule ... ]");
-	}
+      @Override
+      public void run() {
 
-	public void stop(BundleContext context) throws Exception {
+        while (running) {
 
-		LOG.info("ProxyActivator [ Stop ]");
-		running = false;
-	}
+          try {
+            Thread.sleep(60 * 1000L);
+          } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
+            LOG.info("InterruptedException");
+          }
+        }
+      }
+    }, 1000);
+    LOG.info("ProxyActivator [ After timer schedule ... ]");
+  }
+
+  public void stop(BundleContext context) throws Exception {
+
+    LOG.info("ProxyActivator [ Stop ]");
+    running = false;
+  }
 
 }

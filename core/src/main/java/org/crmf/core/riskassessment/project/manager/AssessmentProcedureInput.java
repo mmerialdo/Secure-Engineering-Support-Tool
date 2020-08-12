@@ -12,18 +12,7 @@
 
 package org.crmf.core.riskassessment.project.manager;
 
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-
-import org.crmf.core.audit.AuditInputInterface;
 import org.crmf.core.riskassessment.utility.RiskAssessmentModelsCloner;
-import org.crmf.model.audit.Answer;
 import org.crmf.model.audit.AnswerTypeEnum;
 import org.crmf.model.audit.Question;
 import org.crmf.model.audit.Questionnaire;
@@ -56,9 +45,19 @@ import org.crmf.user.validation.permission.UserPermissionManagerInputInterface;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+
 //This class is called by the Proxy and manages the entrypoint for the business logic (including the interactions with the Persistency) related to the AssessmentProcedures
 public class AssessmentProcedureInput implements AssessmentProcedureInputInterface {
 
+  public static final String DD_MM_YYYY_HH_MM = "dd/MM/yyyy HH:mm";
   private static final Logger LOG = LoggerFactory.getLogger(AssessmentProcedureInput.class.getName());
 
   private AssprocedureServiceInterface assprocedureService;
@@ -78,7 +77,7 @@ public class AssessmentProcedureInput implements AssessmentProcedureInputInterfa
   @Override
   public String createAssessmentProcedure(AssessmentProcedure procedure, String projectIdentifier) throws Exception {
     try {
-      LOG.info("createAssessmentprocedure: " + procedure.getIdentifier());
+      LOG.info("createAssessmentprocedure: {}", procedure.getIdentifier());
 
       // get template identifier associated to project
       //AssessmentTemplate template = assprojectService.getByIdentifierFull(projectIdentifier).getTemplate();
@@ -98,7 +97,7 @@ public class AssessmentProcedureInput implements AssessmentProcedureInputInterfa
         if (procedureToBeCloned == null) {
           newModelsMap = getModelsMapFromTemplate(project);
         } else {
-          LOG.info("createAssessmentprocedure - AssessmentProcedure to be cloned identifier: " + procedureToBeCloned.getIdentifier());
+          LOG.info("createAssessmentprocedure - AssessmentProcedure to be cloned identifier: {}", procedureToBeCloned.getIdentifier());
 
           // copy the old procedure:
           // - a copy of of all models is created
@@ -113,14 +112,15 @@ public class AssessmentProcedureInput implements AssessmentProcedureInputInterfa
       updateAuditQuestionnaires(project.getAudits(), newModelsMap.get(SESTObjectTypeEnum.RiskTreatmentModel));
 
       //create procedure
-      DateFormat df = new SimpleDateFormat("dd/MM/yyyy HH:mm");
+      DateFormat df = new SimpleDateFormat(DD_MM_YYYY_HH_MM);
+
       Date now = new Date();
 
       procedure.setCreationTime(df.format(now));
       procedure.setUpdateTime(df.format(now));
       //set type and identifier accordingly to the sest object just created (procedure)
       procedure.setObjType(SESTObjectTypeEnum.AssessmentProcedure);
-      LOG.info("procedure with identifier " + procedure.getIdentifier() + " created, about to save in the persistency");
+      LOG.info("procedure with identifier {} created, about to save in the persistency", procedure.getIdentifier());
 
       AssessmentProcedure newProcedure = assprocedureService.insert(procedure, projectIdentifier);
 
@@ -143,7 +143,7 @@ public class AssessmentProcedureInput implements AssessmentProcedureInputInterfa
           procedureToBeCloned = oldProcedure;
         }
 
-        DateFormat df = new SimpleDateFormat("dd/MM/yyyy HH:mm");
+        DateFormat df = new SimpleDateFormat(DD_MM_YYYY_HH_MM);
         Date oldProcedureUpdateDate = df.parse(oldProcedure.getUpdateTime());
         Date procedureToBeClonedUpdateTime = df.parse(procedureToBeCloned.getUpdateTime());
 
@@ -161,7 +161,7 @@ public class AssessmentProcedureInput implements AssessmentProcedureInputInterfa
     String templateId = project.getTemplate().getIdentifier();
     //get the full template from template id
     AssessmentTemplate template = templateInput.loadAssessmentTemplateByIdentifier(templateId);
-    LOG.info("createAssessmentprocedure - template id" + templateId);
+    LOG.info("createAssessmentprocedure - template id {}", templateId);
 
     // copy the template:
     // - a copy of of all models is created
@@ -174,8 +174,8 @@ public class AssessmentProcedureInput implements AssessmentProcedureInputInterfa
   @Override
   public void editAssessmentProcedure(AssessmentProcedure procedure) throws Exception {
 
-    LOG.info("editAssessmentprocedure with identifier: " + procedure.getIdentifier());
-    DateFormat df = new SimpleDateFormat("dd/MM/yyyy HH:mm");
+    LOG.info("editAssessmentprocedure with identifier: {}", procedure.getIdentifier());
+    DateFormat df = new SimpleDateFormat(DD_MM_YYYY_HH_MM);
     Date now = new Date();
 
     procedure.setUpdateTime(df.format(now));
@@ -185,15 +185,14 @@ public class AssessmentProcedureInput implements AssessmentProcedureInputInterfa
   @Override
   public void deleteAssessmentProcedure(String identifier) throws Exception {
 
-    LOG.info("deleteAssessmentProcedure with identifier: " + identifier);
+    LOG.info("deleteAssessmentProcedure with identifier: {}", identifier);
     assprocedureService.deleteCascade(identifier);
   }
 
   @Override
   public List<AssessmentProcedure> loadAssessmentProcedure(GenericFilter filter) throws Exception {
 
-    LOG.info("loadAssessmentProcedure " + filter.getFilterMap());
-    LOG.info("loadAssessmentProcedure " + filter.getFilterMap().size());
+    LOG.info("loadAssessmentProcedure {} ", filter.getFilterMap());
     String identifier = filter.getFilterValue(GenericFilterEnum.IDENTIFIER);
     if (filter.getFilterValue(GenericFilterEnum.PROJECT) != null) {
       return assprocedureService.getByProjectIdentifier(filter.getFilterValue(GenericFilterEnum.PROJECT));
@@ -223,27 +222,27 @@ public class AssessmentProcedureInput implements AssessmentProcedureInputInterfa
       // insert the model into the procedure based on model type
       switch (modelType) {
         case AssetModel:
-          LOG.info("-----------------procedure updateModels:: asset id " + identifier);
+          LOG.info("-----------------procedure updateModels:: asset id {} ", identifier);
           procedure.setAssetModel(assetModelService.getByIdentifier(identifier).convertToModel());
           break;
         case VulnerabilityModel:
-          LOG.info("-----------------procedure updateModels:: vuln id " + identifier);
+          LOG.info("-----------------procedure updateModels:: vuln id {}", identifier);
           procedure.setVulnerabilityModel(vulnerabilityModelService.getByIdentifier(identifier).convertToModel());
           break;
         case ThreatModel:
-          LOG.info("-----------------procedure updateModels:: threat id " + identifier);
+          LOG.info("-----------------procedure updateModels:: threat id {}", identifier);
           procedure.setThreatModel(threatModelService.getByIdentifier(identifier).convertToModel());
           break;
         case SafeguardModel:
-          LOG.info("-----------------procedure updateModels:: safeguard id " + identifier);
+          LOG.info("-----------------procedure updateModels:: safeguard id {}", identifier);
           procedure.setSafeguardModel(safeguardModelService.getByIdentifier(identifier).convertToModel());
           break;
         case RiskModel:
-          LOG.info("-----------------procedure updateModels:: risk id " + identifier);
+          LOG.info("-----------------procedure updateModels:: risk id {}", identifier);
           procedure.setRiskModel(riskModelService.getByIdentifier(identifier).convertToModel());
           break;
         case RiskTreatmentModel:
-          LOG.info("-----------------procedure updateModels:: risktreatment id " + identifier);
+          LOG.info("-----------------procedure updateModels:: risktreatment id {}", identifier);
           procedure.setRiskTreatmentModel(riskTreatmentModelService.getByIdentifier(identifier).convertToModel());
           break;
         default:
@@ -273,44 +272,22 @@ public class AssessmentProcedureInput implements AssessmentProcedureInputInterfa
           if (group.getChildren() != null) {
             for (Question safeguard : group.getChildren()) {
               try {
-                List<Answer> answers = safeguard.getAnswers();
-                Optional<Answer> answersV1 = answers.stream().filter(answerItem ->
-                  answerItem.getType().equals(AnswerTypeEnum.MEHARI_R_V1)).findFirst();
-                Optional<Answer> answersPrevious = answers.stream().filter(answerItem ->
-                  answerItem.getType().equals(AnswerTypeEnum.MEHARI_R_Prev)).findFirst();
-                Optional<Answer> answersTarget = answers.stream().filter(answerItem ->
-                  answerItem.getType().equals(AnswerTypeEnum.MEHARI_R_Target)).findFirst();
-                if (answersV1 != null && answersV1.isPresent() && answersV1.get().getValue() != null && Integer.valueOf(answersV1.get().getValue()) > 1) {
-                  if (answersPrevious != null && answersPrevious.isPresent() && answersPrevious.get().getValue() != null) {
-                    answersPrevious.get().setValue(answersV1.get().getValue());
-                    updated = true;
-                  } else {
-                    Answer answerPreviousValue = new Answer();
-                    answerPreviousValue.setIndex(10);
-                    answerPreviousValue.setType(AnswerTypeEnum.MEHARI_R_Prev);
-                    answerPreviousValue.setValue(answersV1.get().getValue());
-                    answers.add(answerPreviousValue);
-                    updated = true;
-                  }
+                Map<AnswerTypeEnum, String> answers = safeguard.getAnswers();
+                String answersV1 = answers.get(AnswerTypeEnum.MEHARI_R_V1);
+                String answersTarget = answers.get(AnswerTypeEnum.MEHARI_R_Target);
+                if (answersV1 != null && Integer.valueOf(answersV1) > 1) {
+                  answers.put(AnswerTypeEnum.MEHARI_R_Prev, answersV1);
+                  updated = true;
                 }
                 Optional<Safeguard> treatmentSafeguard = treatmentSafeguards.stream().filter(safeguardTreatment ->
                   safeguardTreatment.getCatalogueId().equals(safeguard.getCategory())).findFirst();
-                if (treatmentSafeguard != null && treatmentSafeguard.isPresent() && treatmentSafeguard.get().getScore() != null
+                if (treatmentSafeguard.isPresent() && treatmentSafeguard.get().getScore() != null
                   && Integer.valueOf(treatmentSafeguard.get().getScoreNumber()) > 1) {
-                  if (answersTarget != null && answersTarget.isPresent() && answersTarget.get().getValue() != null) {
-                    answersTarget.get().setValue(treatmentSafeguard.get().getScoreNumber());
-                    updated = true;
-                  } else {
-                    Answer answerTreatmentValue = new Answer();
-                    answerTreatmentValue.setIndex(10);
-                    answerTreatmentValue.setType(AnswerTypeEnum.MEHARI_R_Target);
-                    answerTreatmentValue.setValue(treatmentSafeguard.get().getScoreNumber());
-                    answers.add(answerTreatmentValue);
-                    updated = true;
-                  }
+                  answers.put(AnswerTypeEnum.MEHARI_R_Target, treatmentSafeguard.get().getScoreNumber());
+                  updated = true;
                 }
               } catch (Exception ex) {
-                LOG.info("Unable to save answer value for " + safeguard.getCategory());
+                LOG.info("Unable to save answer value for {}", safeguard.getCategory());
               }
             }
           }
@@ -321,7 +298,7 @@ public class AssessmentProcedureInput implements AssessmentProcedureInputInterfa
         questionnaireJson.setQuestionnaireModelJson(questionnaireJSONUpdated);
       }
     });
-    
+
     auditService.update(audit);
   }
 

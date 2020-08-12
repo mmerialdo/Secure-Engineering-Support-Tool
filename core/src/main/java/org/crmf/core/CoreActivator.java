@@ -12,18 +12,14 @@
 
 package org.crmf.core;
 
-import java.util.Timer;
-import java.util.TimerTask;
-
 import org.osgi.framework.BundleActivator;
 import org.osgi.framework.BundleContext;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-//This class is needed in order to start the OSGi bundle
-//The sest-core bundle holds the business logic related to the management of the Models related to the Risk Assessment, with the exception of the 
-//Risk computation, managed by the sest-risk-model bundle (this is due to the fact that SEST should be able to be adapted to different RA methodologies, and the RA specific logics are contained almost only
-//in the sest-risk-model bundle
+import java.util.Timer;
+import java.util.TimerTask;
+
 public class CoreActivator implements BundleActivator
 {
 	private static final Logger LOG = LoggerFactory.getLogger(CoreActivator.class.getName());

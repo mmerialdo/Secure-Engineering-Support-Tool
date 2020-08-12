@@ -13,92 +13,92 @@
 package org.crmf.persistency.domain.risk;
 
 public class StatusImpactScale {
-	public StatusImpactScale(){
-		
-	}
-	
-	public StatusImpactScale(int profileId, int projectId, int intrinsicImpact, String securityImpact, int confining, int palliation, int calculatedImpact){
-		this.profileId = profileId;
-		this.projectId = projectId;
-		
-		this.intrinsincImpact = intrinsicImpact;
-		
-		this.securityImpact = securityImpact;
-		
-		this.confining = confining;
-		this.palliation = palliation;
-		
-		this.calculatedImpact = calculatedImpact;
-				
-	}
+  public StatusImpactScale() {
 
-	private int profileId;
-	private int projectId;
-	
-	private int intrinsincImpact;
-	
-	private String securityImpact;
-	
-	private int confining;
-	private int palliation;
-	
-	private int calculatedImpact;
+  }
 
-	public int getProfileId() {
-		return profileId;
-	}
+  public StatusImpactScale(int profileId, int projectId, int intrinsicImpact, String securityImpact, int confining, int palliation, int calculatedImpact) {
+    this.profileId = profileId;
+    this.projectId = projectId;
 
-	public void setProfileId(int profileId) {
-		this.profileId = profileId;
-	}
+    this.intrinsincImpact = intrinsicImpact;
 
-	public int getProjectId() {
-		return projectId;
-	}
+    this.securityImpact = securityImpact;
 
-	public void setProjectId(int projectId) {
-		this.projectId = projectId;
-	}
+    this.confining = confining;
+    this.palliation = palliation;
 
-	public int getIntrinsincImpact() {
-		return intrinsincImpact;
-	}
+    this.calculatedImpact = calculatedImpact;
 
-	public void setIntrinsincImpact(int intrinsincImpact) {
-		this.intrinsincImpact = intrinsincImpact;
-	}
+  }
 
-	public String getSecurityImpact() {
-		return securityImpact;
-	}
+  private int profileId;
+  private int projectId;
 
-	public void setSecurityImpact(String securityImpact) {
-		this.securityImpact = securityImpact;
-	}
+  private int intrinsincImpact;
 
-	public int getConfining() {
-		return confining;
-	}
+  private String securityImpact;
 
-	public void setConfining(int confining) {
-		this.confining = confining;
-	}
+  private int confining;
+  private int palliation;
 
-	public int getPalliation() {
-		return palliation;
-	}
+  private int calculatedImpact;
 
-	public void setPalliation(int palliation) {
-		this.palliation = palliation;
-	}
+  public int getProfileId() {
+    return profileId;
+  }
 
-	public int getCalculatedImpact() {
-		return calculatedImpact;
-	}
+  public void setProfileId(int profileId) {
+    this.profileId = profileId;
+  }
 
-	public void setCalculatedImpact(int calculatedImpact) {
-		this.calculatedImpact = calculatedImpact;
-	}
+  public int getProjectId() {
+    return projectId;
+  }
+
+  public void setProjectId(int projectId) {
+    this.projectId = projectId;
+  }
+
+  public int getIntrinsincImpact() {
+    return intrinsincImpact;
+  }
+
+  public void setIntrinsincImpact(int intrinsincImpact) {
+    this.intrinsincImpact = intrinsincImpact;
+  }
+
+  public String getSecurityImpact() {
+    return securityImpact;
+  }
+
+  public void setSecurityImpact(String securityImpact) {
+    this.securityImpact = securityImpact;
+  }
+
+  public int getConfining() {
+    return confining;
+  }
+
+  public void setConfining(int confining) {
+    this.confining = confining;
+  }
+
+  public int getPalliation() {
+    return palliation;
+  }
+
+  public void setPalliation(int palliation) {
+    this.palliation = palliation;
+  }
+
+  public int getCalculatedImpact() {
+    return calculatedImpact;
+  }
+
+  public void setCalculatedImpact(int calculatedImpact) {
+    this.calculatedImpact = calculatedImpact;
+  }
 
 
 }

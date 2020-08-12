@@ -12,11 +12,6 @@
 
 package org.crmf.secreqimport.manager.gasf;
 
-import java.io.File;
-import java.nio.file.Files;
-import java.util.ArrayList;
-import java.util.List;
-
 import org.apache.camel.Produce;
 import org.apache.camel.ProducerTemplate;
 import org.crmf.model.audit.ISOControls;
@@ -27,7 +22,11 @@ import org.crmf.persistency.mapper.secrequirement.SecRequirementServiceInterface
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-//
+import java.io.File;
+import java.nio.file.Files;
+import java.util.ArrayList;
+import java.util.List;
+
 public class GASFInput implements GASFInputInterface {
 
   private SecRequirementServiceInterface secrequirementService;
@@ -48,7 +47,7 @@ public class GASFInput implements GASFInputInterface {
     Object gasfsecreq = template.requestBody(null);
     if (gasfsecreq != null) {
       ArrayList<SecurityRequirement> gasfRequirements = converter.getSRsFromGASFJSONString(gasfsecreq.toString());
-      if (gasfRequirements != null && gasfRequirements.size() > 0) {
+      if (gasfRequirements != null && !gasfRequirements.isEmpty()) {
         secrequirementService.deleteSecRequirement();
 
         for (SecurityRequirement securityRequirement : gasfRequirements) {

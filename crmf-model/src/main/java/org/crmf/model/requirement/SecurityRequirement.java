@@ -12,10 +12,10 @@
 
 package org.crmf.model.requirement;
 
-import java.util.ArrayList;
-
 import org.crmf.model.riskassessmentelements.SafeguardScoreEnum;
 import org.crmf.model.riskassessmentelements.Vulnerability;
+
+import java.util.ArrayList;
 
 public class SecurityRequirement extends Requirement {
 
@@ -29,10 +29,6 @@ public class SecurityRequirement extends Requirement {
 		score = SafeguardScoreEnum.NONE;
 		relatedVulnerabilities = new ArrayList<>();
 		children = new ArrayList<>();
-	}
-
-	public void finalize() throws Throwable {
-		super.finalize();
 	}
 
 	public ArrayList<Vulnerability> getRelatedVulnerabilities() {

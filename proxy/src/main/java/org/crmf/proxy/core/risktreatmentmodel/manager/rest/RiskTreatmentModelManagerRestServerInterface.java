@@ -12,42 +12,42 @@
 
 package org.crmf.proxy.core.risktreatmentmodel.manager.rest;
 
+import org.crmf.model.utility.GenericFilter;
+import org.crmf.model.utility.ModelObject;
+
 import javax.ws.rs.Consumes;
 import javax.ws.rs.POST;
 import javax.ws.rs.Produces;
 
-import org.crmf.model.utility.GenericFilter;
-import org.crmf.model.utility.ModelObject;
-
 public interface RiskTreatmentModelManagerRestServerInterface {
 
-	@POST
-    @Consumes("application/json") 
-	@Produces("application/json")
-	String editRiskTreatmentModel(ModelObject riskModel) throws Exception;
-	
-	@POST
-    @Consumes("application/json") 
-	@Produces("application/json")
-	String editRiskTreatmentModelDetail(ModelObject riskModel) throws Exception;
+  @POST
+  @Consumes("application/json")
+  @Produces("application/json")
+  String editRiskTreatmentModel(ModelObject riskModel) throws Exception;
 
-	@POST
-	@Produces("application/json")
-    @Consumes("text/html") 
-	ModelObject loadRiskTreatmentModel(GenericFilter filter) throws Exception;
-	
-	@POST
-    @Consumes("application/json") 
-	@Produces("application/json")
-	String loadRiskTreatmentModelDetail(GenericFilter filter) throws Exception;
+  @POST
+  @Consumes("application/json")
+  @Produces("application/json")
+  String editRiskTreatmentModelDetail(ModelObject riskModel) throws Exception;
 
-	@POST
-    @Consumes("application/json") 
-	@Produces("application/json")
-	String calculateRiskTreatmentModel(ModelObject riskModel) throws Exception;
-	
-	@POST
-    @Consumes("application/json") 
-	@Produces("application/json")
-	String calculateRiskTreatmentModelDetail(ModelObject riskModel) throws Exception;
+  @POST
+  @Produces("application/json")
+  @Consumes("text/html")
+  ModelObject loadRiskTreatmentModel(GenericFilter filter) throws Exception;
+
+  @POST
+  @Consumes("application/json")
+  @Produces("application/json")
+  String loadRiskTreatmentModelDetail(GenericFilter filter) throws Exception;
+
+  @POST
+  @Consumes("application/json")
+  @Produces("application/json")
+  String calculateRiskTreatmentModel(ModelObject riskModel) throws Exception;
+
+  @POST
+  @Consumes("application/json")
+  @Produces("application/json")
+  String calculateRiskTreatmentModelDetail(ModelObject riskModel) throws Exception;
 }

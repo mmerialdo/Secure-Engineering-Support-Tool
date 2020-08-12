@@ -18,40 +18,40 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 public class SestSafeguardModel {
-	private static final Logger LOG = LoggerFactory.getLogger(SestSafeguardModel.class.getName());
-	private Integer id;
-	private String sestobjId;
-	private String safeguardModelJson;
-	
-	
-	public Integer getId() {
-		return id;
-	}
-	
-	public void setId(Integer id) {
-		this.id = id;
-	}
-	
-	public String getSestobjId() {
-		return sestobjId;
-	}
-	
-	public void setSestobjId(String sestobjId) {
-		this.sestobjId = sestobjId;
-	}
-	
-	public String getSafeguardModelJson() {
-		return safeguardModelJson;
-	}
-	
-	public void setSafeguardModelJson(String safeguardModelJson) {
-		this.safeguardModelJson = safeguardModelJson;
-	}
-	
-	public SafeguardModel convertToModel() {
-		LOG.info("SafeguardModel convertToModel");
-		SafeguardModelSerializerDeserializer safeguardModelDeserializer = new  SafeguardModelSerializerDeserializer();
-		
-		return safeguardModelDeserializer.getSMFromJSONString(this.getSafeguardModelJson());
-	}
+  private static final Logger LOG = LoggerFactory.getLogger(SestSafeguardModel.class.getName());
+  private Integer id;
+  private String sestobjId;
+  private String safeguardModelJson;
+
+
+  public Integer getId() {
+    return id;
+  }
+
+  public void setId(Integer id) {
+    this.id = id;
+  }
+
+  public String getSestobjId() {
+    return sestobjId;
+  }
+
+  public void setSestobjId(String sestobjId) {
+    this.sestobjId = sestobjId;
+  }
+
+  public String getSafeguardModelJson() {
+    return safeguardModelJson;
+  }
+
+  public void setSafeguardModelJson(String safeguardModelJson) {
+    this.safeguardModelJson = safeguardModelJson;
+  }
+
+  public SafeguardModel convertToModel() {
+    LOG.info("SafeguardModel convertToModel");
+    SafeguardModelSerializerDeserializer safeguardModelDeserializer = new SafeguardModelSerializerDeserializer();
+
+    return safeguardModelDeserializer.getSMFromJSONString(this.getSafeguardModelJson());
+  }
 }

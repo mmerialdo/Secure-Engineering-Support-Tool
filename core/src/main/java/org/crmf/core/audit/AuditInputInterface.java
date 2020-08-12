@@ -13,9 +13,8 @@
 package org.crmf.core.audit;
 
 import org.crmf.model.audit.AuditTypeEnum;
-import org.crmf.model.audit.SestAuditModel;
-import org.crmf.model.audit.SestQuestionnaireModel;
 import org.crmf.model.audit.Question;
+import org.crmf.model.audit.SestAuditModel;
 import org.crmf.model.riskassessment.AssessmentProject;
 import org.crmf.model.utility.ModelObject;
 

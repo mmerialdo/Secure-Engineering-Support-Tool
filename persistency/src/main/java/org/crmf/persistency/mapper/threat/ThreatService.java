@@ -12,12 +12,11 @@
 
 package org.crmf.persistency.mapper.threat;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.List;
-import java.util.UUID;
-
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
 import org.apache.ibatis.session.SqlSession;
 import org.crmf.model.general.SESTObjectTypeEnum;
 import org.crmf.model.riskassessment.ThreatModel;
@@ -31,15 +30,16 @@ import org.crmf.persistency.session.PersistencySessionFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.List;
+import java.util.UUID;
 
 //This class manages the database interactions related to the ThreatModel
 public class ThreatService implements ThreatServiceInterface {
   private static final Logger LOG = LoggerFactory.getLogger(ThreatService.class.getName());
+  public static final String DD_MM_YYYY_HH_MM = "dd/MM/yyyy HH:mm";
   PersistencySessionFactory sessionFactory;
 
   @Override
@@ -199,7 +199,7 @@ public class ThreatService implements ThreatServiceInterface {
         ThreatSerializerDeserializer threatSerializer = new ThreatSerializerDeserializer();
         String threatJson = threatSerializer.getJSONStringFromTM(newThreat);
 
-        DateFormat df = new SimpleDateFormat("dd/MM/yyyy HH:mm");
+        DateFormat df = new SimpleDateFormat(DD_MM_YYYY_HH_MM);
         Date threatDate = df.parse(newThreat.getLastUpdate());
 
         SestThreat threat = new SestThreat();
@@ -271,7 +271,7 @@ public class ThreatService implements ThreatServiceInterface {
     return result;
   }
 
-	@Override
+  @Override
   public String insertThreatReference(Threat threatModelJson) throws Exception {
     SqlSession sqlSession = sessionFactory.getSession();
     LOG.info("insert " + threatModelJson.getCatalogueId());
@@ -280,7 +280,7 @@ public class ThreatService implements ThreatServiceInterface {
       ThreatMapper threatMapper = sqlSession.getMapper(ThreatMapper.class);
 
       String alreadyExistingThreat = threatMapper.getThreatReferenceSestObjIdByCatalogueId(threatModelJson.getCatalogueId());
-      if(alreadyExistingThreat != null) {
+      if (alreadyExistingThreat != null) {
         LOG.error("Already existing threat with catalogue id : " + threatModelJson.getCatalogueId());
         throw new Exception("Already existing threat with catalogue id : " + threatModelJson.getCatalogueId());
       }
@@ -298,12 +298,12 @@ public class ThreatService implements ThreatServiceInterface {
       ThreatSerializerDeserializer threatSerializer = new ThreatSerializerDeserializer();
       threatModelJson.setIdentifier(sestobj.getIdentifier());
       threatModelJson.setObjType(SESTObjectTypeEnum.ThreatRef);
-      DateFormat df = new SimpleDateFormat("dd/MM/yyyy HH:mm");
+      DateFormat df = new SimpleDateFormat(DD_MM_YYYY_HH_MM);
       threatModelJson.setLastUpdate(df.format(new Date()));
       String threatJson = threatSerializer.getJSONStringFromTM(threatModelJson);
       sestThreat.setThreatJson(threatJson);
 
-			threatMapper.insertThreatRepository(sestThreat);
+      threatMapper.insertThreatRepository(sestThreat);
       sqlSession.commit();
     } catch (Exception ex) {
       LOG.error("Unable to save threat " + ex.getMessage(), ex);
@@ -315,13 +315,13 @@ public class ThreatService implements ThreatServiceInterface {
     return sestThreat.getSestobjId();
   }
 
-	@Override
+  @Override
   public void deleteThreatReference(List<String> identifier) throws Exception {
     SqlSession sqlSession = sessionFactory.getSession();
     LOG.info("delete " + identifier);
     try {
       ThreatMapper threatMapper = sqlSession.getMapper(ThreatMapper.class);
-			threatMapper.deleteThreatReference(identifier);
+      threatMapper.deleteThreatReference(identifier);
       sqlSession.commit();
     } catch (Exception ex) {
       LOG.error(ex.getMessage());
@@ -332,7 +332,7 @@ public class ThreatService implements ThreatServiceInterface {
     }
   }
 
-	@Override
+  @Override
   public void editThreatReference(Threat threatModelJson) throws Exception {
     SqlSession sqlSession = sessionFactory.getSession();
     LOG.info("insert " + threatModelJson.getCatalogueId());
@@ -343,18 +343,18 @@ public class ThreatService implements ThreatServiceInterface {
       sestThreat.setUpdateTime(new Date());
 
       String alreadyExistingThreat = threatMapper.getThreatReferenceSestObjIdByCatalogueId(threatModelJson.getCatalogueId());
-      if(alreadyExistingThreat != null && !alreadyExistingThreat.equals(threatModelJson.getIdentifier())) {
+      if (alreadyExistingThreat != null && !alreadyExistingThreat.equals(threatModelJson.getIdentifier())) {
         LOG.error("Already existing threat with catalogue id : " + threatModelJson.getCatalogueId());
         throw new Exception("Already existing threat with catalogue id : " + threatModelJson.getCatalogueId());
       }
 
       ThreatSerializerDeserializer threatSerializer = new ThreatSerializerDeserializer();
-      DateFormat df = new SimpleDateFormat("dd/MM/yyyy HH:mm");
+      DateFormat df = new SimpleDateFormat(DD_MM_YYYY_HH_MM);
       threatModelJson.setLastUpdate(df.format(new Date()));
       String threatJson = threatSerializer.getJSONStringFromTM(threatModelJson);
       sestThreat.setThreatJson(threatJson);
 
-			threatMapper.updateThreatRepository(sestThreat);
+      threatMapper.updateThreatRepository(sestThreat);
       sqlSession.commit();
     } catch (Exception ex) {
       LOG.error(ex.getMessage());

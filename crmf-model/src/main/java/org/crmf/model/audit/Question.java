@@ -12,9 +12,12 @@
 
 package org.crmf.model.audit;
 
-import java.util.ArrayList;
-
 import org.crmf.model.general.SESTObject;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class Question extends SESTObject {
 
@@ -22,18 +25,10 @@ public class Question extends SESTObject {
 	private String index;
 	private QuestionTypeEnum type;
 	private String value;
-	private ArrayList<Question> children = new ArrayList<>();
-	private ArrayList<Question> gasf = new ArrayList<>();
-	private ArrayList<Answer> answers = new ArrayList<>();
+	private List<Question> children = new ArrayList<>();
+	private List<Question> gasf = new ArrayList<>();
+	private Map<AnswerTypeEnum, String> answers = new HashMap<>();
 	private SESTObject referenceObject;
-
-	public Question(){
-
-	}
-
-	public void finalize() throws Throwable {
-		super.finalize();
-	}
 
 	public String getIndex(){
 		return index;
@@ -67,20 +62,12 @@ public class Question extends SESTObject {
 		this.category = category;
 	}
 
-	public ArrayList<Question> getChildren() {
+	public List<Question> getChildren() {
 		return children;
 	}
 
-	public void setChildren(ArrayList<Question> children) {
+	public void setChildren(List<Question> children) {
 		this.children = children;
-	}
-
-	public ArrayList<Answer> getAnswers() {
-		return answers;
-	}
-
-	public void setAnswers(ArrayList<Answer> answers) {
-		this.answers = answers;
 	}
 
 	public SESTObject getReferenceObject() {
@@ -91,11 +78,19 @@ public class Question extends SESTObject {
 		this.referenceObject = referenceObject;
 	}
 
-	public ArrayList<Question> getGasf() {
+	public List<Question> getGasf() {
 		return gasf;
 	}
 
-	public void setGasf(ArrayList<Question> gasf) {
+	public void setGasf(List<Question> gasf) {
 		this.gasf = gasf;
+	}
+
+	public Map<AnswerTypeEnum, String> getAnswers() {
+		return answers;
+	}
+
+	public void setAnswers(Map<AnswerTypeEnum, String> answers) {
+		this.answers = answers;
 	}
 }

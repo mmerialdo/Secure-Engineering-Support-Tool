@@ -19,11 +19,4 @@ public class BusinessImpact {
 	private float quantitativeImpact;
 	private BusinessImpactTypeEnum type;
 
-	public BusinessImpact(){
-
-	}
-
-	public void finalize() throws Throwable {
-
-	}
 }

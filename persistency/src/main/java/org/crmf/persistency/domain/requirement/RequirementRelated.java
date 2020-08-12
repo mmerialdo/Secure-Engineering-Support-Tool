@@ -13,23 +13,23 @@
 package org.crmf.persistency.domain.requirement;
 
 public class RequirementRelated {
-    private Integer firstRequirementId;
+  private Integer firstRequirementId;
 
-    private Integer secondRequirementId;
+  private Integer secondRequirementId;
 
-    public Integer getFirstRequirementId() {
-        return firstRequirementId;
-    }
+  public Integer getFirstRequirementId() {
+    return firstRequirementId;
+  }
 
-    public void setFirstRequirementId(Integer firstRequirementId) {
-        this.firstRequirementId = firstRequirementId;
-    }
+  public void setFirstRequirementId(Integer firstRequirementId) {
+    this.firstRequirementId = firstRequirementId;
+  }
 
-    public Integer getSecondRequirementId() {
-        return secondRequirementId;
-    }
+  public Integer getSecondRequirementId() {
+    return secondRequirementId;
+  }
 
-    public void setSecondRequirementId(Integer secondRequirementId) {
-        this.secondRequirementId = secondRequirementId;
-    }
+  public void setSecondRequirementId(Integer secondRequirementId) {
+    this.secondRequirementId = secondRequirementId;
+  }
 }

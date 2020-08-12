@@ -16,5 +16,5 @@ import org.apache.camel.spi.AuthorizationPolicy;
 
 public interface ShiroSecurityPolicyCustomInterface extends AuthorizationPolicy {
 
-	String getPermissionList(String token, String projectIdentifier);
+  String getPermissionList(String token, String projectIdentifier);
 }

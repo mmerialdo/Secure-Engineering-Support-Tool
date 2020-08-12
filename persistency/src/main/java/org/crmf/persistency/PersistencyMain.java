@@ -18,15 +18,15 @@ import org.crmf.persistency.session.PersistencySessionFactory;
 //This class represents the entry point of the OSGi bundle
 public class PersistencyMain {
 
-	public static void main(String[] args) {
+  public static void main(String[] args) {
 
-		PersistencySessionFactory sessionFactory = new PersistencySessionFactory();
-		sessionFactory.createSessionFactory();
-		
-		UserService userService = new UserService();
-		userService.setSessionFactory(sessionFactory);
-		
-		userService.getAll();
-		
-	}
+    PersistencySessionFactory sessionFactory = new PersistencySessionFactory();
+    sessionFactory.createSessionFactory();
+
+    UserService userService = new UserService();
+    userService.setSessionFactory(sessionFactory);
+
+    userService.getAll();
+
+  }
 }

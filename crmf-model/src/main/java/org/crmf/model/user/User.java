@@ -12,9 +12,9 @@
 
 package org.crmf.model.user;
 
-import java.util.ArrayList;
-
 import org.crmf.model.general.SESTObject;
+
+import java.util.ArrayList;
 
 public class User extends SESTObject {
 
@@ -29,13 +29,6 @@ public class User extends SESTObject {
 	private ArrayList<UserRole> roles = new ArrayList<UserRole>();
 	private ArrayList<PermissionGroup> permissionGroups;
 
-	public User(){
-
-	}
-
-	public void finalize() throws Throwable {
-		super.finalize();
-	}
 	public String getEmail(){
 		return email;
 	}

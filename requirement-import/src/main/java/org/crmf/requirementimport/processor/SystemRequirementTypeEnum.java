@@ -13,20 +13,20 @@
 package org.crmf.requirementimport.processor;
 
 public enum SystemRequirementTypeEnum {
-    EIF,
-    FCN,
-    PER,
-    DEP,
-    OPS,
-    SEC,
-    INT,
-    PE,
-    FU,
-    OP,
-    RE,
-    SE,
-    AV,
-    MA,
-    CO,
-    IM
+  EIF,
+  FCN,
+  PER,
+  DEP,
+  OPS,
+  SEC,
+  INT,
+  PE,
+  FU,
+  OP,
+  RE,
+  SE,
+  AV,
+  MA,
+  CO,
+  IM
 }

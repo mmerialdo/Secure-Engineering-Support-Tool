@@ -12,9 +12,6 @@
 
 package org.crmf.persistency.mapper.project;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.apache.ibatis.session.SqlSession;
 import org.crmf.model.general.SESTObjectTypeEnum;
 import org.crmf.model.riskassessment.AssessmentProcedure;
@@ -42,6 +39,9 @@ import org.crmf.persistency.mapper.vulnerability.VulnerabilityMapper;
 import org.crmf.persistency.session.PersistencySessionFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import java.util.ArrayList;
+import java.util.List;
 
 //This class manages the database interactions related to the AssessmentProcedure
 public class AssprocedureService implements AssprocedureServiceInterface {
@@ -406,7 +406,7 @@ public class AssprocedureService implements AssprocedureServiceInterface {
 	public List<AssessmentProcedure> getAll() {
 		LOG.info("called getAll");
 		SqlSession sqlSession = sessionFactory.getSession();
-		List<AssessmentProcedure> proceduresToSend = new ArrayList<AssessmentProcedure>();
+		List<AssessmentProcedure> proceduresToSend = new ArrayList<>();
 		try {
 			AssprocedureMapper procedureMapper = sqlSession.getMapper(AssprocedureMapper.class);
 			List<AssProcedure> procedures = procedureMapper.getAll();

@@ -15,6 +15,8 @@ import org.crmf.model.utility.GenericFilter;
 
 public interface LockViewInputInterface {
   String lock(GenericFilter filter) throws Exception;
+
   String unlock(GenericFilter filter) throws Exception;
+
   String getlock(GenericFilter filter) throws Exception;
 }

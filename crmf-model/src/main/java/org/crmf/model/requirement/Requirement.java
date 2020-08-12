@@ -12,10 +12,10 @@
 
 package org.crmf.model.requirement;
 
-import java.util.ArrayList;
-
 import org.crmf.model.general.SESTObject;
 import org.crmf.model.riskassessmentelements.ElementTypeEnum;
+
+import java.util.ArrayList;
 
 public class Requirement extends SESTObject {
 
@@ -42,10 +42,6 @@ public class Requirement extends SESTObject {
 
 	public Requirement(){
 		relatedRequirements = new ArrayList<>();
-	}
-
-	public void finalize() throws Throwable {
-		super.finalize();
 	}
 
 	public String getAuthor() {

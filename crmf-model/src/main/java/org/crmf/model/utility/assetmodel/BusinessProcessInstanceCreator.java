@@ -12,12 +12,6 @@
 
 package org.crmf.model.utility.assetmodel;
 
-import java.lang.reflect.Type;
-
-import org.crmf.model.riskassessmentelements.BusinessProcess;
-import org.crmf.model.riskassessmentelements.NodeTypeEnum;
-import org.crmf.model.riskassessmentelements.ProcessTypeEnum;
-
 import com.google.gson.JsonDeserializationContext;
 import com.google.gson.JsonDeserializer;
 import com.google.gson.JsonElement;
@@ -25,10 +19,17 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
 import com.google.gson.JsonSerializationContext;
 import com.google.gson.JsonSerializer;
+import org.crmf.model.riskassessmentelements.BusinessProcess;
+import org.crmf.model.riskassessmentelements.NodeTypeEnum;
+import org.crmf.model.riskassessmentelements.ProcessTypeEnum;
+
+import java.lang.reflect.Type;
 
 //This class manages the deserialization of BusinessProcess classes
 class BusinessProcessInstanceCreator implements JsonDeserializer<BusinessProcess> , JsonSerializer<BusinessProcess> {
-	
+
+	public static final String TYPE = "type";
+
 	@Override
 	public JsonElement serialize(BusinessProcess bp, Type arg1, JsonSerializationContext context) {
 		
@@ -54,7 +55,7 @@ class BusinessProcessInstanceCreator implements JsonDeserializer<BusinessProcess
 		bp.setNodeType(NodeTypeEnum.BusinessProcess);
 
 		if (!jsonObject.get("type").isJsonNull()) {
-			String type = jsonObject.get("type").getAsString();
+			String type = jsonObject.get(TYPE).getAsString();
 
 			if (type.equals(ProcessTypeEnum.Business.toString())) {
 				bp.setType(ProcessTypeEnum.Business);

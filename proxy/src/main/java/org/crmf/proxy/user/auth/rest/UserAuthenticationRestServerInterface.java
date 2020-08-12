@@ -12,13 +12,11 @@
 
 package org.crmf.proxy.user.auth.rest;
 
-import javax.ws.rs.GET;
-import javax.ws.rs.POST;
-import javax.ws.rs.Produces;
-
 import org.apache.camel.Header;
 import org.apache.camel.Headers;
 
+import javax.ws.rs.POST;
+import javax.ws.rs.Produces;
 import java.util.Map;
 
 public interface UserAuthenticationRestServerInterface {

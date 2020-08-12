@@ -52,18 +52,18 @@ public class Sestobj {
   }
 
   public void setObjtype(String objtype) {
-  	this.objtype = objtype == null ? null : objtype.trim();
+    this.objtype = objtype == null ? null : objtype.trim();
   }
 
-	public String getLockedBy() {
-		return lockedBy;
-	}
+  public String getLockedBy() {
+    return lockedBy;
+  }
 
-	public void setLockedBy(String lockedBy) {
-		this.lockedBy = lockedBy;
-	}
+  public void setLockedBy(String lockedBy) {
+    this.lockedBy = lockedBy;
+  }
 
-	public SESTObject convertToModel() {
+  public SESTObject convertToModel() {
     SESTObject so = new SESTObject();
     so.setIdentifier(this.identifier);
     if (this.objtype != null)

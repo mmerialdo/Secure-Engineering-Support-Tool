@@ -12,32 +12,31 @@
 
 package org.crmf.proxy.core.riskassessment.project.rest;
 
-import java.util.List;
-
-import javax.ws.rs.Consumes;
-import javax.ws.rs.GET;
-import javax.ws.rs.POST;
-import javax.ws.rs.Produces;
-
 import org.apache.camel.Header;
 import org.crmf.model.riskassessment.AssessmentProfile;
 import org.crmf.model.riskassessment.AssessmentTemplate;
 import org.crmf.model.utility.GenericFilter;
 
+import javax.ws.rs.Consumes;
+import javax.ws.rs.GET;
+import javax.ws.rs.POST;
+import javax.ws.rs.Produces;
+import java.util.List;
+
 public interface AssessmentTemplateRestServerInterface {
 
-	@POST
-    @Produces("text/html") 
-    @Consumes("application/json") 
-	String createAssessmentTemplate(AssessmentProfile Template) throws Exception;
+  @POST
+  @Produces("text/html")
+  @Consumes("application/json")
+  String createAssessmentTemplate(AssessmentProfile Template) throws Exception;
 
-	@GET
-	@Produces("application/json")
-	List<AssessmentTemplate> loadAssessmentTemplateList(@Header("SHIRO_SECURITY_TOKEN") String token) throws Exception;
+  @GET
+  @Produces("application/json")
+  List<AssessmentTemplate> loadAssessmentTemplateList(@Header("SHIRO_SECURITY_TOKEN") String token) throws Exception;
 
-	@POST
-	@Produces("application/json")
-    @Consumes("text/html") 
-	List<String> loadAssessmentTemplate(GenericFilter filter, @Header("SHIRO_SECURITY_TOKEN") String token) throws Exception;
+  @POST
+  @Produces("application/json")
+  @Consumes("text/html")
+  List<String> loadAssessmentTemplate(GenericFilter filter, @Header("SHIRO_SECURITY_TOKEN") String token) throws Exception;
 
 }

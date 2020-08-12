@@ -12,28 +12,28 @@
 
 package org.crmf.persistency.mapper.user;
 
-import java.util.List;
-
 import org.crmf.model.user.User;
+
+import java.util.List;
 
 public interface UserServiceInterface {
 
-	String insert(User user);
+  String insert(User user);
 
-	void update(User user);
+  void update(User user);
 
-	void updatePassword(String username, String password) ;
+  void updatePassword(String username, String password);
 
-	void deleteCascade(String identifier);
+  void deleteCascade(String identifier);
 
-	User getByUsername(String username);
-	
-	User getById(Integer userId);
+  User getByUsername(String username);
 
-	User getByIdentifier(String identifier);
+  User getById(Integer userId);
 
-	List<User> getAll();
-	
-	boolean isPasswordExpired(String username);
-	
+  User getByIdentifier(String identifier);
+
+  List<User> getAll();
+
+  boolean isPasswordExpired(String username);
+
 }

@@ -12,9 +12,9 @@
 
 package org.crmf.model.riskassessmentelements;
 
-import java.util.ArrayList;
-
 import org.crmf.model.general.SESTObject;
+
+import java.util.ArrayList;
 
 public class Node extends SESTObject {
 
@@ -27,14 +27,6 @@ public class Node extends SESTObject {
 	private ArrayList<String> relatedRequirementsIds;
 	private ArrayList<Edge> children;
 	private ArrayList<Edge> parents;
-
-	public Node(){
-
-	}
-
-	public void finalize() throws Throwable {
-		super.finalize();
-	}
 
 	public boolean isAssessmentNode() {
 		return assessmentNode;

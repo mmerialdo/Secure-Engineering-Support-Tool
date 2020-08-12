@@ -22,14 +22,6 @@ public class ApplicablePlatform {
 	private String programmingLanguages;
 	private String technologyClasses;
 
-	public ApplicablePlatform(){
-
-	}
-
-	public void finalize() throws Throwable {
-
-	}
-	
 	public String getArchitecturalParadigms() {
 		return architecturalParadigms;
 	}

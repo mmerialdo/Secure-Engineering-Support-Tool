@@ -50,9 +50,6 @@ public class RiskTreatmentModelSerializerDeserializer {
 	/**
 	 * Creates JSON from POJO The created JSON is adapted for the RiskTreatment
 	 * View 2 (single asset view)
-	 * 
-	 * @param RiskTreatmentModel
-	 * @return Json
 	 */
 	public String getClientDetailJSONStringFromRTM(RiskModel riskModel, AssetModel assetModel, SafeguardModel safeguardModel,
 			RiskTreatmentModel rtm, String assetPrimaryCategory) {

@@ -12,15 +12,6 @@
 
 package org.crmf.model.utility.assetmodel;
 
-import java.lang.reflect.Type;
-import java.util.ArrayList;
-
-import org.crmf.model.riskassessmentelements.FunctionalMalfunctionTypeEnum;
-import org.crmf.model.riskassessmentelements.Malfunction;
-import org.crmf.model.riskassessmentelements.MalfunctionValueScale;
-import org.crmf.model.riskassessmentelements.NodeTypeEnum;
-import org.crmf.model.riskassessmentelements.TechnicalMalfunctionTypeEnum;
-
 import com.google.gson.JsonArray;
 import com.google.gson.JsonDeserializationContext;
 import com.google.gson.JsonDeserializer;
@@ -29,28 +20,45 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
 import com.google.gson.JsonSerializationContext;
 import com.google.gson.JsonSerializer;
+import org.crmf.model.riskassessmentelements.FunctionalMalfunctionTypeEnum;
+import org.crmf.model.riskassessmentelements.Malfunction;
+import org.crmf.model.riskassessmentelements.MalfunctionValueScale;
+import org.crmf.model.riskassessmentelements.NodeTypeEnum;
+import org.crmf.model.riskassessmentelements.TechnicalMalfunctionTypeEnum;
+
+import java.lang.reflect.Type;
+import java.util.ArrayList;
 
 //This class manages the deserialization of Malfunction classes
 class MalfunctionInstanceCreator implements JsonDeserializer<Malfunction> , JsonSerializer<Malfunction> {
-	
+
+	public static final String FUNCTIONAL_CONSEQUENCE = "functionalConsequence";
+	public static final String FUNCTIONAL_DESCRIPTION = "functionalDescription";
+	public static final String TECHNICAL_CONSEQUENCE = "technicalConsequence";
+	public static final String TECHNICAL_DESCRIPTION = "technicalDescription";
+	public static final String FUNCTIONAL_TYPE = "functionalType";
+	public static final String WEIGHT = "weight";
+	public static final String TECHNICAL_TYPES = "technicalTypes";
+	public static final String SCALES = "scales";
+
 	@Override
 	public JsonElement serialize(Malfunction mal, Type arg1, JsonSerializationContext context) {
 		
 		JsonObject jsonObject = new JsonObject();
 		
-		jsonObject.addProperty("functionalConsequence", mal.getFunctionalConsequence());
-		jsonObject.addProperty("functionalDescription", mal.getFunctionalDescription());
-		jsonObject.addProperty("technicalConsequence", mal.getTechnicalConsequence());
-		jsonObject.addProperty("technicalDescription", mal.getTechnicalDescription());
+		jsonObject.addProperty(FUNCTIONAL_CONSEQUENCE, mal.getFunctionalConsequence());
+		jsonObject.addProperty(FUNCTIONAL_DESCRIPTION, mal.getFunctionalDescription());
+		jsonObject.addProperty(TECHNICAL_CONSEQUENCE, mal.getTechnicalConsequence());
+		jsonObject.addProperty(TECHNICAL_DESCRIPTION, mal.getTechnicalDescription());
 		
 		if(mal.getFunctionalType() != null){
-			jsonObject.addProperty("functionalType", mal.getFunctionalType().toString());
+			jsonObject.addProperty(FUNCTIONAL_TYPE, mal.getFunctionalType().toString());
 		}
 		else{
-			jsonObject.addProperty("functionalType", "");
+			jsonObject.addProperty(FUNCTIONAL_TYPE, "");
 		}
 		
-		jsonObject.addProperty("weight", mal.getWeight());
+		jsonObject.addProperty(WEIGHT, mal.getWeight());
 	
 		JsonArray technicalTypes = new JsonArray();
 			
@@ -59,7 +67,7 @@ class MalfunctionInstanceCreator implements JsonDeserializer<Malfunction> , Json
         	technicalTypes.add(item.toString());
 		});
 		
-        jsonObject.add("technicalTypes", technicalTypes);
+        jsonObject.add(TECHNICAL_TYPES, technicalTypes);
         
         
         JsonArray scales = new JsonArray();
@@ -72,7 +80,7 @@ class MalfunctionInstanceCreator implements JsonDeserializer<Malfunction> , Json
 			}
 		});
         
-        jsonObject.add("scales", scales);
+        jsonObject.add(SCALES, scales);
 		
 		return jsonObject;
 	}
@@ -84,52 +92,52 @@ class MalfunctionInstanceCreator implements JsonDeserializer<Malfunction> , Json
 
 		Malfunction mal = new Malfunction();
 		mal.setNodeType(NodeTypeEnum.Malfunction);
-		mal.setTechnicalTypes(new ArrayList<TechnicalMalfunctionTypeEnum>());
-		mal.setScales(new ArrayList<MalfunctionValueScale>());
+		mal.setTechnicalTypes(new ArrayList<>());
+		mal.setScales(new ArrayList<>());
 
-		if (!jsonObject.get("functionalConsequence").isJsonNull()) {
-			String functionalConsequence = jsonObject.get("functionalConsequence").getAsString();
+		if (!jsonObject.get(FUNCTIONAL_CONSEQUENCE).isJsonNull()) {
+			String functionalConsequence = jsonObject.get(FUNCTIONAL_CONSEQUENCE).getAsString();
 			mal.setFunctionalConsequence(functionalConsequence);
 		} else {
 			mal.setFunctionalConsequence("");
 		}
 
-		if (!jsonObject.get("functionalDescription").isJsonNull()) {
-			String functionalDescription = jsonObject.get("functionalDescription").getAsString();
+		if (!jsonObject.get(FUNCTIONAL_DESCRIPTION).isJsonNull()) {
+			String functionalDescription = jsonObject.get(FUNCTIONAL_DESCRIPTION).getAsString();
 			mal.setFunctionalDescription(functionalDescription);
 		} else {
 			mal.setFunctionalDescription("");
 		}
 
-		if (!jsonObject.get("technicalConsequence").isJsonNull()) {
-			String technicalConsequence = jsonObject.get("technicalConsequence").getAsString();
+		if (!jsonObject.get(TECHNICAL_CONSEQUENCE).isJsonNull()) {
+			String technicalConsequence = jsonObject.get(TECHNICAL_CONSEQUENCE).getAsString();
 			mal.setTechnicalConsequence(technicalConsequence);
 		} else {
 			mal.setTechnicalConsequence("");
 		}
 
-		if (!jsonObject.get("technicalDescription").isJsonNull()) {
-			String technicalDescription = jsonObject.get("technicalDescription").getAsString();
+		if (!jsonObject.get(TECHNICAL_DESCRIPTION).isJsonNull()) {
+			String technicalDescription = jsonObject.get(TECHNICAL_DESCRIPTION).getAsString();
 			mal.setTechnicalDescription(technicalDescription);
 		} else {
 			mal.setTechnicalDescription("");
 		}
 
-		if (!jsonObject.get("functionalType").isJsonNull()) {
-			String functionalType = jsonObject.get("functionalType").getAsString();
+		if (!jsonObject.get(FUNCTIONAL_TYPE).isJsonNull()) {
+			String functionalType = jsonObject.get(FUNCTIONAL_TYPE).getAsString();
 
 			mal.setFunctionalType(FunctionalMalfunctionTypeEnum.valueOf(functionalType));
 			
 		}
 
-		if (!jsonObject.get("weight").isJsonNull()) {
-			mal.setWeight(jsonObject.get("weight").getAsFloat());
+		if (!jsonObject.get(WEIGHT).isJsonNull()) {
+			mal.setWeight(jsonObject.get(WEIGHT).getAsFloat());
 		} else {
 			mal.setWeight(0);
 		}
 
-		if (!jsonObject.get("technicalTypes").isJsonNull()) {
-			JsonArray technicalTypes = jsonObject.get("technicalTypes").getAsJsonArray();
+		if (!jsonObject.get(TECHNICAL_TYPES).isJsonNull()) {
+			JsonArray technicalTypes = jsonObject.get(TECHNICAL_TYPES).getAsJsonArray();
 
 			technicalTypes.forEach(item -> {
 				String technicalType = item.getAsString();
@@ -139,12 +147,10 @@ class MalfunctionInstanceCreator implements JsonDeserializer<Malfunction> , Json
 			});
 		}
 
-		JsonArray scales = jsonObject.get("scales").getAsJsonArray();
+		JsonArray scales = jsonObject.get(SCALES).getAsJsonArray();
 
 		scales.forEach(item -> {
-			JsonElement obj = (JsonElement) item;
-			MalfunctionValueScale malfunctionValueScale = context.deserialize(obj, MalfunctionValueScale.class);
-
+			MalfunctionValueScale malfunctionValueScale = context.deserialize(item, MalfunctionValueScale.class);
 			mal.getScales().add(malfunctionValueScale);
 		});
 

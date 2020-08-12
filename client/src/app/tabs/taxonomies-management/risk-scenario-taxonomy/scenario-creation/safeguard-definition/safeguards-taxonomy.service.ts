@@ -41,9 +41,4 @@ export class SafeguardsTaxonomyService {
       })
     );
   }
-
-  getFormulaFormat() {
-    return "Safeguards formula can be a combined of max/min, divided by semicolon." +
-      "es. max(09B05;min(07A01;07A02;08F01);min(09A01;09A02))\n"
-  }
 }

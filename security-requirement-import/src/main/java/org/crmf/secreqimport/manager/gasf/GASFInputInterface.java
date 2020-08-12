@@ -14,7 +14,7 @@ package org.crmf.secreqimport.manager.gasf;
 
 public interface GASFInputInterface {
 
-	void importGASFRequirementsFull() throws Exception;
-	
-	void importCWE();
+  void importGASFRequirementsFull() throws Exception;
+
+  void importCWE();
 }

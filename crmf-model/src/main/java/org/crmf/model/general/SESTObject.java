@@ -18,13 +18,6 @@ public class SESTObject {
 	private SESTObjectTypeEnum objType;
 	private String lockedBy;
 
-	public SESTObject(){
-
-	}
-
-	public void finalize() throws Throwable {
-
-	}
 	public String getIdentifier(){
 		return identifier;
 	}

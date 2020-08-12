@@ -18,13 +18,6 @@ public class Experience {
 	private String updateTime;
 	private String updateUsername;
 
-	public Experience(){
-
-	}
-
-	public void finalize() throws Throwable {
-
-	}
 	public String getExperienceData(){
 		return experienceData;
 	}

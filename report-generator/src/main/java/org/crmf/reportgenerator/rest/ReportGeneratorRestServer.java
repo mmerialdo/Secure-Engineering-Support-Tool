@@ -12,11 +12,6 @@
 
 package org.crmf.reportgenerator.rest;
 
-import javax.ws.rs.Consumes;
-import javax.ws.rs.POST;
-import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
-
 import org.crmf.model.riskassessmentelements.ImpactEnum;
 import org.crmf.model.utility.GenericFilter;
 import org.crmf.model.utility.GenericFilterEnum;
@@ -24,68 +19,73 @@ import org.crmf.reportgenerator.manager.ReportGeneratorInputInterface;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import javax.ws.rs.Consumes;
+import javax.ws.rs.POST;
+import javax.ws.rs.Path;
+import javax.ws.rs.Produces;
+
 public class ReportGeneratorRestServer {
 
-	private ReportGeneratorInputInterface reportgeneratorInput;
-	private static final Logger LOG = LoggerFactory.getLogger(ReportGeneratorRestServer.class.getName());
+  private ReportGeneratorInputInterface reportgeneratorInput;
+  private static final Logger LOG = LoggerFactory.getLogger(ReportGeneratorRestServer.class.getName());
 
-	@POST
-	@Produces("text/html")
-	@Consumes("text/html")
-	public String editReport(GenericFilter filter) throws Exception {
-		LOG.info("editReport " + filter.getFilterValue(GenericFilterEnum.PROCEDURE));
-		try {
-			return reportgeneratorInput.editReport(filter.getFilterValue(GenericFilterEnum.PROCEDURE));
-			
-		} catch (Exception e) {
-			throw new Exception("COMMAND_EXCEPTION", e);
-		}
-	}
+  @POST
+  @Produces("text/html")
+  @Consumes("text/html")
+  public String editReport(GenericFilter filter) throws Exception {
+    LOG.info("editReport " + filter.getFilterValue(GenericFilterEnum.PROCEDURE));
+    try {
+      return reportgeneratorInput.editReport(filter.getFilterValue(GenericFilterEnum.PROCEDURE));
 
-	@POST
-	@Produces("text/html")
-	@Consumes("text/html")
-	public String editLightReport(GenericFilter filter) throws Exception {
-		LOG.info("editLightReport " + filter.getFilterValue(GenericFilterEnum.PROCEDURE) + " " + ImpactEnum.valueOf(filter.getFilterValue(GenericFilterEnum.IMPACT)));
-		try {
-			return reportgeneratorInput.editLightReport(filter.getFilterValue(GenericFilterEnum.PROCEDURE),
-				ImpactEnum.valueOf(filter.getFilterValue(GenericFilterEnum.IMPACT)));
+    } catch (Exception e) {
+      throw new Exception("COMMAND_EXCEPTION", e);
+    }
+  }
 
-		} catch (Exception e) {
-			throw new Exception("COMMAND_EXCEPTION", e);
-		}
-	}
+  @POST
+  @Produces("text/html")
+  @Consumes("text/html")
+  public String editLightReport(GenericFilter filter) throws Exception {
+    LOG.info("editLightReport " + filter.getFilterValue(GenericFilterEnum.PROCEDURE) + " " + ImpactEnum.valueOf(filter.getFilterValue(GenericFilterEnum.IMPACT)));
+    try {
+      return reportgeneratorInput.editLightReport(filter.getFilterValue(GenericFilterEnum.PROCEDURE),
+        ImpactEnum.valueOf(filter.getFilterValue(GenericFilterEnum.IMPACT)));
 
-	@POST
-	@Produces("text/html")
-	@Consumes("text/html")
-	public String editISOReport(GenericFilter filter) throws Exception {
-		LOG.info("editISOReport " + filter.getFilterValue(GenericFilterEnum.PROCEDURE));
-		try {
-			return reportgeneratorInput.editISOReport(filter.getFilterValue(GenericFilterEnum.PROCEDURE));
+    } catch (Exception e) {
+      throw new Exception("COMMAND_EXCEPTION", e);
+    }
+  }
 
-		} catch (Exception e) {
-			throw new Exception("COMMAND_EXCEPTION", e);
-		}
-	}
+  @POST
+  @Produces("text/html")
+  @Consumes("text/html")
+  public String editISOReport(GenericFilter filter) throws Exception {
+    LOG.info("editISOReport " + filter.getFilterValue(GenericFilterEnum.PROCEDURE));
+    try {
+      return reportgeneratorInput.editISOReport(filter.getFilterValue(GenericFilterEnum.PROCEDURE));
 
-	@POST
-	@Path("/load")
-	@Produces("application/octet-stream")
-	@Consumes("application/json")
-	public byte[] downloadReport(String filterS) {
-		LOG.info("downloadReport ");
+    } catch (Exception e) {
+      throw new Exception("COMMAND_EXCEPTION", e);
+    }
+  }
 
-		//no action as this code is not reached from cxfrs web service. Processor is used to perform action.
-		return null;
-	}
+  @POST
+  @Path("/load")
+  @Produces("application/octet-stream")
+  @Consumes("application/json")
+  public byte[] downloadReport(String filterS) {
+    LOG.info("downloadReport ");
 
-	public ReportGeneratorInputInterface getReportgeneratorInput() {
-		return reportgeneratorInput;
-	}
+    //no action as this code is not reached from cxfrs web service. Processor is used to perform action.
+    return null;
+  }
 
-	public void setReportgeneratorInput(ReportGeneratorInputInterface reportgeneratorInput) {
-		this.reportgeneratorInput = reportgeneratorInput;
-	}
+  public ReportGeneratorInputInterface getReportgeneratorInput() {
+    return reportgeneratorInput;
+  }
+
+  public void setReportgeneratorInput(ReportGeneratorInputInterface reportgeneratorInput) {
+    this.reportgeneratorInput = reportgeneratorInput;
+  }
 
 }

@@ -15,10 +15,6 @@ import org.crmf.model.audit.ISOControls;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-/************************************************************************
- * Created: 02/07/2020                                                  *
- * Author: Gabriela Mihalachi                                        *
- ************************************************************************/
 public class ISOControlService implements ISOControlServiceInterface {
 
   private static final Logger LOG = LoggerFactory.getLogger(ISOControlService.class.getName());

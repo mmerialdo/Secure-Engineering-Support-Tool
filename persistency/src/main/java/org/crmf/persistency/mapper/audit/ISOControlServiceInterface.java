@@ -14,10 +14,6 @@ package org.crmf.persistency.mapper.audit;
 
 import org.crmf.model.audit.ISOControls;
 
-/************************************************************************
- * Created: 02/07/2020                                                  *
- * Author: Gabriela Mihalachi                                        *
- ************************************************************************/
 public interface ISOControlServiceInterface {
 
   void createDefaultQuestionnaireWithISO(ISOControls controls);

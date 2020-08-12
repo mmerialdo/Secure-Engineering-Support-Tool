@@ -20,11 +20,4 @@ public class DetectionMethod {
 	private String name;
 	private String notes;
 
-	public DetectionMethod(){
-
-	}
-
-	public void finalize() throws Throwable {
-
-	}
 }

@@ -12,8 +12,6 @@
 
 package org.crmf.persistency.mapper.project;
 
-import java.util.ArrayList;
-
 import org.apache.ibatis.session.SqlSession;
 import org.crmf.model.general.SESTObjectTypeEnum;
 import org.crmf.model.riskassessment.SystemParticipant;
@@ -24,99 +22,101 @@ import org.crmf.persistency.session.PersistencySessionFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.util.ArrayList;
+
 //This class manages the database interactions related to the SystemParticipant
 public class SysparticipantService {
 
-	private static final Logger LOG = LoggerFactory.getLogger(SysparticipantService.class.getName());
-	PersistencySessionFactory sessionFactory;
+  private static final Logger LOG = LoggerFactory.getLogger(SysparticipantService.class.getName());
+  PersistencySessionFactory sessionFactory;
 
-	public void insert(ArrayList<SystemParticipant> partecipants, Integer sysprjId) throws Exception {
+  public void insert(ArrayList<SystemParticipant> partecipants, Integer sysprjId) throws Exception {
 
-		SqlSession sqlSession = sessionFactory.getSession();
+    SqlSession sqlSession = sessionFactory.getSession();
 
-		Sestobj sestobj = null;
-		try {
-			SysparticipantMapper participantMapper = sqlSession.getMapper(SysparticipantMapper.class);
-			SestobjMapper sestobjMapper = sqlSession.getMapper(SestobjMapper.class);
-			
-			for (SystemParticipant systemParticipant : partecipants) {
-				SysParticipant sysParticipant = new SysParticipant();
-				sysParticipant.convertFromModel(systemParticipant);
+    Sestobj sestobj = null;
+    try {
+      SysparticipantMapper participantMapper = sqlSession.getMapper(SysparticipantMapper.class);
+      SestobjMapper sestobjMapper = sqlSession.getMapper(SestobjMapper.class);
 
-				sestobj = new Sestobj();
-				sestobj.setObjtype(SESTObjectTypeEnum.AssessmentProject.name());
-				sestobjMapper.insert(sestobj);
-				LOG.info("Insert sestObject identifier ");
-				
-				sysParticipant.setSestobjId(sestobj.getIdentifier());
-				sysParticipant.setSysprojectId(sysprjId);
-				participantMapper.insert(sysParticipant);
-			}
-			sqlSession.commit();
-		} catch (Exception ex) {
-			LOG.error(ex.getMessage());
-			sqlSession.rollback();
-		} finally {
-			sqlSession.close();
-		}
-	}
+      for (SystemParticipant systemParticipant : partecipants) {
+        SysParticipant sysParticipant = new SysParticipant();
+        sysParticipant.convertFromModel(systemParticipant);
 
-	public void update(ArrayList<SystemParticipant> partecipants, Integer sysprjId) {
+        sestobj = new Sestobj();
+        sestobj.setObjtype(SESTObjectTypeEnum.AssessmentProject.name());
+        sestobjMapper.insert(sestobj);
+        LOG.info("Insert sestObject identifier ");
 
-		try {
-			deleteByProjectId(sysprjId);
-			insert(partecipants, sysprjId);
-		} catch (Exception ex) {
-			LOG.error(ex.getMessage());
-		} 
-	}
+        sysParticipant.setSestobjId(sestobj.getIdentifier());
+        sysParticipant.setSysprojectId(sysprjId);
+        participantMapper.insert(sysParticipant);
+      }
+      sqlSession.commit();
+    } catch (Exception ex) {
+      LOG.error(ex.getMessage());
+      sqlSession.rollback();
+    } finally {
+      sqlSession.close();
+    }
+  }
 
-	public void deleteByProjectId(Integer id) {
+  public void update(ArrayList<SystemParticipant> partecipants, Integer sysprjId) {
 
-		SqlSession sqlSession = sessionFactory.getSession();
-		SysparticipantMapper participantMapper = sqlSession.getMapper(SysparticipantMapper.class);
-		
-		try {
-			participantMapper.deleteByProjectId(id);
-			
-			sqlSession.commit();
-		} catch (Exception ex) {
-			LOG.error(ex.getMessage());
-			sqlSession.rollback();
-		} finally {
-			sqlSession.close();
-		}
-	}
+    try {
+      deleteByProjectId(sysprjId);
+      insert(partecipants, sysprjId);
+    } catch (Exception ex) {
+      LOG.error(ex.getMessage());
+    }
+  }
 
-	public ArrayList<SystemParticipant> getByProjectId(Integer id) {
+  public void deleteByProjectId(Integer id) {
 
-		SqlSession sqlSession = sessionFactory.getSession();
-		SysparticipantMapper participantMapper = sqlSession.getMapper(SysparticipantMapper.class);
+    SqlSession sqlSession = sessionFactory.getSession();
+    SysparticipantMapper participantMapper = sqlSession.getMapper(SysparticipantMapper.class);
 
-		ArrayList<SystemParticipant> systempartecipants = new ArrayList<>();
-		try {
+    try {
+      participantMapper.deleteByProjectId(id);
 
-			ArrayList<SysParticipant> partecipants = participantMapper.getByProjectId(id);
+      sqlSession.commit();
+    } catch (Exception ex) {
+      LOG.error(ex.getMessage());
+      sqlSession.rollback();
+    } finally {
+      sqlSession.close();
+    }
+  }
 
-			for (SysParticipant sysParticipant : partecipants) {
+  public ArrayList<SystemParticipant> getByProjectId(Integer id) {
 
-				systempartecipants.add(sysParticipant.convertToModel());
-			}
-		} catch (Exception ex) {
-			LOG.error(ex.getMessage());
-			sqlSession.rollback();
-		} finally {
-			sqlSession.close();
-		}
-		return systempartecipants;
-	}
+    SqlSession sqlSession = sessionFactory.getSession();
+    SysparticipantMapper participantMapper = sqlSession.getMapper(SysparticipantMapper.class);
 
-	public PersistencySessionFactory getSessionFactory() {
-		return sessionFactory;
-	}
+    ArrayList<SystemParticipant> systempartecipants = new ArrayList<>();
+    try {
 
-	public void setSessionFactory(PersistencySessionFactory sessionFactory) {
-		this.sessionFactory = sessionFactory;
-	}
-	
+      ArrayList<SysParticipant> partecipants = participantMapper.getByProjectId(id);
+
+      for (SysParticipant sysParticipant : partecipants) {
+
+        systempartecipants.add(sysParticipant.convertToModel());
+      }
+    } catch (Exception ex) {
+      LOG.error(ex.getMessage());
+      sqlSession.rollback();
+    } finally {
+      sqlSession.close();
+    }
+    return systempartecipants;
+  }
+
+  public PersistencySessionFactory getSessionFactory() {
+    return sessionFactory;
+  }
+
+  public void setSessionFactory(PersistencySessionFactory sessionFactory) {
+    this.sessionFactory = sessionFactory;
+  }
+
 }

@@ -18,13 +18,6 @@ public class Answer {
 	private AnswerTypeEnum type;
 	private String value;
 
-	public Answer(){
-
-	}
-
-	public void finalize() throws Throwable {
-
-	}
 	public int getIndex(){
 		return index;
 	}

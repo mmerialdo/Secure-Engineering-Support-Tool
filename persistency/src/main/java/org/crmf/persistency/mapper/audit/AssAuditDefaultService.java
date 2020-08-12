@@ -15,7 +15,6 @@ package org.crmf.persistency.mapper.audit;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import org.apache.ibatis.session.SqlSession;
-import org.crmf.model.audit.Answer;
 import org.crmf.model.audit.AnswerTypeEnum;
 import org.crmf.model.audit.ISOControl;
 import org.crmf.model.audit.ISOControls;
@@ -219,45 +218,13 @@ public class AssAuditDefaultService {
     child.setValue(question.getAvalue());
     child.setIndex(question.getIx());
 
-    Answer ans_w = new Answer();
-    ans_w.setIndex(1);
-    ans_w.setType(AnswerTypeEnum.MEHARI_W);
-    ans_w.setValue(question.getVw());
-    child.getAnswers().add(ans_w);
-
-    Answer ans_max = new Answer();
-    ans_max.setIndex(2);
-    ans_max.setType(AnswerTypeEnum.MEHARI_Max);
-    ans_max.setValue(question.getVmax());
-    child.getAnswers().add(ans_max);
-
-    Answer ans_min = new Answer();
-    ans_min.setIndex(3);
-    ans_min.setType(AnswerTypeEnum.MEHARI_Min);
-    ans_min.setValue(question.getVmin());
-    child.getAnswers().add(ans_min);
-
-    Answer ans_iso13 = new Answer();
-    ans_iso13.setIndex(4);
-    ans_iso13.setType(AnswerTypeEnum.MEHARI_ISO13);
-    ans_iso13.setValue(question.getViso13());
-    child.getAnswers().add(ans_iso13);
-
-    Answer ans_iso5 = new Answer();
-    ans_iso5.setIndex(5);
-    ans_iso5.setType(AnswerTypeEnum.MEHARI_ISO5);
-    ans_iso5.setValue(question.getViso5());
-    child.getAnswers().add(ans_iso5);
-
-    if (this.isoControls != null && this.isoControls.getControls() != null) {
-      String isoControlsInfo = this.getISOControlsDetails(question.getViso13());
-
-      Answer ans_iso13Info = new Answer();
-      ans_iso13Info.setIndex(4);
-      ans_iso13Info.setType(AnswerTypeEnum.MEHARI_ISO13_info);
-      ans_iso13Info.setValue(isoControlsInfo);
-      child.getAnswers().add(ans_iso13Info);
-    }
+    child.getAnswers().put(AnswerTypeEnum.MEHARI_W, question.getVw());
+    child.getAnswers().put(AnswerTypeEnum.MEHARI_Max, question.getVmax());
+    child.getAnswers().put(AnswerTypeEnum.MEHARI_Min, question.getVmin());
+    child.getAnswers().put(AnswerTypeEnum.MEHARI_ISO13, question.getViso13());
+    child.getAnswers().put(AnswerTypeEnum.MEHARI_ISO5, question.getViso5());
+    String isoControlsInfo = this.getISOControlsDetails(question.getViso13());
+    child.getAnswers().put(AnswerTypeEnum.MEHARI_ISO13_info, isoControlsInfo);
 
     List<AssauditDefaultJSON> auditQuestions = auditeDefaultMapper
       .getAllByParentCategory(question.getCategory());
@@ -272,7 +239,7 @@ public class AssAuditDefaultService {
 
     // manages GASF question
     List<SecRequirementSafeguard> secreqs = requirementMapper.getRequirementsAssocBySafeguard(question.getId());
-    if (secreqs != null && secreqs.size() > 0) {
+    if (secreqs != null && !secreqs.isEmpty()) {
       for (SecRequirementSafeguard requirement : secreqs) {
         SecRequirement secRequirement = requirementMapper.getSecRequirementById(requirement.getRequirementId());
         if (secRequirement != null) {
@@ -296,34 +263,10 @@ public class AssAuditDefaultService {
     secreqQuestion.setValue(secreq.getTitle());
     secreqQuestion.setIndex("01");
 
-    Answer ans1 = new Answer();
-    ans1.setIndex(1);
-    ans1.setType(AnswerTypeEnum.MEHARI_R_V1);
-    secreqQuestion.getAnswers().add(ans1);
-
-    Answer ans_w = new Answer();
-    ans_w.setIndex(2);
-    ans_w.setValue(contribution);
-    ans_w.setType(AnswerTypeEnum.MEHARI_W);
-    secreqQuestion.getAnswers().add(ans_w);
-
-    Answer ans_description = new Answer();
-    ans_description.setIndex(3);
-    ans_description.setValue(secreq.getDescription());
-    ans_description.setType(AnswerTypeEnum.Description);
-    secreqQuestion.getAnswers().add(ans_description);
-
-    Answer ans_note = new Answer();
-    ans_note.setIndex(4);
-    ans_note.setValue(secreq.getNote());
-    ans_note.setType(AnswerTypeEnum.MEHARI_R_V4);
-    secreqQuestion.getAnswers().add(ans_note);
-
-    Answer ans_sources = new Answer();
-    ans_sources.setIndex(4);
-    ans_sources.setValue(secreq.getSourceDescription());
-    ans_sources.setType(AnswerTypeEnum.MEHARI_R_V5);
-    secreqQuestion.getAnswers().add(ans_sources);
+    secreqQuestion.getAnswers().put(AnswerTypeEnum.MEHARI_W, contribution);
+    secreqQuestion.getAnswers().put(AnswerTypeEnum.Description, secreq.getDescription());
+    secreqQuestion.getAnswers().put(AnswerTypeEnum.MEHARI_R_V4, secreq.getNote());
+    secreqQuestion.getAnswers().put(AnswerTypeEnum.MEHARI_R_V5, secreq.getSourceDescription());
 
     //Do not delete. This is commented because the actual mapping GASF/Safeguards is horizontal (it does not manage trees)
 //		List<SecRequirement> secreqChildren = requirementMapper.getSecRequirementChildren(secreq.getId());
@@ -348,12 +291,15 @@ public class AssAuditDefaultService {
     if (isoIds != null && !isoIds.equals("")) {
       String[] controlsId = isoIds.split(";");
       for (String controlId : controlsId) {
-        for (ISOControl control : this.isoControls.getControls()) {
-          if (control.getControlId().equals(controlId.trim())) {
-            if (!controlsInfo.equals("[")) {
-              controlsInfo = controlsInfo.concat(",");
+
+        if (this.isoControls != null && this.isoControls.getControls() != null) {
+          for (ISOControl control : this.isoControls.getControls()) {
+            if (control.getControlId().equals(controlId.trim())) {
+              if (!controlsInfo.equals("[")) {
+                controlsInfo = controlsInfo.concat(",");
+              }
+              controlsInfo = controlsInfo.concat(control.getControlJson());
             }
-            controlsInfo = controlsInfo.concat(control.getControlJson());
           }
         }
       }
@@ -362,14 +308,14 @@ public class AssAuditDefaultService {
     return controlsInfo;
   }
 
-  public static void main(String[] args) {
+ /* public static void main(String[] args) {
 
     AssAuditDefaultService service = new AssAuditDefaultService();
     int id = (args == null || args.length == 0) ? 0 : Integer.valueOf(args[0]);
     for (int i = 1; i < 15; i++) {
       id = service.parseFile(String.valueOf(i), ++id, null);
     }
-  }
+  } */
 
   public void importAudit() {
 

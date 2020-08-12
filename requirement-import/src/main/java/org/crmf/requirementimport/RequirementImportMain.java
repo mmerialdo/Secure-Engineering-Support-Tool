@@ -20,22 +20,22 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 //This class represents the entry point of the OSGi bundle
 public class RequirementImportMain {
 
-	private static final Logger LOG = LoggerFactory.getLogger(RequirementImportMain.class.getName());
-	
-	public static void main(String[] args) {
+  private static final Logger LOG = LoggerFactory.getLogger(RequirementImportMain.class.getName());
 
-		ApplicationContext context = new ClassPathXmlApplicationContext("config_spring.xml");
-		
-		while(!Thread.currentThread().isInterrupted()){
-			try {
-				Thread.sleep(10000);
-			} catch (InterruptedException e) {
-				Thread.currentThread().interrupt();
-				LOG.info("InterruptedException");
-			}
-		}
+  public static void main(String[] args) {
 
-		((ClassPathXmlApplicationContext)context).close();
-	}
+    ApplicationContext context = new ClassPathXmlApplicationContext("config_spring.xml");
+
+    while (!Thread.currentThread().isInterrupted()) {
+      try {
+        Thread.sleep(10000);
+      } catch (InterruptedException e) {
+        Thread.currentThread().interrupt();
+        LOG.info("InterruptedException");
+      }
+    }
+
+    ((ClassPathXmlApplicationContext) context).close();
+  }
 
 }

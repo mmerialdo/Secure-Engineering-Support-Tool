@@ -12,144 +12,145 @@
 
 package org.crmf.persistency.domain.project;
 
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-
 import org.crmf.model.riskassessment.AssessmentTemplate;
 import org.crmf.model.riskassessment.PhaseEnum;
 import org.crmf.model.riskassessment.RiskMethodologyEnum;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 public class AssTemplate {
-	private Integer id;
+  public static final String DD_MM_YYYY_HH_MM = "dd/MM/yyyy HH:mm";
+  private Integer id;
 
-	private String name;
+  private String name;
 
-	private String description;
+  private String description;
 
-	private String methodology;
+  private String methodology;
 
-	private Date creationTime;
+  private Date creationTime;
 
-	private String phase;
+  private String phase;
 
-	private Integer procedureId;
+  private Integer procedureId;
 
-	private Integer profileId;
+  private Integer profileId;
 
-	private Integer assetId;
+  private Integer assetId;
 
-	private Integer threatId;
+  private Integer threatId;
 
-	private Integer vulnerabilityId;
+  private Integer vulnerabilityId;
 
-	private Integer safeguardId;
+  private Integer safeguardId;
 
-	private String sestobjId;
+  private String sestobjId;
 
-	private Integer riskModelId;
+  private Integer riskModelId;
 
-	DateFormat df = new SimpleDateFormat("dd/MM/yyyy HH:mm");
-	private static final Logger LOG = LoggerFactory.getLogger(AssTemplate.class.getName());
+  DateFormat df = new SimpleDateFormat(DD_MM_YYYY_HH_MM);
+  private static final Logger LOG = LoggerFactory.getLogger(AssTemplate.class.getName());
 
-	public Integer getId() {
-		return id;
-	}
+  public Integer getId() {
+    return id;
+  }
 
-	public void setId(Integer id) {
-		this.id = id;
-	}
+  public void setId(Integer id) {
+    this.id = id;
+  }
 
-	public String getName() {
-		return name;
-	}
+  public String getName() {
+    return name;
+  }
 
-	public void setName(String name) {
-		this.name = name == null ? null : name.trim();
-	}
+  public void setName(String name) {
+    this.name = name == null ? null : name.trim();
+  }
 
-	public String getDescription() {
-		return description;
-	}
+  public String getDescription() {
+    return description;
+  }
 
-	public void setDescription(String description) {
-		this.description = description == null ? null : description.trim();
-	}
+  public void setDescription(String description) {
+    this.description = description == null ? null : description.trim();
+  }
 
-	public String getMethodology() {
-		return methodology;
-	}
+  public String getMethodology() {
+    return methodology;
+  }
 
-	public void setMethodology(String methodology) {
-		this.methodology = methodology == null ? null : methodology.trim();
-	}
+  public void setMethodology(String methodology) {
+    this.methodology = methodology == null ? null : methodology.trim();
+  }
 
-	public Date getCreationTime() {
-		return creationTime;
-	}
+  public Date getCreationTime() {
+    return creationTime;
+  }
 
-	public void setCreationTime(Date creationTime) {
-		this.creationTime = creationTime;
-	}
+  public void setCreationTime(Date creationTime) {
+    this.creationTime = creationTime;
+  }
 
-	public Integer getProcedureId() {
-		return procedureId;
-	}
+  public Integer getProcedureId() {
+    return procedureId;
+  }
 
-	public void setProcedureId(Integer procedureId) {
-		this.procedureId = procedureId;
-	}
+  public void setProcedureId(Integer procedureId) {
+    this.procedureId = procedureId;
+  }
 
-	public String getSestobjId() {
-		return sestobjId;
-	}
+  public String getSestobjId() {
+    return sestobjId;
+  }
 
-	public void setSestobjId(String sestobjId) {
-		this.sestobjId = sestobjId;
-	}
+  public void setSestobjId(String sestobjId) {
+    this.sestobjId = sestobjId;
+  }
 
-	public Integer getAssetId() {
-		return assetId;
-	}
+  public Integer getAssetId() {
+    return assetId;
+  }
 
-	public void setAssetId(Integer assetId) {
-		this.assetId = assetId;
-	}
+  public void setAssetId(Integer assetId) {
+    this.assetId = assetId;
+  }
 
-	public Integer getThreatId() {
-		return threatId;
-	}
+  public Integer getThreatId() {
+    return threatId;
+  }
 
-	public void setThreatId(Integer threatId) {
-		this.threatId = threatId;
-	}
+  public void setThreatId(Integer threatId) {
+    this.threatId = threatId;
+  }
 
-	public Integer getVulnerabilityId() {
-		return vulnerabilityId;
-	}
+  public Integer getVulnerabilityId() {
+    return vulnerabilityId;
+  }
 
-	public void setVulnerabilityId(Integer vulnerabilityId) {
-		this.vulnerabilityId = vulnerabilityId;
-	}
+  public void setVulnerabilityId(Integer vulnerabilityId) {
+    this.vulnerabilityId = vulnerabilityId;
+  }
 
-	public Integer getSafeguardId() {
-		return safeguardId;
-	}
+  public Integer getSafeguardId() {
+    return safeguardId;
+  }
 
-	public void setSafeguardId(Integer safeguardId) {
-		this.safeguardId = safeguardId;
-	}
+  public void setSafeguardId(Integer safeguardId) {
+    this.safeguardId = safeguardId;
+  }
 
-	public Integer getRiskModelId() {
-		return riskModelId;
-	}
+  public Integer getRiskModelId() {
+    return riskModelId;
+  }
 
-	public void setRiskModelId(Integer riskModelId) {
-		this.riskModelId = riskModelId;
-	}
+  public void setRiskModelId(Integer riskModelId) {
+    this.riskModelId = riskModelId;
+  }
 
 //	public Integer getRiskTreatmentModelId() {
 //		return riskTreatmentModelId;
@@ -159,80 +160,80 @@ public class AssTemplate {
 //		this.riskTreatmentModelId = riskTreatmentModelId;
 //	}
 
-	public String getPhase() {
-		return phase;
-	}
+  public String getPhase() {
+    return phase;
+  }
 
-	public void setPhase(String phase) {
-		this.phase = phase;
-	}
+  public void setPhase(String phase) {
+    this.phase = phase;
+  }
 
-	public Integer getProfileId() {
-		return profileId;
-	}
+  public Integer getProfileId() {
+    return profileId;
+  }
 
-	public void setProfileId(Integer profileId) {
-		this.profileId = profileId;
-	}
+  public void setProfileId(Integer profileId) {
+    this.profileId = profileId;
+  }
 
-	public AssessmentTemplate convertToModel() {
+  public AssessmentTemplate convertToModel() {
 
-		AssessmentTemplate asstemplate = new AssessmentTemplate();
+    AssessmentTemplate asstemplate = new AssessmentTemplate();
 
-		asstemplate.setName(this.name);
-		asstemplate.setDescription(this.getDescription());
+    asstemplate.setName(this.name);
+    asstemplate.setDescription(this.getDescription());
 
-		if (this.methodology != null) {
-			asstemplate.setRiskMethodology(RiskMethodologyEnum.valueOf(this.getMethodology()));
-		}		
-		if (this.phase != null) {
-			asstemplate.setPhase(PhaseEnum.valueOf(this.phase));
-		}
-		if (this.creationTime != null) {
-			asstemplate.setCreationTime(df.format(this.creationTime));
-		}
-		if (this.sestobjId != null) {
-			asstemplate.setIdentifier(String.valueOf(this.sestobjId));
-		}
+    if (this.methodology != null) {
+      asstemplate.setRiskMethodology(RiskMethodologyEnum.valueOf(this.getMethodology()));
+    }
+    if (this.phase != null) {
+      asstemplate.setPhase(PhaseEnum.valueOf(this.phase));
+    }
+    if (this.creationTime != null) {
+      asstemplate.setCreationTime(df.format(this.creationTime));
+    }
+    if (this.sestobjId != null) {
+      asstemplate.setIdentifier(String.valueOf(this.sestobjId));
+    }
 
-		// asstemplate.setObjType(this.);
-		// asstemplate.setAssetModel(assetModel);
-		// asstemplate.setRiskModel(riskModel);
-		// asstemplate.setSafeguardModel(safeguardModel);
-		// asstemplate.setThreatModel(threatModel);
-		// asstemplate.setVulnerabilityModel(vulnerabilityModel);
-		// asstemplate.setAssociatedProcedure(associatedProcedure);
-		return asstemplate;
-	}
+    // asstemplate.setObjType(this.);
+    // asstemplate.setAssetModel(assetModel);
+    // asstemplate.setRiskModel(riskModel);
+    // asstemplate.setSafeguardModel(safeguardModel);
+    // asstemplate.setThreatModel(threatModel);
+    // asstemplate.setVulnerabilityModel(vulnerabilityModel);
+    // asstemplate.setAssociatedProcedure(associatedProcedure);
+    return asstemplate;
+  }
 
-	public void convertFromModel(AssessmentTemplate asstemplate) {
+  public void convertFromModel(AssessmentTemplate asstemplate) {
 
-		this.setName(asstemplate.getName());
-		this.setDescription(asstemplate.getDescription());
+    this.setName(asstemplate.getName());
+    this.setDescription(asstemplate.getDescription());
 
-		if (asstemplate.getPhase() != null) {
-			this.setPhase(asstemplate.getPhase().name());
-		}
+    if (asstemplate.getPhase() != null) {
+      this.setPhase(asstemplate.getPhase().name());
+    }
 
-		if (asstemplate.getRiskMethodology() != null) {
-			this.setMethodology(asstemplate.getRiskMethodology().name());
-		}
-		try {
-			if (asstemplate.getCreationTime() != null) {
-				this.setCreationTime(new Date(df.parse(asstemplate.getCreationTime()).getTime()));
-			}
-		} catch (ParseException e) {
-			LOG.error(e.getMessage());
-		}
+    if (asstemplate.getRiskMethodology() != null) {
+      this.setMethodology(asstemplate.getRiskMethodology().name());
+    }
+    try {
+      if (asstemplate.getCreationTime() != null) {
+        this.setCreationTime(new Date(df.parse(asstemplate.getCreationTime()).getTime()));
+      }
+    } catch (ParseException e) {
+      LOG.error(e.getMessage());
+    }
 
-		if (asstemplate.getIdentifier() != null) {
-			this.setSestobjId(asstemplate.getIdentifier());
-		}
-		
-		//TODO: WRONG: ID, not identifier: PUT OUT OF POJO
-		//TODO: comment all models when they are integrated 
-				// (removing this if code before integration is finished leads to an insert error into the DB
-				// cause the models cannot be null)
+    if (asstemplate.getIdentifier() != null) {
+      this.setSestobjId(asstemplate.getIdentifier());
+    }
+
+    //TODO: WRONG: ID, not identifier: PUT OUT OF POJO
+    //TODO: comment all models when they are integrated
+    // (removing this if code before integration is finished leads to an insert error into the DB
+    // cause the models cannot be null)
 //		if (asstemplate.getAssetModel() != null) {
 //			this.setAssetId(Integer.valueOf(asstemplate.getAssetModel().getIdentifier())); 
 //		}
@@ -248,6 +249,6 @@ public class AssTemplate {
 //		if (asstemplate.getVulnerabilityModel() != null) {
 //			this.setVulnerabilityId(Integer.valueOf(asstemplate.getVulnerabilityModel().getIdentifier()));
 //		}
-		// this.setId(id);
-	}
+    // this.setId(id);
+  }
 }

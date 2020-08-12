@@ -12,13 +12,7 @@
 
 package org.crmf.proxy.authnauthz;
 
-import java.nio.charset.StandardCharsets;
-import java.util.ArrayList;
-import java.util.Base64;
-import java.util.List;
-import java.util.Set;
-
-import org.apache.camel.Header;
+import com.google.gson.Gson;
 import org.apache.camel.Processor;
 import org.apache.camel.component.shiro.security.ShiroSecurityPolicy;
 import org.apache.camel.component.shiro.security.ShiroSecurityToken;
@@ -30,13 +24,16 @@ import org.apache.shiro.crypto.PaddingScheme;
 import org.crmf.model.general.SESTObjectTypeEnum;
 import org.crmf.model.user.PermissionTypeEnum;
 import org.crmf.model.user.User;
-import org.crmf.user.manager.authentication.UserAuthenticationInterface;
 import org.crmf.user.manager.core.UserManagerInputInterface;
 import org.crmf.user.validation.permission.UserPermissionManagerInputInterface;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.google.gson.Gson;
+import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
+import java.util.Base64;
+import java.util.List;
+import java.util.Set;
 
 //This class extends the ShiroSecurityPolicy in order to send and retrieve User permissions
 public class ShiroSecurityPolicyCustom extends ShiroSecurityPolicy implements ShiroSecurityPolicyCustomInterface {
@@ -200,8 +197,12 @@ public class ShiroSecurityPolicyCustom extends ShiroSecurityPolicy implements Sh
       this.view = view;
     }
 
-    public String getUserProfile() { return userProfile;}
+    public String getUserProfile() {
+      return userProfile;
+    }
 
-    public void setUserProfile(String userProfile) { this.userProfile = userProfile; }
+    public void setUserProfile(String userProfile) {
+      this.userProfile = userProfile;
+    }
   }
 }

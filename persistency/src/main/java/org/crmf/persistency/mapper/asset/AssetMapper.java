@@ -18,12 +18,11 @@ import org.crmf.persistency.domain.asset.SestAssetModel;
 //This interface allows the bundle to invoke the SQL methods within the AssetMapper.xml (via the ibatis API)
 public interface AssetMapper {
 
-	public void insert(SestAssetModel assetModel);
-	
-	public void update(@Param("assetModelJson") String assetModelJson, @Param("sestobjId") String sestobjId);
+  void insert(SestAssetModel assetModel);
 
-	public SestAssetModel getByIdentifier(String sestobjId);
-	
-	public SestAssetModel getById(Integer id);
+  void update(@Param("assetModelJson") String assetModelJson, @Param("sestobjId") String sestobjId);
 
+  SestAssetModel getByIdentifier(String sestobjId);
+
+  SestAssetModel getById(Integer id);
 }

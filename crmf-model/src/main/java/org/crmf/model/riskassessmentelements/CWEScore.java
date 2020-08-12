@@ -19,14 +19,6 @@ public class CWEScore extends VulnerabilityScore {
 	private CWEExploitabilityEnum exploitabilityBasic;
 	private ArrayList<Consequence> consequences;
 
-	public CWEScore(){
-
-	}
-
-	public void finalize() throws Throwable {
-		super.finalize();
-	}
-
 	public CWEExploitabilityEnum getExploitabilityBasic() {
 		return exploitabilityBasic;
 	}

@@ -20,7 +20,7 @@
 
       <div *ngSwitchCase="'viewProject'">
 
-        <p-table [value]="projectslist" dataKey="name" selectionMode="single" [rows]="10" [paginator]="true" (onRowSelect)="activeProjectMenu($event)"
+        <p-table [value]="projectslist" dataKey="name" selectionMode="single" [rows]="20" [paginator]="true" (onRowSelect)="activeProjectMenu($event)"
                  (onRowUnselect)="disactiveProjectMenu($event)" [metaKeySelection]="false" expandableRows="true" rowExpandMode="single" id="projectTable">
           <ng-template pTemplate="header">
             <tr>
@@ -34,7 +34,7 @@
             <tr [pSelectableRow]="project">
               <td>
                 <a href="#" [pRowToggler]="project">
-                  <i [ngClass]="expanded ? 'pi pi-chevron-down' : 'pi pi-chevron-right'"></i>
+                  <em [ngClass]="expanded ? 'pi pi-chevron-down' : 'pi pi-chevron-right'"></em>
                 </a>
               </td>
               <td *ngFor="let col of projectsListCols">
@@ -69,7 +69,7 @@
       </div>
       <div *ngSwitchCase="'viewProfile'">
         <p-table [value]="profilesList" selectionMode="single" dataKey="name" (onRowSelect)="activeProfileMenu($event)" (onRowUnselect)="disactiveProfileMenu($event)"
-                 [metaKeySelection]="false" expandableRows="true" [paginator]="true" [rows]="10" rowExpandMode="single" id="profileTable">
+                 [metaKeySelection]="false" expandableRows="true" [paginator]="true" [rows]="20" rowExpandMode="single" id="profileTable">
 
 
 
@@ -85,7 +85,7 @@
             <tr [pSelectableRow]="profile">
               <td>
                 <a href="#" [pRowToggler]="profile">
-                  <i [ngClass]="expanded ? 'pi pi-chevron-down' : 'pi pi-chevron-right'"></i>
+                  <em [ngClass]="expanded ? 'pi pi-chevron-down' : 'pi pi-chevron-right'"></em>
                 </a>
               </td>
               <td *ngFor="let col of profileListCols">

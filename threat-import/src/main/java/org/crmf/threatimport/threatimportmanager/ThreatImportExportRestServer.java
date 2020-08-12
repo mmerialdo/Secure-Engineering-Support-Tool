@@ -39,24 +39,32 @@ public class ThreatImportExportRestServer {
   @POST
   @Path("/export")
   @Produces("application/octet-stream")
-  public File exportThreats() throws IOException{
+  public File exportThreats() throws IOException {
     LOG.info("exportThreats ");
     FileOutputStream fos = null;
     File fileToReturn = new File("exportThreat.temp");
+    fileToReturn.deleteOnExit();
     try {
-      LOG.info("download threats ");
-      fileToReturn.createNewFile();
+      if (!fileToReturn.exists()) {
+        boolean created = fileToReturn.createNewFile();
+        if (!created) {
+          LOG.error("Unable to create export Threats file");
+          return null;
+        }
+      }
       fos = new FileOutputStream(fileToReturn);
       SestThreatModel model = threatService.getThreatRepository(null);
-      if(model != null) {
+      if (model != null) {
         String threatModel = model.getThreatModelJson();
         fos.write(threatModel.getBytes());
       }
       return fileToReturn;
-    } catch(IOException ioe) {
+    } catch (IOException ioe) {
       LOG.error("Unable to create file ", ioe);
     } finally {
-      if (fos != null) {fos.close();}
+      if (fos != null) {
+        fos.close();
+      }
       fileToReturn.deleteOnExit();
     }
     return null;
@@ -70,17 +78,17 @@ public class ThreatImportExportRestServer {
 
     LOG.info("importThreats ");
     List<Attachment> attachments = body.getAllAttachments();
-    if(attachments == null || attachments.size() != 2){
+    if (attachments == null || attachments.size() != 2) {
       LOG.error("=========== uploadRequirement error : attachments size is different!!! ");
       throw new Exception("COMMAND_EXCEPTION");
     }
     try {
-      LOG.info("=========== import vulnerabilities attachments getContentType : "+attachments.get(0).getContentType()
-        +", "+attachments.get(1).getContentType());
+      LOG.info("=========== import vulnerabilities attachments getContentType : " + attachments.get(0).getContentType()
+        + ", " + attachments.get(1).getContentType());
       threatImportManager.importThreatsFromInput(attachments.get(0));
 
     } catch (Exception e) {
-      LOG.error("=========== import vulnerabilities error "+e.getMessage());
+      LOG.error("=========== import vulnerabilities error " + e.getMessage());
       throw new Exception("COMMAND_EXCEPTION", e);
     }
     return "";

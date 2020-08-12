@@ -130,7 +130,7 @@ export class EditAssetComponent implements OnInit {
   ngOnInit() {
     this.displayEditAsset$ = this.store.pipe(select(selectEditAsset));
     this.displayEditAsset$.subscribe(display => {
-      this.editAssetForm.reset();
+      this.resetForm();
       this.displayEditAsset = display;
     });
     this.store.pipe(select(fetchAssetForEdit)).subscribe(asset => {
@@ -148,12 +148,10 @@ export class EditAssetComponent implements OnInit {
     if (this.selectedCategoryData !== '') {
       this.primaryAssetCategory.push(this.selectedCategoryData);
       this.selectedCategoryData = '';
-    }
-    if (this.selectedCategoryService !== '') {
+    } else if (this.selectedCategoryService !== '') {
       this.primaryAssetCategory.push(this.selectedCategoryService);
       this.selectedCategoryService = '';
-    }
-    if (this.selectedCategoryCompli !== '') {
+    } else if (this.selectedCategoryCompli !== '') {
       this.primaryAssetCategory.push(this.selectedCategoryCompli);
       this.selectedCategoryCompli = '';
     }
@@ -170,7 +168,7 @@ export class EditAssetComponent implements OnInit {
         this.editAssetForm.value.ownAsset
       );
       asset.category = this.selectedSecondary;
-      asset.primaryCategories.push(...this.primaryAssetCategory);
+      asset.primaryCategories = [...this.primaryAssetCategory];
       this.store.dispatch(storeAsset(asset));
     } else {
       const assetToEdit = ServerAssetHelper.findNodeByIdentifier(this.assetToEdit.identifier, this.serverAsset);
@@ -178,7 +176,7 @@ export class EditAssetComponent implements OnInit {
       assetToEdit.description = this.editAssetForm.value.desAsset;
       assetToEdit.systemParticipantOwnerId = this.editAssetForm.value.ownAsset;
       assetToEdit.category = this.selectedSecondary;
-      assetToEdit.primaryCategories.push(...this.primaryAssetCategory);
+      assetToEdit.primaryCategories = [...this.primaryAssetCategory];
       assetToEdit.malfunctionsIds = JSON.parse(JSON.stringify(this.selectedMalfunction));
       this.originalSelectedMalfunction = this.selectedMalfunction;
       this.store.dispatch(editAsset(assetToEdit));
@@ -226,10 +224,10 @@ export class EditAssetComponent implements OnInit {
       asset.malfunctionsIds = JSON.parse(JSON.stringify(this.originalSelectedMalfunction));
       ServerAssetHelper.associateImpactToAsset(asset, this.serverAsset);
       ServerAssetHelper.associateImpactToAssetEdges(asset, this.serverAsset);
-    this.store.dispatch(storeServerAsset(this.serverAsset));
+      this.store.dispatch(storeServerAsset(this.serverAsset));
     }
 
-    this.editAssetForm.reset();
+    this.resetForm();
     this.duplicateName = false;
     this.displayEditAsset = false;
   }
@@ -242,11 +240,11 @@ export class EditAssetComponent implements OnInit {
       asset.malfunctionsIds = JSON.parse(JSON.stringify(this.originalSelectedMalfunction));
       ServerAssetHelper.associateImpactToAsset(asset, this.serverAsset);
       ServerAssetHelper.associateImpactToAssetEdges(asset, this.serverAsset);
-    this.store.dispatch(storeServerAsset(this.serverAsset));
+      this.store.dispatch(storeServerAsset(this.serverAsset));
     }
 
     this.store.dispatch(editAssetClose());
-    this.editAssetForm.reset();
+    this.resetForm();
     this.isNew = true;
     this.displayEditAsset = false;
     this.associatedMalf = [];
@@ -327,7 +325,18 @@ export class EditAssetComponent implements OnInit {
 
     this.showSecurityImpacts(asset);
 
-  this.store.dispatch(storeServerAsset(this.serverAsset));
+    this.store.dispatch(storeServerAsset(this.serverAsset));
+  }
 
+  private resetForm() {
+    this.editAssetForm.reset();
+    this.selectedCategoryCompli = '';
+    this.selectedCategoryData = '';
+    this.selectedCategoryService = '';
+    this.selectedSecondary = '';
+    this.assetConfidentiality = null;
+    this.assetIntegrity = null;
+    this.assetAvailability = null;
+    this.assetEfficiency = null;
   }
 }

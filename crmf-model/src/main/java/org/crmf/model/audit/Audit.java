@@ -12,22 +12,14 @@
 
 package org.crmf.model.audit;
 
-import java.util.ArrayList;
-
 import org.crmf.model.general.SESTObject;
+
+import java.util.ArrayList;
 
 public class Audit extends SESTObject {
 
 	private AuditTypeEnum type;
 	private ArrayList<Questionnaire> questionnaires = new ArrayList<>();
-
-	public Audit(){
-
-	}
-
-	public void finalize() throws Throwable {
-		super.finalize();
-	}
 
 	public AuditTypeEnum getType(){
 		return type;

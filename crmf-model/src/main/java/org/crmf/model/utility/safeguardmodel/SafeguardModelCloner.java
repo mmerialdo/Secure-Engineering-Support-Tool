@@ -12,16 +12,17 @@
 
 package org.crmf.model.utility.safeguardmodel;
 
+import org.crmf.model.riskassessment.SafeguardModel;
+
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.UUID;
 
-import org.crmf.model.riskassessment.SafeguardModel;
-
 //This class is responsible for cloning SafeguardModels from Json strings and POJO
 public class SafeguardModelCloner {
-private String identifier;
+	public static final String DD_MM_YYYY_HH_MM = "dd/MM/yyyy HH:mm";
+	private String identifier;
 	
 	public SafeguardModel clone(SafeguardModel sm){
 		
@@ -33,7 +34,7 @@ private String identifier;
 		UUID uuid = UUID.randomUUID();
 		smNew.setIdentifier(uuid.toString());
 		
-		DateFormat df = new SimpleDateFormat("dd/MM/yyyy HH:mm");
+		DateFormat df = new SimpleDateFormat(DD_MM_YYYY_HH_MM);
 		Date now = new Date();
 		smNew.setCreationTime(df.format(now));
 		smNew.setUpdateTime(df.format(now));
@@ -50,7 +51,7 @@ public String clone(String smJson){
 		
 		UUID uuid = UUID.randomUUID();
 		sm.setIdentifier(uuid.toString());
-		DateFormat df = new SimpleDateFormat("dd/MM/yyyy HH:mm");
+		DateFormat df = new SimpleDateFormat(DD_MM_YYYY_HH_MM);
 		Date now = new Date();
 		sm.setCreationTime(df.format(now));
 		sm.setUpdateTime(df.format(now));

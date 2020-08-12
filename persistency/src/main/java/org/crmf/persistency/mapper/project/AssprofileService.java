@@ -12,9 +12,6 @@
 
 package org.crmf.persistency.mapper.project;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.apache.ibatis.session.SqlSession;
 import org.crmf.model.general.SESTObjectTypeEnum;
 import org.crmf.model.riskassessment.AssessmentProfile;
@@ -26,6 +23,9 @@ import org.crmf.persistency.mapper.general.SestobjMapper;
 import org.crmf.persistency.session.PersistencySessionFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import java.util.ArrayList;
+import java.util.List;
 
 //This class manages the database interactions related to the AssessmentProfile
 public class AssprofileService implements AssprofileServiceInterface {
@@ -69,7 +69,7 @@ public class AssprofileService implements AssprofileServiceInterface {
 			LOG.info("After Insert Profile");
 
 			ArrayList<AssessmentTemplate> templates = assprofileDM.getTemplates();
-			if (templates != null && templates.size() > 0) {
+			if (templates != null && !templates.isEmpty()) {
 
 				for (AssessmentTemplate assTemplate : templates) {
 					
@@ -166,7 +166,7 @@ public class AssprofileService implements AssprofileServiceInterface {
 	public List<AssessmentProfile> getAll() {
 		LOG.info("called getAll");
 		SqlSession sqlSession = sessionFactory.getSession();
-		List<AssessmentProfile> profilesToSend = new ArrayList<AssessmentProfile>();
+		List<AssessmentProfile> profilesToSend = new ArrayList<>();
 		try {
 			AssprofileMapper profileMapper = sqlSession.getMapper(AssprofileMapper.class);
 			List<AssProfile> profiles = profileMapper.getAll();
@@ -213,7 +213,7 @@ public class AssprofileService implements AssprofileServiceInterface {
 			LOG.info("After Insert Profile");
 
 			List<AssTemplate> templatesOld = templateMapper.getByProfileIdentifier(profile.getSestobjId());
-			if(templatesOld != null && templatesOld.size() > 0){
+			if(templatesOld != null && !templatesOld.isEmpty()){
 				LOG.info("Delete templatesOld " + templatesOld.size());
 
 				for (AssTemplate assTemplate : templatesOld) {
@@ -225,7 +225,7 @@ public class AssprofileService implements AssprofileServiceInterface {
 			}
 			
 			ArrayList<AssTemplate> templates = profile.getTemplates();
-			if (templates != null && templates.size() > 0) {
+			if (templates != null && !templates.isEmpty()) {
 				LOG.info("Insert templates new " + templates.size());
 
 				for (AssTemplate assTemplate : templates) {

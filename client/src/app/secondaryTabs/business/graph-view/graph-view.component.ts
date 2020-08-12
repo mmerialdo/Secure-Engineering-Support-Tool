@@ -149,7 +149,7 @@ export class GraphViewComponent implements OnInit, OnDestroy {
   public malfunctionAvailability = false;
   public malfunctionIntegrity = false;
   public malfunctionEfficency = false;
-  public malfunctionConfidenciality = false;
+  public malfunctionConfidentiality = false;
 
   // edges checkbox
 
@@ -1869,7 +1869,7 @@ export class GraphViewComponent implements OnInit, OnDestroy {
           // this.assetCategory=this.assets[i].assetCategory;
 
           this.malfunctionIntegrity = false;
-          this.malfunctionConfidenciality = false;
+          this.malfunctionConfidentiality = false;
           this.malfunctionEfficency = false;
           this.malfunctionAvailability = false;
 
@@ -1886,7 +1886,7 @@ export class GraphViewComponent implements OnInit, OnDestroy {
               this.malfunctionEfficency = true;
             } else if (this.assets[i].technicalTypes[r] === 'Confidentiality_Loss') {
 
-              this.malfunctionConfidenciality = true;
+              this.malfunctionConfidentiality = true;
             }
           }
 
@@ -3823,7 +3823,7 @@ export class GraphViewComponent implements OnInit, OnDestroy {
           this.assets[i].technicalTypes.push('Availability_Loss');
 
         }
-        if (this.malfunctionConfidenciality) {
+        if (this.malfunctionConfidentiality) {
 
           this.assets[i].technicalTypes.push('Confidentiality_Loss');
 

@@ -12,7 +12,6 @@
 
 package org.crmf.persistency.mapper.audit;
 
-import org.crmf.model.audit.Question;
 import org.crmf.model.audit.SestQuestionnaireModel;
 
 import java.util.List;

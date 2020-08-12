@@ -12,6 +12,18 @@
 
 package org.crmf.user.validation.permission;
 
+import org.crmf.model.general.SESTObjectTypeEnum;
+import org.crmf.model.riskassessment.AssessmentProject;
+import org.crmf.model.user.PermissionTypeEnum;
+import org.crmf.model.user.User;
+import org.crmf.model.user.UserProfileEnum;
+import org.crmf.model.user.UserRole;
+import org.crmf.model.user.UserRoleEnum;
+import org.crmf.persistency.mapper.user.RoleServiceInterface;
+import org.crmf.persistency.mapper.user.UserServiceInterface;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
@@ -19,34 +31,6 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
-
-import org.crmf.model.audit.SestAuditModel;
-import org.crmf.model.general.SESTObject;
-import org.crmf.model.general.SESTObjectTypeEnum;
-import org.crmf.model.riskassessment.AssessmentProcedure;
-import org.crmf.model.riskassessment.AssessmentProject;
-import org.crmf.model.riskassessment.AssetModel;
-import org.crmf.model.riskassessment.RiskModel;
-import org.crmf.model.riskassessment.RiskTreatmentModel;
-import org.crmf.model.riskassessment.SafeguardModel;
-import org.crmf.model.riskassessment.ThreatModel;
-import org.crmf.model.riskassessment.VulnerabilityModel;
-import org.crmf.model.user.PermissionGroup;
-import org.crmf.model.user.PermissionTypeEnum;
-import org.crmf.model.user.User;
-import org.crmf.model.user.UserProfileEnum;
-import org.crmf.model.user.UserRole;
-import org.crmf.model.user.UserRoleEnum;
-import org.crmf.persistency.mapper.audit.AssAuditServiceInterface;
-import org.crmf.persistency.mapper.general.SestObjServiceInterface;
-import org.crmf.persistency.mapper.project.AssprocedureServiceInterface;
-import org.crmf.persistency.mapper.project.AssprofileServiceInterface;
-import org.crmf.persistency.mapper.project.AssprojectServiceInterface;
-import org.crmf.persistency.mapper.project.AsstemplateServiceInterface;
-import org.crmf.persistency.mapper.user.RoleServiceInterface;
-import org.crmf.persistency.mapper.user.UserServiceInterface;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 //This class manages the interactions with the sest-proxy bundle. Its methods are invoked in order to add/read/remove User's permissions
 public class UserPermissionManagerInput implements UserPermissionManagerInputInterface {
@@ -304,7 +288,7 @@ public class UserPermissionManagerInput implements UserPermissionManagerInputInt
 
     List<UserRole> roles = roleService.getRolesByUserAndProjectId(userIdentifier, null);
 
-    if (roles != null && roles.size() > 0) {
+    if (roles != null && !roles.isEmpty()) {
       for (UserRole role : roles) {
         Map<PermissionTypeEnum, Set<SESTObjectTypeEnum>> objectAndPermissions = permissionRolesTable.get(role.getRole());
         if (objectAndPermissions != null) {
@@ -325,11 +309,11 @@ public class UserPermissionManagerInput implements UserPermissionManagerInputInt
 
     List<UserRole> roles = roleService.getRolesByUserAndProjectId(userIdentifier, projectIdentifier);
 
-    if (roles != null && roles.size() > 0) {
+    if (roles != null && !roles.isEmpty()) {
       roles.forEach(role -> {
         Map<PermissionTypeEnum, Set<SESTObjectTypeEnum>> rolesMap = permissionRolesTable.get(role.getRole());
         Set<SESTObjectTypeEnum> roleTypeObjectRelated = rolesMap.get(type);
-        if (roleTypeObjectRelated != null && roleTypeObjectRelated.size() > 0) {
+        if (roleTypeObjectRelated != null && !roleTypeObjectRelated.isEmpty()) {
           permissions.addAll(rolesMap.get(type));
           LOG.info("permissions add " + rolesMap.get(type));
         }

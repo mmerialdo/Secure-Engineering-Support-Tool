@@ -12,11 +12,14 @@
 
 package org.crmf.model.utility.risktreatmentmodel;
 
-import java.lang.reflect.Type;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Set;
-
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.google.gson.JsonSerializationContext;
+import com.google.gson.JsonSerializer;
 import org.crmf.model.requirement.SecurityRequirement;
 import org.crmf.model.riskassessment.AssetModel;
 import org.crmf.model.riskassessment.RiskModel;
@@ -33,14 +36,11 @@ import org.crmf.model.riskassessmentelements.SecurityImpactScopeEnum;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.google.gson.JsonArray;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
-import com.google.gson.JsonSerializationContext;
-import com.google.gson.JsonSerializer;
+import java.lang.reflect.Type;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Set;
 
 //The json structure to be returned to the client is quite different
 // from the Java RiskTreatmentModel structure
@@ -50,6 +50,24 @@ public class RiskTreatmentModelClientFullInstanceCreator
 
 	private static final Logger LOG = LoggerFactory
 			.getLogger(RiskTreatmentModelClientFullInstanceCreator.class.getName());
+	public static final String TYPE = "type";
+	public static final String PRIMARY_ASSET_CATEGORY = "primaryAssetCategory";
+	public static final String DESCRIPTION = "description";
+	public static final String VALUE = "value";
+	public static final String SECURITY_IMPACT = "securityImpact";
+	public static final String TOT = "tot";
+	public static final String SAFEGUARD_SCOPE = "safeguardScope";
+	public static final String COVERED_SCENARIO = "coveredScenario";
+	public static final String DATA = "data";
+	public static final String SAFEGUARD_CATALOGUE_ID = "safeguardCatalogueId";
+	public static final String SAFEGUARD_IDENTIFIER = "safeguardIdentifier";
+	public static final String USER_DESCRIPTION = "userDescription";
+	public static final String NAME = "name";
+	public static final String CURRENT_VALUE = "currentValue";
+	public static final String TARGET_VALUE = "targetValue";
+	public static final String CHILDREN = "children";
+	public static final String SECURITY_REQUIREMENT_CATALOGUE_ID = "securityRequirementCatalogueId";
+	public static final String SECURITY_REQUIREMENT_IDENTIFIER = "securityRequirementIdentifier";
 
 	private RiskModel rm;
 	private AssetModel am;
@@ -206,13 +224,13 @@ public class RiskTreatmentModelClientFullInstanceCreator
 					// jsonobject
 					JsonObject categoryData = new JsonObject();
 
-					categoryData.addProperty("type", "PrimaryAssetCategory");
-					categoryData.addProperty("primaryAssetCategory", category.toString());
-					categoryData.addProperty("description", "Risk Scenarios affecting assets with Primary Category '"
+					categoryData.addProperty(TYPE, "PrimaryAssetCategory");
+					categoryData.addProperty(PRIMARY_ASSET_CATEGORY, category.toString());
+					categoryData.addProperty(DESCRIPTION, "Risk Scenarios affecting assets with Primary Category '"
 							+ category.getValue() + "' and Security Impact Scope " + scope.toString());
-					categoryData.addProperty("value", category.getValue());
-					categoryData.addProperty("securityImpact", scope.toString());
-					categoryData.addProperty("tot", riskTreatments.size());
+					categoryData.addProperty(VALUE, category.getValue());
+					categoryData.addProperty(SECURITY_IMPACT, scope.toString());
+					categoryData.addProperty(TOT, riskTreatments.size());
 
 					// We need to count, for each possible Seriousness value,
 					// all related RiskScenario
@@ -224,7 +242,7 @@ public class RiskTreatmentModelClientFullInstanceCreator
 					for (RiskTreatment riskTreatment : riskTreatments) {
 						// We compute how many plans are to be treated for each level of Seriousness
 						if (riskTreatment.getResultingSeriousness() == null) {
-							LOG.error("CurrentSeriousness is null for RiskTreatment with identifier: " + riskTreatment.getIdentifier());
+							LOG.error("CurrentSeriousness is null for RiskTreatment with identifier: {}", riskTreatment.getIdentifier());
 							continue;
 						}
 						else{
@@ -250,10 +268,10 @@ public class RiskTreatmentModelClientFullInstanceCreator
 					categoryData.addProperty("s4", String.valueOf(s4));
 					
 					int tot = s1 + s2 + s3 + s4;
-					categoryData.addProperty("tot", String.valueOf(tot));
+					categoryData.addProperty(TOT, String.valueOf(tot));
 					
 
-					categoryScopeJsonObject.add("data", categoryData);
+					categoryScopeJsonObject.add(DATA, categoryData);
 
 					// we organize the Safeguards for these RiskScenario
 					// grouping them with their scope
@@ -266,13 +284,13 @@ public class RiskTreatmentModelClientFullInstanceCreator
 							Safeguard safeguard = safeguardMap.get(safeguardId);
 
 							if (safeguard == null) {
-								LOG.error("Safeguard in RiskScenario not existing in Safeguard model: " + safeguardId);
+								LOG.error("Safeguard in RiskScenario not existing in Safeguard model: {}", safeguardId);
 								continue;
 							}
 
 							if (safeguard.getScope() == null) {
 
-								LOG.error("Safeguard in RiskScenario has null scope : " + safeguardId);
+								LOG.error("Safeguard in RiskScenario has null scope : {}", safeguardId);
 								continue;
 							}
 
@@ -303,10 +321,10 @@ public class RiskTreatmentModelClientFullInstanceCreator
 						JsonObject safeguardScopeJsonObject = new JsonObject();
 						JsonObject innerSafeguardScopeData = new JsonObject();
 
-						innerSafeguardScopeData.addProperty("safeguardScope", safeguardScope.toString());
-						innerSafeguardScopeData.addProperty("description", "");
-						innerSafeguardScopeData.addProperty("value", safeguardScope.toString());
-						innerSafeguardScopeData.addProperty("type", "SafeguardScope");
+						innerSafeguardScopeData.addProperty(SAFEGUARD_SCOPE, safeguardScope.toString());
+						innerSafeguardScopeData.addProperty(DESCRIPTION, "");
+						innerSafeguardScopeData.addProperty(VALUE, safeguardScope.toString());
+						innerSafeguardScopeData.addProperty(TYPE, "SafeguardScope");
 
 						int coveredScenario = 0;
 
@@ -332,9 +350,9 @@ public class RiskTreatmentModelClientFullInstanceCreator
 							}
 
 						}
-						innerSafeguardScopeData.addProperty("coveredScenario", coveredScenario);
+						innerSafeguardScopeData.addProperty(COVERED_SCENARIO, coveredScenario);
 
-						safeguardScopeJsonObject.add("data", innerSafeguardScopeData);
+						safeguardScopeJsonObject.add(DATA, innerSafeguardScopeData);
 
 						// Now we have to add all children to the Json
 						// (safeguards)
@@ -353,7 +371,7 @@ public class RiskTreatmentModelClientFullInstanceCreator
 								Safeguard safeguard = safeguardMap.get(safeguardId);
 
 								if (safeguard == null) {
-									LOG.error("Safeguard in RiskScenario not existing in Safeguard model: " + safeguardId);
+									LOG.error("Safeguard in RiskScenario not existing in Safeguard model: {}", safeguardId);
 									continue;
 								}
 								if (safeguard.getScope().equals(safeguardScope)) {
@@ -372,19 +390,19 @@ public class RiskTreatmentModelClientFullInstanceCreator
 							Safeguard safeguard = safeguardMap.get(safeguardKey);
 
 							if (safeguard == null) {
-								LOG.error("Safeguard in RiskScenario not existing in Safeguard model: " + safeguardKey);
+								LOG.error("Safeguard in RiskScenario not existing in Safeguard model: {}", safeguardKey);
 								continue;
 							}
 							createSafeguardJsonObject(safeguard, safeguardChildrenJsonArray);
 						}
 
-						safeguardScopeJsonObject.add("children", safeguardChildrenJsonArray);
+						safeguardScopeJsonObject.add(CHILDREN, safeguardChildrenJsonArray);
 
 						categoryChildrenJsonArray.add(safeguardScopeJsonObject);
 
 					}
 
-					categoryScopeJsonObject.add("children", categoryChildrenJsonArray);
+					categoryScopeJsonObject.add(CHILDREN, categoryChildrenJsonArray);
 
 					fullRiskTreatmentJsonArray.add(categoryScopeJsonObject);
 				}
@@ -394,43 +412,43 @@ public class RiskTreatmentModelClientFullInstanceCreator
 			LOG.error("serialize: AssetModel/RiskModel/SafeguardModel/RiskTreatmentModel null. Unable to serialize");
 		}
 
-		fullRiskTreatmentJson.add("data", fullRiskTreatmentJsonArray);
+		fullRiskTreatmentJson.add(DATA, fullRiskTreatmentJsonArray);
 		return fullRiskTreatmentJson;
 
 	}
 
 	private void createSafeguardJsonObject(Safeguard safeguard, JsonArray safeguardChildren) {
-		LOG.info("createSafeguardJsonObject for safeguard with id: " + safeguard.getIdentifier());
+		LOG.info("createSafeguardJsonObject for safeguard with id: {}", safeguard.getIdentifier());
 		// This jsonobjects represents a Safeguard
 		JsonObject safeguardJsonObject = new JsonObject();
 		JsonObject innerSafeguardData = new JsonObject();
 
-		innerSafeguardData.addProperty("safeguardCatalogueId", safeguard.getCatalogueId());
-		innerSafeguardData.addProperty("safeguardIdentifier", safeguard.getIdentifier());
-		innerSafeguardData.addProperty("userDescription", safeguard.getUserDescription());
-		innerSafeguardData.addProperty("name", safeguard.getName());
-		innerSafeguardData.addProperty("value", "(" + safeguard.getCatalogueId() + ") " + safeguard.getName());
-		innerSafeguardData.addProperty("description", safeguard.getDescription());
-		innerSafeguardData.addProperty("type", "Safeguard");
+		innerSafeguardData.addProperty(SAFEGUARD_CATALOGUE_ID, safeguard.getCatalogueId());
+		innerSafeguardData.addProperty(SAFEGUARD_IDENTIFIER, safeguard.getIdentifier());
+		innerSafeguardData.addProperty(USER_DESCRIPTION, safeguard.getUserDescription());
+		innerSafeguardData.addProperty(NAME, safeguard.getName());
+		innerSafeguardData.addProperty(VALUE, "(" + safeguard.getCatalogueId() + ") " + safeguard.getName());
+		innerSafeguardData.addProperty(DESCRIPTION, safeguard.getDescription());
+		innerSafeguardData.addProperty(TYPE, "Safeguard");
 
 		switch (safeguard.getScore()) {
 		case NONE:
-			innerSafeguardData.addProperty("currentValue", "");
+			innerSafeguardData.addProperty(CURRENT_VALUE, "");
 			break;
 		case LOW:
-			innerSafeguardData.addProperty("currentValue", "1");
+			innerSafeguardData.addProperty(CURRENT_VALUE, "1");
 			break;
 		case MEDIUM:
-			innerSafeguardData.addProperty("currentValue", "2");
+			innerSafeguardData.addProperty(CURRENT_VALUE, "2");
 			break;
 		case HIGH:
-			innerSafeguardData.addProperty("currentValue", "3");
+			innerSafeguardData.addProperty(CURRENT_VALUE, "3");
 			break;
 		case VERY_HIGH:
-			innerSafeguardData.addProperty("currentValue", "4");
+			innerSafeguardData.addProperty(CURRENT_VALUE, "4");
 			break;
 		default:
-			innerSafeguardData.addProperty("currentValue", "");
+			innerSafeguardData.addProperty(CURRENT_VALUE, "");
 			break;
 		}
 
@@ -439,22 +457,22 @@ public class RiskTreatmentModelClientFullInstanceCreator
 
 			switch (resultingSafeguard.getScore()) {
 			case NONE:
-				innerSafeguardData.addProperty("targetValue", "");
+				innerSafeguardData.addProperty(TARGET_VALUE, "");
 				break;
 			case LOW:
-				innerSafeguardData.addProperty("targetValue", "1");
+				innerSafeguardData.addProperty(TARGET_VALUE, "1");
 				break;
 			case MEDIUM:
-				innerSafeguardData.addProperty("targetValue", "2");
+				innerSafeguardData.addProperty(TARGET_VALUE, "2");
 				break;
 			case HIGH:
-				innerSafeguardData.addProperty("targetValue", "3");
+				innerSafeguardData.addProperty(TARGET_VALUE, "3");
 				break;
 			case VERY_HIGH:
-				innerSafeguardData.addProperty("targetValue", "4");
+				innerSafeguardData.addProperty(TARGET_VALUE, "4");
 				break;
 			default:
-				innerSafeguardData.addProperty("targetValue", "");
+				innerSafeguardData.addProperty(TARGET_VALUE, "");
 				break;
 			}
 		} else {
@@ -462,10 +480,10 @@ public class RiskTreatmentModelClientFullInstanceCreator
 			// "resulting" SafeguardModel!)
 			LOG.error("createSafeguardJsonObject unable to find safeguard with id " + safeguard.getIdentifier()
 					+ " in resultingSafeguardMap");
-			innerSafeguardData.addProperty("targetValue", innerSafeguardData.get("currentValue").getAsNumber());
+			innerSafeguardData.addProperty(TARGET_VALUE, innerSafeguardData.get(CURRENT_VALUE).getAsNumber());
 		}
 
-		safeguardJsonObject.add("data", innerSafeguardData);
+		safeguardJsonObject.add(DATA, innerSafeguardData);
 
 		// Now we have to add all children to the Json (GASF requirements)
 		JsonArray securityRequirementChildrenJsonArray = new JsonArray();
@@ -477,7 +495,7 @@ public class RiskTreatmentModelClientFullInstanceCreator
 			createSecurityRequirementJsonObject(securityRequirement, securityRequirementChildrenJsonArray);
 		}
 
-		safeguardJsonObject.add("children", securityRequirementChildrenJsonArray);
+		safeguardJsonObject.add(CHILDREN, securityRequirementChildrenJsonArray);
 
 		safeguardChildren.add(safeguardJsonObject);
 	}
@@ -490,30 +508,30 @@ public class RiskTreatmentModelClientFullInstanceCreator
 		JsonObject securityRequirementJsonObject = new JsonObject();
 		JsonObject securityRequirementInnerSafeguardData = new JsonObject();
 
-		securityRequirementInnerSafeguardData.addProperty("securityRequirementCatalogueId",
+		securityRequirementInnerSafeguardData.addProperty(SECURITY_REQUIREMENT_CATALOGUE_ID,
 				securityRequirement.getId());
-		securityRequirementInnerSafeguardData.addProperty("securityRequirementIdentifier",
+		securityRequirementInnerSafeguardData.addProperty(SECURITY_REQUIREMENT_IDENTIFIER,
 				securityRequirement.getIdentifier());
-		securityRequirementInnerSafeguardData.addProperty("name", securityRequirement.getTitle());
-		securityRequirementInnerSafeguardData.addProperty("userDescription", securityRequirement.getUserDescription());
-		securityRequirementInnerSafeguardData.addProperty("value",  "(" + securityRequirement.getId() + ") " + securityRequirement.getTitle());
-		securityRequirementInnerSafeguardData.addProperty("description", securityRequirement.getDescription());
-		securityRequirementInnerSafeguardData.addProperty("type", "SecurityRequirement");
+		securityRequirementInnerSafeguardData.addProperty(NAME, securityRequirement.getTitle());
+		securityRequirementInnerSafeguardData.addProperty(USER_DESCRIPTION, securityRequirement.getUserDescription());
+		securityRequirementInnerSafeguardData.addProperty(VALUE,  "(" + securityRequirement.getId() + ") " + securityRequirement.getTitle());
+		securityRequirementInnerSafeguardData.addProperty(DESCRIPTION, securityRequirement.getDescription());
+		securityRequirementInnerSafeguardData.addProperty(TYPE, "SecurityRequirement");
 
 		if(securityRequirement.getScore() != null) {
 			switch (securityRequirement.getScore()) {
 			case NONE:
-				securityRequirementInnerSafeguardData.addProperty("currentValue", "");
+				securityRequirementInnerSafeguardData.addProperty(CURRENT_VALUE, "");
 				break;
 			case LOW:
-				securityRequirementInnerSafeguardData.addProperty("currentValue", "1");
+				securityRequirementInnerSafeguardData.addProperty(CURRENT_VALUE, "1");
 				break;
 			default:
-				securityRequirementInnerSafeguardData.addProperty("currentValue", "");
+				securityRequirementInnerSafeguardData.addProperty(CURRENT_VALUE, "");
 				break;
 			} 
 		}else {
-			securityRequirementInnerSafeguardData.addProperty("currentValue", "");
+			securityRequirementInnerSafeguardData.addProperty(CURRENT_VALUE, "");
 		}
 
 		SecurityRequirement resultingSecurityRequirement = resultingSecurityRequirementMap
@@ -524,26 +542,26 @@ public class RiskTreatmentModelClientFullInstanceCreator
 			// resultingSecurityRequirement!)
 			LOG.error("createSecurityRequirementJsonObject unable to find securityRequirement with id "
 					+ securityRequirement.getIdentifier() + " in resulting Safeguard");
-			securityRequirementInnerSafeguardData.addProperty("targetValue",
-					securityRequirementInnerSafeguardData.get("currentValue").getAsNumber());
+			securityRequirementInnerSafeguardData.addProperty(TARGET_VALUE,
+					securityRequirementInnerSafeguardData.get(CURRENT_VALUE).getAsNumber());
 		}
 		else if(resultingSecurityRequirement.getScore() != null){
 			switch (resultingSecurityRequirement.getScore()) {
 			case NONE:
-				securityRequirementInnerSafeguardData.addProperty("targetValue", "");
+				securityRequirementInnerSafeguardData.addProperty(TARGET_VALUE, "");
 				break;
 			case LOW:
-				securityRequirementInnerSafeguardData.addProperty("targetValue", "1");
+				securityRequirementInnerSafeguardData.addProperty(TARGET_VALUE, "1");
 				break;
 			default:
-				securityRequirementInnerSafeguardData.addProperty("targetValue", "");
+				securityRequirementInnerSafeguardData.addProperty(TARGET_VALUE, "");
 				break;
 			}
 		} else {
-			securityRequirementInnerSafeguardData.addProperty("targetValue", "");			
+			securityRequirementInnerSafeguardData.addProperty(TARGET_VALUE, "");
 		}
 
-		securityRequirementJsonObject.add("data", securityRequirementInnerSafeguardData);
+		securityRequirementJsonObject.add(DATA, securityRequirementInnerSafeguardData);
 
 		// Now we have to add all children to the Json (GASF requirements)
 		JsonArray securityRequirementInnerChildrenJsonArray = new JsonArray();
@@ -552,11 +570,11 @@ public class RiskTreatmentModelClientFullInstanceCreator
 		// create the related JsonObjects
 		for (SecurityRequirement innerSecurityRequirement : securityRequirement.getChildren()) {
 
-			createSecurityRequirementJsonObject((SecurityRequirement) innerSecurityRequirement,
+			createSecurityRequirementJsonObject(innerSecurityRequirement,
 					securityRequirementInnerChildrenJsonArray);
 		}
 
-		securityRequirementJsonObject.add("children", securityRequirementInnerChildrenJsonArray);
+		securityRequirementJsonObject.add(CHILDREN, securityRequirementInnerChildrenJsonArray);
 
 		securityRequirementChildrenJsonArray.add(securityRequirementJsonObject);
 
@@ -571,36 +589,36 @@ public class RiskTreatmentModelClientFullInstanceCreator
 		// Java RiskTreatmentModel structure
 		// we then need to deserialize accordingly
 
-		if (!jsonObject.has("data")) {
-			LOG.error("deserialize RiskTreatmentModel json from client has no data field: " + json.getAsString());
+		if (!jsonObject.has(DATA)) {
+			LOG.error("deserialize RiskTreatmentModel json from client has no data field: {}", json.getAsString());
 			return null;
 		}
 
 		RiskTreatmentModel newRtm = new RiskTreatmentModel();
 
-		JsonArray fullRiskTreatmentJsonArray = jsonObject.get("data").getAsJsonArray();
+		JsonArray fullRiskTreatmentJsonArray = jsonObject.get(DATA).getAsJsonArray();
 
 		for (JsonElement item : fullRiskTreatmentJsonArray) {
 			JsonObject categoryScopeJsonObject = item.getAsJsonObject();
 
-			if (categoryScopeJsonObject.has("children")) {
+			if (categoryScopeJsonObject.has(CHILDREN)) {
 
-				JsonArray categoryChildrenJsonArray = categoryScopeJsonObject.getAsJsonArray("children");
+				JsonArray categoryChildrenJsonArray = categoryScopeJsonObject.getAsJsonArray(CHILDREN);
 
 				for (JsonElement innerItem : categoryChildrenJsonArray) {
 
 					JsonObject safeguardScopeJsonObject = innerItem.getAsJsonObject();
 
-					if (safeguardScopeJsonObject.has("children")) {
+					if (safeguardScopeJsonObject.has(CHILDREN)) {
 
-						JsonArray safeguardChildrenJsonArray = safeguardScopeJsonObject.getAsJsonArray("children");
+						JsonArray safeguardChildrenJsonArray = safeguardScopeJsonObject.getAsJsonArray(CHILDREN);
 
 						for (JsonElement safeguardItem : safeguardChildrenJsonArray) {
 							JsonObject safeguardJsonObject = safeguardItem.getAsJsonObject();
 
-							if (safeguardJsonObject.has("data")) {
-								JsonObject innerSafeguardJsonObject = safeguardJsonObject.getAsJsonObject("data");								
-								String safeguardIdentifier = innerSafeguardJsonObject.get("safeguardIdentifier")
+							if (safeguardJsonObject.has(DATA)) {
+								JsonObject innerSafeguardJsonObject = safeguardJsonObject.getAsJsonObject(DATA);
+								String safeguardIdentifier = innerSafeguardJsonObject.get(SAFEGUARD_IDENTIFIER)
 										.getAsString();
 
 								Safeguard resultingSafeguard = null;
@@ -614,7 +632,7 @@ public class RiskTreatmentModelClientFullInstanceCreator
 								}
 
 								if (!alreadyAdded) {
-									String targetValue = innerSafeguardJsonObject.get("targetValue").getAsString();
+									String targetValue = innerSafeguardJsonObject.get(TARGET_VALUE).getAsString();
 									if (targetValue == null) {
 										targetValue = "";
 									}
@@ -644,9 +662,9 @@ public class RiskTreatmentModelClientFullInstanceCreator
 
 								}
 
-								if (safeguardJsonObject.has("children")) {
+								if (safeguardJsonObject.has(CHILDREN)) {
 									JsonArray safeguardInnerChildrenJsonArray = safeguardJsonObject
-											.getAsJsonArray("children");
+											.getAsJsonArray(CHILDREN);
 
 									deserializeSecurityRequirements(resultingSafeguard,
 											safeguardInnerChildrenJsonArray);
@@ -672,11 +690,11 @@ public class RiskTreatmentModelClientFullInstanceCreator
 		for (JsonElement securityRequirementItem : safeguardChildrenJsonArray) {
 			JsonObject securityRequirementJsonObject = securityRequirementItem.getAsJsonObject();
 
-			if (securityRequirementJsonObject.has("data")) {
-				JsonObject innerSecurityRequirementJsonObject = securityRequirementJsonObject.getAsJsonObject("data");
+			if (securityRequirementJsonObject.has(DATA)) {
+				JsonObject innerSecurityRequirementJsonObject = securityRequirementJsonObject.getAsJsonObject(DATA);
 
 				String securityRequirementIdentifier = innerSecurityRequirementJsonObject
-						.get("securityRequirementIdentifier").getAsString();
+						.get(SECURITY_REQUIREMENT_IDENTIFIER).getAsString();
 
 				SecurityRequirement resultingSecurityRequirement = null;
 				boolean alreadyAdded = false;
@@ -689,7 +707,7 @@ public class RiskTreatmentModelClientFullInstanceCreator
 				}
 
 				if (!alreadyAdded) {
-					String targetValue = innerSecurityRequirementJsonObject.get("targetValue").getAsString();
+					String targetValue = innerSecurityRequirementJsonObject.get(TARGET_VALUE).getAsString();
 					if (targetValue == null) {
 						targetValue = "";
 					}
@@ -710,9 +728,9 @@ public class RiskTreatmentModelClientFullInstanceCreator
 
 				}
 
-				if (securityRequirementJsonObject.has("children")) {
+				if (securityRequirementJsonObject.has(CHILDREN)) {
 					JsonArray securityRequirementChildrenJsonArray = securityRequirementJsonObject
-							.getAsJsonArray("children");
+							.getAsJsonArray(CHILDREN);
 
 					deserializeSecurityRequirements(resultingSecurityRequirement, securityRequirementChildrenJsonArray);
 
@@ -729,11 +747,11 @@ public class RiskTreatmentModelClientFullInstanceCreator
 		for (JsonElement securityRequirementItem : securityRequirementChildrenJsonArray) {
 			JsonObject securityRequirementJsonObject = securityRequirementItem.getAsJsonObject();
 
-			if (securityRequirementJsonObject.has("data")) {
-				JsonObject innerSecurityRequirementJsonObject = securityRequirementJsonObject.getAsJsonObject("data");
+			if (securityRequirementJsonObject.has(DATA)) {
+				JsonObject innerSecurityRequirementJsonObject = securityRequirementJsonObject.getAsJsonObject(DATA);
 
 				String securityRequirementIdentifier = innerSecurityRequirementJsonObject
-						.get("securityRequirementIdentifier").getAsString();
+						.get(SECURITY_REQUIREMENT_IDENTIFIER).getAsString();
 
 				SecurityRequirement resultingSecurityRequirement = null;
 				boolean alreadyAdded = false;
@@ -746,7 +764,7 @@ public class RiskTreatmentModelClientFullInstanceCreator
 				}
 
 				if (!alreadyAdded) {
-					String targetValue = innerSecurityRequirementJsonObject.get("targetValue").getAsString();
+					String targetValue = innerSecurityRequirementJsonObject.get(TARGET_VALUE).getAsString();
 					if (targetValue == null) {
 						targetValue = "";
 					}
@@ -767,9 +785,9 @@ public class RiskTreatmentModelClientFullInstanceCreator
 
 				}
 
-				if (securityRequirementJsonObject.has("children")) {
+				if (securityRequirementJsonObject.has(CHILDREN)) {
 					JsonArray securityRequirementInnerChildrenJsonArray = securityRequirementJsonObject
-							.getAsJsonArray("children");
+							.getAsJsonArray(CHILDREN);
 
 					deserializeSecurityRequirements(resultingSecurityRequirement,
 							securityRequirementInnerChildrenJsonArray);
@@ -825,7 +843,7 @@ public class RiskTreatmentModelClientFullInstanceCreator
 		}
 	}
 
-	private HashMap<String, Asset> getAssetHashMap(ArrayList<Asset> assets) {
+	private HashMap<String, Asset> getAssetHashMap(List<Asset> assets) {
 		// Here we put the Asset on an HashMap (faster to be used later)
 		HashMap<String, Asset> assetMap = new HashMap<String, Asset>();
 

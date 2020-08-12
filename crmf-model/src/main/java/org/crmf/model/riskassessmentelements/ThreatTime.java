@@ -19,14 +19,6 @@ public class ThreatTime {
 	private String description;
 	private String name;
 
-	public ThreatTime(){
-
-	}
-
-	public void finalize() throws Throwable {
-
-	}
-
 	public ThreatSourceEnum getCatalogue() {
 		return catalogue;
 	}

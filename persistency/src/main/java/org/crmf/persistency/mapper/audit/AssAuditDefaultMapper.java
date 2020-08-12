@@ -12,7 +12,6 @@
 
 package org.crmf.persistency.mapper.audit;
 
-import org.crmf.model.audit.Question;
 import org.crmf.persistency.domain.audit.AssauditDefaultJSON;
 
 import java.util.List;
@@ -20,19 +19,19 @@ import java.util.List;
 //This interface allows the bundle to invoke the SQL methods within the AssAuditDefaultMapper.xml (via the ibatis API)
 public interface AssAuditDefaultMapper {
 
-	void insert(AssauditDefaultJSON questionnaire);
+  void insert(AssauditDefaultJSON questionnaire);
 
-	void updateQuestionnaireJSON(AssauditDefaultJSON questionnaire);
+  void updateQuestionnaireJSON(AssauditDefaultJSON questionnaire);
 
-	List<AssauditDefaultJSON> getAll();
+  List<AssauditDefaultJSON> getAll();
 
-	List<AssauditDefaultJSON> getAllQuestionnaires();
+  List<AssauditDefaultJSON> getAllQuestionnaires();
 
-	List<AssauditDefaultJSON> getAllQuestionnaireNames();
+  List<AssauditDefaultJSON> getAllQuestionnaireNames();
 
-	List<AssauditDefaultJSON> getAllByParentCategory(String category);
+  List<AssauditDefaultJSON> getAllByParentCategory(String category);
 
-	AssauditDefaultJSON getByCategory(String category);
+  AssauditDefaultJSON getByCategory(String category);
 
-	List<AssauditDefaultJSON> getSafeguardByIdentifier();
+  List<AssauditDefaultJSON> getSafeguardByIdentifier();
 }

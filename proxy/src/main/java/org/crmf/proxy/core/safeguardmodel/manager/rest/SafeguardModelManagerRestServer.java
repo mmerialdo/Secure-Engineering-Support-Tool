@@ -20,25 +20,28 @@ import org.slf4j.LoggerFactory;
 //This class manages the business logic behind the webservices related to the SafeguardModel management
 public class SafeguardModelManagerRestServer implements SafeguardModelManagerRestServerInterface {
 
-	private static final Logger LOG = LoggerFactory.getLogger(SafeguardModelManagerRestServer.class.getName());
-	private SafeguardModelManagerInputInterface safeguardModelInput;
-	@Override
-	public String loadSafeguardModel(GenericFilter filter) throws Exception {
-		LOG.info("SafeguardModelManagerRestServer loadSafeguardModel:: begin");
-		try {
-			//return the threat model in json format that matches the filters in input 
-			String result = safeguardModelInput.loadSafeguardModel(filter);
-			return result;
-		} catch (Exception e) {
-			LOG.info("SafeguardModelManagerRestServer loadSafeguardModel:: exception " + e.getMessage());
-			throw new Exception("COMMAND_EXCEPTION", e);
-		}
-	}
-	public SafeguardModelManagerInputInterface getSafeguardModelInput() {
-		return safeguardModelInput;
-	}
-	public void setSafeguardModelInput(SafeguardModelManagerInputInterface safeguardModelInput) {
-		this.safeguardModelInput = safeguardModelInput;
-	}
+  private static final Logger LOG = LoggerFactory.getLogger(SafeguardModelManagerRestServer.class.getName());
+  private SafeguardModelManagerInputInterface safeguardModelInput;
+
+  @Override
+  public String loadSafeguardModel(GenericFilter filter) throws Exception {
+    LOG.info("SafeguardModelManagerRestServer loadSafeguardModel:: begin");
+    try {
+      //return the threat model in json format that matches the filters in input
+      String result = safeguardModelInput.loadSafeguardModel(filter);
+      return result;
+    } catch (Exception e) {
+      LOG.info("SafeguardModelManagerRestServer loadSafeguardModel:: exception " + e.getMessage());
+      throw new Exception("COMMAND_EXCEPTION", e);
+    }
+  }
+
+  public SafeguardModelManagerInputInterface getSafeguardModelInput() {
+    return safeguardModelInput;
+  }
+
+  public void setSafeguardModelInput(SafeguardModelManagerInputInterface safeguardModelInput) {
+    this.safeguardModelInput = safeguardModelInput;
+  }
 
 }

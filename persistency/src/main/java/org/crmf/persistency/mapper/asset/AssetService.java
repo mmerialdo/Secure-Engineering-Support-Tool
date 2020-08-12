@@ -23,87 +23,87 @@ import org.slf4j.LoggerFactory;
 
 //This class manages the database interactions related to the AssetModel
 public class AssetService implements AssetServiceInterface {
-	private static final Logger LOG = LoggerFactory.getLogger(AssetService.class.getName());
-	PersistencySessionFactory sessionFactory;
+  private static final Logger LOG = LoggerFactory.getLogger(AssetService.class.getName());
+  PersistencySessionFactory sessionFactory;
 
 
-	@Override
-	public void insert(String assetModelJson, String sestobjId) {
-		SqlSession sqlSession = sessionFactory.getSession();
-		LOG.info("Insert Asset Model");
+  @Override
+  public void insert(String assetModelJson, String sestobjId) {
+    SqlSession sqlSession = sessionFactory.getSession();
+    LOG.info("Insert Asset Model");
 
-		Sestobj sestobj = null;
-		
-		try {
-			//create a new Asset Mapper
-			AssetMapper assetMapper = sqlSession.getMapper(AssetMapper.class);
-			SestobjMapper sestobjMapper = sqlSession.getMapper(SestobjMapper.class);
-			
-			//create a new sestObj with the identifier in input and type AssetModel
-			LOG.info("Insert sestObject");
-			sestobj = new Sestobj();
-			sestobj.setObjtype(SESTObjectTypeEnum.AssetModel.name());
-			sestobj.setIdentifier(sestobjId);
-			sestobjMapper.insertWithIdentifier(sestobj);
-			
-			
-			//use the Asset Mapper to insert the Asset Model
-			SestAssetModel assetModel= new SestAssetModel();
-			assetModel.setAssetModelJson(assetModelJson);
-			assetModel.setSestobjId(sestobjId);
-			assetMapper.insert(assetModel);
-			sqlSession.commit();
-		} catch (Exception ex) {
-			LOG.error("AssetModel insert exception: " + ex.getMessage(), ex);
-			sqlSession.rollback();
-		} finally {
-			sqlSession.close();
-		}
-	}
-	
-	@Override
-	public void update(String assetModelJson, String identifier){
-		SqlSession sqlSession = sessionFactory.getSession();
-		LOG.info("Update Asset Model");
+    Sestobj sestobj = null;
 
-		try {
-			//create a new Asset Mapper
-			AssetMapper assetMapper = sqlSession.getMapper(AssetMapper.class);
-			//use the Asset Mapper to insert the Asset Model
-			assetMapper.update(assetModelJson, identifier);
-			sqlSession.commit();
-		} catch (Exception ex) {
-			LOG.error("AssetModel updateQuestionnaireJSON exception: " + ex.getMessage(), ex);
-			sqlSession.rollback();
-		} finally {
-			sqlSession.close();
-		}
-	}
+    try {
+      //create a new Asset Mapper
+      AssetMapper assetMapper = sqlSession.getMapper(AssetMapper.class);
+      SestobjMapper sestobjMapper = sqlSession.getMapper(SestobjMapper.class);
 
-	@Override
-	public SestAssetModel getByIdentifier(String sestobjId) {
-		SqlSession sqlSession = sessionFactory.getSession();
-		LOG.info("get By Identifier -  Asset Model");
-		SestAssetModel assetModel;
+      //create a new sestObj with the identifier in input and type AssetModel
+      LOG.info("Insert sestObject");
+      sestobj = new Sestobj();
+      sestobj.setObjtype(SESTObjectTypeEnum.AssetModel.name());
+      sestobj.setIdentifier(sestobjId);
+      sestobjMapper.insertWithIdentifier(sestobj);
 
-		try {
-			//create a new Asset Mapper
-			AssetMapper assetMapper = sqlSession.getMapper(AssetMapper.class);
-			//use the Asset Mapper to insert the Asset Model
-			assetModel = assetMapper.getByIdentifier(sestobjId);
-			LOG.info("get By Identifier -  Asset Model returned: " + assetModel);
-			sqlSession.commit();
-		} catch (Exception ex) {
-			LOG.error("AssetModel getByIdentifier exception: " + ex.getMessage(), ex);
-			sqlSession.rollback();
-			return null;
-		} finally {
-			sqlSession.close();
-		}
-		
-		return (null != assetModel)?assetModel: null;
-	}
-	
+
+      //use the Asset Mapper to insert the Asset Model
+      SestAssetModel assetModel = new SestAssetModel();
+      assetModel.setAssetModelJson(assetModelJson);
+      assetModel.setSestobjId(sestobjId);
+      assetMapper.insert(assetModel);
+      sqlSession.commit();
+    } catch (Exception ex) {
+      LOG.error("AssetModel insert exception: " + ex.getMessage(), ex);
+      sqlSession.rollback();
+    } finally {
+      sqlSession.close();
+    }
+  }
+
+  @Override
+  public void update(String assetModelJson, String identifier) {
+    SqlSession sqlSession = sessionFactory.getSession();
+    LOG.info("Update Asset Model");
+
+    try {
+      //create a new Asset Mapper
+      AssetMapper assetMapper = sqlSession.getMapper(AssetMapper.class);
+      //use the Asset Mapper to insert the Asset Model
+      assetMapper.update(assetModelJson, identifier);
+      sqlSession.commit();
+    } catch (Exception ex) {
+      LOG.error("AssetModel updateQuestionnaireJSON exception: " + ex.getMessage(), ex);
+      sqlSession.rollback();
+    } finally {
+      sqlSession.close();
+    }
+  }
+
+  @Override
+  public SestAssetModel getByIdentifier(String sestobjId) {
+    SqlSession sqlSession = sessionFactory.getSession();
+    LOG.info("get By Identifier -  Asset Model");
+    SestAssetModel assetModel;
+
+    try {
+      //create a new Asset Mapper
+      AssetMapper assetMapper = sqlSession.getMapper(AssetMapper.class);
+      //use the Asset Mapper to insert the Asset Model
+      assetModel = assetMapper.getByIdentifier(sestobjId);
+      LOG.info("get By Identifier -  Asset Model returned: " + assetModel);
+      sqlSession.commit();
+    } catch (Exception ex) {
+      LOG.error("AssetModel getByIdentifier exception: " + ex.getMessage(), ex);
+      sqlSession.rollback();
+      return null;
+    } finally {
+      sqlSession.close();
+    }
+
+    return (null != assetModel) ? assetModel : null;
+  }
+
 //	@Override
 //	public SestAssetModel getById(Integer id){
 //		SqlSession sqlSession = sessionFactory.getSession();
@@ -126,13 +126,13 @@ public class AssetService implements AssetServiceInterface {
 //		
 //		return (null != assetModel)?assetModel: null;
 //	}
-	
-	public PersistencySessionFactory getSessionFactory() {
-		return sessionFactory;
-	}
 
-	public void setSessionFactory(PersistencySessionFactory sessionFactory) {
-		this.sessionFactory = sessionFactory;
-	}
+  public PersistencySessionFactory getSessionFactory() {
+    return sessionFactory;
+  }
+
+  public void setSessionFactory(PersistencySessionFactory sessionFactory) {
+    this.sessionFactory = sessionFactory;
+  }
 
 }

@@ -12,15 +12,16 @@
 
 package org.crmf.model.utility.assetmodel;
 
+import org.crmf.model.riskassessment.AssetModel;
+
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.UUID;
 
-import org.crmf.model.riskassessment.AssetModel;
-
 //This class is responsible for cloning AssetModels from Json strings and POJO
 public class AssetModelCloner {
+	public static final String DD_MM_YYYY_HH_MM = "dd/MM/yyyy HH:mm";
 	private String identifier;
 	
 	public AssetModel clone(AssetModel am){
@@ -32,7 +33,7 @@ public class AssetModelCloner {
 		
 		UUID uuid = UUID.randomUUID();
 		amNew.setIdentifier(uuid.toString());
-		DateFormat df = new SimpleDateFormat("dd/MM/yyyy HH:mm");
+		DateFormat df = new SimpleDateFormat(DD_MM_YYYY_HH_MM);
 		Date now = new Date();
 		amNew.setCreationTime(df.format(now));
 		amNew.setUpdateTime(df.format(now));
@@ -51,7 +52,7 @@ public class AssetModelCloner {
 		UUID uuid = UUID.randomUUID();
 		am.setIdentifier(uuid.toString());
 		
-		DateFormat df = new SimpleDateFormat("dd/MM/yyyy HH:mm");
+		DateFormat df = new SimpleDateFormat(DD_MM_YYYY_HH_MM);
 		Date now = new Date();
 		am.setCreationTime(df.format(now));
 		am.setUpdateTime(df.format(now));

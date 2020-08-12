@@ -12,10 +12,10 @@
 
 package org.crmf.model.riskassessment;
 
-import java.util.ArrayList;
-
 import org.crmf.model.general.SESTObject;
-import org.crmf.model.requirement.ProjectRequirement;
+import org.crmf.model.requirement.Requirement;
+
+import java.util.ArrayList;
 
 public class SystemProject extends SESTObject {
 
@@ -27,15 +27,8 @@ public class SystemProject extends SESTObject {
 	private String physicalLocations;
 	private String scope;
 	private ArrayList<SystemParticipant> participants = new ArrayList<>();
-	private ArrayList<ProjectRequirement> requirements = new ArrayList<>();
+	private ArrayList<Requirement> requirements = new ArrayList<>();
 
-	public SystemProject(){
-
-	}
-
-	public void finalize() throws Throwable {
-		super.finalize();
-	}
 	public String getDescription(){
 		return description;
 	}
@@ -100,11 +93,11 @@ public class SystemProject extends SESTObject {
 		this.participants = participants;
 	}
 
-	public ArrayList<ProjectRequirement> getRequirements() {
+	public ArrayList<Requirement> getRequirements() {
 		return requirements;
 	}
 
-	public void setRequirements(ArrayList<ProjectRequirement> requirements) {
+	public void setRequirements(ArrayList<Requirement> requirements) {
 		this.requirements = requirements;
 	}
 	

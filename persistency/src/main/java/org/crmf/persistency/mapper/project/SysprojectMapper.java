@@ -12,28 +12,28 @@
 
 package org.crmf.persistency.mapper.project;
 
-import java.util.List;
-
 import org.crmf.persistency.domain.project.SysProject;
+
+import java.util.List;
 
 //This interface allows the bundle to invoke the SQL methods within the SysprojectMapper.xml (via the ibatis API)
 public interface SysprojectMapper {
 
-    public int insert(SysProject record);
-    
-	public void update(SysProject project);
+  int insert(SysProject record);
 
-	public void delete(SysProject project);
+  void update(SysProject project);
 
-	public void deleteByAssprojectIdentifier(String identifier);
+  void delete(SysProject project);
 
-	public SysProject getById(Integer id);
+  void deleteByAssprojectIdentifier(String identifier);
 
-	public Integer getIdByIdentifier(String identifier);
-	
-	public SysProject getByAssprojectId(String id);
+  SysProject getById(Integer id);
 
-	public Integer getIdByAssprojectIdentifier(String identifier);
+  Integer getIdByIdentifier(String identifier);
 
-	public List<SysProject> getAll();
+  SysProject getByAssprojectId(String id);
+
+  Integer getIdByAssprojectIdentifier(String identifier);
+
+  List<SysProject> getAll();
 }

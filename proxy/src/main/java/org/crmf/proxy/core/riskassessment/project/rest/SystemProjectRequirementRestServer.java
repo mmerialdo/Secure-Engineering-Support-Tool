@@ -12,51 +12,51 @@
 
 package org.crmf.proxy.core.riskassessment.project.rest;
 
-import java.util.List;
-
 import org.crmf.core.riskassessment.project.requirement.SystemProjectRequirementInputInterface;
 import org.crmf.model.requirement.Requirement;
 import org.crmf.model.utility.GenericFilter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.util.List;
+
 //This class manages the business logic behind the webservices related to the SystemProjectRequirements management
 public class SystemProjectRequirementRestServer implements SystemProjectRequirementRestServerInterface {
 
-	private static final Logger LOG = LoggerFactory.getLogger(SystemProjectRequirementRestServer.class.getName());
-	private SystemProjectRequirementInputInterface requirementInput;
+  private static final Logger LOG = LoggerFactory.getLogger(SystemProjectRequirementRestServer.class.getName());
+  private SystemProjectRequirementInputInterface requirementInput;
 
-	
-	@Override
-	public List<Requirement> loadProjectRequirement(GenericFilter filter) throws Exception {
 
-		LOG.info("loadProjectRequirement Filter : "+filter);
-		try {
-			return requirementInput.loadProjectRequirement(filter);
-		} catch (Exception e) {
-			LOG.error(e.getMessage());
-			throw new Exception("COMMAND_EXCEPTION", e);
-		}
-	}
+  @Override
+  public List<Requirement> loadProjectRequirement(GenericFilter filter) throws Exception {
 
-	@Override
-	public List<Requirement> loadProjectRequirementByIds(List<String> ids) throws Exception {
+    LOG.info("loadProjectRequirement Filter : {}", filter);
+    try {
+      return requirementInput.loadProjectRequirement(filter);
+    } catch (Exception e) {
+      LOG.error(e.getMessage());
+      throw new Exception("COMMAND_EXCEPTION", e);
+    }
+  }
 
-		LOG.info("loadProjectRequirementByIds ids : "+ids);
-		try {
-			return requirementInput.loadProjectRequirementByIds(ids);
-		} catch (Exception e) {
-			LOG.error(e.getMessage());
-			throw new Exception("COMMAND_EXCEPTION", e);
-		}
-	}
+  @Override
+  public List<Requirement> loadProjectRequirementByIds(List<String> ids) throws Exception {
 
-	public SystemProjectRequirementInputInterface getRequirementInput() {
-		return requirementInput;
-	}
+    LOG.info("loadProjectRequirementByIds ids : {}", ids);
+    try {
+      return requirementInput.loadProjectRequirementByIds(ids);
+    } catch (Exception e) {
+      LOG.error(e.getMessage());
+      throw new Exception("COMMAND_EXCEPTION", e);
+    }
+  }
 
-	public void setRequirementInput(SystemProjectRequirementInputInterface requirementInput) {
-		this.requirementInput = requirementInput;
-	}
+  public SystemProjectRequirementInputInterface getRequirementInput() {
+    return requirementInput;
+  }
+
+  public void setRequirementInput(SystemProjectRequirementInputInterface requirementInput) {
+    this.requirementInput = requirementInput;
+  }
 
 }

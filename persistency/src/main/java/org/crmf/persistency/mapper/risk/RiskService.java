@@ -12,12 +12,6 @@
 
 package org.crmf.persistency.mapper.risk;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
-import java.util.UUID;
-
 import org.apache.ibatis.session.SqlSession;
 import org.crmf.model.general.SESTObjectTypeEnum;
 import org.crmf.model.riskassessmentelements.PrimaryAssetCategoryEnum;
@@ -36,6 +30,12 @@ import org.crmf.persistency.mapper.vulnerability.VulnerabilityMapper;
 import org.crmf.persistency.session.PersistencySessionFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+import java.util.UUID;
 
 //This class manages the database interactions related to the RiskModel
 public class RiskService implements RiskServiceInterface {
@@ -243,7 +243,7 @@ public class RiskService implements RiskServiceInterface {
       // updateQuestionnaireJSON the scenario reference with the new entries
       for (SestRiskScenarioReference referenceEntry : convertedModelScenarioReference) {
         referenceEntry.setSestobjId(UUID.randomUUID().toString());
-        result = result & riskMapper.insertScenarioReference(referenceEntry);
+        result = result && riskMapper.insertScenarioReference(referenceEntry);
       }
 
       sqlSession.commit();
@@ -473,10 +473,13 @@ public class RiskService implements RiskServiceInterface {
     try {
       RiskMapper riskMapper = sqlSession.getMapper(RiskMapper.class);
       sestRiskScenarioReference = convertModelRiskScenarioReferenceToDbStandard(riskScenarioReference);
-      sestRiskScenarioReference.setSestobjId(UUID.randomUUID().toString());
+      if (sestRiskScenarioReference != null) {
+        sestRiskScenarioReference.setSestobjId(UUID.randomUUID().toString());
 
-      riskMapper.insertScenarioReference(sestRiskScenarioReference);
-      sqlSession.commit();
+        riskMapper.insertScenarioReference(sestRiskScenarioReference);
+        sqlSession.commit();
+        return sestRiskScenarioReference.getSestobjId();
+      }
     } catch (Exception ex) {
       LOG.error(ex.getMessage(), ex);
       sqlSession.rollback();
@@ -484,12 +487,12 @@ public class RiskService implements RiskServiceInterface {
     } finally {
       sqlSession.close();
     }
-    return sestRiskScenarioReference.getSestobjId();
+    return null;
   }
 
   public void deleteRiskScenarioReference(List<String> identifier) throws Exception {
     SqlSession sqlSession = sessionFactory.getSession();
-		identifier.forEach(id -> LOG.info("deleting risk scenario : "+identifier));
+    identifier.forEach(id -> LOG.info("deleting risk scenario : " + identifier));
 
     try {
       RiskMapper riskMapper = sqlSession.getMapper(RiskMapper.class);

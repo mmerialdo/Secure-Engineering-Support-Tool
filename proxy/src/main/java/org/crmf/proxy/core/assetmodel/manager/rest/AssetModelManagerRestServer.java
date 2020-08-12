@@ -12,11 +12,6 @@
 
 package org.crmf.proxy.core.assetmodel.manager.rest;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.List;
-
 import org.crmf.core.assetmodel.manager.AssetModelManagerInputInterface;
 import org.crmf.model.riskassessment.AssetModel;
 import org.crmf.model.riskassessmentelements.PrimaryAssetCategoryEnum;
@@ -28,10 +23,17 @@ import org.crmf.riskmodel.manager.RiskModelManagerInputInterface;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Arrays;
+import java.util.Date;
+import java.util.List;
+
 //This class manages the business logic behind the webservices related to the AssetModel management
 public class AssetModelManagerRestServer implements AssetModelManagerRestServerInterface {
   // the logger of AssetModelManagerRestServer class
   private static final Logger LOG = LoggerFactory.getLogger(AssetModelManagerRestServer.class.getName());
+  public static final String DD_MM_YYYY_HH_MM = "dd/MM/yyyy HH:mm";
   private AssetModelManagerInputInterface assetModelInput;
   private RiskModelManagerInputInterface riskModelInput;
 
@@ -41,15 +43,15 @@ public class AssetModelManagerRestServer implements AssetModelManagerRestServerI
     try {
       //retrieve the assetModel in json format
       String assetModelJson = assetModelObject.getJsonModel();
-      LOG.info("AssetModelManagerRestServer editAssetModel:: assetModelJson = " + assetModelJson.substring(0, (assetModelJson.length() > 1000 ? 1000 : assetModelJson.length())));
+      LOG.info("AssetModelManagerRestServer editAssetModel:: assetModelJson = {}", assetModelJson.substring(0, (assetModelJson.length() > 1000 ? 1000 : assetModelJson.length())));
       //retrieve the asset model identifier
       String identifier = assetModelObject.getObjectIdentifier();
-      LOG.info("AssetModelManagerRestServer editAssetModel:: identifier = " + identifier);
+      LOG.info("AssetModelManagerRestServer editAssetModel:: identifier = {}", identifier);
 
       //AssetModel data validation and updateQuestionnaireJSON time
       AssetModelSerializerDeserializer amsd = new AssetModelSerializerDeserializer();
       AssetModel am = amsd.getAMFromJSONString(assetModelJson);
-      DateFormat df = new SimpleDateFormat("dd/MM/yyyy HH:mm");
+      DateFormat df = new SimpleDateFormat(DD_MM_YYYY_HH_MM);
       Date now = new Date();
       am.setUpdateTime(df.format(now));
       assetModelJson = amsd.getJSONStringFromAM(am);
@@ -79,15 +81,62 @@ public class AssetModelManagerRestServer implements AssetModelManagerRestServerI
 
   @Override
   public List<PrimaryAssetCategoryEnum> loadPrimaryAssetCategoryEnum() throws Exception {
-  	LOG.info("" + PrimaryAssetCategoryEnum.PRIMARY_ASSET_CATEGORY_LIST);
-    return PrimaryAssetCategoryEnum.PRIMARY_ASSET_CATEGORY_LIST;
+
+    List<PrimaryAssetCategoryEnum> primaryAssetCategoryList = Arrays.asList(
+      PrimaryAssetCategoryEnum.Data_DataFile_Database,
+      PrimaryAssetCategoryEnum.Data_Shared_Office_File,
+      PrimaryAssetCategoryEnum.Data_Personal_Office_File,
+      PrimaryAssetCategoryEnum.Data_Physical_File,
+      PrimaryAssetCategoryEnum.Data_Exchanged_Message,
+      PrimaryAssetCategoryEnum.Data_Digital_Mail,
+      PrimaryAssetCategoryEnum.Data_Physical_Mail,
+      PrimaryAssetCategoryEnum.Data_Physical_Archive,
+      PrimaryAssetCategoryEnum.Data_IT_Archive,
+      PrimaryAssetCategoryEnum.Data_Published_Data,
+      PrimaryAssetCategoryEnum.Data_Published_Data,
+      PrimaryAssetCategoryEnum.Data_Published_Data,
+      PrimaryAssetCategoryEnum.Service_User_Workspace,
+      PrimaryAssetCategoryEnum.Service_Telecommunication_Service,
+      PrimaryAssetCategoryEnum.Service_Extended_Network_Service,
+      PrimaryAssetCategoryEnum.Service_Local_Network_Service,
+      PrimaryAssetCategoryEnum.Service_Application_Service,
+      PrimaryAssetCategoryEnum.Service_Shared_Service,
+      PrimaryAssetCategoryEnum.Service_User_Hardware,
+      PrimaryAssetCategoryEnum.Service_Common_Service,
+      PrimaryAssetCategoryEnum.Service_Web_editing_Service,
+      PrimaryAssetCategoryEnum.Compliance_Policy_Personal_Information_Protection,
+      PrimaryAssetCategoryEnum.Compliance_Policy_Financial_Communication,
+      PrimaryAssetCategoryEnum.Compliance_Policy_Digital_Accounting_Control,
+      PrimaryAssetCategoryEnum.Compliance_Policy_Intellectual_Property,
+      PrimaryAssetCategoryEnum.Compliance_Policy_Protection_Of_Information_Systems,
+      PrimaryAssetCategoryEnum.Compliance_Policy_People_And_Environment_Safety);
+    return primaryAssetCategoryList;
   }
 
-	@Override
-	public List<SecondaryAssetCategoryEnum> loadSecondaryAssetCategoryEnum() throws Exception {
-		LOG.info("" + SecondaryAssetCategoryEnum.SECONDARY_ASSET_CATEGORY_LIST);
-		return SecondaryAssetCategoryEnum.SECONDARY_ASSET_CATEGORY_LIST;
-	}
+  @Override
+  public List<SecondaryAssetCategoryEnum> loadSecondaryAssetCategoryEnum() throws Exception {
+
+    List<SecondaryAssetCategoryEnum> secondaryAssetCategoryList = Arrays.asList(
+      SecondaryAssetCategoryEnum.Personnel,
+      SecondaryAssetCategoryEnum.Hardware,
+      SecondaryAssetCategoryEnum.Software_Off_the_Shelf,
+      SecondaryAssetCategoryEnum.Premise,
+      SecondaryAssetCategoryEnum.Data_File,
+      SecondaryAssetCategoryEnum.Firmware,
+      SecondaryAssetCategoryEnum.Data_Message,
+      SecondaryAssetCategoryEnum.Software_Configuration,
+      SecondaryAssetCategoryEnum.Policy,
+      SecondaryAssetCategoryEnum.Electronic_Media,
+      SecondaryAssetCategoryEnum.Non_Electronic_Media,
+      SecondaryAssetCategoryEnum.Communication_Network,
+      SecondaryAssetCategoryEnum.Software_Custom,
+      SecondaryAssetCategoryEnum.Hardware_Configuration,
+      SecondaryAssetCategoryEnum.Auxiliary_Equipment,
+      SecondaryAssetCategoryEnum.Service_Access_Mean,
+      SecondaryAssetCategoryEnum.Data_Access_Mean
+    );
+    return secondaryAssetCategoryList;
+  }
 
   public AssetModelManagerInputInterface getAssetModelInput() {
     return assetModelInput;

@@ -16,12 +16,4 @@ public class SafeguardScore {
 
 	private SafeguardScopeEnum safeguardScope;
 	private SafeguardScoreEnum score;
-
-	public SafeguardScore(){
-
-	}
-
-	public void finalize() throws Throwable {
-
-	}
 }

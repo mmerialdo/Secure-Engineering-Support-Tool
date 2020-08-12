@@ -19,46 +19,51 @@ import org.slf4j.LoggerFactory;
 
 public class SestRiskTreatmentModel {
 
-	private Integer id;
-	String sestobjId;
-	String riskTreatmentModelJson;
-	
-	private static final Logger LOG = LoggerFactory.getLogger(SestRiskTreatmentModel.class.getName());
-	
-	public Integer getId() {
-		return id;
-	}
-	public void setId(Integer id) {
-		this.id = id;
-	}
-	public String getSestobjId() {
-		return sestobjId;
-	}
-	public void setSestobjId(String sestobjId) {
-		this.sestobjId = sestobjId;
-	}
-	public String getRiskTreatmentModelJson() {
-		return riskTreatmentModelJson;
-	}
-	public void setRiskTreatmentModelJson(String riskTreatmentModelJson) {
-		this.riskTreatmentModelJson = riskTreatmentModelJson;
-	}
+  private Integer id;
+  String sestobjId;
+  String riskTreatmentModelJson;
 
-	public RiskTreatmentModel convertToModel() {
-		LOG.info("SestRiskTreatmentModel convertToModel");
-		try {
-			RiskTreatmentModelSerializerDeserializer riskTreatmentModelDeserializer = new RiskTreatmentModelSerializerDeserializer();
+  private static final Logger LOG = LoggerFactory.getLogger(SestRiskTreatmentModel.class.getName());
 
-			RiskTreatmentModel rtmodel = new RiskTreatmentModel();
-			rtmodel.setIdentifier(this.sestobjId);
-			rtmodel = riskTreatmentModelDeserializer.getRTMFromPersistencyJSONString(riskTreatmentModelJson);
-			
-			return rtmodel;
-			
-		} catch (Exception ex) {
-			LOG.error("Unable to deserialize risk model!!! "+this.getSestobjId(), ex);
-			return null;
-		}
-	}
+  public Integer getId() {
+    return id;
+  }
+
+  public void setId(Integer id) {
+    this.id = id;
+  }
+
+  public String getSestobjId() {
+    return sestobjId;
+  }
+
+  public void setSestobjId(String sestobjId) {
+    this.sestobjId = sestobjId;
+  }
+
+  public String getRiskTreatmentModelJson() {
+    return riskTreatmentModelJson;
+  }
+
+  public void setRiskTreatmentModelJson(String riskTreatmentModelJson) {
+    this.riskTreatmentModelJson = riskTreatmentModelJson;
+  }
+
+  public RiskTreatmentModel convertToModel() {
+    LOG.info("SestRiskTreatmentModel convertToModel");
+    try {
+      RiskTreatmentModelSerializerDeserializer riskTreatmentModelDeserializer = new RiskTreatmentModelSerializerDeserializer();
+
+      RiskTreatmentModel rtmodel = new RiskTreatmentModel();
+      rtmodel.setIdentifier(this.sestobjId);
+      rtmodel = riskTreatmentModelDeserializer.getRTMFromPersistencyJSONString(riskTreatmentModelJson);
+
+      return rtmodel;
+
+    } catch (Exception ex) {
+      LOG.error("Unable to deserialize risk model!!! " + this.getSestobjId(), ex);
+      return null;
+    }
+  }
 
 }

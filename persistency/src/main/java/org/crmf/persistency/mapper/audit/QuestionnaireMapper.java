@@ -20,21 +20,21 @@ import java.util.List;
 //This interface allows the bundle to invoke the SQL methods within the QuestionnaireMapper.xml (via the ibatis API)
 public interface QuestionnaireMapper {
 
-	int insert(SestQuestionnaireModel questionnaire);
+  int insert(SestQuestionnaireModel questionnaire);
 
-	void update(@Param("sestobjId") String sestobjId, @Param("questionnaireModelJson") String questionnaireModelJson);
+  void update(@Param("sestobjId") String sestobjId, @Param("questionnaireModelJson") String questionnaireModelJson);
 
-	void delete(String identifier);
+  void delete(String identifier);
 
-	List<SestQuestionnaireModel> getByAuditId(Integer id);
+  List<SestQuestionnaireModel> getByAuditId(Integer id);
 
-	List<SestQuestionnaireModel> getTypeByAuditId(Integer id);
-	
-	SestQuestionnaireModel getByIdentifier(String identifier);
-	
-	Integer getIdByIdentifier(String identifier);
+  List<SestQuestionnaireModel> getTypeByAuditId(Integer id);
 
-	List<SestQuestionnaireModel> getAllQuestionnaireNames(int auditId);
+  SestQuestionnaireModel getByIdentifier(String identifier);
 
-	SestQuestionnaireModel getQuestionnaireByCategory(String category);
+  Integer getIdByIdentifier(String identifier);
+
+  List<SestQuestionnaireModel> getAllQuestionnaireNames(int auditId);
+
+  SestQuestionnaireModel getQuestionnaireByCategory(String category);
 }

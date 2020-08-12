@@ -12,18 +12,18 @@
 
 package org.crmf.persistency.domain.general;
 
-import java.util.UUID;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.util.UUID;
+
 public class SestobjIdentifierGenerator {
 
-	private static final Logger LOG = LoggerFactory.getLogger(SestobjIdentifierGenerator.class.getName());
+  private static final Logger LOG = LoggerFactory.getLogger(SestobjIdentifierGenerator.class.getName());
 
-	public static String newIdentifier() throws Exception {
+  public static String newIdentifier() throws Exception {
 
-		return UUID.randomUUID().toString();
-	}
+    return UUID.randomUUID().toString();
+  }
 
 }

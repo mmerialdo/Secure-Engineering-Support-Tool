@@ -12,18 +12,6 @@
 
 package org.crmf.model;
 
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.UUID;
-
 import org.crmf.model.general.SESTObjectTypeEnum;
 import org.crmf.model.riskassessment.PhaseEnum;
 import org.crmf.model.riskassessment.ThreatModel;
@@ -46,14 +34,27 @@ import org.crmf.model.riskassessmentelements.ThreatScoreEnum;
 import org.crmf.model.riskassessmentelements.ThreatSourceEnum;
 import org.crmf.model.riskassessmentelements.ThreatTime;
 import org.crmf.model.utility.threatmodel.ThreatModelSerializerDeserializer;
-import org.crmf.model.utility.vulnerabilitymodel.VulnerabilityModelSerializerDeserializer;
 import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.UUID;
+
 public class ThreatModelSerialize {
 
 	private static final Logger LOG = LoggerFactory.getLogger(ThreatModelSerialize.class.getName());
+	public static final String DD_MM_YYYY_HH_MM = "dd/MM/yyyy HH:mm";
+
 	@Test
 	public void serializeThreatModel() throws IOException {
         
@@ -63,7 +64,7 @@ public class ThreatModelSerialize {
 		UUID uuid = UUID.randomUUID();
 		tm.setIdentifier(uuid.toString());
 		
-		DateFormat df = new SimpleDateFormat("dd/MM/yyyy HH:mm");
+		DateFormat df = new SimpleDateFormat(DD_MM_YYYY_HH_MM);
 		Date now = new Date();
 		tm.setCreationTime(df.format(now));
 		tm.setUpdateTime(df.format(now));
@@ -518,7 +519,7 @@ public class ThreatModelSerialize {
 		
 		threat.setAssociatedVulnerabilities(associatedVulnerabilities);
 		
-		DateFormat df = new SimpleDateFormat("dd/MM/yyyy HH:mm");
+		DateFormat df = new SimpleDateFormat(DD_MM_YYYY_HH_MM);
 		Date now = new Date();
 		threat.setLastUpdate(df.format(now));
 		

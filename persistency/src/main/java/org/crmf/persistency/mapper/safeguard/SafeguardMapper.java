@@ -17,15 +17,15 @@ import org.crmf.persistency.domain.safeguard.SestSafeguardModel;
 
 //This interface allows the bundle to invoke the SQL methods within the SafeguardMapper.xml (via the ibatis API)
 public interface SafeguardMapper {
-	
-	void insert(SestSafeguardModel safeguardModel);
 
-	void update(@Param("safeguardModelJson") String safeguardModelJson, @Param("sestobjId") String sestobjId);
+  void insert(SestSafeguardModel safeguardModel);
 
-	SestSafeguardModel getByIdentifier(String sestobjId);
+  void update(@Param("safeguardModelJson") String safeguardModelJson, @Param("sestobjId") String sestobjId);
 
-	SestSafeguardModel getById(Integer id);
+  SestSafeguardModel getByIdentifier(String sestobjId);
 
-	SestSafeguardModel getLastByProjectIdentifier(String sestobjId);
+  SestSafeguardModel getById(Integer id);
+
+  SestSafeguardModel getLastByProjectIdentifier(String sestobjId);
 }
 

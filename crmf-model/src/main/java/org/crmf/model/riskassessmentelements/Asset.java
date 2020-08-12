@@ -23,14 +23,6 @@ public class Asset extends Node {
 	private ArrayList<BusinessImpact> businessImpacts;
 	private ArrayList<String> malfunctionsIds;
 
-	public Asset(){
-
-	}
-
-	public void finalize() throws Throwable {
-		super.finalize();
-	}
-
 	public SecondaryAssetCategoryEnum getCategory() {
 		return category;
 	}

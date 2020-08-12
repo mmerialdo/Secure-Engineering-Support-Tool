@@ -42,7 +42,6 @@ export class NotificationService {
   public connectSession(url): WebSocketSubject<any> {
     if (!this.wsSession) {
       this.wsSession = webSocket(url);
-      console.log(this.wsSession);
       return this.wsSession;
     }
     return this.wsSession;
@@ -81,7 +80,6 @@ export class NotificationService {
   }
 
   listenToTheSocketSession(): Observable<any> {
-    console.log('listenToTheSocketSession ' );
     return this.connectSession('ws://' + this.ipServer + ':9095/pushSession').asObservable();
   }
 

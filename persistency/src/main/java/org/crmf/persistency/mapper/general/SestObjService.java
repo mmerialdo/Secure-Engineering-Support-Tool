@@ -12,14 +12,14 @@
 
 package org.crmf.persistency.mapper.general;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.apache.ibatis.session.SqlSession;
 import org.crmf.model.general.SESTObject;
 import org.crmf.persistency.domain.general.Sestobj;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import java.util.ArrayList;
+import java.util.List;
 
 //This class manages the database interactions related to the SestObjects (each object in the SEST Data Model derives from the SESTObject class, encompassing an unique id which is 
 //used in order to register/updateQuestionnaireJSON the permission attributions

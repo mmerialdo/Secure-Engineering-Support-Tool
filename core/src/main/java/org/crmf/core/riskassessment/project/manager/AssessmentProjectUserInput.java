@@ -26,7 +26,7 @@ public class AssessmentProjectUserInput implements AssessmentProjectUserInputInt
   @Override
   public void editAssessmentProjectRole(AssessmentProject project) throws Exception {
 
-    LOG.info("saveAssessmentProjectRole project identifier: " + project.getIdentifier());
+    LOG.info("saveAssessmentProjectRole project identifier: {}", project.getIdentifier());
     permissionManager.updatePermissionOnRoleChange(project);
   }
 

@@ -12,14 +12,13 @@
 
 package org.crmf.proxy.core.riskmodel.manager.rest;
 
-import javax.ws.rs.Consumes;
-import javax.ws.rs.POST;
-import javax.ws.rs.Produces;
-
 import org.crmf.model.riskassessmentelements.RiskScenarioReference;
 import org.crmf.model.utility.GenericFilter;
 import org.crmf.model.utility.ModelObject;
 
+import javax.ws.rs.Consumes;
+import javax.ws.rs.POST;
+import javax.ws.rs.Produces;
 import java.util.List;
 
 public interface RiskModelManagerRestServerInterface {

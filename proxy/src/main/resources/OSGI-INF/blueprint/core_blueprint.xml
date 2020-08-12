@@ -213,7 +213,7 @@
 
     <bean id="gsonRequirement" class="org.apache.camel.component.gson.GsonDataFormat">
         <property name="unmarshalType"
-                  value="org.crmf.model.requirement.ProjectRequirement"/>
+                  value="org.crmf.model.requirement.Requirement"/>
     </bean>
 
     <bean id="gsonVulnerability" class="org.apache.camel.component.gson.GsonDataFormat">

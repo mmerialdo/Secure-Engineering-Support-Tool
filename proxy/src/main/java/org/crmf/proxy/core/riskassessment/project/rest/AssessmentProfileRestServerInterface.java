@@ -12,18 +12,16 @@
 
 package org.crmf.proxy.core.riskassessment.project.rest;
 
-import java.util.List;
+import org.apache.camel.Header;
+import org.crmf.model.riskassessment.AssessmentProfile;
+import org.crmf.model.utility.GenericFilter;
 
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
-import javax.ws.rs.PUT;
 import javax.ws.rs.Produces;
-
-import org.apache.camel.Header;
-import org.crmf.model.riskassessment.AssessmentProfile;
-import org.crmf.model.utility.GenericFilter;
+import java.util.List;
 
 public interface AssessmentProfileRestServerInterface {
 

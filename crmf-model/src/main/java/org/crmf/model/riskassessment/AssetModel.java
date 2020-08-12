@@ -12,8 +12,6 @@
 
 package org.crmf.model.riskassessment;
 
-import java.util.ArrayList;
-
 import org.crmf.model.general.SESTObject;
 import org.crmf.model.riskassessmentelements.Asset;
 import org.crmf.model.riskassessmentelements.BusinessActivity;
@@ -22,95 +20,90 @@ import org.crmf.model.riskassessmentelements.Edge;
 import org.crmf.model.riskassessmentelements.Malfunction;
 import org.crmf.model.riskassessmentelements.Organization;
 
+import java.util.List;
+
 public class AssetModel extends SESTObject {
 
-	private String creationTime;
-	private String graphJson;
-	private String updateTime;
-	private ArrayList<Edge> edges;
-	private ArrayList<Organization> organizations;
-	private ArrayList<BusinessProcess> businessProcesses;
-	private ArrayList<BusinessActivity> businessActivities;
-	private ArrayList<Asset> assets;
-	private ArrayList<Malfunction> malfunctions;
+  private String creationTime;
+  private String graphJson;
+  private String updateTime;
+  private List<Edge> edges;
+  private List<Organization> organizations;
+  private List<BusinessProcess> businessProcesses;
+  private List<BusinessActivity> businessActivities;
+  private List<Asset> assets;
+  private List<Malfunction> malfunctions;
 
-	public AssetModel(){
+  public String getUpdateTime() {
+    return updateTime;
+  }
 
-	}
+  public void setUpdateTime(String newVal) {
+    updateTime = newVal;
+  }
 
-	public void finalize() throws Throwable {
-		super.finalize();
-	}
-	public String getUpdateTime(){
-		return updateTime;
-	}
+  public String getCreationTime() {
+    return creationTime;
+  }
 
-	public void setUpdateTime(String newVal){
-		updateTime = newVal;
-	}
+  public void setCreationTime(String creationTime) {
+    this.creationTime = creationTime;
+  }
 
-	public String getCreationTime() {
-		return creationTime;
-	}
+  public String getGraphJson() {
+    return graphJson;
+  }
 
-	public void setCreationTime(String creationTime) {
-		this.creationTime = creationTime;
-	}
+  public void setGraphJson(String graphJson) {
+    this.graphJson = graphJson;
+  }
 
-	public String getGraphJson() {
-		return graphJson;
-	}
+  public List<Edge> getEdges() {
+    return edges;
+  }
 
-	public void setGraphJson(String graphJson) {
-		this.graphJson = graphJson;
-	}
+  public void setEdges(List<Edge> edges) {
+    this.edges = edges;
+  }
 
-	public ArrayList<Edge> getEdges() {
-		return edges;
-	}
+  public List<Organization> getOrganizations() {
+    return organizations;
+  }
 
-	public void setEdges(ArrayList<Edge> edges) {
-		this.edges = edges;
-	}
+  public void setOrganizations(List<Organization> organizations) {
+    this.organizations = organizations;
+  }
 
-	public ArrayList<Organization> getOrganizations() {
-		return organizations;
-	}
+  public List<BusinessProcess> getBusinessProcesses() {
+    return businessProcesses;
+  }
 
-	public void setOrganizations(ArrayList<Organization> organizations) {
-		this.organizations = organizations;
-	}
+  public void setBusinessProcesses(List<BusinessProcess> businessProcesses) {
+    this.businessProcesses = businessProcesses;
+  }
 
-	public ArrayList<BusinessProcess> getBusinessProcesses() {
-		return businessProcesses;
-	}
+  public List<BusinessActivity> getBusinessActivities() {
+    return businessActivities;
+  }
 
-	public void setBusinessProcesses(ArrayList<BusinessProcess> businessProcesses) {
-		this.businessProcesses = businessProcesses;
-	}
+  public void setBusinessActivities(List<BusinessActivity> businessActivities) {
+    this.businessActivities = businessActivities;
+  }
 
-	public ArrayList<BusinessActivity> getBusinessActivities() {
-		return businessActivities;
-	}
+  public List<Asset> getAssets() {
+    return assets;
+  }
 
-	public void setBusinessActivities(ArrayList<BusinessActivity> businessActivities) {
-		this.businessActivities = businessActivities;
-	}
+  public void setAssets(List<Asset> assets) {
+    this.assets = assets;
+  }
 
-	public ArrayList<Asset> getAssets() {
-		return assets;
-	}
+  public List<Malfunction> getMalfunctions() {
+    return malfunctions;
+  }
 
-	public void setAssets(ArrayList<Asset> assets) {
-		this.assets = assets;
-	}
-
-	public ArrayList<Malfunction> getMalfunctions() {
-		return malfunctions;
-	}
-
-	public void setMalfunctions(ArrayList<Malfunction> malfunctions) {
-		this.malfunctions = malfunctions;
-	}
+  public void setMalfunctions(List<Malfunction> malfunctions) {
+    this.malfunctions = malfunctions;
+  }
 
 }

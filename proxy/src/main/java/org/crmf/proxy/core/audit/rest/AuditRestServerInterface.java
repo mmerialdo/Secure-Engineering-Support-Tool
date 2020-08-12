@@ -12,42 +12,37 @@
 
 package org.crmf.proxy.core.audit.rest;
 
-import java.util.List;
-
-import javax.ws.rs.Consumes;
-import javax.ws.rs.POST;
-import javax.ws.rs.PUT;
-import javax.ws.rs.Produces;
-
 import org.apache.camel.Header;
-import org.crmf.model.audit.Audit;
 import org.crmf.model.audit.Question;
-import org.crmf.model.audit.Questionnaire;
 import org.crmf.model.audit.SestAuditModel;
-import org.crmf.model.audit.SestQuestionnaireModel;
 import org.crmf.model.utility.GenericFilter;
 import org.crmf.model.utility.ModelObject;
 
+import javax.ws.rs.Consumes;
+import javax.ws.rs.POST;
+import javax.ws.rs.Produces;
+import java.util.List;
+
 public interface AuditRestServerInterface {
 
-	@POST
-	@Consumes("application/json")
-	void editAudit(ModelObject audit) throws Exception;
-	
-	@POST
-	@Produces("application/json")
-	@Consumes("text/html")
-	SestAuditModel loadAudit(GenericFilter filter, @Header("SHIRO_SECURITY_TOKEN") String token, @Header("filterList") String permission) throws Exception;
+  @POST
+  @Consumes("application/json")
+  void editAudit(ModelObject audit) throws Exception;
 
-	@POST
-	@Produces("text/html")
-	@Consumes("text/html")
-	ModelObject loadQuestionnaireJson(GenericFilter filter) throws Exception;
+  @POST
+  @Produces("application/json")
+  @Consumes("text/html")
+  SestAuditModel loadAudit(GenericFilter filter, @Header("SHIRO_SECURITY_TOKEN") String token, @Header("filterList") String permission) throws Exception;
 
-	@POST
-	@Produces("application/json")
-	List<Question> loadQuestionnaireSafeguard() throws Exception;
+  @POST
+  @Produces("text/html")
+  @Consumes("text/html")
+  ModelObject loadQuestionnaireJson(GenericFilter filter) throws Exception;
 
-	@POST
-	void createDefaultQuestionnaire();
+  @POST
+  @Produces("application/json")
+  List<Question> loadQuestionnaireSafeguard() throws Exception;
+
+  @POST
+  void createDefaultQuestionnaire();
 }

@@ -30,8 +30,8 @@ public class ShiroSessionListener implements SessionListener {
   @Override
   public void onExpiration(Session session) {
     LOG.info("On EXPIRATION " + session.getId());
-		LOG.info("On EXPIRATION " + sender);
-  //  sender.requestBody("{\"sessionId\":\"" + session.getId() + "\",\"status\":\"EXPIRED\"}");
+    LOG.info("On EXPIRATION " + sender);
+    //  sender.requestBody("{\"sessionId\":\"" + session.getId() + "\",\"status\":\"EXPIRED\"}");
   }
 
   @Override

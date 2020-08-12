@@ -167,7 +167,6 @@ export class TreatmentComponent implements OnInit, OnDestroy {
 
   close(event) {
 
-    // console.log(event.node.data.type)
     if (event.node.data.type === 'PrimaryAssetCategory') {
 
 
@@ -207,8 +206,6 @@ export class TreatmentComponent implements OnInit, OnDestroy {
   }
 
   openDetails(event) {
-
-    // console.log(event)
 
     if (event.node.data.type === 'Asset') {
 
@@ -254,8 +251,6 @@ export class TreatmentComponent implements OnInit, OnDestroy {
 
   closeDetails(event) {
 
-
-    // console.log(event.node.data.type)
     if (event.node.data.type === 'Asset') {
 
 
@@ -279,19 +274,11 @@ export class TreatmentComponent implements OnInit, OnDestroy {
 
   lostDrop(node) {
 
-    // console.log(this.treatmentModel)
   }
 
   focusDropDetails(event, node) {
 
-    /*console.log(node)
-    console.log("-----")
-    console.log(node)
-    console.log(event)*/
-
     if (event.value < node.currentValue) {
-
-      // console.log(node.data.target)
 
       alert('Wrong value');
 
@@ -353,16 +340,8 @@ export class TreatmentComponent implements OnInit, OnDestroy {
 
   propagateValueSafeguards(model, node, value: string) {
 
-    // for(let i in this.treatmentModel)
-    /*console.log("propagateValueSafeguards")
-    console.log(node)
-    console.log(model)
-    console.log(model.data.safeguardIdentifier)
-    console.log(node.data.safeguardIdentifier)*/
-
     if (model.data.safeguardIdentifier === node.safeguardIdentifier) {
 
-      console.log('setting safeguard value');
       model.data.targetValue = value;
 
     } else if (model.children !== null) {
@@ -373,8 +352,6 @@ export class TreatmentComponent implements OnInit, OnDestroy {
       }
 
     }
-
-    // console.log(this.treatmentModel)
   }
 
   propagateValueGASF(model, node, value: string) {
@@ -407,9 +384,6 @@ export class TreatmentComponent implements OnInit, OnDestroy {
 
   info(node) {
 
-    // console.log(node);
-
-    console.log(node);
     if (node.type === 'PrimaryAssetCategory') {
 
       if (!this.isChanged) {
@@ -500,18 +474,15 @@ export class TreatmentComponent implements OnInit, OnDestroy {
     this.subscriptions.push(
       this.dataService.loadTreatementModel(JSON.stringify(a)).subscribe((response: ModelObject) => {
 
-        console.log('get Treatment');
-        console.log(response);
-        this.blocked = false;
         this.treatmentModel = <TreeNode[]>JSON.parse(response.jsonModel);
         this.treatmentId = response.objectIdentifier;
 
+        this.blocked = false;
         this.showTable = true;
 
         this.lockService.addLock(this.treatmentId, response.lockedBy);
         this.subscriptions.push(
           this.lockService.lockedBy.subscribe((user) => {
-            console.log(user);
             this.treatitems[0].disabled = !this.enableSaveButton ||
               !(this.lockService.lockedBy.getValue() === sessionStorage.getItem('loggedUsername'));
           }));
@@ -533,8 +504,6 @@ export class TreatmentComponent implements OnInit, OnDestroy {
 
     this.subscriptions.push(
       this.dataService.loadTreatementModelDetails(JSON.stringify(a)).subscribe(response => {
-        console.log('get Details secondTreatmentModel');
-        console.log(response);
 
         this.secondTreatmentModel = <TreeNode[]>response;
 
@@ -581,8 +550,6 @@ export class TreatmentComponent implements OnInit, OnDestroy {
     this.subscriptions.push(
       this.dataService.calculateTreatment(JSON.stringify(a)).subscribe(response => {
 
-        console.log('Calculate');
-        console.log(response);
         this.isChanged = false;
         this.treatmentModel = <TreeNode[]>response;
         this.blocked = false;

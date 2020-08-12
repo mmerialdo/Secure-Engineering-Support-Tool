@@ -12,24 +12,24 @@
 
 package org.crmf.persistency.mapper.user;
 
-import java.util.List;
-import java.util.Set;
-
 import org.crmf.model.general.SESTObject;
 import org.crmf.model.user.User;
 import org.crmf.model.user.UserRole;
 
+import java.util.List;
+import java.util.Set;
+
 public interface RoleServiceInterface {
 
-	Integer insert(UserRole role, String userIdentifier, String projectIdentifier) throws Exception;
-	
-	void insertUserForProject(User user, String projectIdentifier) throws Exception;
+  Integer insert(UserRole role, String userIdentifier, String projectIdentifier) throws Exception;
 
-	void deleteUserFromProject(String userIdentifier, String projectIdentifier, Set<SESTObject> associatedObjects);
+  void insertUserForProject(User user, String projectIdentifier) throws Exception;
 
-	List<UserRole> getByUserIdentifier(String identifier) throws Exception;
+  void deleteUserFromProject(String userIdentifier, String projectIdentifier, Set<SESTObject> associatedObjects);
 
-	List<User> getByProjectIdentifier(String identifier) throws Exception;
-	
-	List<UserRole> getRolesByUserAndProjectId(String userId, String projectId);
+  List<UserRole> getByUserIdentifier(String identifier) throws Exception;
+
+  List<User> getByProjectIdentifier(String identifier) throws Exception;
+
+  List<UserRole> getRolesByUserAndProjectId(String userId, String projectId);
 }	

@@ -16,10 +16,9 @@ import org.crmf.persistency.domain.risk.SestRiskTreatmentModel;
 
 public interface RiskTreatmentServiceInterface {
 
-	public void insert(String riskTreatmentModelJson, String sestobjId);
+  void insert(String riskTreatmentModelJson, String sestobjId);
 
-	public void update(String riskTreatmentModelJson, String sestobjId);
+  void update(String riskTreatmentModelJson, String sestobjId);
 
-	public SestRiskTreatmentModel getByIdentifier(String sestobjId);
-
+  SestRiskTreatmentModel getByIdentifier(String sestobjId);
 }

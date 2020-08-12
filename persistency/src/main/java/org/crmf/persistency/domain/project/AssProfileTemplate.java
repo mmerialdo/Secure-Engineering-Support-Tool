@@ -13,33 +13,33 @@
 package org.crmf.persistency.domain.project;
 
 public class AssProfileTemplate {
-    private Integer id;
+  private Integer id;
 
-    private Integer profileId;
+  private Integer profileId;
 
-    private Integer templateId;
-	
-    public Integer getId() {
-        return id;
-    }
+  private Integer templateId;
 
-    public void setId(Integer id) {
-        this.id = id;
-    }
+  public Integer getId() {
+    return id;
+  }
 
-    public Integer getProfileId() {
-        return profileId;
-    }
+  public void setId(Integer id) {
+    this.id = id;
+  }
 
-    public void setProfileId(Integer profileId) {
-        this.profileId = profileId;
-    }
+  public Integer getProfileId() {
+    return profileId;
+  }
 
-    public Integer getTemplateId() {
-        return templateId;
-    }
+  public void setProfileId(Integer profileId) {
+    this.profileId = profileId;
+  }
 
-    public void setTemplateId(Integer templateId) {
-        this.templateId = templateId;
-    }
+  public Integer getTemplateId() {
+    return templateId;
+  }
+
+  public void setTemplateId(Integer templateId) {
+    this.templateId = templateId;
+  }
 }

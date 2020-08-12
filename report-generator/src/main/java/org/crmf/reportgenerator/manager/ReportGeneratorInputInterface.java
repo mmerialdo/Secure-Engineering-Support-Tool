@@ -14,13 +14,11 @@ package org.crmf.reportgenerator.manager;
 
 import org.crmf.model.riskassessmentelements.ImpactEnum;
 
-import java.io.File;
-
 public interface ReportGeneratorInputInterface {
 
-	String editReport(String procedureId) throws Exception;
+  String editReport(String procedureId) throws Exception;
 
-	String editLightReport(String procedureId, ImpactEnum threshold) throws Exception;
+  String editLightReport(String procedureId, ImpactEnum threshold) throws Exception;
 
-	String editISOReport(String procedureId) throws Exception;
+  String editISOReport(String procedureId) throws Exception;
 }

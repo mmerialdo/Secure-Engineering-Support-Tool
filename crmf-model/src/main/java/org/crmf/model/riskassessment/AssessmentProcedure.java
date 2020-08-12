@@ -12,17 +12,16 @@
 
 package org.crmf.model.riskassessment;
 
-import java.util.ArrayList;
-
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonElement;
 import org.crmf.model.general.SESTObject;
 import org.crmf.model.user.User;
 import org.crmf.model.utility.assetmodel.AssetModelSerializerDeserializer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonElement;
+import java.util.List;
 
 public class AssessmentProcedure extends SESTObject {
 
@@ -32,7 +31,7 @@ public class AssessmentProcedure extends SESTObject {
 	private PhaseEnum phase;
 	private AssessmentStatusEnum status;
 	private String updateTime;
-	private ArrayList<AssessmentTemplate> generatedTemplates;
+	private List<AssessmentTemplate> generatedTemplates;
 	private AssetModel assetModel;
 	private ThreatModel threatModel;
 	private VulnerabilityModel vulnerabilityModel;
@@ -40,14 +39,6 @@ public class AssessmentProcedure extends SESTObject {
 	private RiskTreatmentModel riskTreatmentModel;
 	private User lastUserUpdate;
 	private RiskModel riskModel;
-
-	public AssessmentProcedure() {
-
-	}
-
-	public void finalize() throws Throwable {
-		super.finalize();
-	}
 
 	public String getCreationTime() {
 		return creationTime;
@@ -89,11 +80,11 @@ public class AssessmentProcedure extends SESTObject {
 		this.phase = phase;
 	}
 
-	public ArrayList<AssessmentTemplate> getGeneratedTemplates() {
+	public List<AssessmentTemplate> getGeneratedTemplates() {
 		return generatedTemplates;
 	}
 
-	public void setGeneratedTemplates(ArrayList<AssessmentTemplate> generatedTemplates) {
+	public void setGeneratedTemplates(List<AssessmentTemplate> generatedTemplates) {
 		this.generatedTemplates = generatedTemplates;
 	}
 

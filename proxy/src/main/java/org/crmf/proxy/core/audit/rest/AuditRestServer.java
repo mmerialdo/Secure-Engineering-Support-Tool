@@ -16,7 +16,6 @@ import org.crmf.core.audit.AuditInputInterface;
 import org.crmf.model.audit.AuditTypeEnum;
 import org.crmf.model.audit.Question;
 import org.crmf.model.audit.SestAuditModel;
-import org.crmf.model.audit.SestQuestionnaireModel;
 import org.crmf.model.utility.GenericFilter;
 import org.crmf.model.utility.GenericFilterEnum;
 import org.crmf.model.utility.ModelObject;
@@ -28,55 +27,55 @@ import java.util.List;
 //This class manages the business logic behind the webservices related to the Audits management
 public class AuditRestServer implements AuditRestServerInterface {
 
-	private static final Logger LOG = LoggerFactory.getLogger(AuditRestServer.class.getName());
-	
-	private AuditInputInterface auditInput;
+  private static final Logger LOG = LoggerFactory.getLogger(AuditRestServer.class.getName());
 
-	@Override
-	public void editAudit(ModelObject audit) throws Exception {
-		try{
-			auditInput.editAudit(audit);
-		} catch (Exception e) {
-			LOG.error("editAuditList " + e.getMessage());
-			throw new Exception("COMMAND_EXCEPTION", e);
-		}
-	}
-	
-	@Override
-	public SestAuditModel loadAudit(GenericFilter filter, String token, String permission) throws Exception {
+  private AuditInputInterface auditInput;
 
-		try{
-			return auditInput.loadAudit(filter.getFilterValue(GenericFilterEnum.IDENTIFIER), AuditTypeEnum.SECURITY, false);
-		} catch (Exception e) {
-			LOG.error("loadAudit " + e.getMessage());
-			throw new Exception("COMMAND_EXCEPTION", e);
-		}
-	}
+  @Override
+  public void editAudit(ModelObject audit) throws Exception {
+    try {
+      auditInput.editAudit(audit);
+    } catch (Exception e) {
+      LOG.error("editAuditList " + e.getMessage());
+      throw new Exception("COMMAND_EXCEPTION", e);
+    }
+  }
 
-	@Override
-	public List<Question> loadQuestionnaireSafeguard() throws Exception {
-		try{
-			return auditInput.loadQuestionnaireSafeguard();
-		} catch (Exception e) {
-			LOG.error("loadQuestionnaire " + e.getMessage());
-			throw new Exception("COMMAND_EXCEPTION", e);
-		}
-	}
+  @Override
+  public SestAuditModel loadAudit(GenericFilter filter, String token, String permission) throws Exception {
 
-	@Override
-	public ModelObject loadQuestionnaireJson(GenericFilter filter) throws Exception {
-		try{
-			return auditInput.loadQuestionnaire(filter.getFilterValue(GenericFilterEnum.IDENTIFIER));
-		} catch (Exception e) {
-			LOG.error("loadQuestionnaireJson " + e.getMessage());
-			throw new Exception("COMMAND_EXCEPTION", e);
-		}
-	}
+    try {
+      return auditInput.loadAudit(filter.getFilterValue(GenericFilterEnum.IDENTIFIER), AuditTypeEnum.SECURITY, false);
+    } catch (Exception e) {
+      LOG.error("loadAudit " + e.getMessage());
+      throw new Exception("COMMAND_EXCEPTION", e);
+    }
+  }
 
-	@Override
-	public void createDefaultQuestionnaire() {
-		auditInput.createDefaultQuestionnaire();
-	}
+  @Override
+  public List<Question> loadQuestionnaireSafeguard() throws Exception {
+    try {
+      return auditInput.loadQuestionnaireSafeguard();
+    } catch (Exception e) {
+      LOG.error("loadQuestionnaire " + e.getMessage());
+      throw new Exception("COMMAND_EXCEPTION", e);
+    }
+  }
+
+  @Override
+  public ModelObject loadQuestionnaireJson(GenericFilter filter) throws Exception {
+    try {
+      return auditInput.loadQuestionnaire(filter.getFilterValue(GenericFilterEnum.IDENTIFIER));
+    } catch (Exception e) {
+      LOG.error("loadQuestionnaireJson " + e.getMessage());
+      throw new Exception("COMMAND_EXCEPTION", e);
+    }
+  }
+
+  @Override
+  public void createDefaultQuestionnaire() {
+    auditInput.createDefaultQuestionnaire();
+  }
 
   public AuditInputInterface getAuditInput() {
     return auditInput;

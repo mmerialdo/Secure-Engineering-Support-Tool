@@ -12,30 +12,30 @@
 
 package org.crmf.persistency.mapper.project;
 
-import java.util.List;
-
 import org.crmf.persistency.domain.project.AssProject;
+
+import java.util.List;
 
 //This interface allows the bundle to invoke the SQL methods within the AssprojectMapper.xml (via the ibatis API)
 public interface AssprojectMapper {
 
-    public int insert(AssProject record);
-    
-	public void update(AssProject project);
+  int insert(AssProject record);
 
-	public void delete(Integer id);
+  void update(AssProject project);
 
-	public void deleteByIdentifier(String identifier);
+  void delete(Integer id);
 
-	public AssProject getById(Integer id);
-	
-	public AssProject getByIdentifier(String identifier);
+  void deleteByIdentifier(String identifier);
 
-	Integer getIdByIdentifier(String identifier);
-	
-	public AssProject getByProfileId(String profileId);
-	
-	public AssProject getByTemplateId(String templateId);
-	
-	public List<AssProject> getAll();
+  AssProject getById(Integer id);
+
+  AssProject getByIdentifier(String identifier);
+
+  Integer getIdByIdentifier(String identifier);
+
+  AssProject getByProfileId(String profileId);
+
+  AssProject getByTemplateId(String templateId);
+
+  List<AssProject> getAll();
 }

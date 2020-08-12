@@ -59,7 +59,7 @@
       <div class="col-md-6" [formGroup]="malfunctionForm" >
 
         <label>
-          <input #confiLossE type="checkbox" formControlName="malfunctionConfidenciality" [checked]="malfunctionConfidenciality" (change)="malfunctionConfidenciality= confiLossE.checked"> Confidentiality Loss
+          <input #confiLossE type="checkbox" formControlName="malfunctionConfidentiality" [checked]="malfunctionConfidentiality" (change)="malfunctionConfidentiality= confiLossE.checked"> Confidentiality Loss
         </label>
 
         <label>
@@ -108,7 +108,7 @@
 
       <div [formGroup]="malfunctionForm" class="form-group">
         <label for="typeEF">Functional Malfunction Type (*)</label>
-        <i class="fa fa-info-circle" (click)="infoMalfunctionType()" style="cursor:pointer;margin-left:1px;"></i>
+        <em class="fa fa-info-circle" (click)="infoMalfunctionType()" style="cursor:pointer;margin-left:1px;"></em>
         <select formControlName="typeEF" class="form-control" name="typeEF" id="typeEF">
 
 
@@ -141,8 +141,8 @@
 
         <div [formGroup]="malfunctionForm" class="form-group">
           <label for="lowE" style="color: green">Low</label>
-          <i class="fa fa-info-circle" (click)="infoSeriousness()" style="cursor:pointer;margin-left:1px;"></i>
-          <textarea formControlName="lowE" [(ngModel)]="low" class="form-control" rows="3" name="lowE" id="lowE" [readonly]="(!malfunctionEfficency&& !malfunctionIntegrity && !malfunctionConfidenciality&& !malfunctionAvailability)"> </textarea>
+          <em class="fa fa-info-circle" (click)="infoSeriousness()" style="cursor:pointer;margin-left:1px;"></em>
+          <textarea formControlName="lowE" [(ngModel)]="low" class="form-control" rows="3" name="lowE" id="lowE" [readonly]="(!malfunctionEfficency&& !malfunctionIntegrity && !malfunctionConfidentiality&& !malfunctionAvailability)"> </textarea>
 
 
         </div>
@@ -154,8 +154,8 @@
 
         <div [formGroup]="malfunctionForm" class="form-group">
           <label for="mediumE" style="color: #ffdb00">Medium</label>
-          <i class="fa fa-info-circle" (click)="infoSeriousness()" style="cursor:pointer;margin-left:1px;"></i>
-          <textarea formControlName="mediumE" [(ngModel)]="medium" rows="3" class="form-control" name="mediumE" id="mediumE" [readonly]="(!malfunctionEfficency&& !malfunctionIntegrity && !malfunctionConfidenciality&& !malfunctionAvailability)"> </textarea>
+          <em class="fa fa-info-circle" (click)="infoSeriousness()" style="cursor:pointer;margin-left:1px;"></em>
+          <textarea formControlName="mediumE" [(ngModel)]="medium" rows="3" class="form-control" name="mediumE" id="mediumE" [readonly]="(!malfunctionEfficency&& !malfunctionIntegrity && !malfunctionConfidentiality&& !malfunctionAvailability)"> </textarea>
 
 
         </div>
@@ -167,8 +167,8 @@
 
         <div [formGroup]="malfunctionForm" class="form-group">
           <label for="highE" style="color: orange">High</label>
-          <i class="fa fa-info-circle" (click)="infoSeriousness()" style="cursor:pointer;margin-left:1px;"></i>
-          <textarea formControlName="highE" [(ngModel)]="high" rows="3" class="form-control" name="highE" id="highE" [readonly]="(!malfunctionEfficency&& !malfunctionIntegrity && !malfunctionConfidenciality&& !malfunctionAvailability)"> </textarea>
+          <em class="fa fa-info-circle" (click)="infoSeriousness()" style="cursor:pointer;margin-left:1px;"></em>
+          <textarea formControlName="highE" [(ngModel)]="high" rows="3" class="form-control" name="highE" id="highE" [readonly]="(!malfunctionEfficency&& !malfunctionIntegrity && !malfunctionConfidentiality&& !malfunctionAvailability)"> </textarea>
 
         </div>
 
@@ -178,9 +178,9 @@
 
         <div [formGroup]="malfunctionForm" class="form-group">
           <label for="criticalE" style="color: red">Critical</label>
-          <i class="fa fa-info-circle" (click)="infoSeriousness()" style="cursor:pointer;margin-left:1px;"></i>
+          <em class="fa fa-info-circle" (click)="infoSeriousness()" style="cursor:pointer;margin-left:1px;"></em>
           <textarea formControlName="criticalE" [(ngModel)]="critical" rows="3" class="form-control" name="criticalE" id="criticalE"
-                    [readonly]="(!malfunctionEfficency&& !malfunctionIntegrity && !malfunctionConfidenciality&& !malfunctionAvailability)"> </textarea>
+                    [readonly]="(!malfunctionEfficency&& !malfunctionIntegrity && !malfunctionConfidentiality&& !malfunctionAvailability)"> </textarea>
           <!--<p *ngIf="!editMode"> Suppory MCS </p>-->
 
         </div>
@@ -196,7 +196,7 @@
   <p-footer>
     <div class="ui-dialog-buttonpane ui-widget-content ui-helper-clearfix">
       <button type="button" pButton icon="fa fa-close" (click)="closeEditMalForm()" label="Cancel"></button>
-      <button type="button" pButton icon="fa fa-check" [disabled]="(!malfunctionForm.valid || (!malfunctionEfficency&& !malfunctionIntegrity && !malfunctionConfidenciality&& !malfunctionAvailability)|| ((low ===null || low ==='' )&&(medium ===null || medium ==='' )&&(high ===null || high ==='' )&&(critical ===null || critical ==='' ) )|| duplicateName )"
+      <button type="button" pButton icon="fa fa-check" [disabled]="(!malfunctionForm.valid || (!malfunctionEfficency&& !malfunctionIntegrity && !malfunctionConfidentiality&& !malfunctionAvailability)|| ((low ===null || low ==='' )&&(medium ===null || medium ==='' )&&(high ===null || high ==='' )&&(critical ===null || critical ==='' ) )|| duplicateName )"
               (click)="saveOrEditMalfunction()" label="Save"></button>
     </div>
   </p-footer>
@@ -214,7 +214,7 @@ Symbol'>·
           <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </span>
         </span>
-        <b>Seriousness Level 4: Vital </b>
+        <strong>Seriousness Level 4: Vital </strong>
       </p>
 
       <p class=MsoListParagraph style='margin-left:36.0pt;text-indent:0cm'>At this level, the potential risk is very serious, and even the existence and survival of the organization (or at least
@@ -230,7 +230,7 @@ Symbol'>·
           <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </span>
         </span>
-        <b>Seriousness Level 3: Very Serious </b>
+        <strong>Seriousness Level 3: Very Serious </strong>
       </p>
 
       <p class=MsoListParagraph style='margin-left:36.0pt;text-indent:0cm'>These Malfunctions are considered very serious at the level of the organization, although its future would not be at
@@ -247,7 +247,7 @@ Symbol'>·
           <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </span>
         </span>
-        <b>Seriousness Level 2: Serious </b>
+        <strong>Seriousness Level 2: Serious </strong>
       </p>
 
       <p class=MsoListParagraph style='margin-left:36.0pt;text-indent:0cm'>Malfunctions at this level would have a clear impact on the organization’s operations, results or image, but are globally
@@ -260,7 +260,7 @@ Symbol'>·
           <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </span>
         </span>
-        <b>Seriousness Level 1: Not significant  </b>
+        <strong>Seriousness Level 1: Not significant  </strong>
       </p>
 
       <p class=MsoListParagraph style='margin-left:36.0pt;text-indent:0cm'>At this level, any resulting damage would have no significant impact on the results or image of the organization, even
@@ -296,14 +296,14 @@ Symbol'>·
           <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </span>
         </span>
-        <b>Incorrect timing</b>: the tasks or activities that are planned are not completed in time;  </p>
+        <strong>Incorrect timing</strong>: the tasks or activities that are planned are not completed in time;  </p>
       <p class=MsoListParagraph style='margin-left:36.0pt'>
         <span style='font-family:
 Symbol'>·
           <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </span>
         </span>
-        <b>Lack of compliance</b>: the tasks or activities that are planned are not completed in accordance with the specifications;
+        <strong>Lack of compliance</strong>: the tasks or activities that are planned are not completed in accordance with the specifications;
       </p>
       <p class=MsoListParagraph style='margin-left:36.0pt'>
         <span style='font-family:
@@ -311,7 +311,7 @@ Symbol'>·
           <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </span>
         </span>
-        <b>Lack of completeness</b>: the tasks or activities that are planned are only partially completed (although the parts
+        <strong>Lack of completeness</strong>: the tasks or activities that are planned are only partially completed (although the parts
         that are complete are as specified); </p>
       <p class=MsoListParagraph style='margin-left:36.0pt'>
         <span style='font-family:
@@ -319,21 +319,21 @@ Symbol'>·
           <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </span>
         </span>
-        <b>Lack of correctness</b>: additional tasks or activities are performed that were not planned or specified; </p>
+        <strong>Lack of correctness</strong>: additional tasks or activities are performed that were not planned or specified; </p>
       <p class=MsoListParagraph style='margin-left:36.0pt'>
         <span style='font-family:
 Symbol'>·
           <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </span>
         </span>
-        <b>Lack of discretion</b>: information is improperly disclosed while the tasks or activities are performed;  </p>
+        <strong>Lack of discretion</strong>: information is improperly disclosed while the tasks or activities are performed;  </p>
       <p class=MsoListParagraph style='margin-left:36.0pt'>
         <span style='font-family:
 Symbol'>·
           <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </span>
         </span>
-        <b>Lack of Control</b>: the tasks or activities are performed and completed as planned but without any control or visibility
+        <strong>Lack of Control</strong>: the tasks or activities are performed and completed as planned but without any control or visibility
         of their execution.</p>
 
     </div>
@@ -368,7 +368,7 @@ Symbol'>·
   </div>
   <div class="row">
     <div class="col-md-6">
-      <h1>Technical {{this.malfunctionForm.value.malfunctionConfidenciality }}</h1>{{malfunctionEfficency.value}}
+      <h1>Technical {{this.malfunctionForm.value.malfunctionConfidentiality }}</h1>{{malfunctionEfficency.value}}
       <hr>
       <div [formGroup]="malfunctionForm" class="form-group">
         <label for="descriptionET">Description</label>
@@ -382,9 +382,9 @@ Symbol'>·
       <div class="col-md-6" [formGroup]="malfunctionForm">
         <label>
 &lt;!&ndash;i d="checkbox-1" value="value-1"
-          <input #confiLossE type="checkbox" [checked]="malfunctionConfidenciality" (change)="malfunctionConfidenciality= confiLossE.checked"> Confidentiality Loss
+          <input #confiLossE type="checkbox" [checked]="malfunctionConfidentiality" (change)="malfunctionConfidentiality= confiLossE.checked"> Confidentiality Loss
 &ndash;&gt;
-          <input type="checkbox" id="malfunctionConfidenciality" value="malfunctionConfidenciality" formControlName="malfunctionConfidenciality" > Confidentiality Loss
+          <input type="checkbox" id="malfunctionConfidentiality" value="malfunctionConfidentiality" formControlName="malfunctionConfidentiality" > Confidentiality Loss
         </label>
         <label>
           <input type="checkbox" id="malfunctionAvailability" value="malfunctionAvailability" formControlName="malfunctionAvailability" > Availability Loss
@@ -445,21 +445,21 @@ Symbol'>·
         <div [formGroup]="malfunctionForm" class="form-group">
           <label for="lowE" style="color: green">Low</label>
           <i class="fa fa-info-circle" (click)="infoSeriousness()" style="cursor:pointer;margin-left:1px;"></i>
-          <textarea formControlName="lowE" class="form-control" rows="3" name="lowE" id="lowE" [readonly]="(!malfunctionEfficency&& !malfunctionIntegrity && !malfunctionConfidenciality&& !malfunctionAvailability)"> </textarea>
+          <textarea formControlName="lowE" class="form-control" rows="3" name="lowE" id="lowE" [readonly]="(!malfunctionEfficency&& !malfunctionIntegrity && !malfunctionConfidentiality&& !malfunctionAvailability)"> </textarea>
         </div>
       </div>
       <div class="col-md-3">
         <div [formGroup]="malfunctionForm" class="form-group">
           <label for="mediumE" style="color: #ffdb00">Medium</label>
           <i class="fa fa-info-circle" (click)="infoSeriousness()" style="cursor:pointer;margin-left:1px;"></i>
-          <textarea formControlName="mediumE" rows="3" class="form-control" name="mediumE" id="mediumE" [readonly]="(!malfunctionEfficency&& !malfunctionIntegrity && !malfunctionConfidenciality&& !malfunctionAvailability)"> </textarea>
+          <textarea formControlName="mediumE" rows="3" class="form-control" name="mediumE" id="mediumE" [readonly]="(!malfunctionEfficency&& !malfunctionIntegrity && !malfunctionConfidentiality&& !malfunctionAvailability)"> </textarea>
         </div>
       </div>
       <div class="col-md-3">
         <div [formGroup]="malfunctionForm" class="form-group">
           <label for="highE" style="color: orange">High</label>
           <i class="fa fa-info-circle" (click)="infoSeriousness()" style="cursor:pointer;margin-left:1px;"></i>
-          <textarea formControlName="highE" rows="3" class="form-control" name="highE" id="highE" [readonly]="(!malfunctionEfficency&& !malfunctionIntegrity && !malfunctionConfidenciality&& !malfunctionAvailability)"> </textarea>
+          <textarea formControlName="highE" rows="3" class="form-control" name="highE" id="highE" [readonly]="(!malfunctionEfficency&& !malfunctionIntegrity && !malfunctionConfidentiality&& !malfunctionAvailability)"> </textarea>
         </div>
       </div>
       <div class="col-md-3">
@@ -467,7 +467,7 @@ Symbol'>·
           <label for="criticalE" style="color: red">Critical</label>
           <i class="fa fa-info-circle" (click)="infoSeriousness()" style="cursor:pointer;margin-left:1px;"></i>
           <textarea formControlName="criticalE"  rows="3" class="form-control" name="criticalE" id="criticalE"
-                    [readonly]="(!malfunctionEfficency&& !malfunctionIntegrity && !malfunctionConfidenciality&& !malfunctionAvailability)"> </textarea>
+                    [readonly]="(!malfunctionEfficency&& !malfunctionIntegrity && !malfunctionConfidentiality&& !malfunctionAvailability)"> </textarea>
         </div>
       </div>
       <span  class="cols-sm-2 control-label">* - mandatory field</span>
@@ -479,7 +479,7 @@ Symbol'>·
       <button type="button" pButton icon="fa fa-check"
               (click)="saveOrEditMalfunction()" label="Save"></button>&lt;!&ndash;[disabled]="(businessEditMalfunctioForm.valid)"&ndash;&gt;
       &lt;!&ndash;<button type="button" pButton icon="fa fa-check" [disabled]="(!businessEditMalfunctioForm.valid || (!malfunctionEfficency
-      && !malfunctionIntegrity && !malfunctionConfidenciality&& !malfunctionAvailability)||
+      && !malfunctionIntegrity && !malfunctionConfidentiality&& !malfunctionAvailability)||
       ((low ===null || low ==='' )&&(medium ===null || medium ==='' )&&(high ===null || high ==='' )
       &&(critical ===null || critical ==='' ) )|| duplicateName )"
               (click)="saveMalfunction()" label="Save"></button>&ndash;&gt;
@@ -504,14 +504,14 @@ Symbol'>·
           <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </span>
         </span>
-        <b>Incorrect timing</b>: the tasks or activities that are planned are not completed in time;  </p>
+        <strong>Incorrect timing</strong>: the tasks or activities that are planned are not completed in time;  </p>
       <p class=MsoListParagraph style='margin-left:36.0pt'>
         <span style='font-family:
 Symbol'>·
           <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </span>
         </span>
-        <b>Lack of compliance</b>: the tasks or activities that are planned are not completed in accordance with the specifications;
+        <strong>Lack of compliance</strong>: the tasks or activities that are planned are not completed in accordance with the specifications;
       </p>
       <p class=MsoListParagraph style='margin-left:36.0pt'>
         <span style='font-family:
@@ -519,7 +519,7 @@ Symbol'>·
           <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </span>
         </span>
-        <b>Lack of completeness</b>: the tasks or activities that are planned are only partially completed (although the parts
+        <strong>Lack of completeness</strong>: the tasks or activities that are planned are only partially completed (although the parts
         that are complete are as specified); </p>
       <p class=MsoListParagraph style='margin-left:36.0pt'>
         <span style='font-family:
@@ -527,21 +527,21 @@ Symbol'>·
           <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </span>
         </span>
-        <b>Lack of correctness</b>: additional tasks or activities are performed that were not planned or specified; </p>
+        <strong>Lack of correctness</strong>: additional tasks or activities are performed that were not planned or specified; </p>
       <p class=MsoListParagraph style='margin-left:36.0pt'>
         <span style='font-family:
 Symbol'>·
           <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </span>
         </span>
-        <b>Lack of discretion</b>: information is improperly disclosed while the tasks or activities are performed;  </p>
+        <strong>Lack of discretion</strong>: information is improperly disclosed while the tasks or activities are performed;  </p>
       <p class=MsoListParagraph style='margin-left:36.0pt'>
         <span style='font-family:
 Symbol'>·
           <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </span>
         </span>
-        <b>Lack of Control</b>: the tasks or activities are performed and completed as planned but without any control or visibility
+        <strong>Lack of Control</strong>: the tasks or activities are performed and completed as planned but without any control or visibility
         of their execution.</p>
 
     </div>
@@ -563,7 +563,7 @@ Symbol'>·
           <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </span>
         </span>
-        <b>Seriousness Level 4: Vital </b>
+        <strong>Seriousness Level 4: Vital </strong>
       </p>
       <p class=MsoListParagraph style='margin-left:36.0pt;text-indent:0cm'>At this level, the potential risk is very serious, and even the existence and survival of the organization (or at least
         one of its main BPs) is in danger.  If such a Malfunction were to occur, it would concern the entire workforce. For
@@ -577,7 +577,7 @@ Symbol'>·
           <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </span>
         </span>
-        <b>Seriousness Level 3: Very Serious </b>
+        <strong>Seriousness Level 3: Very Serious </strong>
       </p>
       <p class=MsoListParagraph style='margin-left:36.0pt;text-indent:0cm'>These Malfunctions are considered very serious at the level of the organization, although its future would not be at
         risk.  At this seriousness level, all (or, at least, a large part) of the personnel is concerned, in working conditions
@@ -592,7 +592,7 @@ Symbol'>·
           <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </span>
         </span>
-        <b>Seriousness Level 2: Serious </b>
+        <strong>Seriousness Level 2: Serious </strong>
       </p>
       <p class=MsoListParagraph style='margin-left:36.0pt;text-indent:0cm'>Malfunctions at this level would have a clear impact on the organization’s operations, results or image, but are globally
         manageable.  Only a limited part of the staff would be involved in dealing with the consequences of the Malfunction,
@@ -603,7 +603,7 @@ Symbol'>·
           <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </span>
         </span>
-        <b>Seriousness Level 1: Not significant  </b>
+        <strong>Seriousness Level 1: Not significant  </strong>
       </p>
       <p class=MsoListParagraph style='margin-left:36.0pt;text-indent:0cm'>At this level, any resulting damage would have no significant impact on the results or image of the organization, even
         if some staff members are deeply involved in re-establishing the original lockedBy.</p>

@@ -15,12 +15,10 @@ package org.crmf.persistency.mapper.asset;
 import org.crmf.persistency.domain.asset.SestAssetModel;
 
 public interface AssetServiceInterface {
-	
-	public void insert(String assetModelJson, String sestobjId);
-	
-	public void update(String assetModelJson, String sestobjId);
 
-	public SestAssetModel getByIdentifier(String sestobjId);
-	
-	//public SestAssetModel getById(Integer id);
+  void insert(String assetModelJson, String sestobjId);
+
+  void update(String assetModelJson, String sestobjId);
+
+  SestAssetModel getByIdentifier(String sestobjId);
 }

@@ -19,11 +19,11 @@ import java.util.List;
 
 public interface SecRequirementServiceInterface {
 
-	void insertSecurityRequirement(SecurityRequirement secreq);
-	
-	void insertSecRequirementParent(SecurityRequirement secreq);
-	
-	void insertSecRequirementSafeguard(List<String[]> values, ISOControls controls);
+  void insertSecurityRequirement(SecurityRequirement secreq);
 
-	void deleteSecRequirement();
+  void insertSecRequirementParent(SecurityRequirement secreq);
+
+  void insertSecRequirementSafeguard(List<String[]> values, ISOControls controls);
+
+  void deleteSecRequirement();
 }

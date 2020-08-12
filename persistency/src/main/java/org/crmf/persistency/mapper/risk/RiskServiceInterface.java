@@ -12,15 +12,14 @@
 
 package org.crmf.persistency.mapper.risk;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.crmf.model.riskassessmentelements.RiskScenarioReference;
 import org.crmf.persistency.domain.risk.SeriousnessScale;
 import org.crmf.persistency.domain.risk.SestRiskModel;
 import org.crmf.persistency.domain.risk.StatusImpactScale;
 import org.crmf.persistency.domain.risk.StatusLikelihoodScale;
-import org.crmf.persistency.domain.riskassesment.RiskAssesment;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public interface RiskServiceInterface {
   void insert(String riskModelJson, String sestobjId);

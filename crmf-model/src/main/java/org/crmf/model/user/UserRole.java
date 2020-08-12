@@ -19,13 +19,6 @@ public class UserRole {
 	private String projectIdentifier;
 	private String projectName;
 
-	public UserRole(){
-
-	}
-
-	public void finalize() throws Throwable {
-
-	}
 	public UserRoleEnum getRole(){
 		return role;
 	}

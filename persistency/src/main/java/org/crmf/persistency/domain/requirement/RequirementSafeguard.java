@@ -13,23 +13,23 @@
 package org.crmf.persistency.domain.requirement;
 
 public class RequirementSafeguard {
-    private Integer safeguardId;
+  private Integer safeguardId;
 
-    private Integer requirementId;
+  private Integer requirementId;
 
-    public Integer getSafeguardId() {
-        return safeguardId;
-    }
+  public Integer getSafeguardId() {
+    return safeguardId;
+  }
 
-    public void setSafeguardId(Integer safeguardId) {
-        this.safeguardId = safeguardId;
-    }
+  public void setSafeguardId(Integer safeguardId) {
+    this.safeguardId = safeguardId;
+  }
 
-    public Integer getRequirementId() {
-        return requirementId;
-    }
+  public Integer getRequirementId() {
+    return requirementId;
+  }
 
-    public void setRequirementId(Integer requirementId) {
-        this.requirementId = requirementId;
-    }
+  public void setRequirementId(Integer requirementId) {
+    this.requirementId = requirementId;
+  }
 }

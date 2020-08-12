@@ -12,11 +12,6 @@
 
 package org.crmf.model.utility.risktreatmentmodel;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.UUID;
-
 import org.crmf.model.general.SESTObjectTypeEnum;
 import org.crmf.model.riskassessment.RiskModel;
 import org.crmf.model.riskassessment.RiskTreatmentModel;
@@ -25,9 +20,15 @@ import org.crmf.model.riskassessmentelements.RiskScenario;
 import org.crmf.model.riskassessmentelements.RiskTreatment;
 import org.crmf.model.riskassessmentelements.ScenarioResultEnum;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.UUID;
+
 //This class is responsible for cloning RiskTreatmentModels from Json strings and POJO
 public class RiskTreatmentModelCloner {
 
+	public static final String DD_MM_YYYY_HH_MM = "dd/MM/yyyy HH:mm";
 	private String identifier;
 
 	public RiskTreatmentModel clone(RiskTreatmentModel rm) {
@@ -47,7 +48,7 @@ public class RiskTreatmentModelCloner {
 			
 		UUID uuid = UUID.randomUUID();
 		rtm.setIdentifier(uuid.toString());
-		DateFormat df = new SimpleDateFormat("dd/MM/yyyy HH:mm");
+		DateFormat df = new SimpleDateFormat(DD_MM_YYYY_HH_MM);
 		Date now = new Date();
 		rtm.setCreationTime(df.format(now));
 		rtm.setUpdateTime(df.format(now));
@@ -71,7 +72,7 @@ public class RiskTreatmentModelCloner {
 		rtmNew.setIdentifier(identifier);
 		
 		rtmNew.setObjType(SESTObjectTypeEnum.RiskTreatmentModel);
-		DateFormat df = new SimpleDateFormat("dd/MM/yyyy HH:mm");
+		DateFormat df = new SimpleDateFormat(DD_MM_YYYY_HH_MM);
 		Date now = new Date();
 			
 		rtmNew.setCreationTime(df.format(now));

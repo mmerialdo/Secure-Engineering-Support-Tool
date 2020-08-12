@@ -101,7 +101,6 @@ export class DataService {
   }
 
   getUsers<T>(): Observable<T> {
-    console.log('getUsers');
     return this.http.get<T>(this.protocol + '://' + this.ipServer + ':' + this.port + '/user/list?SHIRO_SECURITY_TOKEN=' +
       sessionStorage.getItem('authnToken'));
   }
@@ -421,7 +420,7 @@ export class DataService {
 
   }
 
-  updateRiskModel(s: Object): Observable<Object> {
+  updateRiskModel(s: Object): Observable<any> {
 
     this.loginTrackerService.restartSessionTimer();
     return this.http.post(this.protocol + '://' + this.ipServer + ':' + this.port + '/riskModel/edit?SHIRO_SECURITY_TOKEN=' +

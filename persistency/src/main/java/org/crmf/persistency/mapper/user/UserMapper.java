@@ -12,44 +12,43 @@
 
 package org.crmf.persistency.mapper.user;
 
-import java.util.Date;
-import java.util.List;
-import java.util.Map;
-
 import org.apache.ibatis.annotations.Param;
 import org.crmf.persistency.domain.user.Sestuser;
 
+import java.util.Date;
+import java.util.List;
+
 //This interface allows the bundle to invoke the SQL methods within the UserMapper.xml (via the ibatis API)
 public interface UserMapper {
-	
-	public int insert(Sestuser user);
 
-	public int insertUserPswHistory(@Param("id") int id, @Param("password") String password);
-	
-	public void updatePassword(@Param("id") int id, @Param("password") String password);
+  int insert(Sestuser user);
 
-	public void update(Sestuser user);
+  int insertUserPswHistory(@Param("id") int id, @Param("password") String password);
 
-	public void delete(Integer id);
+  void updatePassword(@Param("id") int id, @Param("password") String password);
 
-	public void deleteByIdentifier(String identifier);
+  void update(Sestuser user);
 
-	public Sestuser getById(Integer userId);
+  void delete(Integer id);
 
-	public Sestuser getByIdentifier(String identifier);
+  void deleteByIdentifier(String identifier);
 
-	public Sestuser getByUsername(String userName);
-	
-	public Integer getIdByIdentifier(String identifier);
+  Sestuser getById(Integer userId);
 
-	public List<Sestuser> getAll();
+  Sestuser getByIdentifier(String identifier);
 
-	public void deleteUserPswByIdentifier(String identifier);
+  Sestuser getByUsername(String userName);
 
-	public void deleteUserPswById(Integer id);
-	
-	public List<String> getOldUserPswByUserId(Integer id);
-	
-	public Date getUserPswLastUpdate(Integer id);
-	
+  Integer getIdByIdentifier(String identifier);
+
+  List<Sestuser> getAll();
+
+  void deleteUserPswByIdentifier(String identifier);
+
+  void deleteUserPswById(Integer id);
+
+  List<String> getOldUserPswByUserId(Integer id);
+
+  Date getUserPswLastUpdate(Integer id);
+
 }

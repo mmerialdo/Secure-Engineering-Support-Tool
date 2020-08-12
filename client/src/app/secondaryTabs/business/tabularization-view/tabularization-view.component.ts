@@ -67,8 +67,6 @@ export class TabularizationViewComponent implements OnInit, OnDestroy {
       this.dataService.loadAsset(JSON.stringify(a)).subscribe((response: ModelObject) => {
 
         this.serverAsset = JSON.parse(response.jsonModel);
-        console.log('Load Asset Model');
-        console.log(this.serverAsset);
         this.loaded = true;
         this.store.dispatch(storeServerAsset(this.serverAsset));
 
@@ -77,7 +75,6 @@ export class TabularizationViewComponent implements OnInit, OnDestroy {
 
       }, err => {
         this.blocked = false;
-        console.log(err);
         throw err;
       }));
   }
@@ -104,7 +101,6 @@ export class TabularizationViewComponent implements OnInit, OnDestroy {
       'objType': 'AssetModel'
     });
 
-    console.log(finalJSON);
     const completeList = {
       'jsonModel': (JSON.stringify(finalJSON, null, 2)),
       'objectIdentifier': this.serverAsset.identifier
@@ -142,9 +138,6 @@ export class TabularizationViewComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    console.log('ngOnDestroy');
-    console.log(this.serverAsset);
-
     this.lockService.removeLock(this.serverAsset.identifier);
 
     this.subscriptions.forEach(s => s.unsubscribe());

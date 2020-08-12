@@ -20,11 +20,7 @@ public class GeneralScore extends VulnerabilityScore {
 	private ArrayList<Consequence> consequences;
 
 	public GeneralScore(){
-		consequences = new ArrayList<Consequence>();
-	}
-
-	public void finalize() throws Throwable {
-		super.finalize();
+		consequences = new ArrayList<>();
 	}
 
 	public VulnerabilityExploitabilityEnum getExploitabilityBasic() {

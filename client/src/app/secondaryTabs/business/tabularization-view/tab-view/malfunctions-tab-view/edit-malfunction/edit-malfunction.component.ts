@@ -25,7 +25,7 @@ import {take} from 'rxjs/operators';
   templateUrl: './edit-malfunction.component.html',
   styleUrls: ['./edit-malfunction.component.css'],
 })
-export class EditMalfunctionComponent implements OnInit, OnDestroy {
+export class EditMalfunctionComponent implements OnInit {
 
   public malfunctionForm: FormGroup;
   public displayEditMalfunction: boolean;
@@ -36,7 +36,7 @@ export class EditMalfunctionComponent implements OnInit, OnDestroy {
   public serverAsset: any;
   public name: string;
   public duplicateName: boolean;
-  public malfunctionConfidenciality: boolean;
+  public malfunctionConfidentiality: boolean;
   public malfunctionAvailability: boolean;
   public malfunctionIntegrity: boolean;
   public malfunctionEfficency: boolean;
@@ -65,12 +65,10 @@ export class EditMalfunctionComponent implements OnInit, OnDestroy {
       'mediumE': ['', [Validators.maxLength(500)]],
       'highE': ['', [Validators.maxLength(500)]],
       'criticalE': ['', [Validators.maxLength(500)]],
-      'malfunctionConfidenciality': [Validators.required],
+      'malfunctionConfidentiality': [Validators.required],
       'malfunctionAvailability': [Validators.required],
       'malfunctionIntegrity': [Validators.required],
-      'malfunctionEfficency': [Validators.required],
-
-
+      'malfunctionEfficency': [Validators.required]
     });
   }
 
@@ -114,7 +112,7 @@ export class EditMalfunctionComponent implements OnInit, OnDestroy {
       const medium = malfunction.scales.find(scale => scale.seriousness === 'MEDIUM');
       const high = malfunction.scales.find(scale => scale.seriousness === 'HIGH');
       const critical = malfunction.scales.find(scale => scale.seriousness === 'CRITICAL');
-      this.malfunctionConfidenciality = malfunction.technicalTypes.some(type => type === 'Confidentiality_Loss');
+      this.malfunctionConfidentiality = malfunction.technicalTypes.some(type => type === 'Confidentiality_Loss');
       this.malfunctionAvailability = malfunction.technicalTypes.some(type => type === 'Availability_Loss');
       this.malfunctionIntegrity = malfunction.technicalTypes.some(type => type === 'Integrity_Loss');
       this.malfunctionEfficency = malfunction.technicalTypes.some(type => type === 'Efficiency_Loss');
@@ -130,7 +128,7 @@ export class EditMalfunctionComponent implements OnInit, OnDestroy {
         mediumE: medium ? medium.description : '',
         highE: high ? high.description : '',
         criticalE: critical ? critical.description : '',
-        malfunctionConfidenciality: this.malfunctionConfidenciality,
+        malfunctionConfidentiality: this.malfunctionConfidentiality,
         malfunctionAvailability: this.malfunctionAvailability,
         malfunctionIntegrity: this.malfunctionIntegrity,
         malfunctionEfficency: this.malfunctionEfficency
@@ -140,7 +138,7 @@ export class EditMalfunctionComponent implements OnInit, OnDestroy {
 
   cancel(): void {
     this.store.dispatch(editMalfunctionClose());
-    this.malfunctionForm.reset();
+    this.reset();
     this.isNew = true;
   }
 
@@ -154,17 +152,16 @@ export class EditMalfunctionComponent implements OnInit, OnDestroy {
   }
 
   closeEditMalForm() {
-    this.malfunctionForm.reset();
-    this.duplicateName = false;
-    this.displayEditMalfunction = false;
+    this.reset();
   }
 
   saveOrEditMalfunction(): void {
+    debugger;
     const technicalTypes: string[] = [];
     if (this.malfunctionAvailability) {
       technicalTypes.push('Availability_Loss');
     }
-    if (this.malfunctionConfidenciality) {
+    if (this.malfunctionConfidentiality) {
       technicalTypes.push('Confidentiality_Loss');
     }
     if (this.malfunctionEfficency) {
@@ -226,16 +223,14 @@ export class EditMalfunctionComponent implements OnInit, OnDestroy {
     // this.displayEditMalfunction = false;
   }
 
-
-
-
-  ngOnDestroy(): void {
-    this.reset();
-  }
-
   reset(): void {
     this.malfunctionForm.reset();
+    this.malfunctionAvailability = false;
+    this.malfunctionConfidentiality = false;
+    this.malfunctionEfficency = false;
+    this.malfunctionIntegrity = false;
+    this.duplicateName = false;
+    this.displayEditMalfunction = false;
   }
-
 }
 

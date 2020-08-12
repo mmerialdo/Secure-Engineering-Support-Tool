@@ -18,12 +18,12 @@ import org.crmf.persistency.domain.risk.SestRiskTreatmentModel;
 //This interface allows the bundle to invoke the SQL methods within the RiskTreatmentMapper.xml (via the ibatis API)
 public interface RiskTreatmentMapper {
 
-	public void insert(SestRiskTreatmentModel riskTreatmentModel);
+  void insert(SestRiskTreatmentModel riskTreatmentModel);
 
-	public void update(@Param("riskTreatmentModelJson") String riskTreatmentModelJson,
-			@Param("sestobjId") String sestobjId);
+  void update(@Param("riskTreatmentModelJson") String riskTreatmentModelJson,
+                     @Param("sestobjId") String sestobjId);
 
-	public SestRiskTreatmentModel getByIdentifier(String sestobjId);
-	
-	public SestRiskTreatmentModel getById(Integer id);
+  SestRiskTreatmentModel getByIdentifier(String sestobjId);
+
+  SestRiskTreatmentModel getById(Integer id);
 }

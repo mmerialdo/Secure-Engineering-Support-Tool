@@ -12,13 +12,7 @@
 
 package org.crmf.proxy.user.auth.rest;
 
-import java.nio.charset.StandardCharsets;
-import java.util.Base64;
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.UUID;
-
+import com.google.gson.Gson;
 import org.apache.camel.Headers;
 import org.apache.camel.Produce;
 import org.apache.camel.ProducerTemplate;
@@ -34,7 +28,6 @@ import org.apache.shiro.session.mgt.DefaultSessionContext;
 import org.apache.shiro.session.mgt.DefaultSessionManager;
 import org.apache.shiro.session.mgt.SessionContext;
 import org.apache.shiro.subject.Subject;
-import org.apache.shiro.subject.support.DefaultSubjectContext;
 import org.crmf.model.user.User;
 import org.crmf.proxy.authnauthz.ShiroSecurityPolicyCustomInterface;
 import org.crmf.user.manager.authentication.UserAuthenticationInterface;
@@ -42,7 +35,11 @@ import org.crmf.user.manager.core.UserManagerInputInterface;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.google.gson.Gson;
+import java.nio.charset.StandardCharsets;
+import java.util.Base64;
+import java.util.Collection;
+import java.util.Map;
+import java.util.UUID;
 
 //This class manages the business logic behind the webservices related to the User Authentication management
 public class UserAuthenticationRestServer implements UserAuthenticationRestServerInterface {

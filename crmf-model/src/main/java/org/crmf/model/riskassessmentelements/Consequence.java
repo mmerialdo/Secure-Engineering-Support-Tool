@@ -23,10 +23,6 @@ public class Consequence {
 		securityImpacts = new ArrayList<SecurityImpact>();
 	}
 
-	public void finalize() throws Throwable {
-
-	}
-
 	public String getDescription() {
 		return description;
 	}

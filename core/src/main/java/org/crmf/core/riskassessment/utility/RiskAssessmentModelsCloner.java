@@ -12,13 +12,6 @@
 
 package org.crmf.core.riskassessment.utility;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.UUID;
-
 import org.crmf.core.safeguardmodel.manager.SafeguardModelManagerInputInterface;
 import org.crmf.model.general.SESTObjectTypeEnum;
 import org.crmf.model.riskassessment.AssessmentProcedure;
@@ -44,9 +37,17 @@ import org.crmf.user.validation.permission.UserPermissionManagerInputInterface;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.UUID;
+
 //This class holds several utility methods for cloning/copying models
 public class RiskAssessmentModelsCloner{
 	private static final Logger LOG = LoggerFactory.getLogger(RiskAssessmentModelsCloner.class.getName());
+	public static final String DD_MM_YYYY_HH_MM = "dd/MM/yyyy HH:mm";
 	private SafeguardModelManagerInputInterface safeguardModelInput;
 	private AssetServiceInterface assetModelService;
 	private VulnerabilityServiceInterface vulnerabilityModelService;
@@ -329,7 +330,7 @@ public class RiskAssessmentModelsCloner{
 		UUID uuid = UUID.randomUUID();
 		safeguards.setIdentifier(uuid.toString());
 		safeguards.setObjType(SESTObjectTypeEnum.SafeguardModel);
-		DateFormat df = new SimpleDateFormat("dd/MM/yyyy HH:mm");
+		DateFormat df = new SimpleDateFormat(DD_MM_YYYY_HH_MM);
 		Date now = new Date();
 			
 		safeguards.setCreationTime(df.format(now));

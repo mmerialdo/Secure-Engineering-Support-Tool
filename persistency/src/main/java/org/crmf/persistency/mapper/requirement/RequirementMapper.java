@@ -12,21 +12,21 @@
 
 package org.crmf.persistency.mapper.requirement;
 
-import java.util.List;
-
 import org.apache.ibatis.annotations.Param;
 import org.crmf.persistency.domain.requirement.Requirement;
 
+import java.util.List;
+
 //This interface allows the bundle to invoke the SQL methods within the RequirementMapper.xml (via the ibatis API)
 public interface RequirementMapper {
-	
-	public void insert(Requirement requirement);
 
-	public List<Requirement> getByIds(List<String> ids);
+  void insert(Requirement requirement);
 
-	public List<Requirement> getBySysProject(@Param("sysprojectId")Integer sysProjectId);
-	
-	public List<Requirement> getBySysProjectAndFile(@Param("sysprojectIdentifier") String sysProjectId, @Param("filename") String filename);
-	
-	public List<String> getFilenameByProject(String sysProjectId);
+  List<Requirement> getByIds(List<String> ids);
+
+  List<Requirement> getBySysProject(@Param("sysprojectId") Integer sysProjectId);
+
+  List<Requirement> getBySysProjectAndFile(@Param("sysprojectIdentifier") String sysProjectId, @Param("filename") String filename);
+
+  List<String> getFilenameByProject(String sysProjectId);
 }

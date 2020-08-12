@@ -12,10 +12,6 @@
 
 package org.crmf.core.riskassessment.project.manager;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-
 import org.crmf.core.riskassessment.utility.RiskAssessmentModelsCloner;
 import org.crmf.model.general.SESTObjectTypeEnum;
 import org.crmf.model.riskassessment.AssessmentProcedure;
@@ -33,6 +29,10 @@ import org.crmf.persistency.mapper.vulnerability.VulnerabilityServiceInterface;
 import org.crmf.user.validation.permission.UserPermissionManagerInputInterface;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 
 //This class is called by the Proxy and manages the entrypoint for the business logic (including the interactions with the Persistency) related to the AssessmentTemplates
 public class AssessmentTemplateInput implements AssessmentTemplateInputInterface {
@@ -54,7 +54,7 @@ public class AssessmentTemplateInput implements AssessmentTemplateInputInterface
 	public String createAssessmentTemplate(AssessmentTemplate template, String profileIdentifier) throws Exception {
 
 		try{
-			LOG.info("createAssessmentTemplate with identifier: " + template.getIdentifier());
+			LOG.info("createAssessmentTemplate with identifier: {}", template.getIdentifier());
 	
 			// copy the template: 
 			// - a copy of of all models is created
@@ -83,8 +83,7 @@ public class AssessmentTemplateInput implements AssessmentTemplateInputInterface
 	@Override
 	public List<AssessmentTemplate> loadAssessmentTemplate(GenericFilter filter) throws Exception {
 
-		LOG.info("loadAssessmentTemplate "+filter.getFilterMap());
-		LOG.info("loadAssessmentTemplate "+filter.getFilterMap().size());
+		LOG.info("loadAssessmentTemplate {}", filter.getFilterMap());
 		String identifier = filter.getFilterValue(GenericFilterEnum.IDENTIFIER);
 		if(filter.getFilterValue(GenericFilterEnum.METHODOLOGY) != null){
 
@@ -96,7 +95,7 @@ public class AssessmentTemplateInput implements AssessmentTemplateInputInterface
 			return asstemplateService.getByProfileIdentifier(filter.getFilterValue(GenericFilterEnum.PROFILE));
 		} else {
 
-			List<AssessmentTemplate> templates = new ArrayList<AssessmentTemplate>();
+			List<AssessmentTemplate> templates = new ArrayList<>();
 			LOG.info("loadAssessmentTemplate IDENTIFIER"+identifier);
 			templates.add(asstemplateService.getByIdentifier(identifier));
 			return templates;
@@ -136,7 +135,7 @@ public class AssessmentTemplateInput implements AssessmentTemplateInputInterface
 				LOG.info("-----------------template updateModels:: vuln id " + identifier);
 				template.setVulnerabilityModel(vulnerabilityModelService.getByIdentifier(identifier).convertToModel());
 				break;
-			case ThreatModel:			
+			case ThreatModel:
 				LOG.info("-----------------template updateModels:: threat id " + identifier);
 				template.setThreatModel(threatModelService.getByIdentifier(identifier).convertToModel());
 				break;

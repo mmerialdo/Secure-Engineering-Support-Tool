@@ -12,13 +12,6 @@
 
 package org.crmf.secreqimport.manager.iso;
 
-import org.crmf.model.audit.ISOControls;
-import org.crmf.model.utility.audit.ISOControlsSerializerDeserializer;
-import org.crmf.persistency.mapper.audit.ISOControlServiceInterface;
-import org.crmf.secreqimport.manager.gasf.GASFInput;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 public interface ISOControlInputInterface {
 
   void importISOFromFile(String filename);

@@ -12,16 +12,8 @@
 
 package org.crmf.persistency.mapper.user;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-
 import org.apache.ibatis.session.SqlSession;
 import org.crmf.model.general.SESTObject;
-import org.crmf.model.user.PermissionTypeEnum;
 import org.crmf.model.user.User;
 import org.crmf.model.user.UserRole;
 import org.crmf.model.user.UserRoleEnum;
@@ -32,6 +24,12 @@ import org.crmf.persistency.mapper.project.AssprojectMapper;
 import org.crmf.persistency.session.PersistencySessionFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 //This class manages the database interactions related to Roles
 public class RoleService implements RoleServiceInterface {

@@ -12,21 +12,13 @@
 
 package org.crmf.model.user;
 
-import java.util.ArrayList;
-
 import org.crmf.model.general.SESTObject;
+
+import java.util.ArrayList;
 
 public class UserExperience extends SESTObject {
 
 	private ArrayList<Experience> experiences;
-
-	public UserExperience(){
-
-	}
-
-	public void finalize() throws Throwable {
-		super.finalize();
-	}
 
 	public ArrayList<Experience> getExperiences() {
 		return experiences;
@@ -35,5 +27,4 @@ public class UserExperience extends SESTObject {
 	public void setExperiences(ArrayList<Experience> experiences) {
 		this.experiences = experiences;
 	}
-	
 }

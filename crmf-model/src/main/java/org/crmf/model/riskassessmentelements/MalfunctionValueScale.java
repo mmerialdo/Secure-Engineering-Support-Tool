@@ -17,14 +17,6 @@ public class MalfunctionValueScale {
 	private String description;
 	private ImpactEnum seriousness;
 
-	public MalfunctionValueScale(){
-
-	}
-
-	public void finalize() throws Throwable {
-
-	}
-
 	public String getDescription() {
 		return description;
 	}

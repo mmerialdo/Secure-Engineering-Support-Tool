@@ -12,9 +12,6 @@
 
 package org.crmf.persistency.mapper.risk;
 
-import java.util.List;
-import java.util.Set;
-
 import org.apache.ibatis.annotations.Param;
 import org.crmf.persistency.domain.risk.SeriousnessScale;
 import org.crmf.persistency.domain.risk.SestRiskModel;
@@ -22,29 +19,32 @@ import org.crmf.persistency.domain.risk.SestRiskScenarioReference;
 import org.crmf.persistency.domain.risk.StatusImpactScale;
 import org.crmf.persistency.domain.risk.StatusLikelihoodScale;
 
+import java.util.List;
+import java.util.Set;
+
 //This interface allows the bundle to invoke the SQL methods within the RiskMapper.xml (via the ibatis API)
 public interface RiskMapper {
-public void insert(SestRiskModel riskModel);
-	
-	void update(@Param("riskModelJson") String riskModelJson, @Param("sestobjId") String sestobjId);
+  void insert(SestRiskModel riskModel);
 
-	SestRiskModel getByIdentifier(String sestobjId);
-	
-	SestRiskModel getById(Integer id);
-	
-	List<SeriousnessScale> getSeriousnessByProjectId(int projectId);
-	
-	List<StatusImpactScale> getStatusImpactByProjectId(int projectId);
-	
-	List<StatusLikelihoodScale> getStatusLikelihoodByProjectId(int projectId);
-	
-	boolean insertScenarioReference(SestRiskScenarioReference scenarioReference);
-	
-	void clearRiskReferenceScenario();
-	
-	Set<SestRiskScenarioReference> getRiskScenarioReference();
+  void update(@Param("riskModelJson") String riskModelJson, @Param("sestobjId") String sestobjId);
 
-	void deleteScenarioReference(@Param("sestobjIds") List<String> identifiers);
+  SestRiskModel getByIdentifier(String sestobjId);
 
-	void editScenarioReference(SestRiskScenarioReference scenarioReference);
+  SestRiskModel getById(Integer id);
+
+  List<SeriousnessScale> getSeriousnessByProjectId(int projectId);
+
+  List<StatusImpactScale> getStatusImpactByProjectId(int projectId);
+
+  List<StatusLikelihoodScale> getStatusLikelihoodByProjectId(int projectId);
+
+  boolean insertScenarioReference(SestRiskScenarioReference scenarioReference);
+
+  void clearRiskReferenceScenario();
+
+  Set<SestRiskScenarioReference> getRiskScenarioReference();
+
+  void deleteScenarioReference(@Param("sestobjIds") List<String> identifiers);
+
+  void editScenarioReference(SestRiskScenarioReference scenarioReference);
 }

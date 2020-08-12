@@ -18,27 +18,27 @@ import org.crmf.persistency.mapper.user.UserServiceInterface;
 //This class manages the business logic related to the retrival of passwords and user identifiers from the persistency (these methods are invoked during the authentication of the Users) 
 public class UserAuthentication implements UserAuthenticationInterface {
 
-	private UserServiceInterface userService;
+  private UserServiceInterface userService;
 
-	@Override
-	public String getPasswordForUser(String username) {
-		
-		User user = userService.getByUsername(username);
-		
-		return (user != null)? user.getPassword() : null;
-	}
+  @Override
+  public String getPasswordForUser(String username) {
 
-	public boolean isPasswordExpired(String username) {
+    User user = userService.getByUsername(username);
 
-		return userService.isPasswordExpired(username);
-	}
-	
-	public UserServiceInterface getUserService() {
-		return userService;
-	}
+    return (user != null) ? user.getPassword() : null;
+  }
 
-	public void setUserService(UserServiceInterface userService) {
-		this.userService = userService;
-	}
+  public boolean isPasswordExpired(String username) {
+
+    return userService.isPasswordExpired(username);
+  }
+
+  public UserServiceInterface getUserService() {
+    return userService;
+  }
+
+  public void setUserService(UserServiceInterface userService) {
+    this.userService = userService;
+  }
 
 }

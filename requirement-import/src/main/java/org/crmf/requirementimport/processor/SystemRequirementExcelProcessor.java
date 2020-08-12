@@ -12,14 +12,6 @@
 
 package org.crmf.requirementimport.processor;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.Iterator;
-import java.util.List;
-
-import javax.xml.datatype.DatatypeFactory;
-
-import org.apache.camel.Body;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.apache.cxf.attachment.DelegatingInputStream;
@@ -28,12 +20,16 @@ import org.apache.poi.hssf.usermodel.HSSFCell;
 import org.apache.poi.hssf.usermodel.HSSFRow;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
-import org.apache.poi.poifs.filesystem.POIFSFileSystem;
 import org.apache.poi.ss.usermodel.CellType;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Row.MissingCellPolicy;
 import org.crmf.model.utility.GenericFilter;
 import org.crmf.model.utility.GenericFilterEnum;
+
+import javax.xml.datatype.DatatypeFactory;
+import java.io.IOException;
+import java.util.Iterator;
+import java.util.List;
 
 /*
  Uses POI to convert an Excel spreadsheet with the system engineering project requirements to the desired JAXB XML format. doc

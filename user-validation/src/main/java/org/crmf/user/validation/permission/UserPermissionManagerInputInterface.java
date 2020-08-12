@@ -12,15 +12,11 @@
 
 package org.crmf.user.validation.permission;
 
-import java.util.List;
-import java.util.Set;
-
-import org.crmf.model.general.SESTObject;
 import org.crmf.model.general.SESTObjectTypeEnum;
 import org.crmf.model.riskassessment.AssessmentProject;
 import org.crmf.model.user.PermissionTypeEnum;
-import org.crmf.model.user.User;
-import org.crmf.model.user.UserProfileEnum;
+
+import java.util.Set;
 
 
 public interface UserPermissionManagerInputInterface {

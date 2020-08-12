@@ -19,14 +19,6 @@ public class ThreatPlace {
 	private String description;
 	private String name;
 
-	public ThreatPlace(){
-
-	}
-
-	public void finalize() throws Throwable {
-
-	}
-
 	public ThreatSourceEnum getCatalogue() {
 		return catalogue;
 	}

@@ -12,10 +12,6 @@
 
 package org.crmf.model.utility;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-
-import org.crmf.model.audit.Answer;
 import org.crmf.model.audit.AnswerTypeEnum;
 import org.crmf.model.audit.Audit;
 import org.crmf.model.audit.AuditTypeEnum;
@@ -25,18 +21,19 @@ import org.crmf.model.audit.Questionnaire;
 import org.crmf.model.audit.QuestionnaireTypeEnum;
 import org.crmf.model.general.SESTObjectTypeEnum;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+
 //This class creates a mock-up Audit for testing reasons
 public class AuditBuilder implements ObjectBuilder {
 
 	@Override
 	public Audit getObject(){
-		
-		Answer answer = new Answer();
-		answer.setIndex(1);
-		answer.setType(AnswerTypeEnum.MEHARI_R_V1);
-		answer.setValue("ok");
-		ArrayList<Answer> answers = new ArrayList<Answer>();
-		answers.add(answer);
+
+		Map<AnswerTypeEnum, String> answers = new HashMap<>();
+		answers.put(AnswerTypeEnum.MEHARI_R_V1, "ok");
 
 		Question question = new Question();
 		question.setIdentifier("104");
@@ -76,7 +73,7 @@ public class AuditBuilder implements ObjectBuilder {
 		question02.setChildren(new ArrayList<>(Arrays.asList(question01)));
 		
 		
-		ArrayList<Question> questions = new ArrayList<Question>();
+		ArrayList<Question> questions = new ArrayList<>();
 		questions.add(question02);
 		
 		Questionnaire quest = new Questionnaire();
@@ -86,7 +83,7 @@ public class AuditBuilder implements ObjectBuilder {
 		quest.setType(QuestionnaireTypeEnum.MEHARI_SecurityPremises);
 		quest.setQuestions(questions);
 		
-		ArrayList<Questionnaire> quests = new ArrayList<Questionnaire>();
+		ArrayList<Questionnaire> quests = new ArrayList<>();
 		quests.add(quest);
 		
 		Audit audit = new Audit();

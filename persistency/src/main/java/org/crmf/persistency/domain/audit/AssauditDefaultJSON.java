@@ -12,9 +12,6 @@
 
 package org.crmf.persistency.domain.audit;
 
-import org.crmf.model.general.SESTObject;
-import org.crmf.persistency.domain.general.Sestobj;
-
 public class AssauditDefaultJSON {
 
   private Integer id;

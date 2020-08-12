@@ -12,9 +12,15 @@
 
 package org.crmf.model.utility.assetmodel;
 
-import java.lang.reflect.Type;
-import java.util.ArrayList;
-
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.google.gson.JsonSerializationContext;
+import com.google.gson.JsonSerializer;
 import org.crmf.model.general.SESTObjectTypeEnum;
 import org.crmf.model.riskassessment.AssetModel;
 import org.crmf.model.riskassessmentelements.Asset;
@@ -26,37 +32,47 @@ import org.crmf.model.riskassessmentelements.Node;
 import org.crmf.model.riskassessmentelements.NodeTypeEnum;
 import org.crmf.model.riskassessmentelements.Organization;
 
-import com.google.gson.Gson;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
-import com.google.gson.JsonSerializationContext;
-import com.google.gson.JsonSerializer;
+import java.lang.reflect.Type;
+import java.util.ArrayList;
 
 //This class manages the deserialization of AssetModel classes
 //As can be seen, within this class all the other deserializators are called
 class AssetModelInstanceCreator implements JsonDeserializer<AssetModel>, JsonSerializer<AssetModel> {
-	
+
+	public static final String OBJ_TYPE = "objType";
+	public static final String ASSESSMENT_NODE = "assessmentNode";
+	public static final String GOAL = "goal";
+	public static final String DESCRIPTION = "description";
+	public static final String NAME = "name";
+	public static final String SYSTEM_PARTICIPANT_OWNER_ID = "systemParticipantOwnerId";
+	public static final String IDENTIFIER = "identifier";
+	public static final String NODE_TYPE = "nodeType";
+	public static final String RELATED_REQUIREMENTS_IDS = "relatedRequirementsIds";
+	public static final String CHILDREN = "children";
+	public static final String PARENTS = "parents";
+	public static final String CREATION_TIME = "creationTime";
+	public static final String UPDATE_TIME = "updateTime";
+	public static final String GRAPH_JSON = "graphJson";
+	public static final String EDGES = "edges";
+	public static final String NODES = "nodes";
+
 	private void serializeNode(JsonObject nodeObject, Node node){
 		
 		
 		if(node.getObjType() != null){
-			nodeObject.addProperty("objType", node.getObjType().toString());
+			nodeObject.addProperty(OBJ_TYPE, node.getObjType().toString());
 		}
 		else{
-			nodeObject.addProperty("objType", SESTObjectTypeEnum.AssetModel.toString());
+			nodeObject.addProperty(OBJ_TYPE, SESTObjectTypeEnum.AssetModel.toString());
 		}
 		
-		nodeObject.addProperty("assessmentNode", node.isAssessmentNode());
-		nodeObject.addProperty("goal", node.getGoal());
-		nodeObject.addProperty("description", node.getDescription());
-		nodeObject.addProperty("name", node.getName());
-		nodeObject.addProperty("systemParticipantOwnerId", node.getSystemParticipantOwnerId());
-		nodeObject.addProperty("identifier", node.getIdentifier());
-		nodeObject.addProperty("nodeType", node.getNodeType().toString());
+		nodeObject.addProperty(ASSESSMENT_NODE, node.isAssessmentNode());
+		nodeObject.addProperty(GOAL, node.getGoal());
+		nodeObject.addProperty(DESCRIPTION, node.getDescription());
+		nodeObject.addProperty(NAME, node.getName());
+		nodeObject.addProperty(SYSTEM_PARTICIPANT_OWNER_ID, node.getSystemParticipantOwnerId());
+		nodeObject.addProperty(IDENTIFIER, node.getIdentifier());
+		nodeObject.addProperty(NODE_TYPE, node.getNodeType().toString());
 		
 
         JsonArray relatedRequirementsIds = new JsonArray();
@@ -66,7 +82,7 @@ class AssetModelInstanceCreator implements JsonDeserializer<AssetModel>, JsonSer
         	relatedRequirementsIds.add(item);
 		});
 	
-        nodeObject.add("relatedRequirementsIds", relatedRequirementsIds);
+        nodeObject.add(RELATED_REQUIREMENTS_IDS, relatedRequirementsIds);
         
 
         JsonArray children = new JsonArray();
@@ -76,7 +92,7 @@ class AssetModelInstanceCreator implements JsonDeserializer<AssetModel>, JsonSer
         	children.add(item.getIdentifier());
 		});
 	
-        nodeObject.add("children", children);
+        nodeObject.add(CHILDREN, children);
         
 
         JsonArray parents = new JsonArray();
@@ -86,7 +102,7 @@ class AssetModelInstanceCreator implements JsonDeserializer<AssetModel>, JsonSer
         	parents.add(item.getIdentifier());
 		});
 		
-        nodeObject.add("parents", parents);
+        nodeObject.add(PARENTS, parents);
 
 	}
 	
@@ -95,16 +111,16 @@ class AssetModelInstanceCreator implements JsonDeserializer<AssetModel>, JsonSer
 		
 		JsonObject jsonObject = new JsonObject();
 		
-		jsonObject.addProperty("creationTime", am.getCreationTime());
-		jsonObject.addProperty("updateTime", am.getUpdateTime());
-		jsonObject.addProperty("identifier", am.getIdentifier());
+		jsonObject.addProperty(CREATION_TIME, am.getCreationTime());
+		jsonObject.addProperty(UPDATE_TIME, am.getUpdateTime());
+		jsonObject.addProperty(IDENTIFIER, am.getIdentifier());
 		
 
 		if(am.getObjType() != null){
-			jsonObject.addProperty("objType", am.getObjType().toString());
+			jsonObject.addProperty(OBJ_TYPE, am.getObjType().toString());
 		}
 		else{
-			jsonObject.addProperty("objType", SESTObjectTypeEnum.AssetModel.toString());
+			jsonObject.addProperty(OBJ_TYPE, SESTObjectTypeEnum.AssetModel.toString());
 		}
 		
 		
@@ -112,7 +128,7 @@ class AssetModelInstanceCreator implements JsonDeserializer<AssetModel>, JsonSer
 		JsonElement element = gson.fromJson (am.getGraphJson(), JsonElement.class);
 		JsonArray graphJson = element.getAsJsonArray();
 		
-		jsonObject.add("graphJson", graphJson);
+		jsonObject.add(GRAPH_JSON, graphJson);
 		
 		
 		JsonArray edges = new JsonArray();
@@ -125,7 +141,7 @@ class AssetModelInstanceCreator implements JsonDeserializer<AssetModel>, JsonSer
 			}
 		});
 		
-		jsonObject.add("edges", edges);
+		jsonObject.add(EDGES, edges);
 		
 		
 		JsonArray nodes = new JsonArray();
@@ -174,7 +190,7 @@ class AssetModelInstanceCreator implements JsonDeserializer<AssetModel>, JsonSer
 			
 		}
 		
-		jsonObject.add("nodes", nodes);
+		jsonObject.add(NODES, nodes);
 		
 		
 		return jsonObject;
@@ -185,50 +201,49 @@ class AssetModelInstanceCreator implements JsonDeserializer<AssetModel>, JsonSer
 			throws JsonParseException {
 		JsonObject jsonObject = json.getAsJsonObject();
 		AssetModel am = new AssetModel();
-		am.setEdges(new ArrayList<Edge>());
-		am.setOrganizations(new ArrayList<Organization>());
-		am.setBusinessProcesses(new ArrayList<BusinessProcess>());
-		am.setBusinessActivities(new ArrayList<BusinessActivity>());
-		am.setMalfunctions(new ArrayList<Malfunction>());
-		am.setAssets(new ArrayList<Asset>());
+		am.setEdges(new ArrayList<>());
+		am.setOrganizations(new ArrayList<>());
+		am.setBusinessProcesses(new ArrayList<>());
+		am.setBusinessActivities(new ArrayList<>());
+		am.setMalfunctions(new ArrayList<>());
+		am.setAssets(new ArrayList<>());
 
-		if (!jsonObject.get("creationTime").isJsonNull()) {
-			am.setCreationTime(jsonObject.get("creationTime").getAsString());
+		if (!jsonObject.get(CREATION_TIME).isJsonNull()) {
+			am.setCreationTime(jsonObject.get(CREATION_TIME).getAsString());
 		} else {
 			am.setCreationTime("");
 		}
-		if (!jsonObject.get("updateTime").isJsonNull()) {
-			am.setUpdateTime(jsonObject.get("updateTime").getAsString());
+		if (!jsonObject.get(UPDATE_TIME).isJsonNull()) {
+			am.setUpdateTime(jsonObject.get(UPDATE_TIME).getAsString());
 		} else {
 			am.setUpdateTime("");
 		}
-		if (!jsonObject.get("identifier").isJsonNull()) {
-			am.setIdentifier(jsonObject.get("identifier").getAsString());
+		if (!jsonObject.get(IDENTIFIER).isJsonNull()) {
+			am.setIdentifier(jsonObject.get(IDENTIFIER).getAsString());
 		} else {
 			am.setIdentifier("");
 		}
-		if (!jsonObject.get("objType").isJsonNull()) {
-			am.setObjType(AssetModelSerializatorDeserializatorCommon.getSESTObjecType(jsonObject.get("objType").getAsString()));
+		if (!jsonObject.get(OBJ_TYPE).isJsonNull()) {
+			am.setObjType(AssetModelSerializatorDeserializatorCommon.getSESTObjecType(jsonObject.get(OBJ_TYPE).getAsString()));
 		} else {
 			am.setObjType(AssetModelSerializatorDeserializatorCommon.getSESTObjecType(""));
 		}
-		if (!jsonObject.get("graphJson").isJsonNull()) {
-			am.setGraphJson(jsonObject.get("graphJson").toString());
+		if (!jsonObject.get(GRAPH_JSON).isJsonNull()) {
+			am.setGraphJson(jsonObject.get(GRAPH_JSON).toString());
 		} else {
 			am.setGraphJson("");
 		}
 
-		JsonArray edges = jsonObject.get("edges").getAsJsonArray();
+		JsonArray edges = jsonObject.get(EDGES).getAsJsonArray();
 		edges.forEach(item -> {
-			JsonElement obj = (JsonElement) item;
-			Edge edge = context.deserialize(obj, Edge.class);
+			Edge edge = context.deserialize(item, Edge.class);
 
 			if (edge != null) {
 				am.getEdges().add(edge);
 			}
 		});
 
-		JsonArray nodes = jsonObject.get("nodes").getAsJsonArray();
+		JsonArray nodes = jsonObject.get(NODES).getAsJsonArray();
 		nodes.forEach(item -> {
 			// JsonElement obj = (JsonElement) item;
 			// Node node = context.deserialize(obj, Node.class);
@@ -243,8 +258,8 @@ class AssetModelInstanceCreator implements JsonDeserializer<AssetModel>, JsonSer
 
 			Node node = null;
 
-			if (!jsonNode.get("nodeType").isJsonNull()) {
-				String nodeType = jsonNode.get("nodeType").getAsString();
+			if (!jsonNode.get(NODE_TYPE).isJsonNull()) {
+				String nodeType = jsonNode.get(NODE_TYPE).getAsString();
 
 				if (nodeType.equals(NodeTypeEnum.Organization.toString())) {
 					node = context.deserialize(jsonNode, Organization.class);
@@ -263,45 +278,45 @@ class AssetModelInstanceCreator implements JsonDeserializer<AssetModel>, JsonSer
 
 			node.setObjType(SESTObjectTypeEnum.AssetModel);
 
-			if (!jsonNode.get("assessmentNode").isJsonNull()) {
-				node.setAssessmentNode(jsonNode.get("assessmentNode").getAsBoolean());
+			if (!jsonNode.get(ASSESSMENT_NODE).isJsonNull()) {
+				node.setAssessmentNode(jsonNode.get(ASSESSMENT_NODE).getAsBoolean());
 			} else {
 				node.setAssessmentNode(false);
 			}
 
-			if (!jsonNode.get("goal").isJsonNull()) {
-				node.setGoal(jsonNode.get("goal").getAsString());
+			if (!jsonNode.get(GOAL).isJsonNull()) {
+				node.setGoal(jsonNode.get(GOAL).getAsString());
 			} else {
 				node.setGoal("");
 			}
 
-			if (!jsonNode.get("description").isJsonNull()) {
-				node.setDescription(jsonNode.get("description").getAsString());
+			if (!jsonNode.get(DESCRIPTION).isJsonNull()) {
+				node.setDescription(jsonNode.get(DESCRIPTION).getAsString());
 			} else {
 				node.setDescription("");
 			}
 
-			if (!jsonNode.get("name").isJsonNull()) {
-				node.setName(jsonNode.get("name").getAsString());
+			if (!jsonNode.get(NAME).isJsonNull()) {
+				node.setName(jsonNode.get(NAME).getAsString());
 			} else {
 				node.setName("");
 			}
 
-			if (!jsonNode.get("systemParticipantOwnerId").isJsonNull()) {
-				node.setSystemParticipantOwnerId(jsonNode.get("systemParticipantOwnerId").getAsString());
+			if (!jsonNode.get(SYSTEM_PARTICIPANT_OWNER_ID).isJsonNull()) {
+				node.setSystemParticipantOwnerId(jsonNode.get(SYSTEM_PARTICIPANT_OWNER_ID).getAsString());
 			} else {
 				node.setSystemParticipantOwnerId("");
 			}
 
-			if (!jsonNode.get("identifier").isJsonNull()) {
-				node.setIdentifier(jsonNode.get("identifier").getAsString());
+			if (!jsonNode.get(IDENTIFIER).isJsonNull()) {
+				node.setIdentifier(jsonNode.get(IDENTIFIER).getAsString());
 			} else {
 				node.setIdentifier("");
 			}
 
 			ArrayList<String> relatedRequirementsIdsArrayList = new ArrayList<String>();
-			if (!jsonNode.get("relatedRequirementsIds").isJsonNull()) {
-				JsonArray relatedRequirementsIds = jsonNode.get("relatedRequirementsIds").getAsJsonArray();
+			if (!jsonNode.get(RELATED_REQUIREMENTS_IDS).isJsonNull()) {
+				JsonArray relatedRequirementsIds = jsonNode.get(RELATED_REQUIREMENTS_IDS).getAsJsonArray();
 
 				relatedRequirementsIds.forEach(itemString -> {
 					String relatedRequirementsId = itemString.getAsString();
@@ -312,9 +327,9 @@ class AssetModelInstanceCreator implements JsonDeserializer<AssetModel>, JsonSer
 
 			node.setRelatedRequirementsIds(relatedRequirementsIdsArrayList);
 
-			ArrayList<Edge> childrenList = new ArrayList<Edge>();
-			if (!jsonNode.get("children").isJsonNull()) {
-				JsonArray children = jsonNode.get("children").getAsJsonArray();
+			ArrayList<Edge> childrenList = new ArrayList<>();
+			if (!jsonNode.get(CHILDREN).isJsonNull()) {
+				JsonArray children = jsonNode.get(CHILDREN).getAsJsonArray();
 				children.forEach(itemChild -> {
 					String child = itemChild.getAsString();
 
@@ -328,9 +343,9 @@ class AssetModelInstanceCreator implements JsonDeserializer<AssetModel>, JsonSer
 			}
 			node.setChildren(childrenList);
 
-			ArrayList<Edge> parentsList = new ArrayList<Edge>();
-			if (!jsonNode.get("parents").isJsonNull()) {
-				JsonArray parents = jsonNode.get("parents").getAsJsonArray();
+			ArrayList<Edge> parentsList = new ArrayList<>();
+			if (!jsonNode.get(PARENTS).isJsonNull()) {
+				JsonArray parents = jsonNode.get(PARENTS).getAsJsonArray();
 				parents.forEach(itemParent -> {
 					String parent = itemParent.getAsString();
 

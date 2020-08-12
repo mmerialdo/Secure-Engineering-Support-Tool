@@ -16,8 +16,8 @@ import org.crmf.model.riskassessment.SystemProject;
 
 public interface SysprojectServiceInterface {
 
-	Integer insert(SystemProject sysprojectDM) throws Exception;
+  Integer insert(SystemProject sysprojectDM) throws Exception;
 
-	void update(SystemProject sysprojectDM);
+  void update(SystemProject sysprojectDM);
 
 }

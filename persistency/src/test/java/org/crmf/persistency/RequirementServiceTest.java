@@ -12,7 +12,7 @@
 
 package org.crmf.persistency;
 
-import org.crmf.model.requirement.ProjectRequirement;
+import org.crmf.model.requirement.Requirement;
 import org.crmf.model.requirement.RequirementStatusEnum;
 import org.crmf.model.requirement.RequirementTypeEnum;
 import org.crmf.model.riskassessmentelements.ElementTypeEnum;
@@ -51,8 +51,8 @@ public class RequirementServiceTest {
 	
 	@Test
 	public void insertSysRequirementTest() throws Exception{
-		
-		ProjectRequirement preq = new ProjectRequirement();
+
+		Requirement preq = new Requirement();
 		preq.setElementType(ElementTypeEnum.Element);
 		preq.setType(RequirementTypeEnum.Documentation);
 		preq.setCategory("fileName");

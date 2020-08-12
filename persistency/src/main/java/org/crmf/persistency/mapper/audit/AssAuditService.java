@@ -16,14 +16,13 @@ import org.apache.ibatis.session.SqlSession;
 import org.crmf.model.audit.AuditTypeEnum;
 import org.crmf.model.audit.Question;
 import org.crmf.model.audit.QuestionnaireTypeEnum;
+import org.crmf.model.audit.SestAuditModel;
+import org.crmf.model.audit.SestQuestionnaireModel;
 import org.crmf.model.general.SESTObjectTypeEnum;
 import org.crmf.model.requirement.SecurityRequirement;
 import org.crmf.model.riskassessment.SafeguardModel;
 import org.crmf.model.riskassessmentelements.Safeguard;
 import org.crmf.model.riskassessmentelements.SafeguardScoreEnum;
-import org.crmf.model.audit.SestAuditModel;
-import org.crmf.model.audit.SestQuestionnaireModel;
-import org.crmf.persistency.domain.audit.AssauditDefault;
 import org.crmf.persistency.domain.audit.AssauditDefaultJSON;
 import org.crmf.persistency.domain.general.Sestobj;
 import org.crmf.persistency.domain.project.AssTemplate;
@@ -61,7 +60,7 @@ public class AssAuditService implements AssAuditServiceInterface {
   public List<SestAuditModel> getAllForProject(String identifier) {
     LOG.info("called getAllForProject");
     SqlSession sqlSession = sessionFactory.getSession();
-    List<SestAuditModel> auditsToSend = new ArrayList<SestAuditModel>();
+    List<SestAuditModel> auditsToSend = new ArrayList<>();
     try {
       AssAuditMapper auditeMapper = sqlSession.getMapper(AssAuditMapper.class);
       QuestionnaireMapper questionnaireMapper = sqlSession.getMapper(QuestionnaireMapper.class);
@@ -330,7 +329,7 @@ public class AssAuditService implements AssAuditServiceInterface {
 
       // sets values to hashmap
       List<Safeguard> safeguards = safeguardModel.getSafeguards();
-      if (safeguards != null && safeguards.size() > 0) {
+      if (safeguards != null && !safeguards.isEmpty()) {
         getSafeguardModelChildren(sgMap, safeguards);
       } else {
         LOG.info("empty safeguard list into the model");
@@ -359,12 +358,12 @@ public class AssAuditService implements AssAuditServiceInterface {
       String comment = (((Safeguard) safeguard).getUserDescription() == null ? ""
         : ((Safeguard) safeguard).getUserDescription());
       LOG.info("Adding {} with values {} , {} ", safeguard.getCatalogueId(), value, comment);
-      sgMap.put(safeguard.getCatalogueId(), new ArrayList<String>(Arrays.asList(value, comment)));
+      sgMap.put(safeguard.getCatalogueId(), new ArrayList<>(Arrays.asList(value, comment)));
 
       getSafeguardModelChildren(sgMap, safeguard.getChildren());
 
       ArrayList<SecurityRequirement> secreqList = safeguard.getRelatedSecurityRequirements();
-      if (secreqList != null && secreqList.size() > 0) {
+      if (secreqList != null && !secreqList.isEmpty()) {
         getRelatedSecurityRequirementChildren(sgMap, secreqList, safeguard.getCatalogueId());
       } else {
         LOG.info("no sec requirement related");
@@ -388,7 +387,7 @@ public class AssAuditService implements AssAuditServiceInterface {
       String comment = (((SecurityRequirement) secreq).getUserDescription() == null ? ""
         : ((SecurityRequirement) secreq).getUserDescription());
       LOG.info("Adding {} with values {} , {} ", secreq.getId(), value, comment);
-      sgMap.put(safeguardCatalogueId + secreq.getId(), new ArrayList<String>(Arrays.asList(value, comment)));
+      sgMap.put(safeguardCatalogueId + secreq.getId(), new ArrayList<>(Arrays.asList(value, comment)));
       getRelatedSecurityRequirementChildren(sgMap, secreq.getChildren(), safeguardCatalogueId);
     }
   }

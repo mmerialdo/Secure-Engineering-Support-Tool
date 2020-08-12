@@ -19,21 +19,21 @@ import java.util.List;
 
 //This interface allows the bundle to invoke the SQL methods within the AssAuditMapper.xml (via the ibatis API)
 public interface AssAuditMapper {
-	
-	public int insert(SestAuditModel audit);
 
-	public void update(SestAuditModel audit);
+  int insert(SestAuditModel audit);
 
-	public void delete(Integer id);
+  void update(SestAuditModel audit);
 
-	public void deleteByIdentifier(String identifier);
-	
-	public List<SestAuditModel> getAllForProject(String identifier);
-	
-	public SestAuditModel getByProjectAndType(@Param("identifier") String identifier, @Param("type") String type);
-	
-	public Integer getIdByIdentifier(String identifier);
-	
-	public Integer getProjectIdByIdentifier(String identifier);
+  void delete(Integer id);
+
+  void deleteByIdentifier(String identifier);
+
+  List<SestAuditModel> getAllForProject(String identifier);
+
+  SestAuditModel getByProjectAndType(@Param("identifier") String identifier, @Param("type") String type);
+
+  Integer getIdByIdentifier(String identifier);
+
+  Integer getProjectIdByIdentifier(String identifier);
 
 }

@@ -12,14 +12,14 @@
 
 package org.crmf.core.riskassessment.project.manager;
 
-import java.util.List;
-
 import org.crmf.model.general.SESTObjectTypeEnum;
 import org.crmf.model.riskassessment.AssessmentProfile;
 import org.crmf.persistency.mapper.project.AssprofileServiceInterface;
 import org.crmf.user.validation.permission.UserPermissionManagerInputInterface;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import java.util.List;
 
 //This class is called by the Proxy and manages the entrypoint for the business logic (including the interactions with the Persistency) related to the AssessmentProfiles
 public class AssessmentProfileInput implements AssessmentProfileInputInterface {
@@ -32,7 +32,7 @@ public class AssessmentProfileInput implements AssessmentProfileInputInterface {
 	@Override
 	public String createAssessmentProfile(AssessmentProfile profile) throws Exception {
 		
-		LOG.info("createAssessmentProfile with identifier: " + profile.getIdentifier());
+		LOG.info("createAssessmentProfile with identifier: {}", profile.getIdentifier());
 		String profileId = assprofileService.insert(profile);
 		
 		//set type and identifier accordingly to the sest object just created (user)
@@ -45,21 +45,21 @@ public class AssessmentProfileInput implements AssessmentProfileInputInterface {
 	@Override
 	public void editAssessmentProfile(AssessmentProfile profile) throws Exception {
 
-		LOG.info("editAssessmentProfile with identifier: " + profile.getIdentifier());
+		LOG.info("editAssessmentProfile with identifier: {}", profile.getIdentifier());
 		assprofileService.update(profile);
 	}
 
 	@Override
 	public void deleteAssessmentProfile(String identifier) throws Exception {
 
-		LOG.info("deleteAssessmentProfile with identifier: " + identifier);
+		LOG.info("deleteAssessmentProfile with identifier: {}", identifier);
 		assprofileService.deleteCascade(identifier);
 	}
 
 	@Override
 	public AssessmentProfile loadAssessmentProfile(String identifier) throws Exception {
 
-		LOG.info("loadAssessmentProfile with identifier: "+identifier);
+		LOG.info("loadAssessmentProfile with identifier: {}", identifier);
 		return assprofileService.getByIdentifier(identifier);
 	}
 

@@ -12,12 +12,6 @@
 
 package org.crmf.persistency.domain.project;
 
-import java.sql.Date;
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-
 import org.crmf.model.riskassessment.AssessmentProfile;
 import org.crmf.model.riskassessment.AssessmentTemplate;
 import org.crmf.model.riskassessment.PhaseEnum;
@@ -25,193 +19,200 @@ import org.crmf.model.riskassessment.RiskMethodologyEnum;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.sql.Date;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+
 public class AssProfile {
-	private Integer id;
+  public static final String DD_MM_YYYY_HH_MM = "dd/MM/yyyy HH:mm";
+  private Integer id;
 
-	private String name;
+  private String name;
 
-	private String description;
+  private String description;
 
-	private Date creationTime;
+  private Date creationTime;
 
-	private Date updateTime;
+  private Date updateTime;
 
-	private String organization;
+  private String organization;
 
-	private String phase;
+  private String phase;
 
-	private String methodology;
+  private String methodology;
 
-	private String sestobjId;
+  private String sestobjId;
 
-	private ArrayList<AssTemplate> templates = new ArrayList<>();
-	
-	DateFormat df = new SimpleDateFormat("dd/MM/yyyy HH:mm");
-	private static final Logger LOG = LoggerFactory.getLogger(AssProfile.class.getName());
+  private ArrayList<AssTemplate> templates = new ArrayList<>();
 
-	public Integer getId() {
-		return id;
-	}
+  DateFormat df = new SimpleDateFormat(DD_MM_YYYY_HH_MM);
+  private static final Logger LOG = LoggerFactory.getLogger(AssProfile.class.getName());
 
-	public void setId(Integer id) {
-		this.id = id;
-	}
+  public Integer getId() {
+    return id;
+  }
 
-	public String getName() {
-		return name;
-	}
+  public void setId(Integer id) {
+    this.id = id;
+  }
 
-	public void setName(String name) {
-		this.name = name == null ? null : name.trim();
-	}
+  public String getName() {
+    return name;
+  }
 
-	public String getDescription() {
-		return description;
-	}
+  public void setName(String name) {
+    this.name = name == null ? null : name.trim();
+  }
 
-	public void setDescription(String description) {
-		this.description = description == null ? null : description.trim();
-	}
+  public String getDescription() {
+    return description;
+  }
 
-	public Date getCreationTime() {
-		return creationTime;
-	}
+  public void setDescription(String description) {
+    this.description = description == null ? null : description.trim();
+  }
 
-	public void setCreationTime(Date creationTime) {
-		this.creationTime = creationTime;
-	}
+  public Date getCreationTime() {
+    return creationTime;
+  }
 
-	public Date getUpdateTime() {
-		return updateTime;
-	}
+  public void setCreationTime(Date creationTime) {
+    this.creationTime = creationTime;
+  }
 
-	public void setUpdateTime(Date updateTime) {
-		this.updateTime = updateTime;
-	}
+  public Date getUpdateTime() {
+    return updateTime;
+  }
 
-	public String getOrganization() {
-		return organization;
-	}
+  public void setUpdateTime(Date updateTime) {
+    this.updateTime = updateTime;
+  }
 
-	public void setOrganization(String organization) {
-		this.organization = organization == null ? null : organization.trim();
-	}
+  public String getOrganization() {
+    return organization;
+  }
 
-	public String getPhase() {
-		return phase;
-	}
+  public void setOrganization(String organization) {
+    this.organization = organization == null ? null : organization.trim();
+  }
 
-	public void setPhase(String phase) {
-		this.phase = phase == null ? null : phase.trim();
-	}
+  public String getPhase() {
+    return phase;
+  }
 
-	public String getMethodology() {
-		return methodology;
-	}
+  public void setPhase(String phase) {
+    this.phase = phase == null ? null : phase.trim();
+  }
 
-	public void setMethodology(String methodology) {
-		this.methodology = methodology == null ? null : methodology.trim();
-	}
+  public String getMethodology() {
+    return methodology;
+  }
 
-	public String getSestobjId() {
-		return sestobjId;
-	}
+  public void setMethodology(String methodology) {
+    this.methodology = methodology == null ? null : methodology.trim();
+  }
 
-	public void setSestobjId(String sestobjId) {
-		this.sestobjId = sestobjId;
-	}
+  public String getSestobjId() {
+    return sestobjId;
+  }
 
-	public ArrayList<AssTemplate> getTemplates() {
-		return templates;
-	}
+  public void setSestobjId(String sestobjId) {
+    this.sestobjId = sestobjId;
+  }
 
-	public void setTemplates(ArrayList<AssTemplate> templates) {
-		this.templates = templates;
-	}
+  public ArrayList<AssTemplate> getTemplates() {
+    return templates;
+  }
 
-	public AssessmentProfile convertToModel() {
+  public void setTemplates(ArrayList<AssTemplate> templates) {
+    this.templates = templates;
+  }
 
-		AssessmentProfile assprofile = new AssessmentProfile();
-		assprofile.setName(this.name);
-		assprofile.setDescription(this.description);
-		assprofile.setOrganization(this.organization);
-		if (this.phase != null) {
-			assprofile.setPhase(PhaseEnum.valueOf(this.phase));
-		}
-		if (this.methodology != null) {
-			assprofile.setRiskMethodology(RiskMethodologyEnum.valueOf(this.methodology));
-		}
+  public AssessmentProfile convertToModel() {
 
-		if (this.creationTime != null) {
-			assprofile.setCreationTime(df.format(this.creationTime));
-		}
-		if (this.updateTime != null) {
-			assprofile.setUpdateTime(df.format(this.updateTime));
-		}
-		if (this.sestobjId != null) {
-			assprofile.setIdentifier(String.valueOf(this.sestobjId));
-		}
+    AssessmentProfile assprofile = new AssessmentProfile();
+    assprofile.setName(this.name);
+    assprofile.setDescription(this.description);
+    assprofile.setOrganization(this.organization);
+    if (this.phase != null) {
+      assprofile.setPhase(PhaseEnum.valueOf(this.phase));
+    }
+    if (this.methodology != null) {
+      assprofile.setRiskMethodology(RiskMethodologyEnum.valueOf(this.methodology));
+    }
 
-		ArrayList<AssessmentTemplate> templatesDM = new ArrayList<>();
-		if(templates != null && templates.size() > 0){
-			for (AssTemplate assTemplate : templates) {
-				AssessmentTemplate template = new AssessmentTemplate();
-				template.setIdentifier(String.valueOf(assTemplate.getSestobjId()));
-				templatesDM.add(template);
-			}
-		}
-		
-		// assprofile.setObjType(this.);
+    if (this.creationTime != null) {
+      assprofile.setCreationTime(df.format(this.creationTime));
+    }
+    if (this.updateTime != null) {
+      assprofile.setUpdateTime(df.format(this.updateTime));
+    }
+    if (this.sestobjId != null) {
+      assprofile.setIdentifier(String.valueOf(this.sestobjId));
+    }
 
-		return assprofile;
-	}
+    ArrayList<AssessmentTemplate> templatesDM = new ArrayList<>();
+    if (templates != null && !templates.isEmpty()) {
+      for (AssTemplate assTemplate : templates) {
+        AssessmentTemplate template = new AssessmentTemplate();
+        template.setIdentifier(String.valueOf(assTemplate.getSestobjId()));
+        templatesDM.add(template);
+      }
+    }
 
-	public void convertFromModel(AssessmentProfile assprofile) {
+    // assprofile.setObjType(this.);
 
-		this.setName(assprofile.getName());
-		this.setDescription(assprofile.getDescription());
-		this.setOrganization(assprofile.getOrganization());
+    return assprofile;
+  }
 
-		if (assprofile.getPhase() != null) {
-			this.setPhase(assprofile.getPhase().name());
-		}
+  public void convertFromModel(AssessmentProfile assprofile) {
 
-		if (assprofile.getRiskMethodology() != null) {
-			this.setMethodology(assprofile.getRiskMethodology().name());
-		}
+    this.setName(assprofile.getName());
+    this.setDescription(assprofile.getDescription());
+    this.setOrganization(assprofile.getOrganization());
 
-		try {
-			if (assprofile.getCreationTime() != null) {
-				this.setCreationTime(new Date(df.parse(assprofile.getCreationTime()).getTime()));
-			}
-			if (assprofile.getUpdateTime() != null) {
-				this.setUpdateTime(new Date(df.parse(assprofile.getUpdateTime()).getTime()));
-			}
-		} catch (ParseException e) {
-			LOG.error(e.getMessage());
-		}
+    if (assprofile.getPhase() != null) {
+      this.setPhase(assprofile.getPhase().name());
+    }
 
-		if (assprofile.getIdentifier() != null) {
-			this.setSestobjId(assprofile.getIdentifier());
-		}
+    if (assprofile.getRiskMethodology() != null) {
+      this.setMethodology(assprofile.getRiskMethodology().name());
+    }
 
-		ArrayList<AssessmentTemplate> templatesDM = assprofile.getTemplates();
-		if(templatesDM != null && templatesDM.size() > 0){
-			for (AssessmentTemplate assTemplate : templatesDM) {
-				AssTemplate template = new AssTemplate();
-				template.setSestobjId(assTemplate.getIdentifier());
-				templates.add(template);
-			}
-		}
-		// this.setId(id);
-	}
+    try {
+      if (assprofile.getCreationTime() != null) {
+        this.setCreationTime(new Date(df.parse(assprofile.getCreationTime()).getTime()));
+      }
+      if (assprofile.getUpdateTime() != null) {
+        this.setUpdateTime(new Date(df.parse(assprofile.getUpdateTime()).getTime()));
+      }
+    } catch (ParseException e) {
+      LOG.error(e.getMessage());
+    }
 
-	@Override
-	public String toString() {
-		return "AssProfile [id=" + id + ", name=" + name + ", description=" + description + ", creationTime="
-				+ creationTime + ", updateTime=" + updateTime + ", organization=" + organization + ", phase=" + phase
-				+ ", methodology=" + methodology + ", sestobjId=" + sestobjId + ", templates=" + templates + ", df="
-				+ df + "]";
-	}
-	
+    if (assprofile.getIdentifier() != null) {
+      this.setSestobjId(assprofile.getIdentifier());
+    }
+
+    ArrayList<AssessmentTemplate> templatesDM = assprofile.getTemplates();
+    if (templatesDM != null && !templatesDM.isEmpty()) {
+      for (AssessmentTemplate assTemplate : templatesDM) {
+        AssTemplate template = new AssTemplate();
+        template.setSestobjId(assTemplate.getIdentifier());
+        templates.add(template);
+      }
+    }
+    // this.setId(id);
+  }
+
+  @Override
+  public String toString() {
+    return "AssProfile [id=" + id + ", name=" + name + ", description=" + description + ", creationTime="
+      + creationTime + ", updateTime=" + updateTime + ", organization=" + organization + ", phase=" + phase
+      + ", methodology=" + methodology + ", sestobjId=" + sestobjId + ", templates=" + templates + ", df="
+      + df + "]";
+  }
+
 }

@@ -12,6 +12,18 @@
 
 package org.crmf.riskmodel.manager;
 
+import org.apache.cxf.jaxrs.ext.multipart.Attachment;
+import org.crmf.model.riskassessment.RiskScenarioReferenceModel;
+import org.crmf.model.riskassessmentelements.PrimaryAssetCategoryEnum;
+import org.crmf.model.riskassessmentelements.RiskScenarioReference;
+import org.crmf.model.riskassessmentelements.SecondaryAssetCategoryEnum;
+import org.crmf.model.riskassessmentelements.SecurityImpactScopeEnum;
+import org.crmf.model.utility.riskmodel.RiskScenarioReferenceModelSerializerDeserializer;
+import org.crmf.persistency.mapper.risk.RiskServiceInterface;
+import org.crmf.riskmodel.utility.SestStandardConverter;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -21,20 +33,6 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-
-import org.apache.cxf.jaxrs.ext.multipart.Attachment;
-import org.crmf.model.riskassessment.RiskScenarioReferenceModel;
-import org.crmf.model.riskassessment.ThreatModel;
-import org.crmf.model.riskassessmentelements.PrimaryAssetCategoryEnum;
-import org.crmf.model.riskassessmentelements.RiskScenarioReference;
-import org.crmf.model.riskassessmentelements.SecondaryAssetCategoryEnum;
-import org.crmf.model.riskassessmentelements.SecurityImpactScopeEnum;
-import org.crmf.model.utility.riskmodel.RiskScenarioReferenceModelSerializerDeserializer;
-import org.crmf.model.utility.threatmodel.ThreatModelSerializerDeserializer;
-import org.crmf.persistency.mapper.risk.RiskServiceInterface;
-import org.crmf.riskmodel.utility.SestStandardConverter;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 //This class manages the import of risk scenarios from a CSV file, deserializing them and persisting them in the database
 public class RiskScenariosReferenceImporter {
@@ -51,34 +49,37 @@ public class RiskScenariosReferenceImporter {
    */
   public void importRiskScenariosFromCsv() {
     // Load a set of risk scenario references importing them from file
-    Set<RiskScenarioReference> riskScenarioReference =  loadReferenceScenariosFromCsv();
+    Set<RiskScenarioReference> riskScenarioReference = loadReferenceScenariosFromCsv();
     importRiskScenarios(riskScenarioReference);
   }
 
-  public void importRiskScenariosFromInput(Attachment attachmentFile) throws Exception{
-		Set<RiskScenarioReference> riskScenarioReference = loadRiskScenariosFromInput(attachmentFile.getObject(InputStream.class));
-    importRiskScenarios(riskScenarioReference);
+  public void importRiskScenariosFromInput(Attachment attachmentFile) throws Exception {
+    Set<RiskScenarioReference> riskScenarioReference = loadRiskScenariosFromInput(attachmentFile.getObject(InputStream.class));
+    if (riskScenarioReference != null && !riskScenarioReference.isEmpty()) {
+      importRiskScenarios(riskScenarioReference);
+    }
   }
 
   private Set<RiskScenarioReference> loadRiskScenariosFromInput(InputStream is) throws IOException {
     try {
-			Set<RiskScenarioReference> riskScenarioReference = new HashSet<>();
       byte[] bamJson = new byte[is.available()];
-      is.read(bamJson);
-      String rsJsonString = new String(bamJson, "UTF-8");
-      LOG.info("loadRiskScenarioFromInput " + rsJsonString);
-      RiskScenarioReferenceModelSerializerDeserializer rmSerDes = new RiskScenarioReferenceModelSerializerDeserializer();
-      RiskScenarioReferenceModel rm = rmSerDes.getRMFromJSONString(rsJsonString);
-      if(rm == null) {
-        LOG.error("Unable to unmarshall riskScenraioReferenceModel.");
-        return null;
-      }
+      int bytesNumer = is.read(bamJson);
+      if (bytesNumer > 0) {
+        String rsJsonString = new String(bamJson, "UTF-8");
+        LOG.info("loadRiskScenarioFromInput " + rsJsonString);
+        RiskScenarioReferenceModelSerializerDeserializer rmSerDes = new RiskScenarioReferenceModelSerializerDeserializer();
+        RiskScenarioReferenceModel rm = rmSerDes.getRMFromJSONString(rsJsonString);
+        if (rm == null) {
+          LOG.error("Unable to unmarshall riskScenraioReferenceModel.");
+          return null;
+        }
 
-      return new HashSet<RiskScenarioReference>(rm.getScenarios());
+        return new HashSet(rm.getScenarios());
+      }
     } catch (Exception e) {
       LOG.error("loadRiskScenarioFromInput " + e.getMessage());
-      return null;
     }
+    return null;
   }
 
   private void importRiskScenarios(Set<RiskScenarioReference> riskScenarioReference) {
@@ -148,7 +149,7 @@ public class RiskScenariosReferenceImporter {
     BufferedReader br = null;
     String line = "";
     String cvsSplitBy = ",";
-		Set<RiskScenarioReference> riskScenarioReference = new HashSet<>();
+    Set<RiskScenarioReference> riskScenarioReference = new HashSet<>();
 
     try {
 

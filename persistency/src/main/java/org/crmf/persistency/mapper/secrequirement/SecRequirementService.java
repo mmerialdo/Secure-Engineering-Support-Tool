@@ -27,11 +27,7 @@ import org.crmf.persistency.session.PersistencySessionFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.sql.SQLIntegrityConstraintViolationException;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-import java.util.Optional;
 
 //This class manages the database interactions related to the SecurityRequirement
 public class SecRequirementService implements SecRequirementServiceInterface {

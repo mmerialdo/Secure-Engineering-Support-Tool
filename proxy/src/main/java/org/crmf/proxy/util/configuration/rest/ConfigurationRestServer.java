@@ -11,8 +11,6 @@
 */
 package org.crmf.proxy.util.configuration.rest;
 
-import org.crmf.model.utility.GenericFilter;
-
 import javax.ws.rs.Consumes;
 import javax.ws.rs.POST;
 import javax.ws.rs.Produces;
@@ -29,9 +27,10 @@ public class ConfigurationRestServer {
   @Produces("application/json")
   public List<String> getConfiguration() throws Exception {
 
-    return new ArrayList<>() {
-      {add(timeout);add(timeoutWarning);}
-    };
+    List<String> configuration = new ArrayList<>();
+    configuration.add(timeout);
+    configuration.add(timeoutWarning);
+    return configuration;
   }
 
   @POST

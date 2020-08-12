@@ -13,8 +13,8 @@
 package org.crmf.persistency.mapper.audit;
 
 import org.crmf.model.audit.AuditTypeEnum;
-import org.crmf.model.audit.SestAuditModel;
 import org.crmf.model.audit.Question;
+import org.crmf.model.audit.SestAuditModel;
 
 import java.util.List;
 

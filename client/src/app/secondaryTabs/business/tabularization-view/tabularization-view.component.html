@@ -16,12 +16,12 @@
         <div class="container-fluid">
 
           <button style="margin-top: 5px;border: 1px solid " type="button" class="btn btn-secondary btn-xs" (click)="changeView()">
-            <b>Change Visualization</b>
+            <strong>Change Visualization</strong>
           </button>
           <hr style="clear: both; color: black; background-color: black; height: 1px; border-width: 0;">
           <button style="margin-top: 5px;border: 1px solid " type="button" class="btn btn-secondary btn-xs" (click)="saveAssetModel()"
                   [disabled]="!(isValid$ | async) || !enableSaveButton || !isLockedByCurrentUser()">
-            <b>Save Asset Model</b>
+            <strong>Save Asset Model</strong>
           </button>
           <hr style="clear: both; color: black; background-color: black; height: 1px; border-width: 0;">
         </div>

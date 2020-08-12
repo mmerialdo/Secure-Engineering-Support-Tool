@@ -19,40 +19,40 @@ import org.slf4j.LoggerFactory;
 
 public class SestThreatModel {
 
-	private static final Logger LOG = LoggerFactory.getLogger(SestThreatModel.class.getName());
-	private Integer id;
-	private String sestobjId;
-	private String threatModelJson;
-	
-	
-	public Integer getId() {
-		return id;
-	}
-	
-	public void setId(Integer id) {
-		this.id = id;
-	}
-	
-	public String getSestobjId() {
-		return sestobjId;
-	}
-	
-	public void setSestobjId(String sestobjId) {
-		this.sestobjId = sestobjId;
-	}
-	
-	public String getThreatModelJson() {
-		return threatModelJson;
-	}
-	
-	public void setThreatModelJson(String threatModelJson) {
-		this.threatModelJson = threatModelJson;
-	}
-	
-	public ThreatModel convertToModel() {
-		LOG.info("ThreatModel convertToModel");
-		ThreatModelSerializerDeserializer threatModelDeserializer = new  ThreatModelSerializerDeserializer();
-		
-		return threatModelDeserializer.getTMFromJSONString(this.getThreatModelJson());
-	}
+  private static final Logger LOG = LoggerFactory.getLogger(SestThreatModel.class.getName());
+  private Integer id;
+  private String sestobjId;
+  private String threatModelJson;
+
+
+  public Integer getId() {
+    return id;
+  }
+
+  public void setId(Integer id) {
+    this.id = id;
+  }
+
+  public String getSestobjId() {
+    return sestobjId;
+  }
+
+  public void setSestobjId(String sestobjId) {
+    this.sestobjId = sestobjId;
+  }
+
+  public String getThreatModelJson() {
+    return threatModelJson;
+  }
+
+  public void setThreatModelJson(String threatModelJson) {
+    this.threatModelJson = threatModelJson;
+  }
+
+  public ThreatModel convertToModel() {
+    LOG.info("ThreatModel convertToModel");
+    ThreatModelSerializerDeserializer threatModelDeserializer = new ThreatModelSerializerDeserializer();
+
+    return threatModelDeserializer.getTMFromJSONString(this.getThreatModelJson());
+  }
 }

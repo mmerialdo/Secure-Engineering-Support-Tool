@@ -12,9 +12,6 @@
 
 package org.crmf.model.riskassessmentelements;
 
-import java.util.Arrays;
-import java.util.List;
-
 public enum SecondaryAssetCategoryEnum {
 	Personnel,
 	Hardware,
@@ -33,24 +30,4 @@ public enum SecondaryAssetCategoryEnum {
 	Auxiliary_Equipment,
 	Service_Access_Mean,
 	Data_Access_Mean;
-
-	public static final List<SecondaryAssetCategoryEnum> SECONDARY_ASSET_CATEGORY_LIST = Arrays.asList(
-		Personnel,
-		Hardware,
-		Software_Off_the_Shelf,
-		Premise,
-		Data_File,
-		Firmware,
-		Data_Message,
-		Software_Configuration,
-		Policy,
-		Electronic_Media,
-		Non_Electronic_Media,
-		Communication_Network,
-		Software_Custom,
-		Hardware_Configuration,
-		Auxiliary_Equipment,
-		Service_Access_Mean,
-		Data_Access_Mean
-	);
 }

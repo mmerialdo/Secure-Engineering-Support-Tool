@@ -67,7 +67,6 @@ export class OrganizationsTabViewComponent extends AbstractTabViewComponent impl
           this.model.id = this.newOrganization.identifier;
           this.save();
         }
-        console.log(this.serverAsset);
         this.validate(this.serverAsset);
       }
     });
@@ -187,7 +186,6 @@ export class OrganizationsTabViewComponent extends AbstractTabViewComponent impl
   }
 
   ngOnDestroy(): void {
-    console.log('ngOnDestroy Organization');
     this.clear();
   }
 }

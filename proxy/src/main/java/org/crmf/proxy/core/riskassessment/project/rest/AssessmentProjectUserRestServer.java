@@ -20,25 +20,25 @@ import org.slf4j.LoggerFactory;
 //This class manages the business logic behind the webservices related to the AssessmentProject User Role management
 public class AssessmentProjectUserRestServer {
 
-	private static final Logger LOG = LoggerFactory.getLogger(AssessmentProjectUserRestServer.class.getName());
-	
-	private AssessmentProjectUserInputInterface projectUserInput;
+  private static final Logger LOG = LoggerFactory.getLogger(AssessmentProjectUserRestServer.class.getName());
 
-	public void editAssessmentProjectUserRoles(AssessmentProject project) {
+  private AssessmentProjectUserInputInterface projectUserInput;
 
-		try {
-			projectUserInput.editAssessmentProjectRole(project);
-		} catch (Exception e) {
-			LOG.error(e.getMessage());
-		}
-	}
+  public void editAssessmentProjectUserRoles(AssessmentProject project) {
 
-	public AssessmentProjectUserInputInterface getProjectUserInput() {
-		return projectUserInput;
-	}
+    try {
+      projectUserInput.editAssessmentProjectRole(project);
+    } catch (Exception e) {
+      LOG.error(e.getMessage());
+    }
+  }
 
-	public void setProjectUserInput(AssessmentProjectUserInputInterface projectUserInput) {
-		this.projectUserInput = projectUserInput;
-	}
+  public AssessmentProjectUserInputInterface getProjectUserInput() {
+    return projectUserInput;
+  }
+
+  public void setProjectUserInput(AssessmentProjectUserInputInterface projectUserInput) {
+    this.projectUserInput = projectUserInput;
+  }
 
 }

@@ -12,9 +12,6 @@
 
 package org.crmf.proxy.core.riskassessment.project.rest;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.crmf.core.riskassessment.project.manager.AssessmentTemplateInputInterface;
 import org.crmf.model.riskassessment.AssessmentProfile;
 import org.crmf.model.riskassessment.AssessmentTemplate;
@@ -22,66 +19,68 @@ import org.crmf.model.utility.GenericFilter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.util.ArrayList;
+import java.util.List;
+
 //This class manages the business logic behind the webservices related to the AssessmentTemplate management
 public class AssessmentTemplateRestServer implements AssessmentTemplateRestServerInterface {
 
-	private static final Logger LOG = LoggerFactory.getLogger(AssessmentTemplateRestServer.class.getName());
-	private AssessmentTemplateInputInterface templateInput;
+  private static final Logger LOG = LoggerFactory.getLogger(AssessmentTemplateRestServer.class.getName());
+  private AssessmentTemplateInputInterface templateInput;
 
-	@Override
-	public String createAssessmentTemplate(AssessmentProfile profile) throws Exception {
-		try {
-			LOG.info("createAssessmentTemplate, template with name " + profile.getTemplates().get(0).getName());
-		
-			String result = templateInput.createAssessmentTemplate(profile.getTemplates().get(0), profile.getIdentifier());
-			if(result == null){
-				throw new Exception("COMMAND_EXCEPTION");
-			}
-			else{
-				return result;
-			}
-		} catch (Exception e) {
-			LOG.error(e.getMessage());
-			throw new Exception("COMMAND_EXCEPTION", e);
-		}
-	}
+  @Override
+  public String createAssessmentTemplate(AssessmentProfile profile) throws Exception {
+    try {
+      LOG.info("createAssessmentTemplate, template with name {}", profile.getTemplates().get(0).getName());
 
-	@Override
-	public List<AssessmentTemplate> loadAssessmentTemplateList(String token) throws Exception {
+      String result = templateInput.createAssessmentTemplate(profile.getTemplates().get(0), profile.getIdentifier());
+      if (result == null) {
+        throw new Exception("COMMAND_EXCEPTION");
+      } else {
+        return result;
+      }
+    } catch (Exception e) {
+      LOG.error(e.getMessage());
+      throw new Exception("COMMAND_EXCEPTION", e);
+    }
+  }
 
-		try {
-			return templateInput.loadAssessmentTemplateList();
-		} catch (Exception e) {
-			LOG.error(e.getMessage());
-			throw new Exception("COMMAND_EXCEPTION", e);
-		}
-	}
+  @Override
+  public List<AssessmentTemplate> loadAssessmentTemplateList(String token) throws Exception {
 
-	@Override
-	public List<String> loadAssessmentTemplate(GenericFilter filter, String token) throws Exception {
-		List<String> jsonTemplates = new ArrayList<String>();
+    try {
+      return templateInput.loadAssessmentTemplateList();
+    } catch (Exception e) {
+      LOG.error(e.getMessage());
+      throw new Exception("COMMAND_EXCEPTION", e);
+    }
+  }
 
-		LOG.info("loadAssessmentTemplate "+filter);
-		try {
-			List<AssessmentTemplate> templates = templateInput.loadAssessmentTemplate(filter);
-			LOG.info("loadAssessmentTemplate templates size: "+templates.size());
+  @Override
+  public List<String> loadAssessmentTemplate(GenericFilter filter, String token) throws Exception {
+    List<String> jsonTemplates = new ArrayList<>();
 
-			for (AssessmentTemplate t : templates) {
-				jsonTemplates.add(t.convertToJson());
-			}
-			LOG.info("loadAssessmentTemplate templates after convert");
-			return jsonTemplates;
-		} catch (Exception e) {
-			LOG.error(e.getMessage());
-			throw new Exception("COMMAND_EXCEPTION", e);
-		}
-	}
+    LOG.info("loadAssessmentTemplate {}", filter);
+    try {
+      List<AssessmentTemplate> templates = templateInput.loadAssessmentTemplate(filter);
+      LOG.info("loadAssessmentTemplate templates size: {}", templates.size());
 
-	public AssessmentTemplateInputInterface getTemplateInput() {
-		return templateInput;
-	}
+      for (AssessmentTemplate t : templates) {
+        jsonTemplates.add(t.convertToJson());
+      }
+      LOG.info("loadAssessmentTemplate templates after convert");
+      return jsonTemplates;
+    } catch (Exception e) {
+      LOG.error(e.getMessage());
+      throw new Exception("COMMAND_EXCEPTION", e);
+    }
+  }
 
-	public void setTemplateInput(AssessmentTemplateInputInterface TemplateInput) {
-		this.templateInput = TemplateInput;
-	}
+  public AssessmentTemplateInputInterface getTemplateInput() {
+    return templateInput;
+  }
+
+  public void setTemplateInput(AssessmentTemplateInputInterface TemplateInput) {
+    this.templateInput = TemplateInput;
+  }
 }

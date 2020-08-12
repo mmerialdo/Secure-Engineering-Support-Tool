@@ -12,13 +12,6 @@
 
 package org.crmf.model.utility.audit;
 
-import java.lang.reflect.Type;
-import java.util.ArrayList;
-import java.util.List;
-
-import org.crmf.model.audit.Audit;
-import org.crmf.model.audit.Questionnaire;
-
 import com.google.gson.JsonArray;
 import com.google.gson.JsonDeserializationContext;
 import com.google.gson.JsonDeserializer;
@@ -27,12 +20,22 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
 import com.google.gson.JsonSerializationContext;
 import com.google.gson.JsonSerializer;
+import org.crmf.model.audit.Audit;
+import org.crmf.model.audit.Questionnaire;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import java.lang.reflect.Type;
+import java.util.ArrayList;
+import java.util.List;
 
 //This class manages the serialization/deserialization of Audit classes
 public class AuditInstanceCreator implements JsonDeserializer<Audit>, JsonSerializer<Audit> {
 
+	public static final String IDENTIFIER = "identifier";
+	public static final String TYPE = "type";
+	public static final String DATA = "data";
+	public static final String CHILDREN = "children";
 	private QuestionnaireInstanceCreator convertor = new QuestionnaireInstanceCreator();
 	private static final Logger LOG = LoggerFactory.getLogger(AuditInstanceCreator.class.getName());
 
@@ -42,10 +45,10 @@ public class AuditInstanceCreator implements JsonDeserializer<Audit>, JsonSerial
 		JsonObject jsonObject = new JsonObject();
 
 		JsonObject auditData = new JsonObject();
-		auditData.addProperty("identifier", audit.getIdentifier());
-		auditData.addProperty("type", audit.getType().name());
+		auditData.addProperty(IDENTIFIER, audit.getIdentifier());
+		auditData.addProperty(TYPE, audit.getType().name());
 
-		jsonObject.add("data", auditData);
+		jsonObject.add(DATA, auditData);
 
 		JsonArray questionnaries = new JsonArray();
 		List<Questionnaire> questionnaires = audit.getQuestionnaires();
@@ -56,7 +59,7 @@ public class AuditInstanceCreator implements JsonDeserializer<Audit>, JsonSerial
 			questionnaries.add(questionnaireJsonObject);
 		}
 
-		jsonObject.add("children", questionnaries);
+		jsonObject.add(CHILDREN, questionnaries);
 		return null;
 	}
 
@@ -68,7 +71,7 @@ public class AuditInstanceCreator implements JsonDeserializer<Audit>, JsonSerial
 		JsonObject jsonObject = json.getAsJsonObject();
 		JsonArray children = jsonObject.getAsJsonArray("questionnaires");
 
-		ArrayList<Questionnaire> questionnaires = new ArrayList<Questionnaire>();
+		ArrayList<Questionnaire> questionnaires = new ArrayList<>();
 
 		if (children != null && !children.isJsonNull()) {
 			for (int i = 0; i < children.size(); i++) {
