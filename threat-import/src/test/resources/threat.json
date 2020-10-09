@@ -1,0 +1,151 @@
+{
+  "threats": [
+    {
+      "affectedAssetsCategories": [
+        "Data_File",
+        "Electronic_Media",
+        "Software_Configuration",
+        "Hardware_Configuration",
+        "Software_Off_the_Shelf",
+        "Software_Custom"
+      ],
+      "assessmentThreat": false,
+      "canBeSelected": true,
+      "catalogue": "MEHARI",
+      "catalogueId": "IF.L.Exp-Exp----",
+      "description": "an accidental production incident within the production premises",
+      "elementType": "Element",
+      "lastUpdate": "15/09/2020 15:00",
+      "name": "(Accidental) Production incident-IF.L.Exp-Exp----",
+      "phase": "Initial",
+      "rawText": "",
+      "threatClass": "Accidental",
+      "associatedVulnerabilities": [
+        "Fic.eff",
+        "Med.ine",
+        "Cfl.eff"
+      ],
+      "applicablePlatform": {
+        "architecturalParadigms": "",
+        "hardwareArchitectures": "",
+        "operatingSystems": "",
+        "platformNotes": "",
+        "products": "",
+        "programmingLanguages": "",
+        "technologyClasses": ""
+      },
+      "actor": {
+        "catalogue": "MEHARI",
+        "catalogueId": "",
+        "name": ""
+      },
+      "event": {
+        "catalogue": "MEHARI",
+        "catalogueId": "IF.L.Exp",
+        "description": "Production incident",
+        "name": "IF.L.Exp"
+      },
+      "score": {
+        "likelihood": "HIGH",
+        "score": "HIGH",
+        "securityImpacts": []
+      },
+      "place": {
+        "catalogue": "MEHARI",
+        "catalogueId": "Exp",
+        "description": "within the production premises",
+        "name": "Exp"
+      },
+      "time": {
+        "catalogue": "MEHARI",
+        "catalogueId": "",
+        "name": ""
+      },
+      "access": {
+        "catalogue": "MEHARI",
+        "catalogueId": "",
+        "name": ""
+      },
+      "process": {
+        "catalogue": "MEHARI",
+        "catalogueId": "",
+        "name": ""
+      },
+      "mitigations": [],
+      "relatedSecurityRequirements": [],
+      "identifier": "5ada3e25-b81f-4d28-a265-1d1e961c38d9",
+      "objType": "ThreatModel"
+    },
+    {
+      "affectedAssetsCategories": [
+        "Data_File"
+      ],
+      "assessmentThreat": false,
+      "canBeSelected": true,
+      "catalogue": "MEHARI",
+      "catalogueId": "ER.P.Pro-Exp--Ain--Ual",
+      "description": "Error of operation or non compliance of a procedure, by a user authorized legitimately connected from the internal network within the production premises",
+      "elementType": "Element",
+      "lastUpdate": "15/09/2020 15:00",
+      "name": "(Error) Error of operation or non compliance of a procedure-ER.P.Pro-Exp--Ain--Ual",
+      "phase": "Initial",
+      "rawText": "",
+      "threatClass": "Error",
+      "associatedVulnerabilities": [
+        "Fic.eff"
+      ],
+      "applicablePlatform": {
+        "architecturalParadigms": "",
+        "hardwareArchitectures": "",
+        "operatingSystems": "",
+        "platformNotes": "",
+        "products": "",
+        "programmingLanguages": "",
+        "technologyClasses": ""
+      },
+      "actor": {
+        "catalogue": "MEHARI",
+        "catalogueId": "Ual",
+        "description": "a user authorized legitimately",
+        "name": "Ual"
+      },
+      "event": {
+        "catalogue": "MEHARI",
+        "catalogueId": "ER.P.Pro",
+        "description": "Error of operation or non compliance of a procedure",
+        "name": "ER.P.Pro"
+      },
+      "score": {
+        "likelihood": "HIGH",
+        "score": "HIGH",
+        "securityImpacts": []
+      },
+      "place": {
+        "catalogue": "MEHARI",
+        "catalogueId": "Exp",
+        "description": "within the production premises",
+        "name": "Exp"
+      },
+      "time": {
+        "catalogue": "MEHARI",
+        "catalogueId": "",
+        "name": ""
+      },
+      "access": {
+        "catalogue": "MEHARI",
+        "catalogueId": "Ain",
+        "description": "connected from the internal network",
+        "name": "Ain"
+      },
+      "process": {
+        "catalogue": "MEHARI",
+        "catalogueId": "",
+        "name": ""
+      },
+      "mitigations": [],
+      "relatedSecurityRequirements": [],
+      "identifier": "9ec701b3-0065-4927-927a-f4f9a115c405",
+      "objType": "ThreatModel"
+    }
+  ]
+}

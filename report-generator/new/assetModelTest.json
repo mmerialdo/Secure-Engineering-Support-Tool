@@ -1,0 +1,166 @@
+{
+  "creationTime": "14/06/2020 11:58",
+  "updateTime": "14/06/2020 12:00",
+  "identifier": "f5f18253-14f5-4a62-baeb-8e1744f2fb84",
+  "objType": "AssetModel",
+  "graphJson": [],
+  "edges": [
+    {
+      "operationalWeight": 0.0,
+      "identifier": "75c5dbd5-04cd-6544-7b38-a2e97a6dc2c5",
+      "objType": "AssetModel",
+      "businessImpactWeights": [],
+      "source": "0feaf7c7-6dc1-78dd-6b7f-ac393dcdad2e",
+      "target": "d7e21963-d04c-ac43-eb1c-0d07beab9f42",
+      "securityImpacts": []
+    },
+    {
+      "operationalWeight": 0.0,
+      "identifier": "a3ba06de-469f-a7e1-1812-864925c8c355",
+      "objType": "AssetModel",
+      "businessImpactWeights": [],
+      "source": "d7e21963-d04c-ac43-eb1c-0d07beab9f42",
+      "target": "2b65c3dc-c0bc-d08d-e39b-1ef89f5e33b6",
+      "securityImpacts": []
+    },
+    {
+      "operationalWeight": 0.0,
+      "identifier": "98953880-0cb6-e69c-9fb5-180f51ff1801",
+      "objType": "AssetModel",
+      "businessImpactWeights": [],
+      "source": "2b65c3dc-c0bc-d08d-e39b-1ef89f5e33b6",
+      "target": "4ca13229-67db-33a2-a0bd-6629f6ecba34",
+      "securityImpacts": []
+    },
+    {
+      "operationalWeight": 0.0,
+      "identifier": "25568d50-38a9-200c-0357-521ed97860ba",
+      "objType": "AssetModel",
+      "businessImpactWeights": [],
+      "source": "2b65c3dc-c0bc-d08d-e39b-1ef89f5e33b6",
+      "target": "5e3f2708-97a9-264e-557b-2621ae3fd731",
+      "securityImpacts": []
+    }
+  ],
+  "nodes": [
+    {
+      "objType": "AssetModel",
+      "assessmentNode": true,
+      "goal": "oijoij",
+      "description": "oijoij",
+      "name": "Org 1",
+      "systemParticipantOwnerId": "",
+      "identifier": "0feaf7c7-6dc1-78dd-6b7f-ac393dcdad2e",
+      "nodeType": "Organization",
+      "relatedRequirementsIds": [],
+      "children": [
+        "75c5dbd5-04cd-6544-7b38-a2e97a6dc2c5"
+      ],
+      "parents": []
+    },
+    {
+      "type": "",
+      "objType": "AssetModel",
+      "assessmentNode": true,
+      "goal": "iojoij",
+      "description": "oij",
+      "name": "Process 1",
+      "systemParticipantOwnerId": "",
+      "identifier": "d7e21963-d04c-ac43-eb1c-0d07beab9f42",
+      "nodeType": "BusinessProcess",
+      "relatedRequirementsIds": [],
+      "children": [
+        "a3ba06de-469f-a7e1-1812-864925c8c355"
+      ],
+      "parents": [
+        "75c5dbd5-04cd-6544-7b38-a2e97a6dc2c5"
+      ]
+    },
+    {
+      "objType": "AssetModel",
+      "assessmentNode": true,
+      "goal": "oijoij",
+      "description": "oijoij",
+      "name": "Act 1",
+      "systemParticipantOwnerId": "",
+      "identifier": "2b65c3dc-c0bc-d08d-e39b-1ef89f5e33b6",
+      "nodeType": "BusinessActivity",
+      "relatedRequirementsIds": [],
+      "children": [
+        "98953880-0cb6-e69c-9fb5-180f51ff1801",
+        "25568d50-38a9-200c-0357-521ed97860ba"
+      ],
+      "parents": [
+        "a3ba06de-469f-a7e1-1812-864925c8c355"
+      ]
+    },
+    {
+      "functionalConsequence": "",
+      "functionalDescription": "",
+      "technicalConsequence": "",
+      "technicalDescription": "",
+      "functionalType": "Completeness_Lack",
+      "weight": 0.0,
+      "technicalTypes": [
+        "Confidentiality_Loss",
+        "Integrity_Loss"
+      ],
+      "scales": [
+        {
+          "seriousness": "HIGH",
+          "description": "iuhiuh"
+        }
+      ],
+      "objType": "AssetModel",
+      "assessmentNode": true,
+      "goal": "",
+      "description": "",
+      "name": "Mal 1",
+      "systemParticipantOwnerId": "",
+      "identifier": "4ca13229-67db-33a2-a0bd-6629f6ecba34",
+      "nodeType": "Malfunction",
+      "relatedRequirementsIds": [],
+      "children": [],
+      "parents": [
+        "98953880-0cb6-e69c-9fb5-180f51ff1801"
+      ]
+    },
+    {
+      "securityImpacts": [
+        {
+          "impact": "HIGH",
+          "scope": "Integrity",
+          "tecnicalImpacts": []
+        },
+        {
+          "impact": "HIGH",
+          "scope": "Confidentiality",
+          "tecnicalImpacts": []
+        }
+      ],
+      "businessImpactWeights": [],
+      "category": "Data_File",
+      "cost": 0,
+      "primaryCategories": [
+        "Data_DataFile_Database",
+        "Data_DataFile_Database"
+      ],
+      "malfunctionsIds": [
+        "4ca13229-67db-33a2-a0bd-6629f6ecba34"
+      ],
+      "objType": "AssetModel",
+      "assessmentNode": true,
+      "goal": "",
+      "description": "oijoij",
+      "name": "Asset 1",
+      "systemParticipantOwnerId": "",
+      "identifier": "5e3f2708-97a9-264e-557b-2621ae3fd731",
+      "nodeType": "Asset",
+      "relatedRequirementsIds": [],
+      "children": [],
+      "parents": [
+        "25568d50-38a9-200c-0357-521ed97860ba"
+      ]
+    }
+  ]
+}
