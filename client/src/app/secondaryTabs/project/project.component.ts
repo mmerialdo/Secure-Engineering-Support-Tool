@@ -53,7 +53,7 @@ export class ProjectComponent implements OnInit, OnDestroy {
     this.subscriptions.push(
       this.dataService.refreshPermissionList().subscribe(
         response => {
-          this.getProject(JSON.stringify(a));
+          this.getProject(a);
         }, err => {
           this.blocked = false;
           throw err;

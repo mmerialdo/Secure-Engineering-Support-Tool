@@ -15,21 +15,26 @@ package org.crmf.core.riskassessment.project.manager;
 import org.crmf.model.general.SESTObjectTypeEnum;
 import org.crmf.model.riskassessment.AssessmentProfile;
 import org.crmf.persistency.mapper.project.AssprofileServiceInterface;
-import org.crmf.user.validation.permission.UserPermissionManagerInputInterface;
+import org.crmf.user.validation.permission.UserPermissionManagerInput;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 //This class is called by the Proxy and manages the entrypoint for the business logic (including the interactions with the Persistency) related to the AssessmentProfiles
-public class AssessmentProfileInput implements AssessmentProfileInputInterface {
+@Service
+public class AssessmentProfileInput {
 	
 	private static final Logger LOG = LoggerFactory.getLogger(AssessmentProfileInput.class.getName());
+	@Autowired
+	@Qualifier("default")
 	private AssprofileServiceInterface assprofileService;
-	private UserPermissionManagerInputInterface permissionManager;
+	@Autowired
+	private UserPermissionManagerInput permissionManager;
 	
-	
-	@Override
 	public String createAssessmentProfile(AssessmentProfile profile) throws Exception {
 		
 		LOG.info("createAssessmentProfile with identifier: {}", profile.getIdentifier());
@@ -42,48 +47,27 @@ public class AssessmentProfileInput implements AssessmentProfileInputInterface {
 		return profileId;
 	}
 
-	@Override
-	public void editAssessmentProfile(AssessmentProfile profile) throws Exception {
+	public void editAssessmentProfile(AssessmentProfile profile) {
 
 		LOG.info("editAssessmentProfile with identifier: {}", profile.getIdentifier());
 		assprofileService.update(profile);
 	}
 
-	@Override
-	public void deleteAssessmentProfile(String identifier) throws Exception {
+	public void deleteAssessmentProfile(String identifier) {
 
 		LOG.info("deleteAssessmentProfile with identifier: {}", identifier);
 		assprofileService.deleteCascade(identifier);
 	}
 
-	@Override
-	public AssessmentProfile loadAssessmentProfile(String identifier) throws Exception {
+	public AssessmentProfile loadAssessmentProfile(String identifier) {
 
 		LOG.info("loadAssessmentProfile with identifier: {}", identifier);
 		return assprofileService.getByIdentifier(identifier);
 	}
 
-	@Override
-	public List<AssessmentProfile> loadAssessmentProfileList() throws Exception {
+	public List<AssessmentProfile> loadAssessmentProfileList() {
 
 		LOG.info("loadAssessmentProfileList ");
 		return assprofileService.getAll();
 	}
-
-	public AssprofileServiceInterface getAssprofileService() {
-		return assprofileService;
-	}
-
-	public void setAssprofileService(AssprofileServiceInterface assprofileService) {
-		this.assprofileService = assprofileService;
-	}
-	
-	public UserPermissionManagerInputInterface getPermissionManager() {
-		return permissionManager;
-	}
-
-	public void setPermissionManager(UserPermissionManagerInputInterface permissionManager) {
-		this.permissionManager = permissionManager;
-	}
-	
 }

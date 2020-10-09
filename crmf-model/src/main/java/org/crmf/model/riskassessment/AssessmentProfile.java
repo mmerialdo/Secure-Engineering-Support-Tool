@@ -14,7 +14,7 @@ package org.crmf.model.riskassessment;
 
 import org.crmf.model.general.SESTObject;
 
-import java.util.ArrayList;
+import java.util.List;
 
 public class AssessmentProfile extends SESTObject {
 
@@ -25,7 +25,7 @@ public class AssessmentProfile extends SESTObject {
 	private PhaseEnum phase;
 	private RiskMethodologyEnum riskMethodology;
 	private String updateTime;
-	private ArrayList<AssessmentTemplate> templates;
+	private List<AssessmentTemplate> templates;
 
 	public String getCreationTime(){
 		return creationTime;
@@ -83,11 +83,11 @@ public class AssessmentProfile extends SESTObject {
 		this.phase = phase;
 	}
 
-	public ArrayList<AssessmentTemplate> getTemplates() {
+	public List<AssessmentTemplate> getTemplates() {
 		return templates;
 	}
 
-	public void setTemplates(ArrayList<AssessmentTemplate> templates) {
+	public void setTemplates(List<AssessmentTemplate> templates) {
 		this.templates = templates;
 	}
 

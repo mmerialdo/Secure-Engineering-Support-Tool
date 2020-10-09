@@ -20,231 +20,186 @@ import org.crmf.persistency.domain.general.Sestobj;
 import org.crmf.persistency.domain.project.AssProfile;
 import org.crmf.persistency.domain.project.AssTemplate;
 import org.crmf.persistency.mapper.general.SestobjMapper;
-import org.crmf.persistency.session.PersistencySessionFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
 
 //This class manages the database interactions related to the AssessmentProfile
+
+@Service
+@Qualifier("default")
 public class AssprofileService implements AssprofileServiceInterface {
 
-	private static final Logger LOG = LoggerFactory.getLogger(AssprofileService.class.getName());
-	PersistencySessionFactory sessionFactory;
+  private static final Logger LOG = LoggerFactory.getLogger(AssprofileService.class.getName());
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see
-	 * org.crmf.persistency.mapper.project.AssprofileServiceInterface#insert(org
-	 * .crmf.model.riskassessment.AssessmentProfile)
-	 */
-	@Override
-	public String insert(AssessmentProfile assprofileDM) throws Exception {
-		SqlSession sqlSession = sessionFactory.getSession();
+  @Autowired
+  private SqlSession sqlSession;
 
-		LOG.info("Insert Profile");
-		AssProfile profile = new AssProfile();
-		profile.convertFromModel(assprofileDM);
-		LOG.info("Insert profile " + profile);
+  /*
+   * (non-Javadoc)
+   *
+   * @see
+   * org.crmf.persistency.mapper.project.AssprofileServiceInterface#insert(org
+   * .crmf.model.riskassessment.AssessmentProfile)
+   */
+  @Override
+  public String insert(AssessmentProfile assprofileDM) {
+    LOG.info("Insert Profile");
+    AssProfile profile = new AssProfile();
+    profile.convertFromModel(assprofileDM);
+    LOG.info("Insert profile " + profile);
 
-		// String identifier = UUID.randomUUID().toString();
-		Sestobj sestobj = null;
+    // String identifier = UUID.randomUUID().toString();
+    Sestobj sestobj = null;
 
-		try {
-			AssprofileMapper profileMapper = sqlSession.getMapper(AssprofileMapper.class);
-			AsstemplateMapper templateMapper = sqlSession.getMapper(AsstemplateMapper.class);
-			SestobjMapper sestobjMapper = sqlSession.getMapper(SestobjMapper.class);
+    try {
+      AssprofileMapper profileMapper = sqlSession.getMapper(AssprofileMapper.class);
+      AsstemplateMapper templateMapper = sqlSession.getMapper(AsstemplateMapper.class);
+      SestobjMapper sestobjMapper = sqlSession.getMapper(SestobjMapper.class);
 
-			LOG.info("Insert sestObject");
-			sestobj = new Sestobj();
-			sestobj.setObjtype(SESTObjectTypeEnum.AssessmentProfile.name());
-			sestobjMapper.insert(sestobj);
+      LOG.info("Insert sestObject");
+      sestobj = new Sestobj();
+      sestobj.setObjtype(SESTObjectTypeEnum.AssessmentProfile.name());
+      sestobjMapper.insert(sestobj);
 
-			profile.setSestobjId(sestobj.getIdentifier());
-			profileMapper.insert(profile);
+      profile.setSestobjId(sestobj.getIdentifier());
+      profileMapper.insert(profile);
 
-			sqlSession.commit();
-			LOG.info("After Insert Profile");
+      LOG.info("After Insert Profile");
 
-			ArrayList<AssessmentTemplate> templates = assprofileDM.getTemplates();
-			if (templates != null && !templates.isEmpty()) {
+      List<AssessmentTemplate> templates = assprofileDM.getTemplates();
+      if (templates != null && !templates.isEmpty()) {
 
-				for (AssessmentTemplate assTemplate : templates) {
-					
-					Integer templateID = templateMapper.getIdByIdentifier(assTemplate.getIdentifier());
-					
-					AssTemplate templateDB = new AssTemplate();
-					templateDB.convertFromModel(assTemplate);
-					templateDB.setId(templateID);
-					templateDB.setProfileId(profile.getId());
-					templateMapper.insertProfileAssoc(templateDB);
-					LOG.info("Insert Template " + templateDB.getId() + ", profile " + profile.getId());
+        for (AssessmentTemplate assTemplate : templates) {
 
-					sqlSession.commit();
-				}
-			}
-		} catch (Exception ex) {
-			LOG.error(ex.getMessage());
-			sqlSession.rollback();
-			return null;
-		} finally {
-			sqlSession.close();
-		}
-		return sestobj.getIdentifier();
-	}
+          Integer templateID = templateMapper.getIdByIdentifier(assTemplate.getIdentifier());
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see org.crmf.persistency.mapper.project.AssprofileServiceInterface#
-	 * deleteCascade(java.lang.String)
-	 */
-	@Override
-	public void deleteCascade(String identifier) {
-		SqlSession sqlSession = sessionFactory.getSession();
+          AssTemplate templateDB = new AssTemplate();
+          templateDB.convertFromModel(assTemplate);
+          templateDB.setId(templateID);
+          templateDB.setProfileId(profile.getId());
+          templateMapper.insertProfileAssoc(templateDB);
+          LOG.info("Insert Template " + templateDB.getId() + ", profile " + profile.getId());
+        }
+      }
+    } catch (Exception ex) {
+      LOG.error(ex.getMessage());
+      return null;
+    }
+    return sestobj.getIdentifier();
+  }
 
-		LOG.info("Delete assessment profile cascade " + identifier);
-		try {
-			AssprofileMapper assprofileMapper = sqlSession.getMapper(AssprofileMapper.class);
+  /*
+   * (non-Javadoc)
+   *
+   * @see org.crmf.persistency.mapper.project.AssprofileServiceInterface#
+   * deleteCascade(java.lang.String)
+   */
+  @Override
+  public void deleteCascade(String identifier) {
+    LOG.info("Delete assessment profile cascade " + identifier);
+    AssprofileMapper assprofileMapper = sqlSession.getMapper(AssprofileMapper.class);
 
-			LOG.info("Delete assessment profile ");
-			assprofileMapper.deleteByIdentifier(identifier);
-			sqlSession.commit();
-		} finally {
-			sqlSession.close();
-		}
-	}
+    LOG.info("Delete assessment profile ");
+    assprofileMapper.deleteByIdentifier(identifier);
+  }
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see org.crmf.persistency.mapper.project.AssprofileServiceInterface#
-	 * getByIdentifier(java.lang.String)
-	 */
-	@Override
-	public AssessmentProfile getByIdentifier(String identifier) {
-		SqlSession sqlSession = sessionFactory.getSession();
-		try {
-			SestobjMapper sestobjMapper = sqlSession.getMapper(SestobjMapper.class);
-			AssprofileMapper profileMapper = sqlSession.getMapper(AssprofileMapper.class);
+  /*
+   * (non-Javadoc)
+   *
+   * @see org.crmf.persistency.mapper.project.AssprofileServiceInterface#
+   * getByIdentifier(java.lang.String)
+   */
+  @Override
+  public AssessmentProfile getByIdentifier(String identifier) {
+    AssprofileMapper profileMapper = sqlSession.getMapper(AssprofileMapper.class);
+    AssessmentProfile profileToSend = null;
+    AssProfile profile = profileMapper.getByIdentifier(identifier);
+    if (profile != null) {
+      profileToSend = profile.convertToModel();
+      profileToSend.setObjType(SESTObjectTypeEnum.AssessmentProfile);
+    }
+    return profileToSend;
+  }
 
-			AssProfile profile = profileMapper.getByIdentifier(identifier);
-			AssessmentProfile profileToSend = profile.convertToModel();
-			profileToSend.setObjType(SESTObjectTypeEnum.AssessmentProfile);
+  public Integer getIdByIdentifier(String identifier) {
+    AssprofileMapper profileMapper = sqlSession.getMapper(AssprofileMapper.class);
+    return profileMapper.getIdByIdentifier(identifier);
+  }
 
-			return profileToSend;
-		} finally {
-			sqlSession.close();
-		}
-	}
+  /*
+   * (non-Javadoc)
+   *
+   * @see
+   * org.crmf.persistency.mapper.project.AssprofileServiceInterface#getAll()
+   */
+  @Override
+  public List<AssessmentProfile> getAll() {
+    LOG.info("called getAll");
+    List<AssessmentProfile> profilesToSend = new ArrayList<>();
+    AssprofileMapper profileMapper = sqlSession.getMapper(AssprofileMapper.class);
+    List<AssProfile> profiles = profileMapper.getAll();
 
-	public Integer getIdByIdentifier(String identifier) {
-		Integer id = null;
-		SqlSession sqlSession = sessionFactory.getSession();
-		try {
-			SestobjMapper sestobjMapper = sqlSession.getMapper(SestobjMapper.class);
-			AssprofileMapper profileMapper = sqlSession.getMapper(AssprofileMapper.class);
+    for (AssProfile assProfile : profiles) {
+      AssessmentProfile profileToSend = assProfile.convertToModel();
+      profileToSend.setObjType(SESTObjectTypeEnum.AssessmentProfile);
 
-			id = profileMapper.getIdByIdentifier(identifier);
+      profilesToSend.add(profileToSend);
+      LOG.info("added profile to listUser");
+    }
+    return profilesToSend;
+  }
 
-		} finally {
-			sqlSession.close();
-		}
+  @Override
+  public void update(AssessmentProfile assprofileDM) {
 
-		return id;
-	}
+    LOG.info("Update Profile");
+    AssProfile profile = new AssProfile();
+    profile.convertFromModel(assprofileDM);
+    try {
+      AssprofileMapper profileMapper = sqlSession.getMapper(AssprofileMapper.class);
+      AsstemplateMapper templateMapper = sqlSession.getMapper(AsstemplateMapper.class);
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see
-	 * org.crmf.persistency.mapper.project.AssprofileServiceInterface#getAll()
-	 */
-	@Override
-	public List<AssessmentProfile> getAll() {
-		LOG.info("called getAll");
-		SqlSession sqlSession = sessionFactory.getSession();
-		List<AssessmentProfile> profilesToSend = new ArrayList<>();
-		try {
-			AssprofileMapper profileMapper = sqlSession.getMapper(AssprofileMapper.class);
-			List<AssProfile> profiles = profileMapper.getAll();
+      Integer id = profileMapper.getIdByIdentifier(assprofileDM.getIdentifier());
+      profile.setId(id);
+      LOG.info("Update profile " + profile);
+      profileMapper.insert(profile);
 
-			for (AssProfile assProfile : profiles) {
-				AssessmentProfile profileToSend = assProfile.convertToModel();
-				profileToSend.setObjType(SESTObjectTypeEnum.AssessmentProfile);
+      LOG.info("After Insert Profile");
 
-				profilesToSend.add(profileToSend);
-				LOG.info("added profile to listUser");
-			}
-		} finally {
-			sqlSession.close();
-		}
-		return profilesToSend;
-	}
+      List<AssTemplate> templatesOld = templateMapper.getByProfileIdentifier(profile.getSestobjId());
+      if (templatesOld != null && !templatesOld.isEmpty()) {
+        LOG.info("Delete templatesOld " + templatesOld.size());
 
-	public PersistencySessionFactory getSessionFactory() {
-		return sessionFactory;
-	}
+        for (AssTemplate assTemplate : templatesOld) {
 
-	public void setSessionFactory(PersistencySessionFactory sessionFactory) {
-		this.sessionFactory = sessionFactory;
-	}
+          assTemplate.setProfileId(profile.getId());
+          LOG.info("Delete Template " + assTemplate.getId() + ", profile " + assTemplate.getProfileId());
+          templateMapper.deleteProfileAssoc(assTemplate);
+        }
+      }
 
-	@Override
-	public void update(AssessmentProfile assprofileDM) {
-		SqlSession sqlSession = sessionFactory.getSession();
+      ArrayList<AssTemplate> templates = profile.getTemplates();
+      if (templates != null && !templates.isEmpty()) {
+        LOG.info("Insert templates new " + templates.size());
 
-		LOG.info("Update Profile");
-		AssProfile profile = new AssProfile();
-		profile.convertFromModel(assprofileDM);
+        for (AssTemplate assTemplate : templates) {
 
-		try {
-			AssprofileMapper profileMapper = sqlSession.getMapper(AssprofileMapper.class);
-			AsstemplateMapper templateMapper = sqlSession.getMapper(AsstemplateMapper.class);
+          Integer templateId = templateMapper.getIdByIdentifier(assTemplate.getSestobjId());
+          assTemplate.setProfileId(profile.getId());
+          assTemplate.setId(templateId);
+          templateMapper.insertProfileAssoc(assTemplate);
+          LOG.info("Insert Template " + templateId + ", profile " + profile.getId());
+        }
+      }
 
-			Integer id = profileMapper.getIdByIdentifier(assprofileDM.getIdentifier());
-			profile.setId(id);
-			LOG.info("Update profile " + profile);
-			profileMapper.insert(profile);
-
-			sqlSession.commit();
-			LOG.info("After Insert Profile");
-
-			List<AssTemplate> templatesOld = templateMapper.getByProfileIdentifier(profile.getSestobjId());
-			if(templatesOld != null && !templatesOld.isEmpty()){
-				LOG.info("Delete templatesOld " + templatesOld.size());
-
-				for (AssTemplate assTemplate : templatesOld) {
-
-					assTemplate.setProfileId(profile.getId());
-					LOG.info("Delete Template " + assTemplate.getId() + ", profile " + assTemplate.getProfileId());
-					templateMapper.deleteProfileAssoc(assTemplate);
-				}
-			}
-			
-			ArrayList<AssTemplate> templates = profile.getTemplates();
-			if (templates != null && !templates.isEmpty()) {
-				LOG.info("Insert templates new " + templates.size());
-
-				for (AssTemplate assTemplate : templates) {
-
-					Integer templateId = templateMapper.getIdByIdentifier(assTemplate.getSestobjId());
-					assTemplate.setProfileId(profile.getId());
-					assTemplate.setId(templateId);
-					templateMapper.insertProfileAssoc(assTemplate);
-					LOG.info("Insert Template " + templateId + ", profile " + profile.getId());
-				}
-			}
-			
-			sqlSession.commit();
-
-		} catch (Exception ex) {
-			LOG.error(ex.getMessage());
-			sqlSession.rollback();
-		} finally {
-			sqlSession.close();
-		}
-	}
+    } catch (Exception ex) {
+      LOG.error(ex.getMessage());
+    }
+  }
 }

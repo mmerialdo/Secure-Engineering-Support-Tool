@@ -23,24 +23,21 @@ import org.apache.shiro.authz.AuthorizationInfo;
 import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
 import org.apache.shiro.subject.SimplePrincipalCollection;
-import org.crmf.user.manager.authentication.UserAuthenticationInterface;
+import org.crmf.user.manager.authentication.UserAuthentication;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Configuration;
 
 
 //Implementation of AuthrizingRealm, used to perform authentication getting credentials from persistency bundle (db).
+@Configuration
 public class CustomSecurityRealm extends AuthorizingRealm {
 
-  private UserAuthenticationInterface userAuthentication;
-
-  protected boolean permissionsLookupEnabled = false;
+  @Autowired
+  private UserAuthentication userAuthentication;
 
   private static final Logger LOG = LoggerFactory.getLogger(CustomSecurityRealm.class);
-
-  public CustomSecurityRealm() {
-    super();
-    LOG.info("CustomSecurityRealm constructor!!!");
-  }
 
   /*
    Method used to get credentials (password for username).
@@ -85,16 +82,7 @@ public class CustomSecurityRealm extends AuthorizingRealm {
   protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principals) {
 
     LOG.info("---------------- doGetAuthorizationInfo ---------------------");
-    LOG.info("Not needed because ShiroSecurityProcessorCustom manages authorization");
+    LOG.info("Not needed because ShiroSecurityProcessorCustom manages authorization " + principals);
     return null;
   }
-
-  public UserAuthenticationInterface getUserAuthentication() {
-    return userAuthentication;
-  }
-
-  public void setUserAuthentication(UserAuthenticationInterface userAuthentication) {
-    this.userAuthentication = userAuthentication;
-  }
-
 }

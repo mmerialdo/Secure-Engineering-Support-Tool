@@ -33,7 +33,6 @@ import { VulnerabilitiesComponent } from './secondaryTabs/vulnerabilities/vulner
 
 import { ThreatsComponent } from './secondaryTabs/threats/threats.component';
 import { ScenarioComponent } from './secondaryTabs/scenario/scenario.component';
-import { SettingsComponent } from './tabs/settings/settings.component';
 import { TreatmentComponent } from './secondaryTabs/treatment/treatment.component';
 import { HomeComponent } from './tabs/home/home.component';
 import {
@@ -72,13 +71,10 @@ const routes: Routes = [
       { path: 'editproject', component: EditprojectComponent },
       { path: 'createproject', component: CreateprojectComponent },
 
-      { path: 'settings', component: SettingsComponent },
       { path: 'taxonomiesManagement', component: TaxonomiesManagementComponent},
 
       { path: 'home', component: HomeComponent }
-
     ]
-
   }
 ];
 

@@ -13,30 +13,24 @@
 package org.crmf.core.riskassessment.project.manager;
 
 import org.crmf.model.riskassessment.AssessmentProject;
-import org.crmf.user.validation.permission.UserPermissionManagerInputInterface;
+import org.crmf.user.validation.permission.UserPermissionManagerInput;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 //This class is called by the Proxy and manages the entrypoint for the business logic (including the interactions with the Persistency) related to the Users
-public class AssessmentProjectUserInput implements AssessmentProjectUserInputInterface {
+@Service
+public class AssessmentProjectUserInput {
 
   private static final Logger LOG = LoggerFactory.getLogger(AssessmentProjectUserInput.class.getName());
-  private UserPermissionManagerInputInterface permissionManager;
+  @Autowired
+  private UserPermissionManagerInput permissionManager;
 
-  @Override
   public void editAssessmentProjectRole(AssessmentProject project) throws Exception {
 
     LOG.info("saveAssessmentProjectRole project identifier: {}", project.getIdentifier());
     permissionManager.updatePermissionOnRoleChange(project);
   }
-
-  public UserPermissionManagerInputInterface getPermissionManager() {
-    return permissionManager;
-  }
-
-  public void setPermissionManager(UserPermissionManagerInputInterface permissionManager) {
-    this.permissionManager = permissionManager;
-  }
-
 }
 

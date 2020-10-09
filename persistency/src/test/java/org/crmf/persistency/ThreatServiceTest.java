@@ -20,40 +20,28 @@ import org.crmf.model.riskassessmentelements.ThreatScore;
 import org.crmf.model.riskassessmentelements.ThreatScoreEnum;
 import org.crmf.model.riskassessmentelements.ThreatSourceEnum;
 import org.crmf.persistency.domain.threat.SestThreatModel;
-import org.crmf.persistency.mapper.general.CleanDatabaseService;
 import org.crmf.persistency.mapper.threat.ThreatService;
-import org.crmf.persistency.session.PersistencySessionFactory;
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mybatis.spring.boot.test.autoconfigure.MybatisTest;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Import;
+import org.springframework.test.context.ActiveProfiles;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import java.util.ArrayList;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
-
+@ExtendWith(SpringExtension.class)
+@MybatisTest
+@Import(ThreatService.class)
+@ContextConfiguration(classes=Application.class)
+@ActiveProfiles("test")
 public class ThreatServiceTest {
 
-  PersistencySessionFactory sessionFactory;
+  @Autowired
   ThreatService threatService;
-
-  @Before
-  public void setUp() throws Exception {
-
-    sessionFactory = new PersistencySessionFactory();
-    sessionFactory.createSessionFactory();
-
-    threatService = new ThreatService();
-    threatService.setSessionFactory(sessionFactory);
-  }
-
-  @After
-  public void tearDown(){
-
-    CleanDatabaseService cleaner = new CleanDatabaseService();
-    cleaner.setSessionFactory(sessionFactory);
-    cleaner.delete();
-  }
 
   @Test
   public void insertThreat() throws Exception {
@@ -72,9 +60,9 @@ public class ThreatServiceTest {
 
     threatService.insertThreatReference(threat);
     SestThreatModel model = threatService.getThreatRepository(ThreatSourceEnum.MEHARI.name());
-    assertNotNull(model);
-    assertNotNull(model.convertToModel());
-    assertEquals(1, model.convertToModel().getThreats().size());
+    Assertions.assertNotNull(model);
+    Assertions.assertNotNull(model.convertToModel());
+    Assertions.assertEquals(1, model.convertToModel().getThreats().size());
   }
 
   @Test
@@ -97,11 +85,11 @@ public class ThreatServiceTest {
     threat.setThreatClass(ThreatClassEnum.Error);
     threatService.editThreatReference(threat);
     SestThreatModel model = threatService.getThreatRepository(ThreatSourceEnum.MEHARI.name());
-    assertNotNull(model);
-    assertNotNull(model.convertToModel());
-    assertNotNull(model.convertToModel().getThreats().get(0));
-    assertEquals(1, model.convertToModel().getThreats().size());
-    assertEquals(ThreatClassEnum.Error, model.convertToModel().getThreats().get(0).getThreatClass());
+    Assertions.assertNotNull(model);
+    Assertions.assertNotNull(model.convertToModel());
+    Assertions.assertNotNull(model.convertToModel().getThreats().get(0));
+    Assertions.assertEquals(1, model.convertToModel().getThreats().size());
+    Assertions.assertEquals(ThreatClassEnum.Error, model.convertToModel().getThreats().get(0).getThreatClass());
   }
 
   @Test
@@ -122,9 +110,8 @@ public class ThreatServiceTest {
     String sestObjId = threatService.insertThreatReference(threat);
     threatService.deleteThreatReference(new ArrayList<String>() {{add(sestObjId);}});
     SestThreatModel model = threatService.getThreatRepository(ThreatSourceEnum.MEHARI.name());
-    assertNotNull(model);
-    assertNotNull(model.convertToModel());
-    System.out.println(model.convertToModel().getThreats().size());
-    assertEquals(0, model.convertToModel().getThreats().size());
+    Assertions.assertNotNull(model);
+    Assertions.assertNotNull(model.convertToModel());
+    Assertions.assertEquals(0, model.convertToModel().getThreats().size());
   }
 }

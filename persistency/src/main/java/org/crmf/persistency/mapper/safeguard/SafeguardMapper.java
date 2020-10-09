@@ -12,10 +12,12 @@
 
 package org.crmf.persistency.mapper.safeguard;
 
+import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.crmf.persistency.domain.safeguard.SestSafeguardModel;
 
 //This interface allows the bundle to invoke the SQL methods within the SafeguardMapper.xml (via the ibatis API)
+@Mapper
 public interface SafeguardMapper {
 
   void insert(SestSafeguardModel safeguardModel);

@@ -17,8 +17,4 @@ public class Organization extends Node {
 	public Organization(){
 
 	}
-
-	public void finalize() throws Throwable {
-		super.finalize();
-	}
 }

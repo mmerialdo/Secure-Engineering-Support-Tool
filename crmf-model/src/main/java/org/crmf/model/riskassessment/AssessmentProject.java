@@ -17,6 +17,7 @@ import org.crmf.model.general.SESTObject;
 import org.crmf.model.user.User;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class AssessmentProject extends SESTObject {
 
@@ -26,13 +27,13 @@ public class AssessmentProject extends SESTObject {
 	private RiskMethodologyEnum riskMethodology;
 	private AssessmentStatusEnum status;
 	private String updateTime;
-	private ArrayList<AssessmentProcedure> procedures;
+	private List<AssessmentProcedure> procedures;
 	private AssessmentProfile profile;
 	private AssessmentTemplate template;
 	private SystemProject systemProject;
 	private ArrayList<User> users;
 	private User projectManager;
-	private ArrayList<SestAuditModel> audits;
+	private List<SestAuditModel> audits;
 
 	public String getCreationTime(){
 		return creationTime;
@@ -82,11 +83,11 @@ public class AssessmentProject extends SESTObject {
 		updateTime = newVal;
 	}
 
-	public ArrayList<AssessmentProcedure> getProcedures() {
+	public List<AssessmentProcedure> getProcedures() {
 		return procedures;
 	}
 
-	public void setProcedures(ArrayList<AssessmentProcedure> procedures) {
+	public void setProcedures(List<AssessmentProcedure> procedures) {
 		this.procedures = procedures;
 	}
 
@@ -130,11 +131,11 @@ public class AssessmentProject extends SESTObject {
 		this.projectManager = projectManager;
 	}
 
-	public ArrayList<SestAuditModel> getAudits() {
+	public List<SestAuditModel> getAudits() {
 		return audits;
 	}
 
-	public void setAudits(ArrayList<SestAuditModel> audits) {
+	public void setAudits(List<SestAuditModel> audits) {
 		this.audits = audits;
 	}
 	

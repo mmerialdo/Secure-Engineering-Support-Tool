@@ -12,10 +12,12 @@
 
 package org.crmf.persistency.mapper.risk;
 
+import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.crmf.persistency.domain.risk.SestRiskTreatmentModel;
 
 //This interface allows the bundle to invoke the SQL methods within the RiskTreatmentMapper.xml (via the ibatis API)
+@Mapper
 public interface RiskTreatmentMapper {
 
   void insert(SestRiskTreatmentModel riskTreatmentModel);

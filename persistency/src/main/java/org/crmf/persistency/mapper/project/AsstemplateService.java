@@ -28,315 +28,248 @@ import org.crmf.persistency.mapper.risk.RiskMapper;
 import org.crmf.persistency.mapper.safeguard.SafeguardMapper;
 import org.crmf.persistency.mapper.threat.ThreatMapper;
 import org.crmf.persistency.mapper.vulnerability.VulnerabilityMapper;
-import org.crmf.persistency.session.PersistencySessionFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
 
 //This class manages the database interactions related to the AssessmentTemplate
+@Service
+@Qualifier("default")
 public class AsstemplateService implements AsstemplateServiceInterface {
 
-	private static final Logger LOG = LoggerFactory.getLogger(AsstemplateService.class.getName());
-	PersistencySessionFactory sessionFactory;
+  private static final Logger LOG = LoggerFactory.getLogger(AsstemplateService.class.getName());
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see
-	 * org.crmf.persistency.mapper.project.AsstemplateServiceInterface#insert(
-	 * org.crmf.model.riskassessment.AssessmentTemplate)
-	 */
-	@Override
-	public String insert(AssessmentTemplate asstemplateDM, String profileIdentifier) throws Exception {
-		SqlSession sqlSession = sessionFactory.getSession();
+  @Autowired
+  private SqlSession sqlSession;
 
-		LOG.info("Insert Template");
-		AssTemplate template = new AssTemplate();
-		template.convertFromModel(asstemplateDM);
+  /*
+   * (non-Javadoc)
+   *
+   * @see
+   * org.crmf.persistency.mapper.project.AsstemplateServiceInterface#insert(
+   * org.crmf.model.riskassessment.AssessmentTemplate)
+   */
+  @Override
+  public String insert(AssessmentTemplate asstemplateDM, String profileIdentifier) {
+    LOG.info("Insert Template");
+    AssTemplate template = new AssTemplate();
+    template.convertFromModel(asstemplateDM);
 
-		Sestobj sestobj = null;
+    Sestobj sestobj = null;
 
-		try {
-			AssprofileMapper profileMapper = sqlSession.getMapper(AssprofileMapper.class);
-			AsstemplateMapper templateMapper = sqlSession.getMapper(AsstemplateMapper.class);
-			SestobjMapper sestobjMapper = sqlSession.getMapper(SestobjMapper.class);
-			AssetMapper assetMapper = sqlSession.getMapper(AssetMapper.class);
-			VulnerabilityMapper vulnerabilityMapper = sqlSession.getMapper(VulnerabilityMapper.class);
-			ThreatMapper threatMapper = sqlSession.getMapper(ThreatMapper.class);
-			SafeguardMapper safeguardMapper = sqlSession.getMapper(SafeguardMapper.class);
-			RiskMapper riskMapper = sqlSession.getMapper(RiskMapper.class);
+    try {
+      AssprofileMapper profileMapper = sqlSession.getMapper(AssprofileMapper.class);
+      AsstemplateMapper templateMapper = sqlSession.getMapper(AsstemplateMapper.class);
+      SestobjMapper sestobjMapper = sqlSession.getMapper(SestobjMapper.class);
+      AssetMapper assetMapper = sqlSession.getMapper(AssetMapper.class);
+      VulnerabilityMapper vulnerabilityMapper = sqlSession.getMapper(VulnerabilityMapper.class);
+      ThreatMapper threatMapper = sqlSession.getMapper(ThreatMapper.class);
+      SafeguardMapper safeguardMapper = sqlSession.getMapper(SafeguardMapper.class);
+      RiskMapper riskMapper = sqlSession.getMapper(RiskMapper.class);
 
-			LOG.info("Insert sestObject");
-			sestobj = new Sestobj();
-			sestobj.setObjtype(SESTObjectTypeEnum.AssessmentTemplate.name());
-			sestobjMapper.insert(sestobj);
+      LOG.info("Insert sestObject");
+      sestobj = new Sestobj();
+      sestobj.setObjtype(SESTObjectTypeEnum.AssessmentTemplate.name());
+      sestobjMapper.insert(sestobj);
 
-			template.setSestobjId(sestobj.getIdentifier());
-			//asstemplateDM.setIdentifier(sestobj.getIdentifier());
-			
-			// get the asset model
-			SestAssetModel am = assetMapper.getByIdentifier(asstemplateDM.getAssetModel().getIdentifier());
-			// set the table id of the retrieved assetModel
-			template.setAssetId(am.getId());
-			
-			// get the vulnerability model
-			SestVulnerabilityModel vm = vulnerabilityMapper.getByIdentifier(asstemplateDM.getVulnerabilityModel().getIdentifier());
-			// set the table id of the retrieved vulnerabilityModel
-			template.setVulnerabilityId(vm.getId());
-			
-			// get the threat model
-			SestThreatModel tm = threatMapper.getByIdentifier(asstemplateDM.getThreatModel().getIdentifier());
-			// set the table id of the retrieved threatModel
-			template.setThreatId(tm.getId());
-			
-			//get the safeguard model
-			SestSafeguardModel sm = safeguardMapper.getByIdentifier(asstemplateDM.getSafeguardModel().getIdentifier());
-			// set the table id of the retrieved safeguardModel
-			template.setSafeguardId(sm.getId());
-			
-			//retrieve the risk model
-			SestRiskModel rm = riskMapper.getByIdentifier(asstemplateDM.getRiskModel().getIdentifier());
-			template.setRiskModelId(rm.getId());
-			
-			// insert the new template into db
-			templateMapper.insert(template);
+      template.setSestobjId(sestobj.getIdentifier());
+      //asstemplateDM.setIdentifier(sestobj.getIdentifier());
 
-			sqlSession.commit();
-			
-			if (profileIdentifier != null) {
-				// AssProject project =
-				// projectMapper.getById(procedure.getProjectId());
-				template.setProfileId(profileMapper.getIdByIdentifier(profileIdentifier));
-				templateMapper.insertProfileAssoc(template);
+      // get the asset model
+      SestAssetModel am = assetMapper.getByIdentifier(asstemplateDM.getAssetModel().getIdentifier());
+      // set the table id of the retrieved assetModel
+      template.setAssetId(am.getId());
 
-				sqlSession.commit();
-			}
-		} catch (Exception ex) {
-			LOG.error(ex.getMessage());
-			sqlSession.rollback();
-			return null;
-		} finally {
-			sqlSession.close();
-		}
-		return sestobj.getIdentifier();
-		//return asstemplateDM;
-	}
+      // get the vulnerability model
+      SestVulnerabilityModel vm = vulnerabilityMapper.getByIdentifier(asstemplateDM.getVulnerabilityModel().getIdentifier());
+      // set the table id of the retrieved vulnerabilityModel
+      template.setVulnerabilityId(vm.getId());
 
-	public void insertProfileAssoc(AssTemplate record) throws Exception {
-		SqlSession sqlSession = sessionFactory.getSession();
+      // get the threat model
+      SestThreatModel tm = threatMapper.getByIdentifier(asstemplateDM.getThreatModel().getIdentifier());
+      // set the table id of the retrieved threatModel
+      template.setThreatId(tm.getId());
 
-		try {
-			AsstemplateMapper templateMapper = sqlSession.getMapper(AsstemplateMapper.class);
+      //get the safeguard model
+      SestSafeguardModel sm = safeguardMapper.getByIdentifier(asstemplateDM.getSafeguardModel().getIdentifier());
+      // set the table id of the retrieved safeguardModel
+      template.setSafeguardId(sm.getId());
 
-			templateMapper.insertProfileAssoc(record);
+      //retrieve the risk model
+      SestRiskModel rm = riskMapper.getByIdentifier(asstemplateDM.getRiskModel().getIdentifier());
+      template.setRiskModelId(rm.getId());
 
-			sqlSession.commit();
-		} catch (Exception ex) {
-			LOG.error(ex.getMessage());
-			sqlSession.rollback();
-		} finally {
-			sqlSession.close();
-		}
-	}
+      // insert the new template into db
+      templateMapper.insert(template);
+      if (profileIdentifier != null) {
+        // AssProject project =
+        // projectMapper.getById(procedure.getProjectId());
+        template.setProfileId(profileMapper.getIdByIdentifier(profileIdentifier));
+        templateMapper.insertProfileAssoc(template);
+      }
+    } catch (Exception ex) {
+      LOG.error(ex.getMessage());
+      return null;
+    }
+    return sestobj.getIdentifier();
+    //return asstemplateDM;
+  }
 
-	@Override
-	public void update(AssessmentTemplate asstemplateDM) {
-		SqlSession sqlSession = sessionFactory.getSession();
+  public void insertProfileAssoc(AssTemplate record) {
+    try {
+      AsstemplateMapper templateMapper = sqlSession.getMapper(AsstemplateMapper.class);
 
-		LOG.info("Update Template");
-		AssTemplate template = new AssTemplate();
-		template.convertFromModel(asstemplateDM);
+      templateMapper.insertProfileAssoc(record);
+    } catch (Exception ex) {
+      LOG.error(ex.getMessage());
+    }
+  }
 
-		try {
-			AssprocedureMapper procedureMapper = sqlSession.getMapper(AssprocedureMapper.class);
-			AsstemplateMapper templateMapper = sqlSession.getMapper(AsstemplateMapper.class);
+  @Override
+  public void update(AssessmentTemplate asstemplateDM) {
 
-			// Integer procedureId = procedureMapper
-			// .getIdByIdentifier(Integer.valueOf(asstemplateDM.getAssociatedProcedure().getIdentifier()));
-			// template.setProcedureId(procedureId);
-			templateMapper.insert(template);
+    LOG.info("Update Template");
+    AssTemplate template = new AssTemplate();
+    template.convertFromModel(asstemplateDM);
 
-			sqlSession.commit();
-		} catch (Exception ex) {
-			LOG.error(ex.getMessage());
-			sqlSession.rollback();
-		} finally {
-			sqlSession.close();
-		}
-	}
+    try {
+      AssprocedureMapper procedureMapper = sqlSession.getMapper(AssprocedureMapper.class);
+      AsstemplateMapper templateMapper = sqlSession.getMapper(AsstemplateMapper.class);
 
-	@Override
-	public void deleteCascade(String identifier) {
+      // Integer procedureId = procedureMapper
+      // .getIdByIdentifier(Integer.valueOf(asstemplateDM.getAssociatedProcedure().getIdentifier()));
+      // template.setProcedureId(procedureId);
+      templateMapper.insert(template);
+    } catch (Exception ex) {
+      LOG.error(ex.getMessage());
+    }
+  }
 
-		SqlSession sqlSession = sessionFactory.getSession();
+  @Override
+  public void deleteCascade(String identifier) {
+    LOG.info("Delete assessment template cascade" + identifier);
+    AsstemplateMapper asstemplateMapper = sqlSession.getMapper(AsstemplateMapper.class);
+    SestobjMapper sestobjMapper = sqlSession.getMapper(SestobjMapper.class);
 
-		LOG.info("Delete assessment template cascade" + identifier);
-		try {
-			AsstemplateMapper asstemplateMapper = sqlSession.getMapper(AsstemplateMapper.class);
-			SestobjMapper sestobjMapper = sqlSession.getMapper(SestobjMapper.class);
+    LOG.info("Delete assessment template ");
+    asstemplateMapper.deleteByIdentifier(identifier);
 
-			LOG.info("Delete assessment template ");
-			asstemplateMapper.deleteByIdentifier(identifier);
-			sqlSession.commit();
-			LOG.info("Delete sestobj ");
-			sestobjMapper.deleteByIdentifier(identifier);
-			sqlSession.commit();
-		} finally {
-			sqlSession.close();
-		}
-	}
+    LOG.info("Delete sestobj ");
+    sestobjMapper.deleteByIdentifier(identifier);
+  }
 
-	@Override
-	public AssessmentTemplate getByIdentifier(String identifier) {
-		SqlSession sqlSession = sessionFactory.getSession();
-		try {
-			AsstemplateMapper asstemplateMapper = sqlSession.getMapper(AsstemplateMapper.class);
+  @Override
+  public AssessmentTemplate getByIdentifier(String identifier) {
+    AsstemplateMapper asstemplateMapper = sqlSession.getMapper(AsstemplateMapper.class);
 
-			AssTemplate template = asstemplateMapper.getByIdentifier(identifier);
-			AssessmentTemplate templateToSend = template.convertToModel();
-			templateToSend.setObjType(SESTObjectTypeEnum.AssessmentTemplate);
+    AssTemplate template = asstemplateMapper.getByIdentifier(identifier);
+    AssessmentTemplate templateToSend = template.convertToModel();
+    templateToSend.setObjType(SESTObjectTypeEnum.AssessmentTemplate);
 
-			return templateToSend;
-		} finally {
-			sqlSession.close();
-		}
-	}
-	
-	public AssessmentTemplate getByIdentifierFull(String identifier) {
-		
-		LOG.info("getByIdentifierFull " + identifier);
-		SqlSession sqlSession = sessionFactory.getSession();
-		try {
-			AsstemplateMapper asstemplateMapper = sqlSession.getMapper(AsstemplateMapper.class);
-			AssetMapper assetMapper = sqlSession.getMapper(AssetMapper.class);
-			VulnerabilityMapper vulnerabilityMapper = sqlSession.getMapper(VulnerabilityMapper.class);
-			ThreatMapper threatMapper = sqlSession.getMapper(ThreatMapper.class);
-			SafeguardMapper safeguardMapper = sqlSession.getMapper(SafeguardMapper.class);
-			RiskMapper riskMapper = sqlSession.getMapper(RiskMapper.class);
-		
+    return templateToSend;
+  }
 
-			AssTemplate template = asstemplateMapper.getByIdentifier(identifier);
-			AssessmentTemplate templateToSend = template.convertToModel();
-			templateToSend.setObjType(SESTObjectTypeEnum.AssessmentTemplate);
-			
-			// retrieve the Asset Model
-			SestAssetModel am = assetMapper.getById(template.getAssetId());
-			templateToSend.setAssetModel(am.convertToModel());
-			
-			// retrieve the vulnerability model
-			SestVulnerabilityModel vm = vulnerabilityMapper.getById(template.getVulnerabilityId());
-			templateToSend.setVulnerabilityModel(vm.convertToModel());
-			
-			//retrieve the threat model
-			SestThreatModel tm = threatMapper.getById(template.getThreatId());
-			templateToSend.setThreatModel(tm.convertToModel());
-						
-			//retrieve the safeguard model
-			SestSafeguardModel sm = safeguardMapper.getById(template.getSafeguardId());
-			templateToSend.setSafeguardModel(sm.convertToModel());
-			
-			//retrieve the risk model
-			SestRiskModel rm = riskMapper.getById(template.getRiskModelId());
-			templateToSend.setRiskModel(rm.convertToModel());
+  public AssessmentTemplate getByIdentifierFull(String identifier) {
 
-			
-			return templateToSend;
-		} finally {
-			sqlSession.close();
-		}
-}
+    LOG.info("getByIdentifierFull " + identifier);
+    AsstemplateMapper asstemplateMapper = sqlSession.getMapper(AsstemplateMapper.class);
+    AssetMapper assetMapper = sqlSession.getMapper(AssetMapper.class);
+    VulnerabilityMapper vulnerabilityMapper = sqlSession.getMapper(VulnerabilityMapper.class);
+    ThreatMapper threatMapper = sqlSession.getMapper(ThreatMapper.class);
+    SafeguardMapper safeguardMapper = sqlSession.getMapper(SafeguardMapper.class);
+    RiskMapper riskMapper = sqlSession.getMapper(RiskMapper.class);
 
-	
-	@Override
-	public Integer getIdByIdentifier(String identifier) {
-		int projectId;
-		SqlSession sqlSession = sessionFactory.getSession();
-		try {
-			AsstemplateMapper asstemplateMapper = sqlSession.getMapper(AsstemplateMapper.class);
-			projectId = asstemplateMapper.getIdByIdentifier(identifier);
-		} finally {
-			sqlSession.close();
-		}
-		
-		return projectId;
-	}
 
-	@Override
-	public List<AssessmentTemplate> getAll() {
-		LOG.info("called getAll");
-		SqlSession sqlSession = sessionFactory.getSession();
-		List<AssessmentTemplate> templatesToSend = new ArrayList<>();
-		try {
-			AsstemplateMapper asstemplateMapper = sqlSession.getMapper(AsstemplateMapper.class);
-			List<AssTemplate> templates = asstemplateMapper.getAll();
+    AssTemplate template = asstemplateMapper.getByIdentifier(identifier);
+    AssessmentTemplate templateToSend = template.convertToModel();
+    templateToSend.setObjType(SESTObjectTypeEnum.AssessmentTemplate);
 
-			for (AssTemplate assTemplate : templates) {
-				AssessmentTemplate templateToSend = assTemplate.convertToModel();
-				templateToSend.setObjType(SESTObjectTypeEnum.AssessmentTemplate);
+    // retrieve the Asset Model
+    SestAssetModel am = assetMapper.getById(template.getAssetId());
+    templateToSend.setAssetModel(am.convertToModel());
 
-				templatesToSend.add(templateToSend);
-				LOG.info("added template");
-			}
-		} finally {
-			sqlSession.close();
-		}
-		return templatesToSend;
-	}
+    // retrieve the vulnerability model
+    SestVulnerabilityModel vm = vulnerabilityMapper.getById(template.getVulnerabilityId());
+    templateToSend.setVulnerabilityModel(vm.convertToModel());
 
-	@Override
-	public List<AssessmentTemplate> getByMethodology(String methodology) {
+    //retrieve the threat model
+    SestThreatModel tm = threatMapper.getById(template.getThreatId());
+    templateToSend.setThreatModel(tm.convertToModel());
 
-		LOG.info("called getByMethodology "+methodology);
-		SqlSession sqlSession = sessionFactory.getSession();
-		List<AssessmentTemplate> templatesToSend = new ArrayList<>();
-		try {
-			AsstemplateMapper asstemplateMapper = sqlSession.getMapper(AsstemplateMapper.class);
-			List<AssTemplate> templates = asstemplateMapper.getByMethodology(methodology);
+    //retrieve the safeguard model
+    SestSafeguardModel sm = safeguardMapper.getById(template.getSafeguardId());
+    templateToSend.setSafeguardModel(sm.convertToModel());
 
-			for (AssTemplate assTemplate : templates) {
-				AssessmentTemplate templateToSend = assTemplate.convertToModel();
-				templateToSend.setObjType(SESTObjectTypeEnum.AssessmentTemplate);
+    //retrieve the risk model
+    SestRiskModel rm = riskMapper.getById(template.getRiskModelId());
+    templateToSend.setRiskModel(rm.convertToModel());
 
-				templatesToSend.add(templateToSend);
-				LOG.info("added template");
-			}
-		} finally {
-			sqlSession.close();
-		}
-		return templatesToSend;
-	}
 
-	@Override
-	public List<AssessmentTemplate> getByProfileIdentifier(String identifier) {
+    return templateToSend;
+  }
 
-		LOG.info("called getByProfileIdentifier "+identifier);
-		SqlSession sqlSession = sessionFactory.getSession();
-		List<AssessmentTemplate> templatesToSend = new ArrayList<>();
-		try {
-			AsstemplateMapper asstemplateMapper = sqlSession.getMapper(AsstemplateMapper.class);
-			List<AssTemplate> templates = asstemplateMapper.getByProfileIdentifier(identifier);
 
-			for (AssTemplate assTemplate : templates) {
-				AssessmentTemplate templateToSend = assTemplate.convertToModel();
-				templateToSend.setObjType(SESTObjectTypeEnum.AssessmentTemplate);
+  @Override
+  public Integer getIdByIdentifier(String identifier) {
+    AsstemplateMapper asstemplateMapper = sqlSession.getMapper(AsstemplateMapper.class);
+    return asstemplateMapper.getIdByIdentifier(identifier);
+  }
 
-				templatesToSend.add(templateToSend);
-				LOG.info("added template");
-			}
-		} finally {
-			sqlSession.close();
-		}
-		return templatesToSend;
-	}
-	
-	public PersistencySessionFactory getSessionFactory() {
-		return sessionFactory;
-	}
+  @Override
+  public List<AssessmentTemplate> getAll() {
+    LOG.info("called getAll");
+    List<AssessmentTemplate> templatesToSend = new ArrayList<>();
+    AsstemplateMapper asstemplateMapper = sqlSession.getMapper(AsstemplateMapper.class);
+    List<AssTemplate> templates = asstemplateMapper.getAll();
 
-	public void setSessionFactory(PersistencySessionFactory sessionFactory) {
-		this.sessionFactory = sessionFactory;
-	}
+    for (AssTemplate assTemplate : templates) {
+      AssessmentTemplate templateToSend = assTemplate.convertToModel();
+      templateToSend.setObjType(SESTObjectTypeEnum.AssessmentTemplate);
 
+      templatesToSend.add(templateToSend);
+      LOG.info("added template");
+    }
+    return templatesToSend;
+  }
+
+  @Override
+  public List<AssessmentTemplate> getByMethodology(String methodology) {
+
+    LOG.info("called getByMethodology " + methodology);
+    List<AssessmentTemplate> templatesToSend = new ArrayList<>();
+    AsstemplateMapper asstemplateMapper = sqlSession.getMapper(AsstemplateMapper.class);
+    List<AssTemplate> templates = asstemplateMapper.getByMethodology(methodology);
+
+    for (AssTemplate assTemplate : templates) {
+      AssessmentTemplate templateToSend = assTemplate.convertToModel();
+      templateToSend.setObjType(SESTObjectTypeEnum.AssessmentTemplate);
+
+      templatesToSend.add(templateToSend);
+      LOG.info("added template");
+    }
+    return templatesToSend;
+  }
+
+  @Override
+  public List<AssessmentTemplate> getByProfileIdentifier(String identifier) {
+
+    LOG.info("called getByProfileIdentifier " + identifier);
+    List<AssessmentTemplate> templatesToSend = new ArrayList<>();
+    AsstemplateMapper asstemplateMapper = sqlSession.getMapper(AsstemplateMapper.class);
+    List<AssTemplate> templates = asstemplateMapper.getByProfileIdentifier(identifier);
+
+    for (AssTemplate assTemplate : templates) {
+      AssessmentTemplate templateToSend = assTemplate.convertToModel();
+      templateToSend.setObjType(SESTObjectTypeEnum.AssessmentTemplate);
+
+      templatesToSend.add(templateToSend);
+      LOG.info("added template");
+    }
+    return templatesToSend;
+  }
 }

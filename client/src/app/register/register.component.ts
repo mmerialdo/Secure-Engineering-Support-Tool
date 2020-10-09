@@ -10,11 +10,14 @@
 // --------------------------------------------------------------------------------------------------------------------
 */
 
-import { Component, OnInit, EventEmitter, Output, ViewEncapsulation } from '@angular/core';
+import {Component, OnInit, EventEmitter, Output, ViewEncapsulation, OnDestroy, Input} from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { ValidationService } from '../validationservice';
 import { DataService } from '../dataservice';
 import { Message } from 'primeng/components/common/api';
+import {Subscription} from 'rxjs/internal/Subscription';
+import {MessageService} from 'primeng/api';
+import {User} from '../shared/model/user.class';
 
 
 @Component({
@@ -22,7 +25,10 @@ import { Message } from 'primeng/components/common/api';
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.scss']
 })
-export class RegisterComponent implements OnInit {
+export class RegisterComponent implements OnInit, OnDestroy {
+
+  @Input()
+  private users: User[];
 
   userForm: any;
   usernamecomp: string;
@@ -36,14 +42,12 @@ export class RegisterComponent implements OnInit {
   private userCreation: any;
 
   public blocked = false;
-  public blockedMessage = false;
 
-  // to show messages
-  msgsAsset: Message[] = [];
+  private subscriptions: Subscription[] = [];
 
   @Output() sendFeed = new EventEmitter<boolean>();
 
-  constructor(private formBuilder: FormBuilder, private dataService: DataService) {
+  constructor(private formBuilder: FormBuilder, private dataService: DataService, private messageService: MessageService) {
 
 
     this.userForm = this.formBuilder.group({
@@ -60,9 +64,6 @@ export class RegisterComponent implements OnInit {
     this.userForm.valueChanges.subscribe(value => {
       this.usernamecomp = value.username;
     });
-
-
-
   }
 
   saveUser() {
@@ -72,6 +73,7 @@ export class RegisterComponent implements OnInit {
   }
 
   ngOnInit() {
+    console.log(this.users);
   }
 
 
@@ -83,39 +85,35 @@ export class RegisterComponent implements OnInit {
 
   createUser() {
 
-    this.blocked = true;
-    this.blockedMessage = true;
+    const alreadyExistingUser = this.users.filter(x => x.email == this.userForm.value.email ||
+      x.username == this.userForm.value.username);
 
-    this.dataService.insertUser(JSON.stringify(this.userForm.value)).subscribe(
-      response => {
-        this.userCreation = response;
+    if (!alreadyExistingUser || alreadyExistingUser.length <= 0) {
+      this.blocked = true;
 
-        this.blocked = false;
-        this.blockedMessage = false;
-        this.sendFeedback(true);
+      this.subscriptions.push(
+        this.dataService.insertUser(JSON.stringify(this.userForm.value)).subscribe((response: any) => {
+            this.userCreation = response.response;
 
-        if (this.userForm.valid) {
-          this.userForm.reset();
-        }
-      },
-      err => {
-        this.blocked = false;
-        this.blockedMessage = false;
-        throw err;
-      });
-  }
+            this.blocked = false;
+            this.sendFeedback(true);
 
-  showFailed(s: string) {
-    this.msgsAsset = [];
-    this.msgsAsset.push({ severity: 'error', summary: 'Error', detail: s });
+            if (this.userForm.valid) {
+              this.userForm.reset();
+            }
+          },
+          err => {
+            this.blocked = false;
+            throw err;
+          }));
+    } else {
 
-    setTimeout(() => { this.clearMessage(); }, 8000);
+      this.messageService.add({severity: 'error', summary: 'Warning', detail: 'Already existing user!'});
+    }
   }
 
   clearMessage() {
-    this.msgsAsset = [];
     this.blocked = false;
-    this.blockedMessage = false;
   }
 
   clearForm() {
@@ -129,8 +127,6 @@ export class RegisterComponent implements OnInit {
       'confirm': ['', [Validators.required, ValidationService.passwordMatchValidator, Validators.maxLength(20)]],
       'profile': ['', [Validators.required]],
     });
-
-
   }
 
   changeConfirm() {
@@ -142,8 +138,8 @@ export class RegisterComponent implements OnInit {
       this.kindTypeConfirm = 'password';
       this.glyConf = true;
     }
-
   }
+
   changePass() {
 
     if (this.kindTypePass === 'password') {
@@ -153,7 +149,9 @@ export class RegisterComponent implements OnInit {
       this.kindTypePass = 'password';
       this.glyPass = true;
     }
-
   }
 
+  ngOnDestroy() {
+    this.subscriptions.forEach(s => s.unsubscribe());
+  }
 }

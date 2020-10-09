@@ -51,6 +51,7 @@ import org.crmf.model.riskassessmentelements.Threat;
 import org.crmf.model.riskassessmentelements.Vulnerability;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -62,8 +63,10 @@ import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 //This class contains methods and utilities useful for all different types of reports
+@Service
 public class CommonWriter {
   private static final Logger LOG = LoggerFactory.getLogger(CommonWriter.class.getName());
+  public static final String CALIBRI = "Calibri";
 
   public void writeProject(XWPFDocument doc, AssessmentProject project) {
     XWPFParagraph projectParagraph = doc.createParagraph();
@@ -80,7 +83,7 @@ public class CommonWriter {
     //Writing Project name
     projectNameRun.setBold(true);
     projectNameRun.setText("Risk Assessment Project" + " " + project.getName());
-    projectNameRun.setFontFamily("Calibri");
+    projectNameRun.setFontFamily(CALIBRI);
     projectNameRun.setFontSize(15);
     projectNameRun.addCarriageReturn();
     projectNameRun.addCarriageReturn();
@@ -100,7 +103,7 @@ public class CommonWriter {
     //Writing Project Project Manager
     projectData.setBold(false);
     projectData.setFontSize(13);
-    projectData.setFontFamily("Calibri");
+    projectData.setFontFamily(CALIBRI);
     projectData.setText("Project Manager: ");
     projectData.setText(project.getProjectManager().getName() + " " + project.getProjectManager().getSurname());
     projectData.addCarriageReturn();
@@ -122,7 +125,7 @@ public class CommonWriter {
     //Writing Procedure name
     procedureNameRun.setBold(true);
     procedureNameRun.setText("Current Risk Assessment Procedure" + " " + procedure.getName());
-    procedureNameRun.setFontFamily("Calibri");
+    procedureNameRun.setFontFamily(CALIBRI);
     procedureNameRun.setFontSize(15);
     procedureNameRun.addCarriageReturn();
     procedureNameRun.addCarriageReturn();
@@ -132,7 +135,7 @@ public class CommonWriter {
     //Writing Procedure Status
     procedureData.setBold(false);
     procedureData.setFontSize(13);
-    procedureData.setFontFamily("Calibri");
+    procedureData.setFontFamily(CALIBRI);
     procedureData.setText("Status: ");
     procedureData.setText(procedure.getStatus().toString());
     procedureData.addCarriageReturn();
@@ -167,7 +170,7 @@ public class CommonWriter {
     //Writing some information about the methodology
     methodologyNameRun.setBold(true);
     methodologyNameRun.setText("Risk Assessment Methodology");
-    methodologyNameRun.setFontFamily("Calibri");
+    methodologyNameRun.setFontFamily(CALIBRI);
     methodologyNameRun.setFontSize(15);
 
     XWPFParagraph methodologyDataParagraph = doc.createParagraph();
@@ -201,7 +204,7 @@ public class CommonWriter {
 
     summaryNameRun.setBold(true);
     summaryNameRun.setText("Risk Assessment Summary");
-    summaryNameRun.setFontFamily("Calibri");
+    summaryNameRun.setFontFamily(CALIBRI);
     summaryNameRun.setFontSize(15);
 
     int numberOfProcedures = project.getProcedures().size();
@@ -216,7 +219,7 @@ public class CommonWriter {
     XWPFRun r1 = p1.createRun();
     r1.setBold(true);
     r1.setFontSize(10);
-    r1.setFontFamily("Calibri");
+    r1.setFontFamily(CALIBRI);
     r1.setText("Procedure Status");
 
     XWPFParagraph p2 = table.getRow(0).getCell(1).getParagraphs().get(0);
@@ -226,7 +229,7 @@ public class CommonWriter {
     r2.setBold(true);
     r2.setFontSize(10);
     r2.setText("N. of Assets");
-    r2.setFontFamily("Calibri");
+    r2.setFontFamily(CALIBRI);
 
     XWPFParagraph p3 = table.getRow(0).getCell(2).getParagraphs().get(0);
     p3.setAlignment(ParagraphAlignment.CENTER);
@@ -235,7 +238,7 @@ public class CommonWriter {
     r3.setBold(true);
     r3.setFontSize(10);
     r3.setText("N. of BAs");
-    r3.setFontFamily("Calibri");
+    r3.setFontFamily(CALIBRI);
 
     XWPFParagraph p4 = table.getRow(0).getCell(3).getParagraphs().get(0);
     p4.setAlignment(ParagraphAlignment.CENTER);
@@ -244,7 +247,7 @@ public class CommonWriter {
     r4.setBold(true);
     r4.setFontSize(10);
     r4.setText("N. of Malf");
-    r4.setFontFamily("Calibri");
+    r4.setFontFamily(CALIBRI);
 
     XWPFParagraph p5 = table.getRow(0).getCell(4).getParagraphs().get(0);
     p5.setAlignment(ParagraphAlignment.CENTER);
@@ -253,7 +256,7 @@ public class CommonWriter {
     r5.setBold(true);
     r5.setFontSize(10);
     r5.setText("N. of Risk Scenarios");
-    r5.setFontFamily("Calibri");
+    r5.setFontFamily(CALIBRI);
 
     XWPFParagraph p6 = table.getRow(0).getCell(5).getParagraphs().get(0);
     p6.setAlignment(ParagraphAlignment.CENTER);
@@ -262,7 +265,7 @@ public class CommonWriter {
     r6.setBold(true);
     r6.setFontSize(10);
     r6.setText("N. of Risk Scenarios CRIT");
-    r6.setFontFamily("Calibri");
+    r6.setFontFamily(CALIBRI);
 
     XWPFParagraph p7 = table.getRow(0).getCell(6).getParagraphs().get(0);
     p7.setAlignment(ParagraphAlignment.CENTER);
@@ -271,7 +274,7 @@ public class CommonWriter {
     r7.setBold(true);
     r7.setFontSize(10);
     r7.setText("N. of Risk Scenarios HIGH");
-    r7.setFontFamily("Calibri");
+    r7.setFontFamily(CALIBRI);
 
     XWPFParagraph p8 = table.getRow(0).getCell(7).getParagraphs().get(0);
     p8.setAlignment(ParagraphAlignment.CENTER);
@@ -280,7 +283,7 @@ public class CommonWriter {
     r8.setBold(true);
     r8.setFontSize(10);
     r8.setText("N. of Risk Scenarios MEDIUM");
-    r8.setFontFamily("Calibri");
+    r8.setFontFamily(CALIBRI);
 
     XWPFParagraph p9 = table.getRow(0).getCell(8).getParagraphs().get(0);
     p9.setAlignment(ParagraphAlignment.CENTER);
@@ -289,7 +292,7 @@ public class CommonWriter {
     r9.setBold(true);
     r9.setFontSize(10);
     r9.setText("N. of Risk Scenarios LOW");
-    r9.setFontFamily("Calibri");
+    r9.setFontFamily(CALIBRI);
 
     XWPFParagraph p10 = table.getRow(0).getCell(9).getParagraphs().get(0);
     p10.setAlignment(ParagraphAlignment.CENTER);
@@ -298,7 +301,7 @@ public class CommonWriter {
     r10.setBold(true);
     r10.setFontSize(10);
     r10.setText("N. of Treated Scenarios CRIT");
-    r10.setFontFamily("Calibri");
+    r10.setFontFamily(CALIBRI);
 
 
     XWPFParagraph p11 = table.getRow(0).getCell(10).getParagraphs().get(0);
@@ -308,7 +311,7 @@ public class CommonWriter {
     r11.setBold(true);
     r11.setFontSize(10);
     r11.setText("N. of Treated Scenarios HIGH");
-    r11.setFontFamily("Calibri");
+    r11.setFontFamily(CALIBRI);
 
 
     XWPFParagraph p12 = table.getRow(0).getCell(11).getParagraphs().get(0);
@@ -318,7 +321,7 @@ public class CommonWriter {
     r12.setBold(true);
     r12.setFontSize(10);
     r12.setText("N. of Treated Scenarios MEDIUM");
-    r12.setFontFamily("Calibri");
+    r12.setFontFamily(CALIBRI);
 
     XWPFParagraph p13 = table.getRow(0).getCell(12).getParagraphs().get(0);
     p12.setAlignment(ParagraphAlignment.CENTER);
@@ -327,7 +330,7 @@ public class CommonWriter {
     r13.setBold(true);
     r13.setFontSize(10);
     r13.setText("N. of Treated Scenarios LOW");
-    r13.setFontFamily("Calibri");
+    r13.setFontFamily(CALIBRI);
 
 
     writeProcedureRow(doc, table.getRow(1), lastProcedure);
@@ -356,7 +359,7 @@ public class CommonWriter {
     } else {
       r1.setText("Closed on " + procedure.getUpdateTime());
     }
-    r1.setFontFamily("Calibri");
+    r1.setFontFamily(CALIBRI);
 
     XWPFParagraph p2 = xwpfTableRow.getCell(1).getParagraphs().get(0);
     p2.setAlignment(ParagraphAlignment.CENTER);
@@ -365,7 +368,7 @@ public class CommonWriter {
     r2.setBold(false);
     r2.setFontSize(10);
     r2.setText(String.valueOf(procedure.getAssetModel().getAssets().size()));
-    r2.setFontFamily("Calibri");
+    r2.setFontFamily(CALIBRI);
 
     XWPFParagraph p3 = xwpfTableRow.getCell(2).getParagraphs().get(0);
     p3.setAlignment(ParagraphAlignment.CENTER);
@@ -374,7 +377,7 @@ public class CommonWriter {
     r3.setBold(false);
     r3.setFontSize(10);
     r3.setText(String.valueOf(procedure.getAssetModel().getBusinessActivities().size()));
-    r3.setFontFamily("Calibri");
+    r3.setFontFamily(CALIBRI);
 
     XWPFParagraph p4 = xwpfTableRow.getCell(3).getParagraphs().get(0);
     p4.setAlignment(ParagraphAlignment.CENTER);
@@ -383,7 +386,7 @@ public class CommonWriter {
     r4.setBold(false);
     r4.setFontSize(10);
     r4.setText(String.valueOf(procedure.getAssetModel().getMalfunctions().size()));
-    r4.setFontFamily("Calibri");
+    r4.setFontFamily(CALIBRI);
 
     XWPFParagraph p5 = xwpfTableRow.getCell(4).getParagraphs().get(0);
     p5.setAlignment(ParagraphAlignment.CENTER);
@@ -392,7 +395,7 @@ public class CommonWriter {
     r5.setBold(false);
     r5.setFontSize(10);
     r5.setText(String.valueOf(procedure.getRiskModel().getScenarios().size()));
-    r5.setFontFamily("Calibri");
+    r5.setFontFamily(CALIBRI);
 
     XWPFParagraph p6 = xwpfTableRow.getCell(5).getParagraphs().get(0);
     p6.setAlignment(ParagraphAlignment.CENTER);
@@ -406,7 +409,7 @@ public class CommonWriter {
     r6.setBold(false);
     r6.setFontSize(10);
     r6.setText(String.valueOf(critScenarios.size()));
-    r6.setFontFamily("Calibri");
+    r6.setFontFamily(CALIBRI);
 
     XWPFParagraph p7 = xwpfTableRow.getCell(6).getParagraphs().get(0);
     p7.setAlignment(ParagraphAlignment.CENTER);
@@ -420,7 +423,7 @@ public class CommonWriter {
     r7.setBold(false);
     r7.setFontSize(10);
     r7.setText(String.valueOf(highScenarios.size()));
-    r7.setFontFamily("Calibri");
+    r7.setFontFamily(CALIBRI);
 
     XWPFParagraph p8 = xwpfTableRow.getCell(7).getParagraphs().get(0);
     p8.setAlignment(ParagraphAlignment.CENTER);
@@ -434,7 +437,7 @@ public class CommonWriter {
     r8.setBold(false);
     r8.setFontSize(10);
     r8.setText(String.valueOf(mediumScenarios.size()));
-    r8.setFontFamily("Calibri");
+    r8.setFontFamily(CALIBRI);
 
     XWPFParagraph p9 = xwpfTableRow.getCell(8).getParagraphs().get(0);
     p9.setAlignment(ParagraphAlignment.CENTER);
@@ -448,7 +451,7 @@ public class CommonWriter {
     r9.setBold(false);
     r9.setFontSize(10);
     r9.setText(String.valueOf(lowScenarios.size()));
-    r9.setFontFamily("Calibri");
+    r9.setFontFamily(CALIBRI);
 
 
     XWPFParagraph p10 = xwpfTableRow.getCell(9).getParagraphs().get(0);
@@ -463,7 +466,7 @@ public class CommonWriter {
     r10.setBold(false);
     r10.setFontSize(10);
     r10.setText(String.valueOf(critTreatedScenarios.size()));
-    r10.setFontFamily("Calibri");
+    r10.setFontFamily(CALIBRI);
 
 
     XWPFParagraph p11 = xwpfTableRow.getCell(10).getParagraphs().get(0);
@@ -478,7 +481,7 @@ public class CommonWriter {
     r11.setBold(false);
     r11.setFontSize(10);
     r11.setText(String.valueOf(highTreatedScenarios.size()));
-    r11.setFontFamily("Calibri");
+    r11.setFontFamily(CALIBRI);
 
 
     XWPFParagraph p12 = xwpfTableRow.getCell(11).getParagraphs().get(0);
@@ -493,7 +496,7 @@ public class CommonWriter {
     r12.setBold(false);
     r12.setFontSize(10);
     r12.setText(String.valueOf(mediumTreatedScenarios.size()));
-    r12.setFontFamily("Calibri");
+    r12.setFontFamily(CALIBRI);
 
     XWPFParagraph p13 = xwpfTableRow.getCell(12).getParagraphs().get(0);
     p12.setAlignment(ParagraphAlignment.CENTER);
@@ -507,7 +510,7 @@ public class CommonWriter {
     r13.setBold(false);
     r13.setFontSize(10);
     r13.setText(String.valueOf(lowTreatedScenarios.size()));
-    r13.setFontFamily("Calibri");
+    r13.setFontFamily(CALIBRI);
   }
 
   public void writeRiskModel(XWPFDocument doc, AssessmentProcedure procedure, AssessmentProject project) {
@@ -529,7 +532,7 @@ public class CommonWriter {
     //Writing RiskModel name
     riskModelNameRun.setBold(true);
     riskModelNameRun.setText("Risk Scenarios Assessment");
-    riskModelNameRun.setFontFamily("Calibri");
+    riskModelNameRun.setFontFamily(CALIBRI);
     riskModelNameRun.setFontSize(15);
 
     XWPFParagraph riskModelDataParagraph = doc.createParagraph();
@@ -543,7 +546,7 @@ public class CommonWriter {
     //Writing RiskModel Creation Time
     riskModelData.setBold(false);
     riskModelData.setFontSize(13);
-    riskModelData.setFontFamily("Calibri");
+    riskModelData.setFontFamily(CALIBRI);
     riskModelData.setText("Creation Time: ");
     riskModelData.setText(procedure.getRiskModel().getCreationTime());
     riskModelData.addCarriageReturn();
@@ -605,7 +608,7 @@ public class CommonWriter {
     r1.setBold(false);
     r1.setFontSize(10);
     r1.setText(scenario.getDescription());
-    r1.setFontFamily("Calibri");
+    r1.setFontFamily(CALIBRI);
 
     XWPFParagraph p2 = xwpfTableRow.getCell(1).getParagraphs().get(0);
     p2.setAlignment(ParagraphAlignment.CENTER);
@@ -613,7 +616,7 @@ public class CommonWriter {
     r2.setBold(false);
     r2.setFontSize(10);
     r2.setText(scenario.getThreatClass().toString());
-    r2.setFontFamily("Calibri");
+    r2.setFontFamily(CALIBRI);
 
     XWPFParagraph p3 = xwpfTableRow.getCell(2).getParagraphs().get(0);
     p3.setAlignment(ParagraphAlignment.CENTER);
@@ -621,7 +624,7 @@ public class CommonWriter {
     r3.setBold(false);
     r3.setFontSize(10);
     r3.setText(scenario.getImpactScope().toString());
-    r3.setFontFamily("Calibri");
+    r3.setFontFamily(CALIBRI);
 
     String assetName = "";
 
@@ -637,7 +640,7 @@ public class CommonWriter {
     r4.setBold(false);
     r4.setFontSize(10);
     r4.setText(assetName);
-    r4.setFontFamily("Calibri");
+    r4.setFontFamily(CALIBRI);
 
     String vulnerabilityName = "";
 
@@ -653,7 +656,7 @@ public class CommonWriter {
     r5.setBold(false);
     r5.setFontSize(10);
     r5.setText(vulnerabilityName);
-    r5.setFontFamily("Calibri");
+    r5.setFontFamily(CALIBRI);
 
     String threatName = "";
 
@@ -669,7 +672,7 @@ public class CommonWriter {
     r6.setBold(false);
     r6.setFontSize(10);
     r6.setText(threatName);
-    r6.setFontFamily("Calibri");
+    r6.setFontFamily(CALIBRI);
 
     XWPFParagraph p7 = xwpfTableRow.getCell(6).getParagraphs().get(0);
     p7.setAlignment(ParagraphAlignment.CENTER);
@@ -677,7 +680,7 @@ public class CommonWriter {
     r7.setBold(true);
     r7.setFontSize(10);
     r7.setText(scenario.getCalculatedSeriousness().toString());
-    r7.setFontFamily("Calibri");
+    r7.setFontFamily(CALIBRI);
 
     XWPFParagraph p8 = xwpfTableRow.getCell(7).getParagraphs().get(0);
     p8.setAlignment(ParagraphAlignment.CENTER);
@@ -685,7 +688,7 @@ public class CommonWriter {
     r8.setBold(false);
     r8.setFontSize(10);
     r8.setText(scenario.getScenarioResult().toString());
-    r8.setFontFamily("Calibri");
+    r8.setFontFamily(CALIBRI);
 
     XWPFParagraph p9 = xwpfTableRow.getCell(8).getParagraphs().get(0);
     p9.setAlignment(ParagraphAlignment.CENTER);
@@ -693,7 +696,7 @@ public class CommonWriter {
     r9.setBold(false);
     r9.setFontSize(10);
     r9.setText(String.valueOf(scenario.isExcluded()));
-    r9.setFontFamily("Calibri");
+    r9.setFontFamily(CALIBRI);
 
     String safeguardIds = "";
 
@@ -721,7 +724,7 @@ public class CommonWriter {
     r10.setBold(false);
     r10.setFontSize(10);
     r10.setText(safeguardIds);
-    r10.setFontFamily("Calibri");
+    r10.setFontFamily(CALIBRI);
   }
 
   public void writeRiskTreatmentModel(XWPFDocument doc, AssessmentProcedure procedure, AssessmentProject project, ImpactEnum threshold) {
@@ -742,7 +745,7 @@ public class CommonWriter {
     //Writing RiskTreatmentModel name
     riskTreatmentModelNameRun.setBold(true);
     riskTreatmentModelNameRun.setText("Risk Treatment Assessment");
-    riskTreatmentModelNameRun.setFontFamily("Calibri");
+    riskTreatmentModelNameRun.setFontFamily(CALIBRI);
     riskTreatmentModelNameRun.setFontSize(15);
 
     XWPFParagraph riskTreatmentModelDataParagraph = doc.createParagraph();
@@ -751,7 +754,7 @@ public class CommonWriter {
     //Writing RiskTreatmentModel Creation Time
     riskTreatmentModelData.setBold(false);
     riskTreatmentModelData.setFontSize(13);
-    riskTreatmentModelData.setFontFamily("Calibri");
+    riskTreatmentModelData.setFontFamily(CALIBRI);
     riskTreatmentModelData.setText("Creation Time: ");
     riskTreatmentModelData.setText(procedure.getRiskTreatmentModel().getCreationTime());
     riskTreatmentModelData.addCarriageReturn();
@@ -789,7 +792,7 @@ public class CommonWriter {
     XWPFRun r1 = p1.createRun();
     r1.setBold(false);
     r1.setFontSize(10);
-    r1.setFontFamily("Calibri");
+    r1.setFontFamily(CALIBRI);
     r1.setText("Scenario/Risk Description");
 
     XWPFParagraph p2 = table.getRow(0).getCell(1).getParagraphs().get(0);
@@ -799,7 +802,7 @@ public class CommonWriter {
     r2.setBold(false);
     r2.setFontSize(10);
     r2.setText("Risk Scope");
-    r2.setFontFamily("Calibri");
+    r2.setFontFamily(CALIBRI);
 
     XWPFParagraph p3 = table.getRow(0).getCell(2).getParagraphs().get(0);
     p3.setAlignment(ParagraphAlignment.CENTER);
@@ -808,7 +811,7 @@ public class CommonWriter {
     r3.setBold(false);
     r3.setFontSize(10);
     r3.setText("Asset Name");
-    r3.setFontFamily("Calibri");
+    r3.setFontFamily(CALIBRI);
 
     XWPFParagraph p4 = table.getRow(0).getCell(3).getParagraphs().get(0);
     p4.setAlignment(ParagraphAlignment.CENTER);
@@ -817,7 +820,7 @@ public class CommonWriter {
     r4.setBold(false);
     r4.setFontSize(10);
     r4.setText("Asset Owner");
-    r4.setFontFamily("Calibri");
+    r4.setFontFamily(CALIBRI);
 
     XWPFParagraph p5 = table.getRow(0).getCell(4).getParagraphs().get(0);
     p5.setAlignment(ParagraphAlignment.CENTER);
@@ -826,7 +829,7 @@ public class CommonWriter {
     r5.setBold(false);
     r5.setFontSize(10);
     r5.setText("Business Activities");
-    r5.setFontFamily("Calibri");
+    r5.setFontFamily(CALIBRI);
 
     XWPFParagraph p6 = table.getRow(0).getCell(5).getParagraphs().get(0);
     p6.setAlignment(ParagraphAlignment.CENTER);
@@ -835,7 +838,7 @@ public class CommonWriter {
     r6.setBold(false);
     r6.setFontSize(10);
     r6.setText("Business Processes");
-    r6.setFontFamily("Calibri");
+    r6.setFontFamily(CALIBRI);
 
     XWPFParagraph p7 = table.getRow(0).getCell(6).getParagraphs().get(0);
     p7.setAlignment(ParagraphAlignment.CENTER);
@@ -844,7 +847,7 @@ public class CommonWriter {
     r7.setBold(false);
     r7.setFontSize(10);
     r7.setText("Organizations");
-    r7.setFontFamily("Calibri");
+    r7.setFontFamily(CALIBRI);
 
     XWPFParagraph p8 = table.getRow(0).getCell(7).getParagraphs().get(0);
     p8.setAlignment(ParagraphAlignment.CENTER);
@@ -853,7 +856,7 @@ public class CommonWriter {
     r8.setBold(false);
     r8.setFontSize(10);
     r8.setText("Impact");
-    r8.setFontFamily("Calibri");
+    r8.setFontFamily(CALIBRI);
 
     XWPFParagraph p9 = table.getRow(0).getCell(8).getParagraphs().get(0);
     p9.setAlignment(ParagraphAlignment.CENTER);
@@ -862,7 +865,7 @@ public class CommonWriter {
     r9.setBold(false);
     r9.setFontSize(10);
     r9.setText("Likelihood");
-    r9.setFontFamily("Calibri");
+    r9.setFontFamily(CALIBRI);
 
     XWPFParagraph p10 = table.getRow(0).getCell(9).getParagraphs().get(0);
     p10.setAlignment(ParagraphAlignment.CENTER);
@@ -871,7 +874,7 @@ public class CommonWriter {
     r10.setBold(false);
     r10.setFontSize(10);
     r10.setText("Vulnerability Descr");
-    r10.setFontFamily("Calibri");
+    r10.setFontFamily(CALIBRI);
 
     XWPFParagraph p11 = table.getRow(0).getCell(10).getParagraphs().get(0);
     p11.setAlignment(ParagraphAlignment.CENTER);
@@ -880,7 +883,7 @@ public class CommonWriter {
     r11.setBold(false);
     r11.setFontSize(10);
     r11.setText("Threat Descr");
-    r11.setFontFamily("Calibri");
+    r11.setFontFamily(CALIBRI);
 
     XWPFParagraph p12 = table.getRow(0).getCell(11).getParagraphs().get(0);
     p12.setAlignment(ParagraphAlignment.CENTER);
@@ -889,7 +892,7 @@ public class CommonWriter {
     r12.setBold(false);
     r12.setFontSize(10);
     r12.setText("Risk Seriousness");
-    r12.setFontFamily("Calibri");
+    r12.setFontFamily(CALIBRI);
 
 
     XWPFParagraph p13 = table.getRow(0).getCell(12).getParagraphs().get(0);
@@ -899,7 +902,7 @@ public class CommonWriter {
     r13.setBold(false);
     r13.setFontSize(10);
     r13.setText("Possible Safeguards");
-    r13.setFontFamily("Calibri");
+    r13.setFontFamily(CALIBRI);
 
 
     XWPFParagraph p14 = table.getRow(0).getCell(13).getParagraphs().get(0);
@@ -909,7 +912,7 @@ public class CommonWriter {
     r14.setBold(false);
     r14.setFontSize(10);
     r14.setText("Selected Safeguards");
-    r14.setFontFamily("Calibri");
+    r14.setFontFamily(CALIBRI);
 
     XWPFParagraph p15 = table.getRow(0).getCell(14).getParagraphs().get(0);
     p15.setAlignment(ParagraphAlignment.CENTER);
@@ -918,7 +921,7 @@ public class CommonWriter {
     r15.setBold(true);
     r15.setFontSize(10);
     r15.setText("Residual Risk Seriousness");
-    r15.setFontFamily("Calibri");
+    r15.setFontFamily(CALIBRI);
 
     //Here we write all Risk Scenarios with their Treatment
     numberOfScenario = 1;
@@ -937,7 +940,7 @@ public class CommonWriter {
     r1.setBold(false);
     r1.setFontSize(8);
     r1.setText(scenario.getDescription());
-    r1.setFontFamily("Calibri");
+    r1.setFontFamily(CALIBRI);
 
     XWPFParagraph p2 = xwpfTableRow.getCell(1).getParagraphs().get(0);
 
@@ -945,7 +948,7 @@ public class CommonWriter {
     r2.setBold(false);
     r2.setFontSize(8);
     r2.setText(scenario.getImpactScope().toString());
-    r2.setFontFamily("Calibri");
+    r2.setFontFamily(CALIBRI);
 
     String assetName = "";
     String assetOwner = "";
@@ -969,7 +972,7 @@ public class CommonWriter {
     r3.setBold(false);
     r3.setFontSize(8);
     r3.setText(assetName);
-    r3.setFontFamily("Calibri");
+    r3.setFontFamily(CALIBRI);
 
     XWPFParagraph p4 = xwpfTableRow.getCell(3).getParagraphs().get(0);
 
@@ -977,7 +980,7 @@ public class CommonWriter {
     r4.setBold(false);
     r4.setFontSize(8);
     r4.setText(assetOwner);
-    r4.setFontFamily("Calibri");
+    r4.setFontFamily(CALIBRI);
 
     XWPFParagraph p5 = xwpfTableRow.getCell(4).getParagraphs().get(0);
 
@@ -985,7 +988,7 @@ public class CommonWriter {
     r5.setBold(false);
     r5.setFontSize(8);
     r5.setText(businessActivities);
-    r5.setFontFamily("Calibri");
+    r5.setFontFamily(CALIBRI);
 
     XWPFParagraph p6 = xwpfTableRow.getCell(5).getParagraphs().get(0);
 
@@ -993,7 +996,7 @@ public class CommonWriter {
     r6.setBold(false);
     r6.setFontSize(8);
     r6.setText(businessProcesses);
-    r6.setFontFamily("Calibri");
+    r6.setFontFamily(CALIBRI);
 
     XWPFParagraph p7 = xwpfTableRow.getCell(6).getParagraphs().get(0);
 
@@ -1001,7 +1004,7 @@ public class CommonWriter {
     r7.setBold(false);
     r7.setFontSize(8);
     r7.setText(organizations);
-    r7.setFontFamily("Calibri");
+    r7.setFontFamily(CALIBRI);
 
     XWPFParagraph p8 = xwpfTableRow.getCell(7).getParagraphs().get(0);
 
@@ -1013,7 +1016,7 @@ public class CommonWriter {
     } else {
       r8.setText(scenario.getCalculatedImpact().toString());
     }
-    r8.setFontFamily("Calibri");
+    r8.setFontFamily(CALIBRI);
 
     XWPFParagraph p9 = xwpfTableRow.getCell(8).getParagraphs().get(0);
 
@@ -1025,7 +1028,7 @@ public class CommonWriter {
     } else {
       r9.setText(scenario.getCalculatedLikelihood().toString());
     }
-    r9.setFontFamily("Calibri");
+    r9.setFontFamily(CALIBRI);
 
     String vulnerabilityName = "";
 
@@ -1041,7 +1044,7 @@ public class CommonWriter {
     r10.setBold(false);
     r10.setFontSize(8);
     r10.setText(vulnerabilityName);
-    r10.setFontFamily("Calibri");
+    r10.setFontFamily(CALIBRI);
 
     String threatName = "";
 
@@ -1057,7 +1060,7 @@ public class CommonWriter {
     r11.setBold(false);
     r11.setFontSize(8);
     r11.setText(threatName);
-    r11.setFontFamily("Calibri");
+    r11.setFontFamily(CALIBRI);
 
     XWPFParagraph p12 = xwpfTableRow.getCell(11).getParagraphs().get(0);
     p12.setAlignment(ParagraphAlignment.CENTER);
@@ -1065,7 +1068,7 @@ public class CommonWriter {
     r12.setBold(true);
     r12.setFontSize(10);
     r12.setText(scenario.getCalculatedSeriousness().toString());
-    r12.setFontFamily("Calibri");
+    r12.setFontFamily(CALIBRI);
 
     String safeguardIds = "";
 
@@ -1090,7 +1093,7 @@ public class CommonWriter {
     r13.setBold(false);
     r13.setFontSize(8);
     r13.setText(safeguardIds);
-    r13.setFontFamily("Calibri");
+    r13.setFontFamily(CALIBRI);
 
     String safeguardTreatedIds = "";
 
@@ -1118,7 +1121,7 @@ public class CommonWriter {
     r14.setBold(false);
     r14.setFontSize(8);
     r14.setText(safeguardTreatedIds);
-    r14.setFontFamily("Calibri");
+    r14.setFontFamily(CALIBRI);
 
     RiskTreatment treatment = treatmentMap.get(scenario.getIdentifier());
 
@@ -1128,7 +1131,7 @@ public class CommonWriter {
     r15.setBold(true);
     r15.setFontSize(10);
     r15.setText(treatment.getResultingSeriousness().toString());
-    r15.setFontFamily("Calibri");
+    r15.setFontFamily(CALIBRI);
 
   }
 
@@ -1145,7 +1148,7 @@ public class CommonWriter {
     //Writing RiskTreatmentModel name
     riskTreatmentModelNameRun.setBold(true);
     riskTreatmentModelNameRun.setText("Risk Treatment Assessment Safeguards");
-    riskTreatmentModelNameRun.setFontFamily("Calibri");
+    riskTreatmentModelNameRun.setFontFamily(CALIBRI);
     riskTreatmentModelNameRun.setFontSize(15);
 
     XWPFParagraph safeguardModelDataParagraph = doc.createParagraph();
@@ -1155,7 +1158,7 @@ public class CommonWriter {
     //Writing RiskTreatmentModel Creation Time
     riskTreatmentModelData.setBold(false);
     riskTreatmentModelData.setFontSize(13);
-    riskTreatmentModelData.setFontFamily("Calibri");
+    riskTreatmentModelData.setFontFamily(CALIBRI);
     riskTreatmentModelData.setText("Creation Time: ");
     riskTreatmentModelData.setText(procedure.getRiskTreatmentModel().getCreationTime());
     riskTreatmentModelData.addCarriageReturn();
@@ -1228,7 +1231,7 @@ public class CommonWriter {
     r1.setBold(false);
     r1.setFontSize(10);
     r1.setText("GASF");
-    r1.setFontFamily("Calibri");
+    r1.setFontFamily(CALIBRI);
 
     XWPFParagraph p2 = xwpfTableRow.getCell(1).getParagraphs().get(0);
     p2.setAlignment(ParagraphAlignment.CENTER);
@@ -1237,7 +1240,7 @@ public class CommonWriter {
     r2.setBold(true);
     r2.setFontSize(10);
     r2.setText(requirementTreated.getId());
-    r2.setFontFamily("Calibri");
+    r2.setFontFamily(CALIBRI);
 
     XWPFParagraph p3 = xwpfTableRow.getCell(2).getParagraphs().get(0);
 
@@ -1245,7 +1248,7 @@ public class CommonWriter {
     r3.setBold(false);
     r3.setFontSize(10);
     r3.setText(requirementTreated.getTitle());
-    r3.setFontFamily("Calibri");
+    r3.setFontFamily(CALIBRI);
 
     XWPFParagraph p4 = xwpfTableRow.getCell(3).getParagraphs().get(0);
 
@@ -1253,7 +1256,7 @@ public class CommonWriter {
     r4.setBold(false);
     r4.setFontSize(10);
     r4.setText(requirementTreated.getDescription());
-    r4.setFontFamily("Calibri");
+    r4.setFontFamily(CALIBRI);
 
     XWPFParagraph p5 = xwpfTableRow.getCell(4).getParagraphs().get(0);
     p5.setAlignment(ParagraphAlignment.CENTER);
@@ -1262,7 +1265,7 @@ public class CommonWriter {
     r5.setBold(true);
     r5.setFontSize(10);
     r5.setText(requirementTreated.getUserDescription());
-    r5.setFontFamily("Calibri");
+    r5.setFontFamily(CALIBRI);
 
   }
 
@@ -1318,7 +1321,7 @@ public class CommonWriter {
     r1.setBold(true);
     r1.setFontSize(10);
     r1.setText(safeguard.getCatalogueId());
-    r1.setFontFamily("Calibri");
+    r1.setFontFamily(CALIBRI);
 
     XWPFParagraph p2 = xwpfTableRow.getCell(1).getParagraphs().get(0);
     p2.setAlignment(ParagraphAlignment.CENTER);
@@ -1327,7 +1330,7 @@ public class CommonWriter {
     r2.setBold(false);
     r2.setFontSize(8);
     r2.setText(safeguard.getName());
-    r2.setFontFamily("Calibri");
+    r2.setFontFamily(CALIBRI);
 
     XWPFParagraph p5 = xwpfTableRow.getCell(4).getParagraphs().get(0);
     p5.setAlignment(ParagraphAlignment.CENTER);
@@ -1336,7 +1339,7 @@ public class CommonWriter {
     r5.setBold(true);
     r5.setFontSize(10);
     r5.setText(safeguard.getScore().toString());
-    r5.setFontFamily("Calibri");
+    r5.setFontFamily(CALIBRI);
 
     XWPFParagraph p6 = xwpfTableRow.getCell(5).getParagraphs().get(0);
     p6.setAlignment(ParagraphAlignment.CENTER);
@@ -1345,7 +1348,7 @@ public class CommonWriter {
     r6.setBold(true);
     r6.setFontSize(10);
     r6.setText(safeguardTreated.getScore().toString());
-    r6.setFontFamily("Calibri");
+    r6.setFontFamily(CALIBRI);
 
     if (safeguard.getScope() == null) {
       return;
@@ -1357,7 +1360,7 @@ public class CommonWriter {
     r7.setBold(true);
     r7.setFontSize(10);
     r7.setText(safeguardTreated.getScope().toString());
-    r7.setFontFamily("Calibri");
+    r7.setFontFamily(CALIBRI);
 
   }
 
@@ -1374,7 +1377,7 @@ public class CommonWriter {
     //Writing Safeguard Annex name
     safeguardAnnexNameRun.setBold(true);
     safeguardAnnexNameRun.setText("Safeguards To Implement");
-    safeguardAnnexNameRun.setFontFamily("Calibri");
+    safeguardAnnexNameRun.setFontFamily(CALIBRI);
     safeguardAnnexNameRun.setFontSize(15);
 
     XWPFParagraph safeguardExplainationParagraph = doc.createParagraph();
@@ -1384,7 +1387,7 @@ public class CommonWriter {
     //Writing explaination about the MEHARI Weighting system
     safeguardExplainationRun.setBold(false);
     safeguardExplainationRun.setFontSize(13);
-    safeguardExplainationRun.setFontFamily("Calibri");
+    safeguardExplainationRun.setFontFamily(CALIBRI);
     safeguardExplainationRun.setText("Within this Annex, all Safeguards selected to be improved in order to reduce the risk to the desired levels are further detailed in order to provide a concrete guidance for their implementation.");
     safeguardExplainationRun.addCarriageReturn();
     safeguardExplainationRun.setText("Each Safeguard is subdivided into a set of Questions providing a detailed highlight on the implementation of the Safeguard: some of these questions may have been positively answered during the Audit phase of the Risk Assessment," +
@@ -1427,7 +1430,7 @@ public class CommonWriter {
           safeguardData.addCarriageReturn();
           safeguardData.setBold(false);
           safeguardData.setFontSize(13);
-          safeguardData.setFontFamily("Calibri");
+          safeguardData.setFontFamily(CALIBRI);
           safeguardData.setText("Safeguard Id: ");
           safeguardData.setText(safeguard.getCatalogueId());
           safeguardData.addCarriageReturn();
@@ -1489,7 +1492,7 @@ public class CommonWriter {
       r1.setBold(true);
       r1.setFontSize(10);
       r1.setText(question.getCategory());
-      r1.setFontFamily("Calibri");
+      r1.setFontFamily(CALIBRI);
 
       XWPFParagraph p2 = table.getRow(count).getCell(1).getParagraphs().get(0);
       p2.setAlignment(ParagraphAlignment.CENTER);
@@ -1498,7 +1501,7 @@ public class CommonWriter {
       r2.setBold(false);
       r2.setFontSize(10);
       r2.setText(question.getValue());
-      r2.setFontFamily("Calibri");
+      r2.setFontFamily(CALIBRI);
 
 
       XWPFParagraph p3 = table.getRow(count).getCell(2).getParagraphs().get(0);
@@ -1524,7 +1527,7 @@ public class CommonWriter {
           }
         }
       }
-      r3.setFontFamily("Calibri");
+      r3.setFontFamily(CALIBRI);
 
 
       XWPFParagraph p4 = table.getRow(count).getCell(3).getParagraphs().get(0);
@@ -1538,7 +1541,7 @@ public class CommonWriter {
       } else {
         r4.setText("");
       }
-      r4.setFontFamily("Calibri");
+      r4.setFontFamily(CALIBRI);
 
       XWPFParagraph p5 = table.getRow(count).getCell(4).getParagraphs().get(0);
       p5.setAlignment(ParagraphAlignment.CENTER);
@@ -1551,7 +1554,7 @@ public class CommonWriter {
       } else {
         r5.setText("");
       }
-      r5.setFontFamily("Calibri");
+      r5.setFontFamily(CALIBRI);
 
       XWPFParagraph p6 = table.getRow(count).getCell(5).getParagraphs().get(0);
       p6.setAlignment(ParagraphAlignment.CENTER);
@@ -1564,7 +1567,7 @@ public class CommonWriter {
       } else {
         r6.setText("");
       }
-      r6.setFontFamily("Calibri");
+      r6.setFontFamily(CALIBRI);
 
       XWPFParagraph p7 = table.getRow(count).getCell(6).getParagraphs().get(0);
       p7.setAlignment(ParagraphAlignment.CENTER);
@@ -1577,7 +1580,7 @@ public class CommonWriter {
       } else {
         r7.setText("");
       }
-      r7.setFontFamily("Calibri");
+      r7.setFontFamily(CALIBRI);
 
       count++;
     }
@@ -1596,8 +1599,6 @@ public class CommonWriter {
     if (safeguardQuestions == null) {
       return;
     }
-
-    System.out.println(safeguard.getCatalogueId());
 
     for (Question question : safeguardQuestions) {
       Map<AnswerTypeEnum, String> newAnswers = attemptOptimizationAnswersMaxMin(safeguardTreated.getScore(), question.getAnswers());
@@ -1769,7 +1770,7 @@ public class CommonWriter {
 
     threatAnnexRun.setBold(true);
     threatAnnexRun.setText("Threats References");
-    threatAnnexRun.setFontFamily("Calibri");
+    threatAnnexRun.setFontFamily(CALIBRI);
     threatAnnexRun.setFontSize(15);
 
     sortThreats(procedure.getThreatModel());
@@ -1805,7 +1806,7 @@ public class CommonWriter {
     r1.setBold(false);
     r1.setFontSize(10);
     r1.setText(threat.getCatalogueId());
-    r1.setFontFamily("Calibri");
+    r1.setFontFamily(CALIBRI);
 
     XWPFParagraph p2 = xwpfTableRow.getCell(1).getParagraphs().get(0);
     p2.setAlignment(ParagraphAlignment.CENTER);
@@ -1814,7 +1815,7 @@ public class CommonWriter {
     r2.setBold(true);
     r2.setFontSize(10);
     r2.setText(threat.getCatalogue().toString());
-    r2.setFontFamily("Calibri");
+    r2.setFontFamily(CALIBRI);
 
     XWPFParagraph p3 = xwpfTableRow.getCell(2).getParagraphs().get(0);
 
@@ -1822,7 +1823,7 @@ public class CommonWriter {
     r3.setBold(false);
     r3.setFontSize(10);
     r3.setText(threat.getName());
-    r3.setFontFamily("Calibri");
+    r3.setFontFamily(CALIBRI);
 
     XWPFParagraph p4 = xwpfTableRow.getCell(3).getParagraphs().get(0);
 
@@ -1830,7 +1831,7 @@ public class CommonWriter {
     r4.setBold(false);
     r4.setFontSize(10);
     r4.setText(threat.getDescription());
-    r4.setFontFamily("Calibri");
+    r4.setFontFamily(CALIBRI);
 
     XWPFParagraph p5 = xwpfTableRow.getCell(4).getParagraphs().get(0);
     p5.setAlignment(ParagraphAlignment.CENTER);
@@ -1839,7 +1840,7 @@ public class CommonWriter {
     r5.setBold(false);
     r5.setFontSize(10);
     r5.setText(threat.getThreatClass().toString());
-    r5.setFontFamily("Calibri");
+    r5.setFontFamily(CALIBRI);
 
     XWPFParagraph p6 = xwpfTableRow.getCell(5).getParagraphs().get(0);
     p6.setAlignment(ParagraphAlignment.CENTER);
@@ -1848,7 +1849,7 @@ public class CommonWriter {
     r6.setBold(false);
     r6.setFontSize(10);
     r6.setText(threat.getScore().getLikelihood().toString());
-    r6.setFontFamily("Calibri");
+    r6.setFontFamily(CALIBRI);
 
     XWPFParagraph p7 = xwpfTableRow.getCell(6).getParagraphs().get(0);
     p7.setAlignment(ParagraphAlignment.CENTER);
@@ -1857,7 +1858,7 @@ public class CommonWriter {
     r7.setBold(false);
     r7.setFontSize(10);
     r7.setText(threat.getLastUpdate());
-    r7.setFontFamily("Calibri");
+    r7.setFontFamily(CALIBRI);
 
   }
 
@@ -1880,7 +1881,7 @@ public class CommonWriter {
 
     vulnerabilityAnnexRun.setBold(true);
     vulnerabilityAnnexRun.setText("Vulnerabilities References");
-    vulnerabilityAnnexRun.setFontFamily("Calibri");
+    vulnerabilityAnnexRun.setFontFamily(CALIBRI);
     vulnerabilityAnnexRun.setFontSize(15);
 
     sortVulnerabilities(procedure.getVulnerabilityModel());
@@ -1916,7 +1917,7 @@ public class CommonWriter {
     r1.setBold(false);
     r1.setFontSize(10);
     r1.setText(vulnerability.getCatalogueId());
-    r1.setFontFamily("Calibri");
+    r1.setFontFamily(CALIBRI);
 
     XWPFParagraph p2 = xwpfTableRow.getCell(1).getParagraphs().get(0);
     p2.setAlignment(ParagraphAlignment.CENTER);
@@ -1925,7 +1926,7 @@ public class CommonWriter {
     r2.setBold(true);
     r2.setFontSize(10);
     r2.setText(vulnerability.getCatalogue().toString());
-    r2.setFontFamily("Calibri");
+    r2.setFontFamily(CALIBRI);
 
     XWPFParagraph p3 = xwpfTableRow.getCell(2).getParagraphs().get(0);
 
@@ -1933,7 +1934,7 @@ public class CommonWriter {
     r3.setBold(false);
     r3.setFontSize(10);
     r3.setText(vulnerability.getName());
-    r3.setFontFamily("Calibri");
+    r3.setFontFamily(CALIBRI);
 
     XWPFParagraph p4 = xwpfTableRow.getCell(3).getParagraphs().get(0);
 
@@ -1941,7 +1942,7 @@ public class CommonWriter {
     r4.setBold(false);
     r4.setFontSize(10);
     r4.setText(vulnerability.getDescription());
-    r4.setFontFamily("Calibri");
+    r4.setFontFamily(CALIBRI);
 
     XWPFParagraph p5 = xwpfTableRow.getCell(4).getParagraphs().get(0);
     p5.setAlignment(ParagraphAlignment.CENTER);
@@ -1974,7 +1975,7 @@ public class CommonWriter {
     r5.setBold(true);
     r5.setFontSize(10);
     r5.setText(securityDimension);
-    r5.setFontFamily("Calibri");
+    r5.setFontFamily(CALIBRI);
 
     XWPFParagraph p6 = xwpfTableRow.getCell(5).getParagraphs().get(0);
     p6.setAlignment(ParagraphAlignment.CENTER);
@@ -1983,7 +1984,7 @@ public class CommonWriter {
     r6.setBold(false);
     r6.setFontSize(10);
     r6.setText(consequences);
-    r6.setFontFamily("Calibri");
+    r6.setFontFamily(CALIBRI);
 
     XWPFParagraph p7 = xwpfTableRow.getCell(6).getParagraphs().get(0);
     p7.setAlignment(ParagraphAlignment.CENTER);
@@ -1992,7 +1993,7 @@ public class CommonWriter {
     r7.setBold(false);
     r7.setFontSize(10);
     r7.setText(vulnerability.getLastUpdate());
-    r7.setFontFamily("Calibri");
+    r7.setFontFamily(CALIBRI);
 
   }
 
@@ -2053,12 +2054,7 @@ public class CommonWriter {
     //Sorting Threats
     Threat[] threatArray = threatModel.getThreats().toArray(new Threat[threatModel.getThreats().size()]);
 
-    Arrays.sort(threatArray, new Comparator<Threat>() {
-      @Override
-      public int compare(Threat first, Threat second) {
-        return first.getCatalogueId().compareTo(second.getCatalogueId());
-      }
-    });
+    Arrays.sort(threatArray, Comparator.comparing(Threat::getCatalogueId));
     threatModel.getThreats().clear();
     threatModel.getThreats().addAll(Arrays.asList(threatArray));
   }
@@ -2067,12 +2063,7 @@ public class CommonWriter {
     //Sorting Vulnerabilities
     Vulnerability[] vulnArray = vulnerabilityModel.getVulnerabilities().toArray(new Vulnerability[vulnerabilityModel.getVulnerabilities().size()]);
 
-    Arrays.sort(vulnArray, new Comparator<Vulnerability>() {
-      @Override
-      public int compare(Vulnerability first, Vulnerability second) {
-        return first.getCatalogueId().compareTo(second.getCatalogueId());
-      }
-    });
+    Arrays.sort(vulnArray, Comparator.comparing(Vulnerability::getCatalogueId));
     vulnerabilityModel.getVulnerabilities().clear();
     vulnerabilityModel.getVulnerabilities().addAll(Arrays.asList(vulnArray));
   }
@@ -2080,12 +2071,7 @@ public class CommonWriter {
   private void sortSafeguardId(ArrayList<Safeguard> safeguards) {
     Safeguard[] safeguardArray = safeguards.toArray(new Safeguard[safeguards.size()]);
 
-    Arrays.sort(safeguardArray, new Comparator<Safeguard>() {
-      @Override
-      public int compare(Safeguard first, Safeguard second) {
-        return first.getCatalogueId().compareTo(second.getCatalogueId());
-      }
-    });
+    Arrays.sort(safeguardArray, Comparator.comparing(Safeguard::getCatalogueId));
     safeguards.clear();
     safeguards.addAll(Arrays.asList(safeguardArray));
 
@@ -2324,7 +2310,7 @@ public class CommonWriter {
     //Writing SOA paragraph name
     soaNameRun.setBold(true);
     soaNameRun.setText("Statement of Applicability");
-    soaNameRun.setFontFamily("Calibri");
+    soaNameRun.setFontFamily(CALIBRI);
     soaNameRun.setFontSize(15);
 
     writeSOADetails(doc, procedure, audit, auditFinal, controls);
@@ -2338,7 +2324,7 @@ public class CommonWriter {
     //Writing Legend
     safeguardData.setBold(false);
     safeguardData.setFontSize(13);
-    safeguardData.setFontFamily("Calibri");
+    safeguardData.setFontFamily(CALIBRI);
     safeguardData.setText("LR: legal requirements, CO: contractual obligations, BR/BP: business requirements/adopted best practices, RRA: results of risk assessment");
     safeguardData.addCarriageReturn();
     safeguardData.setText("Y: 'Implemented' or 'To be Implemented'");
@@ -2376,7 +2362,7 @@ public class CommonWriter {
       r1.setBold(true);
       r1.setFontSize(10);
       r1.setText(control.getClauseId() + " " + control.getClause());
-      r1.setFontFamily("Calibri");
+      r1.setFontFamily(CALIBRI);
 
       XWPFParagraph p2 = table.getRow(count).getCell(1).getParagraphs().get(0);
       p2.setAlignment(ParagraphAlignment.CENTER);
@@ -2385,7 +2371,7 @@ public class CommonWriter {
       r2.setBold(false);
       r2.setFontSize(10);
       r2.setText(control.getObjectiveId() + " " + control.getObjective());
-      r2.setFontFamily("Calibri");
+      r2.setFontFamily(CALIBRI);
 
       XWPFParagraph p3 = table.getRow(count).getCell(2).getParagraphs().get(0);
       p3.setAlignment(ParagraphAlignment.CENTER);
@@ -2394,7 +2380,7 @@ public class CommonWriter {
       r3.setBold(false);
       r3.setFontSize(10);
       r3.setText(control.getControlId() + " " + control.getControl());
-      r3.setFontFamily("Calibri");
+      r3.setFontFamily(CALIBRI);
 
       XWPFParagraph p4 = table.getRow(count).getCell(3).getParagraphs().get(0);
       p4.setAlignment(ParagraphAlignment.CENTER);
@@ -2412,7 +2398,7 @@ public class CommonWriter {
       if (controlValue > 0 && controlValue < 1) {
         r4.setText("P");
       }
-      r4.setFontFamily("Calibri");
+      r4.setFontFamily(CALIBRI);
 
       XWPFParagraph p8 = table.getRow(count).getCell(7).getParagraphs().get(0);
       p8.setAlignment(ParagraphAlignment.CENTER);
@@ -2430,7 +2416,7 @@ public class CommonWriter {
       if (desiredControlValue > 0 && desiredControlValue < 1) {
         r8.setText("P");
       }
-      r8.setFontFamily("Calibri");
+      r8.setFontFamily(CALIBRI);
 
       count++;
     }

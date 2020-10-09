@@ -6,7 +6,7 @@
 	<parent>
 		<groupId>org.crmf</groupId>
 		<artifactId>parent</artifactId>
-        <version>0.0.2</version>
+		<version>0.0.2</version>
 	</parent>
 	<artifactId>sest-security-requirement-import</artifactId>
 	<name>sest-security-requirement-import</name>
@@ -48,22 +48,9 @@
 		<defaultGoal>install</defaultGoal>
 		<plugins>
 			<plugin>
-				<groupId>org.apache.felix</groupId>
-				<artifactId>maven-bundle-plugin</artifactId>
-				<version>${bundle.plugin.version}</version>
-				<extensions>true</extensions>
-				<configuration>
-					<obrRepository>NONE</obrRepository>
-					<instructions>
-						<Bundle-Name>${project.name}</Bundle-Name>
-						<Bundle-SymbolicName>${project.artifactId}</Bundle-SymbolicName>
-						<Bundle-Version>${project.version}</Bundle-Version>
-						<Bundle-Activator>org.crmf.secreqimport.SecurityRequirementImportActivator</Bundle-Activator>
-						<!-- Bundle-Activator>core.TemplateActivator</Bundle-Activator> <Import-Package>core.*, 
-							!* </Import-Package> <Export-Package>core.*, !* </Export-Package> <DynamicImport-Package>*</DynamicImport-Package -->
-					</instructions>
-				</configuration>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
-		</plugins>
-	</build>
+        </plugins>
+    </build>
 </project>

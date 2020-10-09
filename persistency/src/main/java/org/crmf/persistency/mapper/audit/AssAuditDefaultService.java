@@ -27,9 +27,9 @@ import org.crmf.persistency.domain.audit.AssauditDefaultJSON;
 import org.crmf.persistency.domain.secrequirement.SecRequirement;
 import org.crmf.persistency.domain.secrequirement.SecRequirementSafeguard;
 import org.crmf.persistency.mapper.secrequirement.SecRequirementMapper;
-import org.crmf.persistency.session.PersistencySessionFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Component;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -41,10 +41,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 //This class manages the database interactions related to the Audit
+@Component
 public class AssAuditDefaultService {
 
   private static final Logger LOG = LoggerFactory.getLogger(AssAuditDefaultService.class.getName());
-  PersistencySessionFactory sessionFactory;
+  private final SqlSession sqlSession;
+
+  public AssAuditDefaultService(SqlSession sqlSession) {
+    this.sqlSession = sqlSession;
+  }
 
   public static final String inputfilename = "questionnaire.csv";
   public static final String outputfilename = "questionnaire.sql";
@@ -81,50 +86,33 @@ public class AssAuditDefaultService {
 
   public void insertQuestionnaire(AssauditDefaultJSON assauditDefaultJSON) {
 
-    SqlSession sqlSession = sessionFactory.getSession();
     try {
       AssAuditDefaultMapper auditeDefaultMapper = sqlSession.getMapper(AssAuditDefaultMapper.class);
       auditeDefaultMapper.insert(assauditDefaultJSON);
-      sqlSession.commit();
     } catch (Exception ex) {
       LOG.error(ex.getMessage());
-      sqlSession.rollback();
-    } finally {
-      sqlSession.close();
     }
   }
 
 
   public void updateQuestionnaireJSON(AssauditDefaultJSON assauditDefaultJSON) {
-
-    SqlSession sqlSession = sessionFactory.getSession();
     try {
       AssAuditDefaultMapper auditeDefaultMapper = sqlSession.getMapper(AssAuditDefaultMapper.class);
       auditeDefaultMapper.updateQuestionnaireJSON(assauditDefaultJSON);
-      sqlSession.commit();
     } catch (Exception ex) {
       LOG.error(ex.getMessage());
-      sqlSession.rollback();
-    } finally {
-      sqlSession.close();
     }
   }
 
   public List<AssauditDefaultJSON> getAllQuestionnaires() {
 
-    SqlSession sqlSession = sessionFactory.getSession();
     List<AssauditDefaultJSON> questionnaires;
     try {
       AssAuditDefaultMapper auditeDefaultMapper = sqlSession.getMapper(AssAuditDefaultMapper.class);
       questionnaires = auditeDefaultMapper.getAllQuestionnaires();
-
-      sqlSession.commit();
     } catch (Exception ex) {
       LOG.error(ex.getMessage());
-      sqlSession.rollback();
       return null;
-    } finally {
-      sqlSession.close();
     }
 
     return questionnaires;
@@ -132,45 +120,33 @@ public class AssAuditDefaultService {
 
   public List<AssauditDefaultJSON> getAllQuestionnaireNames() {
 
-    SqlSession sqlSession = sessionFactory.getSession();
     List<AssauditDefaultJSON> questionnaires = new ArrayList<>();
     try {
       AssAuditDefaultMapper auditeDefaultMapper = sqlSession.getMapper(AssAuditDefaultMapper.class);
       questionnaires = auditeDefaultMapper.getAllQuestionnaireNames();
     } catch (Exception ex) {
       LOG.error(ex.getMessage());
-      sqlSession.rollback();
       return null;
-    } finally {
-      sqlSession.close();
     }
-
     return questionnaires;
   }
 
   public AssauditDefaultJSON getQuestionnaireByCategory(String category) {
 
-    SqlSession sqlSession = sessionFactory.getSession();
     AssauditDefaultJSON questionnaire = null;
     try {
       AssAuditDefaultMapper auditeDefaultMapper = sqlSession.getMapper(AssAuditDefaultMapper.class);
 
       questionnaire = auditeDefaultMapper.getByCategory(category);
-      sqlSession.commit();
     } catch (Exception ex) {
       LOG.error(ex.getMessage());
-      sqlSession.rollback();
       return null;
-    } finally {
-      sqlSession.close();
     }
     return questionnaire;
   }
 
 
   public String getQuestionnaireJSON(String category) {
-
-    SqlSession sqlSession = sessionFactory.getSession();
 
     try {
       AssAuditDefaultMapper auditeDefaultMapper = sqlSession.getMapper(AssAuditDefaultMapper.class);
@@ -201,10 +177,7 @@ public class AssAuditDefaultService {
       }
     } catch (Exception ex) {
       LOG.error(ex.getMessage());
-    } finally {
-      sqlSession.close();
     }
-
     return null;
   }
 
@@ -319,18 +292,14 @@ public class AssAuditDefaultService {
 
   public void importAudit() {
 
-    SqlSession sqlSession = sessionFactory.getSession();
     try {
       AssAuditDefaultMapper auditeDefaultMapper = sqlSession.getMapper(AssAuditDefaultMapper.class);
       int id = 0;
       for (int i = 1; i < 15; i++) {
         id = this.parseFile(String.valueOf(i), ++id, auditeDefaultMapper);
       }
-      sqlSession.commit();
     } catch (Exception ex) {
       LOG.error(ex.getMessage());
-    } finally {
-      sqlSession.close();
     }
   }
 
@@ -339,7 +308,6 @@ public class AssAuditDefaultService {
     try {
       pr = new PrintWriter(index + outputfilename);
       String filename = index.concat(inputfilename);
-      System.out.println(System.getProperty("user.dir"));
 
       byte[] encoded = Files.readAllBytes(Paths.get(filename));
       String fileS = new String(encoded, StandardCharsets.UTF_8);
@@ -457,14 +425,6 @@ public class AssAuditDefaultService {
       return value;
     else
       return "";
-  }
-
-  public PersistencySessionFactory getSessionFactory() {
-    return sessionFactory;
-  }
-
-  public void setSessionFactory(PersistencySessionFactory sessionFactory) {
-    this.sessionFactory = sessionFactory;
   }
 
   public ISOControls getIsoControls() {

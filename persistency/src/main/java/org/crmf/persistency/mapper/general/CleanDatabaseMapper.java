@@ -12,7 +12,10 @@
 
 package org.crmf.persistency.mapper.general;
 
+import org.apache.ibatis.annotations.Mapper;
+
 //This interface allows the bundle to invoke the SQL methods within the CleanDatabaseMapper.xml (via the ibatis API)
+@Mapper
 public interface CleanDatabaseMapper {
 
 	void deleteSestObj();

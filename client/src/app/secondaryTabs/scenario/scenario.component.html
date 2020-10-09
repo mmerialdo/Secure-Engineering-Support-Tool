@@ -16,51 +16,39 @@
 
     <ng-template pTemplate="header" let-scenario>
       <tr>
-        <th [ngClass]="'pr-column01'" [pSortableColumn]="'assetName'">Asset Name
+        <th scope="col" [ngClass]="'pr-column01'" [pSortableColumn]="'assetName'">Asset Name
           <p-sortIcon [field]="'assetName'"></p-sortIcon></th>
-        <th [ngClass]="'pr-columnPrimaryCategory'" [pSortableColumn]="'assetPrimaryCategory'">Asset Primary Category
+        <th scope="col" [ngClass]="'pr-columnPrimaryCategory'" [pSortableColumn]="'assetPrimaryCategory'">Asset Primary Category
           <p-sortIcon [field]="'assetPrimaryCategory'"></p-sortIcon></th>
-        <th [ngClass]="'pr-columnSecondaryCategory'" [pSortableColumn]="'assetSecondaryCategory'">Asset Secondary Category
+        <th scope="col" [ngClass]="'pr-columnSecondaryCategory'" [pSortableColumn]="'assetSecondaryCategory'">Asset Secondary Category
           <p-sortIcon [field]="'assetSecondaryCategory'"></p-sortIcon></th>
-        <th [ngClass]="'pr-column01'" [pSortableColumn]="'impactScope'">Impact Scope
+        <th scope="col" [ngClass]="'pr-column01'" [pSortableColumn]="'impactScope'">Impact Scope
           <p-sortIcon [field]="'impactScope'"></p-sortIcon></th>
-        <th [ngClass]="'pr-column01'" [pSortableColumn]="'vulnerabilityCode'">Vulnerability ID
+        <th scope="col" [ngClass]="'pr-column01'" [pSortableColumn]="'vulnerabilityCode'">Vulnerability ID
           <p-sortIcon [field]="'vulnerabilityCode'"></p-sortIcon></th>
-<!--        <th [ngClass]="'pr-column01'" [pSortableColumn]="'vulnerabilityDescription'">Vulnerability Description-->
-<!--          <p-sortIcon [field]="'vulnerabilityDescription'"></p-sortIcon></th>-->
-        <th [ngClass]="'pr-column01'" [pSortableColumn]="'threatCat'">Threat ID
+        <th scope="col" [ngClass]="'pr-column01'" [pSortableColumn]="'threatCat'">Threat ID
           <p-sortIcon [field]="'threatCat'"></p-sortIcon></th>
-        <th [ngClass]="'pr-columnDescription'" [ngClass]="'pr-columnDescription'" [pSortableColumn]="'scenarioDescription'">Scenario Description
+        <th scope="col" [ngClass]="'pr-columnDescription'" [ngClass]="'pr-columnDescription'" [pSortableColumn]="'scenarioDescription'">Scenario Description
           <p-sortIcon [field]="'scenarioDescription'"></p-sortIcon></th>
-<!--        <th [ngClass]="'pr-column01'" [pSortableColumn]="'scenarioClass'">Scenario Class-->
-<!--          <p-sortIcon [field]="'scenarioClass'"></p-sortIcon></th>-->
-        <th [ngClass]="'pr-column02'" [pSortableColumn]="'intrinsicImpact'">Intrinsic Impact
+        <th scope="col" [ngClass]="'pr-column02'" [pSortableColumn]="'intrinsicImpact'">Intrinsic Impact
           <p-sortIcon [field]="'intrinsicImpact'"></p-sortIcon></th>
-        <th [ngClass]="'pr-column02'" [pSortableColumn]="'intrinsicLikelihood'">Intrinsic Likelihood
+        <th scope="col" [ngClass]="'pr-column02'" [pSortableColumn]="'intrinsicLikelihood'">Intrinsic Likelihood
           <p-sortIcon [field]="'intrinsicLikelihood'"></p-sortIcon></th>
-        <th [ngClass]="'pr-column02'" [pSortableColumn]="'intrinsicSeriousness'">Intrinsic Seriousness
+        <th scope="col" [ngClass]="'pr-column02'" [pSortableColumn]="'intrinsicSeriousness'">Intrinsic Seriousness
           <p-sortIcon [field]="'intrinsicSeriousness'"></p-sortIcon></th>
-<!--        <th [ngClass]="'pr-column02'" [pSortableColumn]="'dissuasion'">Dissuasion-->
-<!--          <p-sortIcon [field]="'dissuasion'"></p-sortIcon></th>-->
-<!--        <th [ngClass]="'pr-column02'" [pSortableColumn]="'prevention'">Prevention-->
-<!--          <p-sortIcon [field]="'prevention'"></p-sortIcon></th>-->
-<!--        <th [ngClass]="'pr-column02'" [pSortableColumn]="'confining'">Confining-->
-<!--          <p-sortIcon [field]="'confining'"></p-sortIcon></th>-->
-<!--        <th [ngClass]="'pr-column02'" [pSortableColumn]="'palliation'">Palliation-->
-<!--          <p-sortIcon [field]="'palliation'"></p-sortIcon></th>-->
-        <th [ngClass]="'pr-column02'" [pSortableColumn]="'expertImpact'">Expert Impact
+        <th scope="col" [ngClass]="'pr-column02'" [pSortableColumn]="'expertImpact'">Expert Impact
           <p-sortIcon [field]="'expertImpact'"></p-sortIcon></th>
-        <th [ngClass]="'pr-column02'" [pSortableColumn]="'expertLikelihood'">Expert Likelihood
+        <th scope="col" [ngClass]="'pr-column02'" [pSortableColumn]="'expertLikelihood'">Expert Likelihood
           <p-sortIcon [field]="'expertLikelihood'"></p-sortIcon></th>
-        <th [ngClass]="'pr-column03'" [pSortableColumn]="'calculatedImpact'">Calculated Impact
+        <th scope="col" [ngClass]="'pr-column03'" [pSortableColumn]="'calculatedImpact'">Calculated Impact
           <p-sortIcon [field]="'calculatedImpact'"></p-sortIcon></th>
-        <th [ngClass]="'pr-column03'" [pSortableColumn]="'calculatedLikelihood'">Calculated Likelihood
+        <th scope="col" [ngClass]="'pr-column03'" [pSortableColumn]="'calculatedLikelihood'">Calculated Likelihood
           <p-sortIcon [field]="'calculatedLikelihood'"></p-sortIcon></th>
-        <th [ngClass]="'pr-column04'" [pSortableColumn]="'calculatedSeriousness'">Calculated Seriousness
+        <th scope="col" [ngClass]="'pr-column04'" [pSortableColumn]="'calculatedSeriousness'">Calculated Seriousness
           <p-sortIcon [field]="'calculatedSeriousness'"></p-sortIcon></th>
-        <th [ngClass]="'pr-column03'" [pSortableColumn]="'accept'">Scenario Result
+        <th scope="col" [ngClass]="'pr-column03'" [pSortableColumn]="'accept'">Scenario Result
           <p-sortIcon [field]="'accept'"></p-sortIcon></th>
-        <th [ngClass]="'pr-column01'" [pSortableColumn]="'excluded'">Excluded
+        <th scope="col" [ngClass]="'pr-column01'" [pSortableColumn]="'excluded'">Excluded
           <p-sortIcon [field]="'excluded'"></p-sortIcon></th>
       </tr>
     </ng-template>
@@ -72,17 +60,11 @@
         <td >{{scenario.assetSecondaryCategory}}</td>
         <td >{{scenario.impactScope}}</td>
         <td >{{scenario.vulnerabilityCode}}</td>
-<!--        <td >{{scenario.vulnerabilityDescription}}</td>-->
         <td >{{scenario.threatCat}}</td>
         <td >{{scenario.scenarioDescription}}</td>
-<!--        <td >{{scenario.scenarioClass}}</td>-->
         <td >{{scenario.intrinsicImpact}}</td>
         <td >{{scenario.intrinsicLikelihood}}</td>
         <td >{{scenario.intrinsicSeriousness}}</td>
-<!--        <td >{{scenario.dissuasion}}</td>-->
-<!--        <td >{{scenario.prevention}}</td>-->
-<!--        <td >{{scenario.confining}}</td>-->
-<!--        <td >{{scenario.palliation}}</td>-->
         <td >{{scenario.expertImpact}}</td>
         <td >{{scenario.expertLikelihood}}</td>
         <td >{{scenario.calculatedImpact}}</td>
@@ -314,7 +296,6 @@
       </h1>
       <hr>
 
-      <!--<div class="row">-->
       <div class="col-md-3">
         <label>Primary Asset Category</label>
         <p>{{ assetPrimaryCategory }}</p>
@@ -469,18 +450,16 @@
         order
         to assess the scope of the Impact of compromising an Asset:</p>
       <p class=MsoListParagraph style='margin-left:36.0pt'>
-        <span style='font-family:
-Symbol'>·
-          <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <span style='font-family:Symbol, sans-serif;'>·
+          <span style='font-family: times, serif; font-size:7.0pt; '>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </span>
         </span>
         <strong>Confidentiality </strong>(In information security, confidentiality &quot;is the property, that information is not
         made
         available or disclosed to unauthorized individuals, entities, or processes&quot; – from ISO 27001)</p>
       <p class=MsoListParagraph style='margin-left:36.0pt'>
-        <span style='font-family:
-Symbol'>·
-          <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <span style='font-family:Symbol, sans-serif;'>·
+          <span style='font-family: times, serif; font-size:7.0pt; '>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </span>
         </span>
         <strong>Integrity</strong> (In information security, data integrity means maintaining and assuring the accuracy and
@@ -492,9 +471,8 @@ Symbol'>·
         typically
         provide message integrity in addition to data confidentiality)</p>
       <p class=MsoListParagraph style='margin-left:36.0pt'>
-        <span style='font-family:
-Symbol'>·
-          <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <span style='font-family:Symbol, sans-serif;'>·
+          <span style='font-family: times, serif; font-size:7.0pt; '>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </span>
         </span>
         <strong>Availability </strong>(For any information system to serve its purpose, the information must be available when it
@@ -534,23 +512,20 @@ Symbol'>·
         Event)
         are categorized:</p>
       <p class=MsoListParagraph style='margin-left:36.0pt'>
-        <span style='font-family:
-Symbol'>·
-          <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <span style='font-family:Symbol, sans-serif;'>·
+          <span style='font-family: times, serif; font-size:7.0pt; '>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </span>
         </span>
         <strong>Accidental </strong>(General accidents, or natural events)</p>
       <p class=MsoListParagraph style='margin-left:36.0pt'>
-        <span style='font-family:
-Symbol'>·
-          <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <span style='font-family:Symbol, sans-serif;'>·
+          <span style='font-family: times, serif; font-size:7.0pt; '>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </span>
         </span>
         <strong>Error</strong> (Involuntary errors)</p>
       <p class=MsoListParagraph style='margin-left:36.0pt'>
-        <span style='font-family:
-Symbol'>·
-          <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <span style='font-family:Symbol, sans-serif;'>·
+          <span style='font-family: times, serif; font-size:7.0pt; '>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </span>
         </span>
         <strong>Deliberate </strong>(Voluntary acts, whether malicious or not)&nbsp;</p>
@@ -571,21 +546,19 @@ Symbol'>·
   <div class="row">
     <div class=WordSection1>
       <p class=MsoNormal>Risk Treatment consists, of
-        <a name="OLE_LINK86"></a>
-        <a name="OLE_LINK85"></a>
-        <a name="OLE_LINK84">analysing </a>each Risk Scenario and taking specific decisions, which could be the
+        <a id="OLE_LINK86"></a>
+        <a id="OLE_LINK85"></a>
+        <a id="OLE_LINK84">analysing </a>each Risk Scenario and taking specific decisions, which could be the
         following:</p>
       <p class=MsoListParagraph style='margin-left:36.0pt'>
-        <span style='font-family:
-Symbol'>·
-          <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <span style='font-family:Symbol, sans-serif;'>·
+          <span style='font-family: times, serif; font-size:7.0pt; '>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </span>
         </span>
         <strong>Accept</strong> the risk as it is;</p>
       <p class=MsoListParagraph style='margin-left:36.0pt'>
-        <span style='font-family:
-Symbol'>·
-          <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <span style='font-family:Symbol, sans-serif;'>·
+          <span style='font-family: times, serif; font-size:7.0pt; '>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </span>
         </span>
         <strong>Reduce</strong> the risk, by taking measures to diminish the impact or the likelihood (or both), thereby reducing
@@ -593,16 +566,14 @@ Symbol'>·
         residual seriousness of the risk;
       </p>
       <p class=MsoListParagraph style='margin-left:36.0pt'>
-        <span style='font-family:
-Symbol'>·
-          <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <span style='font-family:Symbol, sans-serif;'>·
+          <span style='font-family: times, serif; font-size:7.0pt; '>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </span>
         </span>
         <strong>Avoid</strong> the risk by removing the risk situation using structural or organizational measures; </p>
       <p class=MsoListParagraph style='margin-left:36.0pt'>
-        <span style='font-family:
-Symbol'>·
-          <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <span style='font-family:Symbol, sans-serif;'>·
+          <span style='font-family: times, serif; font-size:7.0pt; '>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </span>
         </span>
         <strong>Transfer</strong> the risk, typically through insurance.</p>
@@ -654,30 +625,26 @@ Symbol'>·
 
       <p class=MsoNormal>Scale of Impact </p>
       <p class=MsoListParagraph style='margin-left:18.0pt'>
-        <span style='font-family:
-Symbol'>·
-          <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <span style='font-family:Symbol, sans-serif;'>·
+          <span style='font-family: times, serif; font-size:7.0pt; '>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </span>
         </span>
         <strong>LOW </strong>(Not significant)</p>
       <p class=MsoListParagraph style='margin-left:18.0pt'>
-        <span style='font-family:
-Symbol'>·
-          <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <span style='font-family:Symbol, sans-serif;'>·
+          <span style='font-family: times, serif; font-size:7.0pt; '>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </span>
         </span>
         <strong>MEDIUM</strong> (Serious)</p>
       <p class=MsoListParagraph style='margin-left:18.0pt'>
-        <span style='font-family:
-Symbol'>·
-          <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <span style='font-family:Symbol, sans-serif;'>·
+          <span style='font-family: times, serif; font-size:7.0pt; '>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </span>
         </span>
         <strong>HIGH </strong>(Very serious)</p>
       <p class=MsoListParagraph style='margin-left:18.0pt'>
-        <span style='font-family:
-Symbol'>·
-          <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <span style='font-family:Symbol, sans-serif;'>·
+          <span style='font-family: times, serif; font-size:7.0pt; '>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </span>
         </span>
         <strong>CRITICAL</strong> (Vital)</p>
@@ -706,30 +673,26 @@ Symbol'>·
 
       <p class=MsoNormal>Scale of Likelihood </p>
       <p class=MsoListParagraph style='margin-left:18.0pt'>
-        <span style='font-family:
-Symbol'>·
-          <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <span style='font-family:Symbol, sans-serif;'>·
+          <span style='font-family: times, serif; font-size:7.0pt; '>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </span>
         </span>
         <strong>LOW </strong>(Very unlikely)</p>
       <p class=MsoListParagraph style='margin-left:18.0pt'>
-        <span style='font-family:
-Symbol'>·
-          <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <span style='font-family:Symbol, sans-serif;'>·
+          <span style='font-family: times, serif; font-size:7.0pt; '>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </span>
         </span>
         <strong>MEDIUM</strong> (Fairly unlikely)</p>
       <p class=MsoListParagraph style='margin-left:18.0pt'>
-        <span style='font-family:
-Symbol'>·
-          <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <span style='font-family:Symbol, sans-serif;'>·
+          <span style='font-family: times, serif; font-size:7.0pt; '>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </span>
         </span>
         <strong>HIGH </strong>(Fairly likely)</p>
       <p class=MsoListParagraph style='margin-left:18.0pt'>
-        <span style='font-family:
-Symbol'>·
-          <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <span style='font-family:Symbol, sans-serif;'>·
+          <span style='font-family: times, serif; font-size:7.0pt; '>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </span>
         </span>
         <strong>VERY_HIGH </strong>(Very likely)</p>
@@ -756,30 +719,26 @@ Symbol'>·
 
       <p class=MsoNormal>Scale of Seriousness </p>
       <p class=MsoListParagraph style='margin-left:18.0pt'>
-        <span style='font-family:
-Symbol'>·
-          <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <span style='font-family:Symbol, sans-serif;'>·
+          <span style='font-family: times, serif; font-size:7.0pt; '>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </span>
         </span>
         <strong>LOW </strong>(Not significant)</p>
       <p class=MsoListParagraph style='margin-left:18.0pt'>
-        <span style='font-family:
-Symbol'>·
-          <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <span style='font-family:Symbol, sans-serif;'>·
+          <span style='font-family: times, serif; font-size:7.0pt; '>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </span>
         </span>
         <strong>MEDIUM</strong> (Serious)</p>
       <p class=MsoListParagraph style='margin-left:18.0pt'>
-        <span style='font-family:
-Symbol'>·
-          <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <span style='font-family:Symbol, sans-serif;'>·
+          <span style='font-family: times, serif; font-size:7.0pt; '>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </span>
         </span>
         <strong>HIGH </strong>(Very serious)</p>
       <p class=MsoListParagraph style='margin-left:18.0pt'>
-        <span style='font-family:
-Symbol'>·
-          <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <span style='font-family:Symbol, sans-serif;'>·
+          <span style='font-family: times, serif; font-size:7.0pt; '>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </span>
         </span>
         <strong>CRITICAL</strong> (Vital)</p>
@@ -806,30 +765,26 @@ Symbol'>·
 
       <p class=MsoNormal>Scale of Impact </p>
       <p class=MsoListParagraph style='margin-left:18.0pt'>
-        <span style='font-family:
-Symbol'>·
-          <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <span style='font-family:Symbol, sans-serif;'>·
+          <span style='font-family: times, serif; font-size:7.0pt; '>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </span>
         </span>
         <strong>LOW </strong>(Not significant)</p>
       <p class=MsoListParagraph style='margin-left:18.0pt'>
-        <span style='font-family:
-Symbol'>·
-          <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <span style='font-family:Symbol, sans-serif;'>·
+          <span style='font-family: times, serif; font-size:7.0pt; '>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </span>
         </span>
         <strong>MEDIUM</strong> (Serious)</p>
       <p class=MsoListParagraph style='margin-left:18.0pt'>
-        <span style='font-family:
-Symbol'>·
-          <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <span style='font-family:Symbol, sans-serif;'>·
+          <span style='font-family: times, serif; font-size:7.0pt; '>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </span>
         </span>
         <strong>HIGH </strong>(Very serious)</p>
       <p class=MsoListParagraph style='margin-left:18.0pt'>
-        <span style='font-family:
-Symbol'>·
-          <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <span style='font-family:Symbol, sans-serif;'>·
+          <span style='font-family: times, serif; font-size:7.0pt; '>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </span>
         </span>
         <strong>CRITICAL</strong> (Vital)</p>
@@ -856,30 +811,26 @@ Symbol'>·
 
       <p class=MsoNormal>Scale of Likelihood </p>
       <p class=MsoListParagraph style='margin-left:18.0pt'>
-        <span style='font-family:
-Symbol'>·
-          <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <span style='font-family:Symbol, sans-serif;'>·
+          <span style='font-family: times, serif; font-size:7.0pt; '>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </span>
         </span>
         <strong>LOW </strong>(Very unlikely)</p>
       <p class=MsoListParagraph style='margin-left:18.0pt'>
-        <span style='font-family:
-Symbol'>·
-          <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <span style='font-family:Symbol, sans-serif;'>·
+          <span style='font-family: times, serif; font-size:7.0pt; '>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </span>
         </span>
         <strong>MEDIUM</strong> (Fairly unlikely)</p>
       <p class=MsoListParagraph style='margin-left:18.0pt'>
-        <span style='font-family:
-Symbol'>·
-          <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <span style='font-family:Symbol, sans-serif;'>·
+          <span style='font-family: times, serif; font-size:7.0pt; '>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </span>
         </span>
         <strong>HIGH </strong>(Fairly likely)</p>
       <p class=MsoListParagraph style='margin-left:18.0pt'>
-        <span style='font-family:
-Symbol'>·
-          <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <span style='font-family:Symbol, sans-serif;'>·
+          <span style='font-family: times, serif; font-size:7.0pt; '>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </span>
         </span>
         <strong>VERY_HIGH </strong>(Very likely)</p>
@@ -908,30 +859,26 @@ Symbol'>·
 
       <p class=MsoNormal>Scale of Seriousness </p>
       <p class=MsoListParagraph style='margin-left:18.0pt'>
-        <span style='font-family:
-Symbol'>·
-          <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <span style='font-family:Symbol, sans-serif;'>·
+          <span style='font-family: times, serif; font-size:7.0pt; '>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </span>
         </span>
         <strong>LOW </strong>(Not significant)</p>
       <p class=MsoListParagraph style='margin-left:18.0pt'>
-        <span style='font-family:
-Symbol'>·
-          <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <span style='font-family:Symbol, sans-serif;'>·
+          <span style='font-family: times, serif; font-size:7.0pt; '>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </span>
         </span>
         <strong>MEDIUM</strong> (Serious)</p>
       <p class=MsoListParagraph style='margin-left:18.0pt'>
-        <span style='font-family:
-Symbol'>·
-          <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <span style='font-family:Symbol, sans-serif;'>·
+          <span style='font-family: times, serif; font-size:7.0pt; '>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </span>
         </span>
         <strong>HIGH </strong>(Very serious)</p>
       <p class=MsoListParagraph style='margin-left:18.0pt'>
-        <span style='font-family:
-Symbol'>·
-          <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <span style='font-family:Symbol, sans-serif;'>·
+          <span style='font-family: times, serif; font-size:7.0pt; '>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </span>
         </span>
         <strong>CRITICAL</strong> (Vital)</p>
@@ -958,30 +905,26 @@ Symbol'>·
 
       <p class=MsoNormal>Scale of Impact </p>
       <p class=MsoListParagraph style='margin-left:18.0pt'>
-        <span style='font-family:
-Symbol'>·
-          <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <span style='font-family:Symbol, sans-serif;'>·
+          <span style='font-family: times, serif; font-size:7.0pt; '>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </span>
         </span>
         <strong>LOW </strong>(Not significant)</p>
       <p class=MsoListParagraph style='margin-left:18.0pt'>
-        <span style='font-family:
-Symbol'>·
-          <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <span style='font-family:Symbol, sans-serif;'>·
+          <span style='font-family: times, serif; font-size:7.0pt; '>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </span>
         </span>
         <strong>MEDIUM</strong> (Serious)</p>
       <p class=MsoListParagraph style='margin-left:18.0pt'>
-        <span style='font-family:
-Symbol'>·
-          <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <span style='font-family:Symbol, sans-serif;'>·
+          <span style='font-family: times, serif; font-size:7.0pt; '>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </span>
         </span>
         <strong>HIGH </strong>(Very serious)</p>
       <p class=MsoListParagraph style='margin-left:18.0pt'>
-        <span style='font-family:
-Symbol'>·
-          <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <span style='font-family:Symbol, sans-serif;'>·
+          <span style='font-family: times, serif; font-size:7.0pt; '>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </span>
         </span>
         <strong>CRITICAL</strong> (Vital)</p>
@@ -1009,30 +952,26 @@ Symbol'>·
 
       <p class=MsoNormal>Scale of Likelihood </p>
       <p class=MsoListParagraph style='margin-left:18.0pt'>
-        <span style='font-family:
-Symbol'>·
-          <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <span style='font-family:Symbol, sans-serif;'>·
+          <span style='font-family: times, serif; font-size:7.0pt; '>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </span>
         </span>
         <strong>LOW </strong>(Very unlikely)</p>
       <p class=MsoListParagraph style='margin-left:18.0pt'>
-        <span style='font-family:
-Symbol'>·
-          <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <span style='font-family:Symbol, sans-serif;'>·
+          <span style='font-family: times, serif; font-size:7.0pt; '>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </span>
         </span>
         <strong>MEDIUM</strong> (Fairly unlikely)</p>
       <p class=MsoListParagraph style='margin-left:18.0pt'>
-        <span style='font-family:
-Symbol'>·
-          <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <span style='font-family:Symbol, sans-serif;'>·
+          <span style='font-family: times, serif; font-size:7.0pt; '>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </span>
         </span>
         <strong>HIGH </strong>(Fairly likely)</p>
       <p class=MsoListParagraph style='margin-left:18.0pt'>
-        <span style='font-family:
-Symbol'>·
-          <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <span style='font-family:Symbol, sans-serif;'>
+          <span style='font-family: times, serif; font-size:7.0pt; '>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </span>
         </span>
         <strong>VERY_HIGH </strong>(Very likely)</p>

@@ -43,23 +43,34 @@ import org.crmf.persistency.mapper.risk.RiskServiceInterface;
 import org.crmf.persistency.mapper.safeguard.SafeguardServiceInterface;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Service;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
 //This class is called by the Proxy and manages the entrypoint for the business logic (including the interactions with the Persistency) related to the SafeguardModel
-public class SafeguardModelManagerInput implements SafeguardModelManagerInputInterface {
+@Service
+public class SafeguardModelManagerInput {
   // the logger of SafeguardModelManagerInput class
   private static final Logger LOG = LoggerFactory.getLogger(SafeguardModelManagerInput.class.getName());
   public static final String DD_MM_YYYY_HH_MM = "dd/MM/yyyy HH:mm";
   // Safeguard service variable of persistency component
+  @Autowired
+  @Qualifier("default")
   private SafeguardServiceInterface safeguardService;
   // Procedure service variable of persistency component
+  @Autowired
+  @Qualifier("default")
   private AssprocedureServiceInterface assprocedureService;
+  @Autowired
+  @Qualifier("default")
   private RiskServiceInterface riskModelService;
 
   public static final String REGEX_QUESTIONNAIRE = "\\d+";
@@ -69,11 +80,10 @@ public class SafeguardModelManagerInput implements SafeguardModelManagerInputInt
 
   private boolean modelUpdated = false;
 
-  @Override
   public String loadSafeguardModel(GenericFilter filter) throws Exception {
     // get the procedure identifier passed in input
     String procedureIdentifier = filter.getFilterValue(GenericFilterEnum.PROCEDURE);
-    LOG.debug("loadSafeguardModel:: input procedure filter = " + procedureIdentifier);
+    LOG.debug("loadSafeguardModel:: input procedure filter = {}", procedureIdentifier);
 
     // if the value of procedure identifier is not null
     if (procedureIdentifier != null) {
@@ -95,9 +105,8 @@ public class SafeguardModelManagerInput implements SafeguardModelManagerInputInt
 
   // This method is called when an Audit is modified. The goal is to updateQuestionnaireJSON
   // the SafeguardModel of all OnGoing AssessmentProcedure
-  @Override
   public void editSafeguardModel(AssessmentProject project) {
-    LOG.info("SafeguardModelManagerInput about to editSafeguardModel for project: " + project.getIdentifier());
+    LOG.info("SafeguardModelManagerInput about to editSafeguardModel for project: {}", project.getIdentifier());
 
     for (AssessmentProcedure procedure : project.getProcedures()) {
       if (procedure.getStatus().equals(AssessmentStatusEnum.OnGoing)) {
@@ -129,10 +138,8 @@ public class SafeguardModelManagerInput implements SafeguardModelManagerInputInt
   // This method is called when a new procedure is created. The existing Audit
   // is transformed into a SafeguardModel for the Procedure
   //As can be seen, we don't use the SafeguardModel from the template, because the SafeguardModel (and the Audit) is the same for each procedure  in the project
-  @Override
   public SafeguardModel createSafeguardModel(SafeguardModel safeguards, AssessmentProject project) {
-    LOG.info("SafeguardModelManagerInput about to createSafeguardModel for SafeguardModel: "
-      + safeguards.getIdentifier());
+    LOG.info("SafeguardModelManagerInput about to createSafeguardModel for SafeguardModel: {} ", safeguards.getIdentifier());
     SestAuditModel audit = null;
 
     for (SestAuditModel aAudit : project.getAudits()) {
@@ -153,7 +160,7 @@ public class SafeguardModelManagerInput implements SafeguardModelManagerInputInt
 
     LOG.info("SafeguardModelManagerInput about to Load all existing risk Scenarios References");
     // Load of all existing risk Scenarios References
-    ArrayList<RiskScenarioReference> allRsr = riskModelService.getRiskScenarioReference();
+    List<RiskScenarioReference> allRsr = riskModelService.getRiskScenarioReference();
 
     // It is necessary to check and assign to each Safeguard its
     // SafeguardScopeEnum. We then check all the RiskScenarioReferences in
@@ -185,7 +192,6 @@ public class SafeguardModelManagerInput implements SafeguardModelManagerInputInt
           break;
         }
       }
-
     }
 
     return safeguards;
@@ -193,8 +199,8 @@ public class SafeguardModelManagerInput implements SafeguardModelManagerInputInt
 
   // This method is called when an Audit is modified. The goal is to updateQuestionnaireJSON
   // the SafeguardModel and the RiskModel of an OnGoing AssessmentProcedure
-  private void editSafeguardModelforProcedure(AssessmentProcedure procedure, ArrayList<SestAuditModel> audits) {
-    LOG.info("SafeguardModelManagerInput about to editSafeguardModel for procedure: " + procedure.getIdentifier());
+  private void editSafeguardModelforProcedure(AssessmentProcedure procedure, List<SestAuditModel> audits) {
+    LOG.info("SafeguardModelManagerInput about to editSafeguardModel for procedure: {}", procedure.getIdentifier());
     SestAuditModel audit = null;
 
     for (SestAuditModel aAudit : audits) {
@@ -214,18 +220,17 @@ public class SafeguardModelManagerInput implements SafeguardModelManagerInputInt
     // Here we compare the actual SafeguardModel and the Audit in order to
     // updateQuestionnaireJSON the SafeguardModel with respect to the actual Audit
     SafeguardModel safeguards = procedure.getSafeguardModel();
-    LOG.info("editSafeguardModelforProcedure about to editSafeguardModel with identifier: "
-      + safeguards.getIdentifier());
+    LOG.info("editSafeguardModelforProcedure about to editSafeguardModel with identifier: {}",
+      safeguards.getIdentifier());
 
     procedure.setSafeguardModel(editSafeguardModel(safeguards, audit));
-    LOG.info("editSafeguardModelforProcedure SafeguardModel with identifier: " + safeguards.getIdentifier()
-      + " has been updated");
+    LOG.info("editSafeguardModelforProcedure SafeguardModel with identifier: {} has been updated", safeguards.getIdentifier());
   }
 
   // This methods compares an existing SafeguardModel with respect to an Audit
   private SafeguardModel editSafeguardModel(SafeguardModel safeguards, SestAuditModel auditModel) {
-    LOG.info("SafeguardModelManagerInput about to editSafeguardModel for SafeguardModel with id: "
-      + safeguards.getIdentifier() + " and Audit with id: " + auditModel.getIdentifier());
+    LOG.info("SafeguardModelManagerInput about to editSafeguardModel for SafeguardModel with id: {} " +
+      "and Audit with id: {}", safeguards.getIdentifier(), auditModel.getIdentifier());
     // If we don't create a Safeguard, we must go back in the tree. It can't
     // exists a Safeguard with children but without a value (every safeguard
     // with children with values must have a value)
@@ -244,31 +249,31 @@ public class SafeguardModelManagerInput implements SafeguardModelManagerInputInt
       for (Questionnaire questionnaire : audit.getQuestionnaires()) {
         for (Question question : questionnaire.getQuestions()) {
           if (checkSafeguardInQuestion(safeguard, question)) {
-            LOG.info("SafeguardModelManagerInput safeguard found " + safeguard.getScore());
+            LOG.info("SafeguardModelManagerInput safeguard found {}", safeguard.getScore());
           }
         }
       }
       updatedSafeguards.add(safeguard);
     }
-    LOG.info("SafeguardModelManagerInput safeguard found " + updatedSafeguards.size());
+    LOG.info("SafeguardModelManagerInput safeguard found {}", updatedSafeguards.size());
     safeguards.setSafeguards(updatedSafeguards);
 
     return safeguards;
   }
 
   private SafeguardModel createSafeguardsInAudit(SafeguardModel safeguards, SestAuditModel audit) {
-    LOG.info("checkNewSafeguardsInAudit SafeguardModel identifier: " + safeguards.getIdentifier()
-      + " audit identifier: " + audit.getIdentifier());
+    LOG.info("checkNewSafeguardsInAudit SafeguardModel identifier: {} audit identifier: {}",
+      safeguards.getIdentifier(), audit.getIdentifier());
     for (SestQuestionnaireModel questionnaire : audit.getSestQuestionnaireModel()) {
-      safeguards = createSafeguardsInQuestionnaire(safeguards, questionnaire);
+      createSafeguardsInQuestionnaire(safeguards, questionnaire);
     }
 
     return safeguards;
   }
 
   private SafeguardModel createSafeguardsInQuestionnaire(SafeguardModel safeguards, SestQuestionnaireModel questionnaireJSON) {
-    LOG.info("checkNewSafeguardInQuestionnaire SafeguardModel identifier: " + safeguards.getIdentifier()
-      + " questionnaire with category ");
+    LOG.info("checkNewSafeguardInQuestionnaire SafeguardModel identifier: {} questionnaire with category",
+      safeguards.getIdentifier());
     QuestionnaireModelSerializerDeserializer converter = new QuestionnaireModelSerializerDeserializer();
     Questionnaire questionnaire = converter.getQuestionnaireFromJSONString(questionnaireJSON.getQuestionnaireModelJson());
     for (Question question : questionnaire.getQuestions()) {
@@ -280,7 +285,7 @@ public class SafeguardModelManagerInput implements SafeguardModelManagerInputInt
 
   private ArrayList<Safeguard> createSafeguardInQuestion(ArrayList<Safeguard> safeguards, Question question) {
 
-    LOG.info("checkNewSafeguardInQuestion question with category " + question.getCategory());
+    LOG.info("checkNewSafeguardInQuestion question with category {}", question.getCategory());
     if (question.getType().equals(QuestionTypeEnum.CATEGORY)) {
 
       // We check if this question is not a Safeguard, but a Category of Safeguards
@@ -299,22 +304,19 @@ public class SafeguardModelManagerInput implements SafeguardModelManagerInputInt
           // The Safeguard is not in our SafeguardModel, so we may
           // have to add it (if the Answers have a value)
           safeguard = createNewSafeguard(question);
-          //     if (safeguard != null) {
           safeguards.add(safeguard);
           modelUpdated = true;
-          //     } else {
           // If we don't create a Safeguard, we must go back in
           // the tree. It can't exists a Safeguard with children
           // but without a value (every safeguard with children
           // with values must have a value)
           return safeguards;
-          //   }
         }
 
         // We need to check if the Question has children. In case,
         // we may add children to the Safeguard
         // The questions children are GASF question
-        LOG.info("question.getChildren().size() " + question.getChildren().size());
+        LOG.info("question.getChildren().size() {}", question.getChildren().size());
         if (question.getChildren() != null && !question.getChildren().isEmpty()) {
 
           ArrayList<SecurityRequirement> securityRequirements = new ArrayList<>();
@@ -339,7 +341,7 @@ public class SafeguardModelManagerInput implements SafeguardModelManagerInputInt
   private ArrayList<SecurityRequirement> createAndCheckSecurityRequirementInQuestion(
     ArrayList<SecurityRequirement> securityRequirements, Question question) {
 
-    LOG.info("createAndCheckSecurityRequirementInQuestion " + question.getCategory());
+    LOG.info("createAndCheckSecurityRequirementInQuestion {}", question.getCategory());
 
     boolean found = false;
     if (securityRequirements != null && !securityRequirements.isEmpty()) {
@@ -376,7 +378,7 @@ public class SafeguardModelManagerInput implements SafeguardModelManagerInputInt
   }
 
   private Safeguard createNewSafeguard(Question question) {
-    LOG.info("createNewSafeguard with category " + question.getCategory());
+    LOG.info("createNewSafeguard with category {}", question.getCategory());
     Safeguard safeguard = new Safeguard();
 
     safeguard.setUserDescription(question.getAnswers().get(AnswerTypeEnum.Comment));
@@ -425,23 +427,14 @@ public class SafeguardModelManagerInput implements SafeguardModelManagerInputInt
   private SafeguardScoreEnum getScoreValueSecurityRequirement(String answer) {
     // If the Question has not been answered, we add a Safeguard
     // with LOW value
-    if (answer == null || answer.equals("")) {
+    if (answer == null || answer.equals("") || Integer.parseInt(answer) != 1) {
       return SafeguardScoreEnum.NONE;
     } else {
-      int answerValue = Integer.parseInt(answer);
-
-      switch (answerValue) {
-        case 1:
-          return SafeguardScoreEnum.LOW;
-        default:
-          return SafeguardScoreEnum.NONE;
-      }
+      return SafeguardScoreEnum.LOW;
     }
   }
 
   private SecurityRequirement createNewSecurityRequirement(Question question) {
-    LOG.info("createNewSecurityRequirement with category " + question.getCategory());
-    LOG.info("createNewSecurityRequirement with category " + question.getAnswers().size());
     SecurityRequirement secreq = new SecurityRequirement();
 
     Map<AnswerTypeEnum, String> answers = question.getAnswers();
@@ -456,27 +449,24 @@ public class SafeguardModelManagerInput implements SafeguardModelManagerInputInt
     secreq.setElementType(ElementTypeEnum.Element);
     secreq.setObjType(SESTObjectTypeEnum.SafeguardModel);
 
-    LOG.info("createNewSecurityRequirement question with category " + question.getCategory()
-      + " SecurityRequirement with identifier: " + secreq.getIdentifier() + ", score : " + secreq.getScore());
+    LOG.info("createNewSecurityRequirement question with category {}, SecurityRequirement with identifier:  {}, " +
+      "score : {}", question.getCategory(), secreq.getIdentifier(), secreq.getScore());
 
     return secreq;
   }
 
   private SecurityRequirement checkSecurityRequirement(Question question, SecurityRequirement secreq) {
-    LOG.info("updateNewSecurityRequirement with category " + question.getCategory());
-    LOG.info("updateNewSecurityRequirement with category " + question.getAnswers().size());
 
     String v1 = question.getAnswers().get(AnswerTypeEnum.MEHARI_R_V1);
     if (v1 != null && secreq.getScore() != null
       && !v1.equals(String.valueOf(secreq.getScore().getScore()))) {
-      LOG.info("updateNewSecurityRequirement answer.getDescription() " + v1);
       secreq.setScore(getScoreValueSecurityRequirement(v1));
       modelUpdated = true;
     }
     secreq.setUserDescription(question.getAnswers().get(AnswerTypeEnum.Comment));
 
-    LOG.info("updateNewSecurityRequirement question with category " + question.getCategory()
-      + " SecurityRequirement with identifier: " + secreq.getIdentifier() + ", score : " + secreq.getScore());
+    LOG.info("updateNewSecurityRequirement question with category {} SecurityRequirement with identifier: {}, score : {}",
+      question.getCategory(), secreq.getIdentifier(), secreq.getScore());
 
     return secreq;
   }
@@ -489,16 +479,15 @@ public class SafeguardModelManagerInput implements SafeguardModelManagerInputInt
 
     if (safeguard.getCatalogueId().equals(question.getCategory())) {
 
-      LOG.info("checkSafeguardInQuestion Safeguard with id: " + safeguard.getCatalogueId()
-        + " question with category " + question.getCategory());
-      LOG.info("checkSafeguardInQuestion question.getAnswers() " + question.getAnswers().size());
+      LOG.info("checkSafeguardInQuestion Safeguard with id: {} question with category {}",
+        safeguard.getCatalogueId(), question.getCategory());
 
       String v1 = question.getAnswers().get(AnswerTypeEnum.MEHARI_R_V1);
       if (v1 != null) {
         SafeguardScoreEnum score = getScoreValueSafeguard(v1);
         if (!safeguard.getScore().equals(score)) {
           safeguard.setScore(score);
-          LOG.info("checkSafeguardInQuestion set score " + score);
+          LOG.info("checkSafeguardInQuestion set score {}", score);
           modelUpdated = true;
         }
       }
@@ -509,7 +498,6 @@ public class SafeguardModelManagerInput implements SafeguardModelManagerInputInt
         modelUpdated = true;
       }
       safeguard.setName(question.getValue());
-      //safeguard.setDescription("");// TODO we have to add a description
 
       // We need to check if the Question has children. In case,
       // we may add children to the Safeguard
@@ -536,29 +524,4 @@ public class SafeguardModelManagerInput implements SafeguardModelManagerInputInt
     }
     return false;
   }
-
-  public SafeguardServiceInterface getSafeguardService() {
-    return safeguardService;
-  }
-
-  public void setSafeguardService(SafeguardServiceInterface safeguardService) {
-    this.safeguardService = safeguardService;
-  }
-
-  public AssprocedureServiceInterface getAssprocedureService() {
-    return assprocedureService;
-  }
-
-  public void setAssprocedureService(AssprocedureServiceInterface assprocedureService) {
-    this.assprocedureService = assprocedureService;
-  }
-
-  public RiskServiceInterface getRiskModelService() {
-    return riskModelService;
-  }
-
-  public void setRiskModelService(RiskServiceInterface riskModelService) {
-    this.riskModelService = riskModelService;
-  }
-
 }

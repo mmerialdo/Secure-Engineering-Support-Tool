@@ -154,7 +154,7 @@ export class EditprojectComponent implements OnInit, OnDestroy {
   ngOnInit() {
 
     const a = {'filterMap': {'PROJECT': sessionStorage.getItem('idProject')}};
-    this.getProject(JSON.stringify(a));
+    this.getProject(a);
   }
 
   userManStep() {

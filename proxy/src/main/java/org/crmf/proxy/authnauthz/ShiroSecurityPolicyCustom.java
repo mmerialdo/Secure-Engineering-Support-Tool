@@ -13,21 +13,22 @@
 package org.crmf.proxy.authnauthz;
 
 import com.google.gson.Gson;
-import org.apache.camel.Processor;
 import org.apache.camel.component.shiro.security.ShiroSecurityPolicy;
-import org.apache.camel.component.shiro.security.ShiroSecurityToken;
-import org.apache.camel.spi.RouteContext;
 import org.apache.shiro.authz.Permission;
 import org.apache.shiro.crypto.AesCipherService;
 import org.apache.shiro.crypto.OperationMode;
 import org.apache.shiro.crypto.PaddingScheme;
+import org.crmf.model.general.AuthToken;
 import org.crmf.model.general.SESTObjectTypeEnum;
 import org.crmf.model.user.PermissionTypeEnum;
 import org.crmf.model.user.User;
-import org.crmf.user.manager.core.UserManagerInputInterface;
-import org.crmf.user.validation.permission.UserPermissionManagerInputInterface;
+import org.crmf.user.manager.core.UserManagerInput;
+import org.crmf.user.validation.permission.UserPermissionManagerInput;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Service;
 
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
@@ -36,11 +37,15 @@ import java.util.List;
 import java.util.Set;
 
 //This class extends the ShiroSecurityPolicy in order to send and retrieve User permissions
-public class ShiroSecurityPolicyCustom extends ShiroSecurityPolicy implements ShiroSecurityPolicyCustomInterface {
+@Service
+@Qualifier("ShiroSecurityPolicyCustom")
+public class ShiroSecurityPolicyCustom extends ShiroSecurityPolicy {
 
   private static final Logger LOG = LoggerFactory.getLogger(ShiroSecurityPolicyCustom.class.getName());
-  private UserPermissionManagerInputInterface userPermission;
-  private UserManagerInputInterface userManager;
+  @Autowired
+  private UserPermissionManagerInput userPermission;
+  @Autowired
+  private UserManagerInput userManager;
 
   public ShiroSecurityPolicyCustom() {
     super();
@@ -54,25 +59,23 @@ public class ShiroSecurityPolicyCustom extends ShiroSecurityPolicy implements Sh
     super.setAllPermissionsRequired(false);
   }
 
-  @Override
-  public String getPermissionList(String token, String projectIdentifier) {
+  public String getPermissionList(String token) {
 
-    LOG.info("LOGIN sendPermissionList TOKEN : " + token);
-    LOG.info("LOGIN sendPermissionList PROJECT : " + projectIdentifier);
+    LOG.info("getPermissionList TOKEN : " + token);
 
     Gson gson = new Gson();
     String decryptedtoken = new String(
       Base64.getDecoder().decode(token),
       StandardCharsets.UTF_8);
-    ShiroSecurityToken inputToken = gson.fromJson(decryptedtoken, ShiroSecurityToken.class);
+    AuthToken inputToken = gson.fromJson(decryptedtoken, AuthToken.class);
 
     String username = inputToken.getUsername();
+    String projectIdentifier = inputToken.getProject();
     LOG.info("TOKEN username : " + username);
+    LOG.info("TOKEN projectIdentifier : " + projectIdentifier);
 
     //send permission for current user
     PermissionToken loggedToken = buildTokenWithPermission(projectIdentifier, username);
-
-    LOG.info("currentUser : " + username);
 
     return gson.toJson(loggedToken);
   }
@@ -126,83 +129,4 @@ public class ShiroSecurityPolicyCustom extends ShiroSecurityPolicy implements Sh
     return permissions;
   }
 
-  @Override
-  public Processor wrap(RouteContext routeContext, final Processor processor) {
-    ShiroSecurityProcessorCustom routeProcessor = new ShiroSecurityProcessorCustom(processor, this);
-    routeProcessor.setEncrypted(false);
-    return routeProcessor;
-  }
-
-  public UserManagerInputInterface getUserManager() {
-    return userManager;
-  }
-
-  public void setUserManager(UserManagerInputInterface userManager) {
-    this.userManager = userManager;
-  }
-
-  public UserPermissionManagerInputInterface getUserPermission() {
-    return userPermission;
-  }
-
-  public void setUserPermission(UserPermissionManagerInputInterface userPermission) {
-    this.userPermission = userPermission;
-  }
-
-  private class PermissionToken {
-    String userId;
-    String userProfile;
-    List<String> read;
-    List<String> update;
-    List<String> create;
-    List<String> view;
-
-    public String getUserId() {
-      return userId;
-    }
-
-    public void setUserId(String userId) {
-      this.userId = userId;
-    }
-
-    public List<String> getRead() {
-      return read;
-    }
-
-    public void setRead(List<String> read) {
-      this.read = read;
-    }
-
-    public List<String> getUpdate() {
-      return update;
-    }
-
-    public void setUpdate(List<String> update) {
-      this.update = update;
-    }
-
-    public List<String> getCreate() {
-      return create;
-    }
-
-    public void setCreate(List<String> create) {
-      this.create = create;
-    }
-
-    public List<String> getView() {
-      return view;
-    }
-
-    public void setView(List<String> view) {
-      this.view = view;
-    }
-
-    public String getUserProfile() {
-      return userProfile;
-    }
-
-    public void setUserProfile(String userProfile) {
-      this.userProfile = userProfile;
-    }
-  }
 }

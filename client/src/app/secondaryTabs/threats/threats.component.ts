@@ -70,7 +70,7 @@ export class ThreatsComponent implements OnInit, OnDestroy {
   public threatsList;
 
   // List threats of the selected asset
-  public stringVul;
+  public stringThreat;
 
   // id selected Asset
   public currentId;
@@ -537,7 +537,6 @@ export class ThreatsComponent implements OnInit, OnDestroy {
 
 
   addAssets() {
-
     for (const i in this.selectedFiles) {
 
       if (this.selectedFiles[i].data != null && this.selectedFiles[i].data.nodeType === 'Asset') {
@@ -560,6 +559,18 @@ export class ThreatsComponent implements OnInit, OnDestroy {
       }
     }
 
+    for (const i in this.canvas.getFigures().data) {
+      const figure = this.canvas.getFigures().data[i];
+      let found = false;
+      for (const selectedFile of this.selectedFiles) {
+        if (selectedFile.data.identifier === figure.id) {
+          found = true;
+        }
+      }
+      if (!found) {
+        this.canvas.remove(figure);
+      }
+    }
     this.thereAreChanges = true;
   }
 
@@ -1130,9 +1141,6 @@ export class ThreatsComponent implements OnInit, OnDestroy {
           this.threatModel.threats.splice(indexVulMod, 1);
 
         }
-
-        // console.log(this.vulnerabilitiesList);
-
         let string = '';
         for (const vul in this.idAssets[indexId].vulnerabilities) {
 
@@ -1142,13 +1150,9 @@ export class ThreatsComponent implements OnInit, OnDestroy {
 
             string = string + '\n' + this.idAssets[indexId].vulnerabilities[vul].name;
           }
-
-
         }
 
-        // console.log(this.stringVul);
-
-        this.stringVul.setText(string);
+        this.stringThreat.setText(string);
 
         this.oldIdVul = undefined;
         this.selectedVulnerability = undefined;
@@ -1221,7 +1225,7 @@ export class ThreatsComponent implements OnInit, OnDestroy {
 
       if ((this.selectedAsset.length === 1) && (value.cssClass === 'draw2d_shape_basic_Label') && (value.text != '')) {
 
-        this.stringVul = value;
+        this.stringThreat = this.selectedAsset[0].children.data[2].figure;
 
         this.associatedVulnerabilities = [];
         for (const k in this.idAssets) {
@@ -1257,15 +1261,6 @@ export class ThreatsComponent implements OnInit, OnDestroy {
         this.idAssets.splice(parseInt(i), 1);
         break;
       }
-    }
-
-    if (this.column != 0) {
-
-      this.column = this.column - 1;
-    } else {
-
-      this.column = 3;
-      this.row = this.row - 1;
     }
 
     if (this.canvas.getFigures().data.length === 0) {
@@ -1929,11 +1924,10 @@ export class ThreatsComponent implements OnInit, OnDestroy {
     completeList = {'jsonModel': (JSON.stringify(this.riskModel, null, 2)), 'objectIdentifier': this.riskModel.identifier};
 
     this.subscriptions.push(
-      this.dataService.updateRiskModel(JSON.stringify(completeList, null, 2)).subscribe(response => {
+      this.dataService.updateRiskModel(completeList).subscribe(response => {
 
         this.blockedMessage = true;
         this.showSuccess();
-        debugger;
         if (JSON.parse(response).otherModelsStatus === 'UPDATED') {
           this.idAssets = [];
           this.canvas.clear();

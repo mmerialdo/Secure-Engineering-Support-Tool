@@ -21,6 +21,8 @@ import {Permission} from '../../permission.class';
 import {PermissionType} from '../../permission-type.class';
 import {Subject} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
+import {HttpResponse} from '@angular/common/http';
+import * as FileSaver from 'file-saver';
 
 @Component({
   selector: 'app-procedures',
@@ -425,7 +427,6 @@ export class ProceduresComponent implements OnInit, OnDestroy {
   downloadReport() {
 
     this.blocked = true;
-    // console.log("download");
     const a = {
       'filterMap': {
         'PROCEDURE': sessionStorage.getItem('idProcedure'),
@@ -435,9 +436,11 @@ export class ProceduresComponent implements OnInit, OnDestroy {
     };
 
     this.subscriptions.push(
-      this.dataService.downloadReportXHR(JSON.stringify(a)).subscribe(data => {
-
+      this.dataService.downloadReportXHR(a).subscribe((resp: HttpResponse<Blob>) => {
           this.blocked = false;
+          const fileName = "reportProcedure.docx";
+          const blob = new Blob([resp.body], {type: 'application/octet-stream'});
+          FileSaver.saveAs(blob, fileName);
         },
         error => {
           this.blocked = true;

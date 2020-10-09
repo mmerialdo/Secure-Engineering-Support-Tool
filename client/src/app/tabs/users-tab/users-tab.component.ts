@@ -21,6 +21,7 @@ import {Subscription} from 'rxjs/internal/Subscription';
 import {PermissionType} from '../../permission-type.class';
 import {Permission} from '../../permission.class';
 import {MessageService} from 'primeng/api';
+import {User} from '../../shared/model/user.class';
 
 
 @Component({
@@ -35,7 +36,7 @@ export class UsersTabComponent implements OnInit, OnDestroy {
   edituserForm: any;
   public usersListCols: any;
   public case = 'view1';
-  private users: any;
+  private users: User[];
   private selectedId: string;
   selectedUser: Users;
   private selectedPass: string;
@@ -43,10 +44,6 @@ export class UsersTabComponent implements OnInit, OnDestroy {
   public items: MenuItem[];
   private permission;
   public blocked = false;
-  public blockedMessage = false;
-
-  // to show messages
-  msgsAsset: Message[] = [];
 
   openRegister = false;
 
@@ -125,7 +122,7 @@ export class UsersTabComponent implements OnInit, OnDestroy {
   getUsers(): void {
 
     this.subscriptions.push(
-      this.dataService.getUsers().subscribe(response => {
+      this.dataService.getUsers().subscribe((response: User[]) => {
           this.users = response;
         },
         err => {
@@ -237,55 +234,51 @@ export class UsersTabComponent implements OnInit, OnDestroy {
 
   findSelectedPass() {
 
-    for (const item in this.users) {
-      if (this.selectedUser.Email === this.users[item].email) {
-        this.selectedPass = this.users[item].password;
+    for (const item of this.users) {
+      if (this.selectedUser.Email === item.email) {
+        this.selectedPass = item.password;
       }
     }
   }
 
   sendEditUser() {
 
-    let arrayform: any;
-    let jsonform: any;
+    const alreadyExistingUser = this.users.filter(x => x.email == this.edituserForm.value.email ||
+      x.username == this.edituserForm.value.username);
 
-    arrayform = {
-      'identifier': this.selectedId,
-      'username': this.edituserForm.value.username,
-      'name': this.edituserForm.value.firstname,
-      'surname': this.edituserForm.value.surname,
-      'email': this.edituserForm.value.email,
-      'password': this.edituserForm.value.password,
-      'profile': this.edituserForm.value.profile
-    };
-    jsonform = JSON.stringify(arrayform);
+    if (!alreadyExistingUser || alreadyExistingUser.length === 1) {
+      let arrayform: any;
+      let jsonform: any;
 
-    this.subscriptions.push(
-      this.dataService.updateUser(jsonform).subscribe(response => {
+      arrayform = {
+        'identifier': this.selectedId,
+        'username': this.edituserForm.value.username,
+        'name': this.edituserForm.value.firstname,
+        'surname': this.edituserForm.value.surname,
+        'email': this.edituserForm.value.email,
+        'password': this.edituserForm.value.password,
+        'profile': this.edituserForm.value.profile
+      };
+      jsonform = JSON.stringify(arrayform);
 
-          this.changeCase();
-          this.getUsers();
-        },
-        err => {
-          this.blocked = false;
-          throw err;
-        }));
-  }
+      this.subscriptions.push(
+        this.dataService.updateUser(jsonform).subscribe(response => {
 
-  showSuccess(s: string) {
-    this.blockedMessage = true;
-    this.msgsAsset = [];
-    this.msgsAsset.push({severity: 'success', summary: 'Successfully', detail: s});
+            this.changeCase();
+            this.getUsers();
+          },
+          err => {
+            this.blocked = false;
+            throw err;
+          }));
+    } else {
 
-    setTimeout(() => {
-      this.clearMessage();
-    }, 6000);
+      this.messageService.add({severity: 'error', summary: 'Warning', detail: 'Username/password already existing!'});
+    }
   }
 
   clearMessage() {
-    this.msgsAsset = [];
     this.blocked = false;
-    this.blockedMessage = false;
   }
 
   copyEditData() {
@@ -296,7 +289,6 @@ export class UsersTabComponent implements OnInit, OnDestroy {
     this.edituserForm.controls['surname'].setValue(this.selectedUser.Surname);
     this.edituserForm.controls['username'].setValue(this.selectedUser.Username);
     this.edituserForm.controls['profile'].setValue(this.selectedUser.Profile);
-
     this.edituserForm.controls['email'].setValue(this.selectedUser.Email);
     this.edituserForm.controls['password'].setValue(this.selectedPass);
   }
@@ -305,15 +297,12 @@ export class UsersTabComponent implements OnInit, OnDestroy {
     this.displayEditPassword = true;
   }
 
+  isAdmin() {
+    return (this.selectedUser.Profile === 'Administrator');
+  }
+
   onClose(value) {
     this.displayEditPassword = false;
-    if (value === 'SUCCESS') {
-      this.messageService.add({severity: 'success', summary: 'Success Message', detail: 'Password updated!'});
-    }
-
-    if (value === 'FAILED') {
-      this.messageService.add({severity: 'error', summary: 'Error Message', detail: 'Password update failed!'});
-    }
   }
 
   ngOnDestroy() {

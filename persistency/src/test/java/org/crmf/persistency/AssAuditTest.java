@@ -12,193 +12,131 @@
 
 package org.crmf.persistency;
 
-import static org.junit.Assert.assertEquals;
-
-import java.util.ArrayList;
-import java.util.List;
-
-import org.crmf.model.audit.AuditTypeEnum;
-import org.crmf.model.audit.QuestionTypeEnum;
-import org.crmf.model.audit.Questionnaire;
-import org.crmf.model.audit.QuestionnaireTypeEnum;
-import org.crmf.model.audit.SestAuditModel;
-import org.crmf.model.audit.SestQuestionnaireModel;
-import org.crmf.model.general.SESTObjectTypeEnum;
+import org.crmf.model.audit.*;
 import org.crmf.model.riskassessment.AssessmentProject;
 import org.crmf.model.utility.audit.QuestionnaireModelSerializerDeserializer;
 import org.crmf.persistency.domain.audit.AssauditDefaultJSON;
 import org.crmf.persistency.mapper.audit.AssAuditDefaultService;
 import org.crmf.persistency.mapper.audit.AssAuditService;
 import org.crmf.persistency.mapper.audit.QuestionnaireService;
-import org.crmf.persistency.mapper.general.CleanDatabaseService;
-import org.crmf.persistency.mapper.project.AssprocedureService;
-import org.crmf.persistency.mapper.project.AssprofileService;
 import org.crmf.persistency.mapper.project.AssprojectService;
-import org.crmf.persistency.mapper.project.AsstemplateService;
-import org.crmf.persistency.mapper.project.SysprojectService;
-import org.crmf.persistency.mapper.user.UserService;
-import org.crmf.persistency.session.PersistencySessionFactory;
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Ignore;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mybatis.spring.boot.test.autoconfigure.MybatisTest;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.context.ActiveProfiles;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
 
+import java.util.List;
+
+@ExtendWith(SpringExtension.class)
+@MybatisTest
+@ContextConfiguration(classes = Application.class)
+@ActiveProfiles("test")
 public class AssAuditTest {
 
-	PersistencySessionFactory sessionFactory;
+  @Autowired
+  private QuestionnaireService questionnaireService;
+  @Autowired
+  private AssAuditService auditService;
+  @Autowired
+  private AssAuditDefaultService auditDefaultService;
+  @Autowired
+  private AssprojectService projectService;
+  @Autowired
+  private TestData data;
 
-	QuestionnaireService questionnaireService;
-	AssAuditService auditService;
-	AssAuditDefaultService auditDefaultService;
+  String projectIdentifier = null;
 
-	private AssprojectService projectService;
-	private AssprofileService profileService;
-	private AssprocedureService procedureService;
-	private AsstemplateService templateService;
-	private UserService userService;
+  @Test
+  public void getAllQuestionnaireNames() throws Exception {
 
-	String projectIdentifier = null;
+    this.data.prefillModels();
+    String projectIdentifier = prefillProject();
 
-	private TestData data = new TestData();
+    List<SestAuditModel> audits = auditService.getAllForProject(projectIdentifier);
+    Assertions.assertEquals(1, audits.size());
+    if (audits.get(0).getType() == AuditTypeEnum.SECURITY) {
+      List<SestQuestionnaireModel> questionnaires = questionnaireService.getAllQuestionnaireNames(audits.get(0).getIdentifier());
+      Assertions.assertEquals(2, questionnaires.size());
+      for (SestQuestionnaireModel questionnaireModel : questionnaires) {
+        if (questionnaireModel.getCategory() == "01") {
+          Assertions.assertEquals(QuestionnaireTypeEnum.MEHARI_OrganizationSecurity, questionnaireModel.getType());
+          Assertions.assertEquals("1", questionnaireModel.getIx());
+          Assertions.assertEquals(null, questionnaireModel.getQuestionnaireModelJson());
+        } else if (questionnaireModel.getCategory() == "02") {
+          Assertions.assertEquals(QuestionnaireTypeEnum.MEHARI_ExtendedNetwork, questionnaireModel.getType());
+          Assertions.assertEquals("02", questionnaireModel.getCategory());
+          Assertions.assertEquals("2", questionnaireModel.getIx());
+          Assertions.assertEquals(null, questionnaireModel.getQuestionnaireModelJson());
+        } else {
+          Assertions.fail();
+        }
+      }
+    }
+  }
 
-	@Before
-	public void setUp() throws Exception {
+  @Test
+  public void getByIdentifier() throws Exception {
+    this.data.prefillModels();
+    String projectIdentifier = prefillProject();
+    QuestionnaireModelSerializerDeserializer converter = new QuestionnaireModelSerializerDeserializer();
 
-		sessionFactory = new PersistencySessionFactory();
-		sessionFactory.createSessionFactory();
+    List<SestAuditModel> audits = auditService.getAllForProject(projectIdentifier);
+    Assertions.assertEquals(1, audits.size());
+    if (audits.get(0).getType() == AuditTypeEnum.SECURITY) {
+      List<SestQuestionnaireModel> questionnaires = questionnaireService.getAllQuestionnaireNames(audits.get(0).getIdentifier());
+      Assertions.assertEquals(2, questionnaires.size());
+      for (SestQuestionnaireModel questionnaireModel : questionnaires) {
+        SestQuestionnaireModel questionnaireModelWithJson = questionnaireService.getByIdentifier(questionnaireModel.getIdentifier());
+        if (QuestionnaireTypeEnum.MEHARI_OrganizationSecurity.equals(questionnaireModelWithJson.getType())) {
+          Assertions.assertEquals(QuestionnaireTypeEnum.MEHARI_OrganizationSecurity, questionnaireModelWithJson.getType());
+          Assertions.assertEquals("1", questionnaireModelWithJson.getIx());
+          Questionnaire questionnaireResulted = converter.getQuestionnaireFromJSONString(questionnaireModelWithJson.getQuestionnaireModelJson());
+          Assertions.assertEquals(1, questionnaireResulted.getQuestions().size());
+          Assertions.assertEquals("01A", questionnaireResulted.getQuestions().get(0).getCategory());
+          Assertions.assertEquals(QuestionTypeEnum.CATEGORY, questionnaireResulted.getQuestions().get(0).getType());
+          Assertions.assertEquals("Roles and structures of security", questionnaireResulted.getQuestions().get(0).getValue());
+          Assertions.assertEquals(1, questionnaireResulted.getQuestions().get(0).getChildren().size());
+          Assertions.assertEquals(QuestionTypeEnum.QUESTION, questionnaireResulted.getQuestions().get(0).getChildren().get(0).getType());
+          Assertions.assertEquals("Organization and Management of General Security", questionnaireResulted.getQuestions().get(0).getChildren().get(0).getValue());
+        } else {
+          Assertions.assertEquals(QuestionnaireTypeEnum.MEHARI_ExtendedNetwork, questionnaireModelWithJson.getType());
+          Assertions.assertEquals("02", questionnaireModelWithJson.getCategory());
+          Assertions.assertEquals("2", questionnaireModelWithJson.getIx());
+        }
+      }
+    }
+  }
 
-		questionnaireService = new QuestionnaireService();
-		questionnaireService.setSessionFactory(sessionFactory);
+  private String prefillProject() throws Exception {
 
-		QuestionnaireService questionnaireService = new QuestionnaireService();
-		questionnaireService.setSessionFactory(sessionFactory);
+    AssauditDefaultJSON questionnaireDefaultJSON01 = new AssauditDefaultJSON();
+    questionnaireDefaultJSON01.setAtype("QUESTIONNAIRE");
+    questionnaireDefaultJSON01.setAvalue(QuestionnaireTypeEnum.MEHARI_OrganizationSecurity.name());
+    questionnaireDefaultJSON01.setCategory("01");
+    questionnaireDefaultJSON01.setIx("1");
+    questionnaireDefaultJSON01.setQuestionnaireJSON("{\"category\":\"01\", \"index\":1, \"type\":\"MEHARI_OrganizationSecurity\", " +
+      "\"questions\":[{\"category\":\"01A\",\"index\":1,\"type\":\"CATEGORY\",\"value\":\"Roles and structures of security\"," +
+      "\"children\":[{\"category\":\"01A01\",\"index\":1,\"type\":\"QUESTION\",\"value\":\"Organization and Management of General Security\"," +
+      "\"children\":[]}]}]}");
+    AssauditDefaultJSON questionnaireDefaultJSON02 = new AssauditDefaultJSON();
+    questionnaireDefaultJSON02.setAtype("QUESTIONNAIRE");
+    questionnaireDefaultJSON02.setAvalue(QuestionnaireTypeEnum.MEHARI_ExtendedNetwork.name());
+    questionnaireDefaultJSON02.setCategory("02");
+    questionnaireDefaultJSON02.setIx("2");
+    questionnaireDefaultJSON02.setQuestionnaireJSON("{}");
+    auditDefaultService.insertQuestionnaire(questionnaireDefaultJSON01);
+    auditDefaultService.insertQuestionnaire(questionnaireDefaultJSON02);
 
-		auditDefaultService = new AssAuditDefaultService();
-		auditDefaultService.setSessionFactory(sessionFactory);
+    AssessmentProject project = data.buildModelAssProject("1");
 
-		auditService = new AssAuditService();
-		auditService.setSessionFactory(sessionFactory);
-		auditService.setQuestionnaireService(questionnaireService);
+    projectIdentifier = projectService.insert(project);
 
-		SysprojectService sysprojectService = new SysprojectService();
-		sysprojectService.setSessionFactory(sessionFactory);
+    project.setIdentifier(projectIdentifier);
 
-		projectService = new AssprojectService();
-		projectService.setSessionFactory(sessionFactory);
-		projectService.setSysprjService(sysprojectService);
-		projectService.setAuditService(auditService);
-
-		userService = new UserService();
-		userService.setSessionFactory(sessionFactory);
-
-		profileService = new AssprofileService();
-		profileService.setSessionFactory(sessionFactory);
-
-		procedureService = new AssprocedureService();
-		procedureService.setSessionFactory(sessionFactory);
-
-		templateService = new AsstemplateService();
-		templateService.setSessionFactory(sessionFactory);
-	}
-
-	@After
-	public void tearDown() {
-
-		CleanDatabaseService cleaner = new CleanDatabaseService();
-		cleaner.setSessionFactory(sessionFactory);
-		cleaner.delete();
-	}
-
-	@Test
-	@Ignore
-	public void insert() throws Exception{
-
-		String projectIdentifier = prefillProject();
-		QuestionnaireModelSerializerDeserializer converter = new QuestionnaireModelSerializerDeserializer();
-
-		List<SestAuditModel> audits = auditService.getAllForProject(projectIdentifier);
-		assertEquals(1, audits.size());
-		for (SestAuditModel sestaudit : audits) {
-			if (sestaudit.getType() == AuditTypeEnum.SECURITY) {
-				List<SestQuestionnaireModel> questionnaires = questionnaireService.getAllQuestionnaireNames(sestaudit.getIdentifier());
-				assertEquals(1, questionnaires.size());
-				for (SestQuestionnaireModel questionnaireModel : questionnaires) {
-					questionnaireModel = questionnaireService.getQuestionnaireByCategory("01");
-					if(questionnaireModel.getType() == QuestionnaireTypeEnum.MEHARI_OrganizationSecurity) {
-						Questionnaire questionnaireResulted = converter.getQuestionnaireFromJSONString(questionnaireModel.getQuestionnaireModelJson());
-						assertEquals(1, questionnaireResulted.getQuestions().size());
-						assertEquals("01A", questionnaireResulted.getQuestions().get(0).getCategory());
-						assertEquals(QuestionTypeEnum.CATEGORY, questionnaireResulted.getQuestions().get(0).getType());
-						assertEquals("Roles and structures of security", questionnaireResulted.getQuestions().get(0).getValue());
-						assertEquals(1, questionnaireResulted.getQuestions().get(0).getChildren().size());
-					}
-				}
-			}
-		}
-	}
-
-	@Test
-	@Ignore
-	public void viewJson() throws Exception {
-
-		String projectIdentifier = prefillProject();
-		SestAuditModel audit = prefill();
-
-		List<SestAuditModel> audits = auditService.getAllForProject(projectIdentifier);
-		assertEquals(2, audits.size());
-		for (SestAuditModel sestaudit : audits) {
-			if (sestaudit.getType() == AuditTypeEnum.GENERAL) {
-				List<SestQuestionnaireModel> questionnaires = sestaudit.getSestQuestionnaireModel();
-				assertEquals(1, questionnaires.size());
-				for (SestQuestionnaireModel questionnaire : questionnaires) {
-					assertEquals("{}", questionnaire);
-				}
-			}
-		}
-	}
-	
-	private String prefillProject() throws Exception {
-
-		AssauditDefaultJSON questionnaireDefaultJSON01 = new AssauditDefaultJSON();
-		questionnaireDefaultJSON01.setAtype(AuditTypeEnum.SECURITY.name());
-		questionnaireDefaultJSON01.setAvalue(QuestionnaireTypeEnum.MEHARI_OrganizationSecurity.name());
-		questionnaireDefaultJSON01.setCategory("01");
-		questionnaireDefaultJSON01.setIx("1");
-		questionnaireDefaultJSON01.setQuestionnaireJSON("{\"category\":\"01\", \"index\":1, \"type\":\"MEHARI_OrganizationSecurity\", " +
-			"\"questions\":[{\"category\":\"01A\",\"index\":1,\"type\":\"CATEGORY\",\"value\":\"Roles and structures of security\"," +
-			"\"children\":[{\"category\":\"01A01\",\"index\":1,\"type\":\"CATEGORY\",\"value\":\"Organization and Management of General Security\"," +
-			"\"children\":[]}]}]}");
-		AssauditDefaultJSON questionnaireDefaultJSON02 = new AssauditDefaultJSON();
-		questionnaireDefaultJSON02.setAtype(AuditTypeEnum.SECURITY.name());
-		questionnaireDefaultJSON02.setAvalue(QuestionnaireTypeEnum.MEHARI_ExtendedNetwork.name());
-		questionnaireDefaultJSON02.setCategory("02");
-		questionnaireDefaultJSON02.setIx("2");
-		questionnaireDefaultJSON02.setQuestionnaireJSON("{}");
-		auditDefaultService.insertQuestionnaire(questionnaireDefaultJSON01);
-		auditDefaultService.insertQuestionnaire(questionnaireDefaultJSON02);
-
-		AssessmentProject project = data.buildModelAssProject("1");
-
-			projectIdentifier = projectService.insert(project);
-			project.setIdentifier(projectIdentifier);
-
-		return projectIdentifier;
-	}
-
-	private SestAuditModel prefill() {
-		SestQuestionnaireModel quest = new SestQuestionnaireModel();
-		quest.setObjType(SESTObjectTypeEnum.Audit);
-		quest.setType(QuestionnaireTypeEnum.MEHARI_ExtendedNetwork);
-		quest.setQuestionnaireModelJson("{}");
-
-		List<SestQuestionnaireModel> quests = new ArrayList<SestQuestionnaireModel>();
-		quests.add(quest);
-
-		SestAuditModel audit = new SestAuditModel();
-		audit.setObjType(SESTObjectTypeEnum.Audit);
-		audit.setType(AuditTypeEnum.GENERAL);
-		audit.setSestQuestionnaireModel(quests);
-
-		return audit;
-	}
+    return projectIdentifier;
+  }
 }

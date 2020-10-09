@@ -18,7 +18,7 @@ import java.util.List;
 
 public interface AssprocedureServiceInterface {
 
-	AssessmentProcedure insert(AssessmentProcedure assprocedureDM, String projectIdentifier) throws Exception;
+	AssessmentProcedure insert(AssessmentProcedure assprocedureDM, String projectIdentifier);
 
 	void update(AssessmentProcedure assprocedureDM);
 	

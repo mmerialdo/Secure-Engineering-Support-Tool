@@ -16,31 +16,31 @@
              selectionMode="multiple" [metaKeySelection]="true">
       <ng-template pTemplate="header">
         <tr>
-          <th>Name</th>
-          <th>Catalogue Id</th>
-          <th>Description</th>
-          <th>Likelihood</th>
+          <th scope="col">Name</th>
+          <th scope="col">Catalogue Id</th>
+          <th scope="col">Description</th>
+          <th scope="col">Likelihood</th>
         </tr>
         <tr>
-          <th>
+          <th scope="col">
             <div class="ui-inputgroup">
-              <span class="ui-inputgroup-addon"><i class="pi pi-search" style="line-height: 1.25;"></i></span>
+              <span class="ui-inputgroup-addon"><em class="pi pi-search" style="line-height: 1.25;"></em></span>
               <input pInputText type="text" (input)="dt.filter($event.target.value, 'name', 'startsWith')"  class="my-input">
             </div>
           </th>
-          <th>
+          <th scope="col">
             <div class="ui-inputgroup">
-              <span class="ui-inputgroup-addon"><i class="pi pi-search" style="line-height: 1.25;"></i></span>
+              <span class="ui-inputgroup-addon"><em class="pi pi-search" style="line-height: 1.25;"></em></span>
               <input pInputText type="text" (input)="dt.filter($event.target.value, 'catalogueId', 'startsWith')" class="my-input">
             </div>
           </th>
-          <th>
+          <th scope="col">
             <div class="ui-inputgroup">
-              <span class="ui-inputgroup-addon"><i class="pi pi-search" style="line-height: 1.25;"></i></span>
+              <span class="ui-inputgroup-addon"><em class="pi pi-search" style="line-height: 1.25;"></em></span>
               <input pInputText type="text" (input)="dt.filter($event.target.value, 'description', 'startsWith')" class="my-input" >
             </div>
           </th>
-          <th>
+          <th scope="col">
             <p-dropdown [options]="impacts" (onChange)="dt.filter($event.value, 'score.likelihood', 'startsWith')"
                         appendTo="body" placeholder="Select an Value" [showClear]="true" [style]="{'min-width':0, 'width':'90%', 'font-size': '12px'}"></p-dropdown>
           </th>
@@ -49,7 +49,7 @@
       <ng-template pTemplate="body" let-taxonomy let-rowIndex="rowIndex">
         <tr [pSelectableRow]="taxonomy" [pSelectableRowIndex]="rowIndex">
           <td>
-            {{taxonomy.name}}<span>&nbsp;&nbsp;</span><i class="fa fa-user-plus fa-xs" *ngIf="taxonomy.catalogue === 'CUSTOM'" pTooltip="Customized by {{taxonomy.author}}"></i>
+            {{taxonomy.name}}<span>&nbsp;&nbsp;</span><em class="fa fa-user-plus fa-xs" *ngIf="taxonomy.catalogue === 'CUSTOM'" pTooltip="Customized by {{taxonomy.author}}"></em>
           </td>
           <td>
             {{taxonomy.catalogueId}}
@@ -226,7 +226,7 @@
     *ngIf="showPopup"
   ></app-add-edit-threat-row>
 
-<p-toast position="center"></p-toast>
+<p-toast position="top-center"></p-toast>
 
 
 

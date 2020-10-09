@@ -22,6 +22,8 @@ import {
 } from '../../../../../shared/store/actions/assets.actions';
 import {fetchProcess, selectRefresh} from '../../../../../shared/store/reducers/assets.reducer';
 import {take} from 'rxjs/operators';
+import {FormBuilder} from '@angular/forms';
+import {MessageService} from 'primeng/api';
 
 @Component({
   selector: 'app-process-tab-view',
@@ -40,8 +42,8 @@ export class ProcessTabViewComponent extends AbstractTabViewComponent implements
   selected: any[];
   public newProcess: any;
 
-  constructor(public store: Store<any>) {
-    super('processes', 'Processes', store);
+  constructor(public store: Store<any>, public messageService: MessageService) {
+    super('processes', 'Processes', store, messageService);
   }
 
   ngOnInit() {
@@ -65,10 +67,9 @@ export class ProcessTabViewComponent extends AbstractTabViewComponent implements
           this.model.processes = newPr.name;
           this.model.id = newPr.identifier;
           this.dataRows[this.dataRows.indexOf(model)] = this.model;
-        this.store.dispatch(storeServerAsset(this.serverAsset));
+          this.store.dispatch(storeServerAsset(this.serverAsset));
           this.store.dispatch(refreshTablesStart());
-        }
-        else {
+        } else {
           this.newProcess = newPr;
           this.model.processes = this.newProcess.name;
           this.model.id = this.newProcess.identifier;
@@ -125,11 +126,11 @@ export class ProcessTabViewComponent extends AbstractTabViewComponent implements
     const node = this.newProcess;
 
     this.serverAsset.nodes.push(node);
-  this.store.dispatch(storeServerAsset(this.serverAsset));
+    this.store.dispatch(storeServerAsset(this.serverAsset));
   }
 
   editName(event) {
-    if (typeof(event.field) === 'string') {
+    if (typeof (event.field) === 'string') {
       const updatedNodes = this.serverAsset.nodes;
       const found = updatedNodes.find(n => n.identifier === event.data.id);
 
@@ -142,7 +143,7 @@ export class ProcessTabViewComponent extends AbstractTabViewComponent implements
 
       found.name = event.data.processes;
 
-    this.store.dispatch(storeServerAsset(this.serverAsset));
+      this.store.dispatch(storeServerAsset(this.serverAsset));
       this.store.dispatch(refreshTablesStart());
     }
   }
@@ -153,7 +154,7 @@ export class ProcessTabViewComponent extends AbstractTabViewComponent implements
     // this.validate();
   }
 
-  editModel (i: number, column: any, changedValue: any): void {
+  editModel(i: number, column: any, changedValue: any): void {
     const edited = this.dataRows[i];
     const node = ServerAssetHelper.findNodeByName(edited.processes, this.serverAsset);
     if (changedValue) {
@@ -172,49 +173,56 @@ export class ProcessTabViewComponent extends AbstractTabViewComponent implements
     organization.children.push(edge.identifier);
     node.parents.push(edge.identifier);
 
-  this.store.dispatch(storeServerAsset(this.serverAsset));
+    this.store.dispatch(storeServerAsset(this.serverAsset));
     this.validate(this.serverAsset);
   }
 
   removeProcessRelationWithOrganization(node: any, column: any): void {
     const organization = this.serverAsset.nodes.filter(n => n.identifier === column.field)[0];
-    let edge = this.serverAsset.edges.filter(e => e.source === organization.identifier && e.target === node.identifier)[0];
+    let edge = this.serverAsset.edges.filter(e => e.source === organization.identifier && e.target === node.identifier);
 
-    if(edge === null){
-      edge = this.serverAsset.edges.filter(e => e.target === organization.identifier && e.source === node.identifier)[0];
+    if (!edge || edge === null) {
+      edge = this.serverAsset.edges.filter(e => e.target === organization.identifier && e.source === node.identifier);
     }
+
+    if (edge) {
+      edge.forEach(edgeElement => {
+        this.removeEdgeProcessRelationWithOrganization(node, edgeElement);
+      });
+    }
+  }
+
+  removeEdgeProcessRelationWithOrganization(node: any, edge: any): void {
 
     ServerAssetHelper.removeEdgeById(edge.identifier, this.serverAsset);
     ServerAssetHelper.removeEdgeFromParents(edge.identifier, this.serverAsset);
     ServerAssetHelper.removeEdgeFromChildren(edge.identifier, this.serverAsset);
 
-  this.store.dispatch(storeServerAsset(this.serverAsset));
+    this.store.dispatch(storeServerAsset(this.serverAsset));
     this.validate(this.serverAsset);
   }
 
   deleteProcesses(): void {
     if (this.selected.length > 0) {
+
       this.selected.forEach(selected => {
-        this.dataRows = this.dataRows.filter( dr => dr !== selected);
+
+        this.dataRows = this.dataRows.filter(dr => dr !== selected);
         const processToDelete = ServerAssetHelper.findNodeByIdentifier(selected.id, this.serverAsset);
 
-        Object.keys(selected).filter(k => k !== 'processes').filter(k => k !== 'id').forEach(rowKey => {
-          if (selected[rowKey]) {
-            this.updateProcessParentsAndEdges(processToDelete);
-            this.updateProcessChildrenAndEdges(processToDelete);
-          }
-        });
+        this.updateProcessParentsAndEdges(processToDelete);
+        this.updateProcessChildrenAndEdges(processToDelete);
+
         const deleted = ServerAssetHelper.removeNodeById(processToDelete.identifier, this.serverAsset);
       });
-    }
-    else{
+    } else {
       return;
     }
 
-  this.store.dispatch(storeServerAsset(this.serverAsset));
+    this.store.dispatch(storeServerAsset(this.serverAsset));
     this.store.dispatch(refreshTablesStart());
-    this.selected = [];
     this.validate(this.serverAsset);
+    this.selected = [];
   }
 
   updateProcessParentsAndEdges(processToDelete: any) {

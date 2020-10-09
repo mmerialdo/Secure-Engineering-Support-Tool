@@ -12,16 +12,18 @@
 
 package org.crmf.core.riskassessment.project.manager;
 
-import org.crmf.core.audit.AuditInputInterface;
 import org.crmf.model.riskassessment.AssessmentProject;
 import org.crmf.model.user.PermissionTypeEnum;
 import org.crmf.model.user.User;
 import org.crmf.model.user.UserRole;
 import org.crmf.model.user.UserRoleEnum;
 import org.crmf.persistency.mapper.project.AssprojectServiceInterface;
-import org.crmf.user.validation.permission.UserPermissionManagerInputInterface;
+import org.crmf.user.validation.permission.UserPermissionManagerInput;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -29,15 +31,18 @@ import java.util.List;
 import java.util.Set;
 
 //This class is called by the Proxy and manages the entrypoint for the business logic (including the interactions with the Persistency) related to the AssessmentProjects
-public class AssessmentProjectInput implements AssessmentProjectInputInterface {
+@Service
+public class AssessmentProjectInput {
 
-  private final Logger LOG = LoggerFactory.getLogger(AssessmentProjectInput.class.getName());
+  private static final Logger LOG = LoggerFactory.getLogger(AssessmentProjectInput.class.getName());
+  @Autowired
+  @Qualifier("default")
   private AssprojectServiceInterface assprojectService;
-  private AssessmentProjectUserInputInterface assprojectUserInput;
-  private UserPermissionManagerInputInterface permissionManager;
-  private AuditInputInterface auditInput;
+  @Autowired
+  private AssessmentProjectUserInput assprojectUserInput;
+  @Autowired
+  private UserPermissionManagerInput permissionManager;
 
-  @Override
   public String createAssessmentProject(AssessmentProject project) throws Exception {
 
     LOG.info("createAssessmentProject with identifier {}", project.getIdentifier());
@@ -67,7 +72,6 @@ public class AssessmentProjectInput implements AssessmentProjectInputInterface {
     return identifier;
   }
 
-  @Override
   public void editAssessmentProject(AssessmentProject project) throws Exception {
 
     LOG.info("editAssessmentProject with identifier: {}", project.getIdentifier());
@@ -76,21 +80,18 @@ public class AssessmentProjectInput implements AssessmentProjectInputInterface {
     assprojectUserInput.editAssessmentProjectRole(project);
   }
 
-  @Override
-  public void deleteAssessmentProject(String identifier) throws Exception {
+  public void deleteAssessmentProject(String identifier) {
 
     LOG.info("deleteAssessmentProject with identifier: {}", identifier);
     assprojectService.deleteCascade(identifier);
   }
 
-  @Override
-  public AssessmentProject loadAssessmentProject(String identifier) throws Exception {
+  public AssessmentProject loadAssessmentProject(String identifier) {
 
     LOG.info("loadAssessmentProject with identifier: {}", identifier);
     return assprojectService.getByIdentifierFull(identifier);
   }
 
-  @Override
   public List<AssessmentProject> loadAssessmentProjectList(String username, String permission) throws Exception {
 
     LOG.info("loadAssessmentProjectList ");
@@ -106,37 +107,4 @@ public class AssessmentProjectInput implements AssessmentProjectInputInterface {
     });
     return projectsFiltered;
   }
-
-  public AssprojectServiceInterface getAssprojectService() {
-    return assprojectService;
-  }
-
-  public void setAssprojectService(AssprojectServiceInterface assprojectService) {
-    this.assprojectService = assprojectService;
-  }
-
-  public AssessmentProjectUserInputInterface getAssprojectUserInput() {
-    return assprojectUserInput;
-  }
-
-  public void setAssprojectUserInput(AssessmentProjectUserInputInterface assprojectUserInput) {
-    this.assprojectUserInput = assprojectUserInput;
-  }
-
-  public UserPermissionManagerInputInterface getPermissionManager() {
-    return permissionManager;
-  }
-
-  public void setPermissionManager(UserPermissionManagerInputInterface permissionManager) {
-    this.permissionManager = permissionManager;
-  }
-
-  public AuditInputInterface getAuditInput() {
-    return auditInput;
-  }
-
-  public void setAuditInput(AuditInputInterface auditInput) {
-    this.auditInput = auditInput;
-  }
-
 }

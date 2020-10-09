@@ -16,6 +16,7 @@ import {FormBuilder, Validators} from '@angular/forms';
 import {Subscription} from 'rxjs/internal/Subscription';
 import {ValidationService} from '../../../validationservice';
 import {DataService} from '../../../dataservice';
+import {MessageService} from "primeng/api";
 
 
 @Component({
@@ -41,7 +42,8 @@ export class UserPasswordComponent implements OnInit, OnDestroy {
 
   private subscriptions: Subscription[] = [];
 
-  constructor(private confirmationService: ConfirmationService, private dataService: DataService, private formBuilder: FormBuilder) {
+  constructor(private confirmationService: ConfirmationService, private dataService: DataService,
+              private formBuilder: FormBuilder, private messageService: MessageService) {
   }
 
   ngOnInit() {
@@ -62,12 +64,12 @@ export class UserPasswordComponent implements OnInit, OnDestroy {
 
     this.subscriptions.push(
       this.dataService.changeUserPassword(jsonform).subscribe(response => {
-          this.message = 'SUCCESS';
+
+          this.messageService.add({severity: 'success', summary: 'Success Message', detail: 'Password updated!'});
           this.closeForm();
         },
         err => {
-          this.message = 'FAILED';
-          this.closeForm();
+          throw err;
         }));
   }
 

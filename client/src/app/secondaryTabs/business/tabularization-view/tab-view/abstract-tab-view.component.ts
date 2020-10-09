@@ -12,6 +12,8 @@
 
 import {Store} from '@ngrx/store';
 import {validateFalse, validateTrue} from '../../../../shared/store/actions/assets.actions';
+import {FormBuilder} from '@angular/forms';
+import {MessageService} from 'primeng/api';
 
 export abstract class AbstractTabViewComponent {
 
@@ -21,9 +23,11 @@ export abstract class AbstractTabViewComponent {
 
   public disableFlag = false;
   protected store: Store<any>;
+  protected messageService: MessageService;
 
-  constructor(field: string, header: string, store: Store<any>) {
+  constructor(field: string, header: string, store: Store<any>, messageService: MessageService) {
     this.store = store;
+    this.messageService = messageService;
     this.cols = [{field: field, header: header}];
   }
 
@@ -45,13 +49,13 @@ export abstract class AbstractTabViewComponent {
       if (this.cols[0]) {
         dataObj[this.cols[0].field] = row.name;
       }
-      if (objectsMap) {
-
-        objectsMap.get(row).map(ob => ob.identifier).forEach(obId => dataObj[obId] = true);
-
-        dataObj.id = row.identifier;
-        this.dataRows.push(dataObj);
-      }
+      objectsMap.get(row).forEach(parent => {
+        if (parent) {
+          dataObj[parent.identifier] = true;
+        }
+      });
+      dataObj.id = row.identifier;
+      this.dataRows.push(dataObj);
     });
     this.model = this.convertToObject(this.cols);
   }
@@ -92,14 +96,21 @@ export abstract class AbstractTabViewComponent {
 
   //Checking if all the nodes except Organizations have a parent
   validate(serverAsset: any): void {
-    const nodeCount = serverAsset.nodes.filter(n => n.nodeType !== 'Organization').length;
-    const nonOrphanNodeCount = serverAsset.nodes.filter(n => n.nodeType !== 'Organization')
-      .filter(node => node.parents.length > 0).length;
+    // const nodeCount = serverAsset.nodes.filter(n => n.nodeType !== 'Organization').length;
+    const nodesOrphan = serverAsset.nodes.filter(n => n.nodeType !== 'Organization')
+      .filter(node => node.parents.length === 0);
 
-    (nodeCount === nonOrphanNodeCount) ? this.store.dispatch(validateTrue()) : this.store.dispatch(validateFalse());
+    if (nodesOrphan.length > 0) {
+      debugger;
+      this.store.dispatch(validateFalse());
+
+      let msg = '';
+      nodesOrphan.forEach(node => {
+        msg = msg.concat(node.name).concat('\n');
+      });
+      this.messageService.add({key: 'linksMissing',severity: 'warn', summary: 'Node links', detail: 'Node links missing for : ' + msg});
+    } else {
+      this.store.dispatch(validateTrue());
+    }
   }
-
-  /*validateName(name: string, serverAsset: any): void {
-    const found = serverAsset.nodes.some(n => n.name === name);
-  }*/
 }

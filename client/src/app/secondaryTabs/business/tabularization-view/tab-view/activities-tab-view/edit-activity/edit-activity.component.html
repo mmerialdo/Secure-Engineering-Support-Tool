@@ -48,9 +48,6 @@
         <select formControlName="ownerEA" class="form-control" name="ownerEA" id="ownerEA">
           <option *ngFor="let c of ownerListActivity" [ngValue]="c.name + ' '+c.surname"> {{ c.name }} {{ c.surname }} </option>
         </select>
-
-
-        <!--<control-messages [control]="editActivityForm.controls.ownerEA"></control-messages>-->
       </div>
 
       <span  class="cols-sm-2 control-label">* - mandatory field</span>

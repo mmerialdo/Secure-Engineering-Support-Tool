@@ -12,18 +12,8 @@
 
 package org.crmf.persistency;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertNull;
-
-import java.util.List;
-
 import org.crmf.model.riskassessment.AssessmentProject;
 import org.crmf.model.riskassessment.RiskMethodologyEnum;
-import org.crmf.persistency.mapper.audit.AssAuditDefaultService;
-import org.crmf.persistency.mapper.audit.AssAuditService;
-import org.crmf.persistency.mapper.audit.QuestionnaireService;
-import org.crmf.persistency.mapper.general.CleanDatabaseService;
 import org.crmf.persistency.mapper.project.AssprocedureService;
 import org.crmf.persistency.mapper.project.AssprofileService;
 import org.crmf.persistency.mapper.project.AssprojectService;
@@ -31,144 +21,111 @@ import org.crmf.persistency.mapper.project.AsstemplateService;
 import org.crmf.persistency.mapper.project.SysprojectService;
 import org.crmf.persistency.mapper.user.RoleService;
 import org.crmf.persistency.mapper.user.UserService;
-import org.crmf.persistency.session.PersistencySessionFactory;
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mybatis.spring.boot.test.autoconfigure.MybatisTest;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.context.ActiveProfiles;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
 
+import java.util.List;
+
+@ExtendWith(SpringExtension.class)
+@MybatisTest
+@ContextConfiguration(classes = Application.class)
+@ActiveProfiles("test")
 public class AssProjectTest {
 
-	PersistencySessionFactory sessionFactory;
+  @Autowired
+  private SysprojectService sysprojectService;
+  @Autowired
+  private AssprojectService projectService;
+  @Autowired
+  private AssprofileService profileService;
+  @Autowired
+  private AssprocedureService procedureService;
+  @Autowired
+  private AsstemplateService templateService;
+  @Autowired
+  private UserService userService;
+  @Autowired
+  private RoleService roleService;
+  @Autowired
+  private TestData data;
 
-	private SysprojectService sysprojectService;
-	private AssprojectService projectService;
-	private AssprofileService profileService;
-	private AssprocedureService procedureService;
-	private AsstemplateService templateService;
-	private UserService userService;
-	private RoleService roleService;
-	AssessmentProject project;
-	private TestData data = new TestData();
+  AssessmentProject project;
 
-	@Before
-	public void setUp() throws Exception {
+  @BeforeEach
+  public void setUp() throws Exception {
+    this.data.prefillModels();
+    project = prefill();
+  }
 
-		sessionFactory = new PersistencySessionFactory();
-		sessionFactory.createSessionFactory();
+  @Test
+  public void insert() throws Exception {
 
-		sysprojectService = new SysprojectService();
-		sysprojectService.setSessionFactory(sessionFactory);
+    AssessmentProject project = data.buildModelAssProject("2");
+    project.setRiskMethodology(RiskMethodologyEnum.HTRA);
 
-		QuestionnaireService questionnaireService = new QuestionnaireService();
-		questionnaireService.setSessionFactory(sessionFactory);
+    String identifier = projectService.insert(project);
+    project.setIdentifier(identifier);
 
-		AssAuditDefaultService auditDefaultService = new AssAuditDefaultService();
-		auditDefaultService.setSessionFactory(sessionFactory);
+    AssessmentProject projectResulted = projectService.getByIdentifierFull(identifier);
+    Assertions.assertEquals("project02", projectResulted.getName());
+    Assertions.assertEquals("project for test2", projectResulted.getDescription());
+    Assertions.assertEquals("HTRA", projectResulted.getRiskMethodology().name());
+    Assertions.assertNotNull(projectResulted.getSystemProject());
+    Assertions.assertEquals("euclid2", projectResulted.getSystemProject().getName());
+  }
 
-		AssAuditService auditService = new AssAuditService();
-		auditService.setSessionFactory(sessionFactory);
-		auditService.setQuestionnaireService(questionnaireService);
+  @Test
+  public void insertProjectWithAudit() throws Exception {
 
-		roleService = new RoleService();
-		roleService.setSessionFactory(sessionFactory);
+    AssessmentProject project = data.buildModelAssProject("3");
+    project.setRiskMethodology(RiskMethodologyEnum.HTRA);
 
-		projectService = new AssprojectService();
-		projectService.setSessionFactory(sessionFactory);
-		projectService.setSysprjService(sysprojectService);
-		projectService.setAuditService(auditService);
-		projectService.setRoleService(roleService);
+    String identifier = projectService.insert(project);
+    project.setIdentifier(identifier);
 
-		userService = new UserService();
-		userService.setSessionFactory(sessionFactory);
-
-
-		profileService = new AssprofileService();
-		profileService.setSessionFactory(sessionFactory);
-
-		procedureService = new AssprocedureService();
-		procedureService.setSessionFactory(sessionFactory);
-
-		templateService = new AsstemplateService();
-		templateService.setSessionFactory(sessionFactory);
-
-		project = prefill();
-	}
-
-	@After
-	public void tearDown() throws Exception {
-
-		CleanDatabaseService cleaner = new CleanDatabaseService();
-		cleaner.setSessionFactory(sessionFactory);
-
-		cleaner.delete();
-	}
-
-	@Test
-	public void insert() throws Exception{
-
-		AssessmentProject project = data.buildModelAssProject("2");
-		project.setRiskMethodology(RiskMethodologyEnum.HTRA);
-
-		String identifier = projectService.insert(project);
-			project.setIdentifier(identifier);
-
-		AssessmentProject projectResulted = projectService.getByIdentifierFull(identifier);
-		assertEquals("project02", projectResulted.getName());
-		assertEquals("project for test2", projectResulted.getDescription());
-		assertEquals("HTRA", projectResulted.getRiskMethodology().name());
-		assertNotNull(projectResulted.getSystemProject());
-		assertEquals("euclid2", projectResulted.getSystemProject().getName());
-	}
-
-	@Test
-	public void insertProjectWithAudit() throws Exception{
-
-		AssessmentProject project = data.buildModelAssProject("3");
-		project.setRiskMethodology(RiskMethodologyEnum.HTRA);
-
-		String identifier = projectService.insert(project);
-			project.setIdentifier(identifier);
-
-		AssessmentProject projectResulted = projectService.getByIdentifierFull(identifier);
-		assertEquals("project03", projectResulted.getName());
-		assertEquals("project for test3", projectResulted.getDescription());
-		assertEquals("HTRA", projectResulted.getRiskMethodology().name());
-		assertNotNull(projectResulted.getSystemProject());
-		assertEquals("euclid3", projectResulted.getSystemProject().getName());
-	}
+    AssessmentProject projectResulted = projectService.getByIdentifierFull(identifier);
+    Assertions.assertEquals("project03", projectResulted.getName());
+    Assertions.assertEquals("project for test3", projectResulted.getDescription());
+    Assertions.assertEquals("HTRA", projectResulted.getRiskMethodology().name());
+    Assertions.assertNotNull(projectResulted.getSystemProject());
+    Assertions.assertEquals("euclid3", projectResulted.getSystemProject().getName());
+  }
 
 
-	@Test
-	public void delete(){
+  @Test
+  public void delete() {
+    projectService.deleteCascade(project.getIdentifier());
+    AssessmentProject projectResulted = projectService.getByIdentifierFull(project.getIdentifier());
+    Assertions.assertNull(projectResulted);
+  }
 
-	//	AssessmentProject project = prefill();
+  @Test
+  public void getAll() throws Exception {
 
-		projectService.deleteCascade(project.getIdentifier());
-		AssessmentProject projectResulted = projectService.getByIdentifierFull(project.getIdentifier());
-		assertNull(projectResulted);
-	}
+    AssessmentProject project = data.buildModelAssProject("2");
+    project.setRiskMethodology(RiskMethodologyEnum.HTRA);
 
-	@Test
-	public void getAll() throws Exception{
+    String identifier = projectService.insert(project);
+    project.setIdentifier(identifier);
 
-		AssessmentProject project = data.buildModelAssProject("2");
-		project.setRiskMethodology(RiskMethodologyEnum.HTRA);
+    List<AssessmentProject> projectResulted = projectService.getAll();
+    Assertions.assertEquals(2, projectResulted.size());
+  }
 
-		String identifier = projectService.insert(project);
-			project.setIdentifier(identifier);
+  private AssessmentProject prefill() throws Exception {
 
-		List<AssessmentProject> projectResulted = projectService.getAll();
-		assertEquals(2, projectResulted.size());
-	}
+    project = data.buildModelAssProject("1");
+    String identifier = projectService.insert(project);
+    project.setIdentifier(identifier);
 
-	private AssessmentProject prefill() throws Exception{
-
-		project = data.buildModelAssProject("1");
-		String identifier  = projectService.insert(project);
-			project.setIdentifier(identifier);
-
-
-		return project;
-	}
+    return project;
+  }
 
 }

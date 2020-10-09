@@ -12,52 +12,73 @@
 
 package org.crmf.proxy.core.riskassessment.project.rest;
 
-import org.crmf.core.riskassessment.project.manager.AssessmentTemplateInputInterface;
+import org.crmf.core.riskassessment.project.manager.AssessmentTemplateInput;
+import org.crmf.model.exception.RemoteComponentException;
 import org.crmf.model.riskassessment.AssessmentProfile;
 import org.crmf.model.riskassessment.AssessmentTemplate;
 import org.crmf.model.utility.GenericFilter;
+import org.crmf.proxy.authnauthz.Permission;
+import org.crmf.proxy.configuration.ApiExceptionEnum;
+import org.crmf.proxy.configuration.ResponseMessage;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
 import java.util.List;
 
 //This class manages the business logic behind the webservices related to the AssessmentTemplate management
-public class AssessmentTemplateRestServer implements AssessmentTemplateRestServerInterface {
+@RestController
+@RequestMapping(value = "api/template")
+public class AssessmentTemplateRestServer {
 
   private static final Logger LOG = LoggerFactory.getLogger(AssessmentTemplateRestServer.class.getName());
-  private AssessmentTemplateInputInterface templateInput;
+  @Autowired
+  private AssessmentTemplateInput templateInput;
 
-  @Override
-  public String createAssessmentTemplate(AssessmentProfile profile) throws Exception {
+  @PostMapping("create")
+  @Permission(value = "AssessmentTemplate:Update")
+  public ResponseMessage createAssessmentTemplate(@RequestParam(name = "SHIRO_SECURITY_TOKEN") String token,
+                                                  @RequestBody AssessmentProfile profile) {
+    String identifier = null;
     try {
       LOG.info("createAssessmentTemplate, template with name {}", profile.getTemplates().get(0).getName());
 
-      String result = templateInput.createAssessmentTemplate(profile.getTemplates().get(0), profile.getIdentifier());
-      if (result == null) {
-        throw new Exception("COMMAND_EXCEPTION");
-      } else {
-        return result;
-      }
+      identifier = templateInput.createAssessmentTemplate(profile.getTemplates().get(0), profile.getIdentifier());
     } catch (Exception e) {
       LOG.error(e.getMessage());
-      throw new Exception("COMMAND_EXCEPTION", e);
+      throw new RemoteComponentException(ApiExceptionEnum.COMMAND_EXCEPTION, e);
+    }
+    if (identifier == null) {
+      throw new RemoteComponentException(ApiExceptionEnum.COMMAND_EXCEPTION);
+    } else {
+      return new ResponseMessage(identifier);
     }
   }
 
-  @Override
-  public List<AssessmentTemplate> loadAssessmentTemplateList(String token) throws Exception {
+  @GetMapping("list")
+  @Permission(value = "AssessmentTemplate:Read")
+  public List<AssessmentTemplate> loadAssessmentTemplateList(
+    @RequestParam(name = "SHIRO_SECURITY_TOKEN") String token) {
 
     try {
       return templateInput.loadAssessmentTemplateList();
     } catch (Exception e) {
       LOG.error(e.getMessage());
-      throw new Exception("COMMAND_EXCEPTION", e);
+      throw new RemoteComponentException(ApiExceptionEnum.COMMAND_EXCEPTION, e);
     }
   }
 
-  @Override
-  public List<String> loadAssessmentTemplate(GenericFilter filter, String token) throws Exception {
+  @PostMapping("load")
+  @Permission(value = "AssessmentTemplate:Read")
+  public List<String> loadAssessmentTemplate(@RequestParam(name = "SHIRO_SECURITY_TOKEN") String token,
+                                             @RequestBody GenericFilter filter) {
     List<String> jsonTemplates = new ArrayList<>();
 
     LOG.info("loadAssessmentTemplate {}", filter);
@@ -72,15 +93,7 @@ public class AssessmentTemplateRestServer implements AssessmentTemplateRestServe
       return jsonTemplates;
     } catch (Exception e) {
       LOG.error(e.getMessage());
-      throw new Exception("COMMAND_EXCEPTION", e);
+      throw new RemoteComponentException(ApiExceptionEnum.COMMAND_EXCEPTION, e);
     }
-  }
-
-  public AssessmentTemplateInputInterface getTemplateInput() {
-    return templateInput;
-  }
-
-  public void setTemplateInput(AssessmentTemplateInputInterface TemplateInput) {
-    this.templateInput = TemplateInput;
   }
 }

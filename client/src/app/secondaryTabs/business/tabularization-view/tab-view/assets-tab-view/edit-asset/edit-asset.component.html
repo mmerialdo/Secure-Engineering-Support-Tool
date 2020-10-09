@@ -24,7 +24,6 @@
         <select formControlName="ownAsset" class="form-control" name="ownAsset" id="ownAsset">
           <option *ngFor="let c of ownerListAsset" [ngValue]="c.name+' '+c.surname"> {{ c.name }} {{ c.surname }} </option>
         </select>
-        <!--<control-messages [control]="businessEditAssetForm.controls.ownAsset"></control-messages>-->
       </div>
     </div>
     <div class="col-md-4">
@@ -50,7 +49,7 @@
       <div class="col-md-4">
         <div class="form-group">
           <label>Data</label>
-          <i class="fa fa-info-circle" (click)="infoDataAsset()" style="cursor:pointer;margin-left:1px;"></i>
+          <em class="fa fa-info-circle" (click)="infoDataAsset()" style="cursor:pointer;margin-left:1px;"></em>
           <select [(ngModel)]="selectedCategoryData" name="dataPrymaryAsset" id="dataPrymaryAsset" class="form-control" [disabled]="selectedCategoryCompli!='' || selectedCategoryService!=''">
             <option *ngFor="let c of primaryAssetConf" [ngValue]="c"> {{ c }} </option>
           </select>
@@ -59,7 +58,7 @@
       <div class="col-md-4">
         <div class="form-group">
           <label>Services</label>
-          <i class="fa fa-info-circle" (click)="infoServicesAsset()" style="cursor:pointer;margin-left:1px;"></i>
+          <em class="fa fa-info-circle" (click)="infoServicesAsset()" style="cursor:pointer;margin-left:1px;"></em>
           <select [(ngModel)]="selectedCategoryService" name="servicesPrymaryAsset" id="servicesPrymaryAsset" class="form-control"
                   [disabled]="selectedCategoryCompli!='' || selectedCategoryData!=''">
             <option *ngFor="let c of primaryAssetInt" [ngValue]="c"> {{ c }} </option>
@@ -69,7 +68,7 @@
       <div class="col-md-4">
         <div class="form-group">
           <label>Compliance to Regulations</label>
-          <i class="fa fa-info-circle" (click)="infoManagementAsset()" style="cursor:pointer;margin-left:1px;"></i>
+          <em class="fa fa-info-circle" (click)="infoManagementAsset()" style="cursor:pointer;margin-left:1px;"></em>
           <select [(ngModel)]="selectedCategoryCompli" name="compliPrymaryAsset" id="compliPrymaryAsset" class="form-control" [disabled]="selectedCategoryService!='' || selectedCategoryData!=''">
             <option *ngFor="let c of primaryAssetAva" [ngValue]="c"> {{ c }} </option>
           </select>
@@ -82,9 +81,8 @@
       <div class="col-md-4">
         <div class="form-group">
           <label for="secAsset">Secondary Asset Category</label>
-          <i class="fa fa-info-circle" (click)="infoSecondaryAsset()" style="cursor:pointer;margin-left:1px;"></i>
-          <!--<select formControlName="secAsset" class="form-control" name="secAsset" id="secAsset" >-->
-          <select [(ngModel)]="selectedSecondary" class="form-control" name="secAsset" id="secAsset" [disabled]="selectedCategoryData === '' && selectedCategoryService === '' && selectedCategoryCompli === ''">
+          <em class="fa fa-info-circle" (click)="infoSecondaryAsset()" style="cursor:pointer;margin-left:1px;"></em>
+         <select [(ngModel)]="selectedSecondary" class="form-control" name="secAsset" id="secAsset" [disabled]="selectedCategoryData === '' && selectedCategoryService === '' && selectedCategoryCompli === ''">
 
             <option value=""></option>
             <option value="Personnel" *ngIf="selectedCategoryService === 'Service_User_Workspace'">Personnel</option>
@@ -123,8 +121,6 @@
             <option value="Non_Electronic_Media" *ngIf="selectedCategoryData === 'Data_Physical_File' || selectedCategoryData === 'Data_Physical_Mail' || selectedCategoryData === 'Data_Physical_Archive'">
               Non_Electronic_Media</option>
 
-            <!--<option value="Communication_Network">Communication_Network</option>-->
-
             <option value="Software_Custom" *ngIf="selectedCategoryService === 'Service_Application_Service' || selectedCategoryService === 'Service_Shared_Service' || selectedCategoryService === 'Service_User_Hardware' || selectedCategoryService === 'Service_Common_Service'
                                                  || selectedCategoryService === 'Service_Web_editing_Service'">
               Software_Custom</option>
@@ -138,9 +134,6 @@
                                                  || selectedCategoryService === 'Service_Application_Service' || selectedCategoryService === 'Service_Shared_Service' || selectedCategoryService === 'Service_Common_Service'
                                                  || selectedCategoryService === 'Service_Web_editing_Service'">
               Auxiliary_Equipment</option>
-
-            <!--<option value="Firmware">Firmware</option>-->
-
             <option value="Service_Access_Mean" *ngIf="selectedCategoryService === 'Service_Application_Service' || selectedCategoryService === 'Service_Shared_Service' || selectedCategoryService === 'Service_Common_Service'">
               Service_Access_Mean</option>
 
@@ -149,7 +142,6 @@
 
 
           </select>
-          <!--<control-messages [control]="businessEditAssetForm.controls.secAsset"></control-messages>-->
         </div>
       </div>
 
@@ -220,45 +212,45 @@
         </strong>
       </p>
       <p class=MsoListParagraph style='margin-left:.5in'>
-        <span lang=EN-GB style='font-family:Symbol'>·
-          <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <span lang=EN-GB style='font-family:Symbol, sans-serif'>·
+          <span style='font-family: times, serif; font-size:7.0pt; '>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </span>
         </span>
         <span lang=EN-GB>Data files or databases associated to applications
         </span>
       </p>
       <p class=MsoListParagraph style='margin-left:.5in'>
-        <span lang=EN-GB style='font-family:Symbol'>·
-          <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <span lang=EN-GB style='font-family:Symbol, sans-serif;'>·
+          <span style='font-family: times, serif; font-size:7.0pt; '>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </span>
         </span>
         <span lang=EN-GB>Exchanges data, screens, data individually sensitive
         </span>
       </p>
       <p class=MsoListParagraph style='margin-left:.5in'>
-        <span lang=EN-GB style='font-family:Symbol'>·
-          <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <span lang=EN-GB style='font-family:Symbol, sans-serif;'>·
+          <span style='font-family: times, serif; font-size:7.0pt; '>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </span>
         </span>
         <span lang=EN-GB>Office related files</span>
       </p>
       <p class=MsoListParagraph style='margin-left:.5in'>
-        <span lang=EN-GB style='font-family:Symbol'>·
-          <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <span lang=EN-GB style='font-family:Symbol, sans-serif;'>·
+          <span style='font-family: times, serif; font-size:7.0pt; '>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </span>
         </span>
         <span lang=EN-GB>Written or printed information available to users and personal archives</span>
       </p>
       <p class=MsoListParagraph style='margin-left:.5in'>
-        <span lang=EN-GB style='font-family:Symbol'>·
-          <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <span lang=EN-GB style='font-family:Symbol, sans-serif;'>·
+          <span style='font-family: times, serif; font-size:7.0pt; '>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </span>
         </span>
         <span lang=EN-GB>Mail (Classical or electronic) and faxes</span>
       </p>
       <p class=MsoListParagraph style='margin-left:.5in'>
-        <span lang=EN-GB style='font-family:Symbol'>·
-          <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <span lang=EN-GB style='font-family:Symbol, sans-serif;'>·
+          <span style='font-family: times, serif; font-size:7.0pt; '>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </span>
         </span>
         <span lang=EN-GB>Archives (physical and IT)</span>
@@ -270,8 +262,8 @@
         <span lang=EN-CA>Within the SEST tool, Data Primary Category has been subdivided in the following:</span>
       </p>
       <p class=MsoListParagraph style='margin-left:.5in'>
-        <span lang=EN-GB style='font-family:Symbol'>·
-          <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <span lang=EN-GB style='font-family:Symbol, sans-serif;'>·
+          <span style='font-family: times, serif; font-size:7.0pt; '>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </span>
         </span>
         <strong>
@@ -280,8 +272,8 @@
         <span lang=EN-GB> (Data files and data bases accessed by applications)</span>
       </p>
       <p class=MsoListParagraph style='margin-left:.5in'>
-        <span lang=EN-GB style='font-family:Symbol'>·
-          <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <span lang=EN-GB style='font-family:Symbol, sans-serif;'>·
+          <span style='font-family: times, serif; font-size:7.0pt; '>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </span>
         </span>
         <strong>
@@ -290,8 +282,8 @@
         <span lang=EN-GB> (Shared office files and data)</span>
       </p>
       <p class=MsoListParagraph style='margin-left:.5in'>
-        <span lang=EN-GB style='font-family:Symbol'>·
-          <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <span lang=EN-GB style='font-family:Symbol, sans-serif;'>·
+          <span style='font-family: times, serif; font-size:7.0pt; '>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </span>
         </span>
         <strong>
@@ -300,8 +292,8 @@
         <span lang=EN-GB> (Personal office files and data)</span>
       </p>
       <p class=MsoListParagraph style='margin-left:.5in'>
-        <span lang=EN-GB style='font-family:Symbol'>·
-          <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <span lang=EN-GB style='font-family:Symbol, sans-serif;'>·
+          <span style='font-family: times, serif; font-size:7.0pt; '>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </span>
         </span>
         <strong>
@@ -310,8 +302,8 @@
         <span lang=EN-GB> (Written or printed files and data)</span>
       </p>
       <p class=MsoListParagraph style='margin-left:.5in'>
-        <span lang=EN-GB style='font-family:Symbol'>·
-          <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <span lang=EN-GB style='font-family:Symbol, sans-serif;'>·
+          <span style='font-family: times, serif; font-size:7.0pt; '>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </span>
         </span>
         <strong>
@@ -320,8 +312,8 @@
         <span lang=EN-GB> (Exchanged messages, screen views, data individually sensitive)</span>
       </p>
       <p class=MsoListParagraph style='margin-left:.5in'>
-        <span lang=EN-GB style='font-family:Symbol'>·
-          <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <span lang=EN-GB style='font-family:Symbol, sans-serif;'>·
+          <span style='font-family: times, serif; font-size:7.0pt; '>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </span>
         </span>
         <strong>
@@ -331,8 +323,8 @@
           (Electronic mailing)</span>
       </p>
       <p class=MsoListParagraph style='margin-left:.5in'>
-        <span lang=EN-GB style='font-family:Symbol'>·
-          <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <span lang=EN-GB style='font-family:Symbol, sans-serif;'>·
+          <span style='font-family: times, serif; font-size:7.0pt; '>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </span>
         </span>
         <strong>
@@ -341,8 +333,8 @@
         <span lang=EN-GB> (Written or printed mailing)</span>
       </p>
       <p class=MsoListParagraph style='margin-left:.5in'>
-        <span lang=EN-GB style='font-family:Symbol'>·
-          <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <span lang=EN-GB style='font-family:Symbol, sans-serif;'>·
+          <span style='font-family: times, serif; font-size:7.0pt; '>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </span>
         </span>
         <strong>
@@ -351,8 +343,8 @@
         <span lang=EN-GB> (Physical data archive)</span>
       </p>
       <p class=MsoListParagraph style='margin-left:.5in'>
-        <span lang=EN-GB style='font-family:Symbol'>·
-          <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <span lang=EN-GB style='font-family:Symbol, sans-serif;'>·
+          <span style='font-family: times, serif; font-size:7.0pt; '>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </span>
         </span>
         <strong>
@@ -362,8 +354,8 @@
           (Digital data archive)</span>
       </p>
       <p class=MsoListParagraph style='margin-left:.5in'>
-        <span lang=EN-GB style='font-family:Symbol'>·
-          <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <span lang=EN-GB style='font-family:Symbol, sans-serif;'>·
+          <span style='font-family: times, serif; font-size:7.0pt; '>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </span>
         </span>
         <strong>
@@ -402,64 +394,64 @@
         </strong>
       </p>
       <p class=MsoListParagraph style='margin-left:.25in'>
-        <span lang=EN-GB style='font-family:Symbol'>·
-          <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <span lang=EN-GB style='font-family:Symbol, sans-serif;'>·
+          <span style='font-family: times, serif; font-size:7.0pt; '>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </span>
         </span>
         <span lang=EN-GB>Network services</span>
       </p>
       <p class=MsoListParagraph style='margin-left:.25in'>
-        <span lang=EN-GB style='font-family:Symbol'>·
-          <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <span lang=EN-GB style='font-family:Symbol, sans-serif;'>·
+          <span style='font-family: times, serif; font-size:7.0pt; '>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </span>
         </span>
         <span lang=EN-GB>Application services</span>
       </p>
       <p class=MsoListParagraph style='margin-left:.25in'>
-        <span lang=EN-GB style='font-family:Symbol'>·
-          <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <span lang=EN-GB style='font-family:Symbol, sans-serif;'>·
+          <span style='font-family: times, serif; font-size:7.0pt; '>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </span>
         </span>
         <span lang=EN-GB>Common/shared office services</span>
       </p>
       <p class=MsoListParagraph style='margin-left:.25in'>
-        <span lang=EN-GB style='font-family:Symbol'>·
-          <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <span lang=EN-GB style='font-family:Symbol, sans-serif;'>·
+          <span style='font-family: times, serif; font-size:7.0pt; '>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </span>
         </span>
         <span lang=EN-GB>Common system services: emailing, archiving, printing, edition, etc.</span>
       </p>
       <p class=MsoListParagraph style='margin-left:.25in'>
-        <span lang=EN-GB style='font-family:Symbol'>·
-          <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <span lang=EN-GB style='font-family:Symbol, sans-serif;'>·
+          <span style='font-family: times, serif; font-size:7.0pt; '>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </span>
         </span>
         <span lang=EN-GB>User interface services and peripherals (PC, local printers, peripherals, specific interfaces, etc.)</span>
       </p>
       <p class=MsoListParagraph style='margin-left:.25in'>
-        <span lang=EN-GB style='font-family:Symbol'>·
-          <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <span lang=EN-GB style='font-family:Symbol, sans-serif;'>·
+          <span style='font-family: times, serif; font-size:7.0pt; '>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </span>
         </span>
         <span lang=EN-GB>Telecommunication services (voice, faxes, video-conferencing, etc.)</span>
       </p>
       <p class=MsoListParagraph style='margin-left:.25in'>
-        <span lang=EN-GB style='font-family:Symbol'>·
-          <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <span lang=EN-GB style='font-family:Symbol, sans-serif;'>·
+          <span style='font-family: times, serif; font-size:7.0pt; '>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </span>
         </span>
         <span lang=EN-GB>Common services for the working environment of the staff (offices, power supply, air</span>
       </p>
       <p class=MsoListParagraph style='margin-left:.25in'>
-        <span lang=EN-GB style='font-family:Symbol'>·
-          <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <span lang=EN-GB style='font-family:Symbol, sans-serif;'>·
+          <span style='font-family: times, serif; font-size:7.0pt; '>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </span>
         </span>
         <span lang=EN-GB>conditioning, etc.)</span>
       </p>
       <p class=MsoListParagraph style='margin-left:.25in'>
-        <span lang=EN-GB style='font-family:Symbol'>·
-          <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <span lang=EN-GB style='font-family:Symbol, sans-serif;'>·
+          <span style='font-family: times, serif; font-size:7.0pt; '>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </span>
         </span>
         <span lang=EN-GB>Classical mail services and treatment</span>
@@ -471,8 +463,8 @@
         <span lang=EN-CA>Within the SEST tool, Services Primary Category has been subdivided in the following:</span>
       </p>
       <p class=MsoListParagraph style='margin-left:.25in'>
-        <span lang=EN-GB style='font-family:Symbol'>·
-          <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <span lang=EN-GB style='font-family:Symbol, sans-serif;'>·
+          <span style='font-family: times, serif; font-size:7.0pt; '>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </span>
         </span>
         <strong>
@@ -481,8 +473,8 @@
         <span lang=EN-GB> (User workspace and environment)</span>
       </p>
       <p class=MsoListParagraph style='margin-left:.25in'>
-        <span lang=EN-GB style='font-family:Symbol'>·
-          <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <span lang=EN-GB style='font-family:Symbol, sans-serif;'>·
+          <span style='font-family: times, serif; font-size:7.0pt; '>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </span>
         </span>
         <strong>
@@ -491,8 +483,8 @@
         <span lang=EN-GB> (Telecommunication Services)</span>
       </p>
       <p class=MsoListParagraph style='margin-left:.25in'>
-        <span lang=EN-GB style='font-family:Symbol'>·
-          <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <span lang=EN-GB style='font-family:Symbol, sans-serif;'>·
+          <span style='font-family: times, serif; font-size:7.0pt; '>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </span>
         </span>
         <strong>
@@ -501,8 +493,8 @@
         <span lang=EN-GB> (Extended Network Service)</span>
       </p>
       <p class=MsoListParagraph style='margin-left:.25in'>
-        <span lang=EN-GB style='font-family:Symbol'>·
-          <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <span lang=EN-GB style='font-family:Symbol, sans-serif;'>·
+          <span style='font-family: times, serif; font-size:7.0pt; '>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </span>
         </span>
         <strong>
@@ -511,8 +503,8 @@
         <span lang=EN-GB> (Local Area Network Service)</span>
       </p>
       <p class=MsoListParagraph style='margin-left:.25in'>
-        <span lang=EN-GB style='font-family:Symbol'>·
-          <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <span lang=EN-GB style='font-family:Symbol, sans-serif;'>·
+          <span style='font-family: times, serif; font-size:7.0pt; '>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </span>
         </span>
         <strong>
@@ -521,8 +513,8 @@
         <span lang=EN-GB> (Services provided by applications)</span>
       </p>
       <p class=MsoListParagraph style='margin-left:.25in'>
-        <span lang=EN-GB style='font-family:Symbol'>·
-          <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <span lang=EN-GB style='font-family:Symbol, sans-serif;'>·
+          <span style='font-family: times, serif; font-size:7.0pt; '>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </span>
         </span>
         <strong>
@@ -531,8 +523,8 @@
         <span lang=EN-GB> (Shared office Services)</span>
       </p>
       <p class=MsoListParagraph style='margin-left:.25in'>
-        <span lang=EN-GB style='font-family:Symbol'>·
-          <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <span lang=EN-GB style='font-family:Symbol, sans-serif;'>·
+          <span style='font-family: times, serif; font-size:7.0pt; '>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </span>
         </span>
         <strong>
@@ -541,8 +533,8 @@
         <span lang=EN-GB> (Equipment provided to end users)</span>
       </p>
       <p class=MsoListParagraph style='margin-left:.25in'>
-        <span lang=EN-GB style='font-family:Symbol'>·
-          <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <span lang=EN-GB style='font-family:Symbol, sans-serif;'>·
+          <span style='font-family: times, serif; font-size:7.0pt; '>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </span>
         </span>
         <strong>
@@ -551,8 +543,8 @@
         <span lang=EN-GB> (Common system Services)</span>
       </p>
       <p class=MsoListParagraph style='margin-left:.25in'>
-        <span lang=EN-GB style='font-family:Symbol'>·
-          <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <span lang=EN-GB style='font-family:Symbol, sans-serif;'>·
+          <span style='font-family: times, serif; font-size:7.0pt; '>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </span>
         </span>
         <strong>
@@ -596,15 +588,15 @@
         </strong>
       </p>
       <p class=MsoListParagraph style='margin-left:.25in'>
-        <span lang=EN-GB style='font-family:Symbol'>·
-          <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <span lang=EN-GB style='font-family:Symbol, sans-serif;'>·
+          <span style='font-family: times, serif; font-size:7.0pt; '>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </span>
         </span>
         <span lang=EN-GB>Processes related to laws, regulations and contractual requirements</span>
       </p>
       <p class=MsoListParagraph style='margin-left:.25in'>
-        <span lang=EN-GB style='font-family:Symbol'>·
-          <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <span lang=EN-GB style='font-family:Symbol, sans-serif;'>·
+          <span style='font-family: times, serif; font-size:7.0pt; '>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </span>
         </span>
         <span lang=EN-GB>Processes for the management of information security
@@ -617,8 +609,8 @@
         <span lang=EN-CA>Within the SEST tool, Management Primary Category has been subdivided in the following:</span>
       </p>
       <p class=MsoListParagraph style='margin-left:.25in'>
-        <span lang=EN-GB style='font-family:Symbol'>·
-          <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <span lang=EN-GB style='font-family:Symbol, sans-serif;'>·
+          <span style='font-family: times, serif; font-size:7.0pt; '>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </span>
         </span>
         <strong>
@@ -628,8 +620,8 @@
         </span>
       </p>
       <p class=MsoListParagraph style='margin-left:.25in'>
-        <span lang=EN-GB style='font-family:Symbol'>·
-          <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <span lang=EN-GB style='font-family:Symbol, sans-serif;'>·
+          <span style='font-family: times, serif; font-size:7.0pt; '>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </span>
         </span>
         <strong>
@@ -639,8 +631,8 @@
         </span>
       </p>
       <p class=MsoListParagraph style='margin-left:.25in'>
-        <span lang=EN-GB style='font-family:Symbol'>·
-          <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <span lang=EN-GB style='font-family:Symbol, sans-serif;'>·
+          <span style='font-family: times, serif; font-size:7.0pt; '>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </span>
         </span>
         <strong>
@@ -650,8 +642,8 @@
         </span>
       </p>
       <p class=MsoListParagraph style='margin-left:.25in'>
-        <span lang=EN-GB style='font-family:Symbol'>·
-          <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <span lang=EN-GB style='font-family:Symbol, sans-serif;'>·
+          <span style='font-family: times, serif; font-size:7.0pt; '>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </span>
         </span>
         <strong>
@@ -661,8 +653,8 @@
         </span>
       </p>
       <p class=MsoListParagraph style='margin-left:.25in'>
-        <span lang=EN-GB style='font-family:Symbol'>·
-          <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <span lang=EN-GB style='font-family:Symbol, sans-serif;'>·
+          <span style='font-family: times, serif; font-size:7.0pt; '>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </span>
         </span>
         <strong>
@@ -671,8 +663,8 @@
         <span lang=EN-GB> (Compliance to law or regulations relative to the protection of information systems)</span>
       </p>
       <p class=MsoListParagraph style='margin-left:.25in'>
-        <span lang=EN-GB style='font-family:Symbol'>·
-          <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <span lang=EN-GB style='font-family:Symbol, sans-serif;'>·
+          <span style='font-family: times, serif; font-size:7.0pt; '>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </span>
         </span>
         <strong>
@@ -711,8 +703,8 @@
         <span lang=EN-CA>:</span>
       </p>
       <p class=MsoListParagraph style='margin-left:.5in'>
-        <span lang=EN-GB style='font-family:Symbol'>·
-          <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <span lang=EN-GB style='font-family:Symbol, sans-serif;'>·
+          <span style='font-family: times, serif; font-size:7.0pt; '>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </span>
         </span>
         <strong>
@@ -721,8 +713,8 @@
         <span lang=EN-GB>(human resource involved in the Business Activity)</span>
       </p>
       <p class=MsoListParagraph style='margin-left:.5in'>
-        <span lang=EN-GB style='font-family:Symbol'>·
-          <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <span lang=EN-GB style='font-family:Symbol, sans-serif;'>·
+          <span style='font-family: times, serif; font-size:7.0pt; '>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </span>
         </span>
         <strong>
@@ -731,8 +723,8 @@
         <span lang=EN-GB>(Any hardware supporting the Service)</span>
       </p>
       <p class=MsoListParagraph style='margin-left:.5in'>
-        <span lang=EN-GB style='font-family:Symbol'>·
-          <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <span lang=EN-GB style='font-family:Symbol, sans-serif;'>·
+          <span style='font-family: times, serif; font-size:7.0pt; '>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </span>
         </span>
         <strong>
@@ -741,8 +733,8 @@
         <span lang=EN-GB>(any COTS software application supporting the Service)</span>
       </p>
       <p class=MsoListParagraph style='margin-left:.5in'>
-        <span lang=EN-GB style='font-family:Symbol'>·
-          <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <span lang=EN-GB style='font-family:Symbol, sans-serif;'>·
+          <span style='font-family: times, serif; font-size:7.0pt; '>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </span>
         </span>
         <strong>
@@ -751,8 +743,8 @@
         <span lang=EN-GB>(physical premise supporting the User Workspace Service)</span>
       </p>
       <p class=MsoListParagraph style='margin-left:.5in'>
-        <span lang=EN-GB style='font-family:Symbol'>·
-          <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <span lang=EN-GB style='font-family:Symbol, sans-serif;'>·
+          <span style='font-family: times, serif; font-size:7.0pt; '>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </span>
         </span>
         <strong>
@@ -761,8 +753,8 @@
         <span lang=EN-GB> (Logical entities: files or databases)</span>
       </p>
       <p class=MsoListParagraph style='margin-left:.5in'>
-        <span lang=EN-GB style='font-family:Symbol'>·
-          <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <span lang=EN-GB style='font-family:Symbol, sans-serif;'>·
+          <span style='font-family: times, serif; font-size:7.0pt; '>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </span>
         </span>
         <strong>
@@ -771,8 +763,8 @@
         <span lang=EN-GB>(Logical entities: transiting data packets or messages)</span>
       </p>
       <p class=MsoListParagraph style='margin-left:.5in'>
-        <span lang=EN-GB style='font-family:Symbol'>·
-          <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <span lang=EN-GB style='font-family:Symbol, sans-serif;'>·
+          <span style='font-family: times, serif; font-size:7.0pt; '>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </span>
         </span>
         <strong>
@@ -781,8 +773,8 @@
         <span lang=EN-GB>(Configuration of the software application supporting the Service)</span>
       </p>
       <p class=MsoListParagraph style='margin-left:.5in'>
-        <span lang=EN-GB style='font-family:Symbol'>·
-          <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <span lang=EN-GB style='font-family:Symbol, sans-serif;'>·
+          <span style='font-family: times, serif; font-size:7.0pt; '>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </span>
         </span>
         <strong>
@@ -791,8 +783,8 @@
         <span lang=EN-GB>(Internal guidelines and procedures)</span>
       </p>
       <p class=MsoListParagraph style='margin-left:.5in'>
-        <span lang=EN-GB style='font-family:Symbol'>·
-          <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <span lang=EN-GB style='font-family:Symbol, sans-serif;'>·
+          <span style='font-family: times, serif; font-size:7.0pt; '>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </span>
         </span>
         <strong>
@@ -801,8 +793,8 @@
         <span lang=EN-GB>(Physical electronic media)</span>
       </p>
       <p class=MsoListParagraph style='margin-left:.5in'>
-        <span lang=EN-GB style='font-family:Symbol'>·
-          <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <span lang=EN-GB style='font-family:Symbol, sans-serif;'>·
+          <span style='font-family: times, serif; font-size:7.0pt; '>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </span>
         </span>
         <strong>
@@ -811,8 +803,8 @@
         <span lang=EN-GB>(Physical non-electronic media –paper document for example)</span>
       </p>
       <p class=MsoListParagraph style='margin-left:.5in'>
-        <span lang=EN-GB style='font-family:Symbol'>·
-          <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <span lang=EN-GB style='font-family:Symbol, sans-serif;'>·
+          <span style='font-family: times, serif; font-size:7.0pt; '>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </span>
         </span>
         <strong>
@@ -821,8 +813,8 @@
         <span lang=EN-GB>(any internally-developed software application supporting the Service)</span>
       </p>
       <p class=MsoListParagraph style='margin-left:.5in'>
-        <span lang=EN-GB style='font-family:Symbol'>·
-          <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <span lang=EN-GB style='font-family:Symbol, sans-serif;'>·
+          <span style='font-family: times, serif; font-size:7.0pt; '>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </span>
         </span>
         <strong>
@@ -831,8 +823,8 @@
         <span lang=EN-GB>(Configuration of the hardware supporting the Service)</span>
       </p>
       <p class=MsoListParagraph style='margin-left:.5in'>
-        <span lang=EN-GB style='font-family:Symbol'>·
-          <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <span lang=EN-GB style='font-family:Symbol, sans-serif;'>·
+          <span style='font-family: times, serif; font-size:7.0pt; '>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </span>
         </span>
         <strong>
@@ -841,8 +833,8 @@
         <span lang=EN-GB>(Auxiliary hardware supporting the Service – fridges, air conditioning, etc.)</span>
       </p>
       <p class=MsoListParagraph style='margin-left:.5in'>
-        <span lang=EN-GB style='font-family:Symbol'>·
-          <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <span lang=EN-GB style='font-family:Symbol, sans-serif;'>·
+          <span style='font-family: times, serif; font-size:7.0pt; '>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </span>
         </span>
         <strong>
@@ -851,8 +843,8 @@
         <span lang=EN-GB>(Means for accessing the Service –physical or logical)</span>
       </p>
       <p class=MsoListParagraph style='margin-left:.5in'>
-        <span lang=EN-GB style='font-family:Symbol'>·
-          <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <span lang=EN-GB style='font-family:Symbol, sans-serif;'>·
+          <span style='font-family: times, serif; font-size:7.0pt; '>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </span>
         </span>
         <strong>

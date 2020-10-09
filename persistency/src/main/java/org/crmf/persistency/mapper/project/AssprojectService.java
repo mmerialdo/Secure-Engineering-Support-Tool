@@ -35,25 +35,33 @@ import org.crmf.persistency.mapper.general.CleanDatabaseMapper;
 import org.crmf.persistency.mapper.general.SestobjMapper;
 import org.crmf.persistency.mapper.user.RoleService;
 import org.crmf.persistency.mapper.user.UserMapper;
-import org.crmf.persistency.session.PersistencySessionFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 //This class manages the database interactions related to the AssessmentProject
+@Service
+@Qualifier("default")
 public class AssprojectService implements AssprojectServiceInterface {
 
   private static final Logger LOG = LoggerFactory.getLogger(AssprojectService.class.getName());
-  PersistencySessionFactory sessionFactory;
 
+  @Autowired
   SysprojectService sysprjService;
+  @Autowired
   SysparticipantService syspartService;
+  @Autowired
   RoleService roleService;
+  @Autowired
   AssAuditService auditService;
-
+  @Autowired
+  private SqlSession sqlSession;
   /*
    * (non-Javadoc)
    *
@@ -63,7 +71,6 @@ public class AssprojectService implements AssprojectServiceInterface {
    */
   @Override
   public String insert(AssessmentProject assprojectDM) throws Exception {
-    SqlSession sqlSession = sessionFactory.getSession();
 
     LOG.info("Insert project");
     AssProject project = new AssProject();
@@ -92,17 +99,12 @@ public class AssprojectService implements AssprojectServiceInterface {
       project.setSestobjId(sestobj.getIdentifier());
 
       projectMapper.insert(project);
-      sqlSession.commit();
-
       LOG.info("1.Insert audit ");
 
       auditService.insertDefaultQuestionnaires(project.getId());
     } catch (Exception ex) {
       LOG.error(ex.getMessage(), ex);
-      sqlSession.rollback();
       throw ex;
-    } finally {
-      sqlSession.close();
     }
     return sestobj.getIdentifier();
   }
@@ -115,7 +117,6 @@ public class AssprojectService implements AssprojectServiceInterface {
    */
   @Override
   public void deleteCascade(String identifier) {
-    SqlSession sqlSession = sessionFactory.getSession();
 
     LOG.info("Delete assessment project cascade " + identifier);
     try {
@@ -129,8 +130,6 @@ public class AssprojectService implements AssprojectServiceInterface {
       LOG.info("Delete project audit " + audit.getId());
       auditMapper.delete(audit.getId());
 
-      sqlSession.commit();
-
       cleandbMapper.cleanAsset();
       cleandbMapper.cleanVulnerability();
       cleandbMapper.cleanThreat();
@@ -139,12 +138,8 @@ public class AssprojectService implements AssprojectServiceInterface {
       cleandbMapper.cleanSafeguard();
       cleandbMapper.cleanSestObj();
 
-      sqlSession.commit();
     } catch (Exception ex) {
       LOG.error(ex.getMessage());
-      sqlSession.rollback();
-    } finally {
-      sqlSession.close();
     }
   }
 
@@ -157,7 +152,6 @@ public class AssprojectService implements AssprojectServiceInterface {
   @Override
   public AssessmentProject getByIdentifier(String identifier) {
 
-    SqlSession sqlSession = sessionFactory.getSession();
     try {
       AssprojectMapper projectMapper = sqlSession.getMapper(AssprojectMapper.class);
       SysprojectMapper sysprojectMapper = sqlSession.getMapper(SysprojectMapper.class);
@@ -172,8 +166,6 @@ public class AssprojectService implements AssprojectServiceInterface {
     } catch (Exception ex) {
       LOG.error(ex.getMessage());
       return null;
-    } finally {
-      sqlSession.close();
     }
   }
 
@@ -181,7 +173,6 @@ public class AssprojectService implements AssprojectServiceInterface {
   public AssessmentProject getByIdentifierFull(String identifier) {
 
     LOG.info("getByIdentifierFull " + identifier);
-    SqlSession sqlSession = sessionFactory.getSession();
     AssessmentProject projectToSend = null;
     try {
       AssprojectMapper projectMapper = sqlSession.getMapper(AssprojectMapper.class);
@@ -244,14 +235,12 @@ public class AssprojectService implements AssprojectServiceInterface {
       SestAuditModel audit = auditService.getByProjectAndType(project.getSestobjId(), AuditTypeEnum.SECURITY, true);
       if (audit != null) {
         LOG.info("getting audit " + audit.getId());
-        projectToSend.setAudits(new ArrayList<>(Arrays.asList(audit)));
+        projectToSend.setAudits(Arrays.asList(audit));
       }
 
     } catch (Exception ex) {
       LOG.error(ex.getMessage());
       return null;
-    } finally {
-      sqlSession.close();
     }
 
     try {
@@ -274,7 +263,6 @@ public class AssprojectService implements AssprojectServiceInterface {
   @Override
   public List<AssessmentProject> getAll() {
     LOG.info("called getAll");
-    SqlSession sqlSession = sessionFactory.getSession();
     AssprojectMapper projectMapper = sqlSession.getMapper(AssprojectMapper.class);
     SysprojectMapper sysprojectMapper = sqlSession.getMapper(SysprojectMapper.class);
     AsstemplateMapper templateMapper = sqlSession.getMapper(AsstemplateMapper.class);
@@ -315,8 +303,6 @@ public class AssprojectService implements AssprojectServiceInterface {
     } catch (Exception ex) {
       LOG.error(ex.getMessage());
       return null;
-    } finally {
-      sqlSession.close();
     }
     return projectsToSend;
   }
@@ -324,13 +310,8 @@ public class AssprojectService implements AssprojectServiceInterface {
   @Override
   public Integer getIdByIdentifier(String identifier) {
     LOG.info("called getIdByIdentifier");
-    SqlSession sqlSession = sessionFactory.getSession();
-    try {
-      AssprojectMapper projectMapper = sqlSession.getMapper(AssprojectMapper.class);
-      return projectMapper.getIdByIdentifier(identifier);
-    } finally {
-      sqlSession.close();
-    }
+    AssprojectMapper projectMapper = sqlSession.getMapper(AssprojectMapper.class);
+    return projectMapper.getIdByIdentifier(identifier);
   }
 
   @Override
@@ -338,15 +319,12 @@ public class AssprojectService implements AssprojectServiceInterface {
     LOG.info("called getById");
     AssessmentProject projectToSend;
 
-    SqlSession sqlSession = sessionFactory.getSession();
     try {
       AssprojectMapper projectMapper = sqlSession.getMapper(AssprojectMapper.class);
       projectToSend = projectMapper.getById(id).convertToModel();
     } catch (Exception ex) {
       LOG.error(ex.getMessage());
       return null;
-    } finally {
-      sqlSession.close();
     }
 
     return projectToSend;
@@ -354,9 +332,6 @@ public class AssprojectService implements AssprojectServiceInterface {
 
   @Override
   public void update(AssessmentProject assprojectDM) {
-
-    SqlSession sqlSession = sessionFactory.getSession();
-
     LOG.info("Update project with identifier " + assprojectDM.getIdentifier());
 
     AssProject project = new AssProject();
@@ -382,18 +357,11 @@ public class AssprojectService implements AssprojectServiceInterface {
       project.setSysprojectId(sysprojectId);
       projectMapper.update(project);
 
-      sqlSession.commit();
-
       sysproject.setId(sysprojectId);
       sysprojectMapper.update(sysproject);
 
-      sqlSession.commit();
-
     } catch (Exception ex) {
       LOG.error(ex.getMessage());
-      sqlSession.rollback();
-    } finally {
-      sqlSession.close();
     }
 
     try {
@@ -403,45 +371,4 @@ public class AssprojectService implements AssprojectServiceInterface {
       LOG.error(e.getMessage());
     }
   }
-
-  public SysprojectService getSysprjService() {
-    return sysprjService;
-  }
-
-  public SysparticipantService getSyspartService() {
-    return syspartService;
-  }
-
-  public RoleService getRoleService() {
-    return roleService;
-  }
-
-  public AssAuditService getAuditService() {
-    return auditService;
-  }
-
-  public void setSysprjService(SysprojectService sysprjService) {
-    this.sysprjService = sysprjService;
-  }
-
-  public void setSyspartService(SysparticipantService syspartService) {
-    this.syspartService = syspartService;
-  }
-
-  public void setRoleService(RoleService roleService) {
-    this.roleService = roleService;
-  }
-
-  public void setAuditService(AssAuditService auditService) {
-    this.auditService = auditService;
-  }
-
-  public PersistencySessionFactory getSessionFactory() {
-    return sessionFactory;
-  }
-
-  public void setSessionFactory(PersistencySessionFactory sessionFactory) {
-    this.sessionFactory = sessionFactory;
-  }
-
 }

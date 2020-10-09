@@ -12,10 +12,6 @@
 <div id="businesstabcontainer">
   <div id="menubusiness" class="container">
 
-    <!--<button type="button" class="btn btn-primary btn-sm" (click)="displayJSON()">Save</button>-->
-
-
-
     <nav class="navbar navbar-default navbar-static-top">
       <div class="container-fluid">
         <button style="margin-top: 5px;border: 1px solid " type="button" class="btn btn-secondary btn-xs" (click)="changeView()">
@@ -26,13 +22,7 @@
                 [disabled]="!enableSaveButton || !isLockedByCurrentUser()">
           <strong>Save Asset Model</strong>
         </button>
-
-        <!--<button style="margin-top: 5px;border: 1px solid " type="button" class="btn btn-secondary btn-xs" (click)="loadJSON()"><strong>Load</strong> </button>-->
-        <!--<button style="margin-top: 5px;border: 1px solid " type="button" class="btn btn-secondary btn-xs" (click)="rimuovo()"><strong>Rimuovo</strong> </button>-->
-        <!--<button style="margin-top: 5px;border: 1px solid " type="button" class="btn btn-secondary btn-xs" (click)=" getAsset()"><strong>Load Asset</strong> </button>-->
-
         <hr style="clear: both; color: black; background-color: black; height: 1px; border-width: 0;">
-
         <button style="margin-top: 5px;border: 1px solid " type="button" class="btn btn-secondary btn-xs" (click)="exportPNG()">
           <strong>Export PNG</strong>
         </button>
@@ -49,18 +39,18 @@
                 Organization </label>
             </li>
             <li style="margin-top: 5px">
-              <img src="../../../assets/process.png" height="20" width="30" (click)="createProcess()" style="cursor: pointer;" />
-              <label style="cursor: pointer;" (click)="createProcess()" alt="process">
+              <img src="../../../assets/process.png" height="20" width="30" (click)="createProcess()" style="cursor: pointer;" alt="process"/>
+              <label style="cursor: pointer;" (click)="createProcess()">
                 Process </label>
             </li>
             <li style="margin-top: 5px">
-              <img src="../../../assets/act.png" height="20" width="30" (click)="createActivity()" style="cursor: pointer;" />
-              <label style="cursor: pointer;" (click)="createActivity()" alt="activity">
+              <img src="../../../assets/act.png" height="20" width="30" (click)="createActivity()" style="cursor: pointer;" alt="activity"/>
+              <label style="cursor: pointer;" (click)="createActivity()">
                 Activity </label>
             </li>
             <li style="margin-top: 5px">
-              <img src="../../../assets/mal.png" height="20" width="30" (click)="createMalfunction()" style="cursor: pointer;" />
-              <label style="cursor: pointer;" (click)="createMalfunction()" alt="malfunction">
+              <img src="../../../assets/mal.png" height="20" width="30" (click)="createMalfunction()" style="cursor: pointer;" alt="malfunction"/>
+              <label style="cursor: pointer;" (click)="createMalfunction()">
                 Malfunction </label>
             </li>
 
@@ -74,11 +64,9 @@
           <ul class="nav navbar-nav">
 
             <li style="margin-top: 5px">
-              <img src="../../../assets/asset.png" height="20" width="30" (click)="createAsset()" style="cursor: pointer;" />
-              <label style="cursor: pointer;margin-bottom: 15px" (click)="createAsset()" alt="asset"> Asset </label>
+              <img src="../../../assets/asset.png" height="20" width="30" (click)="createAsset()" style="cursor: pointer;" alt="asset"/>
+              <label style="cursor: pointer;margin-bottom: 15px" (click)="createAsset()"> Asset </label>
             </li>
-
-
           </ul>
         </div>
         <hr style="clear: both; color: black; background-color: black; height: 1px; border-width: 0;">
@@ -136,62 +124,28 @@
 
       </div>
     </nav>
-
   </div>
 
-
-
   <div id="centerBus" style="max-height: 780px;overflow: scroll">
-
-
-
     <div id="canvas-div" style="width: 5000px;height:4001px"></div>
-
-
-
-
-
   </div>
 
   <div id="properties" [ngSwitch]="propertyCheck">
     <div *ngSwitchCase="'businessProcess'">
-
       <form class="col-md-12 well" style="padding-top: 1px">
-
         <div class="row">
-
           <div class="col-md-12">
-
             <h1>Business Process</h1>
-
             <hr>
-
           </div>
-
         </div>
-
 
         <div class="row">
           <div class="col-md-11">
-
-
-
             <div *ngIf="name!=null">
               <label>Name :</label>
               <p>{{ name }}</p>
             </div>
-
-            <!-- <div *ngIf="description!=null">
-            <label>Description :</label>
-            <p style="max-width: 95%">{{description}}</p>
-            </div>
-
-            <div *ngIf="goal!=null">
-              <label>Goal :</label>
-              <p>{{goal}}</p>
-            </div>-->
-
-
             <div *ngIf="type!=null">
               <label>Type :</label>
               <p>{{ type }}</p>
@@ -201,21 +155,13 @@
               <label>Owner :</label>
               <p>{{ owner }}</p>
             </div>
-
-
           </div>
-
-
         </div>
-
-
-
         <div style="margin-top: 10px">
           <button style="border:1px solid" type="button" class="btn btn-secondary btn-xs" (click)="changeMode()">
             <strong>Edit Process</strong>
           </button>
         </div>
-
 
         <div class="row">
           <div class="col-md-12">
@@ -225,7 +171,6 @@
               <p-dataList [value]="showSelectedRequirements" [style]="{'height':'200px'}">
 
                 <ng-template let-primaryAssetCategory pTemplate="item">
-                  <!--{{primaryAssetCategory.name}} - {{primaryAssetCategory.category}}-->
                   {{ primaryAssetCategory }}
                 </ng-template>
               </p-dataList>
@@ -235,33 +180,20 @@
               <button style="border:1px solid" type="button" class="btn btn-secondary btn-xs" (click)="requirementsMode()">
                 <strong>Edit Requirements</strong>
               </button>
-
             </div>
-
-
           </div>
-
         </div>
       </form>
-
-
     </div>
     <div *ngSwitchCase="'businessActivity'">
 
       <form class="col-md-12 well" style="padding-top: 1px">
-
         <div class="row">
-
           <div class="col-md-12">
-
             <h1>Business Activity</h1>
-
             <hr>
-
           </div>
-
         </div>
-
 
         <div class="row">
           <div class="col-md-11">
@@ -271,32 +203,17 @@
               <p>{{ name }}</p>
             </div>
 
-            <!-- <div *ngIf="description !== null">
-            <label>Description :</label>
-            <p style="max-width: 95%">{{description}}</p>
-            </div>
-
-            <div *ngIf="goal!=null">
-              <label>Goal :</label>
-              <p>{{goal}}</p>
-            </div>
--->
             <div *ngIf="owner!=null">
               <label>Owner :</label>
               <p>{{ owner }}</p>
             </div>
-
 
             <div style="margin-top: 10px">
               <button style="border: 1px solid" type="button" class="btn btn-secondary btn-xs" (click)="changeMode()">
                 <strong>Edit Activity</strong>
               </button>
-
             </div>
-
           </div>
-
-
         </div>
 
         <div class="row">
@@ -307,45 +224,29 @@
               <p-dataList [value]="showSelectedRequirements" [style]="{'height':'100px'}">
 
                 <ng-template let-primaryAssetCategory pTemplate="item">
-                  <!--{{primaryAssetCategory.name}} - {{primaryAssetCategory.category}}-->
                   {{ primaryAssetCategory }}
                 </ng-template>
               </p-dataList>
             </div>
-
             <div>
               <button style="border: 1px solid" type="button" class="btn btn-secondary btn-xs" (click)="requirementsMode()">
                 <strong>Edit Requirements</strong>
               </button>
-
             </div>
-
-
           </div>
-
         </div>
-
       </form>
-
-
     </div>
 
     <div *ngSwitchCase="'businessOrg'">
 
       <form class="col-md-12 well" style="padding-top: 1px">
-
         <div class="row">
-
           <div class="col-md-12">
-
             <h1>Business Organization</h1>
-
             <hr>
-
           </div>
-
         </div>
-
 
         <div class="row">
           <div class="col-md-11">
@@ -354,35 +255,17 @@
               <label>Name :</label>
               <p>{{ name }}</p>
             </div>
-
-            <!-- <div *ngIf="description!=null">
-            <label>Description :</label>
-            <p style="max-width: 95%">{{description}}</p>
-            </div>
-
-            <div *ngIf="goal!=null">
-              <label>Goal :</label>
-              <p>{{goal}}</p>
-            </div>
--->
             <div *ngIf="owner!=null">
-
               <label>Owner :</label>
               <p>{{ owner }}</p>
-
             </div>
-
 
             <div style="margin-top: 10px">
               <button style="border: 1px solid" type="button" class="btn btn-secondary btn-xs" (click)="changeMode()">
                 <strong>Edit Organization</strong>
               </button>
-
             </div>
-
           </div>
-
-
         </div>
         <div class="row">
           <div class="col-md-12">
@@ -392,7 +275,6 @@
               <p-dataList [value]="showSelectedRequirements" [style]="{'height':'100px'}">
 
                 <ng-template let-primaryAssetCategory pTemplate="item">
-                  <!--{{primaryAssetCategory.name}} - {{primaryAssetCategory.category}}-->
                   {{ primaryAssetCategory }}
                 </ng-template>
               </p-dataList>
@@ -402,34 +284,21 @@
               <button style="border: 1px solid" type="button" class="btn btn-secondary btn-xs" (click)="requirementsMode()">
                 <strong>Edit Requirements</strong>
               </button>
-
             </div>
-
-
           </div>
-
         </div>
       </form>
-
-
     </div>
 
     <div *ngSwitchCase="'businessMalfun'">
 
       <form class="col-md-12 well" style="padding-top: 1px">
-
         <div class="row">
-
           <div class="col-md-12">
-
             <h1>Malfunction</h1>
-
             <hr>
-
           </div>
-
         </div>
-
 
         <div class="row">
           <div class="col-md-11">
@@ -438,19 +307,12 @@
               <label>Name :</label>
               <p>{{ name }}</p>
             </div>
-
-
           </div>
-
-
         </div>
-
 
         <div class="row">
 
           <div class="col-md-12">
-
-
             <div *ngIf="technicalDescription!=null">
               <label>Technical Description :</label>
               <p style="max-width: 95%">{{ technicalDescription }}</p>
@@ -460,81 +322,42 @@
               <label>Technical Consequences :</label>
               <p>{{ technicalConsequence }}</p>
             </div>
-
           </div>
-
-
         </div>
 
         <div class="row">
-
           <div class="col-md-6" *ngIf="malfunctionConfidentiality">
-
             <p>Confidentiality Loss</p>
-
-
           </div>
 
           <div class="col-md-6" *ngIf="malfunctionAvailability">
-
-
-
             <p>Availability Loss</p>
-
-
           </div>
-
-
-
         </div>
-
 
         <div class="row">
-
-
           <div class="col-md-6" *ngIf="malfunctionIntegrity">
-
             <p>Integrity Loss</p>
-
           </div>
-
-
 
           <div class="col-md-6" *ngIf="malfunctionEfficency">
-
-
             <p>Efficiency Loss</p>
           </div>
-
-
-
-
         </div>
 
-
-
         <div style="margin-top: 10px">
-
-
           <button style="border: 1px solid" type="button" class="btn btn-secondary btn-xs" (click)="changeMode()">
             <strong>Edit Malfunction</strong>
           </button>
-
-
         </div>
         <div class="row">
           <div class="col-md-12">
             <hr>
             <h1>Requirements</h1>
-
-            <!--to hide empty list-->
-
-            <!--<div [ngClass]="{'my-class': isClassVisible }"style="overflow: auto; width: 100%; max-height:100px;display: none">-->
             <div style="overflow: auto; width: 100%; max-height:100px;display: none">
               <p-dataList [value]="showSelectedRequirements" [style]="{'height':'100px'}">
 
                 <ng-template let-primaryAssetCategory pTemplate="item">
-                  <!--{{primaryAssetCategory.name}} - {{primaryAssetCategory.category}}-->
                   {{ primaryAssetCategory }}
                 </ng-template>
               </p-dataList>
@@ -544,46 +367,29 @@
               <button style="border: 1px solid" type="button" class="btn btn-secondary btn-xs" (click)="requirementsMode()">
                 <strong>Edit Requirements</strong>
               </button>
-
             </div>
-
-
           </div>
-
         </div>
-
-
       </form>
-
 
     </div>
     <div *ngSwitchCase="'edge'">
 
       <form class="col-md-12 well" style="padding-top: 1px">
-
         <div class="row">
-
           <div class="col-md-12">
-
             <h1>Edge</h1>
-
             <hr>
-
           </div>
-
         </div>
 
-
         <div class="row">
           <div class="col-md-12">
-
-
             <label>Source Node :</label>
             <p>{{ sourceNode }}</p>
 
             <label>Target Node :</label>
             <p>{{ targetNode }}</p>
-
 
             <div class="row">
               <div class="col-md-6">
@@ -603,22 +409,8 @@
 
               </div>
             </div>
-
           </div>
-
-
         </div>
-
-
-        <!--<div style="margin-top: 10px">
-
-
-          <button style="border: 1px solid" type="button" class="btn btn-secondary btn-sm" (click)="changeEdgeMode()"><strong>Edit Edge</strong></button>
-
-
-        </div>-->
-
-
       </form>
 
 
@@ -626,19 +418,12 @@
     <div *ngSwitchCase="'businessAsset'">
 
       <form class="col-md-12 well" style="padding-top: 1px;height: auto;overflow: auto;max-height: 780px">
-
         <div class="row">
-
           <div class="col-md-12">
-
             <h1>Asset</h1>
-
             <hr>
-
           </div>
-
         </div>
-
 
         <div class="row">
           <div class="col-md-12">
@@ -650,29 +435,16 @@
 
             <div *ngIf="primaryAssetCategory.length>0">
               <label>Primary Asset Category :</label>
-              <!--<div style="overflow: auto; width: 100%; height:100px">-->
-              <!--<p-dataList [value]="primaryAssetCategory" [style]="{'height':'100px'}">-->
-
-              <!--<ng-template let-primaryAssetCategory pTemplate="item">-->
-              <!--&lt;!&ndash;{{primaryAssetCategory.name}} - {{primaryAssetCategory.category}}&ndash;&gt;-->
-              <!--{{primaryAssetCategory}}-->
-              <!--</ng-template>-->
-              <!--</p-dataList>-->
-              <!--</div>-->
-
               <p>{{ primaryAssetCategory[0] }}</p>
             </div>
-
 
             <div *ngIf="secondaryAssetCategory!=null">
               <label>Secondary Asset Category :</label>
               <p>{{ secondaryAssetCategory }}</p>
             </div>
 
-
             <div *ngIf="showMalfunction.length>0">
               <label>Malfunctions :</label>
-
 
               <p-dataList [value]="showMalfunction" [style]="{'height':'auto','max-height':'100px','overflow': 'auto','width': '100%'}">
 
@@ -704,20 +476,13 @@
                 <p>{{ assetEfficiency }}</p>
               </div>
             </div>
-
           </div>
-
         </div>
 
-
         <div style="margin-top: 10px">
-
-
           <button style="border: 1px solid" type="button" class="btn btn-secondary btn-xs" (click)="changeMode()">
             <strong>Edit Asset</strong>
           </button>
-
-
         </div>
 
         <div class="row">
@@ -728,7 +493,6 @@
               <p-dataList [value]="showSelectedRequirements" [style]="{'height':'100px'}">
 
                 <ng-template let-primaryAssetCategory pTemplate="item">
-                  <!--{{primaryAssetCategory.name}} - {{primaryAssetCategory.category}}-->
                   {{ primaryAssetCategory }}
                 </ng-template>
               </p-dataList>
@@ -738,41 +502,22 @@
               <button style="border: 1px solid" type="button" class="btn btn-secondary btn-xs" (click)="requirementsMode()">
                 <strong>Edit Requirements</strong>
               </button>
-
             </div>
-
-
           </div>
-
         </div>
-
-
-
-
-
       </form>
-
-
     </div>
-
-
   </div>
-
 </div>
 
 
 <p-dialog header="Edit Requirements for {{name}} " [(visible)]="displayRequirements" modal="modal" width="1500" responsive="true">
 
-
-
   <div class="col-md-12">
     <div class="row">
       <div class="col-md-2">
-
         <div class="row">
-
           <label style="font-size: 16px">Filter by: </label>
-
         </div>
 
         <div class="row">
@@ -791,25 +536,15 @@
         <div class="row">
 
           <label>Subcategory</label>
-
-
           <select [(ngModel)]="selectedSubcategory" [disabled]="selectedCategory === undefined" (ngModelChange)="checkedSubCategory()"
                   name="profile">
             <option *ngFor="let c of subcategoryList" [ngValue]="c.subcategory"> {{ c.subcategory }} </option>
           </select>
-
         </div>
-
-
-
-
       </div>
 
-
       <div class="col-md-10">
-
         <div style="float: left">
-
           <div style="margin-bottom: 10px; text-align: center;font-size: 18px">
             <strong>Requirements List</strong>
           </div>
@@ -825,9 +560,7 @@
             <button type="button" class="btn btn-default btn-sm" [disabled]="chosenRequirement === undefined" style="margin-top: 5px"
                     (click)="removeRequirement()">Remove</button>
           </div>
-
         </div>
-
 
         <div style="float: left">
           <div style="margin-bottom: 10px; text-align: center;font-size: 18px">
@@ -835,12 +568,8 @@
           </div>
           <p-listbox [options]="selectedRequirementList" [(ngModel)]="chosenRequirement" (ngModelChange)="requirementDescription(chosenRequirement,true)"
                      filter="filter" [style]="{'width':'500px','height':'250px','max-height':'250px', 'overflow-y':'auto'}"></p-listbox>
-
         </div>
-
       </div>
-
-
     </div>
 
     <div class="container-fluid" *ngIf="selectedRequirement || chosenRequirement">
@@ -848,10 +577,8 @@
         <fieldset class="for-panel">
           <legend>Requirement Detail</legend>
           <div class="row">
-            <!-- First Column -->
             <div class="col-xs-3">
               <div class="row">
-                <!-- name row -->
                 <div class="col-xs-5">
                   <label>Name:</label>
                 </div>
@@ -862,7 +589,6 @@
               <div class="row">
                 <div class="col-xs-5">
                   <label>Category: </label>
-                  <!-- description row -->
                 </div>
                 <div class="col-xs-7">
                   <p>{{ reqCat }}</p>
@@ -871,7 +597,6 @@
               <div class="row">
                 <div class="col-xs-5">
                   <label>Sub Category: </label>
-                  <!-- description row -->
                 </div>
                 <div class="col-xs-7">
                   <p>{{ reqSub }}</p>
@@ -880,7 +605,6 @@
               <div class="row">
                 <div class="col-xs-5">
                   <label>Type: </label>
-                  <!-- description row -->
                 </div>
                 <div class="col-xs-7">
                   <p>{{ reqTyp }}</p>
@@ -889,32 +613,17 @@
               <div class="row">
                 <div class="col-xs-5">
                   <label>Priority: </label>
-                  <!-- description row -->
                 </div>
                 <div class="col-xs-7">
                   <p>{{ reqPri }}</p>
                 </div>
               </div>
             </div>
-            <!-- Second Column -->
             <div class="col-xs-9">
-              <!--<div class="row">  &lt;!&ndash; name row &ndash;&gt;-->
-              <!--<div class="col-xs-2">-->
-              <!--<label>Name:</label>-->
-              <!--</div>-->
-              <!--<div class="col-xs-10">-->
-              <!--<p>Joker</p>-->
-              <!--</div>-->
-              <!--</div>-->
               <div class="row">
-                <!-- description row -->
                 <div class="col-xs-1">
                   <label>Description: </label>
                 </div>
-
-                <!--<div class="col-xs-11">-->
-                <!--<p style="text-align:justify"><pre>{{reqDes}}</pre></p>-->
-                <!--</div>-->
                 <div class="col-xs-11">
                   <pre>{{ reqDes }}</pre>
                 </div>
@@ -926,10 +635,6 @@
     </div>
 
   </div>
-
-  <!--aggiungere qui nuova riga per la descrizione-->
-
-
 
 
 
@@ -984,9 +689,6 @@
         <select formControlName="ownerEA" class="form-control" name="ownerEA" id="ownerEA">
           <option *ngFor="let c of ownerListActivity" [ngValue]="c.name + ' '+c.surname"> {{ c.name }} {{ c.surname }} </option>
         </select>
-
-
-        <!--<control-messages [control]="businessEditActivityForm.controls.ownerEA"></control-messages>-->
       </div>
 
       <span  class="cols-sm-2 control-label">* - mandatory field</span>
@@ -1054,7 +756,6 @@
         <select formControlName="ownerEP" class="form-control" name="ownerEP" id="ownerEP">
           <option *ngFor="let c of ownerListProcess" [ngValue]="c.name +' '+ c.surname"> {{ c.name }} {{ c.surname }} </option>
         </select>
-        <!--<control-messages [control]="businessEditElementForm.controls.ownerEP"></control-messages>-->
       </div>
       <span  class="cols-sm-2 control-label">* - mandatory field</span>
 
@@ -1110,7 +811,6 @@
         <select formControlName="ownerEO" class="form-control" name="ownerEA" id="ownerEO">
           <option *ngFor="let c of ownerListOrganization" [ngValue]="c.name +' '+ c.surname"> {{ c.name }} {{ c.surname }} </option>
         </select>
-        <!--<control-messages [control]="businessEditOrgForm.controls.ownerEO"></control-messages>-->
       </div>
       <span  class="cols-sm-2 control-label">* - mandatory field</span>
 
@@ -1165,16 +865,11 @@
         <label for="descriptionET">Description</label>
         <textarea formControlName="descriptionET" [(ngModel)]="technicalDescription" rows="4" class="form-control" name="descriptionET"
                   id="descriptionET"> </textarea>
-
-        <!--<control-messages [control]="businessEditMalfunctioForm.controls.descriptionET"></control-messages>-->
       </div>
-
 
       <div [formGroup]="businessEditMalfunctioForm" class="form-group">
         <label for="consE">Consequences</label>
         <textarea formControlName="consE" [(ngModel)]="technicalConsequence" rows="4" class="form-control" name="consE" id="consE"> </textarea>
-
-        <!--<control-messages [control]="businessEditMalfunctioForm.controls.consE"></control-messages>-->
       </div>
 
       <div class="col-md-6">
@@ -1186,9 +881,7 @@
         <label>
           <input #avaLossE type="checkbox" [checked]="malfunctionAvailability" (change)="malfunctionAvailability= avaLossE.checked"> Availability Loss
         </label>
-
       </div>
-
 
       <div class="col-md-6">
 
@@ -1200,8 +893,6 @@
           <input #effLossE type="checkbox" [checked]="malfunctionEfficency" (change)="malfunctionEfficency= effLossE.checked"> Efficiency Loss
         </label>
       </div>
-
-
     </div>
 
     <div class="col-md-6">
@@ -1209,30 +900,22 @@
       <h1>Functional</h1>
       <hr>
 
-
       <div [formGroup]="businessEditMalfunctioForm" class="form-group">
         <label for="descriptionEF">Description</label>
         <textarea formControlName="descriptionEF" [(ngModel)]="functionalDescription" rows="4" class="form-control" name="descriptionEF"
                   id="descriptionEF"> </textarea>
-        <!--<p *ngIf="!editMode"> Suppory MCS </p>-->
-        <!--<control-messages [control]="businessEditMalfunctioForm.controls.descriptionEF"></control-messages>-->
       </div>
 
 
       <div [formGroup]="businessEditMalfunctioForm" class="form-group">
         <label for="consEF">Consequences</label>
         <textarea formControlName="consEF" [(ngModel)]="functionalConsequence" rows="4" class="form-control" name="consEF" id="consEF"> </textarea>
-        <!--<p *ngIf="!editMode"> Suppory MCS </p>-->
-        <!--<control-messages [control]="businessEditMalfunctioForm.controls.consEF"></control-messages>-->
       </div>
-
 
       <div [formGroup]="businessEditMalfunctioForm" class="form-group">
         <label for="typeEF">Functional Malfunction Type (*)</label>
-        <i class="fa fa-info-circle" (click)="infoMalfunctionType()" style="cursor:pointer;margin-left:1px;"></i>
+        <em class="fa fa-info-circle" (click)="infoMalfunctionType()" style="cursor:pointer;margin-left:1px;"></em>
         <select formControlName="typeEF" class="form-control" name="typeEF" id="typeEF">
-
-
           <option value="Completeness_Lack">Completeness Lack</option>
           <option value="Compliance_Lack">Compliance Lack</option>
           <option value="Control_Lack">Control Lack</option>
@@ -1244,17 +927,12 @@
         <control-messages [control]="businessEditMalfunctioForm.controls.typeEF"></control-messages>
 
       </div>
-
-
     </div>
-
   </div>
-
 
   <div class="row">
 
     <div class="col-md-12">
-
       <span class="h1">Seriousness</span> (*)
       <hr>
 
@@ -1262,61 +940,43 @@
 
         <div [formGroup]="businessEditMalfunctioForm" class="form-group">
           <label for="lowE" style="color: green">Low</label>
-          <i class="fa fa-info-circle" (click)="infoSeriousness()" style="cursor:pointer;margin-left:1px;"></i>
+          <em class="fa fa-info-circle" (click)="infoSeriousness()" style="cursor:pointer;margin-left:1px;"></em>
           <textarea formControlName="lowE" [(ngModel)]="low" class="form-control" rows="3" name="lowE" id="lowE" [readonly]="(!malfunctionEfficency&& !malfunctionIntegrity && !malfunctionConfidentiality&& !malfunctionAvailability)"> </textarea>
-
-
         </div>
-
-
       </div>
 
       <div class="col-md-3">
 
         <div [formGroup]="businessEditMalfunctioForm" class="form-group">
           <label for="mediumE" style="color: #ffdb00">Medium</label>
-          <i class="fa fa-info-circle" (click)="infoSeriousness()" style="cursor:pointer;margin-left:1px;"></i>
+          <em class="fa fa-info-circle" (click)="infoSeriousness()" style="cursor:pointer;margin-left:1px;"></em>
           <textarea formControlName="mediumE" [(ngModel)]="medium" rows="3" class="form-control" name="mediumE" id="mediumE" [readonly]="(!malfunctionEfficency&& !malfunctionIntegrity && !malfunctionConfidentiality&& !malfunctionAvailability)"> </textarea>
-
-
         </div>
-
-
       </div>
 
       <div class="col-md-3">
 
         <div [formGroup]="businessEditMalfunctioForm" class="form-group">
           <label for="highE" style="color: orange">High</label>
-          <i class="fa fa-info-circle" (click)="infoSeriousness()" style="cursor:pointer;margin-left:1px;"></i>
+          <em class="fa fa-info-circle" (click)="infoSeriousness()" style="cursor:pointer;margin-left:1px;"></em>
           <textarea formControlName="highE" [(ngModel)]="high" rows="3" class="form-control" name="highE" id="highE" [readonly]="(!malfunctionEfficency&& !malfunctionIntegrity && !malfunctionConfidentiality&& !malfunctionAvailability)"> </textarea>
-
-
         </div>
-
-
       </div>
 
       <div class="col-md-3">
 
         <div [formGroup]="businessEditMalfunctioForm" class="form-group">
           <label for="criticalE" style="color: red">Critical</label>
-          <i class="fa fa-info-circle" (click)="infoSeriousness()" style="cursor:pointer;margin-left:1px;"></i>
+          <em class="fa fa-info-circle" (click)="infoSeriousness()" style="cursor:pointer;margin-left:1px;"></em>
           <textarea formControlName="criticalE" [(ngModel)]="critical" rows="3" class="form-control" name="criticalE" id="criticalE"
                     [readonly]="(!malfunctionEfficency&& !malfunctionIntegrity && !malfunctionConfidentiality&& !malfunctionAvailability)"> </textarea>
-          <!--<p *ngIf="!editMode"> Suppory MCS </p>-->
-
         </div>
-
-
       </div>
-
 
       <span  class="cols-sm-2 control-label">* - mandatory field</span>
     </div>
 
   </div>
-
 
   <p-footer>
     <div class="ui-dialog-buttonpane ui-widget-content ui-helper-clearfix">
@@ -1336,7 +996,6 @@
       <div [formGroup]="businessEditEdgeForm" class="form-group">
         <label for="sourceNode">Source Node</label>
         <input formControlName="sourceNode" [(ngModel)]="sourceNode" class="form-control" name="sourceNode" id="sourceNode" readonly/>
-
         <control-messages [control]="businessEditEdgeForm.controls.sourceNode"></control-messages>
       </div>
 
@@ -1350,12 +1009,8 @@
 
         <control-messages [control]="businessEditEdgeForm.controls.targetNode"></control-messages>
       </div>
-
     </div>
-
-
   </div>
-
 
   <div class="row">
 
@@ -1507,7 +1162,6 @@
         <select formControlName="ownAsset" class="form-control" name="ownAsset" id="ownAsset">
           <option *ngFor="let c of ownerListAsset" [ngValue]="c.name+' '+c.surname"> {{ c.name }} {{ c.surname }} </option>
         </select>
-        <!--<control-messages [control]="businessEditAssetForm.controls.ownAsset"></control-messages>-->
       </div>
 
     </div>
@@ -1528,8 +1182,7 @@
       <div class="form-group">
         <label>Malfunctions</label>
         <p-listbox [options]="associatedMalf" [(ngModel)]="selectedMalfunction" multiple="multiple" checkbox="checkbox" filter="filter"
-                   [style]="{'width':'100%', 'max-height':'300px'}"></p-listbox>
-
+                   [style]="{'width':'100%','height':'200px','max-height':'300px', 'overflow-y':'auto'}"></p-listbox>
       </div>
 
     </div>
@@ -1547,7 +1200,7 @@
 
         <div class="form-group">
           <label>Data (*)</label>
-          <i class="fa fa-info-circle" (click)="infoDataAsset()" style="cursor:pointer;margin-left:1px;"></i>
+          <em class="fa fa-info-circle" (click)="infoDataAsset()" style="cursor:pointer;margin-left:1px;"></em>
           <select [(ngModel)]="selectedCategoryData" name="dataPrymaryAsset" id="dataPrymaryAsset" class="form-control" [disabled]="selectedCategoryCompli!='' || selectedCategoryService!=''">
 
             <option *ngFor="let c of primaryAssetConf" [ngValue]="c"> {{ c }} </option>
@@ -1563,7 +1216,7 @@
 
         <div class="form-group">
           <label>Services</label>
-          <i class="fa fa-info-circle" (click)="infoServicesAsset()" style="cursor:pointer;margin-left:1px;"></i>
+          <em class="fa fa-info-circle" (click)="infoServicesAsset()" style="cursor:pointer;margin-left:1px;"></em>
 
           <select [(ngModel)]="selectedCategoryService" name="servicesPrymaryAsset" id="servicesPrymaryAsset" class="form-control"
                   [disabled]="selectedCategoryCompli!='' || selectedCategoryData!=''">
@@ -1584,7 +1237,7 @@
 
         <div class="form-group">
           <label>Compliance to Regulations</label>
-          <i class="fa fa-info-circle" (click)="infoManagementAsset()" style="cursor:pointer;margin-left:1px;"></i>
+          <em class="fa fa-info-circle" (click)="infoManagementAsset()" style="cursor:pointer;margin-left:1px;"></em>
 
           <select [(ngModel)]="selectedCategoryCompli" name="compliPrymaryAsset" id="compliPrymaryAsset" class="form-control" [disabled]="selectedCategoryService!='' || selectedCategoryData!=''">
 
@@ -1611,8 +1264,7 @@
 
         <div class="form-group">
           <label for="secAsset">Secondary Asset Category (*)</label>
-          <i class="fa fa-info-circle" (click)="infoSecondaryAsset()" style="cursor:pointer;margin-left:1px;"></i>
-          <!--<select formControlName="secAsset" class="form-control" name="secAsset" id="secAsset" >-->
+          <em class="fa fa-info-circle" (click)="infoSecondaryAsset()" style="cursor:pointer;margin-left:1px;"></em>
           <select [(ngModel)]="selectedSecondary" class="form-control" name="secAsset" id="secAsset" [disabled]="selectedCategoryData === '' && selectedCategoryService === '' && selectedCategoryCompli === ''">
 
             <option value=""></option>
@@ -1652,8 +1304,6 @@
             <option value="Non_Electronic_Media" *ngIf="selectedCategoryData === 'Data_Physical_File' || selectedCategoryData === 'Data_Physical_Mail' || selectedCategoryData === 'Data_Physical_Archive'">
               Non_Electronic_Media</option>
 
-            <!--<option value="Communication_Network">Communication_Network</option>-->
-
             <option value="Software_Custom" *ngIf="selectedCategoryService === 'Service_Application_Service' || selectedCategoryService === 'Service_Shared_Service' || selectedCategoryService === 'Service_User_Hardware' || selectedCategoryService === 'Service_Common_Service'
                                                  || selectedCategoryService === 'Service_Web_editing_Service'">
               Software_Custom</option>
@@ -1668,8 +1318,6 @@
                                                  || selectedCategoryService === 'Service_Web_editing_Service'">
               Auxiliary_Equipment</option>
 
-            <!--<option value="Firmware">Firmware</option>-->
-
             <option value="Service_Access_Mean" *ngIf="selectedCategoryService === 'Service_Application_Service' || selectedCategoryService === 'Service_Shared_Service' || selectedCategoryService === 'Service_Common_Service'">
               Service_Access_Mean</option>
 
@@ -1678,7 +1326,6 @@
 
 
           </select>
-          <!--<control-messages [control]="businessEditAssetForm.controls.secAsset"></control-messages>-->
         </div>
       </div>
 
@@ -1761,9 +1408,8 @@
     <div class=WordSection1>
 
       <p class=MsoListParagraph style='margin-left:36.0pt'>
-        <span style='font-family:
-Symbol'>·
-          <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <span style='font-family:Symbol, sans-serif;'>·
+          <span style='font-family: times, serif; font-size:7.0pt; '>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </span>
         </span>
         <strong>Seriousness Level 4: Vital </strong>
@@ -1777,9 +1423,8 @@ Symbol'>·
         such a Malfunction, there would be serious and durable consequences. </p>
 
       <p class=MsoListParagraph style='margin-left:36.0pt'>
-        <span style='font-family:
-Symbol'>·
-          <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <span style='font-family:Symbol, sans-serif;'>·
+          <span style='font-family: times, serif; font-size:7.0pt; '>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </span>
         </span>
         <strong>Seriousness Level 3: Very Serious </strong>
@@ -1794,9 +1439,8 @@ Symbol'>·
       </p>
 
       <p class=MsoListParagraph style='margin-left:36.0pt'>
-        <span style='font-family:
-Symbol'>·
-          <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <span style='font-family:Symbol, sans-serif;'>·
+          <span style='font-family: times, serif; font-size:7.0pt; '>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </span>
         </span>
         <strong>Seriousness Level 2: Serious </strong>
@@ -1807,9 +1451,8 @@ Symbol'>·
         with a significant impact on their working conditions. </p>
 
       <p class=MsoListParagraph style='margin-left:36.0pt'>
-        <span style='font-family:
-Symbol'>·
-          <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <span style='font-family:Symbol, sans-serif;'>·
+          <span style='font-family: times, serif; font-size:7.0pt; '>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </span>
         </span>
         <strong>Seriousness Level 1: Not significant  </strong>
@@ -1835,54 +1478,48 @@ Symbol'>·
   <div class="row">
     <div class=WordSection1>
       <p class=MsoNormal>
-        <a name="OLE_LINK15"></a>
-        <a name="OLE_LINK14">
+        <a id="OLE_LINK15"></a>
+        <a id="OLE_LINK14">
           <span lang=EN-CA>At the functional level, the goal is to identify potential Malfunctions that have a significant impact on the organization’s
             activities. These will typically be malfunctions in the processes. The following generic profile criteria of
             a process malfunction will usually apply: </span>
         </a>
       </p>
       <p class=MsoListParagraph style='margin-left:36.0pt'>
-        <span style='font-family:
-Symbol'>·
-          <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <span style='font-family:Symbol, sans-serif;'>·
+          <span style='font-family: times, serif; font-size:7.0pt; '>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </span>
         </span>
         <strong>Incorrect timing</strong>: the tasks or activities that are planned are not completed in time;  </p>
       <p class=MsoListParagraph style='margin-left:36.0pt'>
-        <span style='font-family:
-Symbol'>·
-          <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <span style='font-family:Symbol, sans-serif;'>·
+          <span style='font-family: times, serif; font-size:7.0pt; '>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </span>
         </span>
         <strong>Lack of compliance</strong>: the tasks or activities that are planned are not completed in accordance with the specifications;
       </p>
       <p class=MsoListParagraph style='margin-left:36.0pt'>
-        <span style='font-family:
-Symbol'>·
-          <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <span style='font-family:Symbol, sans-serif;'>·
+          <span style='font-family: times, serif; font-size:7.0pt; '>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </span>
         </span>
         <strong>Lack of completeness</strong>: the tasks or activities that are planned are only partially completed (although the parts
         that are complete are as specified); </p>
       <p class=MsoListParagraph style='margin-left:36.0pt'>
-        <span style='font-family:
-Symbol'>·
-          <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <span style='font-family:Symbol, sans-serif;'>·
+          <span style='font-family: times, serif; font-size:7.0pt; '>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </span>
         </span>
         <strong>Lack of correctness</strong>: additional tasks or activities are performed that were not planned or specified; </p>
       <p class=MsoListParagraph style='margin-left:36.0pt'>
-        <span style='font-family:
-Symbol'>·
-          <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <span style='font-family:Symbol, sans-serif;'>·
+          <span style='font-family: times, serif; font-size:7.0pt; '>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </span>
         </span>
         <strong>Lack of discretion</strong>: information is improperly disclosed while the tasks or activities are performed;  </p>
       <p class=MsoListParagraph style='margin-left:36.0pt'>
-        <span style='font-family:
-Symbol'>·
-          <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <span style='font-family:Symbol, sans-serif;'>·
+          <span style='font-family: times, serif; font-size:7.0pt; '>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </span>
         </span>
         <strong>Lack of Control</strong>: the tasks or activities are performed and completed as planned but without any control or visibility
@@ -1918,45 +1555,45 @@ Symbol'>·
         </strong>
       </p>
       <p class=MsoListParagraph style='margin-left:.5in'>
-        <span lang=EN-GB style='font-family:Symbol'>·
-          <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <span lang=EN-GB style='font-family:Symbol, sans-serif;'>·
+          <span style='font-family: times, serif; font-size:7.0pt; '>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </span>
         </span>
         <span lang=EN-GB>Data files or databases associated to applications
         </span>
       </p>
       <p class=MsoListParagraph style='margin-left:.5in'>
-        <span lang=EN-GB style='font-family:Symbol'>·
-          <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <span lang=EN-GB style='font-family:Symbol, sans-serif;'>·
+          <span style='font-family: times, serif; font-size:7.0pt; '>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </span>
         </span>
         <span lang=EN-GB>Exchanges data, screens, data individually sensitive
         </span>
       </p>
       <p class=MsoListParagraph style='margin-left:.5in'>
-        <span lang=EN-GB style='font-family:Symbol'>·
-          <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <span lang=EN-GB style='font-family:Symbol, sans-serif;'>·
+          <span style='font-family: times, serif; font-size:7.0pt; '>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </span>
         </span>
         <span lang=EN-GB>Office related files</span>
       </p>
       <p class=MsoListParagraph style='margin-left:.5in'>
-        <span lang=EN-GB style='font-family:Symbol'>·
-          <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <span lang=EN-GB style='font-family:Symbol, sans-serif;'>·
+          <span style='font-family: times, serif; font-size:7.0pt; '>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </span>
         </span>
         <span lang=EN-GB>Written or printed information available to users and personal archives</span>
       </p>
       <p class=MsoListParagraph style='margin-left:.5in'>
-        <span lang=EN-GB style='font-family:Symbol'>·
-          <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <span lang=EN-GB style='font-family:Symbol, sans-serif;'>·
+          <span style='font-family: times, serif; font-size:7.0pt; '>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </span>
         </span>
         <span lang=EN-GB>Mail (Classical or electronic) and faxes</span>
       </p>
       <p class=MsoListParagraph style='margin-left:.5in'>
-        <span lang=EN-GB style='font-family:Symbol'>·
-          <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <span lang=EN-GB style='font-family:Symbol, sans-serif;'>·
+          <span style='font-family: times, serif; font-size:7.0pt; '>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </span>
         </span>
         <span lang=EN-GB>Archives (physical and IT)</span>
@@ -1968,8 +1605,8 @@ Symbol'>·
         <span lang=EN-CA>Within the SEST tool, Data Primary Category has been subdivided in the following:</span>
       </p>
       <p class=MsoListParagraph style='margin-left:.5in'>
-        <span lang=EN-GB style='font-family:Symbol'>·
-          <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <span lang=EN-GB style='font-family:Symbol, sans-serif;'>·
+          <span style='font-family: times, serif; font-size:7.0pt; '>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </span>
         </span>
         <strong>
@@ -1978,8 +1615,8 @@ Symbol'>·
         <span lang=EN-GB> (Data files and data bases accessed by applications)</span>
       </p>
       <p class=MsoListParagraph style='margin-left:.5in'>
-        <span lang=EN-GB style='font-family:Symbol'>·
-          <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <span lang=EN-GB style='font-family:Symbol, sans-serif;'>·
+          <span style='font-family: times, serif; font-size:7.0pt; '>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </span>
         </span>
         <strong>
@@ -1988,8 +1625,8 @@ Symbol'>·
         <span lang=EN-GB> (Shared office files and data)</span>
       </p>
       <p class=MsoListParagraph style='margin-left:.5in'>
-        <span lang=EN-GB style='font-family:Symbol'>·
-          <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <span lang=EN-GB style='font-family:Symbol, sans-serif;'>·
+          <span style='font-family: times, serif; font-size:7.0pt; '>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </span>
         </span>
         <strong>
@@ -1998,8 +1635,8 @@ Symbol'>·
         <span lang=EN-GB> (Personal office files and data)</span>
       </p>
       <p class=MsoListParagraph style='margin-left:.5in'>
-        <span lang=EN-GB style='font-family:Symbol'>·
-          <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <span lang=EN-GB style='font-family:Symbol, sans-serif;'>·
+          <span style='font-family: times, serif; font-size:7.0pt; '>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </span>
         </span>
         <strong>
@@ -2008,8 +1645,8 @@ Symbol'>·
         <span lang=EN-GB> (Written or printed files and data)</span>
       </p>
       <p class=MsoListParagraph style='margin-left:.5in'>
-        <span lang=EN-GB style='font-family:Symbol'>·
-          <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <span lang=EN-GB style='font-family:Symbol, sans-serif;'>·
+          <span style='font-family: times, serif; font-size:7.0pt; '>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </span>
         </span>
         <strong>
@@ -2018,8 +1655,8 @@ Symbol'>·
         <span lang=EN-GB> (Exchanged messages, screen views, data individually sensitive)</span>
       </p>
       <p class=MsoListParagraph style='margin-left:.5in'>
-        <span lang=EN-GB style='font-family:Symbol'>·
-          <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <span lang=EN-GB style='font-family:Symbol, sans-serif;'>·
+          <span style='font-family: times, serif; font-size:7.0pt; '>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </span>
         </span>
         <strong>
@@ -2029,8 +1666,8 @@ Symbol'>·
           (Electronic mailing)</span>
       </p>
       <p class=MsoListParagraph style='margin-left:.5in'>
-        <span lang=EN-GB style='font-family:Symbol'>·
-          <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <span lang=EN-GB style='font-family:Symbol, sans-serif;'>·
+          <span style='font-family: times, serif; font-size:7.0pt; '>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </span>
         </span>
         <strong>
@@ -2039,8 +1676,8 @@ Symbol'>·
         <span lang=EN-GB> (Written or printed mailing)</span>
       </p>
       <p class=MsoListParagraph style='margin-left:.5in'>
-        <span lang=EN-GB style='font-family:Symbol'>·
-          <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <span lang=EN-GB style='font-family:Symbol, sans-serif;'>·
+          <span style='font-family: times, serif; font-size:7.0pt; '>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </span>
         </span>
         <strong>
@@ -2049,8 +1686,8 @@ Symbol'>·
         <span lang=EN-GB> (Physical data archive)</span>
       </p>
       <p class=MsoListParagraph style='margin-left:.5in'>
-        <span lang=EN-GB style='font-family:Symbol'>·
-          <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <span lang=EN-GB style='font-family:Symbol, sans-serif;'>·
+          <span style='font-family: times, serif; font-size:7.0pt; '>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </span>
         </span>
         <strong>
@@ -2060,8 +1697,8 @@ Symbol'>·
           (Digital data archive)</span>
       </p>
       <p class=MsoListParagraph style='margin-left:.5in'>
-        <span lang=EN-GB style='font-family:Symbol'>·
-          <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <span lang=EN-GB style='font-family:Symbol, sans-serif;'>·
+          <span style='font-family: times, serif; font-size:7.0pt; '>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </span>
         </span>
         <strong>
@@ -2101,64 +1738,64 @@ Symbol'>·
         </strong>
       </p>
       <p class=MsoListParagraph style='margin-left:.25in'>
-        <span lang=EN-GB style='font-family:Symbol'>·
-          <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <span lang=EN-GB style='font-family:Symbol, sans-serif;'>·
+          <span style='font-family: times, serif; font-size:7.0pt; '>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </span>
         </span>
         <span lang=EN-GB>Network services</span>
       </p>
       <p class=MsoListParagraph style='margin-left:.25in'>
-        <span lang=EN-GB style='font-family:Symbol'>·
-          <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <span lang=EN-GB style='font-family:Symbol, sans-serif;'>·
+          <span style='font-family: times, serif; font-size:7.0pt; '>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </span>
         </span>
         <span lang=EN-GB>Application services</span>
       </p>
       <p class=MsoListParagraph style='margin-left:.25in'>
-        <span lang=EN-GB style='font-family:Symbol'>·
-          <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <span lang=EN-GB style='font-family:Symbol, sans-serif;'>·
+          <span style='font-family: times, serif; font-size:7.0pt; '>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </span>
         </span>
         <span lang=EN-GB>Common/shared office services</span>
       </p>
       <p class=MsoListParagraph style='margin-left:.25in'>
-        <span lang=EN-GB style='font-family:Symbol'>·
-          <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <span lang=EN-GB style='font-family:Symbol, sans-serif;'>·
+          <span style='font-family: times, serif; font-size:7.0pt; '>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </span>
         </span>
         <span lang=EN-GB>Common system services: emailing, archiving, printing, edition, etc.</span>
       </p>
       <p class=MsoListParagraph style='margin-left:.25in'>
-        <span lang=EN-GB style='font-family:Symbol'>·
-          <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <span lang=EN-GB style='font-family:Symbol, sans-serif;'>·
+          <span style='font-family: times, serif; font-size:7.0pt; '>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </span>
         </span>
         <span lang=EN-GB>User interface services and peripherals (PC, local printers, peripherals, specific interfaces, etc.)</span>
       </p>
       <p class=MsoListParagraph style='margin-left:.25in'>
-        <span lang=EN-GB style='font-family:Symbol'>·
-          <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <span lang=EN-GB style='font-family:Symbol, sans-serif;'>·
+          <span style='font-family: times, serif; font-size:7.0pt; '>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </span>
         </span>
         <span lang=EN-GB>Telecommunication services (voice, faxes, video-conferencing, etc.)</span>
       </p>
       <p class=MsoListParagraph style='margin-left:.25in'>
-        <span lang=EN-GB style='font-family:Symbol'>·
-          <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <span lang=EN-GB style='font-family:Symbol, sans-serif;'>·
+          <span style='font-family: times, serif; font-size:7.0pt; '>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </span>
         </span>
         <span lang=EN-GB>Common services for the working environment of the staff (offices, power supply, air</span>
       </p>
       <p class=MsoListParagraph style='margin-left:.25in'>
-        <span lang=EN-GB style='font-family:Symbol'>·
-          <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <span lang=EN-GB style='font-family:Symbol, sans-serif;'>·
+          <span style='font-family: times, serif; font-size:7.0pt; '>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </span>
         </span>
         <span lang=EN-GB>conditioning, etc.)</span>
       </p>
       <p class=MsoListParagraph style='margin-left:.25in'>
-        <span lang=EN-GB style='font-family:Symbol'>·
-          <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <span lang=EN-GB style='font-family:Symbol, sans-serif;'>·
+          <span style='font-family: times, serif; font-size:7.0pt; '>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </span>
         </span>
         <span lang=EN-GB>Classical mail services and treatment</span>
@@ -2170,8 +1807,8 @@ Symbol'>·
         <span lang=EN-CA>Within the SEST tool, Services Primary Category has been subdivided in the following:</span>
       </p>
       <p class=MsoListParagraph style='margin-left:.25in'>
-        <span lang=EN-GB style='font-family:Symbol'>·
-          <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <span lang=EN-GB style='font-family:Symbol, sans-serif;'>·
+          <span style='font-family: times, serif; font-size:7.0pt; '>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </span>
         </span>
         <strong>
@@ -2180,8 +1817,8 @@ Symbol'>·
         <span lang=EN-GB> (User workspace and environment)</span>
       </p>
       <p class=MsoListParagraph style='margin-left:.25in'>
-        <span lang=EN-GB style='font-family:Symbol'>·
-          <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <span lang=EN-GB style='font-family:Symbol, sans-serif;'>·
+          <span style='font-family: times, serif; font-size:7.0pt; '>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </span>
         </span>
         <strong>
@@ -2190,8 +1827,8 @@ Symbol'>·
         <span lang=EN-GB> (Telecommunication Services)</span>
       </p>
       <p class=MsoListParagraph style='margin-left:.25in'>
-        <span lang=EN-GB style='font-family:Symbol'>·
-          <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <span lang=EN-GB style='font-family:Symbol, sans-serif;'>·
+          <span style='font-family: times, serif; font-size:7.0pt; '>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </span>
         </span>
         <strong>
@@ -2200,8 +1837,8 @@ Symbol'>·
         <span lang=EN-GB> (Extended Network Service)</span>
       </p>
       <p class=MsoListParagraph style='margin-left:.25in'>
-        <span lang=EN-GB style='font-family:Symbol'>·
-          <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <span lang=EN-GB style='font-family:Symbol, sans-serif;'>·
+          <span style='font-family: times, serif; font-size:7.0pt; '>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </span>
         </span>
         <strong>
@@ -2210,8 +1847,8 @@ Symbol'>·
         <span lang=EN-GB> (Local Area Network Service)</span>
       </p>
       <p class=MsoListParagraph style='margin-left:.25in'>
-        <span lang=EN-GB style='font-family:Symbol'>·
-          <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <span lang=EN-GB style='font-family:Symbol, sans-serif;'>·
+          <span style='font-family: times, serif; font-size:7.0pt; '>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </span>
         </span>
         <strong>
@@ -2220,8 +1857,8 @@ Symbol'>·
         <span lang=EN-GB> (Services provided by applications)</span>
       </p>
       <p class=MsoListParagraph style='margin-left:.25in'>
-        <span lang=EN-GB style='font-family:Symbol'>·
-          <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <span lang=EN-GB style='font-family:Symbol, sans-serif;'>·
+          <span style='font-family: times, serif; font-size:7.0pt; '>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </span>
         </span>
         <strong>
@@ -2230,8 +1867,8 @@ Symbol'>·
         <span lang=EN-GB> (Shared office Services)</span>
       </p>
       <p class=MsoListParagraph style='margin-left:.25in'>
-        <span lang=EN-GB style='font-family:Symbol'>·
-          <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <span lang=EN-GB style='font-family:Symbol, sans-serif;'>·
+          <span style='font-family: times, serif; font-size:7.0pt; '>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </span>
         </span>
         <strong>
@@ -2240,8 +1877,8 @@ Symbol'>·
         <span lang=EN-GB> (Equipment provided to end users)</span>
       </p>
       <p class=MsoListParagraph style='margin-left:.25in'>
-        <span lang=EN-GB style='font-family:Symbol'>·
-          <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <span lang=EN-GB style='font-family:Symbol, sans-serif;'>·
+          <span style='font-family: times, serif; font-size:7.0pt; '>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </span>
         </span>
         <strong>
@@ -2250,8 +1887,8 @@ Symbol'>·
         <span lang=EN-GB> (Common system Services)</span>
       </p>
       <p class=MsoListParagraph style='margin-left:.25in'>
-        <span lang=EN-GB style='font-family:Symbol'>·
-          <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <span lang=EN-GB style='font-family:Symbol, sans-serif;'>·
+          <span style='font-family: times, serif; font-size:7.0pt; '>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </span>
         </span>
         <strong>
@@ -2296,15 +1933,15 @@ Symbol'>·
         </strong>
       </p>
       <p class=MsoListParagraph style='margin-left:.25in'>
-        <span lang=EN-GB style='font-family:Symbol'>·
-          <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <span lang=EN-GB style='font-family:Symbol, sans-serif;'>·
+          <span style='font-family: times, serif; font-size:7.0pt; '>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </span>
         </span>
         <span lang=EN-GB>Processes related to laws, regulations and contractual requirements</span>
       </p>
       <p class=MsoListParagraph style='margin-left:.25in'>
-        <span lang=EN-GB style='font-family:Symbol'>·
-          <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <span lang=EN-GB style='font-family:Symbol, sans-serif;'>·
+          <span style='font-family: times, serif; font-size:7.0pt; '>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </span>
         </span>
         <span lang=EN-GB>Processes for the management of information security
@@ -2317,8 +1954,8 @@ Symbol'>·
         <span lang=EN-CA>Within the SEST tool, Management Primary Category has been subdivided in the following:</span>
       </p>
       <p class=MsoListParagraph style='margin-left:.25in'>
-        <span lang=EN-GB style='font-family:Symbol'>·
-          <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <span lang=EN-GB style='font-family:Symbol, sans-serif;'>·
+          <span style='font-family: times, serif; font-size:7.0pt; '>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </span>
         </span>
         <strong>
@@ -2328,8 +1965,8 @@ Symbol'>·
         </span>
       </p>
       <p class=MsoListParagraph style='margin-left:.25in'>
-        <span lang=EN-GB style='font-family:Symbol'>·
-          <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <span lang=EN-GB style='font-family:Symbol, sans-serif;'>·
+          <span style='font-family: times, serif; font-size:7.0pt; '>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </span>
         </span>
         <strong>
@@ -2339,8 +1976,8 @@ Symbol'>·
         </span>
       </p>
       <p class=MsoListParagraph style='margin-left:.25in'>
-        <span lang=EN-GB style='font-family:Symbol'>·
-          <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <span lang=EN-GB style='font-family:Symbol, sans-serif;'>·
+          <span style='font-family: times, serif; font-size:7.0pt; '>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </span>
         </span>
         <strong>
@@ -2350,8 +1987,8 @@ Symbol'>·
         </span>
       </p>
       <p class=MsoListParagraph style='margin-left:.25in'>
-        <span lang=EN-GB style='font-family:Symbol'>·
-          <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <span lang=EN-GB style='font-family:Symbol, sans-serif;'>·
+          <span style='font-family: times, serif; font-size:7.0pt; '>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </span>
         </span>
         <strong>
@@ -2361,8 +1998,8 @@ Symbol'>·
         </span>
       </p>
       <p class=MsoListParagraph style='margin-left:.25in'>
-        <span lang=EN-GB style='font-family:Symbol'>·
-          <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <span lang=EN-GB style='font-family:Symbol, sans-serif;'>·
+          <span style='font-family: times, serif; font-size:7.0pt; '>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </span>
         </span>
         <strong>
@@ -2371,8 +2008,8 @@ Symbol'>·
         <span lang=EN-GB> (Compliance to law or regulations relative to the protection of information systems)</span>
       </p>
       <p class=MsoListParagraph style='margin-left:.25in'>
-        <span lang=EN-GB style='font-family:Symbol'>·
-          <span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <span lang=EN-GB style='font-family:Symbol, sans-serif;'>·
+          <span style='font-family: times, serif; font-size:7.0pt; '>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </span>
         </span>
         <strong>

@@ -51,8 +51,8 @@ export class VulnerabilitiesTaxonomyService {
   addVulnerability(vulnerability: VulnerabilityTaxonomy) {
 
     return this.dataService.createVulnerabilityReference(JSON.stringify(vulnerability)).pipe(
-      tap((response) => {
-        vulnerability.identifier = response.toString();
+      tap((response: any) => {
+        vulnerability.identifier = response.response;
         this._vulnerabilities.next([...this._vulnerabilities.getValue(), vulnerability]);
       }),
       catchError((error) => {

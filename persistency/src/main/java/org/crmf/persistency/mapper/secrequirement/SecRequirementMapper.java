@@ -12,15 +12,19 @@
 
 package org.crmf.persistency.mapper.secrequirement;
 
+import org.apache.ibatis.annotations.Mapper;
 import org.crmf.persistency.domain.secrequirement.SecRequirement;
 import org.crmf.persistency.domain.secrequirement.SecRequirementSafeguard;
 
 import java.util.List;
 
 //This interface allows the bundle to invoke the SQL methods within the SecRequirementMapper.xml (via the ibatis API)
+@Mapper
 public interface SecRequirementMapper {
 
   void insert(SecRequirement requirement);
+
+  void update(SecRequirement requirement);
 
   void insertSafeguardAssoc(SecRequirementSafeguard requirementSafeguard);
 

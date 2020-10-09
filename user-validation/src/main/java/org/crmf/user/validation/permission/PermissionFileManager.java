@@ -12,13 +12,18 @@
 
 package org.crmf.user.validation.permission;
 
+import org.ini4j.Ini;
 import org.ini4j.Profile;
 import org.ini4j.Wini;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.ClassPathResource;
+import org.springframework.core.io.ResourceLoader;
+import org.springframework.stereotype.Service;
 
-import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
@@ -29,22 +34,31 @@ import java.util.Map;
  Class responsible for the management of Permission configuration files
  whose goal is to define the User/Profile/Role rights into SEST system.
  */
+@Service
 public class PermissionFileManager {
   private static final Logger LOG = LoggerFactory.getLogger(PermissionFileManager.class.getName());
   private Map<String, HashMap<String, List<String>>> rolesPermissions = new HashMap<String, HashMap<String, List<String>>>();
   private Map<String, List<String>> profilesRolesAssociation = new HashMap<String, List<String>>();
   private Map<String, HashMap<String, List<String>>> profilesPermissions = new HashMap<String, HashMap<String, List<String>>>();
 
+  @Autowired
+  ResourceLoader resourceLoader;
   /*
    Loads the permissions associated to a defined role and the profiles/roles association.
    It returns a Map of role/list of role associated rights pair values
    */
   public void loadSystemRights() {
-    Wini iniRole;
+    Ini iniRole;
     Wini iniProfile;
     try {
-      iniRole = new Wini(new File("permissionRoles.ini"));
-      iniProfile = new Wini(new File("permissionProfiles.ini"));
+      InputStream resourceRoles = new ClassPathResource("permissionRoles.ini").getInputStream();
+      InputStream resourceProfiles = new ClassPathResource("permissionProfiles.ini").getInputStream();
+     // LOG.info(String.valueOf(resourceRoles.readAllBytes().length));
+    //  LOG.info(String.valueOf(resourceProfiles.readAllBytes().length));
+      iniRole = new Ini(resourceRoles);
+      iniProfile = new Wini(resourceProfiles);
+      LOG.info(String.valueOf(iniRole.values().size()));
+      LOG.info(String.valueOf(iniProfile.values().size()));
 
       // load permission Roles files
       //output names of all sections (each section is a role exception "Profiles association" section)
@@ -76,7 +90,7 @@ public class PermissionFileManager {
   /*
    Loads the profiles/roles association, stored into a section of the .ini configuration file.
    */
-  private void loadProfilesRolesAssociation(Wini ini, String profileSectionName) {
+  private void loadProfilesRolesAssociation(Ini ini, String profileSectionName) {
     // for each profile into Profile/Role association section
     for (String profile : ini.get(profileSectionName).keySet()) {
       //fetch the roles associated to the current SEST profile (one or more, separated by commas)
@@ -94,7 +108,7 @@ public class PermissionFileManager {
   /*
    Loads the permissions related to a role, stored into a section of the .ini configuration file.
    */
-  private void loadRolePermissions(Wini ini, String sectionName) {
+  private void loadRolePermissions(Ini ini, String sectionName) {
     LOG.info("loadRolePermissions");
     //output keys of one section (keys are the SEST objects)
     Profile.Section roleSection = ini.get(sectionName);

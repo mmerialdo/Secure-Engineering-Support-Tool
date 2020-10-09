@@ -19,6 +19,9 @@ import org.crmf.model.riskassessmentelements.ElementTypeEnum;
 import org.crmf.persistency.mapper.requirement.RequirementServiceInterface;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -26,9 +29,12 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+@Service
 public class SystemRequirementProcessor {
 
   private static final Logger LOG = LoggerFactory.getLogger(SystemRequirementProcessor.class.getName());
+  @Autowired
+  @Qualifier("default")
   private RequirementServiceInterface requirementService;
   private HashMap<String, List<String>> map = new HashMap<String, List<String>>();
 
@@ -145,13 +151,5 @@ public class SystemRequirementProcessor {
   public List<String> listRequirementLoadedFile(String sysprojectIdentifier) {
     LOG.info("listRequirementLoadedFile sysprojectIdentifier : " + sysprojectIdentifier);
     return requirementService.getFilenameByProject(sysprojectIdentifier);
-  }
-
-  public RequirementServiceInterface getRequirementService() {
-    return this.requirementService;
-  }
-
-  public void setRequirementService(RequirementServiceInterface requirementService) {
-    this.requirementService = requirementService;
   }
 }

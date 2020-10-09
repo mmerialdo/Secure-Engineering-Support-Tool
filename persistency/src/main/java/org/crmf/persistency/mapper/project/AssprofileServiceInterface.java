@@ -18,7 +18,7 @@ import java.util.List;
 
 public interface AssprofileServiceInterface {
 
-	String insert(AssessmentProfile assprofileDM) throws Exception;
+	String insert(AssessmentProfile assprofileDM);
 
 	void update(AssessmentProfile assprofileDM);
 	

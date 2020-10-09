@@ -36,6 +36,8 @@ import org.openxmlformats.schemas.wordprocessingml.x2006.main.CTRPr;
 import org.openxmlformats.schemas.wordprocessingml.x2006.main.CTString;
 import org.openxmlformats.schemas.wordprocessingml.x2006.main.CTStyle;
 import org.openxmlformats.schemas.wordprocessingml.x2006.main.STStyleType;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import javax.xml.bind.annotation.adapters.HexBinaryAdapter;
 import java.io.FileOutputStream;
@@ -44,14 +46,17 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+@Service
 public class ReportGeneratorDOCX {
 
+  @Autowired
+  private AssetModelWriter amWriter;
+  @Autowired
+  private CommonWriter commonWriter;
 
   public static final String DD_MM_YYYY_HH_MM = "dd/MM/yyyy HH:mm";
 
   public void generateReport(String filename, AssessmentProcedure procedure, AssessmentProject project, Audit audit) throws Exception {
-    AssetModelWriter amWriter = new AssetModelWriter();
-    CommonWriter commonWriter = new CommonWriter();
 
     XWPFDocument doc = new XWPFDocument();
     //Write Risk Assessment Project

@@ -22,6 +22,7 @@ import {
 
 import {fetchOrganization, selectRefresh} from '../../../../../shared/store/reducers/assets.reducer';
 import {take} from 'rxjs/operators';
+import {MessageService} from 'primeng/api';
 
 @Component({
   selector: 'app-organizations-tab-view',
@@ -38,8 +39,8 @@ export class OrganizationsTabViewComponent extends AbstractTabViewComponent impl
 
   rowsNumber = '500px';
 
-  constructor(public store: Store<any>) {
-    super('organizations', 'Organizations', store);
+  constructor(public store: Store<any>, public messageService: MessageService) {
+    super('organizations', 'Organizations', store, messageService);
   }
 
   ngOnInit() {

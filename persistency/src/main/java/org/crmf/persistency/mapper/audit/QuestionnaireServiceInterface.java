@@ -21,6 +21,4 @@ public interface QuestionnaireServiceInterface {
 	SestQuestionnaireModel getByIdentifier(String identifier);
 
 	List<SestQuestionnaireModel> getAllQuestionnaireNames(String auditIdentifier);
-
-	SestQuestionnaireModel getQuestionnaireByCategory(String category);
 }

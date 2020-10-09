@@ -21,17 +21,17 @@
                        (onNodeCollapse)="close($event)" [scrollable]="true">
             <ng-template pTemplate="header">
               <tr>
-                <th [ngStyle]="{'width': '40%'}">Involved Safeguards</th>
-                <th *ngIf="!hideCoveredScenario" [ngStyle]="{'width': '5%'}">Covered Scenarios</th>
-                <th *ngIf="!hideValue" [ngStyle]="{'width': '5%'}">Current Value</th>
-                <th *ngIf="!hideValue" [ngStyle]="{'width': '5%'}">Target Value</th>
-                <th [ngStyle]="{'width': '15%'}">Security Impact</th>
-                <th [ngStyle]="{'width': '5%'}">S-L</th>
-                <th [ngStyle]="{'width': '5%'}">S-M</th>
-                <th [ngStyle]="{'width': '5%'}">S-H</th>
-                <th [ngStyle]="{'width': '5%'}">S-VH</th>
-                <th [ngStyle]="{'width': '5%'}">Total</th>
-                <th [ngStyle]="{'width': '5%'}">Info</th>
+                <th scope="col" [ngStyle]="{'width': '40%'}">Involved Safeguards</th>
+                <th scope="col" *ngIf="!hideCoveredScenario" [ngStyle]="{'width': '5%'}">Covered Scenarios</th>
+                <th scope="col" *ngIf="!hideValue" [ngStyle]="{'width': '5%'}">Current Value</th>
+                <th scope="col" *ngIf="!hideValue" [ngStyle]="{'width': '5%'}">Target Value</th>
+                <th scope="col" [ngStyle]="{'width': '15%'}">Security Impact</th>
+                <th scope="col" [ngStyle]="{'width': '5%'}">S-L</th>
+                <th scope="col" [ngStyle]="{'width': '5%'}">S-M</th>
+                <th scope="col" [ngStyle]="{'width': '5%'}">S-H</th>
+                <th scope="col" [ngStyle]="{'width': '5%'}">S-VH</th>
+                <th scope="col" [ngStyle]="{'width': '5%'}">Total</th>
+                <th scope="col" [ngStyle]="{'width': '5%'}">Info</th>
               </tr>
             </ng-template>
             <ng-template pTemplate="body" let-rowNode let-rowData="rowData">
@@ -81,7 +81,7 @@
               <td [ngStyle]="{'width': '5%'}">
                   <div
                     *ngIf="(rowData.type ==='PrimaryAssetCategory')||(rowData.type ==='Safeguard')||(rowData.type ==='SecurityRequirement')">
-                    <i class="fa fa-info-circle" (click)="info(rowData)" style="cursor:pointer;margin-left:30%;"></i>
+                    <em class="fa fa-info-circle" (click)="info(rowData)" style="cursor:pointer;margin-left:30%;"></em>
                   </div>
                 </td>
               </tr>
@@ -101,12 +101,12 @@
                  (onNodeCollapse)="closeDetails($event)">
       <ng-template pTemplate="header">
         <tr>
-          <th [ngStyle]="{'width': '70%'}">Risk Scenario and Safeguards</th>
-          <th *ngIf="!showSerious" [ngStyle]="{'width': '7%'}">Current Seriousness</th>
-          <th *ngIf="!showSerious" [ngStyle]="{'width': '7%'}">Resulting Seriousness</th>
-          <th *ngIf="!showRisk" [ngStyle]="{'width': '5%'}">Current Value</th>
-          <th *ngIf="!showRisk" [ngStyle]="{'width': '6%'}">Target Value</th>
-          <th *ngIf="!showRisk" [ngStyle]="{'width': '5%'}">Info</th>
+          <th scope="col" [ngStyle]="{'width': '70%'}">Risk Scenario and Safeguards</th>
+          <th scope="col" *ngIf="!showSerious" [ngStyle]="{'width': '7%'}">Current Seriousness</th>
+          <th scope="col" *ngIf="!showSerious" [ngStyle]="{'width': '7%'}">Resulting Seriousness</th>
+          <th scope="col" *ngIf="!showRisk" [ngStyle]="{'width': '5%'}">Current Value</th>
+          <th scope="col" *ngIf="!showRisk" [ngStyle]="{'width': '6%'}">Target Value</th>
+          <th scope="col" *ngIf="!showRisk" [ngStyle]="{'width': '5%'}">Info</th>
         </tr>
       </ng-template>
       <ng-template pTemplate="body" let-rowNode let-rowData="rowData">
@@ -140,7 +140,7 @@
           </td>
           <td *ngIf="!showRisk" [ngStyle]="{'width':'3%'}">
             <div *ngIf="(rowData.type ==='Safeguard')||(rowData.type ==='SecurityRequirement')">
-              <i class="fa fa-info-circle" (click)="info(rowData)" style="cursor:pointer;margin-left:30%;"></i>
+              <em class="fa fa-info-circle" (click)="info(rowData)" style="cursor:pointer;margin-left:30%;"></em>
             </div>
           </td>
         </tr>

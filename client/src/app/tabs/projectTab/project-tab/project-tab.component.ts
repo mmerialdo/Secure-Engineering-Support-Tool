@@ -228,7 +228,7 @@ export class ProjectTabComponent implements OnInit, OnDestroy {
         // set id del project
         // this.dataService.setIDProjecy(this.projectslist[i].identifier)
         this.actualID = this.projectslist[i].identifier;
-        sessionStorage.setItem('idProject', this.projectslist[i].identifier);
+        this.dataService.setProjectId(this.projectslist[i].identifier)
       }
     }
   }

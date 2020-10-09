@@ -17,19 +17,24 @@ import org.crmf.model.general.SESTObjectTypeEnum;
 import org.crmf.persistency.domain.general.Sestobj;
 import org.crmf.persistency.domain.risk.SestRiskTreatmentModel;
 import org.crmf.persistency.mapper.general.SestobjMapper;
-import org.crmf.persistency.session.PersistencySessionFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Service;
 
 //This class manages the database interactions related to the RiskTreatmentModel
+@Service
+@Qualifier("default")
 public class RiskTreatmentService implements RiskTreatmentServiceInterface {
 
   private static final Logger LOG = LoggerFactory.getLogger(RiskTreatmentService.class.getName());
-  PersistencySessionFactory sessionFactory;
+
+  @Autowired
+  private SqlSession sqlSession;
 
   @Override
   public void insert(String riskTreatmentModelJson, String sestobjId) {
-    SqlSession sqlSession = sessionFactory.getSession();
     LOG.info("Insert Risk Treatment Model");
 
     Sestobj sestobj = null;
@@ -52,18 +57,13 @@ public class RiskTreatmentService implements RiskTreatmentServiceInterface {
       riskTreatmentModel.setRiskTreatmentModelJson(riskTreatmentModelJson);
       riskTreatmentModel.setSestobjId(sestobjId);
       riskMapper.insert(riskTreatmentModel);
-      sqlSession.commit();
     } catch (Exception ex) {
       LOG.error(ex.getMessage());
-      sqlSession.rollback();
-    } finally {
-      sqlSession.close();
     }
   }
 
   @Override
   public void update(String riskTreatmentModelJson, String sestobjId) {
-    SqlSession sqlSession = sessionFactory.getSession();
     LOG.info("updateQuestionnaireJSON Risk Treatment Model");
 
     try {
@@ -71,18 +71,13 @@ public class RiskTreatmentService implements RiskTreatmentServiceInterface {
       RiskTreatmentMapper riskTreatmentMapper = sqlSession.getMapper(RiskTreatmentMapper.class);
       //use the Risk Treatment Mapper to insert the Risk Model
       riskTreatmentMapper.update(riskTreatmentModelJson, sestobjId);
-      sqlSession.commit();
     } catch (Exception ex) {
       LOG.error(ex.getMessage());
-      sqlSession.rollback();
-    } finally {
-      sqlSession.close();
     }
   }
 
   @Override
   public SestRiskTreatmentModel getByIdentifier(String sestobjId) {
-    SqlSession sqlSession = sessionFactory.getSession();
     LOG.info("get By Identifier -  Risk Treatment Model");
     SestRiskTreatmentModel riskTreatmentModel;
 
@@ -92,24 +87,11 @@ public class RiskTreatmentService implements RiskTreatmentServiceInterface {
       //use the Risk Treatment Mapper to insert the Risk Model
       riskTreatmentModel = riskTreatmentMapper.getByIdentifier(sestobjId);
       LOG.info("get By Identifier -  Risk Treatment Model returned: " + riskTreatmentModel);
-      sqlSession.commit();
     } catch (Exception ex) {
       LOG.error(ex.getMessage());
-      sqlSession.rollback();
       return null;
-    } finally {
-      sqlSession.close();
     }
 
     return riskTreatmentModel;
   }
-
-  public PersistencySessionFactory getSessionFactory() {
-    return sessionFactory;
-  }
-
-  public void setSessionFactory(PersistencySessionFactory sessionFactory) {
-    this.sessionFactory = sessionFactory;
-  }
-
 }

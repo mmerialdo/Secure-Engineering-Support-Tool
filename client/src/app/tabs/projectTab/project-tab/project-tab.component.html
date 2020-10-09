@@ -24,8 +24,8 @@
                  (onRowUnselect)="disactiveProjectMenu($event)" [metaKeySelection]="false" expandableRows="true" rowExpandMode="single" id="projectTable">
           <ng-template pTemplate="header">
             <tr>
-              <th style="width: 3em"></th>
-              <th *ngFor="let col of projectsListCols">
+              <th scope="col" style="width: 3em"></th>
+              <th scope="col" *ngFor="let col of projectsListCols">
                 {{col.header}}
               </th>
             </tr>
@@ -75,8 +75,8 @@
 
           <ng-template pTemplate="header">
             <tr>
-              <th style="width: 3em"></th>
-              <th *ngFor="let col of profileListCols">
+              <th scope="col" style="width: 3em"></th>
+              <th scope="col" *ngFor="let col of profileListCols">
                 {{col.header}}
               </th>
             </tr>

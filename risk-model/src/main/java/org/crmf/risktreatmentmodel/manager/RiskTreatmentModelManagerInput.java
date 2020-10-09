@@ -20,28 +20,34 @@ import org.crmf.model.utility.GenericFilter;
 import org.crmf.model.utility.GenericFilterEnum;
 import org.crmf.model.utility.ModelObject;
 import org.crmf.model.utility.risktreatmentmodel.RiskTreatmentModelSerializerDeserializer;
-import org.crmf.persistency.mapper.general.SestObjServiceInterface;
-import org.crmf.persistency.mapper.project.AssprocedureServiceInterface;
-import org.crmf.persistency.mapper.risk.RiskTreatmentServiceInterface;
-import org.crmf.riskmodel.manager.RiskModelManagerInputInterface;
+import org.crmf.persistency.mapper.general.SestObjService;
+import org.crmf.persistency.mapper.project.AssprocedureService;
+import org.crmf.persistency.mapper.risk.RiskTreatmentService;
+import org.crmf.riskmodel.manager.RiskModelManagerInput;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 
 //The sest-risk-model bundle holds the business logic related to the management of the risk assessment analysis and treatment. It is separated from the sest-core bundle in order to concentrate here
 //the risk assessment logic which may depend on the selected risk assessment methodology
-public class RiskTreatmentModelManagerInput implements RiskTreatmentModelManagerInputInterface {
+@Service
+public class RiskTreatmentModelManagerInput {
 
-  private AssprocedureServiceInterface assprocedureService;
-  private RiskTreatmentServiceInterface riskTreatmentModelService;
-  private RiskModelManagerInputInterface riskModelInput;
-  private SestObjServiceInterface sestObjService;
+  @Autowired
+  private AssprocedureService assprocedureService;
+  @Autowired
+  private RiskTreatmentService riskTreatmentModelService;
+  @Autowired
+  private RiskModelManagerInput riskModelInput;
+  @Autowired
+  private SestObjService sestObjService;
 
   private static final Logger LOG = LoggerFactory.getLogger(RiskTreatmentModelManagerInput.class.getName());
 
-  @Override
   public String editRiskTreatmentModel(String riskTreatmentModel, String riskTreatmentModelIdentifier) {
     LOG.info("editRiskTreatmentModel about to edit RiskTreatmentModel: " + riskTreatmentModel + " with identifier: " + riskTreatmentModelIdentifier);
 
@@ -60,7 +66,6 @@ public class RiskTreatmentModelManagerInput implements RiskTreatmentModelManager
     return riskTreatmentModelClientFull;
   }
 
-  @Override
   public String calculateRiskTreatmentModel(String riskTreatmentModel, String riskTreatmentModelIdentifier) {
     LOG.info("calculateRiskTreatmentModel about to calculate RiskTreatmentModel: " + riskTreatmentModel + " with identifier: " + riskTreatmentModelIdentifier);
 
@@ -81,7 +86,6 @@ public class RiskTreatmentModelManagerInput implements RiskTreatmentModelManager
     return riskTreatmentModelClientFull;
   }
 
-  @Override
   public String editRiskTreatmentModelDetail(String riskTreatmentModel, String riskTreatmentModelIdentifier) {
     LOG.info("editRiskTreatmentModelDetail about to edit RiskTreatmentModel: " + riskTreatmentModel + " with identifier: " + riskTreatmentModelIdentifier);
 
@@ -109,10 +113,8 @@ public class RiskTreatmentModelManagerInput implements RiskTreatmentModelManager
     String riskTreatmentModelClientFull = rtmsr.getClientFullJSONStringFromRTM(procedure.getRiskModel(), procedure.getAssetModel(), procedure.getSafeguardModel(), procedure.getRiskTreatmentModel());
 
     return riskTreatmentModelClientFull;
-
   }
 
-  @Override
   public String calculateRiskTreatmentModelDetail(String riskTreatmentModel, String riskTreatmentModelIdentifier) {
     LOG.info("calculateRiskTreatmentModelDetail about to calculate RiskTreatmentModel: " + riskTreatmentModel + " with identifier: " + riskTreatmentModelIdentifier);
 
@@ -143,7 +145,6 @@ public class RiskTreatmentModelManagerInput implements RiskTreatmentModelManager
   }
 
   //This method loads the RiskTreatmodel from persistency and converts it in the JSON format the SEST client can manage for RiskTreatment View 1 (the grouped view)
-  @Override
   public ModelObject loadRiskTreatmentModel(GenericFilter filter) throws Exception {
 
     String procedureIdentifier = filter.getFilterValue(GenericFilterEnum.PROCEDURE);
@@ -170,7 +171,6 @@ public class RiskTreatmentModelManagerInput implements RiskTreatmentModelManager
     }
   }
 
-  @Override
   public String loadRiskTreatmentModelDetail(GenericFilter filter) throws Exception {
 
     String procedureIdentifier = filter.getFilterValue(GenericFilterEnum.PROCEDURE);
@@ -223,7 +223,6 @@ public class RiskTreatmentModelManagerInput implements RiskTreatmentModelManager
       LOG.info("harmonizeModels for procedure with identifier: " + procedure.getIdentifier() + " safeguard set score " + resultingSafeguard.getScore());
       //Here we assign the new score value from the client to the Safeguard
       safeguard.setScore(resultingSafeguard.getScore());
-
 
       for (SecurityRequirement requirement : safeguard.getRelatedSecurityRequirements()) {
 
@@ -328,37 +327,5 @@ public class RiskTreatmentModelManagerInput implements RiskTreatmentModelManager
     }
     LOG.info("safeguardMap size " + safeguardMap.size());
     return safeguardMap;
-  }
-
-  public RiskTreatmentServiceInterface getRiskTreatmentModelService() {
-    return riskTreatmentModelService;
-  }
-
-  public void setRiskTreatmentModelService(RiskTreatmentServiceInterface riskTreatmentModelService) {
-    this.riskTreatmentModelService = riskTreatmentModelService;
-  }
-
-  public AssprocedureServiceInterface getAssprocedureService() {
-    return assprocedureService;
-  }
-
-  public void setAssprocedureService(AssprocedureServiceInterface assprocedureService) {
-    this.assprocedureService = assprocedureService;
-  }
-
-  public RiskModelManagerInputInterface getRiskModelInput() {
-    return riskModelInput;
-  }
-
-  public void setRiskModelInput(RiskModelManagerInputInterface riskModelInput) {
-    this.riskModelInput = riskModelInput;
-  }
-
-  public SestObjServiceInterface getSestObjService() {
-    return sestObjService;
-  }
-
-  public void setSestObjService(SestObjServiceInterface sestObjService) {
-    this.sestObjService = sestObjService;
   }
 }

@@ -21,9 +21,11 @@ import org.crmf.model.user.UserRole;
 import org.crmf.persistency.domain.general.Sestobj;
 import org.crmf.persistency.domain.user.Sestuser;
 import org.crmf.persistency.mapper.general.SestobjMapper;
-import org.crmf.persistency.session.PersistencySessionFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Service;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -35,11 +37,15 @@ import java.util.Iterator;
 import java.util.List;
 
 //This class manages the database interactions related to User
+@Service
+@Qualifier("default")
 public class UserService implements UserServiceInterface {
 
   private static final Logger LOG = LoggerFactory.getLogger(UserService.class.getName());
-  PersistencySessionFactory sessionFactory;
+  @Autowired
   RoleService roleService;
+  @Autowired
+  private SqlSession sqlSession;
 
   /*
    * (non-Javadoc)
@@ -50,7 +56,6 @@ public class UserService implements UserServiceInterface {
    */
   @Override
   public String insert(User userDM) {
-    SqlSession sqlSession = sessionFactory.getSession();
 
     LOG.info("Insert User");
     Sestuser user = new Sestuser();
@@ -76,14 +81,9 @@ public class UserService implements UserServiceInterface {
       user.setSestobjId(sestobj.getIdentifier());
       userMapper.insert(user);
       userMapper.insertUserPswHistory(user.getId(), psw);
-
-      sqlSession.commit();
     } catch (Exception ex) {
       LOG.error(ex.getMessage());
-      sqlSession.rollback();
       return null;
-    } finally {
-      sqlSession.close();
     }
     return sestobj.getIdentifier();
   }
@@ -97,8 +97,6 @@ public class UserService implements UserServiceInterface {
    */
   @Override
   public void update(User userDM) {
-    SqlSession sqlSession = sessionFactory.getSession();
-
     Sestuser user = new Sestuser();
     user.convertFromModel(userDM);
 
@@ -108,13 +106,8 @@ public class UserService implements UserServiceInterface {
       Sestuser olduser = userMapper.getByIdentifier(userDM.getIdentifier());
       user.setId(olduser.getId());
       userMapper.update(user);
-
-      sqlSession.commit();
     } catch (Exception ex) {
       LOG.error(ex.getMessage());
-      sqlSession.rollback();
-    } finally {
-      sqlSession.close();
     }
   }
 
@@ -127,7 +120,6 @@ public class UserService implements UserServiceInterface {
    */
   @Override
   public void updatePassword(String username, String psw) {
-    SqlSession sqlSession = sessionFactory.getSession();
     UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
     LOG.info("Updating password username " + username);
     if (username == null) {
@@ -154,13 +146,8 @@ public class UserService implements UserServiceInterface {
           userMapper.updatePassword(user.getId(), psw);
           //insert to user_password history
           userMapper.insertUserPswHistory(user.getId(), psw);
-          sqlSession.commit();
-
         } catch (Exception ex) {
           LOG.error("Unable to updateQuestionnaireJSON password! " + ex.getMessage(), ex);
-          sqlSession.rollback();
-        } finally {
-          sqlSession.close();
         }
       } else {
 
@@ -179,20 +166,14 @@ public class UserService implements UserServiceInterface {
    */
   @Override
   public void deleteCascade(String identifier) {
-    SqlSession sqlSession = sessionFactory.getSession();
 
     LOG.info("Delete User cascade" + identifier);
-    try {
-      UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
-      SestobjMapper sestobjMapper = sqlSession.getMapper(SestobjMapper.class);
+    UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
+    SestobjMapper sestobjMapper = sqlSession.getMapper(SestobjMapper.class);
 
-      Integer id = userMapper.getIdByIdentifier(identifier);
-      LOG.info("Delete user ");
-      userMapper.delete(id);
-      sqlSession.commit();
-    } finally {
-      sqlSession.close();
-    }
+    Integer id = userMapper.getIdByIdentifier(identifier);
+    LOG.info("Delete user ");
+    userMapper.delete(id);
   }
 
   /*
@@ -204,18 +185,13 @@ public class UserService implements UserServiceInterface {
    */
   @Override
   public User getById(Integer userId) {
-    SqlSession sqlSession = sessionFactory.getSession();
-    try {
-      UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
+    UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
 
-      Sestuser sestuser = userMapper.getById(userId);
-      User userToSend = sestuser.convertToModel();
-      userToSend.setObjType(SESTObjectTypeEnum.User);
+    Sestuser sestuser = userMapper.getById(userId);
+    User userToSend = sestuser.convertToModel();
+    userToSend.setObjType(SESTObjectTypeEnum.User);
 
-      return userToSend;
-    } finally {
-      sqlSession.close();
-    }
+    return userToSend;
   }
 
   /*
@@ -227,43 +203,34 @@ public class UserService implements UserServiceInterface {
    */
   @Override
   public User getByIdentifier(String identifier) {
-    SqlSession sqlSession = sessionFactory.getSession();
-    try {
-      UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
+    UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
 
-      Sestuser sestuser = userMapper.getByIdentifier(identifier);
-      User userToSend = sestuser.convertToModel();
+    Sestuser sestuser = userMapper.getByIdentifier(identifier);
+    User userToSend = sestuser.convertToModel();
 
-      userToSend.setIdentifier(identifier);
-      userToSend.setObjType(SESTObjectTypeEnum.User);
+    userToSend.setIdentifier(identifier);
+    userToSend.setObjType(SESTObjectTypeEnum.User);
 
-      return userToSend;
-    } finally {
-      sqlSession.close();
-    }
+    return userToSend;
   }
 
   @Override
   public User getByUsername(String username) {
-    SqlSession sqlSession = sessionFactory.getSession();
-    try {
-      UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
 
-      Sestuser sestuser = userMapper.getByUsername(username);
-      LOG.info("sestuser : " + sestuser);
-      if (sestuser != null) {
-        LOG.info("sestuser : " + sestuser.getSestobjId());
-        User userToSend = sestuser.convertToModel();
-        userToSend.setObjType(SESTObjectTypeEnum.User);
+    UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
+    LOG.info("sestuser : " + sqlSession);
+    Sestuser sestuser = userMapper.getByUsername(username);
+    LOG.info("sestuser : " + sestuser);
+    if (sestuser != null) {
+      LOG.info("sestuser : " + sestuser.getSestobjId());
+      User userToSend = sestuser.convertToModel();
+      userToSend.setObjType(SESTObjectTypeEnum.User);
 
-        return userToSend;
-      } else {
+      return userToSend;
+    } else {
 
-        LOG.error("Unable to find username : " + username);
-        throw new ObjectNotFoundException("WRONG_USERNAME_PASSWORD " + username);
-      }
-    } finally {
-      sqlSession.close();
+      LOG.error("Unable to find username : " + username);
+      throw new ObjectNotFoundException("WRONG_USERNAME_PASSWORD " + username);
     }
   }
 
@@ -275,7 +242,6 @@ public class UserService implements UserServiceInterface {
   @Override
   public List<User> getAll() {
     LOG.info("called getAll");
-    SqlSession sqlSession = sessionFactory.getSession();
     List<User> usersToSend = new ArrayList<>();
     List<Sestuser> users = new ArrayList<>();
     try {
@@ -283,8 +249,6 @@ public class UserService implements UserServiceInterface {
       users = userMapper.getAll();
     } catch (Exception ex) {
       LOG.error(ex.getMessage());
-    } finally {
-      sqlSession.close();
     }
 
     for (Iterator<Sestuser> iterator = users.iterator(); iterator.hasNext(); ) {
@@ -314,7 +278,6 @@ public class UserService implements UserServiceInterface {
   @Override
   public boolean isPasswordExpired(String username) {
 
-    SqlSession sqlSession = sessionFactory.getSession();
     try {
       UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
 
@@ -330,8 +293,6 @@ public class UserService implements UserServiceInterface {
     } catch (Exception ex) {
       LOG.error(ex.getMessage());
       throw new RemoteComponentException("Password Expired exception " + ex.getMessage());
-    } finally {
-      sqlSession.close();
     }
     return false;
   }
@@ -376,10 +337,8 @@ public class UserService implements UserServiceInterface {
     byte[] salt = getSalt();
 
     String securePassword = getSecurePassword(passwordToHash, salt);
-    System.out.println(securePassword);
 
     String regeneratedPassowrdToVerify = getSecurePassword(passwordToHash, salt);
-    System.out.println(regeneratedPassowrdToVerify);
     return securePassword;
   }
 
@@ -405,14 +364,6 @@ public class UserService implements UserServiceInterface {
     byte[] salt = new byte[16];
     sr.nextBytes(salt);
     return salt;
-  }
-
-  public PersistencySessionFactory getSessionFactory() {
-    return sessionFactory;
-  }
-
-  public void setSessionFactory(PersistencySessionFactory sessionFactory) {
-    this.sessionFactory = sessionFactory;
   }
 
   public RoleService getRoleService() {

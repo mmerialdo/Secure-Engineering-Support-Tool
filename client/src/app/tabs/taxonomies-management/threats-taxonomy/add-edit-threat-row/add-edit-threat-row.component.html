@@ -26,7 +26,7 @@
 
         <div class="row">
           <div class="col-lg-12">
-            <h5><strong>Description* <i class="fa fa-info-circle" pTooltip="Fill the elements below in order to have the description"></i></strong></h5>
+            <h5><strong>Description* <em class="fa fa-info-circle" pTooltip="Fill the elements below in order to have the description"></em></strong></h5>
             <textarea rows="3" cols="22" pInputTextarea formControlName="description"></textarea>
             <control-messages [control]="form.controls.description"></control-messages>
           </div>
@@ -50,7 +50,7 @@
     </div>
     <div class="row" style="margin-top: 5px">
       <div class="col-lg-4">
-        <label>Catalogue Id* <i class="fa fa-info-circle" pTooltip="Fill the elements below in order to have the catalogue Id"></i></label>
+        <label>Catalogue Id* <em class="fa fa-info-circle" pTooltip="Fill the elements below in order to have the catalogue Id"></em></label>
         <input pInputText type="text" style="width: 95%" formControlName="catalogueId">
         <control-messages [control]="form.controls.catalogueId"></control-messages>
       </div>
@@ -78,7 +78,7 @@
   <div class="row">
     <div class="col-lg-6" [formGroup]="form.get('event')">
       <div class="col-lg-5">
-        <h5><strong>Name*</strong></h5>
+        <h5><strong>Name* <em class="fa fa-info-circle" pTooltip="Field format is x.x.x, composed by event type and subtype."></em></strong></h5>
         <p-autoComplete formControlName="name" [inputStyle]="{'width':'100%'}" [suggestions]="filteredEvents"
                         (completeMethod)="filterEvents($event)" (onSelect)="selectEventDescription($event)" (onKeyUp)="selectEvent($event)"></p-autoComplete>
         <control-messages [control]="form.get('event.name')"></control-messages>

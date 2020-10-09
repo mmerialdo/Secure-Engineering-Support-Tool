@@ -40,10 +40,13 @@ import org.crmf.persistency.mapper.risk.RiskTreatmentServiceInterface;
 import org.crmf.persistency.mapper.safeguard.SafeguardServiceInterface;
 import org.crmf.persistency.mapper.threat.ThreatServiceInterface;
 import org.crmf.persistency.mapper.vulnerability.VulnerabilityServiceInterface;
-import org.crmf.riskmodel.manager.RiskModelManagerInputInterface;
-import org.crmf.user.validation.permission.UserPermissionManagerInputInterface;
+import org.crmf.riskmodel.manager.RiskModelManagerInput;
+import org.crmf.user.validation.permission.UserPermissionManagerInput;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Service;
 
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -55,27 +58,48 @@ import java.util.Map;
 import java.util.Optional;
 
 //This class is called by the Proxy and manages the entrypoint for the business logic (including the interactions with the Persistency) related to the AssessmentProcedures
-public class AssessmentProcedureInput implements AssessmentProcedureInputInterface {
+@Service
+public class AssessmentProcedureInput {
 
   public static final String DD_MM_YYYY_HH_MM = "dd/MM/yyyy HH:mm";
   private static final Logger LOG = LoggerFactory.getLogger(AssessmentProcedureInput.class.getName());
-
+  @Autowired
+  @Qualifier("default")
   private AssprocedureServiceInterface assprocedureService;
+  @Autowired
+  @Qualifier("default")
   private AssprojectServiceInterface assprojectService;
+  @Autowired
+  @Qualifier("default")
   private AssetServiceInterface assetModelService;
+  @Autowired
+  @Qualifier("default")
   private VulnerabilityServiceInterface vulnerabilityModelService;
+  @Autowired
+  @Qualifier("default")
   private ThreatServiceInterface threatModelService;
+  @Autowired
+  @Qualifier("default")
   private SafeguardServiceInterface safeguardModelService;
-  private RiskAssessmentModelsCloner modelsCloner;
+  @Autowired
+  @Qualifier("default")
   private RiskServiceInterface riskModelService;
+  @Autowired
+  @Qualifier("default")
   private RiskTreatmentServiceInterface riskTreatmentModelService;
-  private AssessmentTemplateInputInterface templateInput;
-  private RiskModelManagerInputInterface riskModelInput;
+  @Autowired
+  @Qualifier("default")
   private AssAuditServiceInterface auditService;
-  private UserPermissionManagerInputInterface permissionManager;
+  @Autowired
+  private UserPermissionManagerInput permissionManager;
+  @Autowired
+  private RiskModelManagerInput riskModelInput;
+  @Autowired
+  private AssessmentTemplateInput templateInput;
+  @Autowired
+  private RiskAssessmentModelsCloner modelsCloner;
 
-  @Override
-  public String createAssessmentProcedure(AssessmentProcedure procedure, String projectIdentifier) throws Exception {
+  public String createAssessmentProcedure(AssessmentProcedure procedure, String projectIdentifier) {
     try {
       LOG.info("createAssessmentprocedure: {}", procedure.getIdentifier());
 
@@ -136,7 +160,7 @@ public class AssessmentProcedureInput implements AssessmentProcedureInputInterfa
 
   private AssessmentProcedure getLastProcedureForProject(AssessmentProject project) throws ParseException {
     AssessmentProcedure procedureToBeCloned = null;
-    project.setProcedures((ArrayList) assprocedureService.getByProjectIdentifier(project.getIdentifier()));
+    project.setProcedures(assprocedureService.getByProjectIdentifier(project.getIdentifier()));
     for (AssessmentProcedure oldProcedure : project.getProcedures()) {
       if (oldProcedure.getStatus().equals(AssessmentStatusEnum.Closed)) {
         if (procedureToBeCloned == null) {
@@ -171,8 +195,7 @@ public class AssessmentProcedureInput implements AssessmentProcedureInputInterfa
     return newModelsMap;
   }
 
-  @Override
-  public void editAssessmentProcedure(AssessmentProcedure procedure) throws Exception {
+  public void editAssessmentProcedure(AssessmentProcedure procedure) {
 
     LOG.info("editAssessmentprocedure with identifier: {}", procedure.getIdentifier());
     DateFormat df = new SimpleDateFormat(DD_MM_YYYY_HH_MM);
@@ -182,15 +205,13 @@ public class AssessmentProcedureInput implements AssessmentProcedureInputInterfa
     assprocedureService.update(procedure);
   }
 
-  @Override
-  public void deleteAssessmentProcedure(String identifier) throws Exception {
+  public void deleteAssessmentProcedure(String identifier) {
 
     LOG.info("deleteAssessmentProcedure with identifier: {}", identifier);
     assprocedureService.deleteCascade(identifier);
   }
 
-  @Override
-  public List<AssessmentProcedure> loadAssessmentProcedure(GenericFilter filter) throws Exception {
+  public List<AssessmentProcedure> loadAssessmentProcedure(GenericFilter filter) {
 
     LOG.info("loadAssessmentProcedure {} ", filter.getFilterMap());
     String identifier = filter.getFilterValue(GenericFilterEnum.IDENTIFIER);
@@ -203,9 +224,7 @@ public class AssessmentProcedureInput implements AssessmentProcedureInputInterfa
     }
   }
 
-
-  @Override
-  public List<AssessmentProcedure> loadAssessmentProcedureList() throws Exception {
+  public List<AssessmentProcedure> loadAssessmentProcedureList() {
 
     LOG.info("loadAssessmentProcedureList ");
     return assprocedureService.getAll();
@@ -251,7 +270,7 @@ public class AssessmentProcedureInput implements AssessmentProcedureInputInterfa
     }
   }
 
-  private void updateAuditQuestionnaires(ArrayList<SestAuditModel> audits, String treatmentModelIdentifier) {
+  private void updateAuditQuestionnaires(List<SestAuditModel> audits, String treatmentModelIdentifier) {
     LOG.info("updateAuditQuestionnaires");
 
     SestRiskTreatmentModel treatmentModel = riskTreatmentModelService.getByIdentifier(treatmentModelIdentifier);
@@ -300,110 +319,5 @@ public class AssessmentProcedureInput implements AssessmentProcedureInputInterfa
     });
 
     auditService.update(audit);
-  }
-
-  public AssprocedureServiceInterface getAssprocedureService() {
-    return assprocedureService;
-  }
-
-  public void setAssprocedureService(AssprocedureServiceInterface assprocedureService) {
-    this.assprocedureService = assprocedureService;
-  }
-
-
-  public AssprojectServiceInterface getAssprojectService() {
-    return assprojectService;
-  }
-
-  public void setAssprojectService(AssprojectServiceInterface assprojectService) {
-    this.assprojectService = assprojectService;
-  }
-
-  public AssetServiceInterface getAssetModelService() {
-    return assetModelService;
-  }
-
-  public void setAssetModelService(AssetServiceInterface assetModelService) {
-    this.assetModelService = assetModelService;
-  }
-
-  public AssessmentTemplateInputInterface getTemplateInput() {
-    return templateInput;
-  }
-
-  public void setTemplateInput(AssessmentTemplateInputInterface templateInput) {
-    this.templateInput = templateInput;
-  }
-
-  public RiskAssessmentModelsCloner getModelsCloner() {
-    return modelsCloner;
-  }
-
-  public void setModelsCloner(RiskAssessmentModelsCloner modelsCloner) {
-    this.modelsCloner = modelsCloner;
-  }
-
-  public VulnerabilityServiceInterface getVulnerabilityModelService() {
-    return vulnerabilityModelService;
-  }
-
-  public void setVulnerabilityModelService(VulnerabilityServiceInterface vulnerabilityModelService) {
-    this.vulnerabilityModelService = vulnerabilityModelService;
-  }
-
-  public ThreatServiceInterface getThreatModelService() {
-    return threatModelService;
-  }
-
-  public void setThreatModelService(ThreatServiceInterface threatModelService) {
-    this.threatModelService = threatModelService;
-  }
-
-  public RiskServiceInterface getRiskModelService() {
-    return riskModelService;
-  }
-
-  public void setRiskModelService(RiskServiceInterface riskModelService) {
-    this.riskModelService = riskModelService;
-  }
-
-  public UserPermissionManagerInputInterface getPermissionManager() {
-    return permissionManager;
-  }
-
-  public void setPermissionManager(UserPermissionManagerInputInterface permissionManager) {
-    this.permissionManager = permissionManager;
-  }
-
-  public SafeguardServiceInterface getSafeguardModelService() {
-    return safeguardModelService;
-  }
-
-  public void setSafeguardModelService(SafeguardServiceInterface safeguardModelService) {
-    this.safeguardModelService = safeguardModelService;
-  }
-
-  public RiskTreatmentServiceInterface getRiskTreatmentModelService() {
-    return riskTreatmentModelService;
-  }
-
-  public void setRiskTreatmentModelService(RiskTreatmentServiceInterface riskTreatmentModelService) {
-    this.riskTreatmentModelService = riskTreatmentModelService;
-  }
-
-  public RiskModelManagerInputInterface getRiskModelInput() {
-    return riskModelInput;
-  }
-
-  public void setRiskModelInput(RiskModelManagerInputInterface riskModelInput) {
-    this.riskModelInput = riskModelInput;
-  }
-
-  public AssAuditServiceInterface getAuditService() {
-    return auditService;
-  }
-
-  public void setAuditService(AssAuditServiceInterface auditService) {
-    this.auditService = auditService;
   }
 }

@@ -18,7 +18,7 @@ import java.util.List;
 
 public interface AsstemplateServiceInterface {
 
-	String insert(AssessmentTemplate asstemplateDM, String profileIdentifier) throws Exception;
+	String insert(AssessmentTemplate asstemplateDM, String profileIdentifier);
 
 	void update(AssessmentTemplate asstemplateDM);
 

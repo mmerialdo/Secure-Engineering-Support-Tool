@@ -12,12 +12,14 @@
 
 package org.crmf.persistency.mapper.audit;
 
+import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.crmf.model.audit.SestAuditModel;
 
 import java.util.List;
 
 //This interface allows the bundle to invoke the SQL methods within the AssAuditMapper.xml (via the ibatis API)
+@Mapper
 public interface AssAuditMapper {
 
   int insert(SestAuditModel audit);

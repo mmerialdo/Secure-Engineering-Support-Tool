@@ -22,26 +22,25 @@
   </ng-template>
   <ng-template pTemplate="header" let-columns>
     <tr>
-      <th style="width: 3em">
+      <th scope="col" style="width: 3em">
         <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
       </th>
-      <th *ngFor="let col of columns">
+      <th scope="col" *ngFor="let col of columns">
         {{ col.header }}
       </th>
-      <th style="width: 4em; text-align: center;">
-       <!-- <button pButton type="button" icon="pi pi-cog"></button>-->
+      <th scope="col" style="width: 4em; text-align: center;">
       </th>
     </tr>
     <tr>
-      <th>
+      <th scope="col">
       </th>
-      <th>
+      <th scope="col">
         <div class="ui-inputgroup">
-          <span class="ui-inputgroup-addon"><i class="pi pi-search" style="line-height: 1.25;"></i></span>
+          <span class="ui-inputgroup-addon"><em class="pi pi-search" style="line-height: 1.25;"></em></span>
           <input pInputText type="text" (input)="dt.filter($event.target.value, 'malfunctions', 'contains')" class="my-input">
         </div>
       </th>
-      <th *ngFor="let col of columns">
+      <th scope="col" *ngFor="let col of columns">
       </th>
     </tr>
   </ng-template>
@@ -64,7 +63,7 @@
           </ng-template>
         </p-cellEditor>
       </td>
-      <td><i class="fas fa-pen-square"></i>
+      <td><em class="fas fa-pen-square"></em>
 
 
         <button pButton type="button" class="ui-button-warning" icon="pi pi-pencil" (click)="showDialogToEdit(rowData)"></button>
@@ -73,44 +72,9 @@
   </ng-template>
   <ng-template pTemplate="summary" let-rowData>
     <div style="text-align:left">
-      <!--<button pButton type="button" icon="pi pi-plus" class="ui-button-info" [label]="'Add'"
-              appAddRow [table]="dt" [newRow]="newRow()"></button><span>&nbsp;&nbsp;</span>-->
       <button pButton type="button" icon="pi pi-plus" class="ui-button-info" (click)="showDialogToAdd()"></button><span>&nbsp;&nbsp;</span>
       <button type="button" pButton icon="fa fa-minus" (click)="deleteMalfunctions()"></button>
     </div>
   </ng-template>
 </p-table>
-
-<!--<p-dialog header="Add Malfunction" [(visible)]="displayDialog" [focusOnShow]="false" [responsive]="true" showEffect="fade" [modal]="true"  [style]="{width: '400px'}">
-  <div class="ui-g ui-fluid" *ngIf="model">
-    &lt;!&ndash;<div class="ui-g-12">
-      <div class="ui-g-4">
-        <label>Malfunction</label>
-      </div>
-      <div class="ui-g-8">
-        <input pInputText id="vin" [(ngModel)]="malfun.malfunctions" autofocus />
-      </div>
-    </div>&ndash;&gt;
-    <div class="ui-g-12" *ngFor="let key of modelKeys">
-      <div class="ui-g-4">
-        <label>{{ getModelLabel(key) }}</label>
-      </div>
-      <div class="ui-g-8">
-        <div *ngIf="key === 'malfunctions';else rest">
-          <input pInputText [(ngModel)]="model[key]" />
-         </div>
-        <ng-template #rest>
-          <p-checkbox [(ngModel)]=model[key] binary="true"></p-checkbox>
-
-          &lt;!&ndash;<input type="checkbox" [checked]=>&ndash;&gt;</ng-template>
-      </div>
-    </div>
-  </div>
-  <p-footer>
-    <div class="ui-dialog-buttonpane ui-helper-clearfix">
-      &lt;!&ndash;<button type="button" pButton icon="pi pi-times" (click)="delete()" label="Delete"></button>&ndash;&gt;
-      <button type="button" pButton icon="pi pi-check" (click)="save()" label="Save"></button>
-    </div>
-  </p-footer>
-</p-dialog>-->
 <app-edit-malfunction [serverAsset]="serverAsset"></app-edit-malfunction>

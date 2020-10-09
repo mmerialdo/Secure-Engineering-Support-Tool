@@ -18,21 +18,25 @@ import org.crmf.model.riskassessment.SystemParticipant;
 import org.crmf.persistency.domain.general.Sestobj;
 import org.crmf.persistency.domain.project.SysParticipant;
 import org.crmf.persistency.mapper.general.SestobjMapper;
-import org.crmf.persistency.session.PersistencySessionFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 
 //This class manages the database interactions related to the SystemParticipant
+@Service
+@Qualifier("default")
 public class SysparticipantService {
 
   private static final Logger LOG = LoggerFactory.getLogger(SysparticipantService.class.getName());
-  PersistencySessionFactory sessionFactory;
+
+  @Autowired
+  private SqlSession sqlSession;
 
   public void insert(ArrayList<SystemParticipant> partecipants, Integer sysprjId) throws Exception {
-
-    SqlSession sqlSession = sessionFactory.getSession();
 
     Sestobj sestobj = null;
     try {
@@ -52,12 +56,8 @@ public class SysparticipantService {
         sysParticipant.setSysprojectId(sysprjId);
         participantMapper.insert(sysParticipant);
       }
-      sqlSession.commit();
     } catch (Exception ex) {
       LOG.error(ex.getMessage());
-      sqlSession.rollback();
-    } finally {
-      sqlSession.close();
     }
   }
 
@@ -73,24 +73,17 @@ public class SysparticipantService {
 
   public void deleteByProjectId(Integer id) {
 
-    SqlSession sqlSession = sessionFactory.getSession();
     SysparticipantMapper participantMapper = sqlSession.getMapper(SysparticipantMapper.class);
 
     try {
       participantMapper.deleteByProjectId(id);
-
-      sqlSession.commit();
     } catch (Exception ex) {
       LOG.error(ex.getMessage());
-      sqlSession.rollback();
-    } finally {
-      sqlSession.close();
     }
   }
 
   public ArrayList<SystemParticipant> getByProjectId(Integer id) {
 
-    SqlSession sqlSession = sessionFactory.getSession();
     SysparticipantMapper participantMapper = sqlSession.getMapper(SysparticipantMapper.class);
 
     ArrayList<SystemParticipant> systempartecipants = new ArrayList<>();
@@ -104,19 +97,7 @@ public class SysparticipantService {
       }
     } catch (Exception ex) {
       LOG.error(ex.getMessage());
-      sqlSession.rollback();
-    } finally {
-      sqlSession.close();
     }
     return systempartecipants;
   }
-
-  public PersistencySessionFactory getSessionFactory() {
-    return sessionFactory;
-  }
-
-  public void setSessionFactory(PersistencySessionFactory sessionFactory) {
-    this.sessionFactory = sessionFactory;
-  }
-
 }

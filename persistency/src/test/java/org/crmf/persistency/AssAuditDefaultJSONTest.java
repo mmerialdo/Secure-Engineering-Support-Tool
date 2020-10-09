@@ -12,57 +12,45 @@
 
 package org.crmf.persistency;
 
-import org.crmf.model.audit.AuditTypeEnum;
 import org.crmf.model.audit.QuestionnaireTypeEnum;
 import org.crmf.persistency.domain.audit.AssauditDefaultJSON;
 import org.crmf.persistency.mapper.audit.AssAuditDefaultService;
-import org.crmf.persistency.session.PersistencySessionFactory;
-import org.junit.Before;
-import org.junit.Ignore;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mybatis.spring.boot.test.autoconfigure.MybatisTest;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Import;
+import org.springframework.test.context.ActiveProfiles;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import java.util.List;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
-
+@ExtendWith(SpringExtension.class)
+@MybatisTest
+@Import({AssAuditDefaultService.class})
+@ContextConfiguration(classes=Application.class)
+@ActiveProfiles("test")
 public class AssAuditDefaultJSONTest {
 
-  PersistencySessionFactory sessionFactory;
+  @Autowired
   AssAuditDefaultService auditDefaultService;
 
-  @Before
-  public void setUp() throws Exception {
-
-    sessionFactory = new PersistencySessionFactory();
-    sessionFactory.createSessionFactory();
-
-    auditDefaultService = new AssAuditDefaultService();
-    auditDefaultService.setSessionFactory(sessionFactory);
-  }
-
- /* @After
-  public void tearDown() throws Exception {
-    CleanDatabaseService cleaner = new CleanDatabaseService();
-    cleaner.setSessionFactory(sessionFactory);
-    cleaner.delete();
-  } */
-
-  @Ignore
   @Test
   public void insertAudit() {
 
     AssauditDefaultJSON questionnaireDefaultJSON = new AssauditDefaultJSON();
-    questionnaireDefaultJSON.setAtype(AuditTypeEnum.SECURITY.name());
+    questionnaireDefaultJSON.setAtype("QUESTIONNAIRE");
     questionnaireDefaultJSON.setAvalue(QuestionnaireTypeEnum.MEHARI_ExtendedNetwork.name());
-    questionnaireDefaultJSON.setCategory("01B");
+    questionnaireDefaultJSON.setCategory("01");
     questionnaireDefaultJSON.setIx("1");
     questionnaireDefaultJSON.setQuestionnaireJSON("{}");
     auditDefaultService.insertQuestionnaire(questionnaireDefaultJSON);
 
     List<AssauditDefaultJSON> questionnaires = auditDefaultService.getAllQuestionnaires();
-    assertNotNull(questionnaires);
-    assertEquals(1, questionnaires.size());
+    Assertions.assertNotNull(questionnaires);
+    Assertions.assertEquals(1, questionnaires.size());
   }
 
   @Test

@@ -22,6 +22,7 @@ import {BehaviorSubject, combineLatest, Subject} from "rxjs";
 import {map, takeUntil} from "rxjs/operators";
 import {ThreatsTaxonomyService} from "../threats-taxonomy.service";
 import {VulnerabilitiesTaxonomyService} from "../../vulnerabilities-taxonomy/vulnerabilities-taxonomy.service";
+import {ValidationService} from "../../../../validationservice";
 
 @Component({
   selector: 'app-add-edit-threat-row',
@@ -137,7 +138,7 @@ export class AddEditThreatRowComponent implements OnInit, OnDestroy {
         likelihood: [this.taxonomy.operation === 'Edit' ? this.taxonomy.value[0].score.likelihood : '', Validators.required],
       }),
       event: this.fb.group({
-        name: [this.taxonomy.operation === 'Edit' ? this.taxonomy.value[0].event.name : '', Validators.required],
+        name: [this.taxonomy.operation === 'Edit' ? this.taxonomy.value[0].event.name : '', [Validators.required, ValidationService.threatEventNameValidator]],
         description: [this.taxonomy.operation === 'Edit' ? this.taxonomy.value[0].event.description : '', Validators.required],
       }),
       actor: this.fb.group({

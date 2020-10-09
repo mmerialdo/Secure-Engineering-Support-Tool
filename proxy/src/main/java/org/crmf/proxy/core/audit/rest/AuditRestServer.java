@@ -12,76 +12,84 @@
 
 package org.crmf.proxy.core.audit.rest;
 
-import org.crmf.core.audit.AuditInputInterface;
+import org.crmf.core.audit.AuditInput;
 import org.crmf.model.audit.AuditTypeEnum;
 import org.crmf.model.audit.Question;
 import org.crmf.model.audit.SestAuditModel;
+import org.crmf.model.exception.RemoteComponentException;
 import org.crmf.model.utility.GenericFilter;
 import org.crmf.model.utility.GenericFilterEnum;
 import org.crmf.model.utility.ModelObject;
+import org.crmf.proxy.authnauthz.Permission;
+import org.crmf.proxy.configuration.ApiExceptionEnum;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
 //This class manages the business logic behind the webservices related to the Audits management
-public class AuditRestServer implements AuditRestServerInterface {
+
+@RestController
+@RequestMapping(value = "api/audit")
+public class AuditRestServer {
 
   private static final Logger LOG = LoggerFactory.getLogger(AuditRestServer.class.getName());
 
-  private AuditInputInterface auditInput;
+  @Autowired
+  private AuditInput auditInput;
 
-  @Override
-  public void editAudit(ModelObject audit) throws Exception {
+  @PostMapping("edit")
+  @Permission(value = "Audit:Update")
+  public void editAudit(@RequestParam(name = "SHIRO_SECURITY_TOKEN") String token,
+                        @RequestBody ModelObject audit) {
     try {
       auditInput.editAudit(audit);
     } catch (Exception e) {
       LOG.error("editAuditList " + e.getMessage());
-      throw new Exception("COMMAND_EXCEPTION", e);
+      throw new RemoteComponentException(ApiExceptionEnum.COMMAND_EXCEPTION, e);
     }
   }
 
-  @Override
-  public SestAuditModel loadAudit(GenericFilter filter, String token, String permission) throws Exception {
+  @PostMapping("load")
+  @Permission(value = "Audit:Read")
+  public SestAuditModel loadAudit(@RequestParam(name = "SHIRO_SECURITY_TOKEN") String token,
+                                  @RequestBody GenericFilter filter) {
 
     try {
       return auditInput.loadAudit(filter.getFilterValue(GenericFilterEnum.IDENTIFIER), AuditTypeEnum.SECURITY, false);
     } catch (Exception e) {
       LOG.error("loadAudit " + e.getMessage());
-      throw new Exception("COMMAND_EXCEPTION", e);
+      throw new RemoteComponentException(ApiExceptionEnum.COMMAND_EXCEPTION, e);
     }
   }
 
-  @Override
-  public List<Question> loadQuestionnaireSafeguard() throws Exception {
+  @PostMapping("questionnaireSafeguard/load")
+  @Permission(value = "Audit:Read")
+  public List<Question> loadQuestionnaireSafeguard(
+    @RequestParam(name = "SHIRO_SECURITY_TOKEN") String token) {
     try {
       return auditInput.loadQuestionnaireSafeguard();
     } catch (Exception e) {
       LOG.error("loadQuestionnaire " + e.getMessage());
-      throw new Exception("COMMAND_EXCEPTION", e);
+      throw new RemoteComponentException(ApiExceptionEnum.COMMAND_EXCEPTION, e);
     }
   }
 
-  @Override
-  public ModelObject loadQuestionnaireJson(GenericFilter filter) throws Exception {
+  @PostMapping("questionnairejson/load")
+  @Permission(value = "Audit:Read")
+  public ModelObject loadQuestionnaireJson(@RequestParam(name = "SHIRO_SECURITY_TOKEN") String token,
+                                           @RequestBody GenericFilter filter) {
     try {
       return auditInput.loadQuestionnaire(filter.getFilterValue(GenericFilterEnum.IDENTIFIER));
     } catch (Exception e) {
       LOG.error("loadQuestionnaireJson " + e.getMessage());
-      throw new Exception("COMMAND_EXCEPTION", e);
+      throw new RemoteComponentException(ApiExceptionEnum.COMMAND_EXCEPTION, e);
     }
-  }
-
-  @Override
-  public void createDefaultQuestionnaire() {
-    auditInput.createDefaultQuestionnaire();
-  }
-
-  public AuditInputInterface getAuditInput() {
-    return auditInput;
-  }
-
-  public void setAuditInput(AuditInputInterface auditInput) {
-    this.auditInput = auditInput;
   }
 }

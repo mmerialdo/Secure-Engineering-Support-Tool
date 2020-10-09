@@ -21,10 +21,6 @@ public class BusinessProcess extends Node {
 
 	}
 
-	public void finalize() throws Throwable {
-		super.finalize();
-	}
-
 	public ProcessTypeEnum getType() {
 		return type;
 	}

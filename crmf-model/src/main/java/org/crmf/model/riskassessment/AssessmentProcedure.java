@@ -18,14 +18,11 @@ import com.google.gson.JsonElement;
 import org.crmf.model.general.SESTObject;
 import org.crmf.model.user.User;
 import org.crmf.model.utility.assetmodel.AssetModelSerializerDeserializer;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import java.util.List;
 
 public class AssessmentProcedure extends SESTObject {
 
-	private static final Logger LOG = LoggerFactory.getLogger(AssessmentProcedure.class.getName());
 	private String creationTime;
 	private String name;
 	private PhaseEnum phase;

@@ -42,6 +42,8 @@ export class ConfigService {
 
 export class Configuration {
   constructor(public ipServer: string,
+              public portServer: string,
+              public protocol: string,
               public timeout: string,
               public timeoutWarning: string,
               public other: string) {

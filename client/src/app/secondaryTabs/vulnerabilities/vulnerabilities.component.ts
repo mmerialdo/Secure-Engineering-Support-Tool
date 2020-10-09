@@ -437,26 +437,39 @@ export class VulnerabilitiesComponent implements OnInit, OnDestroy {
 
   addAssets() {
 
-    for (const i in this.selectedFiles) {
-      if (this.selectedFiles[i].data !== null && this.selectedFiles[i].data.nodeType === 'Asset') {
+    for (const selectedFile of this.selectedFiles) {
+      if (selectedFile.data !== null && selectedFile.data.nodeType === 'Asset') {
 
         // The widget of the asset is not already in the canvas
-        if (this.canvas.getFigures().data.findIndex(uni => uni.id === this.selectedFiles[i].data.identifier) === -1) {
+        if (this.canvas.getFigures().data.findIndex(uni => uni.id === selectedFile.data.identifier) === -1) {
 
           let index = -1;
 
-          const a = this.selectedFiles[i].data.identifier;
+          const a = selectedFile.data.identifier;
           index = this.idAssets.findIndex(ix => ix.identifier === a);
 
           if (index === -1) {
             this.idAssets.push({
-              'identifier': this.selectedFiles[i].data.identifier,
-              'secondaryCategory': this.selectedFiles[i].data.category,
+              'identifier': selectedFile.data.identifier,
+              'secondaryCategory': selectedFile.data.category,
               'vulnerabilities': []
             });
           }
-          this.createVuln(this.selectedFiles[i].label, this.selectedFiles[i].data.identifier);
+          this.createVuln(selectedFile.label, selectedFile.data.identifier);
         }
+      }
+    }
+
+    for (const i in this.canvas.getFigures().data) {
+      const figure = this.canvas.getFigures().data[i];
+      let found = false;
+      for (const selectedFile of this.selectedFiles) {
+        if (selectedFile.data.identifier === figure.id) {
+          found = true;
+        }
+      }
+      if (!found) {
+        this.canvas.remove(figure);
       }
     }
     this.thereAreChanges = true;
@@ -1051,22 +1064,12 @@ export class VulnerabilitiesComponent implements OnInit, OnDestroy {
   removeAsset(value) {
 
     const id = value.identifier;
+
     for (const i in this.idAssets) {
-
       if (id === this.idAssets[i].identifier) {
-
-        this.idAssets.splice(Number(i), 1);
+        this.idAssets.splice(parseInt(i), 1);
         break;
       }
-    }
-
-    if (this.column !== 0) {
-
-      this.column = this.column - 1;
-    } else {
-
-      this.column = 3;
-      this.row = this.row - 1;
     }
 
     if (this.canvas.getFigures().data.length === 0) {
@@ -1799,7 +1802,7 @@ export class VulnerabilitiesComponent implements OnInit, OnDestroy {
     this.blocked = true;
 
     this.subscriptions.push(
-      this.dataService.updateRiskModel(JSON.stringify(completeList, null, 2)).subscribe(response => {
+      this.dataService.updateRiskModel(completeList).subscribe(response => {
         this.blocked = false;
         this.showSuccess();
         if (JSON.parse(response).otherModelsStatus === 'UPDATED') {

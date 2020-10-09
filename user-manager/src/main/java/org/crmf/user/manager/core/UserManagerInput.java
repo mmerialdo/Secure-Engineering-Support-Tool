@@ -16,22 +16,28 @@ import org.crmf.model.exception.RemoteComponentException;
 import org.crmf.model.general.SESTObjectTypeEnum;
 import org.crmf.model.user.PermissionTypeEnum;
 import org.crmf.model.user.User;
-import org.crmf.persistency.mapper.user.UserServiceInterface;
-import org.crmf.user.validation.permission.UserPermissionManagerInputInterface;
+import org.crmf.persistency.mapper.user.UserService;
+import org.crmf.user.validation.permission.UserPermissionManagerInput;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Set;
 
 //This class manages the business logic related to the creation, updateQuestionnaireJSON and delete of SEST Users
-public class UserManagerInput implements UserManagerInputInterface {
+@Service
+@Qualifier("default")
+public class UserManagerInput {
 
   private static final Logger LOG = LoggerFactory.getLogger(UserManagerInput.class.getName());
-  private UserServiceInterface userService;
-  private UserPermissionManagerInputInterface permissionManager;
+  @Autowired
+  private UserService userService;
+  @Autowired
+  private UserPermissionManagerInput permissionManager;
 
-  @Override
   public String createUser(User user) throws Exception {
 
     user.setObjType(SESTObjectTypeEnum.User);
@@ -42,14 +48,12 @@ public class UserManagerInput implements UserManagerInputInterface {
     return userId;
   }
 
-  @Override
   public void saveUser(User user) {
 
     userService.update(user);
   }
 
-  @Override
-  public void saveUserPassword(User user, String tokenUsername) throws Exception {
+  public void saveUserPassword(User user, String tokenUsername) {
     Set<SESTObjectTypeEnum> objects = null;
     String username = user.getUsername();
     String password = user.getPassword();
@@ -74,45 +78,24 @@ public class UserManagerInput implements UserManagerInputInterface {
     }
   }
 
-  @Override
   public void deleteUser(String identifier) {
 
     userService.deleteCascade(identifier);
   }
 
-  @Override
   public User retrieveUser(String identifier) {
 
     return userService.getByIdentifier(identifier);
   }
 
-  @Override
   public User retrieveUserByUsername(String username) {
 
     return userService.getByUsername(username);
   }
 
-  @Override
   public List<User> listUser() {
 
     LOG.info("called listUser");
     return userService.getAll();
   }
-
-  public UserServiceInterface getUserService() {
-    return userService;
-  }
-
-  public void setUserService(UserServiceInterface userService) {
-    this.userService = userService;
-  }
-
-  public UserPermissionManagerInputInterface getPermissionManager() {
-    return permissionManager;
-  }
-
-  public void setPermissionManager(UserPermissionManagerInputInterface permissionManager) {
-    this.permissionManager = permissionManager;
-  }
-
 }

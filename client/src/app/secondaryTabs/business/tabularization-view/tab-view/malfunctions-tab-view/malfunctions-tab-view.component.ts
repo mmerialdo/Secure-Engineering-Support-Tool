@@ -47,8 +47,8 @@ export class MalfunctionsTabViewComponent extends AbstractTabViewComponent imple
   addedMalfunctions: Map<string, any> = new Map<string, any>();
 
 
-  constructor(public store: Store<any>) {
-    super('malfunctions', 'Malfunction', store);
+  constructor(public store: Store<any>, public messageService: MessageService) {
+    super('malfunctions', 'Malfunction', store, messageService);
   }
 
   ngOnInit() {
@@ -164,11 +164,20 @@ export class MalfunctionsTabViewComponent extends AbstractTabViewComponent imple
 
   removeMalfunctionRelationWithActivity(node: any, column: any): void {
     const businessActivity = this.serverAsset.nodes.filter(n => n.identifier === column.field)[0];
-    let edge = this.serverAsset.edges.filter(e => e.source === businessActivity.identifier && e.target === node.identifier)[0];
+    let edge = this.serverAsset.edges.filter(e => e.source === businessActivity.identifier && e.target === node.identifier);
 
-    if (edge === null) {
-      edge = this.serverAsset.edges.filter(e => e.target === businessActivity.identifier && e.source === node.identifier)[0];
+    if (!edge || edge === null) {
+      edge = this.serverAsset.edges.filter(e => e.target === businessActivity.identifier && e.source === node.identifier);
     }
+
+    if(edge) {
+      edge.forEach(edgeElement => {
+        this.removeEdgeMalfunctionRelationWithActivity(node, edgeElement);
+      })
+    }
+  }
+
+  removeEdgeMalfunctionRelationWithActivity(node: any, edge: any): void {
 
     ServerAssetHelper.removeEdgeById(edge.identifier, this.serverAsset);
     ServerAssetHelper.removeEdgeFromParents(edge.identifier, this.serverAsset);

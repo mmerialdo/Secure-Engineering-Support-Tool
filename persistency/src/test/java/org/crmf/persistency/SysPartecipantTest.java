@@ -12,50 +12,34 @@
 
 package org.crmf.persistency;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+import org.crmf.model.riskassessment.SystemParticipant;
+import org.crmf.model.riskassessment.SystemProject;
+import org.crmf.persistency.mapper.project.SysparticipantService;
+import org.crmf.persistency.mapper.project.SysprojectService;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mybatis.spring.boot.test.autoconfigure.MybatisTest;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Import;
+import org.springframework.test.context.ActiveProfiles;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import java.util.ArrayList;
 
-import org.crmf.model.riskassessment.SystemParticipant;
-import org.crmf.model.riskassessment.SystemProject;
-import org.crmf.persistency.mapper.general.CleanDatabaseService;
-import org.crmf.persistency.mapper.project.SysparticipantService;
-import org.crmf.persistency.mapper.project.SysprojectService;
-import org.crmf.persistency.session.PersistencySessionFactory;
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
-
+@ExtendWith(SpringExtension.class)
+@MybatisTest
+@Import({SysparticipantService.class, SysprojectService.class})
+@ContextConfiguration(classes=Application.class)
+@ActiveProfiles("test")
 public class SysPartecipantTest {
 
-	PersistencySessionFactory sessionFactory;
+	@Autowired
 	private SysparticipantService syspartecipantService;
+	@Autowired
 	private SysprojectService sysprojectService;
-	
-	@Before
-	public void setUp() throws Exception {
 
-		sessionFactory = new PersistencySessionFactory();
-		sessionFactory.createSessionFactory();
-
-		syspartecipantService = new SysparticipantService();
-		syspartecipantService.setSessionFactory(sessionFactory);
-
-		sysprojectService = new SysprojectService();
-		sysprojectService.setSessionFactory(sessionFactory);
-		
-	}
-
-	@After
-	public void tearDown() throws Exception {
-
-		CleanDatabaseService cleaner = new CleanDatabaseService();
-		cleaner.setSessionFactory(sessionFactory);
-		
-		cleaner.delete();
-	}
-	
 	@Test
 	public void getByProjectIdTest() throws Exception{
 		
@@ -63,7 +47,7 @@ public class SysPartecipantTest {
 		fill(sysprjId);
 	
 		ArrayList<SystemParticipant> participants = syspartecipantService.getByProjectId(sysprjId);
-		assertEquals(4, participants.size());
+		Assertions.assertEquals(4, participants.size());
 	}
 
 	@Test
@@ -88,7 +72,7 @@ public class SysPartecipantTest {
 		syspartecipantService.update(participants, sysprjId);
 		
 		participants = syspartecipantService.getByProjectId(sysprjId);
-		assertEquals(5, participants.size());
+		Assertions.assertEquals(5, participants.size());
 		boolean updated01 = false;
 		boolean new01 = false;
 		int dev = 0;
@@ -102,9 +86,9 @@ public class SysPartecipantTest {
 				++dev;
 			}
 		}
-		assertTrue(updated01);
-		assertTrue(new01);
-		assertEquals(2, dev);
+		Assertions.assertTrue(updated01);
+		Assertions.assertTrue(new01);
+		Assertions.assertEquals(2, dev);
 	}
 	
 	private void fill(Integer sysprjId) throws Exception {

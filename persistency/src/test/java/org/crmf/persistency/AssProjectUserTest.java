@@ -12,59 +12,48 @@
 
 package org.crmf.persistency;
 
-import static org.junit.Assert.assertTrue;
-
-import java.util.ArrayList;
-
 import org.crmf.model.general.SESTObjectTypeEnum;
 import org.crmf.model.riskassessment.AssessmentProject;
 import org.crmf.model.user.User;
 import org.crmf.model.user.UserProfileEnum;
 import org.crmf.model.user.UserRole;
 import org.crmf.model.user.UserRoleEnum;
-import org.crmf.persistency.mapper.general.CleanDatabaseService;
 import org.crmf.persistency.mapper.user.RoleService;
 import org.crmf.persistency.mapper.user.UserService;
-import org.crmf.persistency.session.PersistencySessionFactory;
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mybatis.spring.boot.test.autoconfigure.MybatisTest;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.context.ActiveProfiles;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
 
+import java.util.ArrayList;
+
+@ExtendWith(SpringExtension.class)
+@MybatisTest
+@ContextConfiguration(classes = Application.class)
+@ActiveProfiles("test")
 public class AssProjectUserTest {
-	
-	PersistencySessionFactory sessionFactory;
+
+	@Autowired
 	private UserService userService;
+	@Autowired
 	private RoleService roleService;
+
 	private AssessmentProject project = null;
 
-	@Before	
+	@BeforeEach
 	public void setUp() throws Exception {
-
-		sessionFactory = new PersistencySessionFactory();
-		sessionFactory.createSessionFactory();
-
-		userService = new UserService();
-		userService.setSessionFactory(sessionFactory);
-		
-		roleService = new RoleService();
-		roleService.setSessionFactory(sessionFactory);
-		
 		prefill();
-	}
-
-	@After
-	public void tearDown() throws Exception {
-
-		CleanDatabaseService cleaner = new CleanDatabaseService();
-		cleaner.setSessionFactory(sessionFactory);
-		
-		cleaner.delete();
 	}
 
 	@Test
 	public void testInsertUserForProject(){
 		
-		assertTrue(true);
+		Assertions.assertTrue(true);
 	}
 	
 	private void prefill() throws Exception{

@@ -12,45 +12,36 @@
 package org.crmf.proxy.user.lock.rest;
 
 import org.crmf.model.utility.GenericFilter;
-import org.crmf.user.manager.lock.LockViewInputInterface;
+import org.crmf.user.manager.lock.LockViewInput;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
-import javax.ws.rs.Consumes;
-import javax.ws.rs.POST;
-import javax.ws.rs.Produces;
-
+@RestController
+@RequestMapping("api")
 public class LockViewRestServer {
 
-  private LockViewInputInterface lockInput;
+  @Autowired
+  private LockViewInput lockInput;
 
-  @POST
-  @Produces("application/json")
-  @Consumes("text/html")
-  public String lock(GenericFilter filter) throws Exception {
-
+  @PostMapping("lock")
+  public String lock(@RequestParam(name = "SHIRO_SECURITY_TOKEN") String token,
+                     @RequestBody GenericFilter filter) throws Exception {
     return lockInput.lock(filter);
   }
 
-  @POST
-  @Produces("application/json")
-  @Consumes("text/html")
-  public String unlock(GenericFilter filter) throws Exception {
-
+  @PostMapping("unlock")
+  public String unlock(@RequestParam(name = "SHIRO_SECURITY_TOKEN") String token,
+                       @RequestBody GenericFilter filter) throws Exception {
     return lockInput.unlock(filter);
   }
 
-  @POST
-  @Produces("application/json")
-  @Consumes("text/html")
-  public String getlock(GenericFilter filter) throws Exception {
-
+  @PostMapping(value = "getlock")
+  public String getlock(@RequestParam(name = "SHIRO_SECURITY_TOKEN") String token,
+                 @RequestBody GenericFilter filter) throws Exception {
     return lockInput.getlock(filter);
-  }
-
-  public LockViewInputInterface getLockInput() {
-    return lockInput;
-  }
-
-  public void setLockInput(LockViewInputInterface lockInput) {
-    this.lockInput = lockInput;
   }
 }

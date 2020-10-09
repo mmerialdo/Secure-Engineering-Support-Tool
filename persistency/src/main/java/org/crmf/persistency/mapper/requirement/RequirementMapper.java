@@ -12,12 +12,14 @@
 
 package org.crmf.persistency.mapper.requirement;
 
+import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.crmf.persistency.domain.requirement.Requirement;
 
 import java.util.List;
 
 //This interface allows the bundle to invoke the SQL methods within the RequirementMapper.xml (via the ibatis API)
+@Mapper
 public interface RequirementMapper {
 
   void insert(Requirement requirement);

@@ -31,9 +31,11 @@ import org.crmf.persistency.mapper.general.SestobjMapper;
 import org.crmf.persistency.mapper.project.AssprojectMapper;
 import org.crmf.persistency.mapper.project.AsstemplateMapper;
 import org.crmf.persistency.mapper.safeguard.SafeguardMapper;
-import org.crmf.persistency.session.PersistencySessionFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -42,12 +44,16 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 //This class manages the database interactions related to the Audit
+@Service
+@Qualifier("default")
 public class AssAuditService implements AssAuditServiceInterface {
 
   private static final Logger LOG = LoggerFactory.getLogger(AssAuditService.class.getName());
-  PersistencySessionFactory sessionFactory;
-  QuestionnaireService questionnaireService;
-  AssAuditDefaultService auditDefaultService;
+
+  @Autowired
+  private AssAuditDefaultService auditDefaultService;
+  @Autowired
+  private SqlSession sqlSession;
 
   /*
    * (non-Javadoc)
@@ -59,28 +65,23 @@ public class AssAuditService implements AssAuditServiceInterface {
   @Override
   public List<SestAuditModel> getAllForProject(String identifier) {
     LOG.info("called getAllForProject");
-    SqlSession sqlSession = sessionFactory.getSession();
     List<SestAuditModel> auditsToSend = new ArrayList<>();
-    try {
-      AssAuditMapper auditeMapper = sqlSession.getMapper(AssAuditMapper.class);
-      QuestionnaireMapper questionnaireMapper = sqlSession.getMapper(QuestionnaireMapper.class);
+    AssAuditMapper auditeMapper = sqlSession.getMapper(AssAuditMapper.class);
+    QuestionnaireMapper questionnaireMapper = sqlSession.getMapper(QuestionnaireMapper.class);
 
-      List<SestAuditModel> audits = auditeMapper.getAllForProject(identifier);
-      for (SestAuditModel audit : audits) {
-        LOG.info("questionnaireMapper.getTypeByAuditId(audit.getId()) " + questionnaireMapper.getByAuditId(audit.getId()));
-        audit.setObjType(SESTObjectTypeEnum.Audit);
-        List<SestQuestionnaireModel> questionnaires = questionnaireMapper.getAllQuestionnaireNames(audit.getId()).
-          stream().map(quest -> {
-            quest.setObjType(SESTObjectTypeEnum.Audit);
-            LOG.info("quest "+quest.getIdentifier());
-            return quest;
-        }).collect(Collectors.toList());
-        audit.setSestQuestionnaireModel(questionnaires);
-        auditsToSend.add(audit);
-        LOG.info("added audit to listAudit");
-      }
-    } finally {
-      sqlSession.close();
+    List<SestAuditModel> audits = auditeMapper.getAllForProject(identifier);
+    for (SestAuditModel audit : audits) {
+      LOG.info("questionnaireMapper.getTypeByAuditId(audit.getId()) " + questionnaireMapper.getByAuditId(audit.getId()));
+      audit.setObjType(SESTObjectTypeEnum.Audit);
+      List<SestQuestionnaireModel> questionnaires = questionnaireMapper.getAllQuestionnaireNames(audit.getId()).
+        stream().map(quest -> {
+        quest.setObjType(SESTObjectTypeEnum.Audit);
+        LOG.info("quest " + quest.getIdentifier());
+        return quest;
+      }).collect(Collectors.toList());
+      audit.setSestQuestionnaireModel(questionnaires);
+      auditsToSend.add(audit);
+      LOG.info("added audit to listAudit");
     }
     return auditsToSend;
   }
@@ -90,50 +91,41 @@ public class AssAuditService implements AssAuditServiceInterface {
 
     LOG.info("called getByProjectAndType");
 
-    SqlSession sqlSession = sessionFactory.getSession();
     SestAuditModel audit = null;
-    try {
-      AssAuditMapper auditeMapper = sqlSession.getMapper(AssAuditMapper.class);
-      QuestionnaireMapper questionnaireMapper = sqlSession.getMapper(QuestionnaireMapper.class);
-      SestobjMapper sestobjMapper = sqlSession.getMapper(SestobjMapper.class);
+    AssAuditMapper auditeMapper = sqlSession.getMapper(AssAuditMapper.class);
+    QuestionnaireMapper questionnaireMapper = sqlSession.getMapper(QuestionnaireMapper.class);
+    SestobjMapper sestobjMapper = sqlSession.getMapper(SestobjMapper.class);
 
-      audit = auditeMapper.getByProjectAndType(identifier, type.name());
-      LOG.info("called getByProjectAndType "+audit.getProjectId());
-      List<SestQuestionnaireModel> questionnaires = null;
-      if (includeModels) {
-        questionnaires = questionnaireMapper.getByAuditId(audit.getId());
-        LOG.info("called getByProjectAndType questionnaires "+questionnaires.size());
-      } else {
-        questionnaires = questionnaireMapper.getAllQuestionnaireNames(audit.getId());
-      }
-      questionnaires = questionnaires.stream().map(quest -> {
-        quest.setObjType(SESTObjectTypeEnum.Audit);
-        return quest;
-      }).collect(Collectors.toList());
-      audit.setSestQuestionnaireModel(questionnaires);
-      Sestobj sestObj = sestobjMapper.getByIdentifier(audit.getIdentifier());
-      audit.setObjType(SESTObjectTypeEnum.valueOf(sestObj.getObjtype()));
-      audit.setLockedBy(sestObj.getLockedBy());
-      LOG.info("called sestObj.getLockedBy() "+sestObj.getLockedBy());
-    } finally {
-      sqlSession.close();
+    audit = auditeMapper.getByProjectAndType(identifier, type.name());
+    LOG.info("called getByProjectAndType " + audit.getProjectId());
+    List<SestQuestionnaireModel> questionnaires = null;
+    if (includeModels) {
+      questionnaires = questionnaireMapper.getByAuditId(audit.getId());
+      LOG.info("called getByProjectAndType questionnaires " + questionnaires.size());
+    } else {
+      questionnaires = questionnaireMapper.getAllQuestionnaireNames(audit.getId());
     }
+    questionnaires = questionnaires.stream().map(quest -> {
+      quest.setObjType(SESTObjectTypeEnum.Audit);
+      return quest;
+    }).collect(Collectors.toList());
+    audit.setSestQuestionnaireModel(questionnaires);
+    Sestobj sestObj = sestobjMapper.getByIdentifier(audit.getIdentifier());
+    audit.setObjType(SESTObjectTypeEnum.valueOf(sestObj.getObjtype()));
+    audit.setLockedBy(sestObj.getLockedBy());
+    LOG.info("called sestObj.getLockedBy() " + sestObj.getLockedBy());
     return audit;
   }
 
   @Override
   public int getProjectIdByIdentifier(String identifier) {
     LOG.info("called getProjectIdByIdentifier " + identifier);
-    SqlSession sqlSession = sessionFactory.getSession();
     Integer projectId = null;
-
     try {
       AssAuditMapper auditeMapper = sqlSession.getMapper(AssAuditMapper.class);
       projectId = auditeMapper.getProjectIdByIdentifier(identifier);
     } catch (Exception ex) {
       LOG.error(ex.getMessage());
-    } finally {
-      sqlSession.close();
     }
 
     return projectId;
@@ -143,35 +135,28 @@ public class AssAuditService implements AssAuditServiceInterface {
   public void update(SestAuditModel auditDM) {
 
     LOG.info("Update Audit");
-    SqlSession sqlSession = sessionFactory.getSession();
-
     try {
       QuestionnaireMapper questionnaireMapper = sqlSession.getMapper(QuestionnaireMapper.class);
 
       List<SestQuestionnaireModel> questionnaires = auditDM.getSestQuestionnaireModel();
-      LOG.info("Update questionnaire "+questionnaires.size());
+      LOG.info("Update questionnaire " + questionnaires.size());
       for (SestQuestionnaireModel questionnaire : questionnaires) {
-        LOG.info("Update questionnaire "+questionnaire.getType());
-        LOG.info("Update questionnaire "+questionnaire.getIdentifier());
-        LOG.info("Update questionnaire "+questionnaire.getId());
-        LOG.info("Update questionnaire "+questionnaire.getAuditId());
-        LOG.info("Update questionnaire "+auditDM.getIdentifier());
-        LOG.info("Update questionnaire "+questionnaire.getQuestionnaireModelJson());
+        LOG.info("Update questionnaire " + questionnaire.getType());
+        LOG.info("Update questionnaire " + questionnaire.getIdentifier());
+        LOG.info("Update questionnaire " + questionnaire.getId());
+        LOG.info("Update questionnaire " + questionnaire.getAuditId());
+        LOG.info("Update questionnaire " + auditDM.getIdentifier());
+        LOG.info("Update questionnaire " + questionnaire.getQuestionnaireModelJson());
         questionnaireMapper.update(questionnaire.getIdentifier(), questionnaire.getQuestionnaireModelJson());
       }
-      sqlSession.commit();
     } catch (Exception ex) {
       LOG.error(ex.getMessage());
-      sqlSession.rollback();
-    } finally {
-      sqlSession.close();
     }
   }
 
-  public SestAuditModel insert(SestAuditModel auditModel, Integer projectId) throws Exception {
+  public SestAuditModel insert(SestAuditModel auditModel, Integer projectId) {
 
     LOG.info("Insert Audit");
-    SqlSession sqlSession = sessionFactory.getSession();
 
     // get the hashmap with safeguard - answers relation from the templates'
     // safeguardmodel
@@ -192,14 +177,9 @@ public class AssAuditService implements AssAuditServiceInterface {
       auditModel.setProjectId(projectId);
       auditModel.setType(AuditTypeEnum.SECURITY);
       auditMapper.insert(auditModel);
-
-      sqlSession.commit();
     } catch (Exception ex) {
       LOG.error(ex.getMessage());
-      sqlSession.rollback();
       return null;
-    } finally {
-      sqlSession.close();
     }
     return auditModel;
   }
@@ -207,7 +187,6 @@ public class AssAuditService implements AssAuditServiceInterface {
   public void insertDefaultQuestionnaires(Integer projectId) throws Exception {
 
     LOG.info("Insert Default Questionnaire");
-    SqlSession sqlSession = sessionFactory.getSession();
 
     SestAuditModel auditModel = insert(new SestAuditModel(), projectId);
     int auditId = auditModel.getId();
@@ -230,16 +209,12 @@ public class AssAuditService implements AssAuditServiceInterface {
       });
     } catch (Exception ex) {
       LOG.error(ex.getMessage());
-      sqlSession.rollback();
-    } finally {
-      sqlSession.close();
     }
   }
 
   public Integer insert(SestQuestionnaireModel questionnaireModel, Integer auditId) {
 
     LOG.info("Insert Questionnaire");
-    SqlSession sqlSession = sessionFactory.getSession();
 
     Sestobj sestobj = null;
 
@@ -256,14 +231,10 @@ public class AssAuditService implements AssAuditServiceInterface {
       questionnaireModel.setAuditId(auditId);
       questionnaireMapper.insert(questionnaireModel);
 
-      sqlSession.commit();
       return questionnaireModel.getId();
     } catch (Exception ex) {
       LOG.error(ex.getMessage());
-      sqlSession.rollback();
       return null;
-    } finally {
-      sqlSession.close();
     }
   }
 
@@ -271,21 +242,16 @@ public class AssAuditService implements AssAuditServiceInterface {
   public List<Question> getSafeguardByIdentifier() {
 
     LOG.info("getSafeguardByIdentifier ");
-    SqlSession sqlSession = sessionFactory.getSession();
     List<Question> safeguards = new ArrayList<>();
-    try {
-      AssAuditDefaultMapper auditDefaultMapper = sqlSession.getMapper(AssAuditDefaultMapper.class);
-      List<AssauditDefaultJSON> defaultSafeguards = auditDefaultMapper.getSafeguardByIdentifier();
-      defaultSafeguards.forEach(defaultSafeguard -> {
-        LOG.info("getSafeguardByIdentifier " + defaultSafeguard.getAvalue());
-        Question question = new Question();
-        question.setCategory(defaultSafeguard.getCategory());
-        question.setValue(defaultSafeguard.getAvalue());
-        safeguards.add(question);
-      });
-    } finally {
-      sqlSession.close();
-    }
+    AssAuditDefaultMapper auditDefaultMapper = sqlSession.getMapper(AssAuditDefaultMapper.class);
+    List<AssauditDefaultJSON> defaultSafeguards = auditDefaultMapper.getSafeguardByIdentifier();
+    defaultSafeguards.forEach(defaultSafeguard -> {
+      LOG.info("getSafeguardByIdentifier " + defaultSafeguard.getAvalue());
+      Question question = new Question();
+      question.setCategory(defaultSafeguard.getCategory());
+      question.setValue(defaultSafeguard.getAvalue());
+      safeguards.add(question);
+    });
     return safeguards;
   }
 
@@ -299,7 +265,6 @@ public class AssAuditService implements AssAuditServiceInterface {
   private HashMap<String, ArrayList<String>> getSafeguardModel(Integer projectId) {
 
     LOG.info("getSafeguardModel by projectId {} ", projectId);
-    SqlSession sqlSession = sessionFactory.getSession();
     HashMap<String, ArrayList<String>> sgMap = new HashMap<>();
     try {
 
@@ -338,8 +303,6 @@ public class AssAuditService implements AssAuditServiceInterface {
     } catch (Exception ex) {
       LOG.error(ex.getMessage());
       return sgMap;
-    } finally {
-      sqlSession.close();
     }
     return sgMap;
   }
@@ -413,45 +376,13 @@ public class AssAuditService implements AssAuditServiceInterface {
   public void delete(String identifier) {
 
     LOG.info("deleteCascade questionnaire " + identifier);
-    SqlSession sqlSession = sessionFactory.getSession();
-
-    try {
-      AssAuditMapper auditMapper = sqlSession.getMapper(AssAuditMapper.class);
-
-      auditMapper.deleteByIdentifier(identifier);
-      sqlSession.commit();
-    } finally {
-      sqlSession.close();
-    }
+    AssAuditMapper auditMapper = sqlSession.getMapper(AssAuditMapper.class);
+    auditMapper.deleteByIdentifier(identifier);
   }
 
   public void createDefaultQuestionnaire() {
 
     LOG.info("createDefaultQuestionnaire auditDefaultService " + auditDefaultService);
     auditDefaultService.createQuestionnaire();
-  }
-
-  public PersistencySessionFactory getSessionFactory() {
-    return sessionFactory;
-  }
-
-  public void setSessionFactory(PersistencySessionFactory sessionFactory) {
-    this.sessionFactory = sessionFactory;
-  }
-
-  public QuestionnaireService getQuestionnaireService() {
-    return questionnaireService;
-  }
-
-  public void setQuestionnaireService(QuestionnaireService questionnaireService) {
-    this.questionnaireService = questionnaireService;
-  }
-
-  public AssAuditDefaultService getAuditDefaultService() {
-    return auditDefaultService;
-  }
-
-  public void setAuditDefaultService(AssAuditDefaultService auditDefaultService) {
-    this.auditDefaultService = auditDefaultService;
   }
 }

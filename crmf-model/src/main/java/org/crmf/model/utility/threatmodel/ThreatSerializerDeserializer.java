@@ -26,7 +26,7 @@ public class ThreatSerializerDeserializer {
 
 	/**
 	 * Creates JSON from POJO
-	 * @param Vulnerability
+	 * @param Threat
 	 * @return Json
 	 */
      public String getJSONStringFromTM(Threat threat){

@@ -12,12 +12,14 @@
 
 package org.crmf.persistency.mapper.user;
 
+import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.crmf.persistency.domain.user.Role;
 
 import java.util.List;
 
 //This interface allows the bundle to invoke the SQL methods within the RoleMapper.xml (via the ibatis API)
+@Mapper
 public interface RoleMapper {
 
   int insert(Role role);

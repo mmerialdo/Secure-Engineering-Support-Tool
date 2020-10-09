@@ -18,16 +18,23 @@ import org.crmf.model.riskassessment.SystemProject;
 import org.crmf.persistency.domain.general.Sestobj;
 import org.crmf.persistency.domain.project.SysProject;
 import org.crmf.persistency.mapper.general.SestobjMapper;
-import org.crmf.persistency.session.PersistencySessionFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Service;
 
 //This class manages the database interactions related to the SystemProject
+@Service
+@Qualifier("default")
 public class SysprojectService implements SysprojectServiceInterface {
 
   private static final Logger LOG = LoggerFactory.getLogger(SysprojectService.class.getName());
-  PersistencySessionFactory sessionFactory;
-  SysparticipantService syspService;
+
+  @Autowired
+  private SysparticipantService syspService;
+  @Autowired
+  private SqlSession sqlSession;
 
   /*
    * (non-Javadoc)
@@ -38,8 +45,6 @@ public class SysprojectService implements SysprojectServiceInterface {
    */
   @Override
   public Integer insert(SystemProject sysprojectDM) throws Exception {
-    SqlSession sqlSession = sessionFactory.getSession();
-
     LOG.info("Insert SysProject");
     SysProject project = new SysProject();
     project.convertFromModel(sysprojectDM);
@@ -56,16 +61,10 @@ public class SysprojectService implements SysprojectServiceInterface {
 
       project.setSestobjId(sestobj.getIdentifier());
       projectMapper.insert(project);
-
-      sqlSession.commit();
     } catch (Exception ex) {
       LOG.error(ex.getMessage());
-      sqlSession.rollback();
       return null;
-    } finally {
-      sqlSession.close();
     }
-
     if (sysprojectDM.getParticipants() != null) {
       try {
         syspService.insert(sysprojectDM.getParticipants(), project.getId());
@@ -78,9 +77,6 @@ public class SysprojectService implements SysprojectServiceInterface {
 
   @Override
   public void update(SystemProject sysprojectDM) {
-
-    SqlSession sqlSession = sessionFactory.getSession();
-
     LOG.info("Update SysProject");
     SysProject project = new SysProject();
     project.convertFromModel(sysprojectDM);
@@ -89,31 +85,9 @@ public class SysprojectService implements SysprojectServiceInterface {
       SysprojectMapper projectMapper = sqlSession.getMapper(SysprojectMapper.class);
 
       projectMapper.update(project);
-      sqlSession.commit();
-
       syspService.update(sysprojectDM.getParticipants(), project.getId());
     } catch (Exception ex) {
       LOG.error(ex.getMessage());
-      sqlSession.rollback();
-    } finally {
-      sqlSession.close();
     }
   }
-
-  public PersistencySessionFactory getSessionFactory() {
-    return sessionFactory;
-  }
-
-  public void setSessionFactory(PersistencySessionFactory sessionFactory) {
-    this.sessionFactory = sessionFactory;
-  }
-
-  public SysparticipantService getSyspService() {
-    return syspService;
-  }
-
-  public void setSyspService(SysparticipantService syspService) {
-    this.syspService = syspService;
-  }
-
 }

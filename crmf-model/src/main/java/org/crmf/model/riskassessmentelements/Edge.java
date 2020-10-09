@@ -24,6 +24,13 @@ public class Edge extends SESTObject {
 	private Node target;
 	private ArrayList<BusinessImpact> businessImpactWeights;
 
+	public Edge(Node source, Node target) {
+		this.source = source;
+		this.target = target;
+	}
+
+	public Edge() {}
+
 	public float getOperationalWeight() {
 		return operationalWeight;
 	}
