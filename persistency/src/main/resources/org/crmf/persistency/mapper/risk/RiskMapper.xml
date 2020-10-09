@@ -102,7 +102,7 @@
 	
 	<select id='getRiskScenarioReference' resultMap='SestRiskScenarioReference'>
 		SELECT *
-		FROM RISK_SCENARIO_REFERENCE
+		FROM RISK_SCENARIO_REFERENCE ORDER BY ID
 	</select>
 
 	<delete id='deleteScenarioReference' parameterType="java.util.List">

@@ -17,138 +17,83 @@ import org.crmf.model.audit.SestQuestionnaireModel;
 import org.crmf.model.general.SESTObjectTypeEnum;
 import org.crmf.persistency.domain.general.Sestobj;
 import org.crmf.persistency.mapper.general.SestobjMapper;
-import org.crmf.persistency.session.PersistencySessionFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 //This class manages the database interactions related to the QuestionnaireJSON
+@Service
+@Qualifier("default")
 public class QuestionnaireService implements QuestionnaireServiceInterface {
 
-	private static final Logger LOG = LoggerFactory.getLogger(QuestionnaireService.class.getName());
-	PersistencySessionFactory sessionFactory;
+  private static final Logger LOG = LoggerFactory.getLogger(QuestionnaireService.class.getName());
 
-	public Integer insert(SestQuestionnaireModel questionnaireModel, Integer auditId) throws Exception {
+  @Autowired
+  private SqlSession sqlSession;
 
-		LOG.info("Insert Questionnaire");
-		SqlSession sqlSession = sessionFactory.getSession();
+  public Integer insert(SestQuestionnaireModel questionnaireModel, Integer auditId) {
 
-		Sestobj sestobj = null;
+    LOG.info("Insert Questionnaire");
+    Sestobj sestobj = null;
 
-		try {
-			QuestionnaireMapper questionnaireMapper = sqlSession.getMapper(QuestionnaireMapper.class);
-			SestobjMapper sestobjMapper = sqlSession.getMapper(SestobjMapper.class);
+    try {
+      QuestionnaireMapper questionnaireMapper = sqlSession.getMapper(QuestionnaireMapper.class);
+      SestobjMapper sestobjMapper = sqlSession.getMapper(SestobjMapper.class);
 
-			LOG.info("Insert sestObject");
-			sestobj = new Sestobj();
-			sestobj.setObjtype(SESTObjectTypeEnum.Audit.name());
-			sestobjMapper.insert(sestobj);
+      LOG.info("Insert sestObject");
+      sestobj = new Sestobj();
+      sestobj.setObjtype(SESTObjectTypeEnum.Audit.name());
+      sestobjMapper.insert(sestobj);
 
-			questionnaireModel.setIdentifier(sestobj.getIdentifier());
-			questionnaireMapper.insert(questionnaireModel);
+      questionnaireModel.setIdentifier(sestobj.getIdentifier());
+      questionnaireMapper.insert(questionnaireModel);
+      return questionnaireModel.getId();
+    } catch (Exception ex) {
+      LOG.error(ex.getMessage());
+      return null;
+    }
+  }
 
-			sqlSession.commit();
-			return questionnaireModel.getId();
-		} catch (Exception ex) {
-			LOG.error(ex.getMessage());
-			sqlSession.rollback();
-			return null;
-		} finally {
-			sqlSession.close();
-		}
-	}
+  public void deleteCascade(String identifier) {
 
-	public void deleteCascade(String identifier) {
+    LOG.info("called deleteCascade");
+    QuestionnaireMapper questionnaireMapper = sqlSession.getMapper(QuestionnaireMapper.class);
+    questionnaireMapper.delete(identifier);
+  }
 
-		LOG.info("called deleteCascade");
-		SqlSession sqlSession = sessionFactory.getSession();
+  /*
+   * (non-Javadoc)
+   *
+   * @see org.crmf.persistency.mapper.audit.QuestionnaireServiceInterface#
+   * getByIdentifier(java.lang.String)
+   */
+  @Override
+  public SestQuestionnaireModel getByIdentifier(String identifier) {
 
-		try {
-			QuestionnaireMapper questionnaireMapper = sqlSession.getMapper(QuestionnaireMapper.class);
-			questionnaireMapper.delete(identifier);
-		} finally {
-			sqlSession.close();
-		}
-	}
+    LOG.info("called getByIdentifier |" + identifier + "|");
+    QuestionnaireMapper questionnaireMapper = sqlSession.getMapper(QuestionnaireMapper.class);
+    return questionnaireMapper.getByIdentifier(identifier);
+  }
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see org.crmf.persistency.mapper.audit.QuestionnaireServiceInterface#
-	 * getByIdentifier(java.lang.String)
-	 */
-	@Override
-	public SestQuestionnaireModel getByIdentifier(String identifier) {
+  /*
+   * (non-Javadoc)
+   *
+   * @see org.crmf.persistency.mapper.audit.QuestionnaireServiceInterface#
+   * getByIdentifier(java.lang.String)
+   */
+  @Override
+  public List<SestQuestionnaireModel> getAllQuestionnaireNames(String auditIdentifier) {
 
-		LOG.info("called getByIdentifier |"+identifier+"|");
-		SqlSession sqlSession = sessionFactory.getSession();
-
-		SestQuestionnaireModel questionnaireToSend = null;
-		try {
-			QuestionnaireMapper questionnaireMapper = sqlSession.getMapper(QuestionnaireMapper.class);
-			questionnaireToSend = questionnaireMapper.getByIdentifier(identifier);
-			LOG.info("called getByIdentifier to send |"+questionnaireToSend+"|");
-		} finally {
-			sqlSession.close();
-		}
-		return questionnaireToSend;
-	}
-
-	/*
-	 * (non-Javadoc)
-	 *
-	 * @see org.crmf.persistency.mapper.audit.QuestionnaireServiceInterface#
-	 * getByIdentifier(java.lang.String)
-	 */
-	@Override
-	public List<SestQuestionnaireModel> getAllQuestionnaireNames(String auditIdentifier) {
-
-		LOG.info("called getAllQuestionnaireNames "+auditIdentifier);
-		SqlSession sqlSession = sessionFactory.getSession();
-
-		List<SestQuestionnaireModel>  questionnaireToSend = null;
-		try {
-			QuestionnaireMapper questionnaireMapper = sqlSession.getMapper(QuestionnaireMapper.class);
-			AssAuditMapper auditMapper = sqlSession.getMapper(AssAuditMapper.class);
-			LOG.info("getAllQuestionnaireNames");
-			LOG.info(auditMapper.toString());
-			int auditId = auditMapper.getIdByIdentifier(auditIdentifier);
-			questionnaireToSend = questionnaireMapper.getAllQuestionnaireNames(auditId);
-		} finally {
-			sqlSession.close();
-		}
-		return questionnaireToSend;
-	}
-
-	/*
-	 * (non-Javadoc)
-	 *
-	 * @see org.crmf.persistency.mapper.audit.QuestionnaireServiceInterface#
-	 * getByIdentifier(java.lang.String)
-	 */
-	@Override
-	public SestQuestionnaireModel getQuestionnaireByCategory(String category) {
-
-		LOG.info("called getByCategory "+category);
-		SqlSession sqlSession = sessionFactory.getSession();
-
-		SestQuestionnaireModel questionnaireToSend = null;
-		try {
-			QuestionnaireMapper questionnaireMapper = sqlSession.getMapper(QuestionnaireMapper.class);
-			questionnaireToSend = questionnaireMapper.getQuestionnaireByCategory(category);
-		} finally {
-			sqlSession.close();
-		}
-		return questionnaireToSend;
-	}
-
-	public PersistencySessionFactory getSessionFactory() {
-		return sessionFactory;
-	}
-
-	public void setSessionFactory(PersistencySessionFactory sessionFactory) {
-		this.sessionFactory = sessionFactory;
-	}
-
+    LOG.info("called getAllQuestionnaireNames " + auditIdentifier);
+    QuestionnaireMapper questionnaireMapper = sqlSession.getMapper(QuestionnaireMapper.class);
+    AssAuditMapper auditMapper = sqlSession.getMapper(AssAuditMapper.class);
+    LOG.info("getAllQuestionnaireNames");
+    LOG.info(auditMapper.toString());
+    int auditId = auditMapper.getIdByIdentifier(auditIdentifier);
+    return questionnaireMapper.getAllQuestionnaireNames(auditId);
+  }
 }

@@ -25,11 +25,12 @@ import org.crmf.model.riskassessmentelements.Vulnerability;
 import org.crmf.model.riskassessmentelements.VulnerabilityExploitabilityEnum;
 import org.crmf.model.riskassessmentelements.VulnerabilityScoreEnum;
 import org.crmf.model.riskassessmentelements.VulnerabilitySourceEnum;
+import org.springframework.stereotype.Service;
 
+@Service
 public class TaxonomyReferenceBuilder {
 
-
-  public static final void vulnearbilityCheckAndFill(Vulnerability vulnerability) {
+  public Vulnerability vulnerabilityCheckAndFill(Vulnerability vulnerability) {
 
     vulnerability.setCanBeSelected(true);
     if (vulnerability.getScore() == null) {
@@ -59,9 +60,11 @@ public class TaxonomyReferenceBuilder {
     if (vulnerability.getCatalogue() == null) {
       vulnerability.setCatalogue(VulnerabilitySourceEnum.CUSTOM);
     }
+
+    return vulnerability;
   }
 
-  public static final void threatCheckAndFill(Threat threat) {
+  public Threat threatCheckAndFill(Threat threat) {
 
     threat.setCanBeSelected(true);
     threat.setElementType(ElementTypeEnum.Element);
@@ -134,6 +137,7 @@ public class TaxonomyReferenceBuilder {
         threat.getTime().setCatalogue(ThreatSourceEnum.CUSTOM);
       }
     }
+    return threat;
   }
 
 }

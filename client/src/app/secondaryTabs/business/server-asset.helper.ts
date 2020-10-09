@@ -63,6 +63,7 @@ export class ServerAssetHelper {
     const activitiesMap = new Map<any, any[]>();
     const allActivities: any[] = this.getAllBusinessActivities(serverAsset);
 
+    let count = 0;
     allActivities.forEach(activity => {
       const processes: any[] = [];
       activity.parents.forEach(parent => {
@@ -70,6 +71,7 @@ export class ServerAssetHelper {
       });
       activitiesMap.set(activity, processes);
     });
+
     return activitiesMap;
   }
 
@@ -201,7 +203,7 @@ export class ServerAssetHelper {
       const sourceNode = serverAsset.nodes.filter(node => node.identifier === parentEdge.source)[0];
       const targetNode = serverAsset.nodes.filter(node => node.identifier === parentEdge.target)[0];
 
-      if (sourceNode.identifier === nodeChild.identifier) {
+      if (sourceNode && sourceNode.identifier === nodeChild.identifier) {
         return targetNode;
       } else {
         return sourceNode;
@@ -223,7 +225,7 @@ export class ServerAssetHelper {
       const sourceNode = serverAsset.nodes.filter(node => node.identifier === childEdge.source)[0];
       const targetNode = serverAsset.nodes.filter(node => node.identifier === childEdge.target)[0];
 
-      if (targetNode.identifier === nodeParent.identifier) {
+      if (targetNode && targetNode.identifier === nodeParent.identifier) {
         return sourceNode;
       } else {
         return targetNode;

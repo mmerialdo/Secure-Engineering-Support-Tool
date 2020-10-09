@@ -17,19 +17,23 @@ import org.crmf.model.general.SESTObjectTypeEnum;
 import org.crmf.persistency.domain.asset.SestAssetModel;
 import org.crmf.persistency.domain.general.Sestobj;
 import org.crmf.persistency.mapper.general.SestobjMapper;
-import org.crmf.persistency.session.PersistencySessionFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Service;
 
 //This class manages the database interactions related to the AssetModel
+@Service
+@Qualifier("default")
 public class AssetService implements AssetServiceInterface {
   private static final Logger LOG = LoggerFactory.getLogger(AssetService.class.getName());
-  PersistencySessionFactory sessionFactory;
 
+  @Autowired
+  private SqlSession sqlSession;
 
   @Override
   public void insert(String assetModelJson, String sestobjId) {
-    SqlSession sqlSession = sessionFactory.getSession();
     LOG.info("Insert Asset Model");
 
     Sestobj sestobj = null;
@@ -52,18 +56,13 @@ public class AssetService implements AssetServiceInterface {
       assetModel.setAssetModelJson(assetModelJson);
       assetModel.setSestobjId(sestobjId);
       assetMapper.insert(assetModel);
-      sqlSession.commit();
     } catch (Exception ex) {
       LOG.error("AssetModel insert exception: " + ex.getMessage(), ex);
-      sqlSession.rollback();
-    } finally {
-      sqlSession.close();
     }
   }
 
   @Override
   public void update(String assetModelJson, String identifier) {
-    SqlSession sqlSession = sessionFactory.getSession();
     LOG.info("Update Asset Model");
 
     try {
@@ -71,18 +70,13 @@ public class AssetService implements AssetServiceInterface {
       AssetMapper assetMapper = sqlSession.getMapper(AssetMapper.class);
       //use the Asset Mapper to insert the Asset Model
       assetMapper.update(assetModelJson, identifier);
-      sqlSession.commit();
     } catch (Exception ex) {
       LOG.error("AssetModel updateQuestionnaireJSON exception: " + ex.getMessage(), ex);
-      sqlSession.rollback();
-    } finally {
-      sqlSession.close();
     }
   }
 
   @Override
   public SestAssetModel getByIdentifier(String sestobjId) {
-    SqlSession sqlSession = sessionFactory.getSession();
     LOG.info("get By Identifier -  Asset Model");
     SestAssetModel assetModel;
 
@@ -92,47 +86,11 @@ public class AssetService implements AssetServiceInterface {
       //use the Asset Mapper to insert the Asset Model
       assetModel = assetMapper.getByIdentifier(sestobjId);
       LOG.info("get By Identifier -  Asset Model returned: " + assetModel);
-      sqlSession.commit();
     } catch (Exception ex) {
       LOG.error("AssetModel getByIdentifier exception: " + ex.getMessage(), ex);
-      sqlSession.rollback();
       return null;
-    } finally {
-      sqlSession.close();
     }
 
     return (null != assetModel) ? assetModel : null;
   }
-
-//	@Override
-//	public SestAssetModel getById(Integer id){
-//		SqlSession sqlSession = sessionFactory.getSession();
-//		LOG.info("get By Id - Asset Model");
-//		SestAssetModel assetModel;
-//
-//		try {
-//			//create a new Asset Mapper
-//			AssetMapper assetMapper = sqlSession.getMapper(AssetMapper.class);
-//			//use the Asset Mapper to insert the Asset Model
-//			assetModel = assetMapper.getById(id);
-//			sqlSession.commit();
-//		} catch (Exception ex) {
-//			LOG.error(ex.getMessage());
-//			sqlSession.rollback();
-//			return null;
-//		} finally {
-//			sqlSession.close();
-//		}
-//		
-//		return (null != assetModel)?assetModel: null;
-//	}
-
-  public PersistencySessionFactory getSessionFactory() {
-    return sessionFactory;
-  }
-
-  public void setSessionFactory(PersistencySessionFactory sessionFactory) {
-    this.sessionFactory = sessionFactory;
-  }
-
 }

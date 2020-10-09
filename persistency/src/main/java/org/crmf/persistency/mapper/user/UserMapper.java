@@ -12,6 +12,7 @@
 
 package org.crmf.persistency.mapper.user;
 
+import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.crmf.persistency.domain.user.Sestuser;
 
@@ -19,6 +20,7 @@ import java.util.Date;
 import java.util.List;
 
 //This interface allows the bundle to invoke the SQL methods within the UserMapper.xml (via the ibatis API)
+@Mapper
 public interface UserMapper {
 
   int insert(Sestuser user);

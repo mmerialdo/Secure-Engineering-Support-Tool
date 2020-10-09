@@ -14,11 +14,7 @@ package org.crmf.model.riskassessmentelements;
 
 public class BusinessActivity extends Node {
 
-	public BusinessActivity(){
+	public BusinessActivity() {
 
-	}
-
-	public void finalize() throws Throwable {
-		super.finalize();
 	}
 }

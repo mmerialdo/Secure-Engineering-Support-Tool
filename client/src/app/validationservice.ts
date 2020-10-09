@@ -23,7 +23,8 @@ export class ValidationService {
       'invalidUsername': 'Invalid username. Username must not contain the password!',
       'passwordMismatch': 'Password mismatch ',
       'minlength': `Minimum length ${validatorValue.requiredLength}`,
-      'maxlength': `Maximun length ${validatorValue.requiredLength}`
+      'maxlength': `Maximun length ${validatorValue.requiredLength}`,
+      'invalidThreatEventName': 'Wrong event name format'
     };
 
     return config[validatorName];
@@ -144,6 +145,14 @@ export class ValidationService {
     }
   }
 
+  static threatEventNameValidator(control) {
+
+    if (control.value.match(/^(\w+\.\w+\.\w+)$/)) {
+      return null;
+    } else {
+      return { 'invalidThreatEventName': true };
+    }
+  }
 }
 
 

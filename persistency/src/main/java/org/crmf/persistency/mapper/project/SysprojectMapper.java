@@ -12,11 +12,13 @@
 
 package org.crmf.persistency.mapper.project;
 
+import org.apache.ibatis.annotations.Mapper;
 import org.crmf.persistency.domain.project.SysProject;
 
 import java.util.List;
 
 //This interface allows the bundle to invoke the SQL methods within the SysprojectMapper.xml (via the ibatis API)
+@Mapper
 public interface SysprojectMapper {
 
   int insert(SysProject record);

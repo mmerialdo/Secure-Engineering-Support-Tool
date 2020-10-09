@@ -30,10 +30,6 @@
 
               <div [formGroup]="projectForm" class="form-group">
                 <label for="profile">Profile</label>
-                <!--<select formControlName="profile" class="form-control" name="profile" id="profile">-->
-                <!--<option ></option>-->
-
-                <!--</select>-->
                 <select [(ngModel)]="selectedProfile" formControlName="profile" class="form-control" name="profile"
                         id="profile" disabled>
                   <option *ngFor="let c of profilesList" [ngValue]="c.identifier"> {{ c.name }}</option>
@@ -100,16 +96,12 @@
 
           <div class="col-md-5">
 
-            <!--<div style="float: left">-->
-
             <div style="margin-bottom: 10px; text-align: center;font-size: 18px">
               <strong>Users List</strong>
             </div>
             <p-listbox [options]="usersM" [(ngModel)]="selectedUser" (click)="deselectSecondList(selectedUser)"
                        filter="filter" [style]="{'width':'100%','height':'250px','max-height':'250px', 'overflow-y':'auto'}" [listStyle]="{'max-height':'200px'}"
                        id="setB"></p-listbox>
-            <!--</div>-->
-
           </div>
 
           <div class="col-md-2">
@@ -139,14 +131,11 @@
 
           <div class="col-md-5">
 
-            <!--<div style="float: left">-->
             <div style="margin-bottom: 10px; text-align: center;font-size: 18px">
               <strong>Selected Users </strong>
             </div>
             <p-listbox [options]="selectedList" [(ngModel)]="chosenUser" (click)="deselectFirstList()"
                        [style]="{'width':'100%','height':'250px','max-height':'250px', 'overflow-y':'auto'}" [listStyle]="{'max-height':'250px'}"></p-listbox>
-
-            <!--</div>-->
 
             <div class="to-bottom">
               <button type="button" class="btn btn-primary btn-sm" style="margin-top: 5px;float:right"
@@ -159,25 +148,10 @@
 
 
         </div>
-
-
         <div *ngIf="selectedUser">
-          <!--<div class="col-md-11 well">
-
-
-          </div>-->
         </div>
-
         <div *ngIf="chosenUser">
-          <!--<div class="col-md-11 well">
-
-
-          </div>-->
-
-
         </div>
-
-
       </div>
 
       <div *ngSwitchCase="'systproj'">

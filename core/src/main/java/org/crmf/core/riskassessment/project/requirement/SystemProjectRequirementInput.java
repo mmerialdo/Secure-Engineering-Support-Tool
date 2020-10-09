@@ -12,8 +12,6 @@
 
 package org.crmf.core.riskassessment.project.requirement;
 
-import java.util.List;
-
 import org.crmf.core.riskassessment.project.manager.AssessmentTemplateInput;
 import org.crmf.model.requirement.Requirement;
 import org.crmf.model.utility.GenericFilter;
@@ -21,14 +19,21 @@ import org.crmf.model.utility.GenericFilterEnum;
 import org.crmf.persistency.mapper.requirement.RequirementServiceInterface;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 //This class is called by the Proxy and manages the entrypoint for the business logic (including the interactions with the Persistency) related to the ProjectRequirements
-public class SystemProjectRequirementInput implements SystemProjectRequirementInputInterface {
+@Service
+public class SystemProjectRequirementInput {
 
 	private static final Logger LOG = LoggerFactory.getLogger(AssessmentTemplateInput.class.getName());
+	@Autowired
+	@Qualifier("default")
 	private RequirementServiceInterface requirementService;
-	
-	@Override
+
 	public List<Requirement> loadProjectRequirement(GenericFilter filter) throws Exception {
 		//system project identifier
 		String identifier = filter.getFilterValue(GenericFilterEnum.IDENTIFIER);
@@ -36,18 +41,8 @@ public class SystemProjectRequirementInput implements SystemProjectRequirementIn
 		return requirementService.getBySysProject(identifier);
 	}
 
-	@Override
 	public List<Requirement> loadProjectRequirementByIds(List<String> ids) throws Exception {
 
 		return requirementService.getByIds(ids);
 	}
-
-	public RequirementServiceInterface getRequirementService() {
-		return requirementService;
-	}
-
-	public void setRequirementService(RequirementServiceInterface requirementService) {
-		this.requirementService = requirementService;
-	}
-
 }

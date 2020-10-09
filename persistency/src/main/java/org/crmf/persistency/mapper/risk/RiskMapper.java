@@ -12,6 +12,7 @@
 
 package org.crmf.persistency.mapper.risk;
 
+import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.crmf.persistency.domain.risk.SeriousnessScale;
 import org.crmf.persistency.domain.risk.SestRiskModel;
@@ -23,6 +24,7 @@ import java.util.List;
 import java.util.Set;
 
 //This interface allows the bundle to invoke the SQL methods within the RiskMapper.xml (via the ibatis API)
+@Mapper
 public interface RiskMapper {
   void insert(SestRiskModel riskModel);
 

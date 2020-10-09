@@ -12,72 +12,91 @@
 
 package org.crmf.proxy.core.riskassessment.project.rest;
 
-import org.crmf.core.riskassessment.project.manager.AssessmentProcedureInputInterface;
+import org.crmf.core.riskassessment.project.manager.AssessmentProcedureInput;
+import org.crmf.model.exception.RemoteComponentException;
 import org.crmf.model.riskassessment.AssessmentProcedure;
 import org.crmf.model.riskassessment.AssessmentProject;
 import org.crmf.model.utility.GenericFilter;
+import org.crmf.proxy.authnauthz.Permission;
+import org.crmf.proxy.configuration.ApiExceptionEnum;
+import org.crmf.proxy.configuration.ResponseMessage;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
 import java.util.List;
 
 //This class manages the business logic behind the webservices related to the AssessmentProcedures management
-public class AssessmentProcedureRestServer
-  implements AssessmentProcedureRestServerInterface {
+@RestController
+@RequestMapping(value = "api/procedure")
+public class AssessmentProcedureRestServer {
 
   private static final Logger LOG = LoggerFactory.getLogger(AssessmentProcedureRestServer.class.getName());
-  private AssessmentProcedureInputInterface procedureInput;
+  @Autowired
+  private AssessmentProcedureInput procedureInput;
 
-  @Override
-  public String createAssessmentProcedure(AssessmentProject procedurePrj) throws Exception {
+  @PostMapping("create")
+  @Permission(value = "AssessmentProcedure:Update")
+  public ResponseMessage createAssessmentProcedure(@RequestParam(name = "SHIRO_SECURITY_TOKEN") String token,
+                                                   @RequestBody AssessmentProject procedurePrj) {
+    String procedureIdentifier = null;
     try {
       LOG.info("createAssessmentProcedure, procedure with name {}", procedurePrj.getProcedures().get(0),
         procedurePrj.getName());
-
-      String result = procedureInput.createAssessmentProcedure(procedurePrj.getProcedures().get(0),
+      procedureIdentifier = procedureInput.createAssessmentProcedure(procedurePrj.getProcedures().get(0),
         procedurePrj.getIdentifier());
-      if (result == null) {
-        throw new Exception("COMMAND_EXCEPTION");
-      } else {
-        return result;
-      }
     } catch (Exception e) {
       LOG.error(e.getMessage());
-      throw new Exception("COMMAND_EXCEPTION", e);
+      throw new RemoteComponentException(ApiExceptionEnum.COMMAND_EXCEPTION, e);
+    }
+    if (procedureIdentifier == null) {
+      throw new RemoteComponentException(ApiExceptionEnum.COMMAND_EXCEPTION);
+    } else {
+      return new ResponseMessage(procedureIdentifier);
     }
   }
 
-  @Override
-  public void editAssessmentProcedure(AssessmentProcedure procedure) throws Exception {
+  @PostMapping("edit")
+  @Permission(value = "AssessmentProcedure:Update")
+  public void editAssessmentProcedure(@RequestParam(name = "SHIRO_SECURITY_TOKEN") String token,
+                                      @RequestBody AssessmentProcedure procedure) {
     try {
       LOG.info("editAssessmentProject, project with name {}", procedure.getName());
 
       procedureInput.editAssessmentProcedure(procedure);
     } catch (Exception e) {
       LOG.error(e.getMessage());
-      throw new Exception("COMMAND_EXCEPTION", e);
+      throw new RemoteComponentException(ApiExceptionEnum.COMMAND_EXCEPTION, e);
     }
   }
 
-  @Override
-  public String deleteAssessmentProcedure(String identifier) throws Exception {
+  @PostMapping("delete")
+  @Permission(value = "AssessmentProcedure:Update")
+  public ResponseMessage deleteAssessmentProcedure(@RequestParam(name = "SHIRO_SECURITY_TOKEN") String token,
+                                                   @RequestBody String identifier) {
     try {
       LOG.info("deleteAssessmentProcedure, procedure with identifier {}", identifier);
 
       procedureInput.deleteAssessmentProcedure(identifier);
 
-      return identifier;
-
+      return new ResponseMessage(identifier);
     } catch (Exception e) {
       LOG.error(e.getMessage());
-      throw new Exception("COMMAND_EXCEPTION", e);
+      throw new RemoteComponentException(ApiExceptionEnum.COMMAND_EXCEPTION, e);
     }
 
   }
 
-  @Override
-  public List<AssessmentProcedure> loadAssessmentProcedureList(String token, String permission) {
+  @GetMapping("list")
+  @Permission(value = "AssessmentProcedure:Read")
+  public List<AssessmentProcedure> loadAssessmentProcedureList(@RequestParam(name = "SHIRO_SECURITY_TOKEN") String token) {
 
     try {
       return procedureInput.loadAssessmentProcedureList();
@@ -87,8 +106,10 @@ public class AssessmentProcedureRestServer
     return null;
   }
 
-  @Override
-  public List<String> loadAssessmentProcedure(GenericFilter filter) throws Exception {
+  @PostMapping("load")
+  @Permission(value = "AssessmentProcedure:Read")
+  public List<String> loadAssessmentProcedure(@RequestParam(name = "SHIRO_SECURITY_TOKEN") String token,
+                                              @RequestBody GenericFilter filter) {
     List<String> jsonProcedures = new ArrayList<>();
 
     LOG.info("loadAssessmentProcedure {}", filter);
@@ -104,15 +125,7 @@ public class AssessmentProcedureRestServer
       return jsonProcedures;
     } catch (Exception e) {
       LOG.error("Exception in loadAssessmentProcedure: " + e.getMessage(), e);
-      throw new Exception("COMMAND_EXCEPTION", e);
+      throw new RemoteComponentException(ApiExceptionEnum.COMMAND_EXCEPTION, e);
     }
-  }
-
-  public AssessmentProcedureInputInterface getProcedureInput() {
-    return procedureInput;
-  }
-
-  public void setProcedureInput(AssessmentProcedureInputInterface procedureInput) {
-    this.procedureInput = procedureInput;
   }
 }

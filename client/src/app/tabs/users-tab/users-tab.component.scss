@@ -15,6 +15,7 @@
 .shape {
   border-style: solid;
   border-width: 0 70px 40px 0;
+  border-color: rgba(105, 158, 139, 2) #699e8b rgba(105, 158, 139, 2) rgba(105, 158, 139, 2);
   float: right;
   height: 0px;
   width: 0px;
@@ -45,10 +46,6 @@
   -moz-transition: all 0.4s ease-in-out;
   -o-transition: all 0.4s ease-in-out;
   transition: all 0.4s ease-in-out;
-}
-
-.shape {
-  border-color: rgba(105, 158, 139, 2) #699e8b rgba(105, 158, 139, 2) rgba(105, 158, 139, 2);
 }
 
 .offer-radius {

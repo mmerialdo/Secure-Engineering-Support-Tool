@@ -21,27 +21,32 @@ import org.crmf.persistency.mapper.general.SestObjServiceInterface;
 import org.crmf.persistency.mapper.project.AssprocedureServiceInterface;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Service;
 
 //This class is called by the Proxy and manages the entrypoint for the business logic (including the interactions with the Persistency) related to the AssetModel
-public class AssetModelManagerInput implements AssetModelManagerInputInterface {
+@Service
+public class AssetModelManagerInput {
   // the logger of AssetModelManagerInput class
   private static final Logger LOG = LoggerFactory.getLogger(AssetModelManagerInput.class.getName());
   // Asset service variable of persistency component
+  @Autowired
+  @Qualifier("default")
   private AssetServiceInterface assetService;
   // Procedure service variable of persistency component
+  @Autowired
+  @Qualifier("default")
   private AssprocedureServiceInterface assprocedureService;
+  @Autowired
+  @Qualifier("default")
   private SestObjServiceInterface sestObjService;
 
-  @Override
   public void editAssetModel(String assetModelJson, String assetModelIdentifier) {
-    LOG.info("editAssetModel with identifier: {} and Json {} ", assetModelIdentifier,
-      assetModelJson.substring(0, (assetModelJson.length() > 1000 ? 1000 : assetModelJson.length())));
     // updateQuestionnaireJSON the json asset model whose identifier is the asset model identifier in input
     assetService.update(assetModelJson, assetModelIdentifier);
-
   }
 
-  @Override
   public ModelObject loadAssetModel(GenericFilter filter) throws Exception {
     // get the procedure identifier passed in input
     String procedureIdentifier = filter.getFilterValue(GenericFilterEnum.PROCEDURE);
@@ -63,29 +68,5 @@ public class AssetModelManagerInput implements AssetModelManagerInputInterface {
     } else {
       throw new Exception("Incorrect procedure identifier in input");
     }
-  }
-
-  public AssetServiceInterface getAssetService() {
-    return assetService;
-  }
-
-  public void setAssetService(AssetServiceInterface assetService) {
-    this.assetService = assetService;
-  }
-
-  public AssprocedureServiceInterface getAssprocedureService() {
-    return assprocedureService;
-  }
-
-  public void setAssprocedureService(AssprocedureServiceInterface assprocedureService) {
-    this.assprocedureService = assprocedureService;
-  }
-
-  public SestObjServiceInterface getSestObjService() {
-    return sestObjService;
-  }
-
-  public void setSestObjService(SestObjServiceInterface sestObjService) {
-    this.sestObjService = sestObjService;
   }
 }

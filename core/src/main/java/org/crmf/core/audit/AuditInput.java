@@ -12,7 +12,7 @@
 
 package org.crmf.core.audit;
 
-import org.crmf.core.safeguardmodel.manager.SafeguardModelManagerInputInterface;
+import org.crmf.core.safeguardmodel.manager.SafeguardModelManagerInput;
 import org.crmf.model.audit.Audit;
 import org.crmf.model.audit.AuditTypeEnum;
 import org.crmf.model.audit.Question;
@@ -28,25 +28,38 @@ import org.crmf.persistency.mapper.audit.AssAuditServiceInterface;
 import org.crmf.persistency.mapper.audit.QuestionnaireServiceInterface;
 import org.crmf.persistency.mapper.project.AssprocedureServiceInterface;
 import org.crmf.persistency.mapper.project.AssprojectServiceInterface;
-import org.crmf.riskmodel.manager.RiskModelManagerInputInterface;
+import org.crmf.riskmodel.manager.RiskModelManagerInput;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 //This class is called by the Proxy and manages the entrypoint for the business logic (including the interactions with the Persistency) related to the Audit
-public class AuditInput implements AuditInputInterface {
+@Service
+public class AuditInput  {
 
   private static final Logger LOG = LoggerFactory.getLogger(AuditInput.class.getName());
+  @Autowired
+  @Qualifier("default")
   private AssAuditServiceInterface assauditService;
+  @Autowired
+  @Qualifier("default")
   private QuestionnaireServiceInterface questionnaireService;
+  @Autowired
+  @Qualifier("default")
   private AssprojectServiceInterface assprojectService;
+  @Autowired
+  @Qualifier("default")
   private AssprocedureServiceInterface assprocedureService;
-  private SafeguardModelManagerInputInterface safeguardModelInput;
-  private RiskModelManagerInputInterface riskModelInput;
-
+  @Autowired
+  private SafeguardModelManagerInput safeguardModelInput;
+  @Autowired
+  private RiskModelManagerInput riskModelInput;
 
   public void editAudit(ModelObject auditJson) {
     try {
@@ -59,7 +72,7 @@ public class AuditInput implements AuditInputInterface {
 
       //Once the audit answers are updated, the Safeguard Model must be updated
       AssessmentProject project = assprojectService.getById(projectId);
-      project.setAudits(new ArrayList<>(Arrays.asList(auditModel)));
+      project.setAudits(Arrays.asList(auditModel));
 
       editSafeguardModel(project);
     } catch (Exception e) {
@@ -67,7 +80,6 @@ public class AuditInput implements AuditInputInterface {
     }
   }
 
-  @Override
   public void editSafeguardModel(AssessmentProject project) {
     try {
       LOG.info("editSafeguardModel about to start the updateQuestionnaireJSON of the SafeguardModel for project with id: {} ", project.getIdentifier());
@@ -88,7 +100,6 @@ public class AuditInput implements AuditInputInterface {
   }
 
   //Load a single Audit of a specific Type for a specific AssessmentProject
-  @Override
   public SestAuditModel loadAudit(String identifier, AuditTypeEnum type, boolean includeModels) {
 
     LOG.info("loadAudit : {}, type : {}", identifier, type);
@@ -96,7 +107,6 @@ public class AuditInput implements AuditInputInterface {
       (type != null ? type : AuditTypeEnum.SECURITY), includeModels);
   }
 
-  @Override
   public ModelObject loadQuestionnaire(String identifier) {
     LOG.info("loadQuestionnaire : {} ", identifier);
     QuestionnaireModelSerializerDeserializer converter = new QuestionnaireModelSerializerDeserializer();
@@ -109,61 +119,11 @@ public class AuditInput implements AuditInputInterface {
     return modelObject;
   }
 
-  @Override
   public List<Question> loadQuestionnaireSafeguard() {
     return assauditService.getSafeguardByIdentifier();
   }
 
-  @Override
   public void createDefaultQuestionnaire() {
     assauditService.createDefaultQuestionnaire();
-  }
-
-  public QuestionnaireServiceInterface getQuestionnaireService() {
-    return questionnaireService;
-  }
-
-  public AssprojectServiceInterface getAssprojectService() {
-    return assprojectService;
-  }
-
-  public AssprocedureServiceInterface getAssprocedureService() {
-    return assprocedureService;
-  }
-
-  public SafeguardModelManagerInputInterface getSafeguardModelInput() {
-    return safeguardModelInput;
-  }
-
-  public RiskModelManagerInputInterface getRiskModelInput() {
-    return riskModelInput;
-  }
-
-  public void setQuestionnaireService(QuestionnaireServiceInterface questionnaireService) {
-    this.questionnaireService = questionnaireService;
-  }
-
-  public void setAssprojectService(AssprojectServiceInterface assprojectService) {
-    this.assprojectService = assprojectService;
-  }
-
-  public void setAssprocedureService(AssprocedureServiceInterface assprocedureService) {
-    this.assprocedureService = assprocedureService;
-  }
-
-  public void setSafeguardModelInput(SafeguardModelManagerInputInterface safeguardModelInput) {
-    this.safeguardModelInput = safeguardModelInput;
-  }
-
-  public void setRiskModelInput(RiskModelManagerInputInterface riskModelInput) {
-    this.riskModelInput = riskModelInput;
-  }
-
-  public AssAuditServiceInterface getAssauditService() {
-    return assauditService;
-  }
-
-  public void setAssauditService(AssAuditServiceInterface assauditService) {
-    this.assauditService = assauditService;
   }
 }

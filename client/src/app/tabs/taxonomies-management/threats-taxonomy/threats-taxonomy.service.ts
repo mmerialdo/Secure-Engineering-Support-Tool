@@ -45,8 +45,8 @@ export class ThreatsTaxonomyService {
   addThreat(threat: ThreatTaxonomy) {
 
     return this.dataService.createThreatReference(JSON.stringify(threat)).pipe(
-      tap((response) => {
-        threat.identifier = response.toString();
+      tap((response: any) => {
+        threat.identifier = response.response;
         this._threats.next([...this._threats.getValue(), threat]);
       }),
       catchError((error) => {

@@ -17,117 +17,81 @@ import org.crmf.model.general.SESTObject;
 import org.crmf.persistency.domain.general.Sestobj;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
 
 //This class manages the database interactions related to the SestObjects (each object in the SEST Data Model derives from the SESTObject class, encompassing an unique id which is 
 //used in order to register/updateQuestionnaireJSON the permission attributions
-public class SestObjService implements SestObjServiceInterface{
+@Service
+@Qualifier("default")
+public class SestObjService implements SestObjServiceInterface {
 
-	private static final Logger LOG = LoggerFactory.getLogger(SestObjService.class.getName());
-	org.crmf.persistency.session.PersistencySessionFactory sessionFactory;
-	
-	public Integer insert(Sestobj sestobj) throws Exception {
-		SqlSession sqlSession = sessionFactory.getSession();
-		
-		try {
-			SestobjMapper sestObjMapper = sqlSession.getMapper(SestobjMapper.class);
-			sestObjMapper.insert(sestobj);
-			sqlSession.commit();
-		} finally {
-			sqlSession.close();
-		}
-		return sestobj.getId();
-	}
+  private static final Logger LOG = LoggerFactory.getLogger(SestObjService.class.getName());
 
-	public String updateLock(String viewIdentifier, String userIdentifier) throws Exception {
-		SqlSession sqlSession = sessionFactory.getSession();
+  @Autowired
+  private SqlSession sqlSession;
 
-		try {
-			SestobjMapper sestObjMapper = sqlSession.getMapper(SestobjMapper.class);
-			sestObjMapper.updateLock(viewIdentifier, userIdentifier);
-			sqlSession.commit();
-		} catch (Exception ex) {
-			LOG.error("Unable to lock view ", ex);
-			throw ex;
-		} finally {
-			sqlSession.close();
-		}
-		return viewIdentifier;
-	}
+  public Integer insert(Sestobj sestobj) throws Exception {
 
-	public void delete(Integer sestobjId) {
-		SqlSession sqlSession = sessionFactory.getSession();
-		try {
-			SestobjMapper sestObjMapper = sqlSession.getMapper(SestobjMapper.class);
-			sestObjMapper.delete(sestobjId);
-			sqlSession.commit();
-		} finally {
-			sqlSession.close();
-		}
-	}
+    SestobjMapper sestObjMapper = sqlSession.getMapper(SestobjMapper.class);
+    sestObjMapper.insert(sestobj);
+    return sestobj.getId();
+  }
 
-	public SESTObject getById(Integer sestobjId) {
-		SqlSession sqlSession = sessionFactory.getSession();
-		try {
-			SestobjMapper sestObjMapper = sqlSession.getMapper(SestobjMapper.class);
-			
-			return sestObjMapper.getById(sestobjId).convertToModel();
-		} finally {
-			sqlSession.close();
-		}
-	}
-	
+  public String updateLock(String viewIdentifier, String userIdentifier) throws Exception {
 
-	public SESTObject getByIdentifier(String identifier){
-		SqlSession sqlSession = sessionFactory.getSession();
-		try {
-			SestobjMapper sestObjMapper = sqlSession.getMapper(SestobjMapper.class);
-			Sestobj obj = sestObjMapper.getByIdentifier(identifier);
-			LOG.info("getByIdentifier {} result :{} ",identifier,obj);
-			
-			return obj.convertToModel();
-		}catch(Exception ex){
-			LOG.error(ex.getMessage());
-		} finally {
-			sqlSession.close();
-		}
-		return null;
-	}
+    try {
+      SestobjMapper sestObjMapper = sqlSession.getMapper(SestobjMapper.class);
+      sestObjMapper.updateLock(viewIdentifier, userIdentifier);
+    } catch (Exception ex) {
+      LOG.error("Unable to lock view ", ex);
+      throw ex;
+    }
+    return viewIdentifier;
+  }
 
-	public int getIdByIdentifier(String identifier){
-		SqlSession sqlSession = sessionFactory.getSession();
-		try {
-			SestobjMapper sestObjMapper = sqlSession.getMapper(SestobjMapper.class);
-			return sestObjMapper.getIdByIdentifier(identifier);
-		} finally {
-			sqlSession.close();
-		}
-	}
+  public void delete(Integer sestobjId) {
+    SestobjMapper sestObjMapper = sqlSession.getMapper(SestobjMapper.class);
+    sestObjMapper.delete(sestobjId);
+  }
 
-	@Override
-	public List<SESTObject> getAll() {
-		SqlSession sqlSession = sessionFactory.getSession();
-		List<SESTObject> sestObjs = new ArrayList<>();
-		try {
-			SestobjMapper sestObjMapper = sqlSession.getMapper(SestobjMapper.class);
-			List<Sestobj> objs = sestObjMapper.getAll();
-			for (Sestobj sestobj : objs) {
-				sestObjs.add(sestobj.convertToModel());
-			}
-		} finally {
-			sqlSession.close();
-		}
-		return sestObjs;
-	}
+  public SESTObject getById(Integer sestobjId) {
+    SestobjMapper sestObjMapper = sqlSession.getMapper(SestobjMapper.class);
+    return sestObjMapper.getById(sestobjId).convertToModel();
+  }
 
-	public org.crmf.persistency.session.PersistencySessionFactory getSessionFactory() {
-		return sessionFactory;
-	}
 
-	public void setSessionFactory(org.crmf.persistency.session.PersistencySessionFactory sessionFactory) {
-		this.sessionFactory = sessionFactory;
-	}
+  public SESTObject getByIdentifier(String identifier) {
+    try {
+      SestobjMapper sestObjMapper = sqlSession.getMapper(SestobjMapper.class);
+      Sestobj obj = sestObjMapper.getByIdentifier(identifier);
+      LOG.info("getByIdentifier {} result :{} ", identifier, obj);
 
+      return obj.convertToModel();
+    } catch (Exception ex) {
+      LOG.error(ex.getMessage());
+    }
+    return null;
+  }
+
+  public int getIdByIdentifier(String identifier) {
+    SestobjMapper sestObjMapper = sqlSession.getMapper(SestobjMapper.class);
+    return sestObjMapper.getIdByIdentifier(identifier);
+  }
+
+  @Override
+  public List<SESTObject> getAll() {
+    List<SESTObject> sestObjs = new ArrayList<>();
+
+    SestobjMapper sestObjMapper = sqlSession.getMapper(SestobjMapper.class);
+    List<Sestobj> objs = sestObjMapper.getAll();
+    for (Sestobj sestobj : objs) {
+      sestObjs.add(sestobj.convertToModel());
+    }
+    return sestObjs;
+  }
 }

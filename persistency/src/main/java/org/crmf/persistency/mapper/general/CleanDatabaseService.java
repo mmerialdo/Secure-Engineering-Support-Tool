@@ -14,25 +14,27 @@ package org.crmf.persistency.mapper.general;
 
 import org.apache.ibatis.session.SqlSession;
 import org.crmf.persistency.mapper.user.UserService;
-import org.crmf.persistency.session.PersistencySessionFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Service;
 
 //THis class encompasses methods for cleaning the database
+@Service
+@Qualifier("default")
 public class CleanDatabaseService {
 
 	private static final Logger LOG = LoggerFactory.getLogger(UserService.class.getName());
-	PersistencySessionFactory sessionFactory;
+	@Autowired
+	private SqlSession sqlSession;
 
 	public void delete() {
-
-		SqlSession sqlSession = sessionFactory.getSession();
 		try {
 			CleanDatabaseMapper dbMapper = sqlSession.getMapper(CleanDatabaseMapper.class);
 			
 			// cancels PROJECT, PROCEDURE, ROLE, SESTOBJ
 			dbMapper.deleteAssproject();
-			sqlSession.commit();
 			// cancels PROCEDURE, SESTOBJ
 			dbMapper.deleteAssprocedure();
 			dbMapper.deleteAssauditDefault();
@@ -63,22 +65,9 @@ public class CleanDatabaseService {
 
 			dbMapper.cleanVulnerabilityReference();
 			dbMapper.cleanThreatReference();
-			
-			sqlSession.commit();
+
 		}  catch (Exception ex) {
 			LOG.error(ex.getMessage());
-			sqlSession.rollback();
-		} finally {
-			sqlSession.close();
 		}
 	}
-
-	public PersistencySessionFactory getSessionFactory() {
-		return sessionFactory;
-	}
-
-	public void setSessionFactory(PersistencySessionFactory sessionFactory) {
-		this.sessionFactory = sessionFactory;
-	}
-
 }

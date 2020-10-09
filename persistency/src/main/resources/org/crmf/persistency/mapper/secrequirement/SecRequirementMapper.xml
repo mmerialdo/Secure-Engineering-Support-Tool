@@ -35,12 +35,14 @@
 		#{subcategory},
 		#{tag},
 		#{title}, #{typology}, #{version}, #{sestobjId}, #{sysprojectId}, #{priority}, #{score})
-		ON
-		DUPLICATE KEY UPDATE
+	</insert>
+
+	<update id='update' parameterType='SecRequirement'>
+		UPDATE SECREQUIREMENT_REFERENCE
+		SET
 		AUTHOR = #{author},
 		CATEGORY = #{category},
-		PARENT =
-		#{parent},
+		PARENT = #{parent},
 		DESCRIPTION = #{description},
 		ELEMENT_TYPE = #{elementType},
 		LASTUPD = #{lastupd},
@@ -51,15 +53,14 @@
 		STATUS = #{status},
 		SUBCATEGORY = #{subcategory},
 		TAG = #{tag},
-		TITLE =
-		#{title},
+		TITLE = #{title},
 		TYPOLOGY = #{typology},
 		VERSION = #{version},
-		SYSPROJECT_ID =
-		#{sysprojectId},
+		SYSPROJECT_ID = #{sysprojectId},
 		PRIORITY = #{priority},
 		SCORE = #{score}
-	</insert>
+		WHERE ID = #{id}
+	</update>
 
 	<insert id='insertSafeguardAssoc' parameterType='SecRequirementSafeguard'>
 		INSERT INTO

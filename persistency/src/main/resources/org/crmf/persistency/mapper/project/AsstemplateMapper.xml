@@ -20,8 +20,7 @@
 		VALUES (#{name}, #{description}, #{methodology},#{phase}, NOW(), #{assetId}, #{threatId}, #{vulnerabilityId}, #{safeguardId}, #{riskModelId}, #{sestobjId})
 	</insert>
 
-	<insert id='insertProfileAssoc' parameterType='Asstemplate' useGeneratedKeys='true'
-		keyProperty='id' keyColumn='ID'>
+	<insert id='insertProfileAssoc' parameterType='Asstemplate'>
 		INSERT INTO ASSPROFILE_TEMPLATE(PROFILE_ID, TEMPLATE_ID)
 		VALUES (#{profileId}, #{id})
 	</insert>

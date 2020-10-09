@@ -1,1 +1,5 @@
-{"ipServer":"<<ipServer>>"}
+{
+  "ipServer":"<<ip>>",
+  "portServer": "<<port>>",
+  "protocol": "http"
+}

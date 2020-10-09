@@ -13,103 +13,118 @@
 package org.crmf.proxy.core.risktreatmentmodel.manager.rest;
 
 
+import org.crmf.model.exception.RemoteComponentException;
 import org.crmf.model.utility.GenericFilter;
 import org.crmf.model.utility.ModelObject;
-import org.crmf.risktreatmentmodel.manager.RiskTreatmentModelManagerInputInterface;
+import org.crmf.proxy.authnauthz.Permission;
+import org.crmf.proxy.configuration.ApiExceptionEnum;
+import org.crmf.risktreatmentmodel.manager.RiskTreatmentModelManagerInput;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
 //This class manages the business logic behind the webservices related to the RiskTreatmentModel management
-public class RiskTreatmentModelManagerRestServer implements RiskTreatmentModelManagerRestServerInterface {
+@RestController
+@RequestMapping(value = "api/riskTreatmentModel")
+public class RiskTreatmentModelManagerRestServer {
 
   private static final Logger LOG = LoggerFactory.getLogger(RiskTreatmentModelManagerRestServer.class.getName());
-  private RiskTreatmentModelManagerInputInterface riskTreatmentModelInput;
+  @Autowired
+  private RiskTreatmentModelManagerInput riskTreatmentModelInput;
 
-  @Override
-  public String editRiskTreatmentModel(ModelObject riskTreatmentModel) throws Exception {
+  @PostMapping("edit")
+  @Permission(value = "RiskTreatmentModel:Update")
+  public String editRiskTreatmentModel(@RequestParam(name = "SHIRO_SECURITY_TOKEN") String token,
+                                       @RequestBody ModelObject riskTreatmentModel) {
     LOG.info("editRiskTreatmentModel:: begin");
     try {
       String riskTreatmentModelJson = riskTreatmentModel.getJsonModel();
       String identifier = riskTreatmentModel.getObjectIdentifier();
       LOG.info("editRiskTreatmentModel:: identifier = " + identifier);
       return riskTreatmentModelInput.editRiskTreatmentModel(riskTreatmentModelJson, identifier);
-    } catch (Exception e) {
-      LOG.error("editThreatModel:: exception " + e.getMessage(), e);
-      throw new Exception("COMMAND_EXCEPTION", e);
+    } catch (Exception ex) {
+      LOG.error("editThreatModel:: exception " + ex.getMessage());
+      throw new RemoteComponentException(ApiExceptionEnum.COMMAND_EXCEPTION, ex);
     }
   }
 
-  @Override
-  public String editRiskTreatmentModelDetail(ModelObject riskTreatmentModel) throws Exception {
+  @PostMapping("editDetail")
+  @Permission(value = "RiskTreatmentModel:Update")
+  public String editRiskTreatmentModelDetail(@RequestParam(name = "SHIRO_SECURITY_TOKEN") String token,
+                                             @RequestBody ModelObject riskTreatmentModel) throws Exception {
     LOG.info("editRiskTreatmentModelDetail:: begin");
     try {
       String riskTreatmentModelJson = riskTreatmentModel.getJsonModel();
       String identifier = riskTreatmentModel.getObjectIdentifier();
       LOG.info("editRiskTreatmentModelDetail:: identifier = " + identifier);
       return riskTreatmentModelInput.editRiskTreatmentModelDetail(riskTreatmentModelJson, identifier);
-    } catch (Exception e) {
-      LOG.error("editThreatModel:: exception " + e.getMessage(), e);
-      throw new Exception("COMMAND_EXCEPTION", e);
+    } catch (Exception ex) {
+      LOG.error("editRiskTreatmentModelDetail:: exception " + ex.getMessage());
+      throw new RemoteComponentException(ApiExceptionEnum.COMMAND_EXCEPTION, ex);
     }
   }
 
-  @Override
-  public ModelObject loadRiskTreatmentModel(GenericFilter filter) throws Exception {
+  @PostMapping("load")
+  @Permission(value = "RiskTreatmentModel:Read")
+  public ModelObject loadRiskTreatmentModel(@RequestParam(name = "SHIRO_SECURITY_TOKEN") String token,
+                                            @RequestBody GenericFilter filter) throws Exception {
     LOG.info("loadRiskTreatmentModel:: begin");
     try {
       return riskTreatmentModelInput.loadRiskTreatmentModel(filter);
-    } catch (Exception e) {
-      LOG.error("loadRiskTreatmentModel:: exception " + e.getMessage(), e);
-      throw new Exception("COMMAND_EXCEPTION", e);
+    } catch (Exception ex) {
+      LOG.error("loadRiskTreatmentModel:: exception " + ex.getMessage());
+      throw new RemoteComponentException(ApiExceptionEnum.COMMAND_EXCEPTION, ex);
     }
   }
 
-  @Override
-  public String loadRiskTreatmentModelDetail(GenericFilter filter) throws Exception {
+  @PostMapping("loadDetail")
+  @Permission(value = "RiskTreatmentModel:Read")
+  public String loadRiskTreatmentModelDetail(@RequestParam(name = "SHIRO_SECURITY_TOKEN") String token,
+                                             @RequestBody GenericFilter filter) throws Exception {
     LOG.info("loadRiskTreatmentModelDetail:: begin");
     try {
       String result = riskTreatmentModelInput.loadRiskTreatmentModelDetail(filter);
       return result;
-    } catch (Exception e) {
-      LOG.error("loadRiskTreatmentModelDetail:: exception " + e.getMessage(), e);
-      throw new Exception("COMMAND_EXCEPTION", e);
+    } catch (Exception ex) {
+      LOG.error("loadRiskTreatmentModelDetail:: exception " + ex.getMessage());
+      throw new RemoteComponentException(ApiExceptionEnum.COMMAND_EXCEPTION, ex);
     }
   }
 
-  @Override
-  public String calculateRiskTreatmentModel(ModelObject riskModel) throws Exception {
+  @PostMapping("calculate")
+  @Permission(value = "RiskTreatmentModel:Update")
+  public String calculateRiskTreatmentModel(@RequestParam(name = "SHIRO_SECURITY_TOKEN") String token,
+                                            @RequestBody ModelObject riskModel) throws Exception {
     LOG.info("calculateRiskTreatmentModel:: begin");
     try {
       String riskTreatmentModelJson = riskModel.getJsonModel();
       String identifier = riskModel.getObjectIdentifier();
       LOG.info("calculateRiskTreatmentModel:: identifier = " + identifier);
       return riskTreatmentModelInput.calculateRiskTreatmentModel(riskTreatmentModelJson, identifier);
-    } catch (Exception e) {
-      LOG.error("calculateRiskTreatmentModel:: exception " + e.getMessage(), e);
-      throw new Exception("COMMAND_EXCEPTION", e);
+    } catch (Exception ex) {
+      LOG.error("calculateRiskTreatmentModel:: exception " + ex.getMessage());
+      throw new RemoteComponentException(ApiExceptionEnum.COMMAND_EXCEPTION, ex);
     }
   }
 
-  @Override
-  public String calculateRiskTreatmentModelDetail(ModelObject riskModel) throws Exception {
+  @PostMapping("calculateDetail")
+  @Permission(value = "RiskTreatmentModel:Update")
+  public String calculateRiskTreatmentModelDetail(@RequestParam(name = "SHIRO_SECURITY_TOKEN") String token,
+                                                  @RequestBody ModelObject riskModel) {
     LOG.info("calculateRiskTreatmentModelDetail:: begin");
     try {
       String riskTreatmentModelJson = riskModel.getJsonModel();
       String identifier = riskModel.getObjectIdentifier();
       LOG.info("calculateRiskTreatmentModelDetail:: identifier = " + identifier);
       return riskTreatmentModelInput.calculateRiskTreatmentModelDetail(riskTreatmentModelJson, identifier);
-    } catch (Exception e) {
-      LOG.error("calculateRiskTreatmentModel:: exception " + e.getMessage(), e);
-      throw new Exception("COMMAND_EXCEPTION", e);
+    } catch (Exception ex) {
+      LOG.error("calculateRiskTreatmentModelDetail:: exception " + ex.getMessage());
+      throw new RemoteComponentException(ApiExceptionEnum.COMMAND_EXCEPTION, ex);
     }
   }
-
-  public RiskTreatmentModelManagerInputInterface getRiskTreatmentModelInput() {
-    return riskTreatmentModelInput;
-  }
-
-  public void setRiskTreatmentModelInput(RiskTreatmentModelManagerInputInterface riskTreatmentModelInput) {
-    this.riskTreatmentModelInput = riskTreatmentModelInput;
-  }
-
 }

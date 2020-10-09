@@ -20,7 +20,6 @@
   <div class="col-md-6">
     <img src="../../../assets/2018-01-11-Secure-Engineering-Support-Tool-Logo-White.png" width="190" height="95" style="margin-bottom: 3px"
       class="center-block img-responsive" alt="SEST"/>
-    <!--<h1>{{title}}</h1>-->
   </div>
   <div class="col-md-3" *ngIf="showLogout">
     <button type="button" class="btn btn-default btn-sm" id="logoutButton" (click)="logout()">
@@ -59,5 +58,5 @@
 
 <user-password *ngIf="displayEditPassword" displayEditPassword="{{displayEditPassword}}"
                username="{{username}}" (closePopup)="onClose($event)"></user-password>
-<p-toast position="center"></p-toast>
+<p-toast position="top-center"></p-toast>
 <router-outlet></router-outlet>

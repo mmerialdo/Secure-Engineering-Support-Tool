@@ -12,11 +12,6 @@
 
 package org.crmf.persistency;
 
-import static org.junit.Assert.assertEquals;
-
-import java.util.List;
-import java.util.UUID;
-
 import org.crmf.model.riskassessment.AssessmentProcedure;
 import org.crmf.model.riskassessment.AssessmentProject;
 import org.crmf.model.riskassessment.AssessmentStatusEnum;
@@ -29,114 +24,68 @@ import org.crmf.model.riskassessment.SafeguardModel;
 import org.crmf.model.riskassessment.ThreatModel;
 import org.crmf.model.riskassessment.VulnerabilityModel;
 import org.crmf.persistency.mapper.asset.AssetService;
-import org.crmf.persistency.mapper.audit.AssAuditDefaultService;
 import org.crmf.persistency.mapper.audit.AssAuditService;
 import org.crmf.persistency.mapper.audit.QuestionnaireService;
-import org.crmf.persistency.mapper.general.CleanDatabaseService;
 import org.crmf.persistency.mapper.project.AssprocedureService;
 import org.crmf.persistency.mapper.project.AssprofileService;
 import org.crmf.persistency.mapper.project.AssprojectService;
 import org.crmf.persistency.mapper.project.AsstemplateService;
-import org.crmf.persistency.mapper.project.SysprojectService;
 import org.crmf.persistency.mapper.risk.RiskService;
 import org.crmf.persistency.mapper.safeguard.SafeguardService;
 import org.crmf.persistency.mapper.threat.ThreatService;
 import org.crmf.persistency.mapper.user.UserService;
 import org.crmf.persistency.mapper.vulnerability.VulnerabilityService;
-import org.crmf.persistency.session.PersistencySessionFactory;
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mybatis.spring.boot.test.autoconfigure.MybatisTest;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.context.ActiveProfiles;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
 
+import java.util.List;
+import java.util.UUID;
+
+@ExtendWith(SpringExtension.class)
+@MybatisTest
+@ContextConfiguration(classes = Application.class)
+@ActiveProfiles("test")
 public class AssTemplateTest {
 
-  public QuestionnaireService questionnaireService;
-  public AssAuditService auditService;
-
-  PersistencySessionFactory sessionFactory;
+  @Autowired
+  private QuestionnaireService questionnaireService;
+  @Autowired
+  private AssAuditService auditService;
+  @Autowired
   private AssprocedureService procedureService;
+  @Autowired
   private AsstemplateService templateService;
-  AssessmentTemplate template;
-
+  @Autowired
   private AssprojectService projectService;
+  @Autowired
   private AssprofileService profileService;
+  @Autowired
   private UserService userService;
-
+  @Autowired
   private AssetService assetService;
+  @Autowired
   private VulnerabilityService vulnService;
+  @Autowired
   private ThreatService threatService;
+  @Autowired
   private RiskService riskService;
+  @Autowired
   private SafeguardService safeguardService;
+  @Autowired
+  private TestData data;
 
-  private TestData data = new TestData();
+  private AssessmentTemplate template;
 
-  @Before
+  @BeforeEach
   public void setUp() {
-
-    sessionFactory = new PersistencySessionFactory();
-    sessionFactory.createSessionFactory();
-
-    procedureService = new AssprocedureService();
-    procedureService.setSessionFactory(sessionFactory);
-
-    templateService = new AsstemplateService();
-    templateService.setSessionFactory(sessionFactory);
-
-    userService = new UserService();
-    userService.setSessionFactory(sessionFactory);
-
-    profileService = new AssprofileService();
-    profileService.setSessionFactory(sessionFactory);
-
-    questionnaireService = new QuestionnaireService();
-    questionnaireService.setSessionFactory(sessionFactory);
-
-    auditService = new AssAuditService();
-    auditService.setSessionFactory(sessionFactory);
-    auditService.setQuestionnaireService(questionnaireService);
-
-    SysprojectService sysprojectService = new SysprojectService();
-    sysprojectService.setSessionFactory(sessionFactory);
-
-    QuestionnaireService questionnaireService = new QuestionnaireService();
-    questionnaireService.setSessionFactory(sessionFactory);
-
-    AssAuditDefaultService auditDefaultService = new AssAuditDefaultService();
-    auditDefaultService.setSessionFactory(sessionFactory);
-
-    AssAuditService auditService = new AssAuditService();
-    auditService.setSessionFactory(sessionFactory);
-    auditService.setQuestionnaireService(questionnaireService);
-
-    projectService = new AssprojectService();
-    projectService.setSessionFactory(sessionFactory);
-    projectService.setSysprjService(sysprojectService);
-    projectService.setAuditService(auditService);
-
-    assetService = new AssetService();
-    assetService.setSessionFactory(sessionFactory);
-
-    vulnService = new VulnerabilityService();
-    vulnService.setSessionFactory(sessionFactory);
-
-    threatService = new ThreatService();
-    threatService.setSessionFactory(sessionFactory);
-
-    riskService = new RiskService();
-    riskService.setSessionFactory(sessionFactory);
-
-    safeguardService = new SafeguardService();
-    safeguardService.setSessionFactory(sessionFactory);
-    //template = prefill();
-  }
-
-  @After
-  public void tearDown() throws Exception {
-
-    CleanDatabaseService cleaner = new CleanDatabaseService();
-    cleaner.setSessionFactory(sessionFactory);
-
-    cleaner.delete();
+    this.data.prefillModels();
   }
 
   @Test
@@ -153,10 +102,10 @@ public class AssTemplateTest {
     }
 
     AssessmentTemplate templateResulted = templateService.getByIdentifier(identifier);
-    assertEquals("template02", templateResulted.getName());
-    assertEquals("description template02", templateResulted.getDescription());
-    assertEquals("HTRA", templateResulted.getRiskMethodology().name());
-    assertEquals("Initial", templateResulted.getPhase().name());
+    Assertions.assertEquals("template02", templateResulted.getName());
+    Assertions.assertEquals("description template02", templateResulted.getDescription());
+    Assertions.assertEquals("HTRA", templateResulted.getRiskMethodology().name());
+    Assertions.assertEquals("Initial", templateResulted.getPhase().name());
   }
 
   @Test
@@ -172,7 +121,7 @@ public class AssTemplateTest {
 
 
     List<AssessmentTemplate> templateResulted = templateService.getAll();
-    assertEquals(2, templateResulted.size());
+    Assertions.assertEquals(2, templateResulted.size());
   }
 
   private AssessmentTemplate prefill() throws Exception {

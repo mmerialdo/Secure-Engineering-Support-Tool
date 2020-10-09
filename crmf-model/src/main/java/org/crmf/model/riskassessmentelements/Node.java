@@ -14,7 +14,7 @@ package org.crmf.model.riskassessmentelements;
 
 import org.crmf.model.general.SESTObject;
 
-import java.util.ArrayList;
+import java.util.List;
 
 public class Node extends SESTObject {
 
@@ -24,9 +24,9 @@ public class Node extends SESTObject {
 	private String name;
 	private NodeTypeEnum nodeType;
 	private String systemParticipantOwnerId;
-	private ArrayList<String> relatedRequirementsIds;
-	private ArrayList<Edge> children;
-	private ArrayList<Edge> parents;
+	private List<String> relatedRequirementsIds;
+	private List<Edge> children;
+	private List<Edge> parents;
 
 	public boolean isAssessmentNode() {
 		return assessmentNode;
@@ -76,27 +76,27 @@ public class Node extends SESTObject {
 		this.systemParticipantOwnerId = systemParticipantOwnerId;
 	}
 
-	public ArrayList<String> getRelatedRequirementsIds() {
+	public List<String> getRelatedRequirementsIds() {
 		return relatedRequirementsIds;
 	}
 
-	public void setRelatedRequirementsIds(ArrayList<String> relatedRequirementsIds) {
+	public void setRelatedRequirementsIds(List<String> relatedRequirementsIds) {
 		this.relatedRequirementsIds = relatedRequirementsIds;
 	}
 
-	public ArrayList<Edge> getChildren() {
+	public List<Edge> getChildren() {
 		return children;
 	}
 
-	public void setChildren(ArrayList<Edge> children) {
+	public void setChildren(List<Edge> children) {
 		this.children = children;
 	}
 
-	public ArrayList<Edge> getParents() {
+	public List<Edge> getParents() {
 		return parents;
 	}
 
-	public void setParents(ArrayList<Edge> parents) {
+	public void setParents(List<Edge> parents) {
 		this.parents = parents;
 	}
 }

@@ -57,7 +57,6 @@ import {EditprofileComponent} from './tabs/projectTab/editprofile/editprofile.co
 import {VulnerabilitiesComponent} from './secondaryTabs/vulnerabilities/vulnerabilities.component';
 import {ThreatsComponent} from './secondaryTabs/threats/threats.component';
 import {ScenarioComponent} from './secondaryTabs/scenario/scenario.component';
-import {SettingsComponent} from './tabs/settings/settings.component';
 import {HomeComponent} from './tabs/home/home.component';
 import {TreatmentComponent} from './secondaryTabs/treatment/treatment.component';
 import {ConfigService} from './configservice';
@@ -129,7 +128,6 @@ import {HashLocationStrategy, LocationStrategy} from '@angular/common';
     VulnerabilitiesComponent,
     ThreatsComponent,
     ScenarioComponent,
-    SettingsComponent,
     TreatmentComponent,
     HomeComponent,
     TabViewComponent,

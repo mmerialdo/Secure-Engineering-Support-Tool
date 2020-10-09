@@ -48,12 +48,10 @@ public class ThreatModelSerializerDeserializer {
 		ThreatModel tm;
 		
 		try{
-			LOG.info("Threat Serialization/Deserialization tmJsonString:: "
-				+tmJsonString.substring(0, (tmJsonString.length() > 500 ? 500 : tmJsonString.length())));
 			tm = gson.fromJson(tmJsonString, ThreatModel.class);
 		}
 		catch(Exception e){
-			LOG.info("Threat Serialization/Deserialization error:: "+e.getMessage());
+			LOG.info("Threat Serialization/Deserialization error: {}", e.getMessage());
 			return null;
 		}
 		

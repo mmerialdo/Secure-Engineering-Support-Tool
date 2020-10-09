@@ -48,9 +48,10 @@ export class ErrorsService implements ErrorHandler {
         }
         return;
       } else if (error.status === 0) {
+        console.log(error);
         errorMessage = 'Please check server connection';
         if (router.url === '/login') {
-          errorMessage = errorMessage.concat(' or SSL certificate approval on https://host:9090.');
+          errorMessage = errorMessage.concat(' or SSL certificate approval.');
         }
         this.displayError({message: errorMessage});
         return;
@@ -81,7 +82,7 @@ export class ErrorsService implements ErrorHandler {
         errorMessage = 'Username empty!';
         this.displayError({message: errorMessage});
       } else if (error.error.indexOf('HISTORY_PASSWORD_FOUND') !== -1) {
-        errorMessage = 'Same Password in history. Please update it';
+        errorMessage = 'Password already used in the last 3 updates. Please change password.';
         this.displayError({message: errorMessage});
       } else if (error.error.indexOf('PASSWORD_INVALID') !== -1) {
         errorMessage = 'Invalid Password';
@@ -94,30 +95,8 @@ export class ErrorsService implements ErrorHandler {
       errorMessage = 'Generic error.';
      // this.displayError({message: 'Generic error.'});
     }
-    //else {
-    // client-side error
-    // this.processClientError(error);
-    // }
   }
 
-  /* processClientError(error: any) {
-     let errorStr = '';
-     if (error instanceof Error) {
-       errorStr += error.name + '\n' + error.message + '\n';
-
-       // optional field
-       if (error.hasOwnProperty('stack')) {
-         errorStr += error.stack;
-       }
-     } else {
-       errorStr = error.toString();
-     }
-
-     if (!this.errorsCache.some(errorCached => errorCached === errorStr)) {
-       // this.dataAccessService.clientError(errorStr).subscribe();
-       this.errorsCache.push(errorStr);
-     }
-   } */
 
   displayError(error: { message: string; errorsList?: string[] }) {
     this.ngZone.run(() => {

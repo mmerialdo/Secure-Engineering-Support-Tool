@@ -13,8 +13,6 @@
 			keyProperty='id' keyColumn='ID'>
 		INSERT INTO ASSAUDIT_DEFAULT(IX, AVALUE, ATYPE, CATEGORY, QUESTIONNAIRE_JSON)
 		VALUES (#{ix}, #{avalue}, #{atype}, #{category}, #{questionnaireJSON})
-		ON DUPLICATE KEY UPDATE
-		QUESTIONNAIRE_JSON = VALUES(QUESTIONNAIRE_JSON)
 	</insert>
 
 	<update id='updateQuestionnaireJSON' parameterType='AssauditDefaultJSON'>

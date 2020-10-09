@@ -12,11 +12,13 @@
 
 package org.crmf.persistency.mapper.project;
 
+import org.apache.ibatis.annotations.Mapper;
 import org.crmf.persistency.domain.project.SysParticipant;
 
 import java.util.ArrayList;
 
 //This interface allows the bundle to invoke the SQL methods within the SysparticipantMapper.xml (via the ibatis API)
+@Mapper
 public interface SysparticipantMapper {
 
   int insert(SysParticipant record);

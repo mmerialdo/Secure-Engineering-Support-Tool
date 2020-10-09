@@ -23,26 +23,25 @@
 
   <ng-template pTemplate="header" let-columns>
     <tr>
-      <th style="width: 3em">
+      <th scope="col" style="width: 3em">
         <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
       </th>
-      <th *ngFor="let col of columns">
+      <th scope="col" *ngFor="let col of columns">
         {{ col.header }}
       </th>
-      <th style="width: 4em; text-align: center;">
-        <!-- <button pButton type="button" icon="pi pi-cog"></button>-->
+      <th scope="col" style="width: 4em; text-align: center;">
       </th>
     </tr>
     <tr>
-      <th>
+      <th scope="col">
       </th>
-      <th>
+      <th scope="col" >
         <div class="ui-inputgroup">
-          <span class="ui-inputgroup-addon"><i class="pi pi-search" style="line-height: 1.25;"></i></span>
+          <span class="ui-inputgroup-addon"><em class="pi pi-search" style="line-height: 1.25;"></em></span>
           <input pInputText type="text" (input)="dt.filter($event.target.value, 'activities', 'contains')" class="my-input">
         </div>
       </th>
-      <th *ngFor="let col of columns">
+      <th scope="col" *ngFor="let col of columns">
       </th>
     </tr>
   </ng-template>

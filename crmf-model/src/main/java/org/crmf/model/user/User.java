@@ -25,7 +25,6 @@ public class User extends SESTObject {
 	private String surname;
 	private String username;
 	private ArrayList<Experience> experiences;
-	private ArrayList<UserSession> sessions;
 	private ArrayList<UserRole> roles = new ArrayList<UserRole>();
 	private ArrayList<PermissionGroup> permissionGroups;
 
@@ -83,14 +82,6 @@ public class User extends SESTObject {
 
 	public void setExperiences(ArrayList<Experience> experiences) {
 		this.experiences = experiences;
-	}
-
-	public ArrayList<UserSession> getSessions() {
-		return sessions;
-	}
-
-	public void setSessions(ArrayList<UserSession> sessions) {
-		this.sessions = sessions;
 	}
 
 	public ArrayList<UserRole> getRoles() {

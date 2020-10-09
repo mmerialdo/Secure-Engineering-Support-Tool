@@ -23,16 +23,16 @@
         <p-header>{{ tableHeader }}</p-header>
         <ng-template pTemplate="header">
           <tr>
-            <th [ngStyle]="{'width': '10%'}">Code</th>
-            <th [ngStyle]="{'width': '40%'}">Safeguard</th>
-            <th [ngStyle]="{'width': '5%'}">Value</th>
-            <th [ngStyle]="{'width': '4%'}">Previous</th>
-            <th [ngStyle]="{'width': '4%'}">Target</th>
-            <th [ngStyle]="{'width': '4%'}">Weight</th>
-            <th [ngStyle]="{'width': '4%'}">Min</th>
-            <th [ngStyle]="{'width': '4%'}">Max</th>
-            <th [ngStyle]="{'width': '12%'}">ISO2013</th>
-            <th [ngStyle]="{'width': '13%'}">User Comment</th>
+            <th scope="col" [ngStyle]="{'width': '10%'}">Code</th>
+            <th scope="col" [ngStyle]="{'width': '40%'}">Safeguard</th>
+            <th scope="col" [ngStyle]="{'width': '5%'}">Value</th>
+            <th scope="col" [ngStyle]="{'width': '4%'}">Previous</th>
+            <th scope="col" [ngStyle]="{'width': '4%'}">Target</th>
+            <th scope="col" [ngStyle]="{'width': '4%'}">Weight</th>
+            <th scope="col" [ngStyle]="{'width': '4%'}">Min</th>
+            <th scope="col" [ngStyle]="{'width': '4%'}">Max</th>
+            <th scope="col" [ngStyle]="{'width': '12%'}">ISO2013</th>
+            <th scope="col" [ngStyle]="{'width': '13%'}">User Comment</th>
           </tr>
         </ng-template>
         <ng-template pTemplate="body" let-rowNode let-rowData="rowData">
@@ -43,8 +43,8 @@
             </td>
             <td [ngStyle]="{'width': '40%'}">
               <p *ngIf="rowData.category !== 'GASF' && rowData.category !== 'MEHARI'">
-                <i class="fa fa-info-circle" (click)="info(rowData)"
-                   style="cursor:pointer;float:left; margin-right:5px; margin-top:3px"></i>{{rowData.value ?
+                <em class="fa fa-info-circle" (click)="info(rowData)"
+                   style="cursor:pointer;float:left; margin-right:5px; margin-top:3px"></em>{{rowData.value ?
                 rowData.value : rowData.type}}
               </p>
               <p *ngIf="rowData.category === 'GASF' || rowData.category === 'MEHARI'">
@@ -107,9 +107,9 @@
               <div *ngIf="!hideRow">
                 <div *ngIf="rowData.type === 'QUESTION'">
                   <p>
-                    <i *ngIf="rowData.iso13_info && rowData.iso13_info != '[]'" class="fa fa-info-circle"
+                    <em *ngIf="rowData.iso13_info && rowData.iso13_info != '[]'" class="fa fa-info-circle"
                        (click)="infoISO(rowData)"
-                       style="cursor:pointer;float:left; margin-right:5px; margin-top:3px"></i>{{rowData.iso13}}
+                       style="cursor:pointer;float:left; margin-right:5px; margin-top:3px"></em>{{rowData.iso13}}
                   </p>
                 </div>
               </div>
@@ -138,7 +138,6 @@
 
 <p-dialog header="Information" [(visible)]="displayInfo" modal="modal" width="700" [responsive]="true">
 
-  <!--<div class="row">-->
   <div>
     <div class="col-md-2">
       <label>Code :</label>

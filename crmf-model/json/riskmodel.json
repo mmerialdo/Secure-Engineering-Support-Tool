@@ -1,24 +1,30 @@
 {
-  "creationTime": "01/09/2017 07:44",
-  "updateTime": "01/09/2017 07:44",
+  "creationTime": "08/10/2020 16:52",
+  "updateTime": "08/10/2020 16:52",
   "scenarios": [
     {
       "calculatedImpact": "HIGH",
       "calculatedLikelihood": "HIGH",
       "calculatedSeriousness": "HIGH",
       "description": "production incident within the production premises (Accidental)",
+      "dissuasion": "LOW",
+      "prevention": "LOW",
+      "confining": "LOW",
+      "palliation": "LOW",
       "impactScope": "Availability",
       "intrinsicImpact": "HIGH",
       "intrinsicLikelihood": "HIGH",
       "intrinsicSeriousness": "HIGH",
+      "scenarioResult": "Reduce",
+      "excluded": false,
       "safeguardIds": [],
       "assetId": "42605102-2b52-4f44-b159-3ae28489da28",
       "threatId": "2fa73505-08b9-4717-bd6a-d9d59bc84a37",
       "vulnerabilityId": "579f0196-abf8-4f76-95d0-ec7978faff31",
-      "identifier": "822ca209-a023-4677-870c-bbb297ccfab2",
+      "identifier": "d20c0a96-1acf-48e3-8b72-ed745724c454",
       "objType": "RiskModel"
     }
   ],
-  "identifier": "2d756a14-ca06-4bb4-a3a5-5e166418f320",
+  "identifier": "32afe8e0-f181-4ae9-bdf3-d978dcb9bce1",
   "objType": "RiskModel"
 }

@@ -16,13 +16,15 @@ import org.crmf.model.utility.audit.ISOControlsSerializerDeserializer;
 import org.crmf.persistency.mapper.audit.ISOControlServiceInterface;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.io.File;
 import java.nio.file.Files;
 
 public class ISOControlInput {
 
-  private static final Logger LOG = LoggerFactory.getLogger(ISOControlInputInterface.class.getName());
+  private static final Logger LOG = LoggerFactory.getLogger(ISOControlInput.class.getName());
+  @Autowired
   private ISOControlServiceInterface isoControlService;
 
   private void importISOFromFile(String filename) {

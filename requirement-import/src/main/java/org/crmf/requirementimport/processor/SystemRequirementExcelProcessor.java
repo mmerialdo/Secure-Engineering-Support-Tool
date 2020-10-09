@@ -14,8 +14,6 @@ package org.crmf.requirementimport.processor;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.apache.cxf.attachment.DelegatingInputStream;
-import org.apache.cxf.jaxrs.ext.multipart.Attachment;
 import org.apache.poi.hssf.usermodel.HSSFCell;
 import org.apache.poi.hssf.usermodel.HSSFRow;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
@@ -25,9 +23,12 @@ import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Row.MissingCellPolicy;
 import org.crmf.model.utility.GenericFilter;
 import org.crmf.model.utility.GenericFilterEnum;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import javax.xml.datatype.DatatypeFactory;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.Iterator;
 import java.util.List;
 
@@ -35,20 +36,19 @@ import java.util.List;
  Uses POI to convert an Excel spreadsheet with the system engineering project requirements to the desired JAXB XML format. doc
  version 2003
  */
+@Service
 public class SystemRequirementExcelProcessor {
   private final static Log LOG = LogFactory.getLog(SystemRequirementExcelProcessor.class);
 
+  @Autowired
   private SystemRequirementProcessor reqProcessor;
 
-  public String process(Attachment file, String sysprojectIdentifier, String filename) {
+  public String process(InputStream MultipartFile, String sysprojectIdentifier, String filename) {
     HSSFWorkbook workbook = null;
-    DelegatingInputStream is = null;
     int itemNumber = 0;
 
     try {
-      LOG.info("body input stream 1 " + file);
-      is = file.getObject(DelegatingInputStream.class);
-      workbook = new HSSFWorkbook(is.getInputStream());
+      workbook = new HSSFWorkbook(MultipartFile);
 
       HSSFSheet sheet = workbook.getSheetAt(0);
       DatatypeFactory dateFactory = DatatypeFactory.newInstance();
@@ -121,13 +121,6 @@ public class SystemRequirementExcelProcessor {
       LOG.error("Unable to import Excel SysRequirement", e);
       throw new RuntimeException("Unable to import Excel SysRequirement", e);
     } finally {
-      if (is != null && !is.isClosed()) {
-        try {
-          is.close();
-        } catch (IOException e) {
-          LOG.error("Unable to import Excel SysRequirement", e);
-        }
-      }
       if (workbook != null) {
         try {
           workbook.close();
@@ -144,13 +137,4 @@ public class SystemRequirementExcelProcessor {
     return (filter != null && filter.getFilterValue(GenericFilterEnum.SYS_PROJECT) != null)
       ? reqProcessor.listRequirementLoadedFile(filter.getFilterValue(GenericFilterEnum.SYS_PROJECT)) : null;
   }
-
-  public SystemRequirementProcessor getReqProcessor() {
-    return reqProcessor;
-  }
-
-  public void setReqProcessor(SystemRequirementProcessor reqProcessor) {
-    this.reqProcessor = reqProcessor;
-  }
-
 }

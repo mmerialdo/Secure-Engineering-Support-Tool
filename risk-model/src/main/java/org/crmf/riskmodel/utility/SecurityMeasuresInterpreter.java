@@ -20,9 +20,9 @@ import org.crmf.model.riskassessmentelements.Safeguard;
 import org.crmf.model.riskassessmentelements.SafeguardEffectiveness;
 import org.crmf.model.riskassessmentelements.Threat;
 import org.crmf.model.riskassessmentelements.Vulnerability;
-import org.crmf.persistency.mapper.risk.RiskServiceInterface;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Service;
 
 import javax.script.ScriptEngine;
 import javax.script.ScriptEngineManager;
@@ -32,14 +32,14 @@ import java.util.List;
 import java.util.Map;
 
 //Calculate of risk scenario security measures and updateQuestionnaireJSON risk scenario associated safeguards field
+@Service
 public class SecurityMeasuresInterpreter {
   private static final Logger LOG = LoggerFactory.getLogger(SecurityMeasuresInterpreter.class.getName());
-  private RiskServiceInterface riskModelService;
 
   /*
    Calculate of risk scenario security measures and updateQuestionnaireJSON risk scenario associated safeguards field
    */
-  public void manageRiskScenarioMeasures(RiskScenario rs, ArrayList<Safeguard> safeguards, Asset asset, Threat threat, Vulnerability vulnerability, ArrayList<RiskScenarioReference> allRsr) {
+  public void manageRiskScenarioMeasures(RiskScenario rs, ArrayList<Safeguard> safeguards, Asset asset, Threat threat, Vulnerability vulnerability, List<RiskScenarioReference> allRsr) {
     // FIRST STEP: calculation of risk scenario security measures
 
     //find the Reference Scenario matching the input one
@@ -103,7 +103,7 @@ public class SecurityMeasuresInterpreter {
    find the reference scenario that matches the input scenario and models
    */
   private RiskScenarioReference findMatchReferenceScenario(RiskScenario rs, Asset asset, Threat threat,
-                                                           Vulnerability vulnerability, ArrayList<RiskScenarioReference> allRsr) {
+                                                           Vulnerability vulnerability, List<RiskScenarioReference> allRsr) {
 
     LOG.info("findMatchReferenceScenario - RiskScenario with identifier: " + rs.getIdentifier());
     for (RiskScenarioReference rsr : allRsr) {
@@ -203,15 +203,4 @@ public class SecurityMeasuresInterpreter {
 
     return resultList;
   }
-
-  public RiskServiceInterface getRiskModelService() {
-    return riskModelService;
-  }
-
-
-  public void setRiskModelService(RiskServiceInterface riskModelService) {
-    this.riskModelService = riskModelService;
-  }
-
-
 }

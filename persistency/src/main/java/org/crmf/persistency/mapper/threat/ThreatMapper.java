@@ -12,6 +12,7 @@
 
 package org.crmf.persistency.mapper.threat;
 
+import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.crmf.persistency.domain.threat.SestThreat;
 import org.crmf.persistency.domain.threat.SestThreatModel;
@@ -19,6 +20,7 @@ import org.crmf.persistency.domain.threat.SestThreatModel;
 import java.util.List;
 
 //This interface allows the bundle to invoke the SQL methods within the ThreatMapper.xml (via the ibatis API)
+@Mapper
 public interface ThreatMapper {
   void insert(SestThreatModel threatModel);
 

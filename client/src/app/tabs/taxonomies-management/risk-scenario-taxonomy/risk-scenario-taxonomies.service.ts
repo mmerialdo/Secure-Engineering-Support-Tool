@@ -36,7 +36,7 @@ export class RiskScenarioTaxonomiesService {
 
     return this.dataService.loadRiskScenarioReference(value).pipe(
       map((response: any) => {
-        this._scenarios.next(JSON.parse(response));
+        this._scenarios.next(response);
         return response;
       })
     );
@@ -45,8 +45,8 @@ export class RiskScenarioTaxonomiesService {
   addRiskScenario(riskScenario: RiskScenario) {
 
     return this.dataService.createRiskScenarioReference(JSON.stringify(riskScenario)).pipe(
-      tap((response) => {
-        this._scenarios.next([...this._scenarios.getValue(), { ...riskScenario, identifier: response.toString()}]);
+      tap((response: any) => {
+        this._scenarios.next([...this._scenarios.getValue(), { ...riskScenario, identifier: response.response}]);
       }),
       catchError((error) => {
         throw error;

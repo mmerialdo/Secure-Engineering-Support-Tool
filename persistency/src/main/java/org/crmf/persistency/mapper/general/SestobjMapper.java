@@ -12,12 +12,14 @@
 
 package org.crmf.persistency.mapper.general;
 
+import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.crmf.persistency.domain.general.Sestobj;
 
 import java.util.List;
 
 //This interface allows the bundle to invoke the SQL methods within the SestobjMapper.xml (via the ibatis API)
+@Mapper
 public interface SestobjMapper {
 
 	int insert(Sestobj record);

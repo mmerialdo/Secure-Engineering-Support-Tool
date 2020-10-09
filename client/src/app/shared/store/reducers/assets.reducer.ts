@@ -249,6 +249,7 @@ const assetsReducerConst = createReducer(
     };
   }),
   on(storeServerAsset, (state, props) => {
+    console.log(state);
     return {
       ...state,
       serverAsset: props
@@ -311,6 +312,7 @@ const assetsReducerConst = createReducer(
 );
 
 export function assetsReducer(state: AssetsState | undefined, props: any) {
+  console.log('new reducer!!!');
   return assetsReducerConst(state, props);
 }
 

@@ -66,6 +66,7 @@ export class TabularizationViewComponent implements OnInit, OnDestroy {
     this.subscriptions.push(
       this.dataService.loadAsset(JSON.stringify(a)).subscribe((response: ModelObject) => {
 
+        debugger;
         this.serverAsset = JSON.parse(response.jsonModel);
         this.loaded = true;
         this.store.dispatch(storeServerAsset(this.serverAsset));
@@ -115,7 +116,6 @@ export class TabularizationViewComponent implements OnInit, OnDestroy {
       throw err;
     });
   }
-
 
   showSuccess() {
     this.blockedMessage = true;

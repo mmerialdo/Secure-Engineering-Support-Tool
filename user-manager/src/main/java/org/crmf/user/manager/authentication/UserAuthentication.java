@@ -13,14 +13,17 @@
 package org.crmf.user.manager.authentication;
 
 import org.crmf.model.user.User;
-import org.crmf.persistency.mapper.user.UserServiceInterface;
+import org.crmf.persistency.mapper.user.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 //This class manages the business logic related to the retrival of passwords and user identifiers from the persistency (these methods are invoked during the authentication of the Users) 
-public class UserAuthentication implements UserAuthenticationInterface {
+@Service
+public class UserAuthentication {
 
-  private UserServiceInterface userService;
+  @Autowired
+  private UserService userService;
 
-  @Override
   public String getPasswordForUser(String username) {
 
     User user = userService.getByUsername(username);
@@ -32,13 +35,4 @@ public class UserAuthentication implements UserAuthenticationInterface {
 
     return userService.isPasswordExpired(username);
   }
-
-  public UserServiceInterface getUserService() {
-    return userService;
-  }
-
-  public void setUserService(UserServiceInterface userService) {
-    this.userService = userService;
-  }
-
 }

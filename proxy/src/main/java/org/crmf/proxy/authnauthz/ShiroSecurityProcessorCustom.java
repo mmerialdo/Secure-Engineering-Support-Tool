@@ -13,153 +13,85 @@
 package org.crmf.proxy.authnauthz;
 
 import com.google.gson.Gson;
-import org.apache.camel.AsyncCallback;
-import org.apache.camel.CamelAuthorizationException;
-import org.apache.camel.Exchange;
-import org.apache.camel.Processor;
-import org.apache.camel.StreamCache;
-import org.apache.camel.component.shiro.security.ShiroSecurityConstants;
 import org.apache.camel.component.shiro.security.ShiroSecurityPolicy;
 import org.apache.camel.component.shiro.security.ShiroSecurityProcessor;
-import org.apache.camel.component.shiro.security.ShiroSecurityToken;
-import org.apache.camel.processor.DelegateAsyncProcessor;
-import org.apache.camel.util.ExchangeHelper;
-import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authz.Permission;
 import org.apache.shiro.authz.permission.WildcardPermission;
 import org.apache.shiro.session.ExpiredSessionException;
 import org.apache.shiro.session.Session;
 import org.apache.shiro.subject.Subject;
 import org.apache.shiro.util.ByteSource;
+import org.crmf.model.general.AuthToken;
 import org.crmf.model.general.SESTObjectTypeEnum;
 import org.crmf.model.user.PermissionTypeEnum;
-import org.crmf.model.utility.GenericFilter;
-import org.crmf.model.utility.GenericFilterEnum;
+import org.crmf.user.validation.permission.UserPermissionManagerInput;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Service;
 
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Base64;
 import java.util.List;
 
-//This class extends Apache Camel processor in order to manage authentication and authorization 
-public class ShiroSecurityProcessorCustom extends DelegateAsyncProcessor {
+//This class extends Apache Camel processor in order to manage authentication and authorization
+@Service
+public class ShiroSecurityProcessorCustom {
 
   private static final Logger LOG = LoggerFactory.getLogger(ShiroSecurityProcessor.class);
-  private final ShiroSecurityPolicy policy;
-  private boolean encrypted;
-  private Subject.Builder builder;
+  @Autowired
+  @Qualifier("ShiroSecurityPolicyCustom")
+  private ShiroSecurityPolicy policy;
+  @Autowired
+  private UserPermissionManagerInput userPermission;
+  @Autowired
+  @Qualifier("securityManager")
+  private org.apache.shiro.mgt.DefaultSecurityManager manager;
 
-  public ShiroSecurityProcessorCustom(Processor processor, ShiroSecurityPolicy policy) {
-    super(processor);
-    this.policy = policy;
-  }
-
-  @Override
-  public boolean process(Exchange exchange, AsyncCallback callback) {
-    try {
-      LOG.info("------------------- MY PROCESSOR ");
-
-      applySecurityPolicy(exchange);
-    } catch (Exception e) {
-      // exception occurred so break out
-      exchange.setException(new Exception("AUTHN_AUTHZ_EXCEPTION", e));
-      callback.done(true);
-      return true;
-    }
-
-    return super.process(exchange, callback);
-  }
-
-  private void applySecurityPolicy(Exchange exchange) throws Exception {
+  public void applySecurityPolicy(String permission, String token) throws Exception {
     ByteSource encryptedToken;
     LOG.info("---------------- applySecurityPolicy ---------------------");
-    LOG.info(" applySecurityPolicy " + exchange.getIn());
-    String project = null;
-    if (exchange.getIn().getHeader("PROJECT") != null) {
-      project = exchange.getIn().getHeader("PROJECT").toString();
-    }
-    Object body = exchange.getIn().getBody();
-    if (body != null && body instanceof StreamCache) {
-      String bodyAsString = exchange.getContext().getTypeConverter().convertTo(String.class, body);
-      LOG.info(" StreamCache " + bodyAsString);
-      Gson gson = new Gson();
-      body = gson.fromJson(bodyAsString, Object.class);
-    }
-    LOG.info(" applySecurityPolicy " + exchange.getIn().getHeader("permission"));
-    if (exchange.getIn().getHeader("permission") != null) {
-      this.setCustomPermissionsList(exchange.getIn().getHeader("permission").toString(),
-        project, body);
-    }
-
-    Object token = ExchangeHelper.getMandatoryHeader(exchange, ShiroSecurityConstants.SHIRO_SECURITY_TOKEN,
-      Object.class);
-
-    ShiroSecurityToken securityToken = null;
+    LOG.info("token " + token);
     /** SEST token hashed 64, no encryption for the moment **/
-    if (token instanceof String) {
+    Gson gson = new Gson();
+    String decryptedtoken = new String(Base64.getDecoder().decode(token), StandardCharsets.UTF_8);
+    AuthToken securityToken = gson.fromJson(decryptedtoken, AuthToken.class);
 
-      Gson gson = new Gson();
-      String decryptedtoken = new String(
-        Base64.getDecoder().decode((String) token),
-        StandardCharsets.UTF_8);
-      securityToken = gson.fromJson(decryptedtoken, ShiroSecurityToken.class);
-      LOG.info("securityToken not encrypted " + securityToken);
-    }
+    this.setCustomPermissionsList(permission, securityToken.getProject());
 
     // getting current user by session id - SecurityUtils.getSubject() is
     // empty
     if (securityToken != null) {
       String sessionId = securityToken.getPassword();
-      builder = new Subject.Builder(SecurityUtils.getSecurityManager());
-      builder.sessionCreationEnabled(false);
-      builder.sessionId(sessionId);
-      Subject currentUser = builder.buildSubject();
-      LOG.info("currentUser : " + currentUser);
+
+      Subject currentUser = new Subject.Builder(manager)
+        .sessionId(sessionId)
+        .sessionCreationEnabled(false)
+        .buildSubject();
 
       // Authenticate user if not authenticated
-      try {
-        authenticateUser(currentUser, securityToken);
+      authenticateUser(currentUser, securityToken);
 
-        // Test whether user's role is authorized to perform functions in
-        // the permissions list
-        authorizeUser(currentUser, exchange);
-      } finally {
-        if (policy.isAlwaysReauthenticate()) {
-          currentUser.logout();
-        }
-      }
+      // Test whether user's role is authorized to perform functions in the permissions list
+      authorizeUser(currentUser);
     }
   }
 
-  public void setCustomPermissionsList(String permission, String project, Object body) {
-    String identifier = null;
-    String projectIdentifier = null;
+  private void setCustomPermissionsList(String permission, String projectIdentifier) {
     LOG.info("permission : " + permission);
-    LOG.info("body : " + body);
-    LOG.info("project : " + project);
-    if (project != null && !project.isEmpty()) {
-      projectIdentifier = project;
-    } else if (body != null && body instanceof GenericFilter &&
-      ((GenericFilter) body).getFilterValue(GenericFilterEnum.PROJECT) != null) {
-      LOG.info("body instanceof GenericFilter ");
-      projectIdentifier = ((GenericFilter) body).getFilterValue(GenericFilterEnum.PROJECT);
-    }
-
     LOG.info("projectIdentifier : " + projectIdentifier);
-    LOG.info("permission : " + permission);
     List<Permission> permissions = new ArrayList<>();
     if (permission != null && projectIdentifier != null) {
       permission = permission.concat(":").concat(projectIdentifier);
-      LOG.info("projectIdentifier : " + projectIdentifier);
     }
     LOG.info("permission : " + permission);
     permissions.add(new WildcardPermission(permission, true));
     policy.setPermissionsList(permissions);
   }
 
-  private void authenticateUser(Subject currentUser, ShiroSecurityToken securityToken) throws Exception {
+  private void authenticateUser(Subject currentUser, AuthToken securityToken) throws Exception {
     LOG.info("---------------- authenticateUser ---------------------");
 
     String currentusername = null;
@@ -194,7 +126,6 @@ public class ShiroSecurityProcessorCustom extends DelegateAsyncProcessor {
         LOG.info("Before LOGOUT caused by !authenticated || !sameUser. ");
         currentUser.logout();
         Session session = currentUser.getSession(false);
-        LOG.info("Before LOGOUT " + session);
         if (session != null) {
           session.stop();
         }
@@ -206,7 +137,7 @@ public class ShiroSecurityProcessorCustom extends DelegateAsyncProcessor {
     }
   }
 
-  private void authorizeUser(Subject currentUser, Exchange exchange) throws CamelAuthorizationException {
+  private void authorizeUser(Subject currentUser) throws Exception {
     LOG.info("---------------- authorizeUser ---------------------");
     boolean authorized = false;
     if (!policy.getPermissionsList().isEmpty()) {
@@ -240,9 +171,8 @@ public class ShiroSecurityProcessorCustom extends DelegateAsyncProcessor {
             String[] principals = String.valueOf(currentUser.getPrincipals()).split(",");
             String username = principals[0];
             LOG.info("username " + username);
-            authorized = ((ShiroSecurityPolicyCustom) this.policy).getUserPermission().
-              isSestObjectTypeAllowed(username, PermissionTypeEnum.valueOf(operationType),
-                SESTObjectTypeEnum.valueOf(objType), projectIdentifier);
+            authorized = userPermission.isSestObjectTypeAllowed(username, PermissionTypeEnum.valueOf(operationType),
+              SESTObjectTypeEnum.valueOf(objType), projectIdentifier);
             break;
           } catch (Exception ex) {
             LOG.error("Unable to authorize user " + ex.getMessage());
@@ -256,19 +186,10 @@ public class ShiroSecurityProcessorCustom extends DelegateAsyncProcessor {
     }
 
     if (!authorized) {
-      throw new CamelAuthorizationException("Authorization Failed. Subject's role set does "
-        + "not have the necessary roles or permissions to perform further processing.", exchange);
+      throw new Exception("Authorization Failed. Subject's role set does "
+        + "not have the necessary roles or permissions to perform further processing.");
     }
 
     LOG.debug("Current user {} is successfully authorized.", currentUser.getPrincipal());
   }
-
-  public boolean isEncrypted() {
-    return encrypted;
-  }
-
-  public void setEncrypted(boolean encrypted) {
-    this.encrypted = encrypted;
-  }
-
 }

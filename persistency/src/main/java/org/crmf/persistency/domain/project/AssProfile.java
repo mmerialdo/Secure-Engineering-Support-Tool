@@ -24,6 +24,7 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.List;
 
 public class AssProfile {
   public static final String DD_MM_YYYY_HH_MM = "dd/MM/yyyy HH:mm";
@@ -196,7 +197,7 @@ public class AssProfile {
       this.setSestobjId(assprofile.getIdentifier());
     }
 
-    ArrayList<AssessmentTemplate> templatesDM = assprofile.getTemplates();
+    List<AssessmentTemplate> templatesDM = assprofile.getTemplates();
     if (templatesDM != null && !templatesDM.isEmpty()) {
       for (AssessmentTemplate assTemplate : templatesDM) {
         AssTemplate template = new AssTemplate();

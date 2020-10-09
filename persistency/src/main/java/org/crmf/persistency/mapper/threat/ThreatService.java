@@ -26,9 +26,11 @@ import org.crmf.persistency.domain.general.Sestobj;
 import org.crmf.persistency.domain.threat.SestThreat;
 import org.crmf.persistency.domain.threat.SestThreatModel;
 import org.crmf.persistency.mapper.general.SestobjMapper;
-import org.crmf.persistency.session.PersistencySessionFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Service;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -37,14 +39,17 @@ import java.util.List;
 import java.util.UUID;
 
 //This class manages the database interactions related to the ThreatModel
+@Service
+@Qualifier("default")
 public class ThreatService implements ThreatServiceInterface {
   private static final Logger LOG = LoggerFactory.getLogger(ThreatService.class.getName());
   public static final String DD_MM_YYYY_HH_MM = "dd/MM/yyyy HH:mm";
-  PersistencySessionFactory sessionFactory;
+
+  @Autowired
+  private SqlSession sqlSession;
 
   @Override
   public void insert(String threatModelJson, String sestobjId) {
-    SqlSession sqlSession = sessionFactory.getSession();
     LOG.info("Insert Threat Model");
 
     Sestobj sestobj = null;
@@ -66,20 +71,13 @@ public class ThreatService implements ThreatServiceInterface {
       threatModel.setThreatModelJson(threatModelJson);
       threatModel.setSestobjId(sestobjId);
       threatMapper.insert(threatModel);
-      sqlSession.commit();
     } catch (Exception ex) {
       LOG.error(ex.getMessage());
-      sqlSession.rollback();
-    } finally {
-      sqlSession.close();
     }
-
-
   }
 
   @Override
   public void update(String threatModelJson, String identifier) {
-    SqlSession sqlSession = sessionFactory.getSession();
     LOG.info("updateQuestionnaireJSON Threat Model");
 
     try {
@@ -87,20 +85,13 @@ public class ThreatService implements ThreatServiceInterface {
       ThreatMapper threatMapper = sqlSession.getMapper(ThreatMapper.class);
       //use the Threat Mapper to insert the Threat Model
       threatMapper.update(threatModelJson, identifier);
-      sqlSession.commit();
     } catch (Exception ex) {
       LOG.error(ex.getMessage());
-      sqlSession.rollback();
-    } finally {
-      sqlSession.close();
     }
-
-
   }
 
   @Override
   public SestThreatModel getByIdentifier(String sestobjId) {
-    SqlSession sqlSession = sessionFactory.getSession();
     LOG.info("get By Identifier -  Threat Model");
     SestThreatModel threatModel;
 
@@ -110,21 +101,15 @@ public class ThreatService implements ThreatServiceInterface {
       //use the Threat Mapper to insert the Threat Model
       threatModel = threatMapper.getByIdentifier(sestobjId);
       LOG.info("get By Identifier -  Threat Model returned: " + threatModel);
-      sqlSession.commit();
     } catch (Exception ex) {
       LOG.error(ex.getMessage());
-      sqlSession.rollback();
       return null;
-    } finally {
-      sqlSession.close();
     }
-
     return threatModel;
   }
 
   @Override
   public SestThreatModel getThreatRepository(String catalogue) {
-    SqlSession sqlSession = sessionFactory.getSession();
     LOG.info("getThreatRepository -  Threat Model " + catalogue);
     SestThreatModel threatModel;
 
@@ -138,8 +123,8 @@ public class ThreatService implements ThreatServiceInterface {
       JsonObject jsonObject = new JsonObject();
       JsonArray threatsJson = new JsonArray();
 
-      GsonBuilder gson_builder = new GsonBuilder();
-      Gson gson = gson_builder.create();
+      GsonBuilder gsonBuilder = new GsonBuilder();
+      Gson gson = gsonBuilder.create();
 
 
       for (SestThreat threat : threats) {
@@ -154,28 +139,18 @@ public class ThreatService implements ThreatServiceInterface {
       jsonObject.addProperty("identifier", "");
       jsonObject.addProperty("objType", "ThreatModel");
 
-      GsonBuilder gsonBuilder = new GsonBuilder();
-
       gson = gsonBuilder.setPrettyPrinting().disableHtmlEscaping().create();
       threatModel.setThreatModelJson(gson.toJson(jsonObject));
-
-
       LOG.info("getThreatRepository -  Threat Model returned: " + threatModel);
-      sqlSession.commit();
     } catch (Exception ex) {
       LOG.error(ex.getMessage());
-      sqlSession.rollback();
       return null;
-    } finally {
-      sqlSession.close();
     }
-
     return threatModel;
   }
 
   @Override
   public boolean updateThreatRepository(ThreatModel tmToAdd, ThreatModel tmToUpdate) {
-    SqlSession sqlSession = sessionFactory.getSession();
     LOG.info("updatethreatModelRepository");
 
     try {
@@ -201,9 +176,7 @@ public class ThreatService implements ThreatServiceInterface {
 
         DateFormat df = new SimpleDateFormat(DD_MM_YYYY_HH_MM);
         Date threatDate = df.parse(newThreat.getLastUpdate());
-
         SestThreat threat = new SestThreat();
-
 
         threat.setScore(newThreat.getScore().getScore().toString());
         threat.setLikelihood(newThreat.getScore().getLikelihood().toString());
@@ -215,7 +188,6 @@ public class ThreatService implements ThreatServiceInterface {
         threat.setCatalogue(newThreat.getCatalogue().toString());
         threat.setThreatJson(threatJson);
         threat.setSestobjId(newThreat.getIdentifier());
-
 
         threatMapper.insertThreatRepository(threat);
       }
@@ -234,15 +206,10 @@ public class ThreatService implements ThreatServiceInterface {
 
         threatMapper.updateThreatRepository(sestThreat);
       }
-
       LOG.info("updateThreatRepository end");
-      sqlSession.commit();
     } catch (Exception ex) {
       LOG.error(ex.getMessage());
-      sqlSession.rollback();
       return false;
-    } finally {
-      sqlSession.close();
     }
     return true;
   }
@@ -250,7 +217,6 @@ public class ThreatService implements ThreatServiceInterface {
   @Override
   public Integer retrieveThreatReferenceId(String catalogueId) {
     LOG.info("retrieveThreatReferenceId begin");
-    SqlSession sqlSession = sessionFactory.getSession();
     Integer result = null;
 
     try {
@@ -259,13 +225,9 @@ public class ThreatService implements ThreatServiceInterface {
 
       result = threatMapper.retrieveThreatReferenceId(catalogueId);
       LOG.info("retrieveThreatReferenceId end");
-      sqlSession.commit();
     } catch (Exception ex) {
       LOG.error(ex.getMessage());
-      sqlSession.rollback();
       return null;
-    } finally {
-      sqlSession.close();
     }
 
     return result;
@@ -273,7 +235,6 @@ public class ThreatService implements ThreatServiceInterface {
 
   @Override
   public String insertThreatReference(Threat threatModelJson) throws Exception {
-    SqlSession sqlSession = sessionFactory.getSession();
     LOG.info("insert " + threatModelJson.getCatalogueId());
     SestThreat sestThreat = new SestThreat();
     try {
@@ -304,37 +265,27 @@ public class ThreatService implements ThreatServiceInterface {
       sestThreat.setThreatJson(threatJson);
 
       threatMapper.insertThreatRepository(sestThreat);
-      sqlSession.commit();
     } catch (Exception ex) {
       LOG.error("Unable to save threat " + ex.getMessage(), ex);
-      sqlSession.rollback();
       throw ex;
-    } finally {
-      sqlSession.close();
     }
     return sestThreat.getSestobjId();
   }
 
   @Override
-  public void deleteThreatReference(List<String> identifier) throws Exception {
-    SqlSession sqlSession = sessionFactory.getSession();
+  public void deleteThreatReference(List<String> identifier) {
     LOG.info("delete " + identifier);
     try {
       ThreatMapper threatMapper = sqlSession.getMapper(ThreatMapper.class);
       threatMapper.deleteThreatReference(identifier);
-      sqlSession.commit();
     } catch (Exception ex) {
       LOG.error(ex.getMessage());
-      sqlSession.rollback();
       throw ex;
-    } finally {
-      sqlSession.close();
     }
   }
 
   @Override
   public void editThreatReference(Threat threatModelJson) throws Exception {
-    SqlSession sqlSession = sessionFactory.getSession();
     LOG.info("insert " + threatModelJson.getCatalogueId());
     try {
       ThreatMapper threatMapper = sqlSession.getMapper(ThreatMapper.class);
@@ -355,22 +306,9 @@ public class ThreatService implements ThreatServiceInterface {
       sestThreat.setThreatJson(threatJson);
 
       threatMapper.updateThreatRepository(sestThreat);
-      sqlSession.commit();
     } catch (Exception ex) {
       LOG.error(ex.getMessage());
-      sqlSession.rollback();
       throw ex;
-    } finally {
-      sqlSession.close();
     }
   }
-
-  public PersistencySessionFactory getSessionFactory() {
-    return sessionFactory;
-  }
-
-  public void setSessionFactory(PersistencySessionFactory sessionFactory) {
-    this.sessionFactory = sessionFactory;
-  }
-
 }

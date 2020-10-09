@@ -84,7 +84,6 @@
                 <p-dataList [value]="showSelectedRequirements" [style]="{'height':'150px'}">
 
                   <ng-template let-primaryAssetCategory pTemplate="item">
-                    <!--{{primaryAssetCategory.name}} - {{primaryAssetCategory.category}}-->
                     {{ primaryAssetCategory }}
                   </ng-template>
                 </p-dataList>
@@ -590,11 +589,6 @@
             <select formControlName="scoTh" [ngModel]="selectedScore" class="form-control" name="scoTh" id="scoTh">
 
               <option *ngFor="let score of  scoreList" [ngValue]="score">{{ score }}</option>
-              <!--<option value="Low">Low</option>-->
-              <!--<option value="Medium">Medium</option>-->
-              <!--<option value="High">High</option>-->
-              <!--<option value="Critical">Critical</option>-->
-
             </select>
             <control-messages [control]="threatForm.controls.scoTh"></control-messages>
 
@@ -608,23 +602,11 @@
                     id="likeliTh">
 
               <option *ngFor="let likeli of  likeliList" [ngValue]="likeli">{{ likeli }}</option>
-              <!--<option value="Low">Low</option>-->
-              <!--<option value="Medium">Medium</option>-->
-              <!--<option value="High">High</option>-->
-              <!--<option value="Critical">Critical</option>-->
-
             </select>
             <control-messages [control]="threatForm.controls.likeliTh"></control-messages>
 
           </div>
         </div>
-
-        <!--<div class="col-md-2">-->
-        <!--<label>Threat Class :</label>-->
-        <!--<p>{{threatClass}}</p>-->
-        <!--</div>-->
-
-
       </div>
 
       <div class="row" style="margin-top: 5px">
@@ -894,4 +876,4 @@
 
 
 </p-dialog>
-<p-toast [style]="{marginTop: '80px'}" position="top-center" key="tc"></p-toast>
+<p-toast position="top-center" key="tc"></p-toast>

@@ -16,38 +16,38 @@
              selectionMode="multiple" [metaKeySelection]="true">
       <ng-template pTemplate="header">
         <tr>
-          <th>Primary Category</th>
-          <th>Secondary Category</th>
-          <th>Impact Score</th>
-          <th>Vulnerability Id</th>
-          <th>Threat Id</th>
+          <th scope="col">Primary Category</th>
+          <th scope="col">Secondary Category</th>
+          <th scope="col">Impact Score</th>
+          <th scope="col">Vulnerability Id</th>
+          <th scope="col">Threat Id</th>
         </tr>
         <tr>
-          <th>
+          <th scope="col">
             <div class="ui-inputgroup">
-              <span class="ui-inputgroup-addon"><i class="pi pi-search" style="line-height: 1.25;"></i></span>
+              <span class="ui-inputgroup-addon"><em class="pi pi-search" style="line-height: 1.25;"></em></span>
               <input pInputText type="text" (input)="dt.filter($event.target.value, 'assetType', 'startsWith')"  class="my-input">
             </div>
           </th>
-          <th>
+          <th scope="col">
             <div class="ui-inputgroup">
-              <span class="ui-inputgroup-addon"><i class="pi pi-search" style="line-height: 1.25;"></i></span>
+              <span class="ui-inputgroup-addon"><em class="pi pi-search" style="line-height: 1.25;"></em></span>
               <input pInputText type="text" (input)="dt.filter($event.target.value, 'supportingAsset', 'startsWith')" class="my-input">
             </div>
           </th>
-          <th>
+          <th scope="col">
             <p-dropdown [options]="impacts" (onChange)="dt.filter($event.value, 'aice', 'startsWith')"
                         appendTo="body" placeholder="Select a Value" [showClear]="true" [style]="{'min-width':0, 'width':'90%'}"></p-dropdown>
           </th>
-          <th>
+          <th scope="col">
             <div class="ui-inputgroup">
-              <span class="ui-inputgroup-addon"><i class="pi pi-search" style="line-height: 1.25;"></i></span>
+              <span class="ui-inputgroup-addon"><em class="pi pi-search" style="line-height: 1.25;"></em></span>
               <input pInputText type="text" (input)="dt.filter($event.target.value, 'vulnerabilityCode', 'startsWith')" class="my-input" >
             </div>
           </th>
-          <th>
+          <th scope="col">
             <div class="ui-inputgroup">
-              <span class="ui-inputgroup-addon"><i class="pi pi-search" style="line-height: 1.25;"></i></span>
+              <span class="ui-inputgroup-addon"><em class="pi pi-search" style="line-height: 1.25;"></em></span>
               <input pInputText type="text" (input)="dt.filter($event.target.value, 'eventType', 'startsWith')" class="my-input" >
             </div>
           </th>
@@ -56,7 +56,7 @@
       <ng-template pTemplate="body" let-taxonomy let-rowIndex="rowIndex">
         <tr [pSelectableRow]="taxonomy" [pSelectableRowIndex]="rowIndex">
           <td>
-            {{taxonomy.assetType}}<span>&nbsp;&nbsp;</span><i class="fa fa-user-plus fa-xs" *ngIf="taxonomy.catalogue === 'CUSTOM'" pTooltip="Customized by {{taxonomy.author}}"></i>
+            {{taxonomy.assetType}}<span>&nbsp;&nbsp;</span><em class="fa fa-user-plus fa-xs" *ngIf="taxonomy.catalogue === 'CUSTOM'" pTooltip="Customized by {{taxonomy.author}}"></em>
           </td>
           <td>
             {{taxonomy.supportingAsset}}
@@ -160,7 +160,7 @@
                        (closePopup)="onClose($event)">
 </app-scenario-creation>
 
-<p-toast position="center"></p-toast>
+<p-toast position="top-center"></p-toast>
 
 
 

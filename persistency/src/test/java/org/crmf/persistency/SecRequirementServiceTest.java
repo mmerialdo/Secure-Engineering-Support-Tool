@@ -18,52 +18,37 @@ import org.crmf.model.requirement.SecurityRequirement;
 import org.crmf.model.riskassessmentelements.SafeguardScoreEnum;
 import org.crmf.persistency.domain.audit.AssauditDefaultJSON;
 import org.crmf.persistency.mapper.audit.AssAuditDefaultService;
-import org.crmf.persistency.mapper.general.CleanDatabaseService;
+import org.crmf.persistency.mapper.project.SysparticipantService;
+import org.crmf.persistency.mapper.project.SysprojectService;
 import org.crmf.persistency.mapper.secrequirement.SecRequirementService;
-import org.crmf.persistency.session.PersistencySessionFactory;
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.Ignore;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mybatis.spring.boot.test.autoconfigure.MybatisTest;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Import;
+import org.springframework.test.context.ActiveProfiles;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import java.util.Arrays;
 import java.util.List;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
-
-/************************************************************************
- * Created: 20/12/2019                                                  *
- * Author: Gabriela Mihalachi                                        *
- ************************************************************************/
+@ExtendWith(SpringExtension.class)
+@MybatisTest
+@Import({SysparticipantService.class, SysprojectService.class})
+@ContextConfiguration(classes=Application.class)
+@ActiveProfiles("test")
 public class SecRequirementServiceTest {
-  PersistencySessionFactory sessionFactory;
+
+  @Autowired
   SecRequirementService secRequirementService;
+  @Autowired
   AssAuditDefaultService auditDefaultService;
 
-  @Before
-  public void setUp() throws Exception {
-
-    sessionFactory = new PersistencySessionFactory();
-    sessionFactory.createSessionFactory();
-
-    auditDefaultService = new AssAuditDefaultService();
-    auditDefaultService.setSessionFactory(sessionFactory);
-
-    secRequirementService = new SecRequirementService();
-    secRequirementService.setSessionFactory(sessionFactory);
-  }
-
-  @After
-  public void tearDown() throws Exception {
-
-    CleanDatabaseService cleaner = new CleanDatabaseService();
-    cleaner.setSessionFactory(sessionFactory);
-    cleaner.delete();
-  }
-
   @Test
-  @Ignore
+  @Disabled
   public void insertSecRequirementSafeguardTest() {
 
     AssauditDefaultJSON questionnaireDefaultJSON01 = new AssauditDefaultJSON();
@@ -95,7 +80,7 @@ public class SecRequirementServiceTest {
     secRequirementService.insertSecRequirementSafeguard(Arrays.asList(gasfSecReq1, gasfSecReq2), null);
 
     List<AssauditDefaultJSON> questionnaires = auditDefaultService.getAllQuestionnaires();
-    assertEquals(1, questionnaires.size());
-    assertTrue(questionnaires.get(0).getQuestionnaireJSON().contains("GASF"));
+    Assertions.assertEquals(1, questionnaires.size());
+    Assertions.assertTrue(questionnaires.get(0).getQuestionnaireJSON().contains("GASF"));
   }
 }

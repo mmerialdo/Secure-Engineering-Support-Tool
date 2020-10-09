@@ -12,65 +12,39 @@
 
 package org.crmf.threatimport.threatimportmanager;
 
-import org.apache.cxf.jaxrs.ext.multipart.Attachment;
 import org.crmf.model.exception.RemoteComponentException;
 import org.crmf.model.riskassessment.ThreatModel;
 import org.crmf.model.riskassessmentelements.Threat;
-import org.crmf.model.riskassessmentelements.ThreatSourceEnum;
 import org.crmf.model.utility.threatmodel.ThreatModelSerializerDeserializer;
 import org.crmf.persistency.mapper.threat.ThreatServiceInterface;
-import org.ini4j.Wini;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Service;
 
-import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
-import java.nio.file.Files;
+import java.nio.charset.StandardCharsets;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-
-public class ThreatImportManagerInput implements ThreatImportManagerInputInterface {
-
-  public static final String DD_MM_YYYY_HH_MM = "dd/MM/yyyy HH:mm";
-  // Threat service variable of persistency component
-  private ThreatServiceInterface threatService;
+@Service
+public class ThreatImportManagerInput {
 
   private static final Logger LOG = LoggerFactory.getLogger(ThreatImportManagerInput.class.getName());
-  private String fileName;
-  private String url;
-  private ThreatModel tmToAdd;
-  private ThreatModel tmToUpdate;
 
-  //Actually, the only implemented threat taxonomy source is a JSON file
-  //The method could be easily extended in order to import taxonomies also from other sources
-  @Override
-  public void importThreats(ThreatSourceEnum source) throws Exception {
+  // Threat service variable of persistency component
+  @Autowired
+  @Qualifier("default")
+  private ThreatServiceInterface threatService;
 
-    LOG.info("importThreats -  source: " + source.toString());
+  public static final String DD_MM_YYYY_HH_MM = "dd/MM/yyyy HH:mm";
 
-    fileName = "";
-    url = "";
-
-    loadConfiguredThreatCatalogues(source.toString());
-
-    ThreatModel tm = new ThreatModel();
-    if (fileName != null && !fileName.equals("")) {
-      tm = loadThreatsFromFile(source);
-    } else if (url != null && !url.equals("")) {
-      //TODO
-    } else {
-      throw new RemoteComponentException("Threat Catalogue not supported");
-    }
-
-    importThreatsWithUpdate(source, tm);
-  }
-
-  private void importThreatsWithUpdate(ThreatSourceEnum source, ThreatModel tm) throws Exception {
-    if (tm == null || tm.getThreats() == null || tm.getThreats().size() == 0) {
+  private void importThreatsWithUpdate(ThreatModel tm) throws Exception {
+    if (tm == null || tm.getThreats() == null || tm.getThreats().isEmpty()) {
       LOG.info("Threat Catalogue empty");
       throw new RemoteComponentException("Threat Catalogue empty");
     }
@@ -78,25 +52,25 @@ public class ThreatImportManagerInput implements ThreatImportManagerInputInterfa
     //In this moment I have a ThreatModel with a set of threat just imported
     //Now I need to updateQuestionnaireJSON the database.
     //At first i load all existing threats for the selected source
-    ThreatModel savedTm = threatService.getThreatRepository(source != null ? source.toString() : null).convertToModel();
+    ThreatModel savedTm = threatService.getThreatRepository(null).convertToModel();
 
     //Here I create 2 ThreatModels: the first will collect all threats I have to add, the other all already existing threats which I have to updateQuestionnaireJSON
-    tmToAdd = new ThreatModel();
-    tmToUpdate = new ThreatModel();
+    ThreatModel tmToAdd = new ThreatModel();
+    ThreatModel tmToUpdate = new ThreatModel();
 
-    compareThreatRepositories(tm, savedTm);
+    compareThreatRepositories(tmToAdd, tmToUpdate, tm, savedTm);
 
     if (threatService.updateThreatRepository(tmToAdd, tmToUpdate)) {
       LOG.info("importThreats successful");
     } else {
       LOG.info("importThreats failed");
-      throw new Exception("COMMAND_EXCEPTION");
+      throw new Exception("unable to updateThreatRepository");
     }
   }
 
-  public void importThreatsFromInput(Attachment attachmentFile) throws Exception {
-    ThreatModel model = loadMehariThreatsFromInput(attachmentFile.getObject(InputStream.class));
-    importThreatsWithUpdate(null, model);
+  public void importThreatsFromInput(InputStream file) throws Exception {
+    ThreatModel model = loadMehariThreatsFromInput(file);
+    importThreatsWithUpdate(model);
   }
 
   private ThreatModel loadMehariThreatsFromInput(InputStream is) throws IOException {
@@ -104,21 +78,20 @@ public class ThreatImportManagerInput implements ThreatImportManagerInputInterfa
       byte[] bamJson = new byte[is.available()];
       Integer bytesNumber = is.read(bamJson);
       if (bytesNumber > 0) {
-        String tmJsonString = new String(bamJson, "UTF-8");
-        LOG.info("loadThreatsFromInput " + tmJsonString);
+        String tmJsonString = new String(bamJson, StandardCharsets.UTF_8);
         ThreatModelSerializerDeserializer tmSerDes = new ThreatModelSerializerDeserializer();
         return tmSerDes.getTMFromJSONString(tmJsonString);
       }
     } catch (Exception e) {
-      LOG.error("loadThreatsFromInput " + e.getMessage());
+      LOG.error("loadThreatsFromInput {} ", e.getMessage());
     }
     return null;
   }
 
-  private void compareThreatRepositories(ThreatModel tm, ThreatModel savedTm) {
+  private void compareThreatRepositories(ThreatModel tmToAdd, ThreatModel tmToUpdate, ThreatModel tm, ThreatModel savedTm) {
 
-    LOG.info("compareThreatRepositories " + tm.getThreats().size());
-    LOG.info("compareThreatRepositories " + savedTm.getThreats().size());
+    LOG.info("compareThreatRepositories {} ", tm.getThreats().size());
+    LOG.info("compareThreatRepositories {} ", savedTm.getThreats().size());
 
     for (Threat newThreat : tm.getThreats()) {
 
@@ -138,15 +111,14 @@ public class ThreatImportManagerInput implements ThreatImportManagerInputInterfa
       }
 
       if (!alreadyExisting) {
-        LOG.info("compareThreatRepositories add " + newThreat.getCatalogueId());
+        LOG.info("compareThreatRepositories add {} ", newThreat.getCatalogueId());
         tmToAdd.getThreats().add(newThreat);
       }
       if (toBeUpdated) {
-        LOG.info("compareThreatRepositories update " + newThreat.getCatalogueId());
+        LOG.info("compareThreatRepositories update {} ", newThreat.getCatalogueId());
         tmToUpdate.getThreats().add(newThreat);
       }
     }
-
   }
 
 
@@ -157,77 +129,11 @@ public class ThreatImportManagerInput implements ThreatImportManagerInputInterfa
       Date oldThreatDate = df.parse(oldThreat.getLastUpdate());
       Date newThreatDate = df.parse(newThreat.getLastUpdate());
 
-      if (newThreatDate.compareTo(oldThreatDate) > 0) {
-        return true;
-      } else {
-        return false;
-      }
-
+      return (newThreatDate.compareTo(oldThreatDate) > 0) ? true : false;
     } catch (ParseException e) {
-      LOG.error("loadThreats " + e.getMessage());
+      LOG.error("loadThreats {} ", e.getMessage());
 
       return true;
     }
-
   }
-
-  private ThreatModel loadThreatsFromFile(ThreatSourceEnum source) throws IOException {
-    switch (source) {
-      case MEHARI:
-        return loadMehariThreatsFromFile();
-      case CUSTOM:
-        return null;
-      default:
-        return null;
-    }
-
-  }
-
-  private ThreatModel loadMehariThreatsFromFile() throws IOException {
-    try {
-      File ftmJson = new File(fileName);
-      byte[] bamJson = Files.readAllBytes(ftmJson.toPath());
-      String tmJsonString = new String(bamJson, "UTF-8");
-
-      LOG.info("loadThreatsFromFile " + tmJsonString);
-
-      ThreatModelSerializerDeserializer tmSerDes = new ThreatModelSerializerDeserializer();
-
-      ThreatModel vm = tmSerDes.getTMFromJSONString(tmJsonString);
-
-      return vm;
-
-    } catch (Exception e) {
-      LOG.error("loadThreats " + e.getMessage());
-      return null;
-    }
-  }
-
-
-  public void loadConfiguredThreatCatalogues(String catalogue) {
-    Wini iniVuln = null;
-
-    try {
-      iniVuln = new Wini(new File("threatCatalogue.ini"));
-
-      fileName = iniVuln.get(catalogue, "fileName");
-      url = iniVuln.get(catalogue, "url");
-
-
-    } catch (IOException ex) {
-      LOG.error("loadConfiguredThreatCatalogues " + ex.getMessage());
-    }
-  }
-
-
-  public ThreatServiceInterface getThreatService() {
-    return threatService;
-  }
-
-
-  public void setThreatService(ThreatServiceInterface threatService) {
-    this.threatService = threatService;
-  }
-
-
 }

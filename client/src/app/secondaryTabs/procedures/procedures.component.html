@@ -22,7 +22,7 @@
 
         <ng-template pTemplate="header">
           <tr>
-            <th *ngFor="let col of proceduresListCols">
+            <th scope="col" *ngFor="let col of proceduresListCols">
               {{col.header}}
             </th>
           </tr>

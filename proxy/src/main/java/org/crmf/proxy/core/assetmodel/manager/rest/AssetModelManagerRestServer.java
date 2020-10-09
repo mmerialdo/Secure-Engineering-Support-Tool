@@ -12,16 +12,22 @@
 
 package org.crmf.proxy.core.assetmodel.manager.rest;
 
-import org.crmf.core.assetmodel.manager.AssetModelManagerInputInterface;
+import org.crmf.core.assetmodel.manager.AssetModelManagerInput;
+import org.crmf.model.exception.RemoteComponentException;
 import org.crmf.model.riskassessment.AssetModel;
 import org.crmf.model.riskassessmentelements.PrimaryAssetCategoryEnum;
 import org.crmf.model.riskassessmentelements.SecondaryAssetCategoryEnum;
 import org.crmf.model.utility.GenericFilter;
 import org.crmf.model.utility.ModelObject;
 import org.crmf.model.utility.assetmodel.AssetModelSerializerDeserializer;
-import org.crmf.riskmodel.manager.RiskModelManagerInputInterface;
+import org.crmf.model.utility.assetmodel.AssetModelValidator;
+import org.crmf.proxy.authnauthz.Permission;
+import org.crmf.proxy.configuration.ApiExceptionEnum;
+import org.crmf.riskmodel.manager.RiskModelManagerInput;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -30,15 +36,21 @@ import java.util.Date;
 import java.util.List;
 
 //This class manages the business logic behind the webservices related to the AssetModel management
-public class AssetModelManagerRestServer implements AssetModelManagerRestServerInterface {
+@RestController
+@RequestMapping(value = "api/assetModel")
+public class AssetModelManagerRestServer {
   // the logger of AssetModelManagerRestServer class
   private static final Logger LOG = LoggerFactory.getLogger(AssetModelManagerRestServer.class.getName());
   public static final String DD_MM_YYYY_HH_MM = "dd/MM/yyyy HH:mm";
-  private AssetModelManagerInputInterface assetModelInput;
-  private RiskModelManagerInputInterface riskModelInput;
+  @Autowired
+  private AssetModelManagerInput assetModelInput;
+  @Autowired
+  private RiskModelManagerInput riskModelInput;
 
-  @Override
-  public void editAssetModel(ModelObject assetModelObject) throws Exception {
+  @PostMapping("edit")
+  @Permission(value = "AssetModel:Update")
+  public void editAssetModel(@RequestParam(name = "SHIRO_SECURITY_TOKEN") String token,
+                             @RequestBody ModelObject assetModelObject) {
     LOG.info("AssetModelManagerRestServer editAssetModel:: begin");
     try {
       //retrieve the assetModel in json format
@@ -50,7 +62,13 @@ public class AssetModelManagerRestServer implements AssetModelManagerRestServerI
 
       //AssetModel data validation and updateQuestionnaireJSON time
       AssetModelSerializerDeserializer amsd = new AssetModelSerializerDeserializer();
+      AssetModelValidator amValidator = new AssetModelValidator();
       AssetModel am = amsd.getAMFromJSONString(assetModelJson);
+      try {
+        am = amValidator.validateAssetModel(am);
+      } catch (Exception ex) {
+        LOG.error(ex.getMessage());
+      }
       DateFormat df = new SimpleDateFormat(DD_MM_YYYY_HH_MM);
       Date now = new Date();
       am.setUpdateTime(df.format(now));
@@ -63,24 +81,29 @@ public class AssetModelManagerRestServer implements AssetModelManagerRestServerI
       riskModelInput.editAssetModel(identifier);
     } catch (Exception e) {
       LOG.error(e.getMessage());
-      throw new Exception("COMMAND_EXCEPTION", e);
+      throw new RemoteComponentException(ApiExceptionEnum.COMMAND_EXCEPTION, e);
     }
   }
 
-  @Override
-  public ModelObject loadAssetModel(GenericFilter filter) throws Exception {
+  @PostMapping("load")
+  @Permission(value = "AssetModel:Read")
+  public ModelObject loadAssetModel(@RequestParam(name = "SHIRO_SECURITY_TOKEN") String token,
+                                    @RequestBody GenericFilter filter) {
     LOG.info("AssetModelManagerRestServer loadAssetModel:: begin");
     try {
       //return the asset model in json format that matches the filters in input
       return assetModelInput.loadAssetModel(filter);
     } catch (Exception e) {
       LOG.error(e.getMessage());
-      throw new Exception("COMMAND_EXCEPTION", e);
+      throw new RemoteComponentException(ApiExceptionEnum.COMMAND_EXCEPTION, e);
     }
   }
 
-  @Override
-  public List<PrimaryAssetCategoryEnum> loadPrimaryAssetCategoryEnum() throws Exception {
+
+  @PostMapping("loadPrimaryAssetCategory")
+  @Permission(value = "AssetModel:Read")
+  public List<PrimaryAssetCategoryEnum> loadPrimaryAssetCategoryEnum(
+    @RequestParam(name = "SHIRO_SECURITY_TOKEN") String token) {
 
     List<PrimaryAssetCategoryEnum> primaryAssetCategoryList = Arrays.asList(
       PrimaryAssetCategoryEnum.Data_DataFile_Database,
@@ -113,8 +136,11 @@ public class AssetModelManagerRestServer implements AssetModelManagerRestServerI
     return primaryAssetCategoryList;
   }
 
-  @Override
-  public List<SecondaryAssetCategoryEnum> loadSecondaryAssetCategoryEnum() throws Exception {
+
+  @PostMapping("loadSecondaryAssetCategory")
+  @Permission(value = "AssetModel:Read")
+  public List<SecondaryAssetCategoryEnum> loadSecondaryAssetCategoryEnum(
+    @RequestParam(name = "SHIRO_SECURITY_TOKEN") String token) {
 
     List<SecondaryAssetCategoryEnum> secondaryAssetCategoryList = Arrays.asList(
       SecondaryAssetCategoryEnum.Personnel,
@@ -137,21 +163,4 @@ public class AssetModelManagerRestServer implements AssetModelManagerRestServerI
     );
     return secondaryAssetCategoryList;
   }
-
-  public AssetModelManagerInputInterface getAssetModelInput() {
-    return assetModelInput;
-  }
-
-  public void setAssetModelInput(AssetModelManagerInputInterface assetModelInput) {
-    this.assetModelInput = assetModelInput;
-  }
-
-  public RiskModelManagerInputInterface getRiskModelInput() {
-    return riskModelInput;
-  }
-
-  public void setRiskModelInput(RiskModelManagerInputInterface riskModelInput) {
-    this.riskModelInput = riskModelInput;
-  }
-
 }

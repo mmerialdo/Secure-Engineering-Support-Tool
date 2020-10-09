@@ -19,24 +19,27 @@ import org.crmf.persistency.domain.general.Sestobj;
 import org.crmf.persistency.domain.requirement.Requirement;
 import org.crmf.persistency.mapper.general.SestobjMapper;
 import org.crmf.persistency.mapper.project.SysprojectMapper;
-import org.crmf.persistency.session.PersistencySessionFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
 
 //This class manages the database interactions related to the Requirement
+@Service
+@Qualifier("default")
 public class RequirementService implements RequirementServiceInterface {
 
   private static final Logger LOG = LoggerFactory.getLogger(RequirementService.class.getName());
-  PersistencySessionFactory sessionFactory;
+
+  @Autowired
+  private SqlSession sqlSession;
 
   @Override
   public void insertSysRequirement(org.crmf.model.requirement.Requirement requirementDM, String sysprojectIdentifier) {
-
-    SqlSession sqlSession = sessionFactory.getSession();
-
     LOG.info("Insert SysRequirement");
     Requirement requirement = new Requirement();
     requirement.convertFromModel(requirementDM);
@@ -57,20 +60,13 @@ public class RequirementService implements RequirementServiceInterface {
       requirement.setSysprojectId(sysprjId);
       requirement.setSestobjId(sestobj.getIdentifier());
       requirementMapper.insert(requirement);
-
-      sqlSession.commit();
     } catch (Exception ex) {
       LOG.error(ex.getMessage());
-      sqlSession.rollback();
-    } finally {
-      sqlSession.close();
     }
   }
 
   @Override
   public void deleteSysRequirement(org.crmf.model.requirement.Requirement requirementDM) {
-
-    SqlSession sqlSession = sessionFactory.getSession();
     Requirement requirement = new Requirement();
     requirement.convertFromModel(requirementDM);
 
@@ -79,36 +75,25 @@ public class RequirementService implements RequirementServiceInterface {
 
       requirement.setStatus(RequirementStatusEnum.Canceled.name());
       requirementMapper.insert(requirement);
-
-      sqlSession.commit();
     } catch (Exception ex) {
       LOG.error(ex.getMessage());
-      sqlSession.rollback();
-    } finally {
-      sqlSession.close();
     }
   }
 
   @Override
   public List<org.crmf.model.requirement.Requirement> getByIds(List<String> ids) {
-
     LOG.info("called getByIds ");
-    SqlSession sqlSession = sessionFactory.getSession();
     List<org.crmf.model.requirement.Requirement> requirementsToSend = new ArrayList<>();
-    try {
-      RequirementMapper requirementMapper = sqlSession.getMapper(RequirementMapper.class);
+    RequirementMapper requirementMapper = sqlSession.getMapper(RequirementMapper.class);
 
-      List<Requirement> requirements = requirementMapper.getByIds(ids);
+    List<Requirement> requirements = requirementMapper.getByIds(ids);
 
-      for (Requirement requirement : requirements) {
+    for (Requirement requirement : requirements) {
 
-        org.crmf.model.requirement.Requirement prjRequirement = requirement.convertToModel();
-        prjRequirement.setObjType(SESTObjectTypeEnum.AssessmentProject);
+      org.crmf.model.requirement.Requirement prjRequirement = requirement.convertToModel();
+      prjRequirement.setObjType(SESTObjectTypeEnum.AssessmentProject);
 
-        requirementsToSend.add(prjRequirement);
-      }
-    } finally {
-      sqlSession.close();
+      requirementsToSend.add(prjRequirement);
     }
     return requirementsToSend;
   }
@@ -117,34 +102,21 @@ public class RequirementService implements RequirementServiceInterface {
   public List<org.crmf.model.requirement.Requirement> getBySysProject(String sysprojectIdentifier) {
 
     LOG.info("called getSysProject " + sysprojectIdentifier);
-    SqlSession sqlSession = sessionFactory.getSession();
     List<org.crmf.model.requirement.Requirement> requirementsToSend = new ArrayList<>();
-    try {
-      RequirementMapper requirementMapper = sqlSession.getMapper(RequirementMapper.class);
-      SysprojectMapper sysProjectMapper = sqlSession.getMapper(SysprojectMapper.class);
+    RequirementMapper requirementMapper = sqlSession.getMapper(RequirementMapper.class);
+    SysprojectMapper sysProjectMapper = sqlSession.getMapper(SysprojectMapper.class);
 
-      Integer sysprjId = sysProjectMapper.getIdByIdentifier(sysprojectIdentifier);
-      List<Requirement> requirements = requirementMapper.getBySysProject(sysprjId);
+    Integer sysprjId = sysProjectMapper.getIdByIdentifier(sysprojectIdentifier);
+    List<Requirement> requirements = requirementMapper.getBySysProject(sysprjId);
 
-      for (Requirement requirement : requirements) {
+    for (Requirement requirement : requirements) {
 
-        org.crmf.model.requirement.Requirement prjRequirement = requirement.convertToModel();
-        prjRequirement.setObjType(SESTObjectTypeEnum.AssessmentProject);
+      org.crmf.model.requirement.Requirement prjRequirement = requirement.convertToModel();
+      prjRequirement.setObjType(SESTObjectTypeEnum.AssessmentProject);
 
-        requirementsToSend.add(prjRequirement);
-      }
-    } finally {
-      sqlSession.close();
+      requirementsToSend.add(prjRequirement);
     }
     return requirementsToSend;
-  }
-
-  public PersistencySessionFactory getSessionFactory() {
-    return sessionFactory;
-  }
-
-  public void setSessionFactory(PersistencySessionFactory sessionFactory) {
-    this.sessionFactory = sessionFactory;
   }
 
   @Override
@@ -152,22 +124,17 @@ public class RequirementService implements RequirementServiceInterface {
 
     LOG.info("called getSysProject " + sysprojectIdentifier);
     LOG.info("called filename " + filename);
-    SqlSession sqlSession = sessionFactory.getSession();
     List<org.crmf.model.requirement.Requirement> requirementsToSend = new ArrayList<org.crmf.model.requirement.Requirement>();
-    try {
-      RequirementMapper requirementMapper = sqlSession.getMapper(RequirementMapper.class);
+    RequirementMapper requirementMapper = sqlSession.getMapper(RequirementMapper.class);
 
-      List<Requirement> requirements = requirementMapper.getBySysProjectAndFile(sysprojectIdentifier, filename);
+    List<Requirement> requirements = requirementMapper.getBySysProjectAndFile(sysprojectIdentifier, filename);
 
-      for (Requirement requirement : requirements) {
+    for (Requirement requirement : requirements) {
 
-        org.crmf.model.requirement.Requirement prjRequirement = requirement.convertToModel();
-        prjRequirement.setObjType(SESTObjectTypeEnum.AssessmentProject);
+      org.crmf.model.requirement.Requirement prjRequirement = requirement.convertToModel();
+      prjRequirement.setObjType(SESTObjectTypeEnum.AssessmentProject);
 
-        requirementsToSend.add(prjRequirement);
-      }
-    } finally {
-      sqlSession.close();
+      requirementsToSend.add(prjRequirement);
     }
     return requirementsToSend;
   }
@@ -176,7 +143,6 @@ public class RequirementService implements RequirementServiceInterface {
   public List<String> getFilenameByProject(String sysprojectIdentifier) {
 
     LOG.info("called getSysProject " + sysprojectIdentifier);
-    SqlSession sqlSession = sessionFactory.getSession();
     try {
       RequirementMapper requirementMapper = sqlSession.getMapper(RequirementMapper.class);
       SysprojectMapper sysProjectMapper = sqlSession.getMapper(SysprojectMapper.class);
@@ -185,8 +151,6 @@ public class RequirementService implements RequirementServiceInterface {
       return requirementMapper.getFilenameByProject(String.valueOf(sysprjId));
     } catch (Exception ex) {
       LOG.error("Unable to load requirement files name.", ex);
-    } finally {
-      sqlSession.close();
     }
     return null;
   }

@@ -156,7 +156,6 @@ export class EditMalfunctionComponent implements OnInit {
   }
 
   saveOrEditMalfunction(): void {
-    debugger;
     const technicalTypes: string[] = [];
     if (this.malfunctionAvailability) {
       technicalTypes.push('Availability_Loss');

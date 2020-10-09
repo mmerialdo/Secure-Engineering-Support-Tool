@@ -18,20 +18,20 @@
         >
           <ng-template pTemplate="header">
             <tr>
-              <th>Safeguard Code</th>
-              <th>Safeguard</th>
+              <th scope="col">Safeguard Code</th>
+              <th scope="col">Safeguard</th>
             </tr>
             <tr>
-              <th>
+              <th scope="col">
                 <div class="ui-inputgroup">
-                  <span class="ui-inputgroup-addon"><i class="pi pi-search" style="line-height: 1.25;"></i></span>
+                  <span class="ui-inputgroup-addon"><em class="pi pi-search" style="line-height: 1.25;"></em></span>
                   <input pInputText type="text" (input)="dt.filter($event.target.value, 'category', 'startsWith')"
                          class="my-input">
                 </div>
               </th>
-              <th>
+              <th scope="col">
                 <div class="ui-inputgroup">
-                  <span class="ui-inputgroup-addon"><i class="pi pi-search" style="line-height: 1.25;"></i></span>
+                  <span class="ui-inputgroup-addon"><em class="pi pi-search" style="line-height: 1.25;"></em></span>
                   <input pInputText type="text" (input)="dt.filter($event.target.value, 'value', 'startsWith')"
                          class="my-input max-input-width">
                 </div>
@@ -83,7 +83,7 @@
         </div>
         <div class="row" style="margin-top: 10px">
           <div class="col-lg-12">
-            <i class="fa fa-question-circle" (click)="showFormulaInfo()"></i> Formula Format
+            <em class="fa fa-question-circle" (click)="showFormulaInfo()"></em> Formula Format
           </div>
         </div>
       </div>

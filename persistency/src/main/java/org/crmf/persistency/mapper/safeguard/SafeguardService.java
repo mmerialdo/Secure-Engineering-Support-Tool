@@ -17,19 +17,24 @@ import org.crmf.model.general.SESTObjectTypeEnum;
 import org.crmf.persistency.domain.general.Sestobj;
 import org.crmf.persistency.domain.safeguard.SestSafeguardModel;
 import org.crmf.persistency.mapper.general.SestobjMapper;
-import org.crmf.persistency.session.PersistencySessionFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Service;
 
 //This class manages the database interactions related to the SafeguardModel
+@Service
+@Qualifier("default")
 public class SafeguardService implements SafeguardServiceInterface {
 
   private static final Logger LOG = LoggerFactory.getLogger(SafeguardService.class.getName());
-  PersistencySessionFactory sessionFactory;
+
+  @Autowired
+  private SqlSession sqlSession;
 
   @Override
   public void insert(String safeguardModelJson, String sestobjId) {
-    SqlSession sqlSession = sessionFactory.getSession();
     LOG.info("Insert Safeguard Model");
 
     Sestobj sestobj = null;
@@ -52,20 +57,13 @@ public class SafeguardService implements SafeguardServiceInterface {
       safeguardModel.setSafeguardModelJson(safeguardModelJson);
       safeguardModel.setSestobjId(sestobjId);
       safeguardMapper.insert(safeguardModel);
-      sqlSession.commit();
     } catch (Exception ex) {
       LOG.error(ex.getMessage());
-      sqlSession.rollback();
-    } finally {
-      sqlSession.close();
     }
-
-
   }
 
   @Override
   public void update(String safeguardModelJson, String sestobjId) {
-    SqlSession sqlSession = sessionFactory.getSession();
     LOG.info("updateQuestionnaireJSON Safeguard Model");
 
     try {
@@ -73,19 +71,13 @@ public class SafeguardService implements SafeguardServiceInterface {
       SafeguardMapper safeguardMapper = sqlSession.getMapper(SafeguardMapper.class);
       //use the Safeguard Mapper to insert the Safeguard Model
       safeguardMapper.update(safeguardModelJson, sestobjId);
-      sqlSession.commit();
     } catch (Exception ex) {
       LOG.error(ex.getMessage());
-      sqlSession.rollback();
-    } finally {
-      sqlSession.close();
     }
-
   }
 
   @Override
   public SestSafeguardModel getByIdentifier(String sestobjId) {
-    SqlSession sqlSession = sessionFactory.getSession();
     LOG.info("get By Identifier -  Safeguard Model");
     SestSafeguardModel safeguardModel;
 
@@ -95,21 +87,15 @@ public class SafeguardService implements SafeguardServiceInterface {
       //use the Threat Mapper to insert the Threat Model
       safeguardModel = safeguardMapper.getByIdentifier(sestobjId);
       LOG.info("get By Identifier -  Safeguard Model returned: " + safeguardModel);
-      sqlSession.commit();
     } catch (Exception ex) {
       LOG.error(ex.getMessage());
-      sqlSession.rollback();
       return null;
-    } finally {
-      sqlSession.close();
     }
-
-    return (null != safeguardModel) ? safeguardModel : null;
+    return safeguardModel;
   }
 
   @Override
   public SestSafeguardModel getLastByProjectIdentifier(String sestobjId) {
-    SqlSession sqlSession = sessionFactory.getSession();
     LOG.info("getLastByProjectIdentifier -  Safeguard Model");
     SestSafeguardModel safeguardModel;
 
@@ -120,22 +106,9 @@ public class SafeguardService implements SafeguardServiceInterface {
       LOG.info("getLastByProjectIdentifier -  Safeguard Model returned: " + safeguardModel);
     } catch (Exception ex) {
       LOG.error(ex.getMessage());
-      sqlSession.rollback();
       return null;
-    } finally {
-      sqlSession.close();
     }
 
-    return (null != safeguardModel) ? safeguardModel : null;
+    return safeguardModel;
   }
-
-
-  public PersistencySessionFactory getSessionFactory() {
-    return sessionFactory;
-  }
-
-  public void setSessionFactory(PersistencySessionFactory sessionFactory) {
-    this.sessionFactory = sessionFactory;
-  }
-
 }

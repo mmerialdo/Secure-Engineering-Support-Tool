@@ -29,53 +29,42 @@ import org.crmf.model.riskassessmentelements.Vulnerability;
 import org.crmf.model.riskassessmentelements.VulnerabilityExploitabilityEnum;
 import org.crmf.model.riskassessmentelements.VulnerabilityScoreEnum;
 import org.crmf.model.riskassessmentelements.VulnerabilitySourceEnum;
-import org.crmf.persistency.mapper.general.CleanDatabaseService;
 import org.crmf.persistency.mapper.risk.RiskService;
 import org.crmf.persistency.mapper.threat.ThreatService;
 import org.crmf.persistency.mapper.vulnerability.VulnerabilityService;
-import org.crmf.persistency.session.PersistencySessionFactory;
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mybatis.spring.boot.test.autoconfigure.MybatisTest;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Import;
+import org.springframework.test.context.ActiveProfiles;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
-
+@ExtendWith(SpringExtension.class)
+@MybatisTest
+@Import({RiskService.class, VulnerabilityService.class, ThreatService.class})
+@ContextConfiguration(classes=Application.class)
+@ActiveProfiles("test")
 public class RiskServiceTest {
 
-  PersistencySessionFactory sessionFactory;
+  @Autowired
   RiskService riskService;
+  @Autowired
   VulnerabilityService vulnerabilityService;
+  @Autowired
   ThreatService threatService;
 
-  @Before
+  @BeforeEach
   public void setUp() throws Exception {
-
-    sessionFactory = new PersistencySessionFactory();
-    sessionFactory.createSessionFactory();
-
-    riskService = new RiskService();
-    riskService.setSessionFactory(sessionFactory);
-
-    vulnerabilityService = new VulnerabilityService();
-    vulnerabilityService.setSessionFactory(sessionFactory);
-
-    threatService = new ThreatService();
-    threatService.setSessionFactory(sessionFactory);
 
     this.insertVulnerability();
     this.insertThreat();
-  }
-
-  @After
-  public void tearDown(){
-
-    CleanDatabaseService cleaner = new CleanDatabaseService();
-    cleaner.setSessionFactory(sessionFactory);
-    cleaner.delete();
   }
 
   @Test
@@ -99,11 +88,11 @@ public class RiskServiceTest {
     riskScenarioReference.setPalliative("03D04");
     riskService.insertRiskScenarioReference(riskScenarioReference);
     List<RiskScenarioReference> scenarios = riskService.getRiskScenarioReference();
-    assertNotNull(scenarios);
-    assertEquals(1, scenarios.size());
-    assertEquals("ER.P", scenarios.get(0).getEventType());
-    assertEquals("vulnearability.abc", scenarios.get(0).getVulnerabilityCode());
-    assertEquals("03D04", scenarios.get(0).getPalliative());
+    Assertions.assertNotNull(scenarios);
+    Assertions.assertEquals(1, scenarios.size());
+    Assertions.assertEquals("ER.P", scenarios.get(0).getEventType());
+    Assertions.assertEquals("vulnearability.abc", scenarios.get(0).getVulnerabilityCode());
+    Assertions.assertEquals("03D04", scenarios.get(0).getPalliative());
   }
 
   @Test
@@ -130,9 +119,9 @@ public class RiskServiceTest {
     riskScenarioReference.setConfining("03D05");
     riskService.editRiskScenarioReference(riskScenarioReference);
     List<RiskScenarioReference> scenarios = riskService.getRiskScenarioReference();
-    assertNotNull(scenarios);
-    assertEquals(1, scenarios.size());
-    assertEquals("03D05", scenarios.get(0).getConfining());
+    Assertions.assertNotNull(scenarios);
+    Assertions.assertEquals(1, scenarios.size());
+    Assertions.assertEquals("03D05", scenarios.get(0).getConfining());
   }
 
   @Test
@@ -157,8 +146,8 @@ public class RiskServiceTest {
     String identifier = riskService.insertRiskScenarioReference(riskScenarioReference);
     riskService.deleteRiskScenarioReference(new ArrayList<String>() {{add(identifier);}});
     List<RiskScenarioReference> scenarios = riskService.getRiskScenarioReference();
-    assertNotNull(scenarios);
-    assertEquals(0, scenarios.size());
+    Assertions.assertNotNull(scenarios);
+    Assertions.assertEquals(0, scenarios.size());
   }
 
   public String insertVulnerability() throws Exception{

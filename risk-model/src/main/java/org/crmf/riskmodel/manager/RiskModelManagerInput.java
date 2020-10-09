@@ -61,6 +61,9 @@ import org.crmf.persistency.mapper.vulnerability.VulnerabilityServiceInterface;
 import org.crmf.riskmodel.utility.SecurityMeasuresInterpreter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Service;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -72,28 +75,56 @@ import java.util.UUID;
 
 //The sest-risk-model bundle holds the business logic related to the management of the risk assessment analysis and treatment. It is separated from the sest-core bundle in order to concentrate here
 //the risk assessment logic which may depend on the selected risk assessment methodology
-public class RiskModelManagerInput implements RiskModelManagerInputInterface {
+@Service
+public class RiskModelManagerInput {
   private static final Logger LOG = LoggerFactory.getLogger(RiskModelManagerInput.class.getName());
   public static final String DD_MM_YYYY_HH_MM = "dd/MM/yyyy HH:mm";
+  public static final String RISK_MODEL_IDENTIFIER = "riskModelIdentifier";
+  public static final String METHOD_RESULT = "methodResult";
+  public static final String OTHER_MODELS_STATUS = "otherModelsStatus";
+  public static final String SUCCESS = "SUCCESS";
+  public static final String UPDATED = "UPDATED";
+  public static final String NOT_UPDATED = "NOT UPDATED";
 
+  @Autowired
+  @Qualifier("default")
   private AssprocedureServiceInterface assprocedureService;
+  @Autowired
+  @Qualifier("default")
   private AssprojectServiceInterface assprojectService;
+  @Autowired
+  @Qualifier("default")
   private AssetServiceInterface assetModelService;
+  @Autowired
+  @Qualifier("default")
   private VulnerabilityServiceInterface vulnerabilityModelService;
+  @Autowired
+  @Qualifier("default")
   private ThreatServiceInterface threatModelService;
+  @Autowired
+  @Qualifier("default")
   private SafeguardServiceInterface safeguardModelService;
+  @Autowired
+  @Qualifier("default")
   private RiskServiceInterface riskModelService;
+  @Autowired
+  @Qualifier("default")
   private RiskTreatmentServiceInterface riskTreatmentModelService;
+  @Autowired
+  @Qualifier("default")
+  private SestObjServiceInterface sestObjService;
+  @Autowired
+  private RiskScenariosReferenceImporter importer;
+  @Autowired
+  SecurityMeasuresInterpreter interpreter;
 
   private ArrayList<SeriousnessScale> scales;
   private ArrayList<StatusImpactScale> statusImpactScales;
   private ArrayList<StatusLikelihoodScale> statusLikelihoodScales;
-  private SestObjServiceInterface sestObjService;
 
   private boolean modelsVulnThreatUpdated = false;
   private boolean modelsRiskTreatmentUpdated = false;
 
-  @Override
   public String editRiskModel(String riskModel, String riskModelIdentifier) {
     modelsVulnThreatUpdated = false;
 
@@ -115,13 +146,13 @@ public class RiskModelManagerInput implements RiskModelManagerInputInterface {
       JsonObject jsonObject = new JsonObject();
 
       if (modelsVulnThreatUpdated) {
-        jsonObject.addProperty("riskModelIdentifier", riskModelIdentifier);
-        jsonObject.addProperty("methodResult", "ERROR");
-        jsonObject.addProperty("otherModelsStatus", "UPDATED");
+        jsonObject.addProperty(RISK_MODEL_IDENTIFIER, riskModelIdentifier);
+        jsonObject.addProperty(METHOD_RESULT, "ERROR");
+        jsonObject.addProperty(OTHER_MODELS_STATUS, UPDATED);
       } else {
-        jsonObject.addProperty("riskModelIdentifier", riskModelIdentifier);
-        jsonObject.addProperty("methodResult", "ERROR");
-        jsonObject.addProperty("otherModelsStatus", "NOT UPDATED");
+        jsonObject.addProperty(RISK_MODEL_IDENTIFIER, riskModelIdentifier);
+        jsonObject.addProperty(METHOD_RESULT, "ERROR");
+        jsonObject.addProperty(OTHER_MODELS_STATUS, NOT_UPDATED);
       }
 
 
@@ -149,13 +180,13 @@ public class RiskModelManagerInput implements RiskModelManagerInputInterface {
 
 
     if (modelsVulnThreatUpdated) {
-      jsonObject.addProperty("riskModelIdentifier", riskModelIdentifier);
-      jsonObject.addProperty("methodResult", "SUCCESS");
-      jsonObject.addProperty("otherModelsStatus", "UPDATED");
+      jsonObject.addProperty(RISK_MODEL_IDENTIFIER, riskModelIdentifier);
+      jsonObject.addProperty(METHOD_RESULT, SUCCESS);
+      jsonObject.addProperty(OTHER_MODELS_STATUS, UPDATED);
     } else {
-      jsonObject.addProperty("riskModelIdentifier", riskModelIdentifier);
-      jsonObject.addProperty("methodResult", "SUCCESS");
-      jsonObject.addProperty("otherModelsStatus", "NOT UPDATED");
+      jsonObject.addProperty(RISK_MODEL_IDENTIFIER, riskModelIdentifier);
+      jsonObject.addProperty(METHOD_RESULT, SUCCESS);
+      jsonObject.addProperty(OTHER_MODELS_STATUS, NOT_UPDATED);
     }
 
     GsonBuilder gsonBuilder = new GsonBuilder();
@@ -168,7 +199,6 @@ public class RiskModelManagerInput implements RiskModelManagerInputInterface {
     return gson.toJson(jsonObject);
   }
 
-  @Override
   public String editRiskScenario(String riskModel, String riskModelIdentifier) {
     LOG.info("RiskModelManagerInput about to edit editRiskScenario: " + riskModel);
 
@@ -190,13 +220,13 @@ public class RiskModelManagerInput implements RiskModelManagerInputInterface {
 
 
       if (modelsVulnThreatUpdated) {
-        jsonObject.addProperty("riskModelIdentifier", riskModelIdentifier);
-        jsonObject.addProperty("methodResult", "ERROR");
-        jsonObject.addProperty("otherModelsStatus", "UPDATED");
+        jsonObject.addProperty(RISK_MODEL_IDENTIFIER, riskModelIdentifier);
+        jsonObject.addProperty(METHOD_RESULT, "ERROR");
+        jsonObject.addProperty(OTHER_MODELS_STATUS, UPDATED);
       } else {
-        jsonObject.addProperty("riskModelIdentifier", riskModelIdentifier);
-        jsonObject.addProperty("methodResult", "ERROR");
-        jsonObject.addProperty("otherModelsStatus", "NOT UPDATED");
+        jsonObject.addProperty(RISK_MODEL_IDENTIFIER, riskModelIdentifier);
+        jsonObject.addProperty(METHOD_RESULT, "ERROR");
+        jsonObject.addProperty(OTHER_MODELS_STATUS, NOT_UPDATED);
       }
 
 
@@ -225,13 +255,13 @@ public class RiskModelManagerInput implements RiskModelManagerInputInterface {
 
 
       if (modelsVulnThreatUpdated) {
-        jsonObject.addProperty("riskModelIdentifier", riskModelIdentifier);
-        jsonObject.addProperty("methodResult", "ERROR");
-        jsonObject.addProperty("otherModelsStatus", "UPDATED");
+        jsonObject.addProperty(RISK_MODEL_IDENTIFIER, riskModelIdentifier);
+        jsonObject.addProperty(METHOD_RESULT, "ERROR");
+        jsonObject.addProperty(OTHER_MODELS_STATUS, UPDATED);
       } else {
-        jsonObject.addProperty("riskModelIdentifier", riskModelIdentifier);
-        jsonObject.addProperty("methodResult", "ERROR");
-        jsonObject.addProperty("otherModelsStatus", "NOT UPDATED");
+        jsonObject.addProperty(RISK_MODEL_IDENTIFIER, riskModelIdentifier);
+        jsonObject.addProperty(METHOD_RESULT, "ERROR");
+        jsonObject.addProperty(OTHER_MODELS_STATUS, NOT_UPDATED);
       }
 
 
@@ -259,13 +289,13 @@ public class RiskModelManagerInput implements RiskModelManagerInputInterface {
 
 
     if (modelsVulnThreatUpdated) {
-      jsonObject.addProperty("riskModelIdentifier", riskModelIdentifier);
-      jsonObject.addProperty("methodResult", "SUCCESS");
-      jsonObject.addProperty("otherModelsStatus", "UPDATED");
+      jsonObject.addProperty(RISK_MODEL_IDENTIFIER, riskModelIdentifier);
+      jsonObject.addProperty(METHOD_RESULT, SUCCESS);
+      jsonObject.addProperty(OTHER_MODELS_STATUS, UPDATED);
     } else {
-      jsonObject.addProperty("riskModelIdentifier", riskModelIdentifier);
-      jsonObject.addProperty("methodResult", "SUCCESS");
-      jsonObject.addProperty("otherModelsStatus", "NOT UPDATED");
+      jsonObject.addProperty(RISK_MODEL_IDENTIFIER, riskModelIdentifier);
+      jsonObject.addProperty(METHOD_RESULT, SUCCESS);
+      jsonObject.addProperty(OTHER_MODELS_STATUS, NOT_UPDATED);
     }
 
     GsonBuilder gsonBuilder = new GsonBuilder();
@@ -912,7 +942,6 @@ public class RiskModelManagerInput implements RiskModelManagerInputInterface {
     return procedure;
   }
 
-  @Override
   public ModelObject loadRiskModel(GenericFilter filter) throws Exception {
     // get the procedure identifier passed in input
     String procedureIdentifier = filter.getFilterValue(GenericFilterEnum.PROCEDURE);
@@ -942,7 +971,6 @@ public class RiskModelManagerInput implements RiskModelManagerInputInterface {
 
   //This method is called everytime the client calls the EditAssetModel.
   //It is mandatory since changing the assets may have impact on VulnerabilityModel, ThreatModel and RiskModel
-  @Override
   public void editAssetModel(String assetModelIdentifier) {
     LOG.info("RiskModelManagerInput editAssetModel:: identifier = " + assetModelIdentifier);
 
@@ -955,7 +983,6 @@ public class RiskModelManagerInput implements RiskModelManagerInputInterface {
   }
 
   //This  method is called everytime an Audit is modified. There exists a single audit for each project, which is reflected on SafeguardModels for each procedure
-  @Override
   public void editSafeguardModel(String procedureIdentifier) {
     LOG.info("RiskModelManagerInput editSafeguardModel:: procedure identifier = " + procedureIdentifier);
 
@@ -967,7 +994,6 @@ public class RiskModelManagerInput implements RiskModelManagerInputInterface {
   }
 
   //This  method is called everytime an Audit is modified. There exists a single audit for each project, which is reflected on SafeguardModels for each procedure
-  @Override
   public void editRiskTreatmentModel(AssessmentProcedure procedure, boolean persist) {
     LOG.info("RiskModelManagerInput editRiskTreatmentModel:: procedure identifier = " + procedure.getIdentifier());
 
@@ -979,7 +1005,6 @@ public class RiskModelManagerInput implements RiskModelManagerInputInterface {
   }
 
   //This  method is called everytime an AssessmentProcedure is created, in order to eventually updateQuestionnaireJSON the values of the Models
-  @Override
   public void createAssessmentProcedure(AssessmentProcedure procedure) {
     LOG.info("RiskModelManagerInput createAssessmentProcedure:: procedure identifier = " + procedure.getIdentifier());
 
@@ -1226,16 +1251,62 @@ public class RiskModelManagerInput implements RiskModelManagerInputInterface {
     // on an HashMap (faster to be used later)
     HashMap<String, SecurityRequirement> securityRequirementMap = getSecurityRequirementsHashMap(safeguards.getSafeguards());
 
+    //We also need to keep the RiskTreatment list coupled with the RiskScenario list (Excluded Scenario or Scenario not Reduced are not in RIskTreatment)
+    HashMap<String, RiskTreatment> riskTreatmentMap = getRiskTreatmentHashMap(treatments.getRiskTreatments());
+
+    List<RiskTreatment> treatmentToAdd = new ArrayList<>();
+    List<String> safeguardInTreatment = new ArrayList<>();
+
+    // check and syncronize scenario from risk model with scenario from treatment
+    for (RiskScenario scenario : risks.getScenarios()) {
+      if (riskTreatmentMap.containsKey(scenario.getIdentifier())) {
+        RiskTreatment treatment = riskTreatmentMap.get(scenario.getIdentifier());
+
+        treatment.setCurrentSeriousness(scenario.getCalculatedSeriousness());
+
+        if (treatment.getResultingSeriousness() == null) {
+          LOG.error("treatment with seriousness null: " + treatment.getIdentifier());
+          treatment.setResultingSeriousness(treatment.getCurrentSeriousness());
+        }
+
+        if (treatment.getCurrentSeriousness().getScore() < treatment.getResultingSeriousness().getScore()) {
+          modelsRiskTreatmentUpdated = true;
+          treatment.setResultingSeriousness(treatment.getCurrentSeriousness());
+        }
+        safeguardInTreatment.addAll(scenario.getSafeguardIds());
+      } else {
+        if (!scenario.isExcluded() && scenario.getScenarioResult().equals(ScenarioResultEnum.Reduce) && !scenario.getAssetId().equals("") &&
+          !scenario.getVulnerabilityId().equals("") && !scenario.getThreatId().equals("")) {
+
+          modelsRiskTreatmentUpdated = true;
+          RiskTreatment treatment = new RiskTreatment();
+          String treatmentId = UUID.randomUUID().toString();
+          treatment.setIdentifier(treatmentId);
+          treatment.setObjType(SESTObjectTypeEnum.RiskTreatmentModel);
+
+          treatment.setCurrentSeriousness(scenario.getCalculatedSeriousness());
+          treatment.setResultingSeriousness(scenario.getCalculatedSeriousness());
+          treatment.setRiskScenarioId(scenario.getIdentifier());
+
+          treatmentToAdd.add(treatment);
+          safeguardInTreatment.addAll(scenario.getSafeguardIds());
+        }
+      }
+    }
+
+    // check resulting safeguard in treatment and syncronize if lower with value from audit
     for (Safeguard resultingSafeguard : treatments.getResultingSafeguards()) {
 
       Safeguard safeguard = safeguardMap.get(resultingSafeguard.getIdentifier());
 
       if (safeguard == null) {
-        LOG.error("Resulting Safeguard with identifier {} not existing in SafeguardModel" + resultingSafeguard.getIdentifier());
+        LOG.error("Resulting Safeguard with identifier {} not existing in SafeguardModel", resultingSafeguard.getIdentifier());
         continue;
       }
 
-      if (resultingSafeguard.getScore().getScore() < safeguard.getScore().getScore()) {
+      // if treatment target value is lower then audit value or safeguard is not included in treatment scenarios
+      if ((resultingSafeguard.getScore().getScore() < safeguard.getScore().getScore()) ||
+        !safeguardInTreatment.contains(resultingSafeguard.getIdentifier())) {
         modelsRiskTreatmentUpdated = true;
         resultingSafeguard.setScore(safeguard.getScore());
       }
@@ -1253,69 +1324,24 @@ public class RiskModelManagerInput implements RiskModelManagerInputInterface {
           modelsRiskTreatmentUpdated = true;
           resultingRequirement.setScore(requirement.getScore());
         }
-
         checkSecurityRequirement(resultingRequirement, securityRequirementMap);
-
       }
     }
 
-    //We also need to keep the RiskTreatment list coupled with the RiskScenario list (Excluded Scenario or Scenario not Reduced are not in RIskTreatment)
-    HashMap<String, RiskTreatment> riskTreatmentMap = getRiskTreatmentHashMap(treatments.getRiskTreatments());
-
-    ArrayList<RiskTreatment> treatmentToAdd = new ArrayList<>();
-
-    for (RiskScenario scenario : risks.getScenarios()) {
-      if (riskTreatmentMap.containsKey(scenario.getIdentifier())) {
-        RiskTreatment treatment = riskTreatmentMap.get(scenario.getIdentifier());
-
-        treatment.setCurrentSeriousness(scenario.getCalculatedSeriousness());
-
-        if (treatment.getResultingSeriousness() == null) {
-          LOG.error("treatment with seriousness null: " + treatment.getIdentifier());
-          treatment.setResultingSeriousness(treatment.getCurrentSeriousness());
-        }
-
-
-        if (treatment.getCurrentSeriousness().getScore() < treatment.getResultingSeriousness().getScore()) {
-          modelsRiskTreatmentUpdated = true;
-          treatment.setResultingSeriousness(treatment.getCurrentSeriousness());
-        }
-      } else {
-        if (!scenario.isExcluded() && scenario.getScenarioResult().equals(ScenarioResultEnum.Reduce) && !scenario.getAssetId().equals("") &&
-          !scenario.getVulnerabilityId().equals("") && !scenario.getThreatId().equals("")) {
-
-          modelsRiskTreatmentUpdated = true;
-          RiskTreatment treatment = new RiskTreatment();
-          String treatmentId = UUID.randomUUID().toString();
-          treatment.setIdentifier(treatmentId);
-          treatment.setObjType(SESTObjectTypeEnum.RiskTreatmentModel);
-
-          treatment.setCurrentSeriousness(scenario.getCalculatedSeriousness());
-          treatment.setResultingSeriousness(scenario.getCalculatedSeriousness());
-          treatment.setRiskScenarioId(scenario.getIdentifier());
-
-          treatmentToAdd.add(treatment);
-        }
-      }
-    }
 
     treatments.getRiskTreatments().addAll(treatmentToAdd);
 
     HashMap<String, RiskScenario> scenarioMap = getRiskScenarioHashMap(risks.getScenarios());
 
-    ArrayList<RiskTreatment> treatmentToDelete = new ArrayList<>();
+    List<RiskTreatment> treatmentToDelete = new ArrayList<>();
 
     for (RiskTreatment treatment : treatments.getRiskTreatments()) {
-      if (!scenarioMap.containsKey(treatment.getRiskScenarioId())) {
+      RiskScenario scenario = scenarioMap.get(treatment.getRiskScenarioId());
+      if (!scenarioMap.containsKey(treatment.getRiskScenarioId()) ||
+        (scenario.isExcluded() || !scenario.getScenarioResult().equals(ScenarioResultEnum.Reduce) || scenario.getAssetId().equals("") ||
+          scenario.getVulnerabilityId().equals("") || scenario.getThreatId().equals(""))) {
         modelsRiskTreatmentUpdated = true;
         treatmentToDelete.add(treatment);
-      } else {
-        RiskScenario scenario = scenarioMap.get(treatment.getRiskScenarioId());
-        if (scenario.isExcluded() || !scenario.getScenarioResult().equals(ScenarioResultEnum.Reduce) || scenario.getAssetId().equals("") ||
-          scenario.getVulnerabilityId().equals("") || scenario.getThreatId().equals("")) {
-          modelsRiskTreatmentUpdated = true;
-          treatmentToDelete.add(treatment);
-        }
       }
     }
 
@@ -1368,10 +1394,8 @@ public class RiskModelManagerInput implements RiskModelManagerInputInterface {
 
     LOG.info("checkSafeguardModel begin");
 
-    SecurityMeasuresInterpreter interpreter = new SecurityMeasuresInterpreter();
-
     // Load of all existing risk Scenarios References
-    ArrayList<RiskScenarioReference> allRsr = riskModelService.getRiskScenarioReference();
+    List<RiskScenarioReference> allRsr = riskModelService.getRiskScenarioReference();
 
     //This method checks and assigns Safeguard Ids to the proper scenario (palliation etc computation will be done in the completeRiskModel method)
     for (RiskScenario scenario : risks.getScenarios()) {
@@ -1416,9 +1440,7 @@ public class RiskModelManagerInput implements RiskModelManagerInputInterface {
 
   private void checkThreatModel(ThreatModel threats, AssetModel assets, VulnerabilityModel vulnerabilities, RiskModel risks) {
 
-
     //Here we check if some scenario have references to non existing threats
-
     ArrayList<RiskScenario> scenariosToDelete = new ArrayList<>();
 
     for (RiskScenario scenario : risks.getScenarios()) {
@@ -1439,11 +1461,9 @@ public class RiskModelManagerInput implements RiskModelManagerInputInterface {
         LOG.info("checkThreatModel scenarioToDelete due to reference to non existing threat {} ", scenario.getIdentifier());
         scenariosToDelete.add(scenario);
       }
-
     }
 
     risks.getScenarios().removeAll(scenariosToDelete);
-
 
     //Here we check if the surviving scenario have the proper combinations of Asset-SecondaryAssetCategoryType and Threat-SecondaryAssetCategoryType
     scenariosToDelete = new ArrayList<>();
@@ -1505,11 +1525,9 @@ public class RiskModelManagerInput implements RiskModelManagerInputInterface {
         scenariosToDelete.add(scenario);
         continue;
       }
-
     }
 
     risks.getScenarios().removeAll(scenariosToDelete);
-
 
     //Now we check how many threats must be deleted (since some scenario may be deleted)
     ArrayList<Threat> threatsToDelete = new ArrayList<>();
@@ -1527,15 +1545,12 @@ public class RiskModelManagerInput implements RiskModelManagerInputInterface {
         LOG.info("checkThreatModel threatToDelete {} ", threat.getIdentifier());
         threatsToDelete.add(threat);
       }
-
     }
-
 
     if (threats.getThreats().removeAll(threatsToDelete)) {
       LOG.info("checkThreatModel modelsVulnThreatUpdated = true");
       modelsVulnThreatUpdated = true;
     }
-
   }
 
   private void checkVulnerabilityModel(VulnerabilityModel vulnerabilities, AssetModel assets, RiskModel risks) {
@@ -1726,11 +1741,7 @@ public class RiskModelManagerInput implements RiskModelManagerInputInterface {
     scales.add(new SeriousnessScale(4, 4, 4));
   }
 
-  @Override
   public void updateScenarioRepository(String catalogue) throws Exception {
-
-    RiskScenariosReferenceImporter importer = new RiskScenariosReferenceImporter();
-    importer.setRiskModelService(this.riskModelService);
 
     importer.init();
   }
@@ -1763,83 +1774,11 @@ public class RiskModelManagerInput implements RiskModelManagerInputInterface {
     this.riskModelService.editRiskScenarioReference(riskScenarioReference);
   }
 
-  public ArrayList<RiskScenarioReference> getRiskScenarioReference() {
+  public List<RiskScenarioReference> getRiskScenarioReference() {
     return riskModelService.getRiskScenarioReference();
   }
 
-  public boolean updateScenarioRepository(ArrayList<RiskScenarioReference> rsr) {
+  public boolean updateScenarioRepository(List<RiskScenarioReference> rsr) {
     return riskModelService.updateScenarioRepository(rsr);
-  }
-
-  public AssprocedureServiceInterface getAssprocedureService() {
-    return assprocedureService;
-  }
-
-  public void setAssprocedureService(AssprocedureServiceInterface assprocedureService) {
-    this.assprocedureService = assprocedureService;
-  }
-
-  public AssprojectServiceInterface getAssprojectService() {
-    return assprojectService;
-  }
-
-  public void setAssprojectService(AssprojectServiceInterface assprojectService) {
-    this.assprojectService = assprojectService;
-  }
-
-  public AssetServiceInterface getAssetModelService() {
-    return assetModelService;
-  }
-
-  public void setAssetModelService(AssetServiceInterface assetModelService) {
-    this.assetModelService = assetModelService;
-  }
-
-  public VulnerabilityServiceInterface getVulnerabilityModelService() {
-    return vulnerabilityModelService;
-  }
-
-  public void setVulnerabilityModelService(VulnerabilityServiceInterface vulnerabilityModelService) {
-    this.vulnerabilityModelService = vulnerabilityModelService;
-  }
-
-  public ThreatServiceInterface getThreatModelService() {
-    return threatModelService;
-  }
-
-  public void setThreatModelService(ThreatServiceInterface threatModelService) {
-    this.threatModelService = threatModelService;
-  }
-
-  public RiskServiceInterface getRiskModelService() {
-    return riskModelService;
-  }
-
-  public void setRiskModelService(RiskServiceInterface riskModelService) {
-    this.riskModelService = riskModelService;
-  }
-
-  public SafeguardServiceInterface getSafeguardModelService() {
-    return safeguardModelService;
-  }
-
-  public void setSafeguardModelService(SafeguardServiceInterface safeguardModelService) {
-    this.safeguardModelService = safeguardModelService;
-  }
-
-  public RiskTreatmentServiceInterface getRiskTreatmentModelService() {
-    return riskTreatmentModelService;
-  }
-
-  public void setRiskTreatmentModelService(RiskTreatmentServiceInterface riskTreatmentModelService) {
-    this.riskTreatmentModelService = riskTreatmentModelService;
-  }
-
-  public SestObjServiceInterface getSestObjService() {
-    return sestObjService;
-  }
-
-  public void setSestObjService(SestObjServiceInterface sestObjService) {
-    this.sestObjService = sestObjService;
   }
 }

@@ -12,7 +12,7 @@
 
 package org.crmf.core.riskassessment.utility;
 
-import org.crmf.core.safeguardmodel.manager.SafeguardModelManagerInputInterface;
+import org.crmf.core.safeguardmodel.manager.SafeguardModelManagerInput;
 import org.crmf.model.general.SESTObjectTypeEnum;
 import org.crmf.model.riskassessment.AssessmentProcedure;
 import org.crmf.model.riskassessment.AssessmentProject;
@@ -33,9 +33,11 @@ import org.crmf.persistency.mapper.risk.RiskTreatmentServiceInterface;
 import org.crmf.persistency.mapper.safeguard.SafeguardServiceInterface;
 import org.crmf.persistency.mapper.threat.ThreatServiceInterface;
 import org.crmf.persistency.mapper.vulnerability.VulnerabilityServiceInterface;
-import org.crmf.user.validation.permission.UserPermissionManagerInputInterface;
+import org.crmf.user.validation.permission.UserPermissionManagerInput;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -45,17 +47,26 @@ import java.util.Map;
 import java.util.UUID;
 
 //This class holds several utility methods for cloning/copying models
+@Service
 public class RiskAssessmentModelsCloner{
 	private static final Logger LOG = LoggerFactory.getLogger(RiskAssessmentModelsCloner.class.getName());
 	public static final String DD_MM_YYYY_HH_MM = "dd/MM/yyyy HH:mm";
-	private SafeguardModelManagerInputInterface safeguardModelInput;
+	@Autowired
 	private AssetServiceInterface assetModelService;
+	@Autowired
 	private VulnerabilityServiceInterface vulnerabilityModelService;
+	@Autowired
 	private ThreatServiceInterface threatModelService;
+	@Autowired
 	private SafeguardServiceInterface safeguardModelService;
+	@Autowired
 	private RiskServiceInterface riskModelService;
-	private UserPermissionManagerInputInterface permissionManager;
+	@Autowired
 	private RiskTreatmentServiceInterface riskTreatmentModelService;
+	@Autowired
+	private SafeguardModelManagerInput safeguardModelInput;
+	@Autowired
+	private UserPermissionManagerInput permissionManager;
 
     /*Create a copy of template associated models (AssetModel, ThreatModel, VulnerabilityModel, SafeguardModel, RiskModel)
     This method is called when creating a procedure
@@ -365,83 +376,5 @@ public class RiskAssessmentModelsCloner{
 		riskTreatmentModelService.insert(newRiskTreatmentModelJson, newRiskTreatmentModelId);
 		
 		return newRiskTreatmentModelId;
-		
 	}
-	
-	 public AssetServiceInterface getAssetModelService() {
-		return assetModelService;
-	}
-
-
-	public void setAssetModelService(AssetServiceInterface assetModelService) {
-		this.assetModelService = assetModelService;
-	}
-	
-	public VulnerabilityServiceInterface getVulnerabilityModelService() {
-		return vulnerabilityModelService;
-	}
-
-
-	public void setVulnerabilityModelService(VulnerabilityServiceInterface vulnerabilityModelService) {
-		this.vulnerabilityModelService = vulnerabilityModelService;
-	}
-	
-
-	public ThreatServiceInterface getThreatModelService() {
-		return threatModelService;
-	}
-
-
-	public void setThreatModelService(ThreatServiceInterface threatModelService) {
-		this.threatModelService = threatModelService;
-	}
-
-
-	public RiskServiceInterface getRiskModelService() {
-		return riskModelService;
-	}
-
-
-	public void setRiskModelService(RiskServiceInterface riskModelService) {
-		this.riskModelService = riskModelService;
-	}
-
-	public UserPermissionManagerInputInterface getPermissionManager() {
-		return permissionManager;
-	}
-
-    public void setPermissionManager(UserPermissionManagerInputInterface permissionManager) {
-		this.permissionManager = permissionManager;
-	}
-
-
-	public SafeguardServiceInterface getSafeguardModelService() {
-		return safeguardModelService;
-	}
-
-
-	public void setSafeguardModelService(SafeguardServiceInterface safeguardModelService) {
-		this.safeguardModelService = safeguardModelService;
-	}
-
-
-	public RiskTreatmentServiceInterface getRiskTreatmentModelService() {
-		return riskTreatmentModelService;
-	}
-
-
-	public void setRiskTreatmentModelService(RiskTreatmentServiceInterface riskTreatmentModelService) {
-		this.riskTreatmentModelService = riskTreatmentModelService;
-	}
-
-
-	public SafeguardModelManagerInputInterface getSafeguardModelInput() {
-		return safeguardModelInput;
-	}
-
-
-	public void setSafeguardModelInput(SafeguardModelManagerInputInterface safeguardModelInput) {
-		this.safeguardModelInput = safeguardModelInput;
-	}
-
 }

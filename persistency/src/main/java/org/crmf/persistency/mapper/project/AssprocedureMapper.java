@@ -12,43 +12,45 @@
 
 package org.crmf.persistency.mapper.project;
 
+import org.apache.ibatis.annotations.Mapper;
 import org.crmf.persistency.domain.project.AssProcedure;
 
 import java.util.List;
 
 //This interface allows the bundle to invoke the SQL methods within the AssprocedureMapper.xml (via the ibatis API)
+@Mapper
 public interface AssprocedureMapper {
 
-    public int insert(AssProcedure record);
-    
-	public void update(AssProcedure procedure);
+  int insert(AssProcedure record);
 
-	public void delete(Integer id);
+  void update(AssProcedure procedure);
 
-	public void deleteByIdentifier(String identifier);
+  void delete(Integer id);
 
-	public AssProcedure getByIdentifier(String identifier);
+  void deleteByIdentifier(String identifier);
 
-	public Integer getIdByIdentifier(String identifier);
-	
-	public List<AssProcedure> getAll();
+  AssProcedure getByIdentifier(String identifier);
 
-	public List<AssProcedure> getByProjectIdentifier(String identifier);
-	
-	public Integer getProjectdIdByIdentifier(String identifier);
+  Integer getIdByIdentifier(String identifier);
 
-	public AssProcedure getByAssetModelIdentifier(String identifier);
-	
-	public AssProcedure getByVulnerabilityModelIdentifier(String identifier);
-	
-	public AssProcedure getByThreatModelIdentifier(String identifier);
-	
-	public AssProcedure getByRiskModelIdentifier(String identifier);
-	
-	public AssProcedure getOpenByProjectId(Integer id);
+  public List<AssProcedure> getAll();
 
-	public AssProcedure getByRiskTreatmentModelIdentifier(String riskTreatmentModelIdentifier);
-	
-	public AssProcedure getBySafeguardModelIdentifier(String safeguardModelIdentifier);
-	
+  public List<AssProcedure> getByProjectIdentifier(String identifier);
+
+  public Integer getProjectdIdByIdentifier(String identifier);
+
+  public AssProcedure getByAssetModelIdentifier(String identifier);
+
+  public AssProcedure getByVulnerabilityModelIdentifier(String identifier);
+
+  public AssProcedure getByThreatModelIdentifier(String identifier);
+
+  public AssProcedure getByRiskModelIdentifier(String identifier);
+
+  public AssProcedure getOpenByProjectId(Integer id);
+
+  public AssProcedure getByRiskTreatmentModelIdentifier(String riskTreatmentModelIdentifier);
+
+  public AssProcedure getBySafeguardModelIdentifier(String safeguardModelIdentifier);
+
 }

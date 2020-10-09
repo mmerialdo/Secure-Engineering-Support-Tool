@@ -22,6 +22,7 @@ import {PermissionType} from "../../permission-type.class";
 import {TaxonomiesService} from "./taxonomies.service";
 import {ThreatsTaxonomyService} from "./threats-taxonomy/threats-taxonomy.service";
 import {RiskScenarioTaxonomiesService} from "./risk-scenario-taxonomy/risk-scenario-taxonomies.service";
+import * as FileSaver from 'file-saver';
 
 @Component({
   selector: 'app-taxonomies-management',
@@ -70,6 +71,9 @@ export class TaxonomiesManagementComponent implements OnInit, OnDestroy {
         this.subscriptions.push(
           this.dataService.exportVulnerabilityReference().subscribe(response => {
               this.blocked = false;
+              const fileName = "VulnerabilityExport.json";
+              const blob = new Blob([response.body], {type: 'application/json'});
+              FileSaver.saveAs(blob, fileName);
             },
             err => {
               this.blocked = false;
@@ -81,6 +85,9 @@ export class TaxonomiesManagementComponent implements OnInit, OnDestroy {
         this.subscriptions.push(
           this.dataService.exportThreatReference().subscribe(response => {
               this.blocked = false;
+              const fileName = "ThreatExport.json";
+              const blob = new Blob([response.body], {type: 'application/json'});
+              FileSaver.saveAs(blob, fileName);
             },
             err => {
               this.blocked = false;
@@ -92,6 +99,9 @@ export class TaxonomiesManagementComponent implements OnInit, OnDestroy {
         this.subscriptions.push(
           this.dataService.exportRiskScenarioReference().subscribe(response => {
               this.blocked = false;
+              const fileName = "RiskScenarioExport.json";
+              const blob = new Blob([response.body], {type: 'application/json'});
+              FileSaver.saveAs(blob, fileName);
             },
             err => {
               this.blocked = false;

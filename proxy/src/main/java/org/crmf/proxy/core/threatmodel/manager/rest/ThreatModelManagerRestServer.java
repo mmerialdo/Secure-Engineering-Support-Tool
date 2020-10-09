@@ -12,36 +12,50 @@
 
 package org.crmf.proxy.core.threatmodel.manager.rest;
 
-import org.crmf.core.threatmodel.manager.ThreatModelManagerInputInterface;
+import org.crmf.core.threatmodel.manager.ThreatModelManagerInput;
+import org.crmf.model.exception.RemoteComponentException;
 import org.crmf.model.riskassessment.ThreatModel;
-import org.crmf.model.riskassessmentelements.RiskScenarioReference;
 import org.crmf.model.riskassessmentelements.Threat;
-import org.crmf.model.riskassessmentelements.ThreatSourceEnum;
 import org.crmf.model.utility.GenericFilter;
 import org.crmf.model.utility.ModelObject;
 import org.crmf.model.utility.threatmodel.ThreatModelSerializerDeserializer;
-import org.crmf.riskmodel.manager.RiskModelManagerInputInterface;
-import org.crmf.threatimport.threatimportmanager.ThreatImportManagerInputInterface;
+import org.crmf.proxy.authnauthz.Permission;
+import org.crmf.proxy.configuration.ApiExceptionEnum;
+import org.crmf.proxy.configuration.ResponseMessage;
+import org.crmf.riskmodel.manager.RiskModelManagerInput;
+import org.crmf.threatimport.threatimportmanager.ThreatImportManagerInput;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 //This class manages the business logic behind the webservices related to the ThreatModel management
-public class ThreatModelManagerRestServer implements ThreatModelManagerRestServerInterface {
+@RestController
+@RequestMapping(value = "api/threat")
+public class ThreatModelManagerRestServer {
   // the logger of ThreatModelManagerRestServer class
   private static final Logger LOG = LoggerFactory.getLogger(ThreatModelManagerRestServer.class.getName());
   public static final String DD_MM_YYYY_HH_MM = "dd/MM/yyyy HH:mm";
-  private ThreatModelManagerInputInterface threatModelInput;
-  private ThreatImportManagerInputInterface threatImportInput;
-  private RiskModelManagerInputInterface riskModelInput;
+  @Autowired
+  private ThreatModelManagerInput threatModelInput;
+  @Autowired
+  private ThreatImportManagerInput threatImportInput;
+  @Autowired
+  private RiskModelManagerInput riskModelInput;
 
-  @Override
-  public void editThreatModel(ModelObject threatModelObject) throws Exception {
+  @PostMapping("threatModel/edit")
+  @Permission("ThreatModel:Update")
+  public void editThreatModel(@RequestParam(name = "SHIRO_SECURITY_TOKEN") String token,
+                              @RequestBody ModelObject threatModelObject) {
     LOG.info("ThreatModelManagerRestServer editThreatModel:: begin");
     try {
       //retrieve the threatModel in json format
@@ -63,24 +77,28 @@ public class ThreatModelManagerRestServer implements ThreatModelManagerRestServe
       threatModelInput.editThreatModel(threatModelJson, identifier);
     } catch (Exception e) {
       LOG.info("ThreatModelManagerRestServer editThreatModel:: exception {}", e.getMessage());
-      throw new Exception("COMMAND_EXCEPTION", e);
+      throw new RemoteComponentException(ApiExceptionEnum.COMMAND_EXCEPTION, e);
     }
   }
 
-  @Override
-  public ModelObject loadThreatModel(GenericFilter filter) throws Exception {
+  @PostMapping("threatModel/load")
+  @Permission("ThreatModel:Read")
+  public ModelObject loadThreatModel(@RequestParam(name = "SHIRO_SECURITY_TOKEN") String token,
+                                     @RequestBody GenericFilter filter) {
     LOG.info("ThreatModelManagerRestServer loadThreatModel:: begin");
     try {
       //return the threat model in json format that matches the filters in input
       return threatModelInput.loadThreatModel(filter);
     } catch (Exception e) {
       LOG.info("ThreatModelManagerRestServer loadThreatModel:: exception {}", e.getMessage());
-      throw new Exception("COMMAND_EXCEPTION", e);
+      throw new RemoteComponentException(ApiExceptionEnum.COMMAND_EXCEPTION, e);
     }
   }
 
-  @Override
-  public String loadThreatRepository(GenericFilter filter) throws Exception {
+  @PostMapping("threatRepository/load")
+  @Permission("ThreatModel:Read")
+  public String loadThreatRepository(@RequestParam(name = "SHIRO_SECURITY_TOKEN") String token,
+                                     @RequestBody GenericFilter filter) {
     LOG.info("ThreatModelManagerRestServer loadThreatRepository:: begin");
     LOG.info("loadThreatRepository {}", filter);
 
@@ -90,93 +108,45 @@ public class ThreatModelManagerRestServer implements ThreatModelManagerRestServe
       return result;
     } catch (Exception e) {
       LOG.error("ThreatModelManagerRestServer loadThreatRepository " + e.getMessage());
-      throw new Exception("COMMAND_EXCEPTION", e);
+      throw new RemoteComponentException(ApiExceptionEnum.COMMAND_EXCEPTION, e);
     }
   }
 
-  @Override
-  public void updateThreatRepository(String catalogue) throws Exception {
-    LOG.info("ThreatModelManagerRestServer updateThreatRepository:: begin");
-    LOG.info("updateThreatRepository {}", catalogue);
+  @PostMapping("threatReference/create")
+  @Permission("Taxonomy:Update")
+  public ResponseMessage createThreatReference(@RequestParam(name = "SHIRO_SECURITY_TOKEN") String token,
+                                               @RequestBody Threat threat) {
 
     try {
-      ThreatSourceEnum source;
-      if (catalogue.equals("MEHARI")) {
-        source = ThreatSourceEnum.MEHARI;
-      } else {
-        LOG.error("updateThreatRepository - catalogue not supported " + catalogue);
-        throw new Exception("COMMAND_EXCEPTION");
-      }
-
-      threatImportInput.importThreats(source);
-
-      // get the RISK SCENARIO REFERENCE
-      ArrayList<RiskScenarioReference> rsr = riskModelInput.getRiskScenarioReference();
-      //updateQuestionnaireJSON risk scenario reference in order to link the new threat catalogue
-      boolean scenarioResult = riskModelInput.updateScenarioRepository(rsr);
-
-      if (!scenarioResult) {
-        throw new Exception("COMMAND_EXCEPTION");
-      }
-    } catch (Exception e) {
-      LOG.error("ThreatModelManagerRestServer updateThreatRepository " + e.getMessage());
-      throw new Exception("COMMAND_EXCEPTION", e);
-    }
-  }
-
-  @Override
-  public String createThreatReference(Threat threat) throws Exception {
-
-    try {
-      return threatModelInput.createThreat(threat);
+      String threatIdentifier = threatModelInput.createThreat(threat);
+      return new ResponseMessage(threatIdentifier);
     } catch (Exception e) {
       LOG.error("ThreatModelManagerRestServer createThreatRepository " + e.getMessage());
-      throw new Exception("COMMAND_EXCEPTION", e);
+      throw new RemoteComponentException(ApiExceptionEnum.COMMAND_EXCEPTION, e);
     }
   }
 
-  @Override
-  public void editThreatReference(Threat threat) throws Exception {
+  @PostMapping("threatReference/edit")
+  @Permission(value = "Taxonomy:Update")
+  public void editThreatReference(@RequestParam(name = "SHIRO_SECURITY_TOKEN") String token,
+                                  @RequestBody Threat threat) {
     try {
       threatModelInput.editThreat(threat);
     } catch (Exception e) {
       LOG.error("ThreatModelManagerRestServer updateThreatRepository " + e.getMessage());
-      throw new Exception("COMMAND_EXCEPTION", e);
+      throw new RemoteComponentException(ApiExceptionEnum.COMMAND_EXCEPTION, e);
     }
   }
 
-  @Override
-  public void deleteThreatReference(List<String> identifier) throws Exception {
+  @PostMapping("threatReference/delete")
+  @Permission(value = "Taxonomy:Update")
+  public void deleteThreatReference(@RequestParam(name = "SHIRO_SECURITY_TOKEN") String token,
+                                    @RequestBody List<String> identifier) {
     try {
       threatModelInput.deleteThreat(identifier);
     } catch (Exception e) {
       LOG.error("ThreatModelManagerRestServer deleteThreatRepository " + e.getMessage());
-      throw new Exception("COMMAND_EXCEPTION", e);
+      throw new RemoteComponentException(ApiExceptionEnum.COMMAND_EXCEPTION, e);
     }
   }
-
-  public ThreatModelManagerInputInterface getThreatModelInput() {
-    return threatModelInput;
-  }
-
-  public void setThreatModelInput(ThreatModelManagerInputInterface threatModelInput) {
-    this.threatModelInput = threatModelInput;
-  }
-
-  public ThreatImportManagerInputInterface getThreatImportInput() {
-    return threatImportInput;
-  }
-
-  public void setThreatImportInput(ThreatImportManagerInputInterface threatImportInput) {
-    this.threatImportInput = threatImportInput;
-  }
-
-  public RiskModelManagerInputInterface getRiskModelInput() {
-    return riskModelInput;
-  }
-
-  public void setRiskModelInput(RiskModelManagerInputInterface riskModelInput) {
-    this.riskModelInput = riskModelInput;
-  }
-
 }

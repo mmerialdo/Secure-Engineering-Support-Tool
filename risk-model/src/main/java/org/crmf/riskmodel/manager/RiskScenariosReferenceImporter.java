@@ -12,7 +12,6 @@
 
 package org.crmf.riskmodel.manager;
 
-import org.apache.cxf.jaxrs.ext.multipart.Attachment;
 import org.crmf.model.riskassessment.RiskScenarioReferenceModel;
 import org.crmf.model.riskassessmentelements.PrimaryAssetCategoryEnum;
 import org.crmf.model.riskassessmentelements.RiskScenarioReference;
@@ -23,20 +22,25 @@ import org.crmf.persistency.mapper.risk.RiskServiceInterface;
 import org.crmf.riskmodel.utility.SestStandardConverter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Service;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
 //This class manages the import of risk scenarios from a CSV file, deserializing them and persisting them in the database
+@Service
 public class RiskScenariosReferenceImporter {
   private static final Logger LOG = LoggerFactory.getLogger(RiskScenariosReferenceImporter.class.getName());
+  @Autowired
+  @Qualifier("default")
   private RiskServiceInterface riskModelService;
 
   public void init() throws Exception {
@@ -53,8 +57,8 @@ public class RiskScenariosReferenceImporter {
     importRiskScenarios(riskScenarioReference);
   }
 
-  public void importRiskScenariosFromInput(Attachment attachmentFile) throws Exception {
-    Set<RiskScenarioReference> riskScenarioReference = loadRiskScenariosFromInput(attachmentFile.getObject(InputStream.class));
+  public void importRiskScenariosFromInput(InputStream file) throws Exception {
+    Set<RiskScenarioReference> riskScenarioReference = loadRiskScenariosFromInput(file);
     if (riskScenarioReference != null && !riskScenarioReference.isEmpty()) {
       importRiskScenarios(riskScenarioReference);
     }
@@ -92,7 +96,7 @@ public class RiskScenariosReferenceImporter {
 
     // Update of database table associated to Risk Scenario Reference
     // Load of all existing risk Scenarios References
-    ArrayList<RiskScenarioReference> rsr = riskModelService.getRiskScenarioReference();
+    List<RiskScenarioReference> rsr = riskModelService.getRiskScenarioReference();
 
     //merge the new Reference Scenario with the current one (stored on DB)
     mergeRiskScenarioRepositories(riskScenarioReference, rsr);
@@ -110,7 +114,7 @@ public class RiskScenariosReferenceImporter {
      If an already existing risk scenario reference has
      different dissuasion/prevention/confining/palliative values, updateQuestionnaireJSON them.
    */
-  private void mergeRiskScenarioRepositories(Set<RiskScenarioReference> riskScenarioReference, ArrayList<RiskScenarioReference> rsr) {
+  private void mergeRiskScenarioRepositories(Set<RiskScenarioReference> riskScenarioReference, List<RiskScenarioReference> rsr) {
     // for each Scenario into the new Reference
     for (RiskScenarioReference currentScenario : riskScenarioReference) {
       boolean found = false;
@@ -266,13 +270,5 @@ public class RiskScenariosReferenceImporter {
       }
     }
     return riskScenarioReference;
-  }
-
-  public RiskServiceInterface getRiskModelService() {
-    return riskModelService;
-  }
-
-  public void setRiskModelService(RiskServiceInterface riskModelService) {
-    this.riskModelService = riskModelService;
   }
 }

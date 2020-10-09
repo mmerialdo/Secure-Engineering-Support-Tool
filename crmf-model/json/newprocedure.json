@@ -3,16 +3,16 @@
   "phase": "Initial",
   "status": "OnGoing",
   "assetModel": {
-    "creationTime": "",
-    "updateTime": "",
-    "identifier": "92611faf-67f0-4b07-a910-8e68dd9bd150",
+    "creationTime": "20/12/2017 10:29",
+    "updateTime": "20/12/2017 10:29",
+    "identifier": "115263f8-6317-456c-adef-03eb5d7744ac",
     "objType": "AssetModel",
     "graphJson": [
       {
         "type": "draw2d.shape.node.End",
-        "id": "d25bcb0a-5c92-4d8b-b433-356a6ad39b48",
-        "x": 200,
-        "y": 70,
+        "id": "859edc5e-fed7-e0eb-4fe6-11f89fe2a027",
+        "x": 199,
+        "y": 28,
         "width": 100,
         "height": 60,
         "alpha": 1,
@@ -22,7 +22,7 @@
         "ports": [
           {
             "type": "draw2d.InputPort",
-            "id": "dfb0dab0-e23c-cdb8-2f4f-41b6634cec13",
+            "id": "eff7b840-dfa0-ea9f-9bfd-5b6ea9a1d48f",
             "width": 10,
             "height": 10,
             "alpha": 1,
@@ -41,61 +41,13 @@
         "bgColor": "#E0E0E0",
         "color": "#000000",
         "stroke": 1,
-        "radius": 0,
-        "labels": [
-          {
-            "type": "draw2d.shape.basic.Label",
-            "id": "1896565b-42de-6dd8-a671-4654d5c2ffcd",
-            "x": 1,
-            "y": 1,
-            "width": 36,
-            "height": 23,
-            "alpha": 1,
-            "angle": 0,
-            "userData": {},
-            "cssClass": "draw2d_shape_basic_Label",
-            "ports": [],
-            "bgColor": "none",
-            "color": "#E0E0E0",
-            "stroke": 1,
-            "radius": 0,
-            "text": "ORG",
-            "outlineStroke": 0,
-            "outlineColor": "none",
-            "fontSize": 12,
-            "fontColor": "#080808",
-            "locator": "draw2d.layout.locator.XYAbsPortLocator"
-          },
-          {
-            "type": "draw2d.shape.basic.Label",
-            "id": "69a539b8-c3a4-3bca-460f-72dbe394cbb0",
-            "x": 45.5,
-            "y": 25.5,
-            "width": 10,
-            "height": 10,
-            "alpha": 1,
-            "angle": 0,
-            "userData": {},
-            "cssClass": "draw2d_shape_basic_Label",
-            "ports": [],
-            "bgColor": "none",
-            "color": "#E0E0E0",
-            "stroke": 1,
-            "radius": 0,
-            "text": "",
-            "outlineStroke": 0,
-            "outlineColor": "none",
-            "fontSize": 12,
-            "fontColor": "#080808",
-            "locator": "draw2d.layout.locator.CenterLocator"
-          }
-        ]
+        "radius": 0
       },
       {
         "type": "draw2d.shape.node.End",
-        "id": "8976dff8-f47b-717a-247a-e89d65000330",
-        "x": 361,
-        "y": 153,
+        "id": "b27587f8-43e5-ef36-023e-5cb2d0bdc516",
+        "x": 198.04799877241783,
+        "y": 146,
         "width": 100,
         "height": 60,
         "alpha": 1,
@@ -105,7 +57,7 @@
         "ports": [
           {
             "type": "draw2d.InputPort",
-            "id": "713dba92-58a9-3331-6c18-ee0ab546ef30",
+            "id": "15f10c5b-d734-6a87-b244-02d83d8c7691",
             "width": 10,
             "height": 10,
             "alpha": 1,
@@ -122,7 +74,7 @@
           },
           {
             "type": "draw2d.OutputPort",
-            "id": "ae3969f6-427b-42f1-f6f2-61c9c0e48d27",
+            "id": "6357a8a3-32fd-47c3-9297-fcc2f20cfa15",
             "width": 10,
             "height": 10,
             "alpha": 1,
@@ -141,61 +93,13 @@
         "bgColor": "#D3E1FF",
         "color": "#000000",
         "stroke": 1,
-        "radius": 0,
-        "labels": [
-          {
-            "type": "draw2d.shape.basic.Label",
-            "id": "7a21865c-2191-38ab-eaf3-5b6de8b9fb36",
-            "x": 1,
-            "y": 1,
-            "width": 27,
-            "height": 23,
-            "alpha": 1,
-            "angle": 0,
-            "userData": {},
-            "cssClass": "draw2d_shape_basic_Label",
-            "ports": [],
-            "bgColor": "none",
-            "color": "#D3E1FF",
-            "stroke": 1,
-            "radius": 0,
-            "text": "BP",
-            "outlineStroke": 0,
-            "outlineColor": "none",
-            "fontSize": 12,
-            "fontColor": "#080808",
-            "locator": "draw2d.layout.locator.XYAbsPortLocator"
-          },
-          {
-            "type": "draw2d.shape.basic.Label",
-            "id": "ed3b6759-72a8-aefa-da02-0ed61348d754",
-            "x": 45.5,
-            "y": 25.5,
-            "width": 10,
-            "height": 10,
-            "alpha": 1,
-            "angle": 0,
-            "userData": {},
-            "cssClass": "draw2d_shape_basic_Label",
-            "ports": [],
-            "bgColor": "none",
-            "color": "#D3E1FF",
-            "stroke": 1,
-            "radius": 0,
-            "text": "",
-            "outlineStroke": 0,
-            "outlineColor": "none",
-            "fontSize": 12,
-            "fontColor": "#080808",
-            "locator": "draw2d.layout.locator.CenterLocator"
-          }
-        ]
+        "radius": 0
       },
       {
         "type": "draw2d.shape.node.End",
-        "id": "4559805c-9792-3107-959f-6703c720655f",
-        "x": 283,
-        "y": 251,
+        "id": "df933a42-1452-7841-7018-7626ad1920e1",
+        "x": 145,
+        "y": 282,
         "width": 100,
         "height": 60,
         "alpha": 1,
@@ -205,7 +109,7 @@
         "ports": [
           {
             "type": "draw2d.InputPort",
-            "id": "9deb158d-824f-8f42-d593-67699ece84f5",
+            "id": "9ef795b4-6555-0c5f-7bd2-e2b174c1656e",
             "width": 10,
             "height": 10,
             "alpha": 1,
@@ -222,7 +126,7 @@
           },
           {
             "type": "draw2d.OutputPort",
-            "id": "13467560-a7c7-429f-99e7-b710e5112bb0",
+            "id": "50f1e4c6-0b34-c52e-ce06-0f262cf6eb13",
             "width": 10,
             "height": 10,
             "alpha": 1,
@@ -241,62 +145,14 @@
         "bgColor": "#E6F1F5",
         "color": "#000000",
         "stroke": 1,
-        "radius": 0,
-        "labels": [
-          {
-            "type": "draw2d.shape.basic.Label",
-            "id": "35427d58-8781-8710-a3de-d66c02ef1db0",
-            "x": 1,
-            "y": 1,
-            "width": 27,
-            "height": 23,
-            "alpha": 1,
-            "angle": 0,
-            "userData": {},
-            "cssClass": "draw2d_shape_basic_Label",
-            "ports": [],
-            "bgColor": "none",
-            "color": "#E6F1F5",
-            "stroke": 1,
-            "radius": 0,
-            "text": "BA",
-            "outlineStroke": 0,
-            "outlineColor": "none",
-            "fontSize": 12,
-            "fontColor": "#080808",
-            "locator": "draw2d.layout.locator.XYAbsPortLocator"
-          },
-          {
-            "type": "draw2d.shape.basic.Label",
-            "id": "80bb8cbf-06da-9d12-c4bf-8fc0952d3f7f",
-            "x": 45.5,
-            "y": 25.5,
-            "width": 10,
-            "height": 10,
-            "alpha": 1,
-            "angle": 0,
-            "userData": {},
-            "cssClass": "draw2d_shape_basic_Label",
-            "ports": [],
-            "bgColor": "none",
-            "color": "#E6F1F5",
-            "stroke": 1,
-            "radius": 0,
-            "text": "",
-            "outlineStroke": 0,
-            "outlineColor": "none",
-            "fontSize": 12,
-            "fontColor": "#080808",
-            "locator": "draw2d.layout.locator.CenterLocator"
-          }
-        ]
+        "radius": 0
       },
       {
         "type": "draw2d.shape.node.End",
-        "id": "976dfe28-df2f-29c8-5bad-e50a9ab4a29c",
-        "x": 249,
-        "y": 342,
-        "width": 60,
+        "id": "781d5ea4-6144-9af7-405c-0a52b0a8213c",
+        "x": 528,
+        "y": 173,
+        "width": 100,
         "height": 60,
         "alpha": 1,
         "angle": 0,
@@ -304,8 +160,148 @@
         "cssClass": "malfunction",
         "ports": [
           {
+            "type": "draw2d.OutputPort",
+            "id": "2fbaf471-cdf0-94a1-17f7-ae009da10628",
+            "width": 10,
+            "height": 10,
+            "alpha": 1,
+            "angle": 0,
+            "userData": {},
+            "cssClass": "draw2d_OutputPort",
+            "bgColor": "#4F6870",
+            "color": "#1B1B1B",
+            "stroke": 1,
+            "maxFanOut": 9007199254740991,
+            "name": "output0",
+            "port": "draw2d.OutputPort",
+            "locator": "draw2d.layout.locator.TopLocator"
+          }
+        ],
+        "bgColor": "#00FF00",
+        "color": "#000000",
+        "stroke": 1,
+        "radius": 0
+      },
+      {
+        "type": "draw2d.shape.node.End",
+        "id": "4b8aabbe-e439-1947-09eb-07ee58a1ead0",
+        "x": 667,
+        "y": 176,
+        "width": 120,
+        "height": 59,
+        "alpha": 1,
+        "angle": 0,
+        "userData": {},
+        "cssClass": "malfunction",
+        "ports": [
+          {
+            "type": "draw2d.OutputPort",
+            "id": "ac1abdd7-d974-92f3-2edf-16c1b1c490e6",
+            "width": 10,
+            "height": 10,
+            "alpha": 1,
+            "angle": 0,
+            "userData": {},
+            "cssClass": "draw2d_OutputPort",
+            "bgColor": "#4F6870",
+            "color": "#1B1B1B",
+            "stroke": 1,
+            "maxFanOut": 9007199254740991,
+            "name": "output0",
+            "port": "draw2d.OutputPort",
+            "locator": "draw2d.layout.locator.TopLocator"
+          }
+        ],
+        "bgColor": "#FFDB00",
+        "color": "#000000",
+        "stroke": 1,
+        "radius": 0
+      },
+      {
+        "type": "draw2d.shape.node.End",
+        "id": "e02ded9c-1e61-7bb1-ddf0-689203433015",
+        "x": 842,
+        "y": 178,
+        "width": 100,
+        "height": 60,
+        "alpha": 1,
+        "angle": 0,
+        "userData": {},
+        "cssClass": "malfunction",
+        "ports": [
+          {
+            "type": "draw2d.OutputPort",
+            "id": "d76e26f6-07bb-0554-bea7-738e541d12de",
+            "width": 10,
+            "height": 10,
+            "alpha": 1,
+            "angle": 0,
+            "userData": {},
+            "cssClass": "draw2d_OutputPort",
+            "bgColor": "#4F6870",
+            "color": "#1B1B1B",
+            "stroke": 1,
+            "maxFanOut": 9007199254740991,
+            "name": "output0",
+            "port": "draw2d.OutputPort",
+            "locator": "draw2d.layout.locator.TopLocator"
+          }
+        ],
+        "bgColor": "#FFA500",
+        "color": "#000000",
+        "stroke": 1,
+        "radius": 0
+      },
+      {
+        "type": "draw2d.shape.node.End",
+        "id": "73a22e63-8c70-22f9-35b4-29c9545795a9",
+        "x": 1001,
+        "y": 179,
+        "width": 285,
+        "height": 98,
+        "alpha": 1,
+        "angle": 0,
+        "userData": {},
+        "cssClass": "malfunction",
+        "ports": [
+          {
+            "type": "draw2d.OutputPort",
+            "id": "184bbfd4-139c-4c3d-aad1-e72c292e16ce",
+            "width": 10,
+            "height": 10,
+            "alpha": 1,
+            "angle": 0,
+            "userData": {},
+            "cssClass": "draw2d_OutputPort",
+            "bgColor": "#4F6870",
+            "color": "#1B1B1B",
+            "stroke": 1,
+            "maxFanOut": 9007199254740991,
+            "name": "output0",
+            "port": "draw2d.OutputPort",
+            "locator": "draw2d.layout.locator.TopLocator"
+          }
+        ],
+        "bgColor": "#FF0000",
+        "color": "#000000",
+        "stroke": 1,
+        "radius": 0
+      },
+      {
+        "type": "draw2d.shape.node.End",
+        "id": "4b28ed84-8c4f-8bb3-a589-37517bd4114b",
+        "x": 292,
+        "y": 281,
+        "width": 100,
+        "height": 60,
+        "alpha": 1,
+        "angle": 0,
+        "userData": {},
+        "cssClass": "activity",
+        "ports": [
+          {
             "type": "draw2d.InputPort",
-            "id": "26722fb1-2397-b378-e9ea-1ace0d6ed90a",
+            "id": "b8d1f4ab-d71f-0260-9d95-76562ffde400",
             "width": 10,
             "height": 10,
             "alpha": 1,
@@ -322,7 +318,7 @@
           },
           {
             "type": "draw2d.OutputPort",
-            "id": "d63f47eb-8bae-daa8-e0c5-c4275c9aafad",
+            "id": "b7777229-2a55-582f-2f6a-eab649891442",
             "width": 10,
             "height": 10,
             "alpha": 1,
@@ -338,62 +334,224 @@
             "locator": "draw2d.layout.locator.TopLocator"
           }
         ],
-        "bgColor": "#FFFFFF",
+        "bgColor": "#E6F1F5",
         "color": "#000000",
         "stroke": 1,
-        "radius": 0,
-        "labels": [
+        "radius": 0
+      },
+      {
+        "type": "draw2d.shape.node.End",
+        "id": "ab240241-5ab6-d8a2-844d-fe6e391eba63",
+        "x": 593,
+        "y": 622,
+        "width": 145,
+        "height": 72,
+        "alpha": 1,
+        "angle": 0,
+        "userData": {},
+        "cssClass": "asset",
+        "ports": [
           {
-            "type": "draw2d.shape.basic.Label",
-            "id": "9e5da3d9-7070-722a-886c-d227d70e267b",
-            "x": 1,
-            "y": 1,
-            "width": 35,
-            "height": 23,
-            "alpha": 1,
-            "angle": 0,
-            "userData": {},
-            "cssClass": "draw2d_shape_basic_Label",
-            "ports": [],
-            "bgColor": "none",
-            "color": "#FFFFFF",
-            "stroke": 1,
-            "radius": 0,
-            "text": "MAL",
-            "outlineStroke": 0,
-            "outlineColor": "none",
-            "fontSize": 12,
-            "fontColor": "#080808",
-            "locator": "draw2d.layout.locator.XYAbsPortLocator"
-          },
-          {
-            "type": "draw2d.shape.basic.Label",
-            "id": "129c88f6-99c5-2f3b-4eee-f6d5216d1077",
-            "x": 25.5,
-            "y": 25.5,
+            "type": "draw2d.OutputPort",
+            "id": "e85f703e-8a49-f033-afe8-65fe6929124a",
             "width": 10,
             "height": 10,
             "alpha": 1,
             "angle": 0,
             "userData": {},
-            "cssClass": "draw2d_shape_basic_Label",
-            "ports": [],
-            "bgColor": "none",
-            "color": "#FFFFFF",
+            "cssClass": "draw2d_OutputPort",
+            "bgColor": "#4F6870",
+            "color": "#1B1B1B",
             "stroke": 1,
-            "radius": 0,
-            "text": "",
-            "outlineStroke": 0,
-            "outlineColor": "none",
-            "fontSize": 12,
-            "fontColor": "#080808",
-            "locator": "draw2d.layout.locator.CenterLocator"
+            "maxFanOut": 9007199254740991,
+            "name": "output0",
+            "port": "draw2d.OutputPort",
+            "locator": "draw2d.layout.locator.TopLocator"
           }
-        ]
+        ],
+        "bgColor": "#FDF5E2",
+        "color": "#FF0000",
+        "stroke": 1,
+        "radius": 0
+      },
+      {
+        "type": "draw2d.shape.node.End",
+        "id": "1503fcfd-6aad-513f-1daf-92efd1e26049",
+        "x": 439,
+        "y": 625,
+        "width": 100,
+        "height": 60,
+        "alpha": 1,
+        "angle": 0,
+        "userData": {},
+        "cssClass": "asset",
+        "ports": [
+          {
+            "type": "draw2d.OutputPort",
+            "id": "504273da-06da-cbfd-c778-6584d75f04f0",
+            "width": 10,
+            "height": 10,
+            "alpha": 1,
+            "angle": 0,
+            "userData": {},
+            "cssClass": "draw2d_OutputPort",
+            "bgColor": "#4F6870",
+            "color": "#1B1B1B",
+            "stroke": 1,
+            "maxFanOut": 9007199254740991,
+            "name": "output0",
+            "port": "draw2d.OutputPort",
+            "locator": "draw2d.layout.locator.TopLocator"
+          }
+        ],
+        "bgColor": "#FDF5E2",
+        "color": "#FF0000",
+        "stroke": 1,
+        "radius": 0
+      },
+      {
+        "type": "draw2d.shape.node.End",
+        "id": "0cbac165-5886-3e2f-dc58-a3f91ffc1cbb",
+        "x": 40,
+        "y": 500,
+        "width": 100,
+        "height": 60,
+        "alpha": 1,
+        "angle": 0,
+        "userData": {},
+        "cssClass": "asset",
+        "ports": [
+          {
+            "type": "draw2d.OutputPort",
+            "id": "5a849d52-3974-4e63-970d-d3d0a041539c",
+            "width": 10,
+            "height": 10,
+            "alpha": 1,
+            "angle": 0,
+            "userData": {},
+            "cssClass": "draw2d_OutputPort",
+            "bgColor": "#4F6870",
+            "color": "#1B1B1B",
+            "stroke": 1,
+            "maxFanOut": 9007199254740991,
+            "name": "output0",
+            "port": "draw2d.OutputPort",
+            "locator": "draw2d.layout.locator.TopLocator"
+          }
+        ],
+        "bgColor": "#FDF5E2",
+        "color": "#FFDB00",
+        "stroke": 1,
+        "radius": 0
+      },
+      {
+        "type": "draw2d.shape.node.End",
+        "id": "b8813ff2-2e6c-57a4-4777-7743795e749a",
+        "x": 295,
+        "y": 625,
+        "width": 100,
+        "height": 60,
+        "alpha": 1,
+        "angle": 0,
+        "userData": {},
+        "cssClass": "asset",
+        "ports": [
+          {
+            "type": "draw2d.OutputPort",
+            "id": "cfe0e2ce-cc79-9e63-65bc-80932a0957e4",
+            "width": 10,
+            "height": 10,
+            "alpha": 1,
+            "angle": 0,
+            "userData": {},
+            "cssClass": "draw2d_OutputPort",
+            "bgColor": "#4F6870",
+            "color": "#1B1B1B",
+            "stroke": 1,
+            "maxFanOut": 9007199254740991,
+            "name": "output0",
+            "port": "draw2d.OutputPort",
+            "locator": "draw2d.layout.locator.TopLocator"
+          }
+        ],
+        "bgColor": "#FDF5E2",
+        "color": "#FF0000",
+        "stroke": 1,
+        "radius": 0
+      },
+      {
+        "type": "draw2d.shape.node.End",
+        "id": "14368497-e1bb-9235-89f5-c2b2bec03d7d",
+        "x": 807,
+        "y": 620,
+        "width": 254,
+        "height": 77,
+        "alpha": 1,
+        "angle": 0,
+        "userData": {},
+        "cssClass": "asset",
+        "ports": [
+          {
+            "type": "draw2d.OutputPort",
+            "id": "9f888a49-ea8c-9a90-9883-f8bede3cf1d3",
+            "width": 10,
+            "height": 10,
+            "alpha": 1,
+            "angle": 0,
+            "userData": {},
+            "cssClass": "draw2d_OutputPort",
+            "bgColor": "#4F6870",
+            "color": "#1B1B1B",
+            "stroke": 1,
+            "maxFanOut": 9007199254740991,
+            "name": "output0",
+            "port": "draw2d.OutputPort",
+            "locator": "draw2d.layout.locator.TopLocator"
+          }
+        ],
+        "bgColor": "#FDF5E2",
+        "color": "#FFDB00",
+        "stroke": 1,
+        "radius": 0
+      },
+      {
+        "type": "draw2d.shape.node.End",
+        "id": "4d6bfbe4-3af1-3406-8192-eb14ba0bccf1",
+        "x": 158,
+        "y": 626,
+        "width": 100,
+        "height": 60,
+        "alpha": 1,
+        "angle": 0,
+        "userData": {},
+        "cssClass": "asset",
+        "ports": [
+          {
+            "type": "draw2d.OutputPort",
+            "id": "71c99f30-1ed6-da6c-8b4d-b29d61d00509",
+            "width": 10,
+            "height": 10,
+            "alpha": 1,
+            "angle": 0,
+            "userData": {},
+            "cssClass": "draw2d_OutputPort",
+            "bgColor": "#4F6870",
+            "color": "#1B1B1B",
+            "stroke": 1,
+            "maxFanOut": 9007199254740991,
+            "name": "output0",
+            "port": "draw2d.OutputPort",
+            "locator": "draw2d.layout.locator.TopLocator"
+          }
+        ],
+        "bgColor": "#FDF5E2",
+        "color": "#FFDB00",
+        "stroke": 1,
+        "radius": 0
       },
       {
         "type": "draw2d.Connection",
-        "id": "a8a6ec29-7013-3916-60ba-f4127aeb4df7",
+        "id": "d80af583-1c51-cb8f-2770-61f92ff78e26",
         "alpha": 1,
         "angle": 0,
         "userData": {},
@@ -405,28 +563,28 @@
         "policy": "draw2d.policy.line.LineSelectionFeedbackPolicy",
         "vertex": [
           {
-            "x": 333,
-            "y": 251
+            "x": 195,
+            "y": 282
           },
           {
-            "x": 411,
-            "y": 213
+            "x": 248.04799877241783,
+            "y": 206
           }
         ],
         "router": "draw2d.layout.connection.DirectRouter",
         "radius": 3,
         "source": {
-          "node": "4559805c-9792-3107-959f-6703c720655f",
+          "node": "df933a42-1452-7841-7018-7626ad1920e1",
           "port": "output0"
         },
         "target": {
-          "node": "8976dff8-f47b-717a-247a-e89d65000330",
+          "node": "b27587f8-43e5-ef36-023e-5cb2d0bdc516",
           "port": "input0"
         }
       },
       {
         "type": "draw2d.Connection",
-        "id": "220af7ee-58be-d620-6314-d150a4e11f93",
+        "id": "cad24f24-1776-a9ee-becf-e5bebcc22516",
         "alpha": 1,
         "angle": 0,
         "userData": {},
@@ -438,28 +596,127 @@
         "policy": "draw2d.policy.line.LineSelectionFeedbackPolicy",
         "vertex": [
           {
-            "x": 279,
+            "x": 342,
+            "y": 281
+          },
+          {
+            "x": 248.04799877241783,
+            "y": 206
+          }
+        ],
+        "router": "draw2d.layout.connection.DirectRouter",
+        "radius": 3,
+        "source": {
+          "node": "4b28ed84-8c4f-8bb3-a589-37517bd4114b",
+          "port": "output0"
+        },
+        "target": {
+          "node": "b27587f8-43e5-ef36-023e-5cb2d0bdc516",
+          "port": "input0"
+        }
+      },
+      {
+        "type": "draw2d.Connection",
+        "id": "93596fb4-183f-285d-4b17-59c34d8c9de7",
+        "alpha": 1,
+        "angle": 0,
+        "userData": {},
+        "cssClass": "draw2d_Connection",
+        "stroke": 2,
+        "color": "#787878",
+        "outlineStroke": 0,
+        "outlineColor": "none",
+        "policy": "draw2d.policy.line.LineSelectionFeedbackPolicy",
+        "vertex": [
+          {
+            "x": 578,
+            "y": 173
+          },
+          {
+            "x": 195,
             "y": 342
-          },
-          {
-            "x": 333,
-            "y": 311
           }
         ],
         "router": "draw2d.layout.connection.DirectRouter",
         "radius": 3,
         "source": {
-          "node": "976dfe28-df2f-29c8-5bad-e50a9ab4a29c",
+          "node": "781d5ea4-6144-9af7-405c-0a52b0a8213c",
           "port": "output0"
         },
         "target": {
-          "node": "4559805c-9792-3107-959f-6703c720655f",
+          "node": "df933a42-1452-7841-7018-7626ad1920e1",
           "port": "input0"
         }
       },
       {
         "type": "draw2d.Connection",
-        "id": "a61cb7b3-ee38-5944-963c-d1222d06f478",
+        "id": "ae64cc04-ca95-44f2-a305-cc37ef3cf70d",
+        "alpha": 1,
+        "angle": 0,
+        "userData": {},
+        "cssClass": "draw2d_Connection",
+        "stroke": 2,
+        "color": "#FFDB00",
+        "outlineStroke": 0,
+        "outlineColor": "none",
+        "policy": "draw2d.policy.line.LineSelectionFeedbackPolicy",
+        "vertex": [
+          {
+            "x": 90,
+            "y": 500
+          },
+          {
+            "x": 195,
+            "y": 342
+          }
+        ],
+        "router": "draw2d.layout.connection.DirectRouter",
+        "radius": 3,
+        "source": {
+          "node": "0cbac165-5886-3e2f-dc58-a3f91ffc1cbb",
+          "port": "output0"
+        },
+        "target": {
+          "node": "df933a42-1452-7841-7018-7626ad1920e1",
+          "port": "input0"
+        }
+      },
+      {
+        "type": "draw2d.Connection",
+        "id": "d8ad331f-d5bc-db30-9499-b54253871fcc",
+        "alpha": 1,
+        "angle": 0,
+        "userData": {},
+        "cssClass": "draw2d_Connection",
+        "stroke": 2,
+        "color": "#FFDB00",
+        "outlineStroke": 0,
+        "outlineColor": "none",
+        "policy": "draw2d.policy.line.LineSelectionFeedbackPolicy",
+        "vertex": [
+          {
+            "x": 208,
+            "y": 626
+          },
+          {
+            "x": 195,
+            "y": 342
+          }
+        ],
+        "router": "draw2d.layout.connection.DirectRouter",
+        "radius": 3,
+        "source": {
+          "node": "4d6bfbe4-3af1-3406-8192-eb14ba0bccf1",
+          "port": "output0"
+        },
+        "target": {
+          "node": "df933a42-1452-7841-7018-7626ad1920e1",
+          "port": "input0"
+        }
+      },
+      {
+        "type": "draw2d.Connection",
+        "id": "376a638c-df6d-f46f-3c17-d98c20d8adbf",
         "alpha": 1,
         "angle": 0,
         "userData": {},
@@ -471,22 +728,319 @@
         "policy": "draw2d.policy.line.LineSelectionFeedbackPolicy",
         "vertex": [
           {
-            "x": 411,
-            "y": 153
+            "x": 727,
+            "y": 176
           },
           {
-            "x": 250,
-            "y": 130
+            "x": 195,
+            "y": 342
           }
         ],
         "router": "draw2d.layout.connection.DirectRouter",
         "radius": 3,
         "source": {
-          "node": "8976dff8-f47b-717a-247a-e89d65000330",
+          "node": "4b8aabbe-e439-1947-09eb-07ee58a1ead0",
           "port": "output0"
         },
         "target": {
-          "node": "d25bcb0a-5c92-4d8b-b433-356a6ad39b48",
+          "node": "df933a42-1452-7841-7018-7626ad1920e1",
+          "port": "input0"
+        }
+      },
+      {
+        "type": "draw2d.Connection",
+        "id": "054161fb-3612-f48b-621f-264d9331f417",
+        "alpha": 1,
+        "angle": 0,
+        "userData": {},
+        "cssClass": "draw2d_Connection",
+        "stroke": 2,
+        "color": "#787878",
+        "outlineStroke": 0,
+        "outlineColor": "none",
+        "policy": "draw2d.policy.line.LineSelectionFeedbackPolicy",
+        "vertex": [
+          {
+            "x": 892,
+            "y": 178
+          },
+          {
+            "x": 195,
+            "y": 342
+          }
+        ],
+        "router": "draw2d.layout.connection.DirectRouter",
+        "radius": 3,
+        "source": {
+          "node": "e02ded9c-1e61-7bb1-ddf0-689203433015",
+          "port": "output0"
+        },
+        "target": {
+          "node": "df933a42-1452-7841-7018-7626ad1920e1",
+          "port": "input0"
+        }
+      },
+      {
+        "type": "draw2d.Connection",
+        "id": "3418c7f9-7abc-02eb-1576-ab31f9f24a58",
+        "alpha": 1,
+        "angle": 0,
+        "userData": {},
+        "cssClass": "draw2d_Connection",
+        "stroke": 2,
+        "color": "#129CE4",
+        "outlineStroke": 0,
+        "outlineColor": "none",
+        "policy": "draw2d.policy.line.LineSelectionFeedbackPolicy",
+        "vertex": [
+          {
+            "x": 345,
+            "y": 625
+          },
+          {
+            "x": 195,
+            "y": 342
+          }
+        ],
+        "router": "draw2d.layout.connection.DirectRouter",
+        "radius": 3,
+        "source": {
+          "node": "b8813ff2-2e6c-57a4-4777-7743795e749a",
+          "port": "output0"
+        },
+        "target": {
+          "node": "df933a42-1452-7841-7018-7626ad1920e1",
+          "port": "input0"
+        }
+      },
+      {
+        "type": "draw2d.Connection",
+        "id": "cb75116e-6fe3-ea02-e736-fc1ebe25059d",
+        "alpha": 1,
+        "angle": 0,
+        "userData": {},
+        "cssClass": "draw2d_Connection",
+        "stroke": 2,
+        "color": "#787878",
+        "outlineStroke": 0,
+        "outlineColor": "none",
+        "policy": "draw2d.policy.line.LineSelectionFeedbackPolicy",
+        "vertex": [
+          {
+            "x": 727,
+            "y": 176
+          },
+          {
+            "x": 342,
+            "y": 341
+          }
+        ],
+        "router": "draw2d.layout.connection.DirectRouter",
+        "radius": 3,
+        "source": {
+          "node": "4b8aabbe-e439-1947-09eb-07ee58a1ead0",
+          "port": "output0"
+        },
+        "target": {
+          "node": "4b28ed84-8c4f-8bb3-a589-37517bd4114b",
+          "port": "input0"
+        }
+      },
+      {
+        "type": "draw2d.Connection",
+        "id": "94d100c0-07e8-02e3-f93b-1da9e3a48330",
+        "alpha": 1,
+        "angle": 0,
+        "userData": {},
+        "cssClass": "draw2d_Connection",
+        "stroke": 2,
+        "color": "#FF0000",
+        "outlineStroke": 0,
+        "outlineColor": "none",
+        "policy": "draw2d.policy.line.LineSelectionFeedbackPolicy",
+        "vertex": [
+          {
+            "x": 665.5,
+            "y": 622
+          },
+          {
+            "x": 342,
+            "y": 341
+          }
+        ],
+        "router": "draw2d.layout.connection.DirectRouter",
+        "radius": 3,
+        "source": {
+          "node": "ab240241-5ab6-d8a2-844d-fe6e391eba63",
+          "port": "output0"
+        },
+        "target": {
+          "node": "4b28ed84-8c4f-8bb3-a589-37517bd4114b",
+          "port": "input0"
+        }
+      },
+      {
+        "type": "draw2d.Connection",
+        "id": "6d25cc21-f7ad-826c-7ba7-2e227280f609",
+        "alpha": 1,
+        "angle": 0,
+        "userData": {},
+        "cssClass": "draw2d_Connection",
+        "stroke": 2,
+        "color": "#787878",
+        "outlineStroke": 0,
+        "outlineColor": "none",
+        "policy": "draw2d.policy.line.LineSelectionFeedbackPolicy",
+        "vertex": [
+          {
+            "x": 1143.5,
+            "y": 179
+          },
+          {
+            "x": 342,
+            "y": 341
+          }
+        ],
+        "router": "draw2d.layout.connection.DirectRouter",
+        "radius": 3,
+        "source": {
+          "node": "73a22e63-8c70-22f9-35b4-29c9545795a9",
+          "port": "output0"
+        },
+        "target": {
+          "node": "4b28ed84-8c4f-8bb3-a589-37517bd4114b",
+          "port": "input0"
+        }
+      },
+      {
+        "type": "draw2d.Connection",
+        "id": "9340602e-7628-3664-b9da-71b3a5d15d24",
+        "alpha": 1,
+        "angle": 0,
+        "userData": {},
+        "cssClass": "draw2d_Connection",
+        "stroke": 2,
+        "color": "#FFDB00",
+        "outlineStroke": 0,
+        "outlineColor": "none",
+        "policy": "draw2d.policy.line.LineSelectionFeedbackPolicy",
+        "vertex": [
+          {
+            "x": 934,
+            "y": 620
+          },
+          {
+            "x": 342,
+            "y": 341
+          }
+        ],
+        "router": "draw2d.layout.connection.DirectRouter",
+        "radius": 3,
+        "source": {
+          "node": "14368497-e1bb-9235-89f5-c2b2bec03d7d",
+          "port": "output0"
+        },
+        "target": {
+          "node": "4b28ed84-8c4f-8bb3-a589-37517bd4114b",
+          "port": "input0"
+        }
+      },
+      {
+        "type": "draw2d.Connection",
+        "id": "67652165-2943-9006-ceb3-9ae358f71f26",
+        "alpha": 1,
+        "angle": 0,
+        "userData": {},
+        "cssClass": "draw2d_Connection",
+        "stroke": 2,
+        "color": "#FF0000",
+        "outlineStroke": 0,
+        "outlineColor": "none",
+        "policy": "draw2d.policy.line.LineSelectionFeedbackPolicy",
+        "vertex": [
+          {
+            "x": 489,
+            "y": 625
+          },
+          {
+            "x": 342,
+            "y": 341
+          }
+        ],
+        "router": "draw2d.layout.connection.DirectRouter",
+        "radius": 3,
+        "source": {
+          "node": "1503fcfd-6aad-513f-1daf-92efd1e26049",
+          "port": "output0"
+        },
+        "target": {
+          "node": "4b28ed84-8c4f-8bb3-a589-37517bd4114b",
+          "port": "input0"
+        }
+      },
+      {
+        "type": "draw2d.Connection",
+        "id": "b584eda1-6e2f-2580-a7e9-f9d6d2a0691e",
+        "alpha": 1,
+        "angle": 0,
+        "userData": {},
+        "cssClass": "draw2d_Connection",
+        "stroke": 2,
+        "color": "#FF0000",
+        "outlineStroke": 0,
+        "outlineColor": "none",
+        "policy": "draw2d.policy.line.LineSelectionFeedbackPolicy",
+        "vertex": [
+          {
+            "x": 345,
+            "y": 625
+          },
+          {
+            "x": 342,
+            "y": 341
+          }
+        ],
+        "router": "draw2d.layout.connection.DirectRouter",
+        "radius": 3,
+        "source": {
+          "node": "b8813ff2-2e6c-57a4-4777-7743795e749a",
+          "port": "output0"
+        },
+        "target": {
+          "node": "4b28ed84-8c4f-8bb3-a589-37517bd4114b",
+          "port": "input0"
+        }
+      },
+      {
+        "type": "draw2d.Connection",
+        "id": "a56c21a3-6f2b-06a0-3446-5ece86d13144",
+        "alpha": 1,
+        "angle": 0,
+        "userData": {},
+        "cssClass": "draw2d_Connection",
+        "stroke": 2,
+        "color": "#787878",
+        "outlineStroke": 0,
+        "outlineColor": "none",
+        "policy": "draw2d.policy.line.LineSelectionFeedbackPolicy",
+        "vertex": [
+          {
+            "x": 248.04799877241783,
+            "y": 146
+          },
+          {
+            "x": 249,
+            "y": 88
+          }
+        ],
+        "router": "draw2d.layout.connection.DirectRouter",
+        "radius": 3,
+        "source": {
+          "node": "b27587f8-43e5-ef36-023e-5cb2d0bdc516",
+          "port": "output0"
+        },
+        "target": {
+          "node": "859edc5e-fed7-e0eb-4fe6-11f89fe2a027",
           "port": "input0"
         }
       }
@@ -494,54 +1048,258 @@
     "edges": [
       {
         "operationalWeight": 0.0,
-        "identifier": "d469efaa-98ce-454f-9cb6-8d1d928bc8bf",
+        "identifier": "d80af583-1c51-cb8f-2770-61f92ff78e26",
         "objType": "AssetModel",
         "businessImpactWeights": [],
-        "source": "2fbdc2d9-23a1-4745-a20e-74122cf0b14f",
-        "target": "e7e2c7bb-d054-4c8a-852a-9681430d1f93",
+        "source": "b27587f8-43e5-ef36-023e-5cb2d0bdc516",
+        "target": "df933a42-1452-7841-7018-7626ad1920e1",
         "securityImpacts": []
       },
       {
         "operationalWeight": 0.0,
-        "identifier": "51ecf9d6-014e-4c3b-ba7f-40e043d47b2f",
+        "identifier": "a56c21a3-6f2b-06a0-3446-5ece86d13144",
         "objType": "AssetModel",
         "businessImpactWeights": [],
-        "source": "e7e2c7bb-d054-4c8a-852a-9681430d1f93",
-        "target": "92ccd8b4-8d80-49ec-9aee-8a1a39e52fac",
+        "source": "859edc5e-fed7-e0eb-4fe6-11f89fe2a027",
+        "target": "b27587f8-43e5-ef36-023e-5cb2d0bdc516",
         "securityImpacts": []
       },
       {
         "operationalWeight": 0.0,
-        "identifier": "f662aa7c-6b22-49d1-ab49-a2b5f2968f7c",
+        "identifier": "93596fb4-183f-285d-4b17-59c34d8c9de7",
         "objType": "AssetModel",
         "businessImpactWeights": [],
-        "source": "92ccd8b4-8d80-49ec-9aee-8a1a39e52fac",
-        "target": "f5bd5f0c-f533-47d0-a706-660759e55fc6",
+        "source": "df933a42-1452-7841-7018-7626ad1920e1",
+        "target": "781d5ea4-6144-9af7-405c-0a52b0a8213c",
         "securityImpacts": []
       },
       {
         "operationalWeight": 0.0,
-        "identifier": "a3863eb1-d7d5-4c21-aeea-b67ad6a141bc",
+        "identifier": "376a638c-df6d-f46f-3c17-d98c20d8adbf",
         "objType": "AssetModel",
         "businessImpactWeights": [],
-        "source": "92ccd8b4-8d80-49ec-9aee-8a1a39e52fac",
-        "target": "42605102-2b52-4f44-b159-3ae28489da28",
+        "source": "df933a42-1452-7841-7018-7626ad1920e1",
+        "target": "4b8aabbe-e439-1947-09eb-07ee58a1ead0",
+        "securityImpacts": []
+      },
+      {
+        "operationalWeight": 0.0,
+        "identifier": "054161fb-3612-f48b-621f-264d9331f417",
+        "objType": "AssetModel",
+        "businessImpactWeights": [],
+        "source": "df933a42-1452-7841-7018-7626ad1920e1",
+        "target": "e02ded9c-1e61-7bb1-ddf0-689203433015",
+        "securityImpacts": []
+      },
+      {
+        "operationalWeight": 0.0,
+        "identifier": "6d25cc21-f7ad-826c-7ba7-2e227280f609",
+        "objType": "AssetModel",
+        "businessImpactWeights": [],
+        "source": "4b28ed84-8c4f-8bb3-a589-37517bd4114b",
+        "target": "73a22e63-8c70-22f9-35b4-29c9545795a9",
+        "securityImpacts": []
+      },
+      {
+        "operationalWeight": 0.0,
+        "identifier": "cad24f24-1776-a9ee-becf-e5bebcc22516",
+        "objType": "AssetModel",
+        "businessImpactWeights": [],
+        "source": "b27587f8-43e5-ef36-023e-5cb2d0bdc516",
+        "target": "4b28ed84-8c4f-8bb3-a589-37517bd4114b",
+        "securityImpacts": []
+      },
+      {
+        "operationalWeight": 0.0,
+        "identifier": "b584eda1-6e2f-2580-a7e9-f9d6d2a0691e",
+        "objType": "AssetModel",
+        "businessImpactWeights": [],
+        "source": "4b28ed84-8c4f-8bb3-a589-37517bd4114b",
+        "target": "b8813ff2-2e6c-57a4-4777-7743795e749a",
         "securityImpacts": [
           {
-            "impact": "HIGH",
+            "impact": "CRITICAL",
             "scope": "Availability",
-            "tecnicalImpacts": [
-              "puppa iperbolica",
-              "secondap uppa"
-            ]
+            "tecnicalImpacts": []
           },
           {
-            "impact": "HIGH",
+            "impact": "CRITICAL",
+            "scope": "Confidentiality",
+            "tecnicalImpacts": []
+          },
+          {
+            "impact": "CRITICAL",
+            "scope": "Efficiency",
+            "tecnicalImpacts": []
+          },
+          {
+            "impact": "CRITICAL",
             "scope": "Integrity",
-            "tecnicalImpacts": [
-              "puppa iperbolica",
-              "secondap uppa"
-            ]
+            "tecnicalImpacts": []
+          }
+        ]
+      },
+      {
+        "operationalWeight": 0.0,
+        "identifier": "ae64cc04-ca95-44f2-a305-cc37ef3cf70d",
+        "objType": "AssetModel",
+        "businessImpactWeights": [],
+        "source": "df933a42-1452-7841-7018-7626ad1920e1",
+        "target": "0cbac165-5886-3e2f-dc58-a3f91ffc1cbb",
+        "securityImpacts": [
+          {
+            "impact": "MEDIUM",
+            "scope": "Availability",
+            "tecnicalImpacts": []
+          },
+          {
+            "impact": "MEDIUM",
+            "scope": "Confidentiality",
+            "tecnicalImpacts": []
+          },
+          {
+            "impact": "MEDIUM",
+            "scope": "Integrity",
+            "tecnicalImpacts": []
+          }
+        ]
+      },
+      {
+        "operationalWeight": 0.0,
+        "identifier": "67652165-2943-9006-ceb3-9ae358f71f26",
+        "objType": "AssetModel",
+        "businessImpactWeights": [],
+        "source": "4b28ed84-8c4f-8bb3-a589-37517bd4114b",
+        "target": "1503fcfd-6aad-513f-1daf-92efd1e26049",
+        "securityImpacts": [
+          {
+            "impact": "CRITICAL",
+            "scope": "Availability",
+            "tecnicalImpacts": []
+          },
+          {
+            "impact": "CRITICAL",
+            "scope": "Confidentiality",
+            "tecnicalImpacts": []
+          },
+          {
+            "impact": "CRITICAL",
+            "scope": "Efficiency",
+            "tecnicalImpacts": []
+          },
+          {
+            "impact": "CRITICAL",
+            "scope": "Integrity",
+            "tecnicalImpacts": []
+          }
+        ]
+      },
+      {
+        "operationalWeight": 0.0,
+        "identifier": "94d100c0-07e8-02e3-f93b-1da9e3a48330",
+        "objType": "AssetModel",
+        "businessImpactWeights": [],
+        "source": "4b28ed84-8c4f-8bb3-a589-37517bd4114b",
+        "target": "ab240241-5ab6-d8a2-844d-fe6e391eba63",
+        "securityImpacts": [
+          {
+            "impact": "CRITICAL",
+            "scope": "Availability",
+            "tecnicalImpacts": []
+          },
+          {
+            "impact": "CRITICAL",
+            "scope": "Confidentiality",
+            "tecnicalImpacts": []
+          },
+          {
+            "impact": "CRITICAL",
+            "scope": "Efficiency",
+            "tecnicalImpacts": []
+          },
+          {
+            "impact": "CRITICAL",
+            "scope": "Integrity",
+            "tecnicalImpacts": []
+          }
+        ]
+      },
+      {
+        "operationalWeight": 0.0,
+        "identifier": "cb75116e-6fe3-ea02-e736-fc1ebe25059d",
+        "objType": "AssetModel",
+        "businessImpactWeights": [],
+        "source": "4b28ed84-8c4f-8bb3-a589-37517bd4114b",
+        "target": "4b8aabbe-e439-1947-09eb-07ee58a1ead0",
+        "securityImpacts": []
+      },
+      {
+        "operationalWeight": 0.0,
+        "identifier": "9340602e-7628-3664-b9da-71b3a5d15d24",
+        "objType": "AssetModel",
+        "businessImpactWeights": [],
+        "source": "4b28ed84-8c4f-8bb3-a589-37517bd4114b",
+        "target": "14368497-e1bb-9235-89f5-c2b2bec03d7d",
+        "securityImpacts": [
+          {
+            "impact": "MEDIUM",
+            "scope": "Availability",
+            "tecnicalImpacts": []
+          },
+          {
+            "impact": "MEDIUM",
+            "scope": "Confidentiality",
+            "tecnicalImpacts": []
+          },
+          {
+            "impact": "MEDIUM",
+            "scope": "Integrity",
+            "tecnicalImpacts": []
+          }
+        ]
+      },
+      {
+        "operationalWeight": 0.0,
+        "identifier": "d8ad331f-d5bc-db30-9499-b54253871fcc",
+        "objType": "AssetModel",
+        "businessImpactWeights": [],
+        "source": "df933a42-1452-7841-7018-7626ad1920e1",
+        "target": "4d6bfbe4-3af1-3406-8192-eb14ba0bccf1",
+        "securityImpacts": [
+          {
+            "impact": "MEDIUM",
+            "scope": "Availability",
+            "tecnicalImpacts": []
+          },
+          {
+            "impact": "MEDIUM",
+            "scope": "Confidentiality",
+            "tecnicalImpacts": []
+          },
+          {
+            "impact": "MEDIUM",
+            "scope": "Integrity",
+            "tecnicalImpacts": []
+          }
+        ]
+      },
+      {
+        "operationalWeight": 0.0,
+        "identifier": "3418c7f9-7abc-02eb-1576-ab31f9f24a58",
+        "objType": "AssetModel",
+        "businessImpactWeights": [],
+        "source": "df933a42-1452-7841-7018-7626ad1920e1",
+        "target": "b8813ff2-2e6c-57a4-4777-7743795e749a",
+        "securityImpacts": [
+          {
+            "impact": "LOW",
+            "scope": "Availability",
+            "tecnicalImpacts": []
+          },
+          {
+            "impact": "LOW",
+            "scope": "Integrity",
+            "tecnicalImpacts": []
           }
         ]
       }
@@ -549,128 +1307,477 @@
     "nodes": [
       {
         "objType": "AssetModel",
-        "assessmentNode": false,
-        "goal": "",
-        "description": "",
-        "name": "Operations Ground Segment for Euclid",
-        "systemParticipantOwnerId": "xxxedfuogtruh",
-        "identifier": "2fbdc2d9-23a1-4745-a20e-74122cf0b14f",
+        "assessmentNode": true,
+        "goal": "description of the organization Y",
+        "description": "SYS project owner",
+        "name": "org Y",
+        "systemParticipantOwnerId": "John Doe",
+        "identifier": "859edc5e-fed7-e0eb-4fe6-11f89fe2a027",
         "nodeType": "Organization",
         "relatedRequirementsIds": [],
         "children": [
-          "d469efaa-98ce-454f-9cb6-8d1d928bc8bf"
+          "a56c21a3-6f2b-06a0-3446-5ece86d13144"
         ],
-        "parents": [
-          "d469efaa-98ce-454f-9cb6-8d1d928bc8bf"
-        ]
+        "parents": []
       },
       {
         "type": "Business",
         "objType": "AssetModel",
-        "assessmentNode": false,
-        "goal": "",
-        "description": "",
-        "name": "Mission Execution",
-        "systemParticipantOwnerId": "iuhiuhuihiuh",
-        "identifier": "e7e2c7bb-d054-4c8a-852a-9681430d1f93",
+        "assessmentNode": true,
+        "goal": "create value from core process 1",
+        "description": "core process of organization",
+        "name": "core process 1",
+        "systemParticipantOwnerId": "Jane Doe",
+        "identifier": "b27587f8-43e5-ef36-023e-5cb2d0bdc516",
         "nodeType": "BusinessProcess",
         "relatedRequirementsIds": [],
         "children": [
-          "51ecf9d6-014e-4c3b-ba7f-40e043d47b2f"
+          "d80af583-1c51-cb8f-2770-61f92ff78e26",
+          "cad24f24-1776-a9ee-becf-e5bebcc22516"
         ],
         "parents": [
-          "51ecf9d6-014e-4c3b-ba7f-40e043d47b2f"
+          "a56c21a3-6f2b-06a0-3446-5ece86d13144"
         ]
       },
       {
         "objType": "AssetModel",
-        "assessmentNode": false,
-        "goal": "",
-        "description": "blablabla bla bla",
-        "name": "Science Data Management",
-        "systemParticipantOwnerId": "yyuuiyiuy",
-        "identifier": "92ccd8b4-8d80-49ec-9aee-8a1a39e52fac",
+        "assessmentNode": true,
+        "goal": "collect underpants",
+        "description": "very important business stuff for the core business processes",
+        "name": "do stuff 1",
+        "systemParticipantOwnerId": "Max Mike",
+        "identifier": "df933a42-1452-7841-7018-7626ad1920e1",
         "nodeType": "BusinessActivity",
         "relatedRequirementsIds": [],
         "children": [
-          "f662aa7c-6b22-49d1-ab49-a2b5f2968f7c",
-          "a3863eb1-d7d5-4c21-aeea-b67ad6a141bc"
+          "93596fb4-183f-285d-4b17-59c34d8c9de7",
+          "376a638c-df6d-f46f-3c17-d98c20d8adbf",
+          "054161fb-3612-f48b-621f-264d9331f417",
+          "ae64cc04-ca95-44f2-a305-cc37ef3cf70d",
+          "d8ad331f-d5bc-db30-9499-b54253871fcc",
+          "3418c7f9-7abc-02eb-1576-ab31f9f24a58"
         ],
         "parents": [
-          "f662aa7c-6b22-49d1-ab49-a2b5f2968f7c",
-          "a3863eb1-d7d5-4c21-aeea-b67ad6a141bc"
+          "d80af583-1c51-cb8f-2770-61f92ff78e26"
         ]
       },
       {
-        "assetCategory": "",
-        "functionalConsequence": "not possible for Flight Dynamics to perform analyses on TM frames",
-        "functionalDescription": "not possible for Flight Dynamics to perform analyses on TM frames",
-        "technicalConsequence": "not possible to perform analyses on TM frames to support Orbit Determination, Manoeuvre",
-        "technicalDescription": "Telemetry data with incorrect format is supplied to Flight Dynamics",
+        "objType": "AssetModel",
+        "assessmentNode": true,
+        "goal": "create high value or problems for society",
+        "description": "very critical process with high impact on society",
+        "name": "do critical stuff 2",
+        "systemParticipantOwnerId": "Carol Caroline",
+        "identifier": "4b28ed84-8c4f-8bb3-a589-37517bd4114b",
+        "nodeType": "BusinessActivity",
+        "relatedRequirementsIds": [],
+        "children": [
+          "6d25cc21-f7ad-826c-7ba7-2e227280f609",
+          "b584eda1-6e2f-2580-a7e9-f9d6d2a0691e",
+          "67652165-2943-9006-ceb3-9ae358f71f26",
+          "94d100c0-07e8-02e3-f93b-1da9e3a48330",
+          "cb75116e-6fe3-ea02-e736-fc1ebe25059d",
+          "9340602e-7628-3664-b9da-71b3a5d15d24"
+        ],
+        "parents": [
+          "cad24f24-1776-a9ee-becf-e5bebcc22516"
+        ]
+      },
+      {
+        "functionalConsequence": "func consequences mal 1",
+        "functionalDescription": "func description mal 1",
+        "technicalConsequence": "tech consequences mal 1",
+        "technicalDescription": "technical description mal 1",
+        "functionalType": "Incorrect_Timing",
+        "weight": 0.0,
+        "technicalTypes": [
+          "Availability_Loss",
+          "Integrity_Loss"
+        ],
+        "scales": [
+          {
+            "seriousness": "LOW",
+            "description": "minor impact"
+          }
+        ],
+        "objType": "AssetModel",
+        "assessmentNode": true,
+        "goal": "",
+        "description": "",
+        "name": "mal 1 ",
+        "systemParticipantOwnerId": "",
+        "identifier": "781d5ea4-6144-9af7-405c-0a52b0a8213c",
+        "nodeType": "Malfunction",
+        "relatedRequirementsIds": [],
+        "children": [],
+        "parents": [
+          "93596fb4-183f-285d-4b17-59c34d8c9de7"
+        ]
+      },
+      {
+        "functionalConsequence": "func consequences mal 2",
+        "functionalDescription": "func description mal 2",
+        "technicalConsequence": "tech consequences mal 2",
+        "technicalDescription": "tech description mal 2",
+        "functionalType": "Completeness_Lack",
+        "weight": 0.0,
+        "technicalTypes": [
+          "Availability_Loss",
+          "Confidentiality_Loss",
+          "Integrity_Loss"
+        ],
+        "scales": [
+          {
+            "seriousness": "MEDIUM",
+            "description": "major impact on business process"
+          }
+        ],
+        "objType": "AssetModel",
+        "assessmentNode": true,
+        "goal": "",
+        "description": "",
+        "name": "mal 2 ",
+        "systemParticipantOwnerId": "",
+        "identifier": "4b8aabbe-e439-1947-09eb-07ee58a1ead0",
+        "nodeType": "Malfunction",
+        "relatedRequirementsIds": [],
+        "children": [],
+        "parents": [
+          "376a638c-df6d-f46f-3c17-d98c20d8adbf",
+          "cb75116e-6fe3-ea02-e736-fc1ebe25059d"
+        ]
+      },
+      {
+        "functionalConsequence": "func consequences mal 3",
+        "functionalDescription": "func description mal 3",
+        "technicalConsequence": "tech consequences mal 3",
+        "technicalDescription": "tech description mal 2",
         "functionalType": "Compliance_Lack",
         "weight": 0.0,
         "technicalTypes": [
-          "Integrity_Loss",
-          "Availability_Loss"
+          "Confidentiality_Loss",
+          "Integrity_Loss"
         ],
         "scales": [
           {
             "seriousness": "HIGH",
-            "description": "not having correct data seriously affects mission goals or even leads to loss of SC"
+            "description": "impact on whole organization"
           }
         ],
         "objType": "AssetModel",
-        "assessmentNode": false,
+        "assessmentNode": true,
         "goal": "",
         "description": "",
-        "name": "Unavailability of science data storage",
+        "name": "mal 3 ",
         "systemParticipantOwnerId": "",
-        "identifier": "f5bd5f0c-f533-47d0-a706-660759e55fc6",
+        "identifier": "e02ded9c-1e61-7bb1-ddf0-689203433015",
         "nodeType": "Malfunction",
         "relatedRequirementsIds": [],
         "children": [],
-        "parents": []
+        "parents": [
+          "054161fb-3612-f48b-621f-264d9331f417"
+        ]
+      },
+      {
+        "functionalConsequence": "func consequences mal 4",
+        "functionalDescription": "func description mal 4",
+        "technicalConsequence": "tech consequences mal 4",
+        "technicalDescription": "tech description mal 4",
+        "functionalType": "Control_Lack",
+        "weight": 0.0,
+        "technicalTypes": [
+          "Availability_Loss",
+          "Confidentiality_Loss",
+          "Efficiency_Loss",
+          "Integrity_Loss"
+        ],
+        "scales": [
+          {
+            "seriousness": "CRITICAL",
+            "description": "wide impact on organization and on parts of society"
+          }
+        ],
+        "objType": "AssetModel",
+        "assessmentNode": true,
+        "goal": "",
+        "description": "",
+        "name": "mal 4  iuhiuhi iuhiuhiuh iuhiuhiuhiuh iuhiuhiuhuih",
+        "systemParticipantOwnerId": "",
+        "identifier": "73a22e63-8c70-22f9-35b4-29c9545795a9",
+        "nodeType": "Malfunction",
+        "relatedRequirementsIds": [],
+        "children": [],
+        "parents": [
+          "6d25cc21-f7ad-826c-7ba7-2e227280f609"
+        ]
       },
       {
         "securityImpacts": [
           {
-            "impact": "HIGH",
+            "impact": "CRITICAL",
             "scope": "Availability",
             "tecnicalImpacts": []
           },
           {
-            "impact": "HIGH",
+            "impact": "CRITICAL",
+            "scope": "Confidentiality",
+            "tecnicalImpacts": []
+          },
+          {
+            "impact": "CRITICAL",
+            "scope": "Efficiency",
+            "tecnicalImpacts": []
+          },
+          {
+            "impact": "CRITICAL",
             "scope": "Integrity",
-            "tecnicalImpacts": [
-              "puppa iperbolica",
-              "secondap uppa"
-            ]
+            "tecnicalImpacts": []
+          }
+        ],
+        "businessImpactWeights": [],
+        "category": "Policy",
+        "cost": 0,
+        "primaryCategories": [
+          "Compliance_Policy_Personal_Information_Protection"
+        ],
+        "malfunctionsIds": [
+          "73a22e63-8c70-22f9-35b4-29c9545795a9"
+        ],
+        "objType": "AssetModel",
+        "assessmentNode": true,
+        "goal": "",
+        "description": "GDPR company policy explanation",
+        "name": "GDPR company policy",
+        "systemParticipantOwnerId": "John Doe",
+        "identifier": "ab240241-5ab6-d8a2-844d-fe6e391eba63",
+        "nodeType": "Asset",
+        "relatedRequirementsIds": [],
+        "children": [],
+        "parents": [
+          "94d100c0-07e8-02e3-f93b-1da9e3a48330"
+        ]
+      },
+      {
+        "securityImpacts": [
+          {
+            "impact": "CRITICAL",
+            "scope": "Availability",
+            "tecnicalImpacts": []
+          },
+          {
+            "impact": "CRITICAL",
+            "scope": "Confidentiality",
+            "tecnicalImpacts": []
+          },
+          {
+            "impact": "CRITICAL",
+            "scope": "Efficiency",
+            "tecnicalImpacts": []
+          },
+          {
+            "impact": "CRITICAL",
+            "scope": "Integrity",
+            "tecnicalImpacts": []
+          }
+        ],
+        "businessImpactWeights": [],
+        "category": "Data_Message",
+        "cost": 0,
+        "primaryCategories": [
+          "Data_Exchanged_Message"
+        ],
+        "malfunctionsIds": [
+          "73a22e63-8c70-22f9-35b4-29c9545795a9"
+        ],
+        "objType": "AssetModel",
+        "assessmentNode": true,
+        "goal": "",
+        "description": "information exchanged with external partners with personal information that has to be stored and protected",
+        "name": "external information",
+        "systemParticipantOwnerId": "John Doe",
+        "identifier": "1503fcfd-6aad-513f-1daf-92efd1e26049",
+        "nodeType": "Asset",
+        "relatedRequirementsIds": [],
+        "children": [],
+        "parents": [
+          "67652165-2943-9006-ceb3-9ae358f71f26"
+        ]
+      },
+      {
+        "securityImpacts": [
+          {
+            "impact": "MEDIUM",
+            "scope": "Availability",
+            "tecnicalImpacts": []
+          },
+          {
+            "impact": "MEDIUM",
+            "scope": "Confidentiality",
+            "tecnicalImpacts": []
+          },
+          {
+            "impact": "MEDIUM",
+            "scope": "Integrity",
+            "tecnicalImpacts": []
+          }
+        ],
+        "businessImpactWeights": [],
+        "category": "Hardware",
+        "cost": 0,
+        "primaryCategories": [
+          "Service_Local_Network_Service"
+        ],
+        "malfunctionsIds": [
+          "4b8aabbe-e439-1947-09eb-07ee58a1ead0"
+        ],
+        "objType": "AssetModel",
+        "assessmentNode": true,
+        "goal": "",
+        "description": "for internal processes network services",
+        "name": "LAN server",
+        "systemParticipantOwnerId": "Max Mike",
+        "identifier": "0cbac165-5886-3e2f-dc58-a3f91ffc1cbb",
+        "nodeType": "Asset",
+        "relatedRequirementsIds": [],
+        "children": [],
+        "parents": [
+          "ae64cc04-ca95-44f2-a305-cc37ef3cf70d"
+        ]
+      },
+      {
+        "securityImpacts": [
+          {
+            "impact": "CRITICAL",
+            "scope": "Availability",
+            "tecnicalImpacts": []
+          },
+          {
+            "impact": "CRITICAL",
+            "scope": "Confidentiality",
+            "tecnicalImpacts": []
+          },
+          {
+            "impact": "CRITICAL",
+            "scope": "Efficiency",
+            "tecnicalImpacts": []
+          },
+          {
+            "impact": "CRITICAL",
+            "scope": "Integrity",
+            "tecnicalImpacts": []
+          }
+        ],
+        "businessImpactWeights": [],
+        "category": "Hardware",
+        "cost": 0,
+        "primaryCategories": [
+          "Service_Application_Service"
+        ],
+        "malfunctionsIds": [
+          "73a22e63-8c70-22f9-35b4-29c9545795a9"
+        ],
+        "objType": "AssetModel",
+        "assessmentNode": true,
+        "goal": "",
+        "description": "application server for critical business processes both internal and external partners as well as general public",
+        "name": "server",
+        "systemParticipantOwnerId": "Fred Fedin",
+        "identifier": "b8813ff2-2e6c-57a4-4777-7743795e749a",
+        "nodeType": "Asset",
+        "relatedRequirementsIds": [],
+        "children": [],
+        "parents": [
+          "b584eda1-6e2f-2580-a7e9-f9d6d2a0691e",
+          "3418c7f9-7abc-02eb-1576-ab31f9f24a58"
+        ]
+      },
+      {
+        "securityImpacts": [
+          {
+            "impact": "MEDIUM",
+            "scope": "Availability",
+            "tecnicalImpacts": []
+          },
+          {
+            "impact": "MEDIUM",
+            "scope": "Confidentiality",
+            "tecnicalImpacts": []
+          },
+          {
+            "impact": "MEDIUM",
+            "scope": "Integrity",
+            "tecnicalImpacts": []
           }
         ],
         "businessImpactWeights": [],
         "category": "Software_Off_the_Shelf",
         "cost": 0,
         "primaryCategories": [
-          "Data_DataFile_Database",
           "Data_IT_Archive"
         ],
         "malfunctionsIds": [
-          "f5bd5f0c-f533-47d0-a706-660759e55fc6"
+          "4b8aabbe-e439-1947-09eb-07ee58a1ead0"
         ],
         "objType": "AssetModel",
-        "assessmentNode": false,
+        "assessmentNode": true,
         "goal": "",
-        "description": "bla bla bla bla",
-        "name": "",
-        "systemParticipantOwnerId": "tyfytftyfytf",
-        "identifier": "42605102-2b52-4f44-b159-3ae28489da28",
+        "description": "system logs with external partner info",
+        "name": "system logs oiuiouio oiiouoiu oiuoiuoiu o",
+        "systemParticipantOwnerId": "Erik Idle",
+        "identifier": "14368497-e1bb-9235-89f5-c2b2bec03d7d",
+        "nodeType": "Asset",
+        "relatedRequirementsIds": [
+          "4b545efe-e497-11e7-a25a-0200c0a80208",
+          "4b59bfc8-e497-11e7-a25a-0200c0a80208"
+        ],
+        "children": [],
+        "parents": [
+          "9340602e-7628-3664-b9da-71b3a5d15d24"
+        ]
+      },
+      {
+        "securityImpacts": [
+          {
+            "impact": "MEDIUM",
+            "scope": "Availability",
+            "tecnicalImpacts": []
+          },
+          {
+            "impact": "MEDIUM",
+            "scope": "Confidentiality",
+            "tecnicalImpacts": []
+          },
+          {
+            "impact": "MEDIUM",
+            "scope": "Integrity",
+            "tecnicalImpacts": []
+          }
+        ],
+        "businessImpactWeights": [],
+        "category": "Hardware",
+        "cost": 0,
+        "primaryCategories": [
+          "Data_DataFile_Database"
+        ],
+        "malfunctionsIds": [
+          "4b8aabbe-e439-1947-09eb-07ee58a1ead0"
+        ],
+        "objType": "AssetModel",
+        "assessmentNode": true,
+        "goal": "",
+        "description": "backup server on hot standby",
+        "name": "backup server",
+        "systemParticipantOwnerId": "Erik Idle",
+        "identifier": "4d6bfbe4-3af1-3406-8192-eb14ba0bccf1",
         "nodeType": "Asset",
         "relatedRequirementsIds": [],
         "children": [],
-        "parents": []
+        "parents": [
+          "d8ad331f-d5bc-db30-9499-b54253871fcc"
+        ]
       }
     ]
   },
-  "identifier": "db99593e-dda9-4d5d-abc5-1a5cb7dece9a",
+  "identifier": "d02d68bc-1c83-4064-b43c-910915e999a2",
   "objType": "AssessmentProcedure"
 }

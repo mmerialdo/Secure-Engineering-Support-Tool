@@ -47,7 +47,7 @@
           <div class="cols-sm-10">
             <div class="input-group">
               <span class="input-group-addon">
-                <i class="fa fa-envelope fa" aria-hidden="true"></i>
+                <em class="fa fa-envelope fa" aria-hidden="true"></em>
               </span>
               <input formControlName="email" class="form-control" name="email" id="email" />
             </div>
@@ -84,8 +84,8 @@
 
               <span class="input-group-addon" style="background-color: #FFFFFF">
 
-                <i class="glyphicon glyphicon-eye-open" style="cursor: pointer" (click)="changePass()" *ngIf="glyPass"></i>
-                <i class="glyphicon glyphicon-eye-close" style="cursor: pointer" (click)="changePass()" *ngIf="!glyPass"></i>
+                <em class="glyphicon glyphicon-eye-open" style="cursor: pointer" (click)="changePass()" *ngIf="glyPass"></em>
+                <em class="glyphicon glyphicon-eye-close" style="cursor: pointer" (click)="changePass()" *ngIf="!glyPass"></em>
 
 
 
@@ -107,14 +107,14 @@
           <div class="cols-sm-10">
             <div class="input-group">
               <span class="input-group-addon">
-                <i class="fa fa-lock fa-lg" aria-hidden="true"></i>
+                <em class="fa fa-lock fa-lg" aria-hidden="true"></em>
               </span>
               <input formControlName="confirm" class="form-control" name="confirm" id="confirm" type={{kindTypeConfirm}} />
 
               <span class="input-group-addon" style="background-color: #FFFFFF">
 
-                <i class="glyphicon glyphicon-eye-open" style="cursor: pointer" (click)="changeConfirm()" *ngIf="glyConf"></i>
-                <i class="glyphicon glyphicon-eye-close" style="cursor: pointer" (click)="changeConfirm()" *ngIf="!glyConf"></i>
+                <em class="glyphicon glyphicon-eye-open" style="cursor: pointer" (click)="changeConfirm()" *ngIf="glyConf"></em>
+                <em class="glyphicon glyphicon-eye-close" style="cursor: pointer" (click)="changeConfirm()" *ngIf="!glyConf"></em>
 
               </span>
             </div>
@@ -127,9 +127,9 @@
           <div class="cols-sm-10">
             <div class="input-group">
               <span class="input-group-addon">
-                <i class="fa fa-user-circle-o" aria-hidden="true">
+                <em class="fa fa-user-circle-o" aria-hidden="true">
 
-                </i>
+                </em>
               </span>
               <select formControlName="profile" class="form-control" name="profile" id="profile">
 
@@ -161,16 +161,9 @@
 </div>
 
 <p-dialog [(visible)]="blocked" modal="modal" [responsive]="true" [showHeader]="false" class="registerSpinner">
-
-  <div *ngIf="!blockedMessage">
+  <div>
     <h1></h1>
     <div class="loader"></div>
   </div>
-
-  <div *ngIf="blockedMessage">
-
-    <p-messages [(value)]="msgsAsset"></p-messages>
-
-  </div>
-
 </p-dialog>
+<p-toast position="top-center"></p-toast>

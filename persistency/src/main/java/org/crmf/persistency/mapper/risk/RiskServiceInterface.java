@@ -18,8 +18,8 @@ import org.crmf.persistency.domain.risk.SestRiskModel;
 import org.crmf.persistency.domain.risk.StatusImpactScale;
 import org.crmf.persistency.domain.risk.StatusLikelihoodScale;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 public interface RiskServiceInterface {
   void insert(String riskModelJson, String sestobjId);
@@ -34,9 +34,13 @@ public interface RiskServiceInterface {
 
   List<StatusLikelihoodScale> getStatusLikelihood(int projectId);
 
-  boolean updateScenarioRepository(ArrayList<RiskScenarioReference> rsr);
+  boolean updateScenarioRepository(List<RiskScenarioReference> rsr);
 
-  ArrayList<RiskScenarioReference> getRiskScenarioReference();
+  List<RiskScenarioReference> getRiskScenarioReference();
+
+//  List<RiskScenarioReference> getMatchingRiskScenarioReference(List<RiskScenario> scenarios);
+
+  Map<String, Map<RiskScenarioReference.SecurityMeasureEnum, String>> getRiskScenarioReferenceSafeguards();
 
   String insertRiskScenarioReference(RiskScenarioReference riskScenarioReference) throws Exception;
 

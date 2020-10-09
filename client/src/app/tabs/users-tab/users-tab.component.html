@@ -23,8 +23,8 @@
 
           <ng-template pTemplate="header">
             <tr>
-              <th style="width: 3em"></th>
-              <th *ngFor="let col of usersListCols">
+              <th scope="col" style="width: 3em"></th>
+              <th scope="col" *ngFor="let col of usersListCols">
                 {{col.header}}
               </th>
             </tr>
@@ -80,7 +80,6 @@
 
               <div [formGroup]="edituserForm" class="form-group">
                 <label for="firstname">Firstname</label>
-                <!--<input formControlName="firstname" type="text" class="form-control" name="firstname" id="firstname"  value="ciao"/>-->
                 <input type="text" name="firstname" value="John" id="firstname" class="form-control" formControlName="firstname">
                 <control-messages [control]="edituserForm.controls.firstname"></control-messages>
               </div>
@@ -128,7 +127,7 @@
 
             <div class="col-md-6">
 
-              <div [formGroup]="edituserForm" class="form-group">
+              <div *ngIf="!isAdmin()" [formGroup]="edituserForm" class="form-group">
                 <label for="profile">Profile</label>
                 <select formControlName="profile" class="form-control" name="profile" id="profile">
 
@@ -161,20 +160,14 @@
 </div>
 
 <div *ngIf="openRegister">
-  <app-register (sendFeed)="sendFeed($event)">
+  <app-register (sendFeed)="sendFeed($event)" [users]="users">
   </app-register>
 </div>
 <p-confirmDialog width="425"></p-confirmDialog>
 
 <p-dialog [(visible)]="blocked" modal="modal" [responsive]="true" [showHeader]="false" class="userSpinner">
-
-  <div *ngIf="blockedMessage">
-
-    <p-messages [(value)]="msgsAsset"></p-messages>
-
-  </div>
 </p-dialog>
 
 <user-password *ngIf="displayEditPassword" displayEditPassword="{{displayEditPassword}}"
                username="{{selectedUser.Username}}" (closePopup)="onClose($event)"></user-password>
-<p-toast position="center"></p-toast>
+<p-toast position="top-center"></p-toast>

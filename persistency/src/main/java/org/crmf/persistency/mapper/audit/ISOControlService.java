@@ -14,7 +14,11 @@ package org.crmf.persistency.mapper.audit;
 import org.crmf.model.audit.ISOControls;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Service;
 
+@Service
+@Qualifier("default")
 public class ISOControlService implements ISOControlServiceInterface {
 
   private static final Logger LOG = LoggerFactory.getLogger(ISOControlService.class.getName());

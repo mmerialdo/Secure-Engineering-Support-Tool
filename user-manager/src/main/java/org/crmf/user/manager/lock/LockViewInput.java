@@ -17,16 +17,21 @@ import org.crmf.model.user.PermissionTypeEnum;
 import org.crmf.model.user.User;
 import org.crmf.model.utility.GenericFilter;
 import org.crmf.model.utility.GenericFilterEnum;
-import org.crmf.persistency.mapper.general.SestObjServiceInterface;
-import org.crmf.persistency.mapper.user.UserServiceInterface;
-import org.crmf.user.validation.permission.UserPermissionManagerInputInterface;
+import org.crmf.persistency.mapper.general.SestObjService;
+import org.crmf.persistency.mapper.user.UserService;
+import org.crmf.user.validation.permission.UserPermissionManagerInput;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+@Service
+public class LockViewInput {
 
-public class LockViewInput implements LockViewInputInterface {
-
-  private UserPermissionManagerInputInterface permissionManager;
-  private UserServiceInterface userService;
-  private SestObjServiceInterface sestObjService;
+  @Autowired
+  private UserPermissionManagerInput permissionManager;
+  @Autowired
+  private UserService userService;
+  @Autowired
+  private SestObjService sestObjService;
 
   public String lock(GenericFilter filter) throws Exception {
 
@@ -62,34 +67,10 @@ public class LockViewInput implements LockViewInputInterface {
     return null;
   }
 
-  public String getlock(GenericFilter filter) throws Exception {
+  public String getlock(GenericFilter filter) {
 
     String identifier = filter.getFilterValue(GenericFilterEnum.IDENTIFIER);
     SESTObject sestObj = sestObjService.getByIdentifier(identifier);
     return sestObj.getLockedBy();
-  }
-
-  public UserPermissionManagerInputInterface getPermissionManager() {
-    return permissionManager;
-  }
-
-  public SestObjServiceInterface getSestObjService() {
-    return sestObjService;
-  }
-
-  public UserServiceInterface getUserService() {
-    return userService;
-  }
-
-  public void setUserService(UserServiceInterface userService) {
-    this.userService = userService;
-  }
-
-  public void setPermissionManager(UserPermissionManagerInputInterface permissionManager) {
-    this.permissionManager = permissionManager;
-  }
-
-  public void setSestObjService(SestObjServiceInterface sestObjService) {
-    this.sestObjService = sestObjService;
   }
 }

@@ -95,7 +95,7 @@ export class LoginComponent implements OnInit, OnDestroy {
   login() {
     this.blockedLogin = true;
 
-    const tokenLogin = new LoginToken(this.username, this.password);
+    const tokenLogin = new LoginToken(this.username, this.password, null);
     const tokenLoginJson = JSON.stringify(tokenLogin);
 
     const encryptedToSend = btoa(tokenLoginJson);
@@ -246,7 +246,8 @@ export class LoginToken {
 
   constructor(
     public username: string,
-    public password: string
+    public password: string,
+    public project: string
   ) {
   }
 

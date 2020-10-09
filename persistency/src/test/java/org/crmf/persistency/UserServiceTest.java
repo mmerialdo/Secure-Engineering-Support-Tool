@@ -12,57 +12,43 @@
 
 package org.crmf.persistency;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
-
-import java.util.List;
-
 import org.crmf.model.exception.RemoteComponentException;
 import org.crmf.model.general.SESTObjectTypeEnum;
 import org.crmf.model.user.User;
 import org.crmf.model.user.UserProfileEnum;
-import org.crmf.persistency.mapper.general.CleanDatabaseService;
 import org.crmf.persistency.mapper.user.RoleService;
 import org.crmf.persistency.mapper.user.UserService;
-import org.crmf.persistency.session.PersistencySessionFactory;
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mybatis.spring.boot.test.autoconfigure.MybatisTest;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Import;
+import org.springframework.test.context.ActiveProfiles;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
 
-/**
- * Unit test for simple App.
- */
+import java.util.List;
+
+@ExtendWith(SpringExtension.class)
+@MybatisTest
+@Import({UserService.class, RoleService.class})
+@ContextConfiguration(classes=Application.class)
+@ActiveProfiles("test")
 public class UserServiceTest {
 
-  PersistencySessionFactory sessionFactory;
+  @Autowired
   private UserService userService;
+  @Autowired
+  private RoleService roleService;
   private User user = null;
 
 
-  @Before
+  @BeforeEach
   public void setUp() {
-
-    sessionFactory = new PersistencySessionFactory();
-    sessionFactory.createSessionFactory();
-
-    RoleService roleService = new RoleService();
-    roleService.setSessionFactory(sessionFactory);
-    userService = new UserService();
-    userService.setSessionFactory(sessionFactory);
-    userService.setRoleService(roleService);
-
     user = prefill();
   }
-
-  @After
-  public void tearDown() throws Exception {
-
-    CleanDatabaseService cleaner = new CleanDatabaseService();
-    cleaner.setSessionFactory(sessionFactory);
-
-    cleaner.delete();
-  }
-
 
   @Test
   public void testInsert() {
@@ -81,14 +67,14 @@ public class UserServiceTest {
     user.setIdentifier(identifier);
 
     User users = userService.getByIdentifier(identifier);
-    assertNotNull(user);
-    assertEquals("user1", users.getName());
-    assertEquals("surname1", users.getSurname());
-    assertEquals("paSS01", users.getPassword());
-    assertEquals("username1", users.getUsername());
-    assertEquals("email1", users.getEmail());
-    assertEquals(UserProfileEnum.ProjectManager, users.getProfile());
-    assertEquals(SESTObjectTypeEnum.User, users.getObjType());
+    Assertions.assertNotNull(user);
+    Assertions.assertEquals("user1", users.getName());
+    Assertions.assertEquals("surname1", users.getSurname());
+    Assertions.assertEquals("paSS01", users.getPassword());
+    Assertions.assertEquals("username1", users.getUsername());
+    Assertions.assertEquals("email1", users.getEmail());
+    Assertions.assertEquals(UserProfileEnum.ProjectManager, users.getProfile());
+    Assertions.assertEquals(SESTObjectTypeEnum.User, users.getObjType());
 
     userService.deleteCascade(user.getIdentifier());
   }
@@ -107,14 +93,14 @@ public class UserServiceTest {
     userService.update(user);
 
     User users = userService.getByIdentifier(user.getIdentifier());
-    assertNotNull(user);
-    assertEquals("user2", users.getName());
-    assertEquals("surname2", users.getSurname());
+    Assertions.assertNotNull(user);
+    Assertions.assertEquals("user2", users.getName());
+    Assertions.assertEquals("surname2", users.getSurname());
     //assertEquals("paSS02", users.getPassword());
-    assertEquals("username2", users.getUsername());
-    assertEquals("email2", users.getEmail());
-    assertEquals(UserProfileEnum.GeneralUser, users.getProfile());
-    assertEquals(SESTObjectTypeEnum.User, users.getObjType());
+    Assertions.assertEquals("username2", users.getUsername());
+    Assertions.assertEquals("email2", users.getEmail());
+    Assertions.assertEquals(UserProfileEnum.GeneralUser, users.getProfile());
+    Assertions.assertEquals(SESTObjectTypeEnum.User, users.getObjType());
   }
 
   @Test
@@ -125,10 +111,10 @@ public class UserServiceTest {
     userService.updatePassword(user.getUsername(), user.getPassword());
 
     User users = userService.getByIdentifier(user.getIdentifier());
-    assertEquals("paSS03", users.getPassword());
+    Assertions.assertEquals("paSS03", users.getPassword());
   }
 
-  @Test(expected = RemoteComponentException.class)
+  @Test
   public void testUpdatePassword_ErrorHistory() {
 
     user.setPassword("paSS03");
@@ -138,10 +124,9 @@ public class UserServiceTest {
     userService.updatePassword(user.getUsername(), user.getPassword());
     user.setPassword("paSS03");
 
-    userService.updatePassword(user.getUsername(), user.getPassword());
-
-    User users = userService.getByIdentifier(user.getIdentifier());
-    assertEquals("paSS04", users.getPassword());
+    Assertions.assertThrows(RemoteComponentException.class, () -> {
+      userService.updatePassword(user.getUsername(), user.getPassword());
+    });
   }
 
   @Test
@@ -160,8 +145,8 @@ public class UserServiceTest {
     user.setIdentifier(identifier);
 
     List<User> users = userService.getAll();
-    assertNotNull(users);
-    assertEquals(2, users.size());
+    Assertions.assertNotNull(users);
+    Assertions.assertEquals(2, users.size());
 
     userService.deleteCascade(user.getIdentifier());
   }

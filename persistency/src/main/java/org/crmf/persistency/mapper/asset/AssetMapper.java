@@ -12,10 +12,12 @@
 
 package org.crmf.persistency.mapper.asset;
 
+import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.crmf.persistency.domain.asset.SestAssetModel;
 
 //This interface allows the bundle to invoke the SQL methods within the AssetMapper.xml (via the ibatis API)
+@Mapper
 public interface AssetMapper {
 
   void insert(SestAssetModel assetModel);

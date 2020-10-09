@@ -16,38 +16,23 @@ import org.crmf.model.requirement.Requirement;
 import org.crmf.model.requirement.RequirementStatusEnum;
 import org.crmf.model.requirement.RequirementTypeEnum;
 import org.crmf.model.riskassessmentelements.ElementTypeEnum;
-import org.crmf.persistency.mapper.general.CleanDatabaseService;
 import org.crmf.persistency.mapper.requirement.RequirementService;
-import org.crmf.persistency.session.PersistencySessionFactory;
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mybatis.spring.boot.test.autoconfigure.MybatisTest;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.context.ActiveProfiles;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
 
+@ExtendWith(SpringExtension.class)
+@MybatisTest
+@ContextConfiguration(classes=Application.class)
+@ActiveProfiles("test")
 public class RequirementServiceTest {
 
-	PersistencySessionFactory sessionFactory;
+	@Autowired
 	private RequirementService requirementService;
-	
-	@Before
-	public void setUp() throws Exception {
-
-		
-		sessionFactory = new PersistencySessionFactory();
-		sessionFactory.createSessionFactory();
-
-		requirementService = new RequirementService();
-		requirementService.setSessionFactory(sessionFactory);
-		
-	}
-
-	@After
-	public void tearDown() throws Exception {
-
-		CleanDatabaseService cleaner = new CleanDatabaseService();
-		cleaner.setSessionFactory(sessionFactory);
-		
-		cleaner.delete();
-	}
 	
 	@Test
 	public void insertSysRequirementTest() throws Exception{

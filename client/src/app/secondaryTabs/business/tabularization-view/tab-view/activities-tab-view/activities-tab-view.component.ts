@@ -21,6 +21,7 @@ import {
 import {select, Store} from '@ngrx/store';
 import {fetchActivity, selectRefresh} from '../../../../../shared/store/reducers/assets.reducer';
 import {take} from 'rxjs/operators';
+import {MessageService} from 'primeng/api';
 
 @Component({
   selector: 'app-activities-tab-view',
@@ -40,12 +41,13 @@ export class ActivitiesTabViewComponent extends AbstractTabViewComponent impleme
   public newActivity: any;
 
 
-  constructor(public store: Store<any>) {
-    super('activities', 'Activities', store);
+  constructor(public store: Store<any>, public messageService: MessageService) {
+    super('activities', 'Activities', store, messageService);
   }
 
   ngOnInit() {
     this.store.pipe(select(selectRefresh)).subscribe(() => {
+
       this.resetTable();
       const activitiesMap = ServerAssetHelper.retrieveActivitiesMap(this.serverAsset);
       const allBusinessProcesses = ServerAssetHelper.getAllBusinessProcesses(this.serverAsset);
@@ -166,7 +168,7 @@ export class ActivitiesTabViewComponent extends AbstractTabViewComponent impleme
     this.serverAsset.edges.push(edge);
     businessProcess.children.push(edge.identifier);
     node.parents.push(edge.identifier);
-  
+
 
     this.store.dispatch(storeServerAsset(this.serverAsset));
     this.validate(this.serverAsset);
@@ -174,11 +176,20 @@ export class ActivitiesTabViewComponent extends AbstractTabViewComponent impleme
 
   removeActivityRelationWithBusinessProcess(node: any, column: any): void {
     const businessProcess = this.serverAsset.nodes.filter(n => n.identifier === column.field)[0];
-    let edge = this.serverAsset.edges.filter(e => e.source === businessProcess.identifier && e.target === node.identifier)[0];
+    let edge = this.serverAsset.edges.filter(e => e.source === businessProcess.identifier && e.target === node.identifier);
 
-    if (edge === null) {
-      edge = this.serverAsset.edges.filter(e => e.target === businessProcess.identifier && e.source === node.identifier)[0];
+    if (!edge || edge === null) {
+      edge = this.serverAsset.edges.filter(e => e.target === businessProcess.identifier && e.source === node.identifier);
     }
+
+    if (edge) {
+      edge.forEach(edgeElement => {
+        this.removeEdgeAssetRelationWithBusinessProcess(node, edgeElement);
+      });
+    }
+  }
+
+  removeEdgeAssetRelationWithBusinessProcess(node: any, edge: any): void {
 
     ServerAssetHelper.removeEdgeById(edge.identifier, this.serverAsset);
     ServerAssetHelper.removeEdgeFromParents(edge.identifier, this.serverAsset);
@@ -192,16 +203,13 @@ export class ActivitiesTabViewComponent extends AbstractTabViewComponent impleme
     if (this.selected.length > 0) {
       this.selected.forEach(selected => {
         this.dataRows = this.dataRows.filter(dr => dr !== selected);
+
         const activityToDelete = ServerAssetHelper.findNodeByIdentifier(selected.id, this.serverAsset);
 
-        Object.keys(selected).filter(k => k !== 'activities').filter(k => k !== 'id').forEach(rowKey => {
-          if (selected[rowKey]) {
-            this.updateActivityParentsAndEdges(activityToDelete);
-            let assetsChildren = ServerAssetHelper.getActivityRelatedAssets(activityToDelete, this.serverAsset);
-            this.updateActivityChildrenAndEdges(activityToDelete);
-            this.updateAssetsImpactsAndMalfunctions(assetsChildren);
-          }
-        });
+        this.updateActivityParentsAndEdges(activityToDelete);
+        let assetsChildren = ServerAssetHelper.getActivityRelatedAssets(activityToDelete, this.serverAsset);
+        this.updateActivityChildrenAndEdges(activityToDelete);
+        this.updateAssetsImpactsAndMalfunctions(assetsChildren);
         const deleted = ServerAssetHelper.removeNodeById(activityToDelete.identifier, this.serverAsset);
       });
     } else {
@@ -279,7 +287,6 @@ export class ActivitiesTabViewComponent extends AbstractTabViewComponent impleme
         if (missingMalfunction) {
           missingMalfunctions.push(node.malfunctionsIds[malfunctionId]);
         }
-
       }
 
       for (let malId of missingMalfunctions) {

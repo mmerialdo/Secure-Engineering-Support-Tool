@@ -19,6 +19,8 @@ import org.crmf.model.audit.SestAuditModel;
 import org.crmf.model.riskassessment.AssessmentProcedure;
 import org.crmf.model.riskassessment.AssessmentProject;
 import org.crmf.model.riskassessmentelements.ImpactEnum;
+import org.crmf.model.utility.GenericFilter;
+import org.crmf.model.utility.GenericFilterEnum;
 import org.crmf.model.utility.audit.AuditModelSerializerDeserializer;
 import org.crmf.model.utility.audit.ISOControlsSerializerDeserializer;
 import org.crmf.persistency.mapper.audit.AssAuditServiceInterface;
@@ -26,20 +28,37 @@ import org.crmf.persistency.mapper.project.AssprocedureServiceInterface;
 import org.crmf.persistency.mapper.project.AssprojectServiceInterface;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.core.io.ClassPathResource;
+import org.springframework.core.io.InputStreamResource;
+import org.springframework.stereotype.Service;
 
 import java.io.File;
-import java.nio.file.Files;
+import java.io.FileInputStream;
+import java.io.InputStream;
 import java.util.ArrayList;
 
 //This class manages the interactions the the sest-proxy bundle and the invoke to the business logic related to the report generation
-public class ReportGeneratorInput implements ReportGeneratorInputInterface {
+@Service
+public class ReportGeneratorInput {
 
+  @Autowired
+  @Qualifier("default")
   private AssAuditServiceInterface auditService;
+  @Autowired
+  @Qualifier("default")
   private AssprocedureServiceInterface assprocedureService;
+  @Autowired
+  @Qualifier("default")
   private AssprojectServiceInterface assprojectService;
+  @Autowired
   private ReportGeneratorDOCX reportGeneratorDOCX;
+  @Autowired
   private ReportGeneratorLightDOCX reportGeneratorLightDOCX;
+  @Autowired
   private ReportGeneratorISO reportGeneratorISO;
+
   private static final String PREFIX = "report_";
   private static final String PREFIXLIGHT = "report_light_";
   private static final String PREFIXISO = "report_ISO_";
@@ -47,7 +66,6 @@ public class ReportGeneratorInput implements ReportGeneratorInputInterface {
 
   private static final Logger LOG = LoggerFactory.getLogger(ReportGeneratorInput.class.getName());
 
-  @Override
   public String editReport(String procedureId) throws Exception {
 
     try {
@@ -67,14 +85,11 @@ public class ReportGeneratorInput implements ReportGeneratorInputInterface {
       reportGeneratorDOCX.generateReport(PREFIX.concat(procedureId).concat(SUFFIX), procedure, project, audit);
     } catch (Exception e) {
       LOG.error("Unable to generate report! ", e);
-
-      throw new Exception("COMMAND_EXCEPTION", e);
+      throw new Exception(e);
     }
-
     return PREFIX.concat(procedureId);
   }
 
-  @Override
   public String editLightReport(String procedureId, ImpactEnum threshold) throws Exception {
 
     try {
@@ -96,14 +111,12 @@ public class ReportGeneratorInput implements ReportGeneratorInputInterface {
       reportGeneratorLightDOCX.generateReport(PREFIXLIGHT.concat(procedureId).concat(SUFFIX), procedure, project, threshold, audit, auditFinal);
     } catch (Exception e) {
       LOG.error("Unable to generate light report! ", e);
-
-      throw new Exception("COMMAND_EXCEPTION", e);
+      throw new Exception(e);
     }
 
     return PREFIX.concat(procedureId);
   }
 
-  @Override
   public String editISOReport(String procedureId) throws Exception {
 
     try {
@@ -122,11 +135,8 @@ public class ReportGeneratorInput implements ReportGeneratorInputInterface {
       Audit auditFinal = auditModelSerializerDeserializer.getAuditFromAuditModel(sestAudit, true);
 
       //generating the report
-      //GABRI TODO: metti questo file dove vuoi, ovviamente
-      String isoControlsPath = "ISO27002.json";
-
-      File famJson = new File(isoControlsPath);
-      byte[] bamJson = Files.readAllBytes(famJson.toPath());
+      InputStream resource = new ClassPathResource("ISO27002.json").getInputStream();
+      byte[] bamJson = resource.readAllBytes();
       String amJsonString = new String(bamJson, "UTF-8");
 
       ISOControlsSerializerDeserializer amSerDes = new ISOControlsSerializerDeserializer();
@@ -136,58 +146,36 @@ public class ReportGeneratorInput implements ReportGeneratorInputInterface {
       reportGeneratorISO.generateReport(PREFIXISO.concat(procedureId).concat(SUFFIX), procedure, project, audit, auditFinal, controls);
     } catch (Exception e) {
       LOG.error("Unable to generate light report! ", e);
-
-      throw new Exception("COMMAND_EXCEPTION", e);
+      throw new Exception(e);
     }
 
     return PREFIX.concat(procedureId);
   }
 
-  public ReportGeneratorDOCX getReportGeneratorDOCX() {
-    return reportGeneratorDOCX;
-  }
+  public InputStreamResource download(GenericFilter filter) throws Exception {
 
-  public void setReportGeneratorDOCX(ReportGeneratorDOCX reportGeneratorDOCX) {
-    this.reportGeneratorDOCX = reportGeneratorDOCX;
-  }
+    LOG.info("downloadReport process ");
+    String procedureId = filter.getFilterValue(GenericFilterEnum.PROCEDURE);
+    String reportType = filter.getFilterValue(GenericFilterEnum.REPORT_TYPE);
+    LOG.info("downloadReport procedure Id " + procedureId);
+    LOG.info("downloadReport report Type " + reportType);
+    String prefix = PREFIX;
+    if (reportType != null) {
+      switch (reportType) {
+        case "LIGHT":
+          prefix = PREFIXLIGHT;
+          break;
+        case "ISO":
+          prefix = PREFIXISO;
+          break;
+      }
+    }
 
-  public AssprojectServiceInterface getAssprojectService() {
-    return assprojectService;
-  }
-
-  public void setAssprojectService(AssprojectServiceInterface assprojectService) {
-    this.assprojectService = assprojectService;
-  }
-
-  public AssprocedureServiceInterface getAssprocedureService() {
-    return assprocedureService;
-  }
-
-  public void setAssprocedureService(AssprocedureServiceInterface assprocedureService) {
-    this.assprocedureService = assprocedureService;
-  }
-
-  public ReportGeneratorLightDOCX getReportGeneratorLightDOCX() {
-    return reportGeneratorLightDOCX;
-  }
-
-  public void setReportGeneratorLightDOCX(ReportGeneratorLightDOCX reportGeneratorLightDOCX) {
-    this.reportGeneratorLightDOCX = reportGeneratorLightDOCX;
-  }
-
-  public ReportGeneratorISO getReportGeneratorISO() {
-    return reportGeneratorISO;
-  }
-
-  public void setReportGeneratorISO(ReportGeneratorISO reportGeneratorISO) {
-    this.reportGeneratorISO = reportGeneratorISO;
-  }
-
-  public AssAuditServiceInterface getAuditService() {
-    return auditService;
-  }
-
-  public void setAuditService(AssAuditServiceInterface auditService) {
-    this.auditService = auditService;
+    File file = new File(prefix.concat(procedureId).concat(SUFFIX));
+    if (!file.exists()) {
+      throw new Exception("REPORT_MISSING");
+    } else {
+      return new InputStreamResource(new FileInputStream(file));
+    }
   }
 }

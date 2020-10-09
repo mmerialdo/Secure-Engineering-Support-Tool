@@ -14,18 +14,11 @@
 		INSERT INTO ASSPROFILE(ID, NAME,
 		DESCRIPTION, CREATION_TIME, UPDATE_TIME, ORGANIZATION, PHASE,
 		METHODOLOGY, SESTOBJ_ID)
-		VALUES (#{id}, #{name}, #{description}, NOW(),
-		#{updateTime}, #{organization}, #{phase}, #{methodology},
-		#{sestobjId})
-		ON
-		DUPLICATE KEY UPDATE
-		NAME = #{name},
-		DESCRIPTION =
-		#{description},
-		UPDATE_TIME = NOW(),
-		ORGANIZATION = #{organization},
-		PHASE = #{phase},
-		METHODOLOGY = #{methodology}
+		VALUES (#{id}, #{name}, #{description}, NOW(), #{updateTime}, #{organization}, #{phase}, #{methodology}, #{sestobjId})
+		ON DUPLICATE KEY UPDATE
+		NAME = #{name}, DESCRIPTION = #{description},
+		UPDATE_TIME = NOW(), ORGANIZATION = #{organization},
+		PHASE = #{phase}, METHODOLOGY = #{methodology}
 	</insert>
 
 	<select id='getById' parameterType='int' resultMap='Assprofile'>

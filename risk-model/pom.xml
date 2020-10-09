@@ -32,7 +32,7 @@
 			<version>${camel.version}</version>
 		</dependency>
 
-		<dependency>
+		<!-- dependency>
 			<groupId>org.apache.camel</groupId>
 			<artifactId>camel-cxf</artifactId>
 			<version>${camel.version}</version>
@@ -54,7 +54,7 @@
 			<groupId>org.apache.cxf</groupId>
 			<artifactId>cxf-rt-frontend-jaxrs</artifactId>
 			<version>${cxf.version}</version>
-		</dependency>
+		</dependency -->
 
 	</dependencies>
 
@@ -62,22 +62,24 @@
 		<defaultGoal>install</defaultGoal>
 		<plugins>
 			<plugin>
-				<groupId>org.apache.felix</groupId>
-				<artifactId>maven-bundle-plugin</artifactId>
-				<version>${bundle.plugin.version}</version>
-				<extensions>true</extensions>
-				<configuration>
-					<obrRepository>NONE</obrRepository>
-					<instructions>
-						<Bundle-Name>${project.name}</Bundle-Name>
-						<Bundle-SymbolicName>${project.artifactId}</Bundle-SymbolicName>
-						<Bundle-Version>${project.version}</Bundle-Version>
-						<Bundle-Activator>org.crmf.riskmodel.RiskModelActivator</Bundle-Activator>
-						<!-- Bundle-Activator>core.TemplateActivator</Bundle-Activator> <Import-Package>core.*, 
-							!* </Import-Package> <Export-Package>core.*, !* </Export-Package> <DynamicImport-Package>*</DynamicImport-Package -->
-					</instructions>
-				</configuration>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
+			<!--plugin>
+                <groupId>org.apache.felix</groupId>
+                <artifactId>maven-bundle-plugin</artifactId>
+                <version>${bundle.plugin.version}</version>
+                <extensions>true</extensions>
+                <configuration>
+                    <obrRepository>NONE</obrRepository>
+                    <instructions>
+                        <Bundle-Name>${project.name}</Bundle-Name>
+                        <Bundle-SymbolicName>${project.artifactId}</Bundle-SymbolicName>
+                        <Bundle-Version>${project.version}</Bundle-Version>
+                        <Bundle-Activator>org.crmf.riskmodel.RiskModelActivator</Bundle-Activator>
+                     </instructions>
+				</configuration>
+			</plugin -->
 		</plugins>
 	</build>
 </project>

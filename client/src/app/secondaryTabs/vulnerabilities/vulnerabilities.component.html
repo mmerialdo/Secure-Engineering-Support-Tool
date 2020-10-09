@@ -89,7 +89,6 @@
                 <p-dataList [value]="showSelectedRequirements" id="vulnRequirements">
 
                   <ng-template let-primaryAssetCategory pTemplate="item">
-                    <!--{{primaryAssetCategory.name}} - {{primaryAssetCategory.category}}-->
                     {{ primaryAssetCategory }}
                   </ng-template>
                 </p-dataList>
@@ -460,4 +459,4 @@
     <div class="loader"></div>
   </div>
 </p-dialog>
-<p-toast [style]="{marginTop: '80px'}" position="top-center" key="tc"></p-toast>
+<p-toast position="top-center" key="tc"></p-toast>

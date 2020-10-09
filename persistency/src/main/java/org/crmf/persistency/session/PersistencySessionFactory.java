@@ -40,6 +40,9 @@ import org.crmf.persistency.mapper.vulnerability.VulnerabilityMapper;
 import org.osgi.framework.BundleContext;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Primary;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -49,6 +52,7 @@ import java.io.Reader;
 import java.net.URL;
 import java.util.Properties;
 
+@Configuration
 public class PersistencySessionFactory {
 
   private static final Logger LOG = LoggerFactory.getLogger(PersistencySessionFactory.class.getName());
@@ -56,9 +60,15 @@ public class PersistencySessionFactory {
   private SqlSessionFactory sessionFactory;
   private BundleContext context;
 
-  public void createSessionFactory() {
+  private final SqlSession sqlSession;
 
-    String pathConfig = "config".concat(File.separator).concat("config_test.xml");
+  public PersistencySessionFactory(SqlSession sqlSession) {
+    this.sqlSession = sqlSession;
+  }
+
+  public SqlSessionFactory createSessionFactory() {
+
+    String pathConfig = "config".concat(File.separator).concat("config-test.xml");
     LOG.info("pathConfig " + pathConfig);
     Reader reader = null;
     Properties prop = null;
@@ -69,12 +79,12 @@ public class PersistencySessionFactory {
         prop = new Properties();
         prop.load(new FileInputStream("etc".concat(File.separator).concat("SEST.cfg")));
 
-        URL url = context.getBundle().getEntry("config/config.xml");
+        URL url = context.getBundle().getEntry("config-dev.xml");
         if (url != null) {
           reader = new InputStreamReader(url.openStream());
         } else {
           LOG.error("Unvalid path " + pathConfig);
-          return;
+          return null;
         }
       }
       LOG.info("reader " + reader);
@@ -112,12 +122,21 @@ public class PersistencySessionFactory {
         LOG.error(e.getMessage());
       }
     }
+    return this.sessionFactory;
   }
 
+  @Bean
+  @Primary
   public SqlSession getSession() {
 
-    SqlSession session = this.sessionFactory.openSession();
-    return session;
+    if (this.sqlSession == null) {
+      if (this.sessionFactory == null) {
+        this.sessionFactory = this.createSessionFactory();
+      }
+      return this.sessionFactory.openSession();
+    } else {
+      return this.sqlSession;
+    }
   }
 
   public SqlSessionFactory getSessionFactory() {

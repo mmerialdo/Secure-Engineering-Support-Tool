@@ -38,6 +38,7 @@ import org.crmf.model.riskassessmentelements.SecurityImpact;
 import org.crmf.model.riskassessmentelements.TechnicalMalfunctionTypeEnum;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Service;
 
 import java.math.BigInteger;
 import java.util.ArrayList;
@@ -46,8 +47,10 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
+@Service
 public class AssetModelWriter {
   private static final Logger LOG = LoggerFactory.getLogger(AssetModelWriter.class.getName());
+  public static final String CALIBRI = "Calibri";
 
   public void writeAssetModel(XWPFDocument doc, AssessmentProcedure procedure, AssessmentProject project, boolean lightReport) {
 
@@ -76,7 +79,7 @@ public class AssetModelWriter {
     assetModelNameRun.setBold(true);
 
     assetModelNameRun.setText("Business-Asset Model");
-    assetModelNameRun.setFontFamily("Calibri");
+    assetModelNameRun.setFontFamily(CALIBRI);
     assetModelNameRun.setFontSize(15);
 
     XWPFParagraph assetModelDataParagraph = doc.createParagraph();
@@ -90,7 +93,7 @@ public class AssetModelWriter {
     //Writing AssetModel Creation Time
     assetModelData.setBold(false);
     assetModelData.setFontSize(13);
-    assetModelData.setFontFamily("Calibri");
+    assetModelData.setFontFamily(CALIBRI);
     assetModelData.setText("Creation Time: ");
     assetModelData.setText(procedure.getAssetModel().getCreationTime());
     assetModelData.addCarriageReturn();
@@ -146,7 +149,7 @@ public class AssetModelWriter {
     //Writing AssetModel Heading 2
     assetModelNameRunDetails.setBold(true);
     assetModelNameRunDetails.setText("Business-Asset Model Details");
-    assetModelNameRunDetails.setFontFamily("Calibri");
+    assetModelNameRunDetails.setFontFamily(CALIBRI);
     assetModelNameRunDetails.setFontSize(14);
 
     //Here we write all Organizations
@@ -167,7 +170,7 @@ public class AssetModelWriter {
     //Writing Organization Heading 3
     organizationNameRunDetails.setBold(true);
     organizationNameRunDetails.setText("Organizations");
-    organizationNameRunDetails.setFontFamily("Calibri");
+    organizationNameRunDetails.setFontFamily(CALIBRI);
     organizationNameRunDetails.setFontSize(13);
 
     for (Organization item : procedure.getAssetModel().getOrganizations()) {
@@ -193,7 +196,7 @@ public class AssetModelWriter {
     //Writing BusinessProcess Heading 3
     bpRunDetails.setBold(true);
     bpRunDetails.setText("Business Processes");
-    bpRunDetails.setFontFamily("Calibri");
+    bpRunDetails.setFontFamily(CALIBRI);
     bpRunDetails.setFontSize(13);
 
     for (BusinessProcess item : procedure.getAssetModel().getBusinessProcesses()) {
@@ -219,7 +222,7 @@ public class AssetModelWriter {
     //Writing Business Process Heading 3
     baNameRunDetails.setBold(true);
     baNameRunDetails.setText("Business Activities");
-    baNameRunDetails.setFontFamily("Calibri");
+    baNameRunDetails.setFontFamily(CALIBRI);
     baNameRunDetails.setFontSize(13);
 
     for (BusinessActivity item : procedure.getAssetModel().getBusinessActivities()) {
@@ -245,7 +248,7 @@ public class AssetModelWriter {
     //Writing Malfunctions Heading 3
     malNameRunDetails.setBold(true);
     malNameRunDetails.setText("Malfunctions");
-    malNameRunDetails.setFontFamily("Calibri");
+    malNameRunDetails.setFontFamily(CALIBRI);
     malNameRunDetails.setFontSize(13);
     for (Malfunction item : procedure.getAssetModel().getMalfunctions()) {
       writeMalfunction(doc, item, procedure.getAssetModel(), project);
@@ -270,7 +273,7 @@ public class AssetModelWriter {
     //Writing Assets Heading 3
     assetNameRunDetails.setBold(true);
     assetNameRunDetails.setText("Assets");
-    assetNameRunDetails.setFontFamily("Calibri");
+    assetNameRunDetails.setFontFamily(CALIBRI);
     assetNameRunDetails.setFontSize(13);
 
     for (Asset item : procedure.getAssetModel().getAssets()) {
@@ -381,7 +384,7 @@ public class AssetModelWriter {
       r1.setText("                                     " + node.getName());
     }
 
-    r1.setFontFamily("Calibri");
+    r1.setFontFamily(CALIBRI);
 
     XWPFParagraph p2 = xwpfTableRow.getCell(1).getParagraphs().get(0);
     p2.setAlignment(ParagraphAlignment.CENTER);
@@ -392,7 +395,7 @@ public class AssetModelWriter {
 
 
     r2.setText(node.getNodeType().toString());
-    r2.setFontFamily("Calibri");
+    r2.setFontFamily(CALIBRI);
 
     XWPFParagraph p3 = xwpfTableRow.getCell(2).getParagraphs().get(0);
     p3.setAlignment(ParagraphAlignment.CENTER);
@@ -462,7 +465,7 @@ public class AssetModelWriter {
     //Writing Asset Heading
     assetHeadingRun.setBold(true);
     assetHeadingRun.setText(item.getName());
-    assetHeadingRun.setFontFamily("Calibri");
+    assetHeadingRun.setFontFamily(CALIBRI);
     assetHeadingRun.setFontSize(12);
 
 
@@ -568,7 +571,7 @@ public class AssetModelWriter {
     //Writing Malfunction Heading
     malfunctionHeadingRun.setBold(true);
     malfunctionHeadingRun.setText(item.getName());
-    malfunctionHeadingRun.setFontFamily("Calibri");
+    malfunctionHeadingRun.setFontFamily(CALIBRI);
     malfunctionHeadingRun.setFontSize(12);
 
 
@@ -652,7 +655,7 @@ public class AssetModelWriter {
     //Writing BA Heading
     baHeadingRun.setBold(true);
     baHeadingRun.setText(item.getName());
-    baHeadingRun.setFontFamily("Calibri");
+    baHeadingRun.setFontFamily(CALIBRI);
     baHeadingRun.setFontSize(12);
 
     XWPFParagraph activityParagraph = doc.createParagraph();
@@ -709,7 +712,7 @@ public class AssetModelWriter {
     //Writing BP Heading
     bpHeadingRun.setBold(true);
     bpHeadingRun.setText(item.getName());
-    bpHeadingRun.setFontFamily("Calibri");
+    bpHeadingRun.setFontFamily(CALIBRI);
     bpHeadingRun.setFontSize(12);
 
     XWPFParagraph processParagraph = doc.createParagraph();
@@ -765,7 +768,7 @@ public class AssetModelWriter {
     //Writing Organization Heading
     organizationHeadingRun.setBold(true);
     organizationHeadingRun.setText(item.getName());
-    organizationHeadingRun.setFontFamily("Calibri");
+    organizationHeadingRun.setFontFamily(CALIBRI);
     organizationHeadingRun.setFontSize(12);
 
     XWPFParagraph organizationParagraph = doc.createParagraph();

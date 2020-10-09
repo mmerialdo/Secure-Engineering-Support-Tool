@@ -19,10 +19,12 @@ import org.crmf.model.user.User;
 import org.crmf.model.user.UserProfileEnum;
 import org.crmf.model.user.UserRole;
 import org.crmf.model.user.UserRoleEnum;
-import org.crmf.persistency.mapper.user.RoleServiceInterface;
-import org.crmf.persistency.mapper.user.UserServiceInterface;
+import org.crmf.persistency.mapper.user.RoleService;
+import org.crmf.persistency.mapper.user.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -33,14 +35,17 @@ import java.util.Map;
 import java.util.Set;
 
 //This class manages the interactions with the sest-proxy bundle. Its methods are invoked in order to add/read/remove User's permissions
-public class UserPermissionManagerInput implements UserPermissionManagerInputInterface {
+@Service
+public class UserPermissionManagerInput {
   private static final Logger LOG = LoggerFactory.getLogger(UserPermissionManagerInput.class.getName());
   private Map<UserRoleEnum, Map<PermissionTypeEnum, Set<SESTObjectTypeEnum>>> permissionRolesTable = new HashMap<>();
   private Map<UserProfileEnum, Set<UserRoleEnum>> profileRolesLinkTable = new HashMap<UserProfileEnum, Set<UserRoleEnum>>();
   private Map<UserProfileEnum, Map<PermissionTypeEnum, Set<SESTObjectTypeEnum>>> permissionProfilesTable = new HashMap<>();
 
-  private UserServiceInterface userService;
-  private RoleServiceInterface roleService;
+  @Autowired
+  private UserService userService;
+  @Autowired
+  private RoleService roleService;
 
   public UserPermissionManagerInput() {
     this.initializePermissions();
@@ -134,10 +139,8 @@ public class UserPermissionManagerInput implements UserPermissionManagerInputInt
       }
       profileRolesLinkTable.put(p, associatedRoles);
     }
-
   }
 
-  @Override
   public void updatePermissionOnRoleChange(AssessmentProject project) throws Exception {
     String projectIdentifier = project.getIdentifier();
     List<User> users = project.getUsers();
@@ -205,11 +208,9 @@ public class UserPermissionManagerInput implements UserPermissionManagerInputInt
     return false;
   }
 
-
-  @Override
   public boolean isSestObjectTypeAllowed(String username, PermissionTypeEnum type, SESTObjectTypeEnum objectType, String projectIdentifier) {
 
-    LOG.info("isSestObjectAllowed username " + username + ", type " + type + ", objectType " + objectType + " projectIdentifier" + projectIdentifier);
+    LOG.info("isSestObjectAllowed username {}, type {}, objectType {}, projectIdentifier {}", username, type, objectType, projectIdentifier);
 
     User user = userService.getByUsername(username);
     UserProfileEnum profile = user.getProfile();
@@ -244,7 +245,6 @@ public class UserPermissionManagerInput implements UserPermissionManagerInputInt
     return false;
   }
 
-  @Override
   public Set<SESTObjectTypeEnum> retrievePermissionBasedOnProfileAndType(String username, PermissionTypeEnum type,
                                                                          String projectIdentifier) throws Exception {
 
@@ -322,7 +322,6 @@ public class UserPermissionManagerInput implements UserPermissionManagerInputInt
     return permissions;
   }
 
-  @Override
   public Set<String> retrieveProjectPermissionBasedOnRoleAndType(String username, PermissionTypeEnum type) throws Exception {
     LOG.info("retrieveProjectPermissionBasedOnRoleAndType username :" + username + ", type " + type);
     Set<String> allowedObjectsByProject = new HashSet<>();
@@ -358,22 +357,6 @@ public class UserPermissionManagerInput implements UserPermissionManagerInputInt
 
   public Map<UserProfileEnum, Map<PermissionTypeEnum, Set<SESTObjectTypeEnum>>> getPermissionProfilesTable() {
     return permissionProfilesTable;
-  }
-
-  public UserServiceInterface getUserService() {
-    return userService;
-  }
-
-  public RoleServiceInterface getRoleService() {
-    return roleService;
-  }
-
-  public void setUserService(UserServiceInterface userService) {
-    this.userService = userService;
-  }
-
-  public void setRoleService(RoleServiceInterface roleService) {
-    this.roleService = roleService;
   }
 
   public void setPermissionRolesTable(Map<UserRoleEnum, Map<PermissionTypeEnum, Set<SESTObjectTypeEnum>>> permissionRolesTable) {

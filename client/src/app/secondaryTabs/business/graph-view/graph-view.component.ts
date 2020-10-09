@@ -5,7 +5,7 @@
   //  Author: Software developed by RHEA System S.A.
   //
   //  This file is subject to the terms and conditions defined in file 'LICENSE.txt', which is part of this source code package.
-  //  No part of the package, including this file, may be copied, modified, propagated, or distributed
+  //  No part of the package, including this file, may be copied, modified, propagated, or distributedassetName
   //  except according to the terms contained in the file ‘LICENSE.txt’.
   // --------------------------------------------------------------------------------------------------------------------
   */
@@ -15,19 +15,14 @@ import {FormBuilder, Validators} from '@angular/forms';
 
 import {DataService} from '../../../dataservice';
 import * as FileSaver from 'file-saver';
-import {ProgressSpinnerModule} from 'primeng/progressspinner';
 
 import {SelectItem, ConfirmationService, Message, MessageService} from 'primeng/primeng';
 import * as $ from 'jquery';
-import {PermissionType} from '../../../permission-type.class';
-import {Permission} from '../../../permission.class';
 import {Subscription} from 'rxjs/internal/Subscription';
 import {Store} from '@ngrx/store';
 import {switchToTabView} from '../../../shared/store/actions/assets.actions';
-import {tryCatch} from 'rxjs/internal-compatibility';
 import {ServerAssetHelper} from '../server-asset.helper';
 import {LockService} from '../../../shared/service/lock-service';
-import {Model} from '@swimlane/ngx-datatable';
 import {ModelObject} from '../../../model-object';
 
 declare var window: any;
@@ -1712,44 +1707,27 @@ export class GraphViewComponent implements OnInit, OnDestroy {
 
   clickProcess(value) {
 
-    /*console.log("There are some requirements")
-      console.log(this.requirementsList)*/
-
-    // let a={"filterMap":{"IDENTIFIER":this.idsystemproject}}
-    //
-    // this.getRequirements(JSON.stringify(a),value);
-
-
     // Requirements part
     this.showRequirementsList = [];
     this.categoryList = [];
     this.totalSubcategoryList = [];
     this.categoryList.push('All');
 
-
     this.selectedFigure = value.figure;
-
     this.id = this.selectedFigure.id;
 
     for (const i in this.assets) {
-
       if (this.id === this.assets[i].identifier) {
-
         if (this.selectedFigure.cssClass === 'process') {
 
           this.description = this.assets[i].description;
           this.goal = this.assets[i].goal;
           this.name = this.assets[i].name;
           this.owner = this.assets[i].systemParticipantOwnerId;
-
           this.businessEditElementForm.controls['ownerEP'].setValue(this.assets[i].systemParticipantOwnerId);
           this.type = this.assets[i].type;
-
           this.businessEditElementForm.controls['typeEP'].setValue(this.assets[i].type);
-
           this.showSelectedRequirements = [];
-          //  this.selectedRequirementList=[];
-
           for (const m in this.assets[i].relatedRequirementsIds) {
 
             for (const n in this.requirementsList) {
@@ -1758,23 +1736,12 @@ export class GraphViewComponent implements OnInit, OnDestroy {
 
                 if (this.requirementsList[n].status != 'Canceled') {
 
-
                   this.showSelectedRequirements.push(this.requirementsList[n].id);
-                  //  this.selectedRequirementList.push(({label:this.requirementsList[n].id+" ----- "+this.requirementsList[n].category+" ----- "+this.requirementsList[n].subCategory,value:this.requirementsList[n].identifier}))
                 } else {
-
                   alert('The requirement ' + this.requirementsList[n].id + ' was canceled!');
-
-
                 }
-
-
               }
-
-
             }
-
-
           }
 
           this.propertyCheck = 'businessProcess';
@@ -1804,17 +1771,9 @@ export class GraphViewComponent implements OnInit, OnDestroy {
                 } else {
 
                   alert('The requirement ' + this.requirementsList[n].id + ' was cancelled!');
-
-
                 }
-
-
               }
-
-
             }
-
-
           }
 
           this.propertyCheck = 'businessActivity';
@@ -1828,8 +1787,6 @@ export class GraphViewComponent implements OnInit, OnDestroy {
           this.businessEditOrgForm.controls['ownerEO'].setValue(this.assets[i].systemParticipantOwnerId);
 
           this.showSelectedRequirements = [];
-          //   this.selectedRequirementList=[];
-
           for (const m in this.assets[i].relatedRequirementsIds) {
 
             for (const n in this.requirementsList) {
@@ -1839,21 +1796,11 @@ export class GraphViewComponent implements OnInit, OnDestroy {
                 if (this.requirementsList[n].status != 'Canceled') {
 
                   this.showSelectedRequirements.push(this.requirementsList[n].id);
-                  //    this.selectedRequirementList.push(({label:this.requirementsList[n].id+" ----- "+this.requirementsList[n].category+" ----- "+this.requirementsList[n].subCategory,value:this.requirementsList[n].identifier}))
                 } else {
-
                   alert('The requirement ' + this.requirementsList[n].id + ' was canceled!');
-
-
                 }
-
-
               }
-
-
             }
-
-
           }
 
           this.propertyCheck = 'businessOrg';
@@ -1866,7 +1813,6 @@ export class GraphViewComponent implements OnInit, OnDestroy {
           this.functionalConsequence = this.assets[i].functionalConsequence;
           this.technicalDescription = this.assets[i].technicalDescription;
           this.functionalType = this.assets[i].functionalType;
-          // this.assetCategory=this.assets[i].assetCategory;
 
           this.malfunctionIntegrity = false;
           this.malfunctionConfidentiality = false;
@@ -1898,14 +1844,11 @@ export class GraphViewComponent implements OnInit, OnDestroy {
               this.medium = this.malfuncOpt[x].medium;
               this.high = this.malfuncOpt[x].high;
               this.critical = this.malfuncOpt[x].critical;
-
             }
-
           }
           this.businessEditMalfunctioForm.controls['typeEF'].setValue(this.assets[i].functionalType);
 
           this.showSelectedRequirements = [];
-          //  this.selectedRequirementList=[];
 
           for (const m in this.assets[i].relatedRequirementsIds) {
 
@@ -1916,21 +1859,12 @@ export class GraphViewComponent implements OnInit, OnDestroy {
                 if (this.requirementsList[n].status != 'Canceled') {
 
                   this.showSelectedRequirements.push(this.requirementsList[n].id);
-                  //    this.selectedRequirementList.push(({label:this.requirementsList[n].id+" ----- "+this.requirementsList[n].category+" ----- "+this.requirementsList[n].subCategory,value:this.requirementsList[n].identifier}))
                 } else {
 
                   alert('The requirement ' + this.requirementsList[n].id + ' was canceled!');
-
-
                 }
-
-
               }
-
-
             }
-
-
           }
 
           this.propertyCheck = 'businessMalfun';
@@ -1948,14 +1882,11 @@ export class GraphViewComponent implements OnInit, OnDestroy {
           this.selectedCategoryCompli = '';
           this.selectedCategoryData = '';
 
-
           if (this.primaryAssetCategory.length > 0) {
 
             if (this.primaryAssetCategory[0].indexOf('Data') != -1) {
 
-
               this.selectedCategoryData = this.primaryAssetCategory[0];
-
 
             } else if (this.primaryAssetCategory[0].indexOf('Service') != -1) {
 
@@ -1964,14 +1895,11 @@ export class GraphViewComponent implements OnInit, OnDestroy {
             } else if (this.primaryAssetCategory[0].indexOf('Compliance') != -1) {
 
               this.selectedCategoryCompli = this.primaryAssetCategory[0];
-
             }
           }
 
-
           this.showMalfunction = [];
           this.selectedMalfunction = JSON.parse(JSON.stringify(this.assets[i].malfunctionsIds));
-
 
           // to change edge color when there is an asset with 0 associated malfunctions
           this.newSizeMalf = this.assets[i].malfunctionsIds.length;
@@ -2026,21 +1954,13 @@ export class GraphViewComponent implements OnInit, OnDestroy {
 
                 } else {
 
-
                   this.showMalfunction.push(this.assets[x].name);
                 }
-
               }
-
-
             }
-
-
           }
 
           this.showSelectedRequirements = [];
-          //   this.selectedRequirementList=[];
-
           for (const m in this.assets[i].relatedRequirementsIds) {
 
             for (const n in this.requirementsList) {
@@ -2054,26 +1974,15 @@ export class GraphViewComponent implements OnInit, OnDestroy {
                 } else {
 
                   alert('The requirement ' + this.requirementsList[n].id + ' was canceled!');
-
-
                 }
-
-
               }
-
-
             }
-
-
           }
 
           this.propertyCheck = 'businessAsset';
-
         }
       }
-
     }
-
   }
 
   // create the list of all the Malfunctions that could be associated to an asset
@@ -2093,88 +2002,6 @@ export class GraphViewComponent implements OnInit, OnDestroy {
     [...children].filter(c => (c.nodeType === 'Malfunction' && c.scales.length > 0)).forEach(child => {
       this.associatedMalf.push({label: child.name, value: child.identifier});
     });
-
-
-    /*const malf = [];
-
-    this.associatedMalf = [];
-
-
-    for (const i in array.data) {
-
-      if (array.data[i].sourcePort.parent.cssClass === 'activity') {
-
-        const actCon = array.data[i].sourcePort.parent.getConnections();
-
-        for (const j in actCon.data) {
-
-          if (actCon.data[j].sourcePort.parent.cssClass === 'malfunction') {
-
-
-            malf.push(actCon.data[j].sourcePort.parent);
-
-          }
-          if (actCon.data[j].targetPort.parent.cssClass === 'malfunction') {
-
-            malf.push(actCon.data[j].sourcePort.parent);
-
-          }
-
-        }
-
-      }
-      if (array.data[i].targetPort.parent.cssClass === 'activity') {
-
-        const actCon = array.data[i].targetPort.parent.getConnections();
-
-        for (const j in actCon.data) {
-
-          if (actCon.data[j].sourcePort.parent.cssClass === 'malfunction') {
-
-            if (malf.findIndex(m => m.id === actCon.data[j].sourcePort.parent.id) === -1) {
-              malf.push(actCon.data[j].sourcePort.parent);
-            }
-
-          }
-          if (actCon.data[j].targetPort.parent.cssClass === 'malfunction') {
-
-            if (malf.findIndex(m => m.id === actCon.data[j].targetPort.parent.id) === -1) {
-
-              malf.push(actCon.data[j].sourcePort.parent);
-
-            }
-
-          }
-
-        }
-
-
-      }
-
-    }
-
-    for (const z in malf) {
-
-      for (const x in this.malfuncOpt) {
-
-        if (malf[z].id === this.malfuncOpt[x].id) {
-
-          if (this.malfuncOpt[x].name != null) {
-
-
-            this.associatedMalf.push({label: this.malfuncOpt[x].name, value: this.malfuncOpt[x].id});
-
-          } else {
-
-            this.associatedMalf.push({label: this.malfuncOpt[x].id, value: this.malfuncOpt[x].id});
-
-          }
-        }
-      }
-
-    }*/
-
-
   }
 
   //This event is called everytime we add a graphical edge on the canvas
@@ -2225,17 +2052,6 @@ export class GraphViewComponent implements OnInit, OnDestroy {
           'objType': 'AssetModel'
         });
 
-        // if ((value.connection.sourcePort.parent.cssClass === "asset")) {
-        //   this.edgeBAS.push({
-        //     "id": value.connection.id,
-        //     "source": value.connection.targetPort.parent.id,
-        //     "target": value.connection.sourcePort.parent.id,
-        //     "Confidentiality": "",
-        //     "Integrity": "",
-        //     "Availability": "",
-        //     "Efficiency": ""
-        //   })
-        // }
         for (const i in this.assets) {
           if (this.assets[i].identifier == value.connection.targetPort.parent.id) {
             this.assets[i].children.push(value.connection.id);
@@ -2254,17 +2070,6 @@ export class GraphViewComponent implements OnInit, OnDestroy {
           'identifier': value.connection.id,
           'objType': 'AssetModel'
         });
-        // if ((value.connection.targetPort.parent.cssClass === "asset")) {
-        //   this.edgeBAS.push({
-        //     "id": value.connection.id,
-        //     "source": value.connection.sourcePort.parent.id,
-        //     "target": value.connection.targetPort.parent.id,
-        //     "Confidentiality": "",
-        //     "Integrity": "",
-        //     "Availability": "",
-        //     "Efficiency": ""
-        //   })
-        // }
         for (const i in this.assets) {
           if (this.assets[i].identifier == value.connection.targetPort.parent.id) {
             this.assets[i].parents.push(value.connection.id);
@@ -2293,12 +2098,9 @@ export class GraphViewComponent implements OnInit, OnDestroy {
         header: 'Warning',
         icon: 'fa fa-exclamation-triangle',
         accept: () => {
-          // this.msgs = [{severity:'info', summary:'Confirmed', detail:'You have accepted'}];
-
           this.remove();
         },
         reject: () => {
-          // this.msgs = [{severity:'info', summary:'Rejected', detail:'You have rejected'}];
         }
       });
       notAllowedConnection = false;
@@ -2310,12 +2112,9 @@ export class GraphViewComponent implements OnInit, OnDestroy {
         header: 'Warning',
         icon: 'fa fa-exclamation-triangle',
         accept: () => {
-          // this.msgs = [{severity:'info', summary:'Confirmed', detail:'You have accepted'}];
-
           this.remove();
         },
         reject: () => {
-          // this.msgs = [{severity:'info', summary:'Rejected', detail:'You have rejected'}];
         }
       });
       alreadyExistingConnection = false;
@@ -2338,11 +2137,8 @@ export class GraphViewComponent implements OnInit, OnDestroy {
       if (this.edges[i].identifier === event.connection.id) {
 
         this.edges.splice(parseInt(i), 1);
-
       }
-
     }
-
 
     for (const j in this.assets) {
 
@@ -2351,7 +2147,6 @@ export class GraphViewComponent implements OnInit, OnDestroy {
         if (this.assets[j].parents[x] === event.connection.id) {
 
           this.assets[j].parents.splice(parseInt(x), 1);
-
         }
       }
       for (const y in this.assets[j].children) {
@@ -2359,7 +2154,6 @@ export class GraphViewComponent implements OnInit, OnDestroy {
         if (this.assets[j].children[y] === event.connection.id) {
 
           this.assets[j].children.splice(parseInt(y), 1);
-
         }
       }
 
@@ -2380,14 +2174,11 @@ export class GraphViewComponent implements OnInit, OnDestroy {
 
             if (this.assets[j].malfunctionsIds[y] === event.connection.sourcePort.parent.id) {
 
-
               this.assets[j].malfunctionsIds.splice(parseInt(y), 1);
-
               const indexAsset = this.canvas.getFigures().data.findIndex(ind => ind.id === this.assets[j].identifier);
 
               const links = [];
               for (const link in this.canvas.getFigures().data[indexAsset].getConnections().data) {
-
 
                 if (this.canvas.getFigures().data[indexAsset].getConnections().data[link].id != event.connection.id) {
 
@@ -2396,15 +2187,9 @@ export class GraphViewComponent implements OnInit, OnDestroy {
               }
 
               assId.push({'asset': this.assets[j].identifier, 'malfunctions': this.assets[j].malfunctionsIds, 'links': links});
-
-
             }
-
           }
-
         }
-
-
       }
 
       this.newEditEdgeColor(assId);
@@ -2432,12 +2217,8 @@ export class GraphViewComponent implements OnInit, OnDestroy {
 
       // to remove the asset's associated Malfunctions
       this.removeMalfunctionsToAsset(event.connection.targetPort.parent.id, this.assets[indexAssetDel].malfunctionsIds);
-
       this.newEditEdgeColor(arrayForColor);
-
     }
-
-
   }
 
   removeMalfunctionsToAsset(activityId, malfToAsset) {
@@ -2451,14 +2232,9 @@ export class GraphViewComponent implements OnInit, OnDestroy {
       for (const j in this.assets) {
 
         if ((this.assets[j].nodeType === 'Malfunction') && (this.assets[j].parents.indexOf(this.assets[indexActivity].children[i]) != -1)) {
-
           malfToRemove.push(this.assets[j].identifier);
-
         }
-
       }
-
-
     }
 
     for (const k in malfToRemove) {
@@ -2466,23 +2242,16 @@ export class GraphViewComponent implements OnInit, OnDestroy {
       const ind = malfToAsset.indexOf(malfToRemove[k]);
 
       if (ind != -1) {
-
         malfToAsset.splice(ind, 1);
-
       }
     }
-
   }
 
   removeFigure(event) {
 
-    /*console.log("Remove figure");
-      console.log(event);*/
-
     for (const j in this.assets) {
 
       if (this.assets[j].identifier === event.id) {
-
         this.assets.splice(parseInt(j), 1);
       }
     }
@@ -2490,10 +2259,8 @@ export class GraphViewComponent implements OnInit, OnDestroy {
     for (const i in this.edges) {
 
       if ((this.edges[i].source === event.id) || (this.edges[i].target === event.id)) {
-
         this.edges.splice(parseInt(i), 1);
       }
-
     }
 
 
@@ -2502,10 +2269,8 @@ export class GraphViewComponent implements OnInit, OnDestroy {
       for (const x in this.malfuncOpt) {
 
         if (this.malfuncOpt[x].id === event.id) {
-
           this.malfuncOpt.splice(parseInt(x), 1);
         }
-
       }
 
       const assId = [];
@@ -2519,28 +2284,14 @@ export class GraphViewComponent implements OnInit, OnDestroy {
             if (this.assets[j].malfunctionsIds[y] === event.id) {
 
               this.assets[j].malfunctionsIds.splice(parseInt(y), 1);
-
               assId.push({'asset': this.assets[j].identifier, 'malfunctions': this.assets[j].malfunctionsIds});
-
-
             }
-
           }
-
         }
-
-
       }
-
-      // this.deleteEdgeColor(assId);
-
-
-      // this.newEditEdgeColor(assId)
-
     }
 
     this.propertyCheck = null;
-
   }
 
   //This methods converts the Draw2d canvas into a JSON representation and saves all the model (including the SEST AssetModel) in the repository
@@ -2561,10 +2312,7 @@ export class GraphViewComponent implements OnInit, OnDestroy {
         break;
       }
 
-      //if (((this.assets[i].nodeType === 'Organization') && (this.assets[i].children.length === 0)) || ((this.assets[i].nodeType === 'BusinessProcess') && ((this.assets[i].children.length === 0) || (this.assets[i].parents.length === 0))) || ((this.assets[i].nodeType === 'BusinessActivity') && ((this.assets[i].children.length === 0) && (this.assets[i].parents.length === 0))) || ((this.assets[i].nodeType === 'Malfunction') && (this.assets[i].parents.length === 0)) || ((this.assets[i].nodeType === 'Asset') && (this.assets[i].parents.length === 0))) {
-      if (
-        /*((this.assets[i].nodeType === 'Organization') && (this.assets[i].children.length === 0))
-        ||*/
+       if (
         ((this.assets[i].nodeType === 'BusinessProcess') && (this.assets[i].parents.length === 0))
         ||
         ((this.assets[i].nodeType === 'BusinessActivity') && (this.assets[i].parents.length === 0))
@@ -2579,9 +2327,7 @@ export class GraphViewComponent implements OnInit, OnDestroy {
         this.blockedMessage = true;
         this.showFailed(message);
         break;
-
       }
-
     }
 
     if (check === 0) {
@@ -2607,8 +2353,6 @@ export class GraphViewComponent implements OnInit, OnDestroy {
         'objType': 'AssetModel'
       });
 
-      // console.log(JSON.stringify(this.finalJSON, null, 2))
-
       let completeList = {};
       completeList = {
         'jsonModel': (JSON.stringify(this.finalJSON, null, 2)),
@@ -2617,7 +2361,6 @@ export class GraphViewComponent implements OnInit, OnDestroy {
 
       this.sendAsset(JSON.stringify(completeList, null, 2));
     }
-
   }
 
   loadJSON() {
@@ -2663,22 +2406,13 @@ export class GraphViewComponent implements OnInit, OnDestroy {
 
         figures[i].on('click', function (emitter, event) {
 
-          // console.log("click load json")
           window.angularComponentRef.componentFn(event);
 
         });
-        /*figures[i].on("dblclick", function(emitter, event){
-
-            window.angularComponentRef.componentDBClick(emitter);
-
-
-          });*/
         figures[i].on('removed', function (emitter, event) {
 
           window.angularComponentRef.removeComponent(emitter);
-
         });
-
 
       } else if (figures[i].cssClass === 'activity') {
 
@@ -2700,7 +2434,6 @@ export class GraphViewComponent implements OnInit, OnDestroy {
         figures[i].inputPorts.data[0].on('connect', function (emitterPort, connection) {
 
           window.angularComponentRef.connectionPolicy(connection);
-
         });
 
         figures[i].outputPorts.data[0].on('disconnect', function (emitterPort, connection) {
@@ -2710,18 +2443,11 @@ export class GraphViewComponent implements OnInit, OnDestroy {
         figures[i].on('click', function (emitter, event) {
 
           window.angularComponentRef.componentFn(event);
-
         });
 
-        /*figures[i].on("dblclick", function(emitter, event){
-
-            window.angularComponentRef.componentDBClick(emitter);
-
-          });*/
         figures[i].on('removed', function (emitter, event) {
 
           window.angularComponentRef.removeComponent(emitter);
-
         });
 
       } else if (figures[i].cssClass === 'organization') {
@@ -2744,25 +2470,16 @@ export class GraphViewComponent implements OnInit, OnDestroy {
         figures[i].inputPorts.data[0].on('connect', function (emitterPort, connection) {
 
           window.angularComponentRef.connectionPolicy(connection);
-
         });
-
 
         figures[i].on('click', function (emitter, event) {
 
           window.angularComponentRef.componentFn(event);
-
         });
 
-        /*figures[i].on("dblclick", function(emitter, event){
-
-            window.angularComponentRef.componentDBClick(emitter);
-
-          });*/
         figures[i].on('removed', function (emitter, event) {
 
           window.angularComponentRef.removeComponent(emitter);
-
         });
 
       } else if (figures[i].cssClass === 'asset') {
@@ -2789,18 +2506,11 @@ export class GraphViewComponent implements OnInit, OnDestroy {
         figures[i].on('click', function (emitter, event) {
 
           window.angularComponentRef.componentFn(event);
-
         });
 
-        /*figures[i].on("dblclick", function(emitter, event){
-
-            window.angularComponentRef.componentDBClick(emitter);
-
-          });*/
         figures[i].on('removed', function (emitter, event) {
 
           window.angularComponentRef.removeComponent(emitter);
-
         });
 
       } else if (figures[i].cssClass === 'malfunction') {
@@ -2827,14 +2537,7 @@ export class GraphViewComponent implements OnInit, OnDestroy {
         figures[i].on('click', function (emitter, event) {
 
           window.angularComponentRef.componentFn(event);
-
         });
-
-        /*figures[i].on("dblclick", function(emitter, event){
-
-            window.angularComponentRef.componentDBClick(emitter);
-
-          });*/
 
         figures[i].on('removed', function (emitter, event) {
 
@@ -2847,9 +2550,7 @@ export class GraphViewComponent implements OnInit, OnDestroy {
         figures[i].children.data[1].figure.attr({
           'color': figures[i].getBackgroundColor().hashString
         });
-
       }
-
     }
 
     this.associateData();
@@ -2890,7 +2591,6 @@ export class GraphViewComponent implements OnInit, OnDestroy {
             critical = this.assets[i].scales[k].description;
 
           }
-
         }
 
         this.malfuncOpt.push({
@@ -2904,7 +2604,6 @@ export class GraphViewComponent implements OnInit, OnDestroy {
         });
 
         low = medium = high = critical = null;
-
       }
 
       for (const j in figures) {
@@ -2915,13 +2614,9 @@ export class GraphViewComponent implements OnInit, OnDestroy {
 
             figures[j].children.data[1].figure.setText(this.modifyString(this.assets[i].name));
           }
-
         }
-
       }
-
     }
-
   }
 
   changeEdgeMode() {
@@ -2953,13 +2648,7 @@ export class GraphViewComponent implements OnInit, OnDestroy {
     if (this.selectedFigure.cssClass === 'asset') {
 
       this.displayEditAsset = true;
-
-      /*console.log(this.selectedCategoryData)
-        console.log(this.selectedCategory)
-        console.log(this.selectedCategoryCompli)*/
-
     }
-
   }
 
   editProcess() {
@@ -2981,7 +2670,6 @@ export class GraphViewComponent implements OnInit, OnDestroy {
         this.owner = this.businessEditElementForm.value.ownerEP;
 
       }
-
     }
     this.displayEditProcess = false;
     if (this.businessEditElementForm.value.nameEP != null) {
@@ -3210,8 +2898,6 @@ export class GraphViewComponent implements OnInit, OnDestroy {
 
               }
 
-              //  }
-
               const index = this.canvas.getFigures().data.findIndex((n) => n.id === this.assets[k].identifier);
 
               const indexColor = borderImpact.findIndex((x) => x.identifier === this.edges[j].target);
@@ -3259,35 +2945,26 @@ export class GraphViewComponent implements OnInit, OnDestroy {
 
   editAsset() {
 
-    // let tempIndex=-1;
-
     this.primaryAssetCategory = [];
     if (this.selectedCategoryData != '') {
 
-      // this.primaryAssetCategory.push({"name":this.selectedCategoryData[i],"category":"Data"})
       this.primaryAssetCategory.push(this.selectedCategoryData);
       this.selectedCategoryData = '';
     }
     if (this.selectedCategoryService != '') {
 
-      // this.primaryAssetCategory.push({"name":this.selectedCategoryService[j],"category":"Service"})
       this.primaryAssetCategory.push(this.selectedCategoryService);
-
       this.selectedCategoryService = '';
     }
     if (this.selectedCategoryCompli != '') {
 
-      // this.primaryAssetCategory.push({"name":this.selectedCategoryCompli[x],"category":"Regolations"})
       this.primaryAssetCategory.push(this.selectedCategoryCompli);
       this.selectedCategoryCompli = '';
-
     }
 
     this.name = this.businessEditAssetForm.value.assetName;
     this.owner = this.businessEditAssetForm.value.ownAsset;
-    // this.secondaryAssetCategory=this.businessEditAssetForm.value.secAsset;
     this.secondaryAssetCategory = this.selectedSecondary;
-
 
     if (this.businessEditAssetForm.value.assetName != null) {
       this.selectedFigure.children.data[1].figure.setText(this.modifyString(this.businessEditAssetForm.value.assetName));
@@ -3295,17 +2972,11 @@ export class GraphViewComponent implements OnInit, OnDestroy {
 
     this.showMalfunction = [];
 
-
     for (const y in this.assets) {
 
       if (this.assets[y].identifier === this.id) {
 
-        // tempIndex=parseInt(y);
-
-
-        // this.assets[y].category=this.businessEditAssetForm.value.secAsset;
         this.assets[y].category = this.selectedSecondary;
-
 
         if (this.businessEditAssetForm.value.desAsset != undefined) {
           this.assets[y].description = this.businessEditAssetForm.value.desAsset;
@@ -3318,32 +2989,18 @@ export class GraphViewComponent implements OnInit, OnDestroy {
         if (this.businessEditAssetForm.value.ownAsset != undefined) {
           this.assets[y].systemParticipantOwnerId = this.businessEditAssetForm.value.ownAsset;
         }
-        // this.sizeMalf= this.assets[y].malfunctionsIds.length;
-
 
         this.assets[y].malfunctionsIds = [];
-        // for(let w in this.associatedMalf){
-        //   this.assets[y].malfunctionsIds.push(this.associatedMalf[w].value)
-        //
-        // }
-
-
         this.assets[y].malfunctionsIds = JSON.parse(JSON.stringify(this.selectedMalfunction));
 
-
         this.sizeMalf = this.newSizeMalf;
-
         this.newSizeMalf = this.assets[y].malfunctionsIds.length;
-
 
         this.assets[y].primaryCategories = [];
         for (const k in this.primaryAssetCategory) {
 
-          // this.assets[y].primaryCategories.push(this.primaryAssetCategory[k].name)
           this.assets[y].primaryCategories.push(this.primaryAssetCategory[k]);
-
         }
-
       }
 
       for (const g in this.selectedMalfunction) {
@@ -3353,19 +3010,12 @@ export class GraphViewComponent implements OnInit, OnDestroy {
           if ((this.assets[y].name === null) || this.assets[y].name === ' ') {
 
             this.showMalfunction.push(this.selectedMalfunction[g], this.selectedMalfunction[g]);
-
           } else {
 
             this.showMalfunction.push(this.assets[y].name, this.selectedMalfunction[g]);
-
           }
-
         }
-
-        // for color of the edge
-
       }
-
     }
     this.map = [];
 
@@ -3389,14 +3039,14 @@ export class GraphViewComponent implements OnInit, OnDestroy {
     this.propertyCheck = null;
     this.displayEditAsset = false;
 
-    this.businessEditAssetForm.reset();
+   // this.businessEditAssetForm.reset();
     // to show selected Malfunction also when an user clicks on "edit asset" button without to deselect the asset before
     // this.selectedMalfunction=this.assets[tempIndex].malfunctionsIds;
 
   }
 
   closeEditAssetForm() {
-    this.businessEditAssetForm.reset();
+  //  this.businessEditAssetForm.reset();
     this.duplicateName = false;
     this.displayEditAsset = false;
   }
@@ -4657,7 +4307,7 @@ export class GraphViewComponent implements OnInit, OnDestroy {
     console.log(a);
 
     this.subscriptions.push(
-      this.dataService.loadAsset(JSON.stringify(a)).subscribe((response: ModelObject) => {
+      this.dataService.loadAsset(a).subscribe((response: ModelObject) => {
         console.log(response);
         this.serverAsset = JSON.parse(response.jsonModel);
 
@@ -5229,6 +4879,7 @@ export class GraphViewComponent implements OnInit, OnDestroy {
 
     console.log('Send Asset');
     this.blocked = true;
+
     this.subscriptions.push(
       this.dataService.updateAsset(s).subscribe(response => {
         this.showSuccess();

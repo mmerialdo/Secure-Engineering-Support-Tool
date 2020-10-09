@@ -21,9 +21,11 @@ import org.crmf.persistency.domain.project.AssProject;
 import org.crmf.persistency.domain.user.Role;
 import org.crmf.persistency.domain.user.Sestuser;
 import org.crmf.persistency.mapper.project.AssprojectMapper;
-import org.crmf.persistency.session.PersistencySessionFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -32,11 +34,14 @@ import java.util.Map;
 import java.util.Set;
 
 //This class manages the database interactions related to Roles
+@Service
+@Qualifier("default")
 public class RoleService implements RoleServiceInterface {
 
   private static final Logger LOG = LoggerFactory.getLogger(RoleService.class.getName());
 
-  PersistencySessionFactory sessionFactory;
+  @Autowired
+  private SqlSession sqlSession;
 
   /*
    * (non-Javadoc)
@@ -46,9 +51,7 @@ public class RoleService implements RoleServiceInterface {
    * persistency.domain.user.Role)
    */
   @Override
-  public Integer insert(UserRole role, String userIdentifier, String projectIdentifier) throws Exception {
-
-    SqlSession sqlSession = sessionFactory.getSession();
+  public Integer insert(UserRole role, String userIdentifier, String projectIdentifier) {
 
     Role roleDb = new Role();
     try {
@@ -64,20 +67,15 @@ public class RoleService implements RoleServiceInterface {
       roleDb.setProjectId(projectId);
       roleMapper.insert(roleDb);
 
-      sqlSession.commit();
     } catch (Exception ex) {
       LOG.error(ex.getMessage());
-      sqlSession.rollback();
-    } finally {
-      sqlSession.close();
     }
     return roleDb.getId();
   }
 
   @Override
-  public void insertUserForProject(User user, String projectIdentifier) throws Exception {
+  public void insertUserForProject(User user, String projectIdentifier) {
 
-    SqlSession sqlSession = sessionFactory.getSession();
     try {
       RoleMapper roleMapper = sqlSession.getMapper(RoleMapper.class);
       UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
@@ -98,20 +96,14 @@ public class RoleService implements RoleServiceInterface {
 
         roleMapper.insert(role);
       }
-
-      sqlSession.commit();
     } catch (Exception ex) {
       LOG.error(ex.getMessage());
-      sqlSession.rollback();
-    } finally {
-      sqlSession.close();
     }
   }
 
   @Override
   public void deleteUserFromProject(String userIdentifier, String projectIdentifier, Set<SESTObject> associatedObjects) {
 
-    SqlSession sqlSession = sessionFactory.getSession();
     try {
       RoleMapper roleMapper = sqlSession.getMapper(RoleMapper.class);
       UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
@@ -121,19 +113,14 @@ public class RoleService implements RoleServiceInterface {
       Integer projectId = projectMapper.getIdByIdentifier(projectIdentifier);
       LOG.info("delete role " + userId + ", project " + projectId);
       roleMapper.delete(userId, projectId);
-      sqlSession.commit();
     } catch (Exception ex) {
       LOG.error(ex.getMessage(), ex);
-      sqlSession.rollback();
-    } finally {
-      sqlSession.close();
     }
   }
 
   @Override
-  public List<UserRole> getByUserIdentifier(String userIdentifier) throws Exception {
+  public List<UserRole> getByUserIdentifier(String userIdentifier) {
     List<UserRole> result = new ArrayList<UserRole>();
-    SqlSession sqlSession = sessionFactory.getSession();
 
     try {
       RoleMapper roleMapper = sqlSession.getMapper(RoleMapper.class);
@@ -157,16 +144,12 @@ public class RoleService implements RoleServiceInterface {
       return result;
     } catch (Exception ex) {
       LOG.error(ex.getMessage(), ex);
-    } finally {
-      sqlSession.close();
     }
     return null;
   }
 
   @Override
-  public List<User> getByProjectIdentifier(String identifier) throws Exception {
-
-    SqlSession sqlSession = sessionFactory.getSession();
+  public List<User> getByProjectIdentifier(String identifier) {
 
     try {
       RoleMapper roleMapper = sqlSession.getMapper(RoleMapper.class);
@@ -194,8 +177,6 @@ public class RoleService implements RoleServiceInterface {
 
     } catch (Exception ex) {
       LOG.error(ex.getMessage());
-    } finally {
-      sqlSession.close();
     }
     return null;
   }
@@ -203,7 +184,6 @@ public class RoleService implements RoleServiceInterface {
   @Override
   public List<UserRole> getRolesByUserAndProjectId(String userId, String projectId) {
     List<UserRole> result = new ArrayList<UserRole>();
-    SqlSession sqlSession = sessionFactory.getSession();
 
     try {
       RoleMapper roleMapper = sqlSession.getMapper(RoleMapper.class);
@@ -220,17 +200,7 @@ public class RoleService implements RoleServiceInterface {
       return result;
     } catch (Exception ex) {
       LOG.error(ex.getMessage());
-    } finally {
-      sqlSession.close();
     }
     return null;
-  }
-
-  public PersistencySessionFactory getSessionFactory() {
-    return sessionFactory;
-  }
-
-  public void setSessionFactory(PersistencySessionFactory sessionFactory) {
-    this.sessionFactory = sessionFactory;
   }
 }
