@@ -877,7 +877,6 @@ export class ThreatsComponent implements OnInit, OnDestroy {
 
   vulSelect(event) {
 
-    // console.log(event)
     const index = -1;
 
     if (event.node.data[0].nodeType === 'Threat') {
@@ -1570,7 +1569,6 @@ export class ThreatsComponent implements OnInit, OnDestroy {
 
   // save in modifiedVulnerabilitiesList in order to not lose the last modification
   modifiedBeforeToSave(data) {
-    // console.log("modifiedBeforeToSave");
 
     for (const old in this.modifiedVulnerabilitiesList) {
 

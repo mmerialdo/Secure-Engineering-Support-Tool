@@ -21,6 +21,7 @@ import {select, Store} from '@ngrx/store';
 import {fetchAsset, selectRefresh} from '../../../../../shared/store/reducers/assets.reducer';
 import {take} from 'rxjs/operators';
 import {MessageService} from 'primeng/api';
+import {Subscription} from "rxjs/internal/Subscription";
 
 @Component({
   selector: 'app-assets-tab-view',
@@ -42,44 +43,49 @@ export class AssetsTabViewComponent extends AbstractTabViewComponent implements 
   public assetToEdit;
   selected: any[];
 
+  private subscriptions: Subscription[] = [];
+
   constructor(public store: Store<any>, public messageService: MessageService) {
     super('assets', 'Assets', store, messageService);
   }
 
   ngOnInit() {
-    this.store.pipe(select(selectRefresh)).subscribe(refresh => {
-      this.resetTable();
-      const assetsMap = ServerAssetHelper.retrieveAssetsMap(this.serverAsset);
-      const allActivities = ServerAssetHelper.getAllBusinessActivities(this.serverAsset);
-      const assets: any[] = [];
-      for (const key of assetsMap.keys()) {
-        assets.push(key);
-      }
 
-      this.setColumns(allActivities);
-      this.setRows(assets, assetsMap);
-    });
-    this.store.pipe(select(fetchAsset)).subscribe(newAsset => {
-      if (newAsset) {
-        const predict = r => r.id === newAsset.identifier;
-        if (this.dataRows.some(predict)) {
-          const model = this.dataRows.find(predict);
-          this.model = model;
-          this.model.assets = newAsset.name;
-          this.model.id = newAsset.identifier;
-          this.dataRows[this.dataRows.indexOf(model)] = this.model;
-          this.store.dispatch(storeServerAsset(this.serverAsset));
-          this.store.dispatch(refreshTablesStart());
-        } else {
-          this.newAsset = newAsset;
-          this.model.assets = this.newAsset.name;
-          this.model.id = this.newAsset.identifier;
-          this.save();
+    this.subscriptions.push(
+      this.store.pipe(select(selectRefresh)).subscribe(refresh => {
+        this.resetTable();
+        const assetsMap = ServerAssetHelper.retrieveAssetsMap(this.serverAsset);
+        const allActivities = ServerAssetHelper.getAllBusinessActivities(this.serverAsset);
+        const assets: any[] = [];
+        for (const key of assetsMap.keys()) {
+          assets.push(key);
         }
-        this.validate(this.serverAsset);
-      }
-    });
 
+        this.setColumns(allActivities);
+        this.setRows(assets, assetsMap);
+      }));
+
+    this.subscriptions.push(
+      this.store.pipe(select(fetchAsset)).subscribe(newAsset => {
+        if (newAsset) {
+          const predict = r => r.id === newAsset.identifier;
+          if (this.dataRows.some(predict)) {
+            const model = this.dataRows.find(predict);
+            this.model = model;
+            this.model.assets = newAsset.name;
+            this.model.id = newAsset.identifier;
+            this.dataRows[this.dataRows.indexOf(model)] = this.model;
+            this.store.dispatch(storeServerAsset(this.serverAsset));
+            this.store.dispatch(refreshTablesStart());
+          } else {
+            this.newAsset = newAsset;
+            this.model.assets = this.newAsset.name;
+            this.model.id = this.newAsset.identifier;
+            this.save();
+          }
+          this.validate(this.serverAsset);
+        }
+      }));
   }
 
   ngOnChanges(changes: SimpleChanges) {
@@ -290,6 +296,7 @@ export class AssetsTabViewComponent extends AbstractTabViewComponent implements 
 
   ngOnDestroy(): void {
     this.clear();
+    this.subscriptions.forEach(s => s.unsubscribe());
   }
 
   assetColor(value): string {

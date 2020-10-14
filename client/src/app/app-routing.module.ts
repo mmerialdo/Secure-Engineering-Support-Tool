@@ -55,10 +55,7 @@ const routes: Routes = [
       { path: 'threats', component: ThreatsComponent },
       { path: 'scenario', component: ScenarioComponent },
       { path: 'treatment', component: TreatmentComponent }
-
-
     ]
-
   },
   {
     path: 'tool', component: TabsComponent,

@@ -10,15 +10,14 @@
   // --------------------------------------------------------------------------------------------------------------------
   */
 
-import {Component, Input, OnChanges, OnDestroy, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnDestroy, OnInit, Output} from '@angular/core';
 import {DataService} from '../../../dataservice';
-import {select, Store} from '@ngrx/store';
+import {select, State, Store} from '@ngrx/store';
 import {
   clearView,
-  storeServerAsset,
-  switchToGraphView
+  storeServerAsset
 } from '../../../shared/store/actions/assets.actions';
-import {fetchServerAsset, selectValid} from '../../../shared/store/reducers/assets.reducer';
+import {fetchServerAsset, getAssetsState, selectValid} from '../../../shared/store/reducers/assets.reducer';
 import {Observable} from 'rxjs';
 import {Subscription} from 'rxjs/internal/Subscription';
 import {Message} from 'primeng/primeng';
@@ -34,6 +33,7 @@ import {ModelObject} from '../../../model-object';
 export class TabularizationViewComponent implements OnInit, OnDestroy {
 
   @Input() enableSaveButton: boolean;
+  @Output() gotoTabView: EventEmitter<string> = new EventEmitter<string>();
 
   serverAsset: any;
   nodes: any;
@@ -54,6 +54,7 @@ export class TabularizationViewComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
+
     this.isValid$ = this.store.pipe(select(selectValid));
     this.blocked = true;
     const a = {
@@ -66,7 +67,6 @@ export class TabularizationViewComponent implements OnInit, OnDestroy {
     this.subscriptions.push(
       this.dataService.loadAsset(JSON.stringify(a)).subscribe((response: ModelObject) => {
 
-        debugger;
         this.serverAsset = JSON.parse(response.jsonModel);
         this.loaded = true;
         this.store.dispatch(storeServerAsset(this.serverAsset));
@@ -80,9 +80,8 @@ export class TabularizationViewComponent implements OnInit, OnDestroy {
       }));
   }
 
-
   changeView(): void {
-    this.store.dispatch(switchToGraphView());
+    this.gotoTabView.emit('false');
   }
 
   saveAssetModel(): void {
@@ -139,9 +138,7 @@ export class TabularizationViewComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.lockService.removeLock(this.serverAsset.identifier);
-
-    this.subscriptions.forEach(s => s.unsubscribe());
-
     this.store.dispatch(clearView());
+    this.subscriptions.forEach(s => s.unsubscribe());
   }
 }

@@ -133,34 +133,4 @@ export class TabsComponent implements OnInit {
       this.mainTabsItems[tabIndex].disabled = false;
     }
   }
-
-  // function to load component for each tab
-
-  // handleChangeProject(e){
-  //
-  //
-  //   //get the index of the selected tab
-  //   let index = e.index;
-  //   let link;
-  //   switch (index) {
-  //
-  //     case 0:
-  //
-  //       break;
-  //
-  //     case 1:
-  //       link = ['/tool/projects'];
-  //       break;
-  //     case 2:
-  //       link = ['/tool/users'];
-  //       break;
-  //     case 3:
-  //       link = ['/tool/scenario'];
-  //       break;
-  //   }
-  //   this.router.navigate(link);
-  // }
-
 }
-
-// general user

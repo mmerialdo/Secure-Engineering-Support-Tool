@@ -46,12 +46,14 @@ export class MalfunctionsTabViewComponent extends AbstractTabViewComponent imple
   modelKeys: string[];
   addedMalfunctions: Map<string, any> = new Map<string, any>();
 
+  private subscriptions: Subscription[] = [];
 
   constructor(public store: Store<any>, public messageService: MessageService) {
     super('malfunctions', 'Malfunction', store, messageService);
   }
 
   ngOnInit() {
+    this.subscriptions.push(
     this.store.pipe(select(selectRefresh)).subscribe(refresh => {
       this.resetTable();
       const malfunctionsMap = ServerAssetHelper.retrieveMalfunctionsMap(this.serverAsset);
@@ -64,9 +66,9 @@ export class MalfunctionsTabViewComponent extends AbstractTabViewComponent imple
       this.setRows(malfunctionsForOrganization, malfunctionsMap);
 
       this.store.dispatch(refreshTablesStop());
-    });
+    }));
 
-    //this.modelKeys = Object.keys(this.model);
+    this.subscriptions.push(
     this.store.pipe(select(fetchMalfunction)).subscribe(newMal => {
       if (newMal) {
         const predict = r => r.id === newMal.identifier;
@@ -86,7 +88,7 @@ export class MalfunctionsTabViewComponent extends AbstractTabViewComponent imple
         }
         this.validate(this.serverAsset);
       }
-    });
+    }));
   }
 
   ngOnChanges(changes: SimpleChanges) {
@@ -246,7 +248,7 @@ export class MalfunctionsTabViewComponent extends AbstractTabViewComponent imple
 
   ngOnDestroy(): void {
     this.clear();
-    //this.sub.unsubscribe();
+    this.subscriptions.forEach(s => s.unsubscribe());
   }
 
   deleteMalfunctions(): void {

@@ -10,7 +10,7 @@
   // --------------------------------------------------------------------------------------------------------------------
   */
 
-import {createReducer, createSelector, on} from '@ngrx/store';
+import {ActionReducer, combineReducers, createFeatureSelector, createReducer, on} from '@ngrx/store';
 import {
   editActivity,
   editActivityClose,
@@ -42,14 +42,11 @@ import {
   storeOrganization,
   storeProcess,
   storeServerAsset,
-  switchToGraphView,
-  switchToTabView,
   validateFalse,
   validateTrue
 } from '../actions/assets.actions';
 
 export interface AssetsState {
-  tabView: boolean;
   serverAsset: any;
   malfunction: any;
   asset: any;
@@ -71,7 +68,6 @@ export interface AssetsState {
 }
 
 export const initialState: AssetsState = {
-  tabView: true,
   serverAsset: {},
   malfunction: null,
   activity: null,
@@ -95,10 +91,27 @@ export const initialState: AssetsState = {
 const assetsReducerConst = createReducer(
   initialState,
   on(clearView, (state) => {
-    const tabViewValue = state.tabView;
-    state = initialState;
-    state.tabView = tabViewValue;
-    return state;
+    return {
+      ...state,
+      serverAsset: {},
+      malfunction: null,
+      activity: null,
+      asset: null,
+      process: null,
+      organization: null,
+      malfunctionToEdit: null,
+      assetToEdit: null,
+      activityToEdit: null,
+      processToEdit: null,
+      organizationToEdit: null,
+      editMalfunction: false,
+      editActivity: false,
+      editAsset: false,
+      editProcess: false,
+      editOrganization: false,
+      valid: true,
+      refresh: false
+    };
   }),
   on(refreshTablesStart, (state) => {
     return {
@@ -122,18 +135,6 @@ const assetsReducerConst = createReducer(
     return {
       ...state,
       valid: true
-    };
-  }),
-  on(switchToGraphView, (state) => {
-    return {
-      ...state,
-      tabView: false
-    };
-  }),
-  on(switchToTabView, (state) => {
-    return {
-      ...state,
-      tabView: true
     };
   }),
   on(newProcessOpen, (state) => {
@@ -249,7 +250,6 @@ const assetsReducerConst = createReducer(
     };
   }),
   on(storeServerAsset, (state, props) => {
-    console.log(state);
     return {
       ...state,
       serverAsset: props
@@ -312,13 +312,11 @@ const assetsReducerConst = createReducer(
 );
 
 export function assetsReducer(state: AssetsState | undefined, props: any) {
-  console.log('new reducer!!!');
   return assetsReducerConst(state, props);
 }
+export const getAssetsState = createFeatureSelector('assets');
 
 // selectors
-// export const getState = (state: AssetsState) => state.assets;
-export const selectView = (state: any): boolean => state.assets.tabView;
 export const selectValid = (state: any): boolean => state.assets.valid;
 export const selectRefresh = (state: any): boolean => state.assets.refresh;
 export const selectEditMalfunction = (state: any): boolean => state.assets.editMalfunction;

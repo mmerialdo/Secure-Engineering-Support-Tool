@@ -106,6 +106,7 @@ import {LoginTrackerService} from './shared/service/login-tracker-service';
 import {LockService} from './shared/service/lock-service';
 import {UserPasswordComponent} from './tabs/users-tab/user-password/user-password.component';
 import {HashLocationStrategy, LocationStrategy} from '@angular/common';
+import * as fromAssets from "./shared/store/reducers/assets.reducer";
 
 @NgModule({
   declarations: [
@@ -197,6 +198,7 @@ import {HashLocationStrategy, LocationStrategy} from '@angular/common';
     ToastModule,
     ToolbarModule,
     StoreModule.forRoot(reducers),
+    StoreModule.forFeature('assets', fromAssets.assetsReducer),
     StoreDevtoolsModule.instrument({maxAge: 25})
   ],
   providers: [ValidationService,

@@ -22,6 +22,7 @@ import {select, Store} from '@ngrx/store';
 import {fetchActivity, selectRefresh} from '../../../../../shared/store/reducers/assets.reducer';
 import {take} from 'rxjs/operators';
 import {MessageService} from 'primeng/api';
+import {Subscription} from "rxjs/internal/Subscription";
 
 @Component({
   selector: 'app-activities-tab-view',
@@ -40,44 +41,47 @@ export class ActivitiesTabViewComponent extends AbstractTabViewComponent impleme
   selected: any[];
   public newActivity: any;
 
+  private subscriptions: Subscription[] = [];
 
   constructor(public store: Store<any>, public messageService: MessageService) {
     super('activities', 'Activities', store, messageService);
   }
 
   ngOnInit() {
-    this.store.pipe(select(selectRefresh)).subscribe(() => {
 
-      this.resetTable();
-      const activitiesMap = ServerAssetHelper.retrieveActivitiesMap(this.serverAsset);
-      const allBusinessProcesses = ServerAssetHelper.getAllBusinessProcesses(this.serverAsset);
-      const activities: any[] = [];
-      for (const key of activitiesMap.keys()) {
-        activities.push(key);
-      }
-      this.setColumns(allBusinessProcesses);
-      this.setRows(activities, activitiesMap);
-    });
-    this.store.pipe(select(fetchActivity)).subscribe(newActivity => {
-      if (newActivity) {
-        const predict = r => r.id === newActivity.identifier;
-        if (this.dataRows.some(predict)) {
-          const model = this.dataRows.find(predict);
-          this.model = model;
-          this.model.activities = newActivity.name;
-          this.model.id = newActivity.identifier;
-          this.dataRows[this.dataRows.indexOf(model)] = this.model;
-          this.store.dispatch(storeServerAsset(this.serverAsset));
-          this.store.dispatch(refreshTablesStart());
-        } else {
-          this.newActivity = newActivity;
-          this.model.activities = this.newActivity.name;
-          this.model.id = this.newActivity.identifier;
-          this.save();
+    this.subscriptions.push(
+      this.store.pipe(select(selectRefresh)).subscribe(() => {
+        this.resetTable();
+        const activitiesMap = ServerAssetHelper.retrieveActivitiesMap(this.serverAsset);
+        const allBusinessProcesses = ServerAssetHelper.getAllBusinessProcesses(this.serverAsset);
+        const activities: any[] = [];
+        for (const key of activitiesMap.keys()) {
+          activities.push(key);
         }
-        this.validate(this.serverAsset);
-      }
-    });
+        this.setColumns(allBusinessProcesses);
+        this.setRows(activities, activitiesMap);
+      }));
+    this.subscriptions.push(
+      this.store.pipe(select(fetchActivity)).subscribe(newActivity => {
+        if (newActivity) {
+          const predict = r => r.id === newActivity.identifier;
+          if (this.dataRows.some(predict)) {
+            const model = this.dataRows.find(predict);
+            this.model = model;
+            this.model.activities = newActivity.name;
+            this.model.id = newActivity.identifier;
+            this.dataRows[this.dataRows.indexOf(model)] = this.model;
+            this.store.dispatch(storeServerAsset(this.serverAsset));
+            this.store.dispatch(refreshTablesStart());
+          } else {
+            this.newActivity = newActivity;
+            this.model.activities = this.newActivity.name;
+            this.model.id = this.newActivity.identifier;
+            this.save();
+          }
+          this.validate(this.serverAsset);
+        }
+      }));
   }
 
   ngOnChanges(changes: SimpleChanges) {
@@ -249,6 +253,7 @@ export class ActivitiesTabViewComponent extends AbstractTabViewComponent impleme
 
   ngOnDestroy(): void {
     this.clear();
+    this.subscriptions.forEach(s => s.unsubscribe());
   }
 
   //When we remove an Activity, we need to check that its Assets are not losing Impact vaues (since the Activity may be linked to some Malfunction

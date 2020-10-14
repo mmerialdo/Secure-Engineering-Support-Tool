@@ -23,6 +23,7 @@ import {
 import {fetchOrganization, selectRefresh} from '../../../../../shared/store/reducers/assets.reducer';
 import {take} from 'rxjs/operators';
 import {MessageService} from 'primeng/api';
+import {Subscription} from "rxjs/internal/Subscription";
 
 @Component({
   selector: 'app-organizations-tab-view',
@@ -36,6 +37,7 @@ export class OrganizationsTabViewComponent extends AbstractTabViewComponent impl
   @Input() tabsStatus: boolean[];
   selected: any[];
   public newOrganization: any;
+  private subscriptions: Subscription[] = [];
 
   rowsNumber = '500px';
 
@@ -44,33 +46,35 @@ export class OrganizationsTabViewComponent extends AbstractTabViewComponent impl
   }
 
   ngOnInit() {
-    this.store.pipe(select(selectRefresh)).subscribe(() => {
-      this.resetTable();
-      const organizations = ServerAssetHelper.retrieveOrganizations(this.serverAsset);
+    this.subscriptions.push(
+      this.store.pipe(select(selectRefresh)).subscribe(() => {
+        this.resetTable();
+        const organizations = ServerAssetHelper.retrieveOrganizations(this.serverAsset);
 
-      this.setSimpleRows(organizations);
-    });
-    this.store.pipe(select(fetchOrganization)).subscribe(newOrganization => {
-      if (newOrganization) {
-        const predict = r => r.id === newOrganization.identifier;
-        if (this.dataRows.some(predict)) {
-          const model = this.dataRows.find(predict);
-          this.model = model;
-          this.model.organizations = newOrganization.name;
-          this.model.id = newOrganization.identifier;
-          this.dataRows[this.dataRows.indexOf(model)] = this.model;
-          this.store.dispatch(storeServerAsset(this.serverAsset));
-          this.store.dispatch(refreshTablesStart());
-        } else {
+        this.setSimpleRows(organizations);
+      }));
+    this.subscriptions.push(
+      this.store.pipe(select(fetchOrganization)).subscribe(newOrganization => {
+        if (newOrganization) {
+          const predict = r => r.id === newOrganization.identifier;
+          if (this.dataRows.some(predict)) {
+            const model = this.dataRows.find(predict);
+            this.model = model;
+            this.model.organizations = newOrganization.name;
+            this.model.id = newOrganization.identifier;
+            this.dataRows[this.dataRows.indexOf(model)] = this.model;
+            this.store.dispatch(storeServerAsset(this.serverAsset));
+            this.store.dispatch(refreshTablesStart());
+          } else {
 
-          this.newOrganization = newOrganization;
-          this.model.organizations = this.newOrganization.name;
-          this.model.id = this.newOrganization.identifier;
-          this.save();
+            this.newOrganization = newOrganization;
+            this.model.organizations = this.newOrganization.name;
+            this.model.id = this.newOrganization.identifier;
+            this.save();
+          }
+          this.validate(this.serverAsset);
         }
-        this.validate(this.serverAsset);
-      }
-    });
+      }));
   }
 
 
@@ -188,5 +192,6 @@ export class OrganizationsTabViewComponent extends AbstractTabViewComponent impl
 
   ngOnDestroy(): void {
     this.clear();
+    this.subscriptions.forEach(s => s.unsubscribe());
   }
 }

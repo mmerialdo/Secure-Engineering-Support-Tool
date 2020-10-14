@@ -10,7 +10,7 @@
   // --------------------------------------------------------------------------------------------------------------------
   */
 
-import {Component, Input, NgZone, OnDestroy, OnInit, ViewEncapsulation} from '@angular/core';
+import {Component, EventEmitter, Input, NgZone, OnDestroy, OnInit, Output, ViewEncapsulation} from '@angular/core';
 import {FormBuilder, Validators} from '@angular/forms';
 
 import {DataService} from '../../../dataservice';
@@ -19,8 +19,6 @@ import * as FileSaver from 'file-saver';
 import {SelectItem, ConfirmationService, Message, MessageService} from 'primeng/primeng';
 import * as $ from 'jquery';
 import {Subscription} from 'rxjs/internal/Subscription';
-import {Store} from '@ngrx/store';
-import {switchToTabView} from '../../../shared/store/actions/assets.actions';
 import {ServerAssetHelper} from '../server-asset.helper';
 import {LockService} from '../../../shared/service/lock-service';
 import {ModelObject} from '../../../model-object';
@@ -34,14 +32,14 @@ declare var example: any;
 @Component({
   selector: 'app-graph-view',
   templateUrl: './graph-view.component.html',
-  styleUrls: ['./graph-view.component.scss'],
-  providers: [ConfirmationService]
+  styleUrls: ['./graph-view.component.scss']
 })
 export class GraphViewComponent implements OnInit, OnDestroy {
 
   canvas: any;
 
   @Input() enableSaveButton: boolean;
+  @Output() gotoTabView: EventEmitter<string> = new EventEmitter<string>();
   // old associated malfunctions list lenght
   public sizeMalf = 0;
 
@@ -265,9 +263,7 @@ export class GraphViewComponent implements OnInit, OnDestroy {
               private zone: NgZone,
               private formBuilder: FormBuilder,
               private dataService: DataService,
-              private lockService: LockService,
-              private store: Store<any>) {
-
+              private lockService: LockService) {
 
     this.width = 1500;
     this.height = 2000;
@@ -443,7 +439,7 @@ export class GraphViewComponent implements OnInit, OnDestroy {
   }
 
   changeView(): void {
-    this.store.dispatch(switchToTabView());
+    this.gotoTabView.emit('true');
   }
 
   ngOnInit() {
@@ -659,9 +655,6 @@ export class GraphViewComponent implements OnInit, OnDestroy {
       if (listFig.data[g].cssClass === 'process') {
         listFig.data[g].setVisible(false);
         listFig.data[g].setSelectable(false);
-
-        // console.log(this.canvas.getSelection().all.data[g])
-
         for (const label in listFig.data[g].children.data) {
 
           listFig.data[g].children.data[label].figure.setVisible(false);
@@ -713,8 +706,6 @@ export class GraphViewComponent implements OnInit, OnDestroy {
       if (listFig.data[g].cssClass === 'activity') {
         listFig.data[g].setVisible(false);
         listFig.data[g].setSelectable(false);
-
-        // console.log(this.canvas.getSelection().all.data[g])
 
         for (const label in listFig.data[g].children.data) {
 
@@ -768,8 +759,6 @@ export class GraphViewComponent implements OnInit, OnDestroy {
         listFig.data[g].setVisible(false);
         listFig.data[g].setSelectable(false);
 
-        // console.log(this.canvas.getSelection().all.data[g])
-
         for (const label in listFig.data[g].children.data) {
 
           listFig.data[g].children.data[label].figure.setVisible(false);
@@ -821,8 +810,6 @@ export class GraphViewComponent implements OnInit, OnDestroy {
       if (listFig.data[g].cssClass === 'asset') {
         listFig.data[g].setVisible(false);
         listFig.data[g].setSelectable(false);
-
-        // console.log(this.canvas.getSelection().all.data[g])
 
         for (const label in listFig.data[g].children.data) {
 
@@ -906,25 +893,12 @@ export class GraphViewComponent implements OnInit, OnDestroy {
 
     endNode.on('click', function (emitter, event) {
 
-      // console.log("click create process")
       window.angularComponentRef.componentFn(event);
-
-
     });
-    /*endNode.on("dblclick", function(emitter, event){
-
-
-        window.angularComponentRef.componentDBClick(emitter);
-
-
-      });*/
     endNode.on('removed', function (emitter, event) {
 
-
       window.angularComponentRef.removeComponent(emitter);
-
     });
-
 
     this.canvas.add(endNode);
 
@@ -1457,20 +1431,6 @@ export class GraphViewComponent implements OnInit, OnDestroy {
 
     }
 
-    //
-    // listFig.data[0].attr({
-    //       color: "#f3f3f3"
-    //     });
-
-    //
-    // for(let i in listCon){
-    // console.log(listCon[i][0])
-    //   listCon[i][0].canvas.attr({
-    //     color: "#f3f3f3"
-    //   });
-    //
-    // }
-
   }
 
   clickOnEdge(the) {
@@ -1619,7 +1579,6 @@ export class GraphViewComponent implements OnInit, OnDestroy {
         }
       } else if (the.cssClass === 'draw2d_shape_basic_Label') {
 
-        // console.log("click on label");
         const figure = {'figure': the.parent};
         this.clickProcess(figure);
       }
@@ -2159,7 +2118,6 @@ export class GraphViewComponent implements OnInit, OnDestroy {
 
     }
 
-    // console.log("Check involved nodes");
     if ((event.connection.sourcePort.parent.cssClass === 'malfunction') && (event.connection.targetPort.parent.cssClass === 'activity')) {
 
       const assId = [];
@@ -3076,7 +3034,6 @@ export class GraphViewComponent implements OnInit, OnDestroy {
 
                   }
                   const appTech = [];
-                  // console.log("First error")
                   appTech.push(this.assets[q].technicalTypes[0].split('_')[0]);
                   tech = appTech;
 
@@ -3147,10 +3104,6 @@ export class GraphViewComponent implements OnInit, OnDestroy {
 
 
     this.changeEdgeColor(this.map);
-
-    /*console.log("map to be seen")
-      console.log(this.map)*/
-
   }
 
   //Not used. Consider to remove
@@ -3209,11 +3162,6 @@ export class GraphViewComponent implements OnInit, OnDestroy {
               }
 
             }
-
-            /*console.log("edge with values")
-              console.log(this.edges[ed])*/
-
-
           }
 
           for (const x in map[j].seriousness) {
@@ -3326,10 +3274,6 @@ export class GraphViewComponent implements OnInit, OnDestroy {
       }
     }
 
-    /*console.log("new")
-      console.log(this.newSizeMalf)
-      console.log("old")
-      console.log(this.sizeMalf)*/
     if (this.newSizeMalf < this.sizeMalf) {
 
       this.checkedColor(this.involvedEdges, this.coloredByMal);
@@ -3339,11 +3283,6 @@ export class GraphViewComponent implements OnInit, OnDestroy {
 
   // to discolour an edge without malfunctions
   checkedColor(involved, colored) {
-
-    /*console.log("+++++++entering checkColor++++++")
-
-      console.log(involved)
-      console.log(colored)*/
 
     const asset = involved[0].asset;
     const discoloured = [];
@@ -3639,7 +3578,6 @@ export class GraphViewComponent implements OnInit, OnDestroy {
 
     }
 
-    // console.log("edit Mal")
     this.newEditEdgeColor(assId);
   }
 
@@ -3652,9 +3590,6 @@ export class GraphViewComponent implements OnInit, OnDestroy {
   //assId is an array
   //This method changes the color of an asset depending on the related Malfunctions
   newEditEdgeColor(assId) {
-    console.log('newEditEdgeColor');
-    console.log(assId);
-
     const graphicAssets = [];
     const graphicMalfunctions = [];
     const allFigures = this.canvas.getFigures().data;
@@ -3708,11 +3643,6 @@ export class GraphViewComponent implements OnInit, OnDestroy {
       }
 
     }
-
-    /*console.log("figures")
-      console.log(graphicMalfunctions)
-      console.log(graphicAssets)*/
-
     this.calculateValueActivity(graphicMalfunctions, graphicAssets);
 
   }
@@ -3786,16 +3716,12 @@ export class GraphViewComponent implements OnInit, OnDestroy {
 
     }
 
-    /*console.log("Activities Value")
-      console.log(activitiesValue);*/
-
     this.assignValueAndColorToEdgesByMalfunctions(activitiesValue, graphicAssets);
 
   }
 
   // it assigns color and values to the edge
   assignValueAndColorToEdgesByMalfunctions(activitiesValue, graphicAssets) {
-    console.log('assignValueAndColorToEdgesByMalfunctions');
 
     // for each involved asset
     for (const i in graphicAssets) {
@@ -3818,9 +3744,6 @@ export class GraphViewComponent implements OnInit, OnDestroy {
               if (index != -1) {
 
                 const indexActivity = activitiesValue.findIndex(act => act.id === this.assets[k].identifier);
-
-                /*console.log(indexActivity)
-                  console.log(activitiesValue)*/
 
                 const indexGraphicalEdge = this.canvas.getLines().data.findIndex(ed => ed.id === graphicAssets[i].links[j]);
 
@@ -3879,9 +3802,6 @@ export class GraphViewComponent implements OnInit, OnDestroy {
 
 
                   }
-                  /*console.log("filled edge")
-                    console.log(this.edges[indexDataEdge])*/
-
                   finalBorder.push(this.edges[indexDataEdge].securityImpacts);
 
                   // to assign color to the edge

@@ -24,6 +24,7 @@ import {fetchProcess, selectRefresh} from '../../../../../shared/store/reducers/
 import {take} from 'rxjs/operators';
 import {FormBuilder} from '@angular/forms';
 import {MessageService} from 'primeng/api';
+import {Subscription} from "rxjs/internal/Subscription";
 
 @Component({
   selector: 'app-process-tab-view',
@@ -41,43 +42,46 @@ export class ProcessTabViewComponent extends AbstractTabViewComponent implements
   rowsNumber = '500px';
   selected: any[];
   public newProcess: any;
+  private subscriptions: Subscription[] = [];
 
   constructor(public store: Store<any>, public messageService: MessageService) {
     super('processes', 'Processes', store, messageService);
   }
 
   ngOnInit() {
-    this.store.pipe(select(selectRefresh)).subscribe(() => {
-      this.resetTable();
-      const businessProcessesMap = ServerAssetHelper.retrieveBusinessProcessesMap(this.serverAsset);
-      const processes: any[] = [];
-      for (const key of businessProcessesMap.keys()) {
-        processes.push(key);
-      }
-      this.setColumns(this.serverAsset.nodes.filter(e => e.nodeType === 'Organization'));
-      this.setRows(processes, businessProcessesMap);
-
-    });
-    this.store.pipe(select(fetchProcess)).subscribe(newPr => {
-      if (newPr) {
-        const predict = r => r.id === newPr.identifier;
-        if (this.dataRows.some(predict)) {
-          const model = this.dataRows.find(predict);
-          this.model = model;
-          this.model.processes = newPr.name;
-          this.model.id = newPr.identifier;
-          this.dataRows[this.dataRows.indexOf(model)] = this.model;
-          this.store.dispatch(storeServerAsset(this.serverAsset));
-          this.store.dispatch(refreshTablesStart());
-        } else {
-          this.newProcess = newPr;
-          this.model.processes = this.newProcess.name;
-          this.model.id = this.newProcess.identifier;
-          this.save();
+    this.subscriptions.push(
+      this.store.pipe(select(selectRefresh)).subscribe(() => {
+        this.resetTable();
+        const businessProcessesMap = ServerAssetHelper.retrieveBusinessProcessesMap(this.serverAsset);
+        const processes: any[] = [];
+        for (const key of businessProcessesMap.keys()) {
+          processes.push(key);
         }
-        this.validate(this.serverAsset);
-      }
-    });
+        this.setColumns(this.serverAsset.nodes.filter(e => e.nodeType === 'Organization'));
+        this.setRows(processes, businessProcessesMap);
+
+      }));
+    this.subscriptions.push(
+      this.store.pipe(select(fetchProcess)).subscribe(newPr => {
+        if (newPr) {
+          const predict = r => r.id === newPr.identifier;
+          if (this.dataRows.some(predict)) {
+            const model = this.dataRows.find(predict);
+            this.model = model;
+            this.model.processes = newPr.name;
+            this.model.id = newPr.identifier;
+            this.dataRows[this.dataRows.indexOf(model)] = this.model;
+            this.store.dispatch(storeServerAsset(this.serverAsset));
+            this.store.dispatch(refreshTablesStart());
+          } else {
+            this.newProcess = newPr;
+            this.model.processes = this.newProcess.name;
+            this.model.id = this.newProcess.identifier;
+            this.save();
+          }
+          this.validate(this.serverAsset);
+        }
+      }));
   }
 
   ngOnChanges(changes: SimpleChanges) {
@@ -251,5 +255,6 @@ export class ProcessTabViewComponent extends AbstractTabViewComponent implements
 
   ngOnDestroy(): void {
     this.clear();
+    this.subscriptions.forEach(s => s.unsubscribe());
   }
 }

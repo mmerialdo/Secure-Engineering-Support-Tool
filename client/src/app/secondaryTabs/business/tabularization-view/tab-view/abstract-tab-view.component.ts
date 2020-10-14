@@ -12,7 +12,6 @@
 
 import {Store} from '@ngrx/store';
 import {validateFalse, validateTrue} from '../../../../shared/store/actions/assets.actions';
-import {FormBuilder} from '@angular/forms';
 import {MessageService} from 'primeng/api';
 
 export abstract class AbstractTabViewComponent {
@@ -95,13 +94,12 @@ export abstract class AbstractTabViewComponent {
   }
 
   //Checking if all the nodes except Organizations have a parent
-  validate(serverAsset: any): void {
+  validate(serverAsset: any) {
     // const nodeCount = serverAsset.nodes.filter(n => n.nodeType !== 'Organization').length;
     const nodesOrphan = serverAsset.nodes.filter(n => n.nodeType !== 'Organization')
       .filter(node => node.parents.length === 0);
 
     if (nodesOrphan.length > 0) {
-      debugger;
       this.store.dispatch(validateFalse());
 
       let msg = '';

@@ -10,6 +10,6 @@
 // ------------------------------------------------------------------------------------------------------------------ -->
 
 <div style="margin-top: 4px">
-<app-graph-view *ngIf="!(tabView$ | async)" [enableSaveButton]="enableSaveButton"></app-graph-view>
-<app-tabularization-view *ngIf="(tabView$ | async)" [enableSaveButton]="enableSaveButton"></app-tabularization-view>
+  <app-graph-view *ngIf="!(tabView$ | async)" [enableSaveButton]="enableSaveButton" (gotoTabView)="gotoTabView(true)" ></app-graph-view>
+  <app-tabularization-view *ngIf="(tabView$ | async)" [enableSaveButton]="enableSaveButton" (gotoTabView)="gotoTabView(false)" ></app-tabularization-view>
 </div>
