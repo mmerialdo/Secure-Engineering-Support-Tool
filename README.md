@@ -7,7 +7,7 @@ SEST - Version 2.0
 
 == Version ==
 
-V2.0 - 31/10/20 - 
+V2.0 - 30/10/20 - 
 
 == Organization == 
 
