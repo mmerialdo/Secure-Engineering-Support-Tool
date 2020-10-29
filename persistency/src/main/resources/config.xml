@@ -10,12 +10,11 @@
 		<typeAlias alias="Assprofile" type="org.crmf.persistency.domain.project.AssProfile"></typeAlias>
 		<typeAlias alias="Assproject" type="org.crmf.persistency.domain.project.AssProject"></typeAlias>
 		<typeAlias alias="Asstemplate" type="org.crmf.persistency.domain.project.AssTemplate"></typeAlias>
-		<typeAlias alias="AssProfileTemplate" type="org.crmf.persistency.domain.project.AssProfileTemplate"></typeAlias>
 		<typeAlias alias="Sysproject" type="org.crmf.persistency.domain.project.SysProject"></typeAlias>
 		<typeAlias alias="Sysparticipant" type="org.crmf.persistency.domain.project.SysParticipant"></typeAlias>
 		<typeAlias alias="Requirement" type="org.crmf.persistency.domain.requirement.Requirement"></typeAlias>
 		<typeAlias alias="Assaudit" type="org.crmf.persistency.domain.audit.Assaudit"></typeAlias>
-		<typeAlias alias="AssauditDefaultJSON" type="org.crmf.persistency.domain.audit.AssauditDefaultJSON"></typeAlias>
+		<typeAlias alias="AssauditDefault" type="org.crmf.persistency.domain.audit.AssauditDefault"></typeAlias>
 		<typeAlias alias="SestAuditModel" type="org.crmf.model.audit.SestAuditModel"></typeAlias>
 		<typeAlias alias="SestQuestionnaireModel" type="org.crmf.model.audit.SestQuestionnaireModel"></typeAlias>
 		<typeAlias alias="SestAssetModel" type="org.crmf.persistency.domain.asset.SestAssetModel"></typeAlias>

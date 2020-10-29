@@ -25,8 +25,10 @@ public class SestRiskScenarioReference {
   //vulnerability fields
   private String securityScope;
   private String vulnerabilityReferenceId;
+  private String vulnerabilityReferenceCatalogue;
   //threat fields
   private String threatReferenceId;
+  private String threatReferenceCatalogue;
 
   //security measures fields
   private String dissuasion;
@@ -73,8 +75,24 @@ public class SestRiskScenarioReference {
     this.vulnerabilityReferenceId = vulnerabilityReferenceId;
   }
 
+  public String getVulnerabilityReferenceCatalogue() {
+    return vulnerabilityReferenceCatalogue;
+  }
+
+  public String getThreatReferenceCatalogue() {
+    return threatReferenceCatalogue;
+  }
+
   public String getThreatReferenceId() {
     return threatReferenceId;
+  }
+
+  public void setVulnerabilityReferenceCatalogue(String vulnerabilityReferenceCatalogue) {
+    this.vulnerabilityReferenceCatalogue = vulnerabilityReferenceCatalogue;
+  }
+
+  public void setThreatReferenceCatalogue(String threatReferenceCatalogue) {
+    this.threatReferenceCatalogue = threatReferenceCatalogue;
   }
 
   public void setThreatReferenceId(String threatReferenceId) {
@@ -113,11 +131,9 @@ public class SestRiskScenarioReference {
     this.palliative = palliative;
   }
 
-
   public String getSecondaryAssetType() {
     return secondaryAssetType;
   }
-
 
   public void setSecondaryAssetType(String secondaryAssetType) {
     this.secondaryAssetType = secondaryAssetType;

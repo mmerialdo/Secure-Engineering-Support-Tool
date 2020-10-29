@@ -51,8 +51,9 @@ export class ThreatsComponent implements OnInit, OnDestroy {
   public edges: any;
   public nodes: any;
 
-  public row = 0;
-  public column = 0;
+  // keeps elements position
+  private mapPosition = new Map<Number, String>();
+  private maxColumns = 5;
 
   files: TreeNode[];
   public selectedFiles = [];
@@ -332,10 +333,23 @@ export class ThreatsComponent implements OnInit, OnDestroy {
   // to create a widget
   createCard(s: string, id: string) {
 
-    const figure = new CollapsibleShapeThreat({x: 150 * this.column, y: 150 * this.row}, id);
+    const elementsNumber = this.mapPosition.size;
+    const elementsKeysArray = Array.from(this.mapPosition.keys());
+    let nextPosition = elementsNumber;
+    for (let i = 0; i < elementsNumber; i++) {
+      const found = elementsKeysArray.includes(i);
+      if (!found) {
+        nextPosition = i;
+        break;
+      }
+    }
+
+    const column = nextPosition % this.maxColumns;
+    const row = Math.floor(nextPosition/this.maxColumns);
+    const figure = new CollapsibleShapeThreat({x: 150 * column, y: 150 * row}, id);
     figure.attr({
-      x: (230 * this.column) + 30,
-      y: (150 * this.row) + 30
+      x: (230 * column) + 30,
+      y: (150 * row) + 30
     });
 
     figure.attr({
@@ -343,16 +357,9 @@ export class ThreatsComponent implements OnInit, OnDestroy {
       height: 60
     });
 
-    if (this.column === 3) {
-      this.column = 0;
-      this.row = this.row + 1;
-    } else {
-      this.column = this.column + 1;
-    }
-
     figure.children.data[0].figure.children.data[0].figure.setText(s);
     figure.setId(id);
-
+    figure.deleteable = false;
     figure.on('removed', function (emitter, event) {
       window.angularComponentRef.removeComponent(emitter);
     });
@@ -364,6 +371,7 @@ export class ThreatsComponent implements OnInit, OnDestroy {
     }
 
     this.canvas.add(figure);
+    this.mapPosition.set(nextPosition, id);
     this.checkedRiskModelThreat(id, figure);
   }
 
@@ -559,17 +567,22 @@ export class ThreatsComponent implements OnInit, OnDestroy {
       }
     }
 
-    for (const i in this.canvas.getFigures().data) {
-      const figure = this.canvas.getFigures().data[i];
-      let found = false;
-      for (const selectedFile of this.selectedFiles) {
-        if (selectedFile.data.identifier === figure.id) {
-          found = true;
-        }
+    let figureToRemove = [];
+    for (const figure of this.canvas.getFigures().data) {
+      const foundFigure = this.selectedFiles.find(selectedFile => selectedFile.data.identifier === figure.id);
+      if (!foundFigure) {
+        figureToRemove.push(figure);
       }
-      if (!found) {
+    }
+    if (figureToRemove.length > 0) {
+      figureToRemove.forEach(figure => {
         this.canvas.remove(figure);
-      }
+        const foundPosition = Array.from(this.mapPosition.entries()).filter(({1: v}) => v === figure.id)
+          .map(([k]) => k);
+        if (foundPosition) {
+          this.mapPosition.delete(foundPosition[0]);
+        }
+      });
     }
     this.thereAreChanges = true;
   }
@@ -1919,7 +1932,10 @@ export class ThreatsComponent implements OnInit, OnDestroy {
     let completeList = {};
 
     this.blocked = true;
-    completeList = {'jsonModel': (JSON.stringify(this.riskModel, null, 2)), 'objectIdentifier': this.riskModel.identifier};
+    completeList = {
+      'jsonModel': (JSON.stringify(this.riskModel, null, 2)),
+      'objectIdentifier': this.riskModel.identifier
+    };
 
     this.subscriptions.push(
       this.dataService.updateRiskModel(completeList).subscribe(response => {
@@ -1928,7 +1944,9 @@ export class ThreatsComponent implements OnInit, OnDestroy {
         this.showSuccess();
         if (JSON.parse(response).otherModelsStatus === 'UPDATED') {
           this.idAssets = [];
+          this.selectedFiles = [];
           this.canvas.clear();
+          this.mapPosition.clear();
           this.getAsset();
         } else {
           this.getRiskModelAfterUpdate();
@@ -1941,9 +1959,17 @@ export class ThreatsComponent implements OnInit, OnDestroy {
     this.blocked = true;
 
     let completeList = {};
-    completeList = {'jsonModel': (JSON.stringify(this.threatModel, null, 2)), 'objectIdentifier': this.threatModel.identifier};
+    completeList = {
+      'jsonModel': (JSON.stringify(this.threatModel, null, 2)),
+      'objectIdentifier': this.threatModel.identifier
+    };
 
-    this.messageService.add({key: 'tc', severity: 'info', summary: 'Info Message', detail: ThreatsComponent.INFO_SERVER_FILTER});
+    this.messageService.add({
+      key: 'tc',
+      severity: 'info',
+      summary: 'Info Message',
+      detail: ThreatsComponent.INFO_SERVER_FILTER
+    });
     this.subscriptions.push(
       this.dataService.updateThreatModel(JSON.stringify(completeList, null, 2)).subscribe(response => {
         this.sendRiskModel();

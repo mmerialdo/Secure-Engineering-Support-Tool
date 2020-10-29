@@ -17,28 +17,8 @@ import com.google.gson.GsonBuilder;
 import com.google.gson.JsonObject;
 import org.crmf.model.general.SESTObjectTypeEnum;
 import org.crmf.model.requirement.SecurityRequirement;
-import org.crmf.model.riskassessment.AssessmentProcedure;
-import org.crmf.model.riskassessment.AssetModel;
-import org.crmf.model.riskassessment.RiskModel;
-import org.crmf.model.riskassessment.RiskTreatmentModel;
-import org.crmf.model.riskassessment.SafeguardModel;
-import org.crmf.model.riskassessment.ThreatModel;
-import org.crmf.model.riskassessment.VulnerabilityModel;
-import org.crmf.model.riskassessmentelements.Asset;
-import org.crmf.model.riskassessmentelements.Consequence;
-import org.crmf.model.riskassessmentelements.ImpactEnum;
-import org.crmf.model.riskassessmentelements.LikelihoodEnum;
-import org.crmf.model.riskassessmentelements.RiskScenario;
-import org.crmf.model.riskassessmentelements.RiskScenarioReference;
-import org.crmf.model.riskassessmentelements.RiskTreatment;
-import org.crmf.model.riskassessmentelements.Safeguard;
-import org.crmf.model.riskassessmentelements.SafeguardEffectiveness;
-import org.crmf.model.riskassessmentelements.ScenarioResultEnum;
-import org.crmf.model.riskassessmentelements.SecondaryAssetCategoryEnum;
-import org.crmf.model.riskassessmentelements.SecurityImpact;
-import org.crmf.model.riskassessmentelements.Threat;
-import org.crmf.model.riskassessmentelements.Vulnerability;
-import org.crmf.model.riskassessmentelements.VulnerabilitySourceEnum;
+import org.crmf.model.riskassessment.*;
+import org.crmf.model.riskassessmentelements.*;
 import org.crmf.model.utility.GenericFilter;
 import org.crmf.model.utility.GenericFilterEnum;
 import org.crmf.model.utility.ModelObject;
@@ -49,13 +29,10 @@ import org.crmf.model.utility.vulnerabilitymodel.VulnerabilityModelSerializerDes
 import org.crmf.persistency.domain.risk.SeriousnessScale;
 import org.crmf.persistency.domain.risk.StatusImpactScale;
 import org.crmf.persistency.domain.risk.StatusLikelihoodScale;
-import org.crmf.persistency.mapper.asset.AssetServiceInterface;
 import org.crmf.persistency.mapper.general.SestObjServiceInterface;
 import org.crmf.persistency.mapper.project.AssprocedureServiceInterface;
-import org.crmf.persistency.mapper.project.AssprojectServiceInterface;
 import org.crmf.persistency.mapper.risk.RiskServiceInterface;
 import org.crmf.persistency.mapper.risk.RiskTreatmentServiceInterface;
-import org.crmf.persistency.mapper.safeguard.SafeguardServiceInterface;
 import org.crmf.persistency.mapper.threat.ThreatServiceInterface;
 import org.crmf.persistency.mapper.vulnerability.VulnerabilityServiceInterface;
 import org.crmf.riskmodel.utility.SecurityMeasuresInterpreter;
@@ -67,11 +44,7 @@ import org.springframework.stereotype.Service;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.UUID;
+import java.util.*;
 
 //The sest-risk-model bundle holds the business logic related to the management of the risk assessment analysis and treatment. It is separated from the sest-core bundle in order to concentrate here
 //the risk assessment logic which may depend on the selected risk assessment methodology
@@ -91,19 +64,10 @@ public class RiskModelManagerInput {
   private AssprocedureServiceInterface assprocedureService;
   @Autowired
   @Qualifier("default")
-  private AssprojectServiceInterface assprojectService;
-  @Autowired
-  @Qualifier("default")
-  private AssetServiceInterface assetModelService;
-  @Autowired
-  @Qualifier("default")
   private VulnerabilityServiceInterface vulnerabilityModelService;
   @Autowired
   @Qualifier("default")
   private ThreatServiceInterface threatModelService;
-  @Autowired
-  @Qualifier("default")
-  private SafeguardServiceInterface safeguardModelService;
   @Autowired
   @Qualifier("default")
   private RiskServiceInterface riskModelService;
@@ -154,8 +118,6 @@ public class RiskModelManagerInput {
         jsonObject.addProperty(METHOD_RESULT, "ERROR");
         jsonObject.addProperty(OTHER_MODELS_STATUS, NOT_UPDATED);
       }
-
-
       GsonBuilder gsonBuilder = new GsonBuilder();
       gsonBuilder.serializeNulls();
 
@@ -172,7 +134,6 @@ public class RiskModelManagerInput {
     harmonizeModels(procedure);
 
     saveModels(procedure);
-
 
     //If, after harmonization and completion, some models (vulnerabilities an threats) have been modified, the client must retrieve them, so we need to communicate that to the client. If only the risk model has been updated, the client
     //will retrieve only the RiskModel

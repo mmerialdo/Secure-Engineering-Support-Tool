@@ -16,7 +16,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.crmf.model.audit.ISOControls;
 import org.crmf.model.general.SESTObjectTypeEnum;
 import org.crmf.model.requirement.SecurityRequirement;
-import org.crmf.persistency.domain.audit.AssauditDefaultJSON;
+import org.crmf.persistency.domain.audit.AssauditDefault;
 import org.crmf.persistency.domain.general.Sestobj;
 import org.crmf.persistency.domain.secrequirement.SecRequirement;
 import org.crmf.persistency.domain.secrequirement.SecRequirementSafeguard;
@@ -97,7 +97,7 @@ public class SecRequirementService implements SecRequirementServiceInterface {
 
       for (String[] valueItem : values) {
         SecRequirement securityReq = requirementMapper.getSecRequirementByReqId(valueItem[0]);
-        AssauditDefaultJSON safeguard = auditDefaultMapper.getByCategory(valueItem[1]);
+        AssauditDefault safeguard = auditDefaultMapper.getByCategory(valueItem[1]);
         String contribution = valueItem[2];
 
         LOG.info("InsertSecRequirementAuditDefault " + securityReq + ", safeguard " + safeguard + ", contribution " + contribution);

@@ -48,16 +48,15 @@
                 </td>
                 <td *ngIf="!hideValue" [ngStyle]="{'width':'5%'}">
                   <div *ngIf="rowData.type === 'Safeguard'">
-
                     <p-dropdown [options]="rv1List" [(ngModel)]="rowData.targetValue"
                                 (onChange)="focusDrop($event,rowData)" (onBlur)="lostDrop(rowData)"
                                 [style]="{'min-width':0, 'width':'100%'}" appendTo="body"></p-dropdown>
                   </div>
 
                   <div *ngIf="rowData.type === 'SecurityRequirement'">
-                    <p-dropdown [options]="rv2List" [(ngModel)]="rowData.targetValue"
+                    <!--p-dropdown [options]="rv2List" [(ngModel)]="rowData.targetValue"
                                 (onChange)="focusDrop($event,rowData)"
-                                [style]="{'min-width':0, 'width':'100%'}" appendTo="body"></p-dropdown>
+                                [style]="{'min-width':0, 'width':'100%'}" appendTo="body"></p-dropdown-->
                   </div>
                 </td>
               <td [ngStyle]="{'width': '15%'}">
@@ -132,16 +131,16 @@
                           [style]="{'min-width':0, 'width':'100%'}" appendTo="body"></p-dropdown>
             </div>
 
-            <div *ngIf="rowData.type === 'SecurityRequirement'">
+            <!-- div *ngIf="rowData.type === 'SecurityRequirement'">
               <p-dropdown [options]="rv2DetailsList" [(ngModel)]="rowData.targetValue"
                           [style]="{'min-width':0, 'width':'100%'}" appendTo="body"></p-dropdown>
-            </div>
+            </div -->
 
           </td>
           <td *ngIf="!showRisk" [ngStyle]="{'width':'3%'}">
-            <div *ngIf="(rowData.type ==='Safeguard')||(rowData.type ==='SecurityRequirement')">
+            <!-- div *ngIf="(rowData.type ==='Safeguard')||(rowData.type ==='SecurityRequirement')">
               <em class="fa fa-info-circle" (click)="info(rowData)" style="cursor:pointer;margin-left:30%;"></em>
-            </div>
+            </div -->
           </td>
         </tr>
       </ng-template>

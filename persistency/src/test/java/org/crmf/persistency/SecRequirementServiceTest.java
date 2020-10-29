@@ -16,7 +16,7 @@ import org.crmf.model.audit.AuditTypeEnum;
 import org.crmf.model.audit.QuestionnaireTypeEnum;
 import org.crmf.model.requirement.SecurityRequirement;
 import org.crmf.model.riskassessmentelements.SafeguardScoreEnum;
-import org.crmf.persistency.domain.audit.AssauditDefaultJSON;
+import org.crmf.persistency.domain.audit.AssauditDefault;
 import org.crmf.persistency.mapper.audit.AssAuditDefaultService;
 import org.crmf.persistency.mapper.project.SysparticipantService;
 import org.crmf.persistency.mapper.project.SysprojectService;
@@ -51,7 +51,7 @@ public class SecRequirementServiceTest {
   @Disabled
   public void insertSecRequirementSafeguardTest() {
 
-    AssauditDefaultJSON questionnaireDefaultJSON01 = new AssauditDefaultJSON();
+    AssauditDefault questionnaireDefaultJSON01 = new AssauditDefault();
     questionnaireDefaultJSON01.setAtype(AuditTypeEnum.SECURITY.name());
     questionnaireDefaultJSON01.setAvalue(QuestionnaireTypeEnum.MEHARI_OrganizationSecurity.name());
     questionnaireDefaultJSON01.setCategory("01");
@@ -79,7 +79,7 @@ public class SecRequirementServiceTest {
     String[] gasfSecReq2 = {"GASF_0042","01A01","2"};
     secRequirementService.insertSecRequirementSafeguard(Arrays.asList(gasfSecReq1, gasfSecReq2), null);
 
-    List<AssauditDefaultJSON> questionnaires = auditDefaultService.getAllQuestionnaires();
+    List<AssauditDefault> questionnaires = auditDefaultService.getAllQuestionnaires();
     Assertions.assertEquals(1, questionnaires.size());
     Assertions.assertTrue(questionnaires.get(0).getQuestionnaireJSON().contains("GASF"));
   }

@@ -1,5 +1,5 @@
 /* --------------------------------------------------------------------------------------------------------------------
-// Copyright file="AssAuditDefaultJSONTest.java"
+// Copyright file="AssauditDefaultTest.java"
 //  © Copyright European Space Agency, 2018-2020
 //
 //  Author: Software developed by RHEA System S.A.

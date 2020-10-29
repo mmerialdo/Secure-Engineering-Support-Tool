@@ -23,7 +23,7 @@ import org.crmf.model.requirement.SecurityRequirement;
 import org.crmf.model.riskassessment.SafeguardModel;
 import org.crmf.model.riskassessmentelements.Safeguard;
 import org.crmf.model.riskassessmentelements.SafeguardScoreEnum;
-import org.crmf.persistency.domain.audit.AssauditDefaultJSON;
+import org.crmf.persistency.domain.audit.AssauditDefault;
 import org.crmf.persistency.domain.general.Sestobj;
 import org.crmf.persistency.domain.project.AssTemplate;
 import org.crmf.persistency.domain.safeguard.SestSafeguardModel;
@@ -192,10 +192,10 @@ public class AssAuditService implements AssAuditServiceInterface {
     int auditId = auditModel.getId();
     try {
       AssAuditDefaultMapper auditDefaultMapper = sqlSession.getMapper(AssAuditDefaultMapper.class);
-      List<AssauditDefaultJSON> questionnaireDefaultList = auditDefaultMapper.getAllQuestionnaireNames();
+      List<AssauditDefault> questionnaireDefaultList = auditDefaultMapper.getAllQuestionnaireNames();
       questionnaireDefaultList.forEach(questionnaireDefault -> {
 
-        AssauditDefaultJSON questionnaireDefaultWithJSON = auditDefaultMapper.getByCategory(questionnaireDefault.getCategory());
+        AssauditDefault questionnaireDefaultWithJSON = auditDefaultMapper.getByCategory(questionnaireDefault.getCategory());
         if (questionnaireDefaultWithJSON != null && questionnaireDefaultWithJSON.getQuestionnaireJSON() != null) {
           SestQuestionnaireModel questionnaireModel = new SestQuestionnaireModel();
           questionnaireModel.setType(QuestionnaireTypeEnum.valueOf(questionnaireDefault.getAvalue()));
@@ -244,7 +244,7 @@ public class AssAuditService implements AssAuditServiceInterface {
     LOG.info("getSafeguardByIdentifier ");
     List<Question> safeguards = new ArrayList<>();
     AssAuditDefaultMapper auditDefaultMapper = sqlSession.getMapper(AssAuditDefaultMapper.class);
-    List<AssauditDefaultJSON> defaultSafeguards = auditDefaultMapper.getSafeguardByIdentifier();
+    List<AssauditDefault> defaultSafeguards = auditDefaultMapper.getSafeguardByIdentifier();
     defaultSafeguards.forEach(defaultSafeguard -> {
       LOG.info("getSafeguardByIdentifier " + defaultSafeguard.getAvalue());
       Question question = new Question();

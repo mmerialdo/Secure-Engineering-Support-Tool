@@ -46,6 +46,8 @@ public interface RiskMapper {
 
   Set<SestRiskScenarioReference> getRiskScenarioReference();
 
+  Set<SestRiskScenarioReference> getRiskScenarioReferenceWithCataloguesId();
+
   void deleteScenarioReference(@Param("sestobjIds") List<String> identifiers);
 
   void editScenarioReference(SestRiskScenarioReference scenarioReference);

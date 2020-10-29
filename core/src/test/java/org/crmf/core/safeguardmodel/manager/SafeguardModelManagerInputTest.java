@@ -147,6 +147,8 @@ public class SafeguardModelManagerInputTest {
 
     Assertions.assertEquals(1, safeguardModel.getSafeguards().size());
     Assertions.assertEquals("01A01", safeguardModel.getSafeguards().get(0).getCatalogueId());
+    Assertions.assertEquals(1, safeguardModel.getSafeguards().get(0).getRelatedSecurityRequirements().size());
+    Assertions.assertEquals("GASF_0041", safeguardModel.getSafeguards().get(0).getRelatedSecurityRequirements().get(0).getId());
     //safeguard takes score from questionnaire json
     Assertions.assertEquals(SafeguardScoreEnum.VERY_HIGH, safeguardModel.getSafeguards().get(0).getScore());
   }

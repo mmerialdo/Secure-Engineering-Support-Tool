@@ -12,14 +12,11 @@
 
 package org.crmf.model.utility;
 
-import org.apache.camel.Converter;
-
 import java.util.HashMap;
 
 //This class creates a mock-up GenericFilter for testing reasons
 public class GenericFilterBuilder implements ObjectBuilder {
 
-	@Converter
 	@Override
 	public Object getObject() {
 		

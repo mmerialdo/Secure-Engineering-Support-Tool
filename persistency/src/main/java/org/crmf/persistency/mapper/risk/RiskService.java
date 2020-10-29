@@ -281,42 +281,29 @@ public class RiskService implements RiskServiceInterface {
    * @param referenceEntry
    * @return a sest model format risk scenario reference containing the info of the input DB risk scenario Reference
    */
-  private RiskScenarioReference convertToModelRiskScenarioReference(VulnerabilityMapper vulnerabilityMapper,
-                                                                    ThreatMapper threatMapper,
-                                                                    SestRiskScenarioReference referenceEntry) {
+  private RiskScenarioReference convertToModelRiskScenarioReference(SestRiskScenarioReference referenceEntry) {
 
     RiskScenarioReference rsr = new RiskScenarioReference();
 
     try {
       rsr.setIdentifier(referenceEntry.getSestobjId());
-      //set asset type
       rsr.setAssetType(PrimaryAssetCategoryEnum.valueOf(referenceEntry.getAssetType()));
-      //set secondary asset type
       rsr.setSupportingAsset(SecondaryAssetCategoryEnum.valueOf(referenceEntry.getSecondaryAssetType()));
-      //set security Scope
       rsr.setAice(SecurityImpactScopeEnum.valueOf(referenceEntry.getSecurityScope()));
+      rsr.setVulnerabilityCode(referenceEntry.getVulnerabilityReferenceCatalogue());
 
-      //retrieve vulnerability associated to vulnerability Reference id and set corresponding fields
-      String vulnRiskCatalogue = vulnerabilityMapper.getReferenceCatalogueById(Integer.valueOf(referenceEntry.getVulnerabilityReferenceId()));
-      if (null == vulnRiskCatalogue) {
-        LOG.error("no Vulnerability Reference found with id: " + referenceEntry.getVulnerabilityReferenceId());
-        return null;
-      }
+      String threatCatalogueId = referenceEntry.getThreatReferenceCatalogue();
 
-      rsr.setVulnerabilityCode(vulnRiskCatalogue);
-
-      //retrieve threat associated to threat Reference id and set corresponding fields
-      String threatRiskCatalogue = threatMapper.getReferenceCatalogueById(Integer.valueOf(referenceEntry.getThreatReferenceId()));
-      if (null == threatRiskCatalogue) {
-        LOG.error("no Threat Reference found with id: " + referenceEntry.getThreatReferenceId());
+      if (null == threatCatalogueId) {
+        LOG.error("no Threat Reference found with scenario identifier: " + referenceEntry.getSestobjId());
         return null;
       }
 
       // split the threat catalogueId in order to get all threat info stored in it
-      String[] chunks = threatRiskCatalogue.split("-", -1);
+      String[] chunks = threatCatalogueId.split("-", -1);
 
       if (chunks.length < 6) {
-        LOG.error("Chunk size < 6 for threatRiskCatalogue: " + threatRiskCatalogue);
+        LOG.error("Chunk size < 6 for threatRiskCatalogue: " + threatCatalogueId);
         return null;
       }
 
@@ -398,15 +385,12 @@ public class RiskService implements RiskServiceInterface {
       //create a new Risk Mapper
       RiskMapper riskMapper = sqlSession.getMapper(RiskMapper.class);
       LOG.error("getRiskScenarioReference riskMapper " + riskMapper);
-      //create a new Vulnerability Mapper
-      VulnerabilityMapper vulnerabilityMapper = sqlSession.getMapper(VulnerabilityMapper.class);
-      //create a new Threat Mapper
-      ThreatMapper threatMapper = sqlSession.getMapper(ThreatMapper.class);
 
+      Set<SestRiskScenarioReference> scenarios = riskMapper.getRiskScenarioReferenceWithCataloguesId();
       // updateQuestionnaireJSON the scenario reference with the new entries
-      for (SestRiskScenarioReference referenceEntry : riskMapper.getRiskScenarioReference()) {
+      for (SestRiskScenarioReference referenceEntry : scenarios) {
 
-        RiskScenarioReference currentScenario = convertToModelRiskScenarioReference(vulnerabilityMapper, threatMapper, referenceEntry);
+        RiskScenarioReference currentScenario = convertToModelRiskScenarioReference(referenceEntry);
         if (currentScenario != null) {
           rsr.add(currentScenario);
           LOG.error("getRiskScenarioReference currentScenario " + currentScenario);

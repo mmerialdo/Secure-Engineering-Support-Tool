@@ -22,7 +22,10 @@ import {PermissionType} from '../../permission-type.class';
 import {UUID} from 'angular2-uuid';
 import {select, Store} from '@ngrx/store';
 import {take} from 'rxjs/operators';
-import {fetchCopiedVulnerabilitiesStatus, selectVulnerabilitiesFromCache} from '../../shared/store/reducers/vulnerabilities.reducer';
+import {
+  fetchCopiedVulnerabilitiesStatus,
+  selectVulnerabilitiesFromCache
+} from '../../shared/store/reducers/vulnerabilities.reducer';
 import {copyVulnerabilities} from '../../shared/store/actions/vulnerabilities.actions';
 import {Observable} from 'rxjs/internal/Observable';
 import {LockService} from '../../shared/service/lock-service';
@@ -57,8 +60,11 @@ export class VulnerabilitiesComponent implements OnInit, OnDestroy {
   public currentId;
   // List vulnerabilities of the selected asset
   public stringVul;
-  public row = 0;
-  public column = 0;
+
+  // keeps elements position
+  private mapPosition = new Map<Number, String>();
+  private maxColumns = 5;
+
   files: TreeNode[];
   public selectedFiles = [];
   public mehariVulns: TreeNode[];
@@ -287,10 +293,23 @@ export class VulnerabilitiesComponent implements OnInit, OnDestroy {
   // to create a widget
   createVuln(s: string, id: string) {
 
-    const figure = new CollapsibleShape({x: 150 * this.column, y: 150 * this.row}, id);
+    const elementsNumber = this.mapPosition.size;
+    const elementsKeysArray = Array.from(this.mapPosition.keys());
+    let nextPosition = elementsNumber;
+    for (let i = 0; i < elementsNumber; i++) {
+      const found = elementsKeysArray.includes(i);
+      if (!found) {
+        nextPosition = i;
+        break;
+      }
+    }
+
+    const column = nextPosition % this.maxColumns;
+    const row = Math.floor(nextPosition / this.maxColumns);
+    const figure = new CollapsibleShape({x: 150 * column, y: 150 * row}, id);
     figure.attr({
-      x: (230 * this.column) + 30,
-      y: (150 * this.row) + 30
+      x: (230 * column) + 30,
+      y: (150 * row) + 30
     });
 
     figure.attr({
@@ -298,22 +317,14 @@ export class VulnerabilitiesComponent implements OnInit, OnDestroy {
       height: 60
     });
 
-    if (this.column === 3) {
-
-      this.column = 0;
-      this.row = this.row + 1;
-    } else {
-
-      this.column = this.column + 1;
-    }
-
     figure.children.data[0].figure.children.data[0].figure.setText(s);
     figure.setId(id);
+    figure.deleteable = false;
     figure.on('removed', function (emitter, event) {
-
       window.angularComponentRef.removeComponent(emitter);
     });
     this.canvas.add(figure);
+    this.mapPosition.set(nextPosition, id);
     this.checkedRiskModel(id, figure);
   }
 
@@ -460,18 +471,24 @@ export class VulnerabilitiesComponent implements OnInit, OnDestroy {
       }
     }
 
-    for (const i in this.canvas.getFigures().data) {
-      const figure = this.canvas.getFigures().data[i];
-      let found = false;
-      for (const selectedFile of this.selectedFiles) {
-        if (selectedFile.data.identifier === figure.id) {
-          found = true;
-        }
-      }
-      if (!found) {
-        this.canvas.remove(figure);
+    let figureToRemove = [];
+    for (const figure of this.canvas.getFigures().data) {
+      const foundFigure = this.selectedFiles.find(selectedFile => selectedFile.data.identifier === figure.id);
+      if (!foundFigure) {
+        figureToRemove.push(figure);
       }
     }
+    if (figureToRemove.length > 0) {
+      figureToRemove.forEach(figure => {
+        this.canvas.remove(figure);
+        const foundPosition = Array.from(this.mapPosition.entries()).filter(({1: v}) => v === figure.id)
+          .map(([k]) => k);
+        if (foundPosition) {
+          this.mapPosition.delete(foundPosition[0]);
+        }
+      });
+    }
+
     this.thereAreChanges = true;
   }
 
@@ -532,7 +549,10 @@ export class VulnerabilitiesComponent implements OnInit, OnDestroy {
                   });
                   assVuln.push({'name': selectedVulnerability.label, 'data': selectedVulnerability.data});
                 } else {
-                  assVuln.push({'name': selectedVulnerability.label, 'data': this.vulnerabilitiesList[indexOldVuln].data});
+                  assVuln.push({
+                    'name': selectedVulnerability.label,
+                    'data': this.vulnerabilitiesList[indexOldVuln].data
+                  });
                 }
 
                 if (vulnLabel === '') {
@@ -574,7 +594,12 @@ export class VulnerabilitiesComponent implements OnInit, OnDestroy {
     }
     if (!isMatchingAssetCategory) {
 
-      this.messageService.add({key: 'tc', severity: 'info', summary: 'Info Message', detail: VulnerabilitiesComponent.WARN_NO_ASSET_MATCH});
+      this.messageService.add({
+        key: 'tc',
+        severity: 'info',
+        summary: 'Info Message',
+        detail: VulnerabilitiesComponent.WARN_NO_ASSET_MATCH
+      });
     }
 
     this.setColor(this.idAssets);
@@ -641,7 +666,10 @@ export class VulnerabilitiesComponent implements OnInit, OnDestroy {
                   });
                   assVuln.push({'name': this.selectedVulnArray[i].label, 'data': this.selectedVulnArray[i].data});
                 } else {
-                  assVuln.push({'name': this.selectedVulnArray[i].label, 'data': this.vulnerabilitiesList[indexOldVuln].data});
+                  assVuln.push({
+                    'name': this.selectedVulnArray[i].label,
+                    'data': this.vulnerabilitiesList[indexOldVuln].data
+                  });
                 }
                 if (vulnLabel === '') {
                   vulnLabel = vulnLabel + this.selectedVulnArray[i].label;
@@ -1665,7 +1693,10 @@ export class VulnerabilitiesComponent implements OnInit, OnDestroy {
           if (indexVul === -1) {
             const newVulnerability = [];
             newVulnerability.push(this.vulnerabilityModel.vulnerabilities[vul]);
-            this.vulnerabilitiesList.push({'name': this.vulnerabilityModel.vulnerabilities[vul].name, 'data': newVulnerability});
+            this.vulnerabilitiesList.push({
+              'name': this.vulnerabilityModel.vulnerabilities[vul].name,
+              'data': newVulnerability
+            });
           }
         }
       }
@@ -1807,7 +1838,9 @@ export class VulnerabilitiesComponent implements OnInit, OnDestroy {
         this.showSuccess();
         if (JSON.parse(response).otherModelsStatus === 'UPDATED') {
           this.idAssets = [];
+          this.selectedFiles = [];
           this.canvas.clear();
+          this.mapPosition.clear();
           this.getAsset();
         } else {
           this.getRiskModelAfterUpdate();
@@ -1827,7 +1860,12 @@ export class VulnerabilitiesComponent implements OnInit, OnDestroy {
       'objectIdentifier': this.vulnerabilityModel.identifier
     };
 
-    this.messageService.add({key: 'tc', severity: 'info', summary: 'Info Message', detail: VulnerabilitiesComponent.INFO_SERVER_FILTER});
+    this.messageService.add({
+      key: 'tc',
+      severity: 'info',
+      summary: 'Info Message',
+      detail: VulnerabilitiesComponent.INFO_SERVER_FILTER
+    });
     this.subscriptions.push(
       this.dataService.updateVulnerability(JSON.stringify(completeList, null, 2)).subscribe(response => {
         this.sendRiskModel();

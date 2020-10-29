@@ -3,56 +3,56 @@
 	  'http://mybatis.org/dtd/mybatis-3-mapper.dtd'>
 <mapper namespace='org.crmf.persistency.mapper.audit.AssAuditDefaultMapper'>
 
-	<resultMap type='AssauditDefaultJSON' id='AssauditDefaultJSON'>
+	<resultMap type='AssauditDefault' id='AssauditDefault'>
 		<result property='questionnaireJSON' column='QUESTIONNAIRE_JSON' />
 		<result property='questionnaireJSON' column='QUESTIONNAIRE_JSON' />
 		<result property='questionnaireJSON' column='QUESTIONNAIRE_JSON' />
 	</resultMap>
 
-	<insert id='insert' parameterType='AssauditDefaultJSON' useGeneratedKeys='true'
+	<insert id='insert' parameterType='AssauditDefault' useGeneratedKeys='true'
 			keyProperty='id' keyColumn='ID'>
 		INSERT INTO ASSAUDIT_DEFAULT(IX, AVALUE, ATYPE, CATEGORY, QUESTIONNAIRE_JSON)
 		VALUES (#{ix}, #{avalue}, #{atype}, #{category}, #{questionnaireJSON})
 	</insert>
 
-	<update id='updateQuestionnaireJSON' parameterType='AssauditDefaultJSON'>
+	<update id='updateQuestionnaireJSON' parameterType='AssauditDefault'>
 		UPDATE ASSAUDIT_DEFAULT
 		SET
 		QUESTIONNAIRE_JSON = #{questionnaireJSON}
 		WHERE ID = #{id}
 	</update>
 
-	<select id='getAll' resultMap='AssauditDefaultJSON'>
+	<select id='getAll' resultMap='AssauditDefault'>
 		SELECT *
 		FROM ASSAUDIT_DEFAULT
 		ORDER BY ID
 	</select>
 
-	<select id='getAllQuestionnaires' resultMap='AssauditDefaultJSON'>
+	<select id='getAllQuestionnaires' resultMap='AssauditDefault'>
 		SELECT *
 		FROM ASSAUDIT_DEFAULT WHERE ATYPE = 'QUESTIONNAIRE'
 		ORDER BY ID
 	</select>
 
-	<select id='getAllQuestionnaireNames' resultMap='AssauditDefaultJSON'>
+	<select id='getAllQuestionnaireNames' resultMap='AssauditDefault'>
 		SELECT ID, IX, AVALUE, ATYPE, CATEGORY
 		FROM ASSAUDIT_DEFAULT WHERE ATYPE = 'QUESTIONNAIRE'
 		ORDER BY ID
 	</select>
 
-	<select id='getAllByParentCategory' resultMap='AssauditDefaultJSON'>
+	<select id='getAllByParentCategory' resultMap='AssauditDefault'>
 		SELECT *
 		FROM ASSAUDIT_DEFAULT WHERE PARENT = '${value}'
 		ORDER BY ID
 	</select>
 
-	<select id='getByCategory' parameterType='String' resultMap='AssauditDefaultJSON'>
+	<select id='getByCategory' parameterType='String' resultMap='AssauditDefault'>
 		SELECT *
 		FROM ASSAUDIT_DEFAULT
 		WHERE CATEGORY = '${value}'
 	</select>
 
-	<select id='getSafeguardByIdentifier' resultMap='AssauditDefaultJSON'>
+	<select id='getSafeguardByIdentifier' resultMap='AssauditDefault'>
 		SELECT *
 		FROM ASSAUDIT_DEFAULT
 		WHERE ATYPE = 'CATEGORY' AND CHAR_LENGTH(CATEGORY) = 5

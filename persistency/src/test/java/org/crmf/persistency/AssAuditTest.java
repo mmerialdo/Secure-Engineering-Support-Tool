@@ -15,7 +15,7 @@ package org.crmf.persistency;
 import org.crmf.model.audit.*;
 import org.crmf.model.riskassessment.AssessmentProject;
 import org.crmf.model.utility.audit.QuestionnaireModelSerializerDeserializer;
-import org.crmf.persistency.domain.audit.AssauditDefaultJSON;
+import org.crmf.persistency.domain.audit.AssauditDefault;
 import org.crmf.persistency.mapper.audit.AssAuditDefaultService;
 import org.crmf.persistency.mapper.audit.AssAuditService;
 import org.crmf.persistency.mapper.audit.QuestionnaireService;
@@ -113,7 +113,7 @@ public class AssAuditTest {
 
   private String prefillProject() throws Exception {
 
-    AssauditDefaultJSON questionnaireDefaultJSON01 = new AssauditDefaultJSON();
+    AssauditDefault questionnaireDefaultJSON01 = new AssauditDefault();
     questionnaireDefaultJSON01.setAtype("QUESTIONNAIRE");
     questionnaireDefaultJSON01.setAvalue(QuestionnaireTypeEnum.MEHARI_OrganizationSecurity.name());
     questionnaireDefaultJSON01.setCategory("01");
@@ -122,7 +122,7 @@ public class AssAuditTest {
       "\"questions\":[{\"category\":\"01A\",\"index\":1,\"type\":\"CATEGORY\",\"value\":\"Roles and structures of security\"," +
       "\"children\":[{\"category\":\"01A01\",\"index\":1,\"type\":\"QUESTION\",\"value\":\"Organization and Management of General Security\"," +
       "\"children\":[]}]}]}");
-    AssauditDefaultJSON questionnaireDefaultJSON02 = new AssauditDefaultJSON();
+    AssauditDefault questionnaireDefaultJSON02 = new AssauditDefault();
     questionnaireDefaultJSON02.setAtype("QUESTIONNAIRE");
     questionnaireDefaultJSON02.setAvalue(QuestionnaireTypeEnum.MEHARI_ExtendedNetwork.name());
     questionnaireDefaultJSON02.setCategory("02");

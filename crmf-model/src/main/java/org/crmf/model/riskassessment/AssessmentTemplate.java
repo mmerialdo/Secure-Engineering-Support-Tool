@@ -117,7 +117,7 @@ public class AssessmentTemplate extends SESTObject {
 
 	/*
 	 Converts this template into a json properly formatted and ready to be
-	 sent through camel.
+	 sent.
 	 */
 	public String convertToJson() {
 		

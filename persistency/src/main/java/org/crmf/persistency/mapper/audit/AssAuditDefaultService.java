@@ -23,7 +23,7 @@ import org.crmf.model.audit.QuestionTypeEnum;
 import org.crmf.model.audit.Questionnaire;
 import org.crmf.model.audit.QuestionnaireTypeEnum;
 import org.crmf.model.general.SESTObjectTypeEnum;
-import org.crmf.persistency.domain.audit.AssauditDefaultJSON;
+import org.crmf.persistency.domain.audit.AssauditDefault;
 import org.crmf.persistency.domain.secrequirement.SecRequirement;
 import org.crmf.persistency.domain.secrequirement.SecRequirementSafeguard;
 import org.crmf.persistency.mapper.secrequirement.SecRequirementMapper;
@@ -72,10 +72,10 @@ public class AssAuditDefaultService {
 
   public void createQuestionnaire() {
 
-    List<AssauditDefaultJSON> questionnaires = this.getAllQuestionnaireNames();
+    List<AssauditDefault> questionnaires = this.getAllQuestionnaireNames();
     if (questionnaires != null) {
       LOG.info("createDefaultQuestionnaire " + questionnaires.size());
-      for (AssauditDefaultJSON questionnaire : questionnaires) {
+      for (AssauditDefault questionnaire : questionnaires) {
         String questionnaireJson = this.getQuestionnaireJSON(questionnaire.getCategory());
         LOG.info("createDefaultQuestionnaire " + questionnaire.getCategory());
         questionnaire.setQuestionnaireJSON(questionnaireJson);
@@ -84,29 +84,29 @@ public class AssAuditDefaultService {
     }
   }
 
-  public void insertQuestionnaire(AssauditDefaultJSON assauditDefaultJSON) {
+  public void insertQuestionnaire(AssauditDefault assauditDefault) {
 
     try {
       AssAuditDefaultMapper auditeDefaultMapper = sqlSession.getMapper(AssAuditDefaultMapper.class);
-      auditeDefaultMapper.insert(assauditDefaultJSON);
+      auditeDefaultMapper.insert(assauditDefault);
     } catch (Exception ex) {
       LOG.error(ex.getMessage());
     }
   }
 
 
-  public void updateQuestionnaireJSON(AssauditDefaultJSON assauditDefaultJSON) {
+  public void updateQuestionnaireJSON(AssauditDefault assauditDefault) {
     try {
       AssAuditDefaultMapper auditeDefaultMapper = sqlSession.getMapper(AssAuditDefaultMapper.class);
-      auditeDefaultMapper.updateQuestionnaireJSON(assauditDefaultJSON);
+      auditeDefaultMapper.updateQuestionnaireJSON(assauditDefault);
     } catch (Exception ex) {
       LOG.error(ex.getMessage());
     }
   }
 
-  public List<AssauditDefaultJSON> getAllQuestionnaires() {
+  public List<AssauditDefault> getAllQuestionnaires() {
 
-    List<AssauditDefaultJSON> questionnaires;
+    List<AssauditDefault> questionnaires;
     try {
       AssAuditDefaultMapper auditeDefaultMapper = sqlSession.getMapper(AssAuditDefaultMapper.class);
       questionnaires = auditeDefaultMapper.getAllQuestionnaires();
@@ -118,9 +118,9 @@ public class AssAuditDefaultService {
     return questionnaires;
   }
 
-  public List<AssauditDefaultJSON> getAllQuestionnaireNames() {
+  public List<AssauditDefault> getAllQuestionnaireNames() {
 
-    List<AssauditDefaultJSON> questionnaires = new ArrayList<>();
+    List<AssauditDefault> questionnaires = new ArrayList<>();
     try {
       AssAuditDefaultMapper auditeDefaultMapper = sqlSession.getMapper(AssAuditDefaultMapper.class);
       questionnaires = auditeDefaultMapper.getAllQuestionnaireNames();
@@ -131,9 +131,9 @@ public class AssAuditDefaultService {
     return questionnaires;
   }
 
-  public AssauditDefaultJSON getQuestionnaireByCategory(String category) {
+  public AssauditDefault getQuestionnaireByCategory(String category) {
 
-    AssauditDefaultJSON questionnaire = null;
+    AssauditDefault questionnaire = null;
     try {
       AssAuditDefaultMapper auditeDefaultMapper = sqlSession.getMapper(AssAuditDefaultMapper.class);
 
@@ -151,7 +151,7 @@ public class AssAuditDefaultService {
     try {
       AssAuditDefaultMapper auditeDefaultMapper = sqlSession.getMapper(AssAuditDefaultMapper.class);
       SecRequirementMapper requirementMapper = sqlSession.getMapper(SecRequirementMapper.class);
-      AssauditDefaultJSON auditQuestionnaire = auditeDefaultMapper.getByCategory(category);
+      AssauditDefault auditQuestionnaire = auditeDefaultMapper.getByCategory(category);
 
       if (auditQuestionnaire != null) {
         Questionnaire questionnaire = new Questionnaire();
@@ -161,9 +161,9 @@ public class AssAuditDefaultService {
         questionnaire.setType(QuestionnaireTypeEnum.valueOf(auditQuestionnaire.getAvalue()));
         questionnaire.setCategory(auditQuestionnaire.getCategory());
 
-        List<AssauditDefaultJSON> auditQuestions = auditeDefaultMapper
+        List<AssauditDefault> auditQuestions = auditeDefaultMapper
           .getAllByParentCategory(auditQuestionnaire.getCategory());
-        for (AssauditDefaultJSON auditQuestion : auditQuestions) {
+        for (AssauditDefault auditQuestion : auditQuestions) {
 
           questionnaire.getQuestions().add(getQuestion(auditeDefaultMapper, requirementMapper,
             auditQuestion));
@@ -182,7 +182,7 @@ public class AssAuditDefaultService {
   }
 
   private Question getQuestion(AssAuditDefaultMapper auditeDefaultMapper, SecRequirementMapper requirementMapper,
-                               AssauditDefaultJSON question) {
+                               AssauditDefault question) {
 
     Question child = new Question();
     child.setObjType(SESTObjectTypeEnum.Audit);
@@ -199,11 +199,11 @@ public class AssAuditDefaultService {
     String isoControlsInfo = this.getISOControlsDetails(question.getViso13());
     child.getAnswers().put(AnswerTypeEnum.MEHARI_ISO13_info, isoControlsInfo);
 
-    List<AssauditDefaultJSON> auditQuestions = auditeDefaultMapper
+    List<AssauditDefault> auditQuestions = auditeDefaultMapper
       .getAllByParentCategory(question.getCategory());
     int k = 0;
     if (auditQuestions != null) {
-      for (AssauditDefaultJSON questionDefault : auditQuestions) {
+      for (AssauditDefault questionDefault : auditQuestions) {
 
         child.getChildren().add(
           getQuestion(auditeDefaultMapper, requirementMapper, questionDefault));
@@ -336,7 +336,7 @@ public class AssAuditDefaultService {
           value = value.replace("\"", "");
 
           if (auditeDefaultMapper != null) {
-            AssauditDefaultJSON item = new AssauditDefaultJSON();
+            AssauditDefault item = new AssauditDefault();
             item.setId(id);
             item.setCategory(category);
             item.setIx(ix);

@@ -15,73 +15,120 @@ package org.crmf.persistency.domain.audit;
 public class AssauditDefault {
 
   private Integer id;
-
+  private String ix;
   private String avalue;
-
   private String atype;
-
-  private String questioncategory;
-
-  private String parentcategory;
-
-  private String answers;
-
-  private String description;
+  private String category;
+  private String parent;
+  private String vw;
+  private String vmax;
+  private String vmin;
+  private String vtype;
+  private String viso13;
+  private String viso5;
+  private String questionnaireJSON;
 
   public Integer getId() {
     return id;
   }
 
-  public void setId(Integer id) {
-    this.id = id;
-  }
-
-  public String getParentcategory() {
-    return parentcategory;
-  }
-
-  public void setParentcategory(String parentcategory) {
-    this.parentcategory = parentcategory;
-  }
-
-  public String getQuestioncategory() {
-    return questioncategory;
-  }
-
-  public void setQuestioncategory(String questioncategory) {
-    this.questioncategory = questioncategory;
-  }
-
-  public String getAnswers() {
-    return answers;
-  }
-
-  public void setAnswers(String answers) {
-    this.answers = answers;
+  public String getIx() {
+    return ix;
   }
 
   public String getAvalue() {
     return avalue;
   }
 
-  public void setAvalue(String avalue) {
-    this.avalue = avalue;
-  }
-
   public String getAtype() {
     return atype;
+  }
+
+  public String getCategory() {
+    return category;
+  }
+
+  public String getParent() {
+    return parent;
+  }
+
+  public String getVw() {
+    return vw;
+  }
+
+  public String getVmax() {
+    return vmax;
+  }
+
+  public String getVmin() {
+    return vmin;
+  }
+
+  public String getVtype() {
+    return vtype;
+  }
+
+  public String getViso13() {
+    return viso13;
+  }
+
+  public String getViso5() {
+    return viso5;
+  }
+
+  public String getQuestionnaireJSON() {
+    return questionnaireJSON;
+  }
+
+  public void setId(Integer id) {
+    this.id = id;
+  }
+
+  public void setIx(String ix) {
+    this.ix = ix;
+  }
+
+  public void setAvalue(String avalue) {
+    this.avalue = avalue;
   }
 
   public void setAtype(String atype) {
     this.atype = atype;
   }
 
-  public String getDescription() {
-    return description;
+  public void setCategory(String category) {
+    this.category = category;
   }
 
-  public void setDescription(String description) {
-    this.description = description;
+  public void setParent(String parent) {
+    this.parent = parent;
   }
 
+  public void setVw(String vw) {
+    this.vw = vw;
+  }
+
+  public void setVmax(String vmax) {
+    this.vmax = vmax;
+  }
+
+  public void setVmin(String vmin) {
+    this.vmin = vmin;
+  }
+
+  public void setVtype(String vtype) {
+    this.vtype = vtype;
+  }
+
+  public void setViso13(String viso13) {
+    this.viso13 = viso13;
+  }
+
+  public void setViso5(String viso5) {
+    this.viso5 = viso5;
+  }
+
+  public void setQuestionnaireJSON(String questionnaireJSON) {
+    this.questionnaireJSON = questionnaireJSON;
+  }
 }

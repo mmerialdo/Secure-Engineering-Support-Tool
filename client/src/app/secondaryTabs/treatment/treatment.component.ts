@@ -403,11 +403,7 @@ export class TreatmentComponent implements OnInit, OnDestroy {
 
           }
         });
-
-
       }
-
-
     }
 
     if ((node.type === 'Safeguard')) {

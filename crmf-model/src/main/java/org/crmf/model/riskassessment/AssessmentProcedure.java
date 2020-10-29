@@ -134,8 +134,7 @@ public class AssessmentProcedure extends SESTObject {
 	}
 
 	/*
-	 Converts this procedure into a json properly formatted and ready to be
-	 sent through Apache Camel.
+	 Converts this procedure into a json properly formatted and ready to be sent.
 	 */
 	public String convertToJson() {
 		

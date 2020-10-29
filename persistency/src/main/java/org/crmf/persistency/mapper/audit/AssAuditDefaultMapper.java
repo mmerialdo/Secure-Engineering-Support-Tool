@@ -13,7 +13,7 @@
 package org.crmf.persistency.mapper.audit;
 
 import org.apache.ibatis.annotations.Mapper;
-import org.crmf.persistency.domain.audit.AssauditDefaultJSON;
+import org.crmf.persistency.domain.audit.AssauditDefault;
 
 import java.util.List;
 
@@ -21,19 +21,19 @@ import java.util.List;
 @Mapper
 public interface AssAuditDefaultMapper {
 
-  void insert(AssauditDefaultJSON questionnaire);
+  void insert(AssauditDefault questionnaire);
 
-  void updateQuestionnaireJSON(AssauditDefaultJSON questionnaire);
+  void updateQuestionnaireJSON(AssauditDefault questionnaire);
 
-  List<AssauditDefaultJSON> getAll();
+  List<AssauditDefault> getAll();
 
-  List<AssauditDefaultJSON> getAllQuestionnaires();
+  List<AssauditDefault> getAllQuestionnaires();
 
-  List<AssauditDefaultJSON> getAllQuestionnaireNames();
+  List<AssauditDefault> getAllQuestionnaireNames();
 
-  List<AssauditDefaultJSON> getAllByParentCategory(String category);
+  List<AssauditDefault> getAllByParentCategory(String category);
 
-  AssauditDefaultJSON getByCategory(String category);
+  AssauditDefault getByCategory(String category);
 
-  List<AssauditDefaultJSON> getSafeguardByIdentifier();
+  List<AssauditDefault> getSafeguardByIdentifier();
 }

@@ -41,6 +41,7 @@ public class LockViewInput {
     User user = userService.getByIdentifier(userIdentifier);
 
     SESTObject sestObj = sestObjService.getByIdentifier(identifier);
+    // locks model if it is available (no lock), and takes lock only if is pm
     if ((sestObj.getLockedBy() == null &&
       permissionManager.isProjectObjectTypeAllowed(userIdentifier, PermissionTypeEnum.Update, sestObj.getObjType(), projectIdentifier))
       || (sestObj.getLockedBy() != null &&
