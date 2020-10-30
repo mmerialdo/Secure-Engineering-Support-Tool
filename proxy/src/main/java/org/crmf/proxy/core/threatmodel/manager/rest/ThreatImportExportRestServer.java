@@ -73,7 +73,7 @@ public class ThreatImportExportRestServer {
       if (fos != null) {
         fos.close();
       }
-      fileToReturn.deleteOnExit();
+      fileToReturn.delete();
     }
     return null;
   }
