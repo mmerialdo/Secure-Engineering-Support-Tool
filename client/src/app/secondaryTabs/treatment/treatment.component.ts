@@ -97,6 +97,7 @@ export class TreatmentComponent implements OnInit, OnDestroy {
 
   constructor(private confirmationService: ConfirmationService,
               private dataService: DataService,
+              private messageService: MessageService,
               private lockService: LockService) {
 
     this.rv1List = [];
@@ -280,7 +281,7 @@ export class TreatmentComponent implements OnInit, OnDestroy {
 
     if (event.value < node.currentValue) {
 
-      alert('Wrong value');
+      this.messageService.add({key: 'lower_value', severity: 'info', summary: 'Info Message', detail: 'Lower value not allowed.'});
 
       node.data.targetValue = node.currentValue;
 
@@ -311,7 +312,7 @@ export class TreatmentComponent implements OnInit, OnDestroy {
 
     if (event.value < node.currentValue) {
 
-      alert('Wrong value');
+      this.messageService.add({key: 'lower_value', severity: 'info', summary: 'Info Message', detail: 'Lower value not allowed.'});
 
       node.targetValue = node.currentValue;
 
@@ -356,8 +357,7 @@ export class TreatmentComponent implements OnInit, OnDestroy {
 
   propagateValueGASF(model, node, value: string) {
 
-    if (model.data.securityRequirementCatalogueId === node.data.securityRequirementCatalogueId) {
-
+    if (model.data.securityRequirementCatalogueId === node.securityRequirementCatalogueId) {
 
       model.data.targetValue = value;
 
@@ -426,7 +426,6 @@ export class TreatmentComponent implements OnInit, OnDestroy {
       this.safeguardAddInfo = node.description;
 
       this.detailsInfo = true;
-
     }
 
   }
