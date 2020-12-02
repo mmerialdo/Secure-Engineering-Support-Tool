@@ -54,9 +54,9 @@
                   </div>
 
                   <div *ngIf="rowData.type === 'SecurityRequirement'">
-                    <!--p-dropdown [options]="rv2List" [(ngModel)]="rowData.targetValue"
+                    <p-dropdown [options]="rv2List" [(ngModel)]="rowData.targetValue"
                                 (onChange)="focusDrop($event,rowData)"
-                                [style]="{'min-width':0, 'width':'100%'}" appendTo="body"></p-dropdown-->
+                                [style]="{'min-width':0, 'width':'100%'}" appendTo="body"></p-dropdown>
                   </div>
                 </td>
               <td [ngStyle]="{'width': '15%'}">
@@ -125,17 +125,15 @@
           </td>
           <td *ngIf="!showRisk" [ngStyle]="{'width':'8%'}">
             <div *ngIf="rowData.type === 'Safeguard'">
-
               <p-dropdown [options]="rv1DetailsList" [(ngModel)]="rowData.targetValue"
                           (onChange)="focusDropDetails($event,rowData)" (onBlur)="lostDrop(rowData)"
                           [style]="{'min-width':0, 'width':'100%'}" appendTo="body"></p-dropdown>
             </div>
 
-            <!-- div *ngIf="rowData.type === 'SecurityRequirement'">
+            <div *ngIf="rowData.type === 'SecurityRequirement'">
               <p-dropdown [options]="rv2DetailsList" [(ngModel)]="rowData.targetValue"
                           [style]="{'min-width':0, 'width':'100%'}" appendTo="body"></p-dropdown>
-            </div -->
-
+            </div>
           </td>
           <td *ngIf="!showRisk" [ngStyle]="{'width':'3%'}">
             <!-- div *ngIf="(rowData.type ==='Safeguard')||(rowData.type ==='SecurityRequirement')">
@@ -217,3 +215,4 @@
 </p-dialog>
 
 <p-confirmDialog width="425"></p-confirmDialog>
+<p-toast position="top-center" key="lower_value"></p-toast>
